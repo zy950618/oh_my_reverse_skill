@@ -1,5 +1,5 @@
 ---
-title: 可用的 SKILLS 索引
+title: my_reverse_skill 索引
 tags:
   - codex
   - skills
@@ -8,35 +8,92 @@ tags:
   - governance
 ---
 
-# 可用的 SKILLS 索引
+# my_reverse_skill 索引
 
-这个目录只放 **SKILLS**：也就是可触发、可复用、可评测、可长期进化的任务能力包。
+本仓库是逆向工程 SKILLS 总库，分层组织，仓库为唯一来源，通过 Windows junction 安装到 `~/.claude/skills/`。
 
-后续的 **AGENT / AGENTS** 另建目录处理，那里放写代码行为规则、项目协作规则、提交规范、代码审查规则。代码工程规则和逆向采集技能不要混在一个文件里。
+## 层次划分
 
-## 核心边界
-
-- `SKILLS`：解决某一类任务，例如 JS 逆向、反爬 token、站点接口化、314 服务化、技能评分。
-- `AGENT / AGENTS`：约束编码代理如何思考和改代码，例如谨慎假设、最小改动、测试闭环。
-- `references/`：技能被触发后按需读取的详细资料。
-- `evals/`：Skill Bench 或人工评分用例。
-- `governance.md`：版本、变更记录、漂移测试策略。
-
-## 当前可用技能
-
-| Skill | 适用场景 | 主要来源 |
+| 层 | 目录 | 角色 |
 |---|---|---|
-| `website-314-api-delivery` | 新网站 -> 纯接口 -> 查询/加车/生单/支付 -> 314 框架接口交付 | 新站点长期接入流程、Thai Airways 需求模型 |
-| `reverse-js-crawler` | 页面侦察、真实接口识别、签名/token 还原、采集脚本交付 | 爬虫逆向 Agent、JS 逆向模板、Thai Airways 复盘 |
-| `imperva-waf-reese84` | Imperva/Incapsula/Reese84/x-d-token/WAF challenge 深度处理 | Thai Airways 反爬处理经验 |
-| `site-api-adapter` | 把单站点逆向经验沉淀为 adapter、schema、runbook、prompt-router | 通用站点接口化分析体系 |
-| `skills-evaluation-governance` | 给技能评分、补 eval、接 Skill Bench、判断是否能直接安装 | SKILLS 评分与能力评估 |
+| 1 | `1-业务流程层/` | 顶层入口，按用户需求调度 2/3 层 |
+| 2 | `2-JS逆向工具层/` | Web/JS 原子工具，被 1 层调用 |
+| 3 | `3-移动逆向工具层/` | Android/iOS/Native 工具，被 1 层调用 |
+| 4 | `4-通用规范层/` | 行为守则、代码纪律 |
+| 99 | `99-SKILLS治理/` | 生命周期/分类/评分/漂移/准入 |
+| - | `站点经验库/` | 站点案例（按 domain/market/locale 拆分） |
+
+## 全部 17 个 skill
+
+### 1-业务流程层（5 个）
+
+| Skill | 适用场景 | 主要触发词 |
+|---|---|---|
+| `website-314-api-delivery` | 新网站 → 纯接口 → 查询/加车/生单/支付 → 314 交付 | 新站点接入、纯接口、314 基础框架、加解密全部实现 |
+| `reverse-js-crawler` | 页面侦察、接口识别、签名/token 还原、采集脚本交付 | JS逆向、接口还原、加密参数、补环境、批量采集 |
+| `imperva-waf-reese84` | Imperva/Reese84/84 盾/x-d-token/WAF challenge | 84盾、Reese84逆向、Incapsula、WAF挑战、风控token |
+| `site-api-adapter` | 单站点逆向结果 → adapter.yaml/schema/runbook | 接口化沉淀、adapter标准化、prompt-router、多站点复用 |
+| `skills-evaluation-governance` | 给技能评分、补 eval、回测、漂移测试、版本治理 | SKILLS评分、Skill Bench、新增Skill准入、回测、漂移 |
+
+### 2-JS逆向工具层（4 个）
+
+| Skill | 适用场景 |
+|---|---|
+| `find-crypto-entry` | 定位 JS 加密参数生成入口（函数位置 + 调用链） |
+| `ast-deobfuscate` | Babel AST 解混淆（字符串解密、控制流还原、死代码删除） |
+| `env-patch` | 浏览器加密 JS 在 Node.js 中运行（补环境） |
+| `ai-reverse-skill-creator` | 创建/优化/评测逆向类 skill |
+
+### 3-移动逆向工具层（7 个）
+
+| Skill | 适用场景 |
+|---|---|
+| `rev-frida` | Frida hook 脚本生成（Java/ObjC/Native 拦截、参数/返回值 trace） |
+| `rev-idapython` | IDAPython / IDALib 脚本（IDB 操作、Hex-Rays、批处理） |
+| `rev-dex-dumper` | Android DEX 内存 dump，破解 class-loading 加壳 |
+| `rev-u3d-dump` | Unity IL2CPP 符号 dump（方法名/地址，IDA/Ghidra 导入脚本） |
+| `rev-struct` | 通过内存访问模式重建数据结构 |
+| `rev-symbol` | 通过代码特征/字符串/常量恢复函数符号 |
+| `rev-unicorn-debug` | Unicorn 引擎仿真函数（脱离 JNI/syscalls/libc 依赖） |
+
+### 4-通用规范层（1 个）
+
+| Skill | 适用场景 |
+|---|---|
+| `karpathy-guidelines` | LLM 编码行为守则（最小改动、显式假设、可验证成功标准） |
+
+## 调度顺序（典型场景）
+
+### 网页逆向（最常用）
+
+```
+website-314-api-delivery（总控）
+  ├─ reverse-js-crawler         主链路
+  │    ├─ find-crypto-entry     定位加密
+  │    ├─ ast-deobfuscate       看不懂的 JS
+  │    └─ env-patch             浏览器 JS → Node
+  ├─ imperva-waf-reese84        遇到 84盾/Incapsula
+  ├─ site-api-adapter           接口稳定后做 adapter
+  └─ skills-evaluation-governance  任务结束做评分
+```
+
+### 移动端 / Native 逆向
+
+```
+rev-frida                动态 hook 看真实参数
+  ├─ rev-idapython       静态分析
+  ├─ rev-dex-dumper      Android 脱壳
+  ├─ rev-u3d-dump        Unity 游戏
+  ├─ rev-struct          重建结构
+  ├─ rev-symbol          还原符号
+  └─ rev-unicorn-debug   独立仿真验证算法
+```
+
+完整规划见 `99-SKILLS治理/06-网页逆向标准规划.md`。
 
 ## 新网站接入入口
 
-以后如果要处理一个新网站，优先从 `website-314-api-delivery` 开始。
-
-典型输入：
+任何新网站任务都从 `website-314-api-delivery` 开始。典型输入：
 
 ```text
 目标网站：https://www.example.com/
@@ -44,51 +101,39 @@ tags:
 要求：加解密全部实现，最后使用 314 基础框架提供接口
 ```
 
-处理顺序：
-
-```text
-website-314-api-delivery
-  -> reverse-js-crawler
-  -> imperva-waf-reese84（如果有 WAF/84盾/风控）
-  -> site-api-adapter
-  -> skills-evaluation-governance
-```
-
 ## 长期进化闭环
 
-每次真实任务结束后，都要问：
+每次真实任务结束后必须问：
 
-- 有没有新触发词？
-- 有没有新失败类型？
-- 有没有新分类规则？
-- 有没有新加解密或反爬模式？
-- 有没有应该加入 eval 的场景？
-- 是否需要升级版本号？
+1. 有没有新触发词？
+2. 有没有新失败类型？
+3. 有没有新分类规则？
+4. 有没有新加解密或反爬模式？
+5. 有没有应该加入 eval 的场景？
+6. 是否需要升级版本号？
 
-固定沉淀路径：
+沉淀路径：
 
-```text
+```
 真实任务
-  -> 归类
-  -> 执行
-  -> 记录失败点
-  -> 更新 references
-  -> 增加 eval
-  -> 评分
-  -> 版本升级
-  -> 漂移测试
+  → 归类（02-新网站接入分类.md）
+  → 执行（按 06-网页逆向标准规划.md）
+  → 记录失败点（站点经验库/<domain>/known-failures.md）
+  → 更新 references
+  → 增加 eval
+  → 评分（skills-evaluation-governance）
+  → 版本升级
+  → 漂移测试（03-测试评分漂移.md）
 ```
 
-## 官方 CI 跑分是什么意思
+## 官方 CI 跑分
 
-“结构已准备好，但还没接官方 CI 跑分”指的是：
+本地目录已有 `SKILL.md` 和 `evals/`，结构上具备被 Skill Bench 评测的能力。但要正式跑分还需要：
 
-- 本地目录已经有 `SKILL.md` 和 `evals/`，具备被 Skill Bench 评测的结构。
-- 但官方 Skill Bench 通常通过 GitHub Actions 在仓库里运行，需要仓库可见路径，例如 `skills/<skill-name>/`。
-- GitHub Actions 还需要配置模型 API key secret，例如 `ANTHROPIC_API_KEY`。
-- 本地结构校验只能说明“格式正确”，不等于官方模型已经对 evals 跑过分。
-
-如果要做正式长期跟踪，需要把这些 Skill 镜像到一个 Git 仓库，并配置 PR 触发和定时触发的 Skill Bench workflow。
+- 把 skill 镜像到一个 Git 仓库（本仓库 my_reverse_skill 已具备）
+- 仓库可见路径，例如 `skills/<skill-name>/`（本仓库用分层目录，必要时再镜像一份扁平结构给 CI）
+- GitHub Actions 配置模型 API key secret（如 `ANTHROPIC_API_KEY`）
+- PR 触发 + 定时触发的 Skill Bench workflow
 
 ## 治理文档
 
@@ -97,38 +142,18 @@ website-314-api-delivery
 - `99-SKILLS治理/03-测试评分漂移.md`
 - `99-SKILLS治理/04-新增SKILL评分回测准入.md`
 - `99-SKILLS治理/05-当前评分与回测结果.md`
-
-这些是 SKILLS 的治理说明，不是 AGENT 编码规则。
+- `99-SKILLS治理/06-网页逆向标准规划.md`（meta 规划入口）
 
 ## 新 Skill 准入
 
-后续每次新增 Skill，必须先过准入：
-
-```text
+```
 标准结构
-  -> quick_validate
-  -> 本地评分脚本
-  -> 正例/负例/历史回归回测
-  -> 更新评分结果
-  -> 再进入可用目录
+  → quick_validate
+  → 本地评分脚本
+  → 正例/负例/历史回归回测
+  → 更新评分结果
+  → 进入对应分层目录
+  → mklink /J 到 ~/.claude/skills/
 ```
 
-评分参考 `skills-evaluation-governance/references/scorecard-rubric.md`，同时吸收 Karpathy 风格的行为检查：不默默假设、不过度复杂、精准边界、目标驱动验证。
-
-
-
-## GitHub CI ????
-
-????????
-
-```text
-website-314-api-delivery/references/github-ci.md
-```
-
-?????
-
-1. ???????? `crawler-skills`?
-2. ??? Skill ????? `skills/` ???
-3. ?? `.github/workflows/skill-bench.yml`?
-4. ? GitHub Secrets ??? `ANTHROPIC_API_KEY`?
-5. ? PR???????????????
+评分参考 `skills-evaluation-governance/references/scorecard-rubric.md`，吸收 Karpathy 行为守则（4-通用规范层/karpathy-guidelines）。
