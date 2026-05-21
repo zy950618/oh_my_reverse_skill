@@ -29,19 +29,25 @@ description: >-
 
 ## Skill Routing
 
-按协议形态调用不同工具：
+按协议形态调用不同工具。**进入对应阶段前，主动 Read 对应 skill 的 SKILL.md 把上下文装进来再做，不要凭 description 记忆继续工作**。
 
-| 协议形态 | 调用 |
+| 协议形态 | 必读文件 |
 |---|---|
-| H5 webview 加密在 JS 中 | `reverse-js-crawler` + `find-crypto-entry` + `env-patch` + `ast-deobfuscate` |
-| Native .so 加密（C/C++） | `rev-frida`（动态 hook）+ `rev-idapython`（静态分析）+ `rev-unicorn-debug`（仿真验证） |
-| Native 加密但符号被剥 | `rev-symbol` 还原 + `rev-struct` 重建结构 |
-| 加壳 APK | 先 `rev-dex-dumper` 脱壳 |
-| React Native bundle | bundle 解包 → `ast-deobfuscate` → 类 web 流程 |
-| Flutter | snapshot dump + Frida 动态 hook（无静态符号） |
-| WAF/反爬在 mobile SDK | `imperva-waf-reese84`（如果是 Reese84 系）或专项分析 |
-| 接口稳定后沉淀 adapter | `5-沉淀工具层/site-api-adapter` |
-| 用户要求"接 314" | 本 skill 是 mobile 端总控，314 接入由本 skill 协调 |
+| H5 webview 加密在 JS 中 | Read `~/.claude/skills/reverse-js-crawler/SKILL.md` + `~/.claude/skills/find-crypto-entry/SKILL.md` + `~/.claude/skills/env-patch/SKILL.md` + `~/.claude/skills/ast-deobfuscate/SKILL.md` |
+| Native .so 加密（C/C++） | Read `~/.claude/skills/rev-frida/SKILL.md` + `~/.claude/skills/rev-idapython/SKILL.md` + `~/.claude/skills/rev-unicorn-debug/SKILL.md` |
+| Native 加密但符号被剥 | Read `~/.claude/skills/rev-symbol/SKILL.md` + `~/.claude/skills/rev-struct/SKILL.md` |
+| 加壳 APK | Read `~/.claude/skills/rev-dex-dumper/SKILL.md` |
+| React Native bundle | Read `~/.claude/skills/ast-deobfuscate/SKILL.md`（解 bundle 后类 web 流程） |
+| Flutter | 暂无专门 sub-skill，参考本 skill `references/airline-app-patterns.md` |
+| WAF/反爬 SDK 形态 | Read `~/.claude/skills/imperva-waf-reese84/SKILL.md`（如果是 Reese84 系） |
+| 接口稳定后做 adapter | Read `~/.claude/skills/site-api-adapter/SKILL.md` |
+| 任务结束做评分 | Read `~/.claude/skills/skills-evaluation-governance/SKILL.md` |
+
+执行约定：
+
+1. **阶段 A 协议判别完成前，不允许进入阶段 B/C 的 Read**（防止盲目调工具）。
+2. 阶段切换时 Read 完用一句话总结该 sub-skill 的 Boundaries，确认没越权。
+3. 同一任务长链路里每次切换都重新 Read。
 
 ## Workflow
 

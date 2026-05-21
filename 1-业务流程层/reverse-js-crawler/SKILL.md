@@ -60,7 +60,11 @@ description: >-
 
 - 使用 `js_reverse` MCP 做页面打开、网络拦截、Hook、运行时变量、调用栈、Cookie/storage 观察。
 - 使用仓库搜索和静态分析定位脚本入口。
-- 遇到浏览器环境依赖时使用 `env-patch` 思路把官方 JS 搬到 Node 补环境运行。
+- **进入加密还原阶段前，按需主动 Read 子 skill 的 SKILL.md 把上下文装进来再做**：
+  - 找加密入口：Read `~/.claude/skills/find-crypto-entry/SKILL.md`
+  - 看不懂的混淆 JS：Read `~/.claude/skills/ast-deobfuscate/SKILL.md`
+  - 浏览器环境依赖搬到 Node：Read `~/.claude/skills/env-patch/SKILL.md`
+- 每次 Read 后用一句话总结该 sub-skill 的 Boundaries，确认没越权（如 env-patch 仅处理"Node 内 JS 模拟"，不处理"DOM 完整渲染"）。
 - 不要求用户手工抓包，除非当前环境无法访问目标页面并且缺少任何样本。
 
 ## Boundaries

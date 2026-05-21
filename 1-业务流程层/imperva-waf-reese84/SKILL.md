@@ -34,6 +34,7 @@ description: >-
    - 记录 challenge host、cookie domain、script path、post endpoint。
 
 3. 补浏览器环境：
+   - **进入补环境工作前先 Read `~/.claude/skills/env-patch/SKILL.md`**，拿到补环境引擎、proxy 模式、存根策略，再开始写代码。
    - 模拟 `window/document/navigator/location/screen/performance/crypto` 等依赖。
    - 对齐 UA、client hints、language、timezone、screen、hardware、referer、origin、sec-fetch。
    - 浏览器只用于诊断或显式 fallback，不依赖用户真实浏览器缓存。

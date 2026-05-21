@@ -31,14 +31,21 @@ description: >-
 
 ## Skill Routing
 
-按问题类型调用已有 Skill：
+按问题类型调用已有 Skill。**进入对应阶段前，主动 Read 对应 skill 的 SKILL.md，把它的 workflow 和 Boundaries 装进当前上下文，再继续执行**，不要凭 description 记忆继续工作。
 
-- 真实接口、参数、JS 加密：`reverse-js-crawler`
-- WAF、84盾、Reese84、Incapsula、x-d-token：`imperva-waf-reese84`
-- adapter、schema、runbook、prompt-router：`site-api-adapter`
-- 评分、eval、漂移测试、版本治理：`skills-evaluation-governance`
+| 场景 | 阶段 | 必读文件 |
+|---|---|---|
+| 真实接口、参数、JS 加密 | 阶段 B-D | Read `~/.claude/skills/reverse-js-crawler/SKILL.md` |
+| WAF、84盾、Reese84、Incapsula、x-d-token | 阶段 B-D | Read `~/.claude/skills/imperva-waf-reese84/SKILL.md` |
+| Mobile App（不是 Web 站点）| 切换总控 | Read `~/.claude/skills/mobile-app-reverse-delivery/SKILL.md` 并把它当作新的总控（本 skill 不再继续） |
+| 接口已稳定，做 adapter/schema/runbook/prompt-router | 阶段 E | Read `~/.claude/skills/site-api-adapter/SKILL.md` |
+| 任务结束做评分、eval、漂移、版本治理 | 阶段 E 之后 | Read `~/.claude/skills/skills-evaluation-governance/SKILL.md` |
 
-不要把所有细节塞进一个 Skill。这个 Skill 负责分层、排期、验收和交付边界。
+执行约定：
+
+1. **阶段切换时先 Read 再做**，每次 Read 完用一句话总结"该 skill 的 Boundaries 是什么"，确认没越权。
+2. 不要把所有细节塞进一个 Skill。这个 Skill 负责分层、排期、验收和交付边界，不替代任何子 skill 的具体执行。
+3. 同一任务多次切换 skill 时，每次都重新 Read（防止上下文已被压缩丢失）。
 
 ## Delivery Workflow
 
