@@ -1,17 +1,20 @@
 """Stop hook: 任务结束时检测是否需要沉淀提醒。
 
 读 stdin 的 hook payload,扫 transcript 提取 domain。
-如果对话涉及网站逆向但没看到沉淀动作,把提示写到 stderr 并以退出码 2 退出,
+若对话涉及网站逆向但没看到沉淀动作,把提示写到 stderr 并以退出码 2 退出,
 让 Claude 接到反馈、酌情提醒用户补沉淀步骤。
 
-设计原则:异常静默(任何失败都退出码 0),不影响主任务。
+设计原则:
+- 异常静默(任何失败都退出码 0),不影响主任务
+- repo_root 从 __file__ 推断,不依赖 cwd,支持任意工作目录调用
+- 每次触发写一条 stats 到 tools/.reminder-stats.jsonl,为词表校准提供真实数据
 """
 from __future__ import annotations
 
 import json
-import os
 import re
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 if hasattr(sys.stderr, "reconfigure"):
@@ -19,6 +22,11 @@ if hasattr(sys.stderr, "reconfigure"):
         sys.stderr.reconfigure(encoding="utf-8")
     except Exception:
         pass
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parent
+STATS_FILE = SCRIPT_DIR / ".reminder-stats.jsonl"
+SITE_MEMORY_DIR = "站点经验库"
 
 DOMAIN_RE = re.compile(
     r"(?:https?://)?(?:www\.)?"
@@ -38,6 +46,7 @@ EXCLUDE_DOMAINS = {
     "openai.com",
     "microsoft.com", "msdn.com", "live.com",
     "wikipedia.org",
+    "unpkg.com", "jsdelivr.net", "cdnjs.com",
     "example.com", "example.org", "example.net",
     "localhost",
 }
@@ -56,14 +65,12 @@ PERSIST_MARKERS = (
 REVERSE_MARKERS = (
     "逆向", "reverse", "crawler", "crawl",
     "接口还原", "接口实现", "纯接口", "签名", "加密参数",
-    "sign", "token", "x-sign", "authkey", "x-d-token",
-    "waf", "imperva", "reese84", "84盾", "incapsula", "akamai",
+    "sign", "x-sign", "authkey", "x-d-token", "reese84",
+    "waf", "imperva", "84盾", "incapsula", "akamai",
     "find-crypto-entry", "ast-deobfuscate", "env-patch",
     "frida", "apk", "ipa", "dex", "il2cpp",
-    "314", "adapter.yaml",
+    "adapter.yaml",
 )
-
-SITE_MEMORY_DIR = "站点经验库"
 
 
 def load_transcript(path: str) -> list[dict]:
@@ -139,8 +146,8 @@ def has_any(text: str, markers) -> bool:
     return any(k.lower() in lower for k in markers)
 
 
-def list_site_memory_dirs(repo_root: Path) -> set[str]:
-    site = repo_root / SITE_MEMORY_DIR
+def list_site_memory_dirs() -> set[str]:
+    site = REPO_ROOT / SITE_MEMORY_DIR
     if not site.exists():
         return set()
     return {
@@ -148,6 +155,29 @@ def list_site_memory_dirs(repo_root: Path) -> set[str]:
         for d in site.iterdir()
         if d.is_dir() and not d.name.startswith("_")
     }
+
+
+def write_stats(
+    payload: dict,
+    reverse_hit: bool,
+    domains: set[str],
+    persisted: bool,
+    exit_code: int,
+) -> None:
+    try:
+        rec = {
+            "ts": datetime.now(timezone.utc).isoformat(),
+            "session_id": payload.get("session_id", ""),
+            "cwd": payload.get("cwd", ""),
+            "reverse_hit": reverse_hit,
+            "domains": sorted(domains),
+            "persisted": persisted,
+            "exit_code": exit_code,
+        }
+        with STATS_FILE.open("a", encoding="utf-8") as f:
+            f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+    except Exception:
+        pass
 
 
 def main() -> int:
@@ -160,8 +190,6 @@ def main() -> int:
         return 0
 
     transcript_path = payload.get("transcript_path", "")
-    cwd = payload.get("cwd") or os.getcwd()
-    repo_root = Path(cwd)
 
     try:
         events = load_transcript(transcript_path)
@@ -175,7 +203,8 @@ def main() -> int:
     except Exception:
         return 0
 
-    if not has_any(text, REVERSE_MARKERS):
+    reverse_hit = has_any(text, REVERSE_MARKERS)
+    if not reverse_hit:
         return 0
 
     try:
@@ -183,13 +212,15 @@ def main() -> int:
     except Exception:
         return 0
     if not domains:
+        write_stats(payload, reverse_hit, domains, persisted=False, exit_code=0)
         return 0
 
     persisted = has_any(text, PERSIST_MARKERS)
-    existing = list_site_memory_dirs(repo_root)
+    existing = list_site_memory_dirs()
     new_domains = {d for d in domains if d not in existing}
 
     if not new_domains and persisted:
+        write_stats(payload, reverse_hit, domains, persisted, exit_code=0)
         return 0
 
     lines = ["[my_reverse_skill] 任务结束沉淀提醒:"]
@@ -210,6 +241,7 @@ def main() -> int:
     lines.append("  详见 `99-SKILLS治理/06-网页逆向标准规划.md` 阶段 E。")
 
     print("\n".join(lines), file=sys.stderr)
+    write_stats(payload, reverse_hit, domains, persisted, exit_code=2)
     return 2
 
 

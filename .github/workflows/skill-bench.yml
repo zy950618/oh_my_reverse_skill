@@ -16,7 +16,13 @@ on:
       - 'tools/ci_gate.py'
   push:
     branches: [main]
+  schedule:
+    - cron: '17 1 * * 1'  # 每周一 UTC 01:17,错开整点降低 GitHub Actions 高峰
   workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
   static-scoring:
@@ -76,7 +82,7 @@ jobs:
               '|---|---|---|---|',
               ...rows,
               '',
-              '_Artifact `skill-scores` 包含 JSON 详细打分，下载查看每个 skill 的 structure / operational / drift 分项。_'
+              '_Artifact `skill-scores` 包含 JSON 详细打分,下载查看每个 skill 的 structure / operational / drift 分项。_'
             ].join('\n');
             github.rest.issues.createComment({
               owner: context.repo.owner,
@@ -84,3 +90,19 @@ jobs:
               issue_number: context.issue.number,
               body
             });
+
+      - name: Append weekly drift snapshot
+        if: github.event_name == 'schedule'
+        run: |
+          set -euo pipefail
+          DATE=$(date -u +%Y-%m-%d)
+          python tools/append_drift_history.py .ci-out metrics/drift-history.md "$DATE"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add metrics/drift-history.md
+          if git diff --cached --quiet; then
+            echo "No drift-history changes to commit"
+          else
+            git commit -m "chore: weekly drift snapshot $DATE"
+            git push
+          fi

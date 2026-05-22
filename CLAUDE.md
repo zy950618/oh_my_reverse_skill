@@ -117,3 +117,22 @@ Claude 完成响应时,脚本会扫 transcript:
 - 则输出 reminder 给 Claude
 
 reminder 是软提示,不阻断流程。脚本异常时静默退出,不影响主任务。
+
+### 触发范围(重要)
+
+Stop hook 由**项目级** `.claude/settings.json` 注册,**只在 Claude Code 的 cwd 是本仓库或其子目录时生效**:
+
+- ✓ 在 `E:/SKILLS/my_reverse_skill/` 内任何子目录工作时,hook 自动触发
+- ✗ 在外部项目(如 `C:/Users/Administrator`、`flight-cwl-vj-baggage`)中工作时,**hook 不会触发**
+
+跨项目场景下,任务结束请手动核对 06 规划的 5 步沉淀,或在 Claude 中说"按 my_reverse_skill 的 5 步沉淀核对一遍"。
+
+跨项目自动触发需要在 `~/.claude/settings.json` 用户级配置中加 Stop hook 指向本仓库脚本绝对路径,会污染所有项目,**默认不开启,按需手动配**。
+
+### 校准数据
+
+hook 每次触发会写一条记录到 `tools/.reminder-stats.jsonl`(在 `.gitignore` 中,不入 git)。累积 2 周后用于校准 `EXCLUDE_DOMAINS` / `REVERSE_MARKERS` / `PERSIST_MARKERS` 词表。
+
+### 跨平台 python 命令
+
+hook 命令默认 `python`。Windows 上若 `python` 不在 PATH(只装了 Microsoft Store 版可能叫 `py`),把 `.claude/settings.json` 中的 `"python"` 改为 `"py"`。

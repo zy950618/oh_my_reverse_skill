@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python tools/post_task_reminder.py"
+            "command": "python \"$CLAUDE_PROJECT_DIR/tools/post_task_reminder.py\""
           }
         ]
       }
