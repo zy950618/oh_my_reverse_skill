@@ -1,6 +1,6 @@
 # my_reverse_skill — Claude 工作指南
 
-逆向工程 SKILLS 总库。进入本仓库工作时,请先按下面规则行动,**不要直接跳进 reverse-js-crawler 写代码**。
+逆向工程 SKILLS 总库。进入本仓库工作时,请先按下面规则行动,**不要直接跳进 reverse-js-crawler 写代码，所有逆向需要依据，最后实现纯算和能高并发的调用处理**。
 
 ---
 
