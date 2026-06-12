@@ -11,24 +11,22 @@ version: 0.1.0
 # 平台分类 schema (v0.1.0)
 
 > 引入起点: v0.3.9 (2026-05-23)
-> 原因: thaiairways.com (web) 一致性证据被错位分给 mobile/native skill,8 个 app 类
-> skill 拿到不该有的 consistency=30。需要 Skill ↔ domain platform 匹配后再计 consistency。
+> 原因: thaiairways.com (web) 一致性证据曾被错位分给非 Web/H5 能力。本 schema 只约束 Web/H5 与治理类 skill。
 
 ## 1. 平台分类(终端维度)
 
 | 标签 | 中文 | 含义 |
 |---|---|---|
 | `web` | 网页 | PC 浏览器(Chrome/Edge/Firefox 等),HTML/JS/CSS,无 webview 套壳 |
-| `h5` | 移动 H5 | 移动浏览器(Safari iOS / Chrome Android)直接打开的页面,或 APP 内 WebView 套壳 |
-| `app` | 原生 APP | Android APK / iOS IPA 中的原生代码部分(Java/Kotlin/ObjC/Swift/C/C++)|
+| `h5` | 移动 H5 | 移动浏览器(Safari iOS / Chrome Android)直接打开的页面 |
 | `mini-program` | 小程序 | 微信小程序、支付宝小程序、字节小程序等(JS 但运行在专属容器) |
 | `cross-platform` | 跨端通用 | 规范/治理/创建/评估类 skill,不绑定单一终端 |
 
 约定:
 - `web` 与 `h5` 在很多 skill 上重叠(都是浏览器 JS 环境),允许同时打两个标签。
-- `app` 内嵌 WebView 调用 H5 页面时,如果 skill 的工作面是 H5 部分(JS 加密),应同时标 `h5` + `app`。
+- 非 Web/H5 不在本仓库建平台标签。
 - 一个站点(domain)通常是**单平台**(thaiairways.com → web),但同一公司可能有多端 domain
-  (m.thaiairways.com → h5, com.thaiairways → app)。
+  (m.thaiairways.com → h5)。
 
 ## 2. SKILL.md frontmatter 约定
 
@@ -39,14 +37,6 @@ version: 0.1.0
 name: reverse-js-crawler
 description: ...
 platforms: [web, h5]   # 网页 + 移动 H5
----
-```
-
-```yaml
----
-name: rev-frida
-description: ...
-platforms: [app]       # 仅原生 APP
 ---
 ```
 
@@ -72,7 +62,6 @@ platforms: [cross-platform]   # 通用规范,任何平台都适用
 platform: web
 notes: |
   PC 浏览器站点。m.thaiairways.com 走 h5,需要单独建目录。
-  APK com.thaiairways.thaiairwaysapp 走 app,也需单独建目录(暂未接入)。
 ```
 
 约定:
@@ -109,21 +98,13 @@ notes: |
 | reverse-js-crawler | 1-业务流程层 | `[web, h5]` | JS 逆向 |
 | website-314-api-delivery | 1-业务流程层 | `[web, h5]` | 网站交付 |
 | imperva-waf-reese84 | 1-业务流程层 | `[web, h5]` | WAF |
-| mobile-app-reverse-delivery | 1-业务流程层 | `[app]` | 移动 App 交付 |
 | skills-evaluation-governance | 1-业务流程层 | `[cross-platform]` | 治理 |
 | find-crypto-entry | 2-JS逆向工具层 | `[web, h5]` | JS 加密入口 |
 | ast-deobfuscate | 2-JS逆向工具层 | `[web, h5]` | JS AST 解混淆 |
 | env-patch | 2-JS逆向工具层 | `[web, h5]` | 补环境 |
-| skill-creator (ai-reverse-skill-creator) | 2-JS逆向工具层 | `[cross-platform]` | 创建 skill |
-| rev-frida | 3-移动逆向工具层 | `[app]` | Frida |
-| rev-idapython | 3-移动逆向工具层 | `[app]` | IDA |
-| rev-dex-dumper | 3-移动逆向工具层 | `[app]` | DEX dump |
-| rev-u3d-dump | 3-移动逆向工具层 | `[app]` | Unity IL2CPP |
-| rev-symbol | 3-移动逆向工具层 | `[app]` | 符号恢复 |
-| rev-struct | 3-移动逆向工具层 | `[app]` | 结构恢复 |
-| rev-unicorn-debug | 3-移动逆向工具层 | `[app]` | Unicorn 模拟 |
+| ai-reverse-skill-creator | 2-JS逆向工具层 | `[cross-platform]` | 创建 skill |
 | karpathy-guidelines | 4-通用规范层 | `[cross-platform]` | 通用规范 |
-| site-api-adapter | 5-沉淀工具层 | `[web, h5, app]` | 接口沉淀,多端通用 |
+| site-api-adapter | 5-沉淀工具层 | `[web, h5]` | Web/H5 接口沉淀 |
 
 ## 6. 当前 domain ↔ platform 映射
 
@@ -135,7 +116,7 @@ notes: |
 
 | 维度 | 字段 | 取值 |
 |---|---|---|
-| 终端(本文档) | `platforms` | web / h5 / app / mini-program / cross-platform |
+| 终端(本文档) | `platforms` | web / h5 / mini-program / cross-platform |
 | 业务分类(02-接入分类.md) | (无字段,在文档分类表里) | 纯HTTP / JS加密 / 补环境 / WAF / 接口化沉淀 / 314服务化 / 技能治理 |
 
 **两个维度正交**:thaiairways.com 在终端维度是 `web`,在业务维度可能是 `纯HTTP + 接口化沉淀`。
@@ -144,6 +125,7 @@ notes: |
 ## 8. Roadmap
 
 - [x] v0.3.9: platforms 字段落地,score_skills.py 按 platform 过滤
+- [x] v0.4.1: 本仓库平台 schema 回到 Web/H5 范围
 - [ ] 后续: 在 platforms 之上叠加 scenarios(业务分类) 二级过滤
 - [ ] 后续: 引入小程序专属 skill (微信/支付宝/字节)
 - [ ] 后续: domain 自动从 _platform.yaml + 实际 fixtures 推断终端类型,无 yaml 时不默认 web

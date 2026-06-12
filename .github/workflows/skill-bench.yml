@@ -9,9 +9,11 @@ on:
       - '**/agents/**'
       - '1-业务流程层/**'
       - '2-JS逆向工具层/**'
-      - '3-移动逆向工具层/**'
       - '4-通用规范层/**'
       - '5-沉淀工具层/**'
+      - '6-验证码逆向层/**'
+      - '逆向工程经验库/**'
+      - '验证码经验库/**'
       - '.github/workflows/**'
       - 'tools/ci_gate.py'
   push:
@@ -42,7 +44,7 @@ jobs:
           SCRIPT="1-业务流程层/skills-evaluation-governance/scripts/score_skills.py"
           mkdir -p .ci-out
 
-          for layer in "1-业务流程层" "2-JS逆向工具层" "3-移动逆向工具层" "4-通用规范层" "5-沉淀工具层"; do
+          for layer in "1-业务流程层" "2-JS逆向工具层" "4-通用规范层" "5-沉淀工具层" "6-验证码逆向层"; do
             safe=$(echo "$layer" | tr / _)
             echo "::group::Scoring $layer"
             python "$SCRIPT" "$layer" > ".ci-out/${safe}.json"

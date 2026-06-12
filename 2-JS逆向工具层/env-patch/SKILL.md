@@ -10,6 +10,32 @@ platforms: [web, h5]
 
 # env-patch
 
+## Hardened Tool Governance
+
+Version: 0.5.0
+
+Change log: 0.5.0 adds structured eval coverage, graph/impact examples, minimal-stub delivery gates, and fingerprint/risk-control evidence discipline.
+
+Workflow:
+1. Use `references/governance.md` before adding environment stubs, changing `run.js`, changing `sign.js`, changing request fields, or claiming standalone Node success.
+2. Use `references/graph-impact-examples.md` when an environment dependency affects a signing function, request field, protection state, or replay fixture.
+3. Patch only the minimum runtime dependency needed to reproduce the browser output. Prefer observed browser values over guessed stubs, and label anything not observed.
+
+Success Criteria:
+- Output entry evidence, environment dependencies, stub source, diagnostic report, browser-vs-Node signature comparison, and request replay status separately.
+- Classify every important claim as observed, derived, assumed, or unverified.
+- Update `站点经验库/<domain>/knowledge-graph.md` and `站点经验库/<domain>/impact-regression.md` when stubs, globals, storage, cache, fields, protection nodes, or evals change.
+- List commands/tools used and required format, replay, diff, and schema checks.
+
+Evidence Discipline:
+- Fingerprint and risk-control fields must carry source, capture id, replay effect, and freshness status before reuse.
+- Do not hardcode request headers, fingerprints, cookies, tokens, signatures, timestamps, localStorage/sessionStorage values, or device IDs as a fix.
+
+Governance:
+- Before claiming Node parity, require browser-vs-Node signature format and value comparison on representative inputs.
+- Before claiming request success, require final observed API response evidence.
+- Before claiming concurrency, require per-session storage/cache/fingerprint isolation evidence and a concurrency ladder.
+
 对 **$ARGUMENTS** 执行补环境方案。
 
 **前置条件**：已知加密入口（模块 ID、函数名、所在脚本）。如未定位，先用 `/find-crypto-entry`。
@@ -173,6 +199,8 @@ module.exports = function sign(url, data) {
 
 - **开始实现前 Read `~/.claude/skills/karpathy-guidelines/SKILL.md`**,确认 4 条原则:Think Before Coding / Simplicity First / Surgical Changes / Goal-Driven Execution。这是基础层规范,所有执行类 skill 强制依赖。
 - **遇到逆向运行时问题(断点/时间/cookie/TLS 指纹/风控恢复/接口变更)Read `~/.claude/skills/my_reverse_skill/99-SKILLS治理/10-逆向运行时常见问题.md`**。
+- **输出结论、扩范围或做并发前 Read `~/.claude/skills/my_reverse_skill/99-SKILLS治理/11-AI事实证据规约.md` / `12-反泛化与任务收敛规约.md` / `13-并发指纹与会话隔离规约.md`**。
+- **改端点/字段/状态/保护/实现/eval 前后 Read `14-知识图谱行程与关联规约.md` / `15-AI变更风险与回归校验规约.md`,并更新 knowledge-graph.md / impact-regression.md**。
 
 ## References
 

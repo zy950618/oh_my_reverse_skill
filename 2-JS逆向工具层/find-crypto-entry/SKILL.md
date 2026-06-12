@@ -9,6 +9,33 @@ platforms: [web, h5]
 
 # find-crypto-entry
 
+## Hardened Tool Governance
+
+Version: 0.5.0
+
+Change log: 0.5.0 adds structured eval coverage, graph/impact examples, and a hard delivery gate for evidence-first crypto-entry work.
+
+Workflow:
+1. Use `references/governance.md` before final output, especially when the target field affects endpoints, request headers, request body, cache state, session state, or evals.
+2. Use `references/graph-impact-examples.md` when writing node/edge updates or impact-regression records.
+3. Treat the final observed API request/response and captured call stack as the source of truth. Do not infer hidden endpoints, parameters, cookies, tokens, device IDs, signatures, or risk tokens.
+
+Success Criteria:
+- Output the parameter, script URL, line/column or searchable offset, function name, call path, observed request URL, and evidence pointer.
+- Classify every important claim as observed, derived, assumed, or unverified.
+- Update `站点经验库/<domain>/knowledge-graph.md` and `站点经验库/<domain>/impact-regression.md` when the entry point, endpoint, field, protection state, or eval changes.
+- List commands/tools used and the required replay/diff/schema regression checks.
+
+Evidence Discipline:
+- Algorithm restoration, request replay, and runtime environment work require their own evidence and downstream skill handoff when they go beyond entry location.
+- Fingerprint and risk-control fields must carry source, capture id, replay effect, and freshness status before reuse.
+- Do not hardcode request headers, fingerprints, cookies, tokens, signatures, timestamps, or session-derived values.
+
+Governance:
+- Before expanding across market/stage/session, require separate evidence for each scope.
+- Before claiming concurrency support, require a concurrency ladder and session/cache/fingerprint isolation evidence.
+- If evidence is missing, stop at `unverified` and write the missing capture requirement instead of guessing.
+
 定位加密参数 **$ARGUMENTS** 的生成入口。
 
 **目标**：找到生成该参数的函数位置（脚本 URL + 行列号 + 函数名 + 调用路径）。
@@ -60,6 +87,8 @@ XHR 断点命中在 `send()` 调用处，调用栈底部通常是框架代码（
 
 - **开始实现前 Read `~/.claude/skills/karpathy-guidelines/SKILL.md`**,确认 4 条原则:Think Before Coding / Simplicity First / Surgical Changes / Goal-Driven Execution。这是基础层规范,所有执行类 skill 强制依赖。
 - **遇到逆向运行时问题(断点/时间/cookie/TLS 指纹/风控恢复/接口变更)Read `~/.claude/skills/my_reverse_skill/99-SKILLS治理/10-逆向运行时常见问题.md`**。
+- **输出结论、扩范围或做并发前 Read `~/.claude/skills/my_reverse_skill/99-SKILLS治理/11-AI事实证据规约.md` / `12-反泛化与任务收敛规约.md` / `13-并发指纹与会话隔离规约.md`**。
+- **改端点/字段/状态/保护/实现/eval 前后 Read `14-知识图谱行程与关联规约.md` / `15-AI变更风险与回归校验规约.md`,并更新 knowledge-graph.md / impact-regression.md**。
 
 ---
 

@@ -1,4 +1,4 @@
-"""verify_delivery.py: 完成度 5 维自验工具
+"""verify_delivery.py: 完成度 6 维自验工具
 
 声明"完成"前 Claude 主动跑。规则源 99-SKILLS治理/08-完成度自评.md。
 
@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import subprocess
 import sys
 import time
 from datetime import datetime, timezone
@@ -23,6 +24,7 @@ if hasattr(sys.stderr, "reconfigure"):
 SCRIPT_DIR = Path(__file__).resolve().parent
 DEFAULT_REPO_ROOT = SCRIPT_DIR.parent
 SITE_MEMORY_DIR = "站点经验库"
+REVERSE_MEMORY_DIR = "逆向工程经验库"
 
 # 与 08-完成度自评.md 一致的窗口:近 1h
 RECENT_WINDOW_SEC = 3600
@@ -46,6 +48,18 @@ HONESTY_MARKERS = (
     "未在干净环境",
     "blockers",
     "局限",
+)
+
+# Cleanup 关键词
+CLEANUP_MARKERS = (
+    "cleanup ledger",
+    "清理账本",
+    "delivery-cleanup",
+    "encryption-algorithm-graph",
+    "加密算法图",
+    "临时测试文件",
+    "废代码",
+    "废注释",
 )
 
 
@@ -157,7 +171,7 @@ def transcript_mtime(path: Path | None) -> float:
 
 
 # ---------------------------------------------------------------------------
-# 5 维检查
+# 6 维检查
 # ---------------------------------------------------------------------------
 
 def check_code(events: list[dict], now: float, blockers: list[str]) -> int:
@@ -222,16 +236,22 @@ def check_integration(
     transcript_mt: float,
     blockers: list[str],
 ) -> int:
-    """3. Integration: 若 domain != none,看 site memory 关键文件 mtime"""
+    """3. Integration: 若 domain != none,看 site/reverse memory 关键文件 mtime"""
     if domain == "none":
         return 1
     site_dir = repo_root / SITE_MEMORY_DIR / domain
-    if not site_dir.exists():
+    reverse_file = repo_root / REVERSE_MEMORY_DIR / "domains" / domain / "reverse-memory.md"
+    if not site_dir.exists() and not reverse_file.exists():
         blockers.append(
-            f"Integration: {SITE_MEMORY_DIR}/{domain}/ 目录不存在(还未从 _templates/ 复制?)"
+            f"Integration: {SITE_MEMORY_DIR}/{domain}/ 与 {REVERSE_MEMORY_DIR}/domains/{domain}/reverse-memory.md 均不存在(还未从 _templates/ 复制?)"
         )
         return 0
     threshold = transcript_mt - INTEGRATION_MTIME_TOLERANCE_SEC
+    try:
+        if reverse_file.exists() and reverse_file.stat().st_mtime >= threshold:
+            return 1
+    except Exception:
+        pass
     candidates = ("test-log-lessons.md", "known-failures.md")
     updated: list[str] = []
     for name in candidates:
@@ -247,8 +267,8 @@ def check_integration(
     if updated:
         return 1
     blockers.append(
-        f"Integration: {SITE_MEMORY_DIR}/{domain}/test-log-lessons.md 或 known-failures.md "
-        f"在本次任务期间无 mtime 更新"
+        f"Integration: {SITE_MEMORY_DIR}/{domain}/test-log-lessons.md、known-failures.md "
+        f"或 {REVERSE_MEMORY_DIR}/domains/{domain}/reverse-memory.md 在本次任务期间无 mtime 更新"
     )
     return 0
 
@@ -278,18 +298,148 @@ def check_honesty(text: str, blockers: list[str]) -> int:
     return 0
 
 
+def check_cleanup(text: str, blockers: list[str]) -> int:
+    """6. Cleanup: transcript 出现清理账本或加密算法图证据。"""
+    lower = text.lower()
+    for kw in CLEANUP_MARKERS:
+        if kw.lower() in lower:
+            return 1
+    blockers.append(
+        "Cleanup: transcript 未出现 cleanup ledger / 清理账本 / encryption-algorithm-graph / 加密算法图 等收尾证据"
+    )
+    return 0
+
+
+# ---------------------------------------------------------------------------
+# Codex / 本地 workspace 证据模式
+# ---------------------------------------------------------------------------
+
+def git_changed_files(repo_root: Path, blockers: list[str]) -> list[str]:
+    """读取当前工作区改动列表。Codex 桌面环境没有 Claude transcript 时用作本地证据。"""
+    try:
+        proc = subprocess.run(
+            ["git", "-C", str(repo_root), "diff", "--name-only"],
+            check=False,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+        )
+    except Exception as e:
+        blockers.append(f"Workspace: git diff --name-only 执行失败: {e!r}")
+        return []
+    if proc.returncode != 0:
+        msg = (proc.stderr or proc.stdout or "").strip()
+        blockers.append(f"Workspace: git diff --name-only 返回 {proc.returncode}: {msg}")
+        return []
+    changed = [line.strip().replace("\\", "/") for line in proc.stdout.splitlines() if line.strip()]
+    try:
+        untracked = subprocess.run(
+            ["git", "-C", str(repo_root), "ls-files", "--others", "--exclude-standard"],
+            check=False,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+        )
+        if untracked.returncode == 0:
+            changed.extend(
+                line.strip().replace("\\", "/")
+                for line in untracked.stdout.splitlines()
+                if line.strip()
+            )
+    except Exception:
+        pass
+    return sorted(set(changed))
+
+
+def check_code_workspace(changed: list[str], blockers: list[str]) -> int:
+    """1. Code: 当前工作区存在实际改动。"""
+    if changed:
+        return 1
+    blockers.append("Code: workspace evidence 模式下未发现 git diff 改动")
+    return 0
+
+
+def check_docs_workspace(changed: list[str], blockers: list[str]) -> int:
+    """2. Docs: 当前任务改动包含 .md 文档。"""
+    if any(path.lower().endswith(".md") for path in changed):
+        return 1
+    blockers.append("Docs: workspace evidence 模式下 git diff 未包含 .md 文档")
+    return 0
+
+
+def check_regression_workspace(repo_root: Path, now: float, blockers: list[str]) -> int:
+    """4. Regression: 近 1h 生成过 Web/H5 层级评分 JSON。"""
+    ci_dir = repo_root / ".ci-out"
+    expected = (
+        "1-业务流程层.json",
+        "2-JS逆向工具层.json",
+        "4-通用规范层.json",
+        "5-沉淀工具层.json",
+        "6-验证码逆向层.json",
+    )
+    missing: list[str] = []
+    stale: list[str] = []
+    invalid: list[str] = []
+    for name in expected:
+        path = ci_dir / name
+        if not path.is_file():
+            missing.append(name)
+            continue
+        try:
+            if now - path.stat().st_mtime > RECENT_WINDOW_SEC:
+                stale.append(name)
+        except Exception:
+            stale.append(name)
+        try:
+            json.loads(path.read_text(encoding="utf-8"))
+        except Exception:
+            invalid.append(name)
+    if not missing and not stale and not invalid:
+        return 1
+    blockers.append(
+        "Regression: workspace evidence 模式要求近 1h 内生成有效 .ci-out 评分文件; "
+        f"missing={missing}, stale={stale}, invalid={invalid}"
+    )
+    return 0
+
+
+def check_honesty_workspace(blockers: list[str]) -> int:
+    """5. Honesty: 本地模式无法预读最终答复,因此保留为声明项。"""
+    blockers.append("Honesty: workspace evidence 模式无法预读最终答复; 最终答复需列出未验证项/局限")
+    return 0
+
+
+def check_cleanup_workspace(changed: list[str], blockers: list[str]) -> int:
+    """6. Cleanup: workspace 模式检查是否接入收尾规约或清理/算法图模板。"""
+    markers = (
+        "99-SKILLS治理/17-交付收尾清理与加密算法图谱规约.md",
+        "逆向工程经验库/_templates/delivery-cleanup.md",
+        "逆向工程经验库/_templates/encryption-algorithm-graph.md",
+        "delivery-cleanup.md",
+        "encryption-algorithm-graph.md",
+    )
+    if any(any(marker in path for marker in markers) for path in changed):
+        return 1
+    blockers.append(
+        "Cleanup: workspace evidence 模式未发现 17 收尾规约、delivery-cleanup 或 encryption-algorithm-graph 改动"
+    )
+    return 0
+
+
 # ---------------------------------------------------------------------------
 # 评分 + 输出
 # ---------------------------------------------------------------------------
 
 def grade(passed_count: int) -> str:
-    table = {5: "10/10", 4: "7/10", 3: "5/10", 2: "3/10", 1: "2/10", 0: "0/10"}
+    table = {6: "10/10", 5: "7/10", 4: "5/10", 3: "3/10", 2: "2/10", 1: "1/10", 0: "0/10"}
     return table.get(passed_count, "0/10")
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="完成度 5 维自验工具 (见 99-SKILLS治理/08-完成度自评.md)"
+        description="完成度 6 维自验工具 (见 99-SKILLS治理/08-完成度自评.md)"
     )
     parser.add_argument(
         "--domain",
@@ -306,6 +456,12 @@ def main() -> int:
         default=None,
         help="仓库根目录 (缺省从脚本路径推断)",
     )
+    parser.add_argument(
+        "--evidence-mode",
+        choices=("auto", "transcript", "workspace"),
+        default="auto",
+        help="证据来源:auto 优先 transcript,缺失时降级 workspace; transcript 强制 Claude transcript; workspace 强制本地 git/.ci-out 证据",
+    )
     args = parser.parse_args()
 
     domain = (args.domain or "").strip().lower() or "none"
@@ -315,6 +471,7 @@ def main() -> int:
 
     # 定位 transcript
     transcript_path: Path | None = None
+    force_transcript = args.evidence_mode == "transcript"
     if args.transcript:
         p = Path(args.transcript)
         if p.exists():
@@ -325,9 +482,11 @@ def main() -> int:
         try:
             transcript_path = find_latest_transcript()
             if transcript_path is None:
-                blockers.append("未在 ~/.claude/projects/ 找到 transcript .jsonl")
+                if force_transcript:
+                    blockers.append("未在 ~/.claude/projects/ 找到 transcript .jsonl")
         except Exception as e:
-            blockers.append(f"transcript 自动定位失败: {e!r}")
+            if force_transcript:
+                blockers.append(f"transcript 自动定位失败: {e!r}")
 
     # 读 events
     try:
@@ -344,38 +503,74 @@ def main() -> int:
 
     now = time.time()
     tmt = transcript_mtime(transcript_path)
+    use_workspace_evidence = (
+        args.evidence_mode == "workspace"
+        or (args.evidence_mode == "auto" and transcript_path is None)
+    )
 
-    # 5 维
+    # 6 维
     scores = {
         "code": 0,
         "docs": 0,
         "integration": 0,
         "regression": 0,
         "honesty": 0,
+        "cleanup": 0,
     }
-    try:
-        scores["code"] = check_code(events, now, blockers)
-    except Exception as e:
-        blockers.append(f"Code 维度检查异常: {e!r}")
-    try:
-        scores["docs"] = check_docs(events, now, blockers)
-    except Exception as e:
-        blockers.append(f"Docs 维度检查异常: {e!r}")
-    try:
-        scores["integration"] = check_integration(domain, repo_root, tmt, blockers)
-    except Exception as e:
-        blockers.append(f"Integration 维度检查异常: {e!r}")
-    try:
-        scores["regression"] = check_regression(text, blockers)
-    except Exception as e:
-        blockers.append(f"Regression 维度检查异常: {e!r}")
-    try:
-        scores["honesty"] = check_honesty(text, blockers)
-    except Exception as e:
-        blockers.append(f"Honesty 维度检查异常: {e!r}")
+    if use_workspace_evidence:
+        changed = git_changed_files(repo_root, blockers)
+        try:
+            scores["code"] = check_code_workspace(changed, blockers)
+        except Exception as e:
+            blockers.append(f"Code 维度检查异常: {e!r}")
+        try:
+            scores["docs"] = check_docs_workspace(changed, blockers)
+        except Exception as e:
+            blockers.append(f"Docs 维度检查异常: {e!r}")
+        try:
+            scores["integration"] = check_integration(domain, repo_root, tmt, blockers)
+        except Exception as e:
+            blockers.append(f"Integration 维度检查异常: {e!r}")
+        try:
+            scores["regression"] = check_regression_workspace(repo_root, now, blockers)
+        except Exception as e:
+            blockers.append(f"Regression 维度检查异常: {e!r}")
+        try:
+            scores["honesty"] = check_honesty_workspace(blockers)
+        except Exception as e:
+            blockers.append(f"Honesty 维度检查异常: {e!r}")
+        try:
+            scores["cleanup"] = check_cleanup_workspace(changed, blockers)
+        except Exception as e:
+            blockers.append(f"Cleanup 维度检查异常: {e!r}")
+    else:
+        try:
+            scores["code"] = check_code(events, now, blockers)
+        except Exception as e:
+            blockers.append(f"Code 维度检查异常: {e!r}")
+        try:
+            scores["docs"] = check_docs(events, now, blockers)
+        except Exception as e:
+            blockers.append(f"Docs 维度检查异常: {e!r}")
+        try:
+            scores["integration"] = check_integration(domain, repo_root, tmt, blockers)
+        except Exception as e:
+            blockers.append(f"Integration 维度检查异常: {e!r}")
+        try:
+            scores["regression"] = check_regression(text, blockers)
+        except Exception as e:
+            blockers.append(f"Regression 维度检查异常: {e!r}")
+        try:
+            scores["honesty"] = check_honesty(text, blockers)
+        except Exception as e:
+            blockers.append(f"Honesty 维度检查异常: {e!r}")
+        try:
+            scores["cleanup"] = check_cleanup(text, blockers)
+        except Exception as e:
+            blockers.append(f"Cleanup 维度检查异常: {e!r}")
 
     passed_count = sum(scores.values())
-    skipped = 5 - passed_count
+    skipped = 6 - passed_count
 
     if skipped >= 2:
         exit_code = 2
@@ -383,13 +578,14 @@ def main() -> int:
         exit_code = 0
 
     result = {
-        "5_dim_self_score": scores,
+        "6_dim_self_score": scores,
         "passed_count": passed_count,
         "total": grade(passed_count),
         "blockers": blockers,
         "exit_code": exit_code,
         "meta": {
             "domain": domain,
+            "evidence_mode": "workspace" if use_workspace_evidence else "transcript",
             "transcript": str(transcript_path) if transcript_path else None,
             "repo_root": str(repo_root),
             "ts_utc": datetime.fromtimestamp(now, tz=timezone.utc).isoformat(),

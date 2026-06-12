@@ -27,6 +27,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parent
 STATS_FILE = SCRIPT_DIR / ".reminder-stats.jsonl"
 SITE_MEMORY_DIR = "站点经验库"
+REVERSE_MEMORY_DIR = "逆向工程经验库"
 
 DOMAIN_RE = re.compile(
     r"(?<![\w.\-/])(?:https?://)?(?:www\.)?"
@@ -58,7 +59,6 @@ EXCLUDE_DOMAINS = {
     "brotli.de", "gzip.de", "zlib.de", "raw.de",
     "re.com", "p.net",
     # v0.3.9: SKILL.md description / references / fixtures 中的引用类 domain (非任务真目标)
-    "vietjetair.com",   # mobile-app-reverse-delivery 示例触发词 + workflow.md 示例
     "x.com",            # karpathy SKILL.md 引用推文链接 + thaiairways socialMedia.json 引用
     "twitter.com",      # 同上,Twitter/X 的旧域名
     "facebook.com", "instagram.com", "linkedin.com",  # 社交平台常出现在 socialMedia 配置里
@@ -72,7 +72,13 @@ PERSIST_MARKERS = (
     "known-failures.md",
     "test-log-lessons.md",
     "site-memory.md",
+    "reverse-memory.md",
+    "delivery-cleanup.md",
+    "encryption-algorithm-graph.md",
+    "captcha-memory.md",
     "站点经验库",
+    "逆向工程经验库",
+    "验证码经验库",
     "site memory",
 )
 
@@ -81,8 +87,9 @@ REVERSE_MARKERS = (
     "接口还原", "接口实现", "纯接口", "签名", "加密参数",
     "sign", "x-sign", "authkey", "x-d-token", "reese84",
     "waf", "imperva", "84盾", "incapsula", "akamai",
+    "验证码", "captcha", "recaptcha", "hcaptcha", "turnstile",
+    "滑块", "点选", "sitekey", "challenge", "verify endpoint",
     "find-crypto-entry", "ast-deobfuscate", "env-patch",
-    "frida", "apk", "ipa", "dex", "il2cpp",
     "adapter.yaml",
 )
 
@@ -94,8 +101,9 @@ COMPLETION_MARKERS = (
 
 VERIFICATION_MARKERS = (
     "验证", "verified", "verify", "跑过", "实测", "自评", "自检", "自读",
-    "端到端", "checklist", "5 维", "五维", "spot check", "smoke test",
-    "dry-run pass", "5 维自评", "五维自评",
+    "端到端", "checklist", "spot check", "smoke test",
+    "dry-run pass", "6 维", "六维", "6 维自评", "六维自评",
+    "cleanup ledger", "清理账本", "加密算法图", "encryption-algorithm-graph",
 )
 
 # v0.4.0: 治理/评分任务上下文识别。命中 >=2 个 marker 时,认为本次是治理任务而非
@@ -238,9 +246,16 @@ def check_domain_freshness(domain: str, transcript_path: str) -> tuple[bool, str
         task_start = tp.stat().st_mtime - 7200
 
         domain_dir = REPO_ROOT / SITE_MEMORY_DIR / domain
-        if not domain_dir.exists():
+        reverse_file = REPO_ROOT / REVERSE_MEMORY_DIR / "domains" / domain / "reverse-memory.md"
+        if not domain_dir.exists() and not reverse_file.exists():
             # domain 目录不存在 → 让现有的 new_domains 逻辑去提示, 这里不重复
             return (True, "")
+
+        try:
+            if reverse_file.exists() and reverse_file.stat().st_mtime > task_start:
+                return (True, "")
+        except Exception:
+            pass
 
         targets = ["test-log-lessons.md", "known-failures.md"]
         fresh = False
@@ -263,6 +278,7 @@ def check_domain_freshness(domain: str, transcript_path: str) -> tuple[bool, str
             hint = " / ".join(missing)
         else:
             hint = f"{SITE_MEMORY_DIR}/{domain}/test-log-lessons.md 或 known-failures.md"
+        hint += f" / {REVERSE_MEMORY_DIR}/domains/{domain}/reverse-memory.md"
         return (False, hint)
     except Exception:
         return (True, "")
@@ -357,12 +373,15 @@ def main() -> int:
                     )
                 if not persisted:
                     rev_lines.append("  - 对话中未见沉淀动作,请考虑:")
-                    rev_lines.append("    1) 写 `站点经验库/<domain>/known-failures.md` 失败模式")
-                    rev_lines.append("    2) 写 `站点经验库/<domain>/test-log-lessons.md` 测试教训")
-                    rev_lines.append("    3) 写 `站点经验库/<domain>/change-log.md` 变更记录")
-                    rev_lines.append("    4) 跑 `python tools/sync_site_memory.py --project <P> --domain <D> --apply`")
-                    rev_lines.append("    5) 调用 `skills-evaluation-governance` 给本次用到的 skill 打分")
-                rev_lines.append("  详见 `99-SKILLS治理/06-网页逆向标准规划.md` 阶段 E。")
+                    rev_lines.append("    1) 写 `逆向工程经验库/domains/<domain>/reverse-memory.md` run/capture/replay 与 old-vs-new diff")
+                    rev_lines.append("    2) 写 `站点经验库/<domain>/known-failures.md` 失败模式")
+                    rev_lines.append("    3) 写 `站点经验库/<domain>/test-log-lessons.md` 测试教训")
+                    rev_lines.append("    4) 写 `站点经验库/<domain>/change-log.md` 变更记录")
+                    rev_lines.append("    5) 跑 `python tools/sync_site_memory.py --project <P> --domain <D> --apply`")
+                    rev_lines.append("    6) 调用 `skills-evaluation-governance` 给本次用到的 skill 打分")
+                    rev_lines.append("    7) 写 cleanup ledger,清理临时测试文件/历史输出/废代码/废注释")
+                    rev_lines.append("    8) 涉及 sign/token/加密时写 `encryption-algorithm-graph.md`")
+                rev_lines.append("  详见 `99-SKILLS治理/06-网页逆向标准规划.md` 阶段 E/G。")
                 reminders.append("\n".join(rev_lines))
 
             # v0.3.10: 硬检查 — 当 Claude 自称完成 + 涉及 domain 时, 验证产物是否真有更新
@@ -389,12 +408,13 @@ def main() -> int:
         comp_lines = [
             "[my_reverse_skill] 完成度自评提醒:",
             "  你说\"完成\"了, 但 transcript 里没看到验证动作。",
-            "  按 `99-SKILLS治理/08-完成度自评.md` 走 5 维自评:",
+            "  按 `99-SKILLS治理/08-完成度自评.md` 走 6 维自评:",
             "    1) 代码层: 主路径端到端跑过?",
             "    2) 文档层: 自读过? 抽查命令跑过?",
             "    3) 集成层: 内链查过? 触发词与 SKILL.md 一致?",
             "    4) 回归层: 改的脚本所有依赖层都跑了?",
             "    5) 诚实层: 列了\"做了什么 + 没验证什么\"?",
+            "    6) 收尾层: 清理账本和加密算法图是否补齐?",
             "  全打勾 = 10/10; 跳一维 = -3 分; 跳 2 维+ ≤ 5 分。",
         ]
         reminders.append("\n".join(comp_lines))

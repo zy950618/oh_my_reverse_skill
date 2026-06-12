@@ -1,11 +1,13 @@
-"""从站点经验库反推真实任务下限,写入对应 Skill 的 metrics/real-task-summary.md。
+"""从站点经验库和逆向工程经验库反推真实任务下限,写入对应 Skill 的 metrics/real-task-summary.md。
 
 逻辑:
   - 扫 站点经验库/<domain>/{known-failures,test-log-lessons,change-log}.md
+  - 扫 逆向工程经验库/domains/<domain>/reverse-memory.md
   - known-failures: 每个 '## Failure:' 算一次真实任务接触
   - test-log-lessons: 每个 '## Pattern:' 或 '## Lesson:' 算一次
   - change-log: 表格里每条版本算一次 (跳过表头与分隔行)
-  - 任务下限 = 三者去重后求和
+  - reverse-memory: Run Ledger 中每条有 run_id 的记录算一次真实逆向接触
+  - 任务下限 = 四者求和
   - 写进指定 Skill 的 metrics/real-task-summary.md,标 "extracted from site memory"
 
 设计原则:
@@ -30,6 +32,7 @@ if hasattr(sys.stdout, "reconfigure"):
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SITE_ROOT = REPO_ROOT / "站点经验库"
+REVERSE_ROOT = REPO_ROOT / "逆向工程经验库" / "domains"
 
 FAILURE_RE = re.compile(r"^##\s+Failure[:：]", re.MULTILINE)
 LESSON_RE = re.compile(r"^##\s+(?:Pattern|Lesson)[:：]", re.MULTILINE)
@@ -59,21 +62,47 @@ def count_changes(path: Path) -> int:
     return len(CHANGE_TABLE_ROW_RE.findall(path.read_text(encoding="utf-8", errors="replace")))
 
 
+def count_reverse_runs(path: Path) -> int:
+    if not path.exists():
+        return 0
+    total = 0
+    in_run_ledger = False
+    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        if line.startswith("## "):
+            in_run_ledger = line.strip().lower() == "## run ledger"
+            continue
+        if not in_run_ledger:
+            continue
+        if not line.startswith("|"):
+            continue
+        cells = [c.strip() for c in line.strip("|").split("|")]
+        if not cells:
+            continue
+        first = cells[0].lower()
+        if not first or first in {"run_id", "---"} or set(first) <= {"-"}:
+            continue
+        total += 1
+    return total
+
+
 def collect_domain(domain: str) -> dict:
     domain_dir = SITE_ROOT / domain
-    if not domain_dir.is_dir():
+    reverse_file = REVERSE_ROOT / domain / "reverse-memory.md"
+    if not domain_dir.is_dir() and not reverse_file.exists():
         return {"domain": domain, "exists": False}
 
     failures = count_failures(domain_dir / "known-failures.md")
     lessons = count_lessons(domain_dir / "test-log-lessons.md")
     changes = count_changes(domain_dir / "change-log.md")
-    lower_bound = failures + lessons + changes
+    reverse_runs = count_reverse_runs(reverse_file)
+    lower_bound = failures + lessons + changes + reverse_runs
     return {
         "domain": domain,
         "exists": True,
         "failures": failures,
         "lessons": lessons,
         "changes": changes,
+        "reverse_runs": reverse_runs,
         "lower_bound": lower_bound,
     }
 
@@ -83,21 +112,21 @@ def render_block(stats: list[dict]) -> str:
     lines = [
         BACKFILL_MARK,
         "",
-        f"## 真实任务下限(从站点经验库反推 / {ts})",
+        f"## 真实任务下限(从站点经验库 + 逆向工程经验库反推 / {ts})",
         "",
-        "> 数据来自 `站点经验库/<domain>/`,每个失败模式 / 测试教训 / change-log 版本视为至少一次真实任务接触。",
+        "> 数据来自 `站点经验库/<domain>/` 和 `逆向工程经验库/domains/<domain>/reverse-memory.md`,每个失败模式 / 测试教训 / change-log 版本 / reverse run 视为至少一次真实任务接触。",
         "> 这不是严格命中率,只是「已发生过的真实任务下限」。脚本: `tools/backfill_from_site_memory.py`。",
         "",
-        "| domain | 已知失败 | 测试教训 | 变更版本 | 任务下限 |",
-        "|---|---:|---:|---:|---:|",
+        "| domain | 已知失败 | 测试教训 | 变更版本 | 逆向 run | 任务下限 |",
+        "|---|---:|---:|---:|---:|---:|",
     ]
     total = 0
     for s in stats:
         if not s.get("exists"):
-            lines.append(f"| {s['domain']} | - | - | - | - (站点目录不存在) |")
+            lines.append(f"| {s['domain']} | - | - | - | - | - (经验目录不存在) |")
             continue
         lines.append(
-            f"| {s['domain']} | {s['failures']} | {s['lessons']} | {s['changes']} | {s['lower_bound']} |"
+            f"| {s['domain']} | {s['failures']} | {s['lessons']} | {s['changes']} | {s['reverse_runs']} | {s['lower_bound']} |"
         )
         total += s["lower_bound"]
     lines.append("")
@@ -141,7 +170,7 @@ def update_metrics_file(metrics: Path, block: str, rewrite: bool, apply: bool) -
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="从站点经验库反推真实任务下限")
+    parser = argparse.ArgumentParser(description="从站点经验库和逆向工程经验库反推真实任务下限")
     parser.add_argument(
         "--domain",
         action="append",
@@ -166,11 +195,12 @@ def main() -> int:
     print(f"目标文件: {metrics}\n")
     for s in stats:
         if not s.get("exists"):
-            print(f"  WARN: {s['domain']} 站点目录不存在")
+            print(f"  WARN: {s['domain']} 站点/逆向经验目录不存在")
             continue
         print(
             f"  {s['domain']}: failures={s['failures']} "
             f"lessons={s['lessons']} changes={s['changes']} "
+            f"reverse_runs={s['reverse_runs']} "
             f"lower_bound={s['lower_bound']}"
         )
 

@@ -130,7 +130,7 @@ def _parse_expiry(meta_text: str) -> datetime.datetime | None:
         return None
 
 
-VALID_PLATFORMS = {"web", "h5", "app", "mini-program", "cross-platform"}
+VALID_PLATFORMS = {"web", "h5", "mini-program", "cross-platform"}
 
 
 def _read_domain_platform(domain_dir: Path) -> str:

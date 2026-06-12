@@ -32,6 +32,8 @@ tags:
 ```text
 site-memory.md
 market-matrix.md
+knowledge-graph.md
+impact-regression.md
 known-failures.md
 test-log-lessons.md
 route-decisions.md
@@ -46,7 +48,9 @@ change-log.md
 1. 是否已有 domain 目录。
 2. 是否已有 market/locale/currency 记录。
 3. 是否已有相同 stage 的 known failure。
-4. 是否已有 eval backlog 尚未沉淀到 Skill。
+4. 是否已有 endpoint / request-field / response-field / state / protection 节点和边。
+5. 是否已有 impact-regression 记录说明改动影响面。
+6. 是否已有 eval backlog 尚未沉淀到 Skill。
 
 测试完成后，必须写回：
 
@@ -55,4 +59,6 @@ change-log.md
 3. 是否更新 Skill。
 4. 是否新增 eval。
 5. 是否更新版本。
+6. 是否更新 knowledge-graph.md 的节点和边。
+7. 是否更新 impact-regression.md 的影响面、必跑回归和数据校验。
 

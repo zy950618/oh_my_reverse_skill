@@ -12,7 +12,7 @@ platforms: [web, h5]
 - 用户明确要"314 基础框架"、"长期可维护服务"、"完整查询→加车→生单→支付链路交付" → 切到 `website-314-api-delivery`（让它做总控，调用本 skill 做逆向部分）
 - 用户只要把已有逆向结果"标准化 adapter / schema / runbook / prompt-router" → 切到 `site-api-adapter`
 - 目标网站命中 Imperva / Reese84 / Incapsula / 84盾 / x-d-token → 切到 `imperva-waf-reese84`
-- 用户做的是移动端 App 逆向（APK / IPA） → 切到 `mobile-app-reverse-delivery`
+- 用户做的不是 Web/H5 页面、接口或浏览器 JS 逆向 → 不属于本仓库范围
 - 用户要求"评分某个 skill"、"准入测试"、"漂移检查" → 切到 `skills-evaluation-governance`
 - 用户只是问"AST 解混淆"、"在 Node 跑这段 JS"、"找加密入口"等原子问题 → 直接用对应原子工具 `ast-deobfuscate` / `env-patch` / `find-crypto-entry`
 
@@ -61,6 +61,8 @@ platforms: [web, h5]
 
 - **开始实现前 Read `~/.claude/skills/karpathy-guidelines/SKILL.md`**,确认 4 条原则:Think Before Coding / Simplicity First / Surgical Changes / Goal-Driven Execution。这是基础层规范,所有执行类 skill 强制依赖。
 - **遇到逆向运行时问题(断点/时间/cookie/TLS 指纹/风控恢复/接口变更)Read `~/.claude/skills/my_reverse_skill/99-SKILLS治理/10-逆向运行时常见问题.md`**。
+- **输出结论、扩范围或做并发前 Read `~/.claude/skills/my_reverse_skill/99-SKILLS治理/11-AI事实证据规约.md` / `12-反泛化与任务收敛规约.md` / `13-并发指纹与会话隔离规约.md`**。
+- **改端点/字段/状态/保护/实现/eval 前后 Read `14-知识图谱行程与关联规约.md` / `15-AI变更风险与回归校验规约.md`,并更新 knowledge-graph.md / impact-regression.md**。
 - 使用 `js_reverse` MCP 做页面打开、网络拦截、Hook、运行时变量、调用栈、Cookie/storage 观察。
 - 使用仓库搜索和静态分析定位脚本入口。
 - **进入加密还原阶段前，按需主动 Read 子 skill 的 SKILL.md 把上下文装进来再做**：

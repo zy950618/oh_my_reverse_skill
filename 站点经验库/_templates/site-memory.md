@@ -36,4 +36,6 @@
 - Do not assume one market works because another market works.
 - Do not treat token generation as business success.
 - Do not submit real payment without explicit approval.
+- Update knowledge-graph.md whenever endpoint / field / state / protection / implementation / eval changes.
+- Update impact-regression.md whenever a change can affect downstream routes, fields, validation, or drift.
 

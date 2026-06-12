@@ -13,7 +13,7 @@ platforms: [web, h5]
 - 用户只问"找加密入口"、"补环境"、"看一下 JS 怎么生成 sign" 等单点逆向问题 → 切到 `reverse-js-crawler`（或更具体的 `find-crypto-entry` / `env-patch`）
 - 用户只问 WAF/Reese84/84盾怎么过 → 切到 `imperva-waf-reese84`
 - 用户只要把已有结果"沉淀成 adapter / schema / runbook" → 切到 `site-api-adapter`
-- 用户做的是移动端 App 逆向（不是 web 网站） → 切到 `mobile-app-reverse-delivery`
+- 用户做的不是 Web/H5 网站接入 → 不属于本仓库范围
 - 用户问的是 skill 评分/治理本身 → 切到 `skills-evaluation-governance`
 
 ## Purpose
@@ -38,7 +38,6 @@ platforms: [web, h5]
 |---|---|---|
 | 真实接口、参数、JS 加密 | 阶段 B-D | Read `~/.claude/skills/reverse-js-crawler/SKILL.md` |
 | WAF、84盾、Reese84、Incapsula、x-d-token | 阶段 B-D | Read `~/.claude/skills/imperva-waf-reese84/SKILL.md` |
-| Mobile App（不是 Web 站点）| 切换总控 | Read `~/.claude/skills/mobile-app-reverse-delivery/SKILL.md` 并把它当作新的总控（本 skill 不再继续） |
 | 接口已稳定，做 adapter/schema/runbook/prompt-router | 阶段 E | Read `~/.claude/skills/site-api-adapter/SKILL.md` |
 | 任务结束做评分、eval、漂移、版本治理 | 阶段 E 之后 | Read `~/.claude/skills/skills-evaluation-governance/SKILL.md` |
 
@@ -109,6 +108,8 @@ platforms: [web, h5]
 
 - **开始实现前 Read `~/.claude/skills/karpathy-guidelines/SKILL.md`**,确认 4 条原则:Think Before Coding / Simplicity First / Surgical Changes / Goal-Driven Execution。这是基础层规范,所有执行类 skill 强制依赖。
 - **遇到逆向运行时问题(断点/时间/cookie/TLS 指纹/风控恢复/接口变更)Read `~/.claude/skills/my_reverse_skill/99-SKILLS治理/10-逆向运行时常见问题.md`**。
+- **输出结论、扩范围或做并发前 Read `~/.claude/skills/my_reverse_skill/99-SKILLS治理/11-AI事实证据规约.md` / `12-反泛化与任务收敛规约.md` / `13-并发指纹与会话隔离规约.md`**。
+- **改端点/字段/状态/保护/实现/eval 前后 Read `14-知识图谱行程与关联规约.md` / `15-AI变更风险与回归校验规约.md`,并更新 knowledge-graph.md / impact-regression.md**。
 
 ## Boundaries
 

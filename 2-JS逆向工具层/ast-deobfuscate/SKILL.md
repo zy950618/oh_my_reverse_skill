@@ -9,6 +9,33 @@ platforms: [web, h5]
 
 # ast-deobfuscate
 
+## Hardened Tool Governance
+
+Version: 0.5.0
+
+Change log: 0.5.0 adds structured eval coverage, graph/impact examples, semantic-equivalence checks, and a hard delivery gate for AST deobfuscation.
+
+Workflow:
+1. Use `references/governance.md` before changing AST transforms, generated scripts, output code, evals, or field mappings.
+2. Use `references/graph-impact-examples.md` when a deobfuscation step affects crypto-entry location, request fields, bundled modules, or downstream replay.
+3. Preserve original source as read-only, save intermediate outputs, and verify equivalence with sample inputs/outputs before claiming success.
+
+Success Criteria:
+- Output original file, transform steps, intermediate files, final file, parser validation, and sampled equivalence evidence.
+- Classify every important claim as observed, derived, assumed, or unverified.
+- Update `站点经验库/<domain>/knowledge-graph.md` and `站点经验库/<domain>/impact-regression.md` when deobfuscation changes entry nodes, module nodes, function names, or eval coverage.
+- List commands/tools used and required replay/diff/schema checks when decrypted code touches API behavior.
+
+Evidence Discipline:
+- Do not invent semantic names, guess hidden endpoints, or make request replay claims without evidence.
+- Do not delete uncertain code. Preserve unknown branches when equivalence evidence is missing.
+- Do not hardcode decoded strings, offsets, request headers, fingerprints, cookies, tokens, or signatures.
+
+Governance:
+- Treat parse failure, AST transform failure, output mismatch, bundle hash change, function rename, and field movement as drift.
+- Before expanding across bundle/module/session, require separate evidence for each scope.
+- If equivalence cannot be proven, mark the result partial and keep the unresolved block in the graph/impact record.
+
 对 **$ARGUMENTS** 执行 AST 解混淆，最大化还原可读代码。
 
 **工具链**: `@babel/parser` + `@babel/traverse` + `@babel/generator` + `@babel/types`
@@ -529,6 +556,8 @@ Webpack 模块参数（不管原始名是什么前缀）:
 
 - **开始实现前 Read `~/.claude/skills/karpathy-guidelines/SKILL.md`**,确认 4 条原则:Think Before Coding / Simplicity First / Surgical Changes / Goal-Driven Execution。这是基础层规范,所有执行类 skill 强制依赖。
 - **遇到逆向运行时问题(断点/时间/cookie/TLS 指纹/风控恢复/接口变更)Read `~/.claude/skills/my_reverse_skill/99-SKILLS治理/10-逆向运行时常见问题.md`**。
+- **输出结论、扩范围或做并发前 Read `~/.claude/skills/my_reverse_skill/99-SKILLS治理/11-AI事实证据规约.md` / `12-反泛化与任务收敛规约.md` / `13-并发指纹与会话隔离规约.md`**。
+- **改端点/字段/状态/保护/实现/eval 前后 Read `14-知识图谱行程与关联规约.md` / `15-AI变更风险与回归校验规约.md`,并更新 knowledge-graph.md / impact-regression.md**。
 
 ---
 

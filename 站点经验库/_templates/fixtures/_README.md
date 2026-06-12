@@ -1,6 +1,6 @@
 # fixtures/ — 站点逆向产出与真实响应的一致性证据
 
-每个 domain 的 `fixtures/` 目录是"我方接口"与"真实网页/App"对齐的物证。脚本写,人工 review,CI 重放。
+每个 domain 的 `fixtures/` 目录是"我方接口"与"真实网页"对齐的物证。脚本写,人工 review,CI 重放。
 
 ## 目录布局
 

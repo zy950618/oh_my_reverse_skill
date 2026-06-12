@@ -2,7 +2,7 @@
 name: site-api-adapter
 description: >-
   Use this skill to turn reverse-engineering findings into a reusable site API adapter: adapter.yaml, request/response schema, route classification, prompt-router rules, runbook, smoke tests, and service boundary documentation. Trigger when the user asks to standardize a site, build an adapter, define API protocol, create prompt-router output, productize crawler reverse results into a maintainable interface, or Chinese requests such as 接口化沉淀, 站点接口化, adapter标准化, adapter.yaml, prompt-router, API协议模板, runbook, schema沉淀, 多站点复用, or 逆向结果工程化.
-platforms: [web, h5, app]
+platforms: [web, h5]
 ---
 
 # Site API Adapter
@@ -12,7 +12,7 @@ platforms: [web, h5, app]
 - 用户的接口还没逆向稳定，处于"找加密入口/补环境/破 WAF"阶段（沉淀必须在能稳定复现之后） → 切到 `reverse-js-crawler` / `imperva-waf-reese84`
 - 用户只要单次脚本/采集数据，不会复用，不需要 schema/runbook → 切到 `reverse-js-crawler`
 - 用户要求"完整 314 服务交付" → 切到 `website-314-api-delivery`（让它做总控，本 skill 是它的 references 输出之一）
-- 用户做的是移动端 App 的接口沉淀 → 当前 skill 也可用，但建议先走 `mobile-app-reverse-delivery` 拿到稳定接口再回头沉淀
+- 用户做的不是 Web/H5 接口沉淀 → 不属于本仓库范围
 - 用户问的是"skill 评分" → 切到 `skills-evaluation-governance`
 
 ## Purpose
@@ -56,6 +56,8 @@ platforms: [web, h5, app]
 
 - **开始实现前 Read `~/.claude/skills/karpathy-guidelines/SKILL.md`**,确认 4 条原则:Think Before Coding / Simplicity First / Surgical Changes / Goal-Driven Execution。这是基础层规范,所有执行类 skill 强制依赖。
 - **遇到逆向运行时问题(断点/时间/cookie/TLS 指纹/风控恢复/接口变更)Read `~/.claude/skills/my_reverse_skill/99-SKILLS治理/10-逆向运行时常见问题.md`**。
+- **输出结论、扩范围或做并发前 Read `~/.claude/skills/my_reverse_skill/99-SKILLS治理/11-AI事实证据规约.md` / `12-反泛化与任务收敛规约.md` / `13-并发指纹与会话隔离规约.md`**。
+- **改端点/字段/状态/保护/实现/eval 前后 Read `14-知识图谱行程与关联规约.md` / `15-AI变更风险与回归校验规约.md`,并更新 knowledge-graph.md / impact-regression.md**。
 
 ## Boundaries
 

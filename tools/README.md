@@ -42,9 +42,9 @@ python tools/sync_site_memory.py \
 
 ## backfill_from_site_memory.py
 
-从 `站点经验库/<domain>/` 反推真实任务下限，写进指定 Skill 的 `metrics/real-task-summary.md`。
+从 `站点经验库/<domain>/` 和 `逆向工程经验库/domains/<domain>/reverse-memory.md` 反推真实任务下限，写进指定 Skill 的 `metrics/real-task-summary.md`。
 
-任务下限 = `## Failure:` 计数 + `## Pattern:` / `## Lesson:` 计数 + change-log 表格版本行数。
+任务下限 = `## Failure:` 计数 + `## Pattern:` / `## Lesson:` 计数 + change-log 表格版本行数 + reverse-memory 的 Run Ledger 行数。
 
 ### 用法
 
@@ -77,7 +77,7 @@ python tools/backfill_from_site_memory.py ... --apply --rewrite
 
 ### 何时跑
 
-每次新建 / 更新 `站点经验库/<domain>/` 后跑一次，让该 domain 真实参与的 Skill metrics 反映真实任务下限。
+每次新建 / 更新 `站点经验库/<domain>/` 或 `逆向工程经验库/domains/<domain>/reverse-memory.md` 后跑一次，让该 domain 真实参与的 Skill metrics 反映真实任务下限。
 
 ---
 
@@ -95,7 +95,7 @@ python tools/scaffold_evals.py --skill 2-JS逆向工具层/find-crypto-entry
 python tools/scaffold_evals.py \
     --skill 2-JS逆向工具层/find-crypto-entry \
     --skill 2-JS逆向工具层/ast-deobfuscate \
-    --skill 3-移动逆向工具层/rev-frida
+    --skill 2-JS逆向工具层/env-patch
 
 # 覆盖已有骨架
 python tools/scaffold_evals.py --skill ... --force

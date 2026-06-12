@@ -8,16 +8,21 @@
 
 ## 这是什么
 
-逆向工程 SKILL 库,装到 Claude Code 后,**用自然语言**让 Claude 帮你:
+Web/H5 逆向工程 SKILL 库,装到 Claude Code 后,**用自然语言**让 Claude 帮你:
 
 - 把一个网站逆向成可调接口(查询/列表/详情)
 - 还原请求里的加密参数 (sign / token / x-d-token / reese84)
 - 把浏览器加密 JS 搬到 Node.js 独立运行
-- 解 Android APP 加固 / hook native 函数
 - 验证 "我做出来的接口" 与 "真实网页" 数据一致(fixtures + replay + diff)
+- 约束 AI 输出:结论分事实等级、防以点概面、并发/session/cache 必须隔离验证
+- 维护站点知识图谱:每次更新端点/字段/状态/保护/实现/eval 时同步节点、边和影响回归
+- 处理验证码/验证服务:reCAPTCHA、hCaptcha、Turnstile、滑块、点选的 provider 流程、站点绑定、token 状态和实战复测
+- 区分旧数据和新数据:清空浏览器状态、抓包、多轮对照,避免旧 HAR/旧 token/旧 scriptId 污染结论
+- 吸收真实逆向经验:每个 domain 维护 reverse-memory,记录 run/capture/replay、旧新 diff、工具失败样本和下次排查顺序
+- 完成后保持干净交付:删除已替代的临时测试文件、历史输出、废代码、废注释,并补整体加密算法细节图
 - 给自己产出的 Skill 打分 / 回测 / 治理
 
-仓库里有 **18 个 Skill** + 一套 fixtures 一致性验证工具链 + CI + 治理评分。
+仓库里有 **11 个 Skill** + 一套 fixtures 一致性验证工具链 + CI + 治理评分。
 
 ## 谁应该用
 
@@ -39,20 +44,13 @@
 
 | 我想做的事 | 我可以说 | 触发的 Skill | Skill 做什么 |
 |---|---|---|---|
-| 逆向一个新网站,做成纯接口 | "逆向 thaiairways.com 做接口" / "把 XXX 接入 314 框架" / "纯接口实现查询/加车/生单" | `website-314-api-delivery` | 五阶段总控:侦察→识别→还原→复现→交付 314 服务 |
+| 逆向一个新网站,做成纯接口 | "逆向 thaiairways.com 做接口" / "把 XXX 接入 314 框架" / "纯接口实现查询/加车/生单" | `website-314-api-delivery` | 六阶段总控:侦察→入口→还原→复现→沉淀→一致性验证 |
 | 爬虫接口还原 / sign 分析 | "JS 逆向 XXX" / "分析 X 网站请求" / "还原签名算法" / "做个采集脚本" | `reverse-js-crawler` | 页面侦察→真实 API 识别→sign/token 还原→Python/Node 复现 |
 | 84 盾 / WAF token 被拒 | "84 盾过不去" / "Reese84 token 失败" / "x-d-token 拒了" / "Imperva 挑战页" | `imperva-waf-reese84` | 指纹模拟 + token 缓存 + 接受度阶段化验证 |
+| 验证码/滑块/点选 | "reCAPTCHA 卡住" / "Turnstile 验证后接口才有数据" / "阿里滑块" / "携程点选" | `captcha-service-delivery` | provider 流程 + 站点绑定 + clean/verified/repeat 三轮抓包 + 图谱回归 |
 | 找请求里某个参数怎么生成的 | "x-sign 在哪生成" / "找加密入口" / "这个 token 哪来的" / "签名怎么算的" | `find-crypto-entry` | 静态搜索 + XHR 断点,只定位函数位置,不还原算法 |
 | JS 看不懂(混淆) | "解混淆" / "_0x 是啥" / "字符串数组解密" / "代码全是乱码" / "deobfuscate" | `ast-deobfuscate` | Babel AST 解混淆:字符串解密 / 控制流还原 / 死代码删除 |
 | 把浏览器 JS 拿到 Node 跑 | "补环境" / "把 JS 搬到 Node" / "webpack 模块提取" / "Node 里跑" | `env-patch` | Node 环境模拟:window/document/navigator/Proxy 引擎 |
-| 逆向 Android APP | "APK 逆向" / "Frida hook Android app" / "航司 app 接口" / "安卓 app 抓包逆向" | `mobile-app-reverse-delivery` | Mobile 总控:协议判别(H5/Native/RN/Flutter)→对应路径 |
-| 写 Frida hook 脚本 | "用 Frida hook ..." / "trace 调用参数" / "拦截 Java/ObjC/native 方法" | `rev-frida` | 现代 Frida API 脚本生成,Java/ObjC/native 都支持 |
-| 写 IDAPython / IDALib 脚本 | "IDA 里写脚本" / "headless 反编译" / "Hex-Rays API" / "批处理 binary" | `rev-idapython` | IDB 操作 / Hex-Rays / 批处理 |
-| Android 加壳 APK 脱壳 | "APK 加固脱壳" / "DEX 内存 dump" / "破解 class-loading 加壳" | `rev-dex-dumper` | 从运行中的 app dump DEX,对抗 360 / 腾讯 / 梆梆等加固 |
-| Unity 游戏逆向 | "IL2CPP 符号恢复" / "Unity 游戏逆向" / "导入符号到 IDA" | `rev-u3d-dump` | 解析 global-metadata.dat,生成 IDA/Ghidra 导入脚本 |
-| 重建数据结构 | "重建 struct" / "vtable 推断" / "C++ 类对象布局" | `rev-struct` | 跨函数分析内存访问模式 |
-| 还原函数符号名 | "stripped binary 命名" / "通过魔数识别算法" / "通过字符串识别 lib 函数" | `rev-symbol` | 用代码特征 / 字符串 / 常量恢复符号 |
-| Unicorn 仿真函数 | "用 Unicorn 仿真" / "跑算法不跑完整程序" / "绕过 JNI/syscall" | `rev-unicorn-debug` | 单函数仿真,脱离环境依赖 |
 | 接口稳定后做 adapter | "接口化沉淀" / "做 adapter.yaml" / "prompt-router 输出" | `site-api-adapter` | 把逆向产出标准化为 adapter.yaml / schema / runbook |
 | 验证产出和网页一致 | "跑一致性" / "fixtures 验证" / "snapshot diff" / "重放对比" | (脚本工具链) | 见 [07 一致性验证规约](./99-SKILLS治理/07-一致性验证规约.md) |
 | 给 Skill 打分 / 评测 | "Skill 评分" / "Skill Bench" / "回测 Skill" / "新增 Skill 准入" | `skills-evaluation-governance` | 三段分 → 四段分评分,回测,漂移检测 |
@@ -69,7 +67,7 @@
 
 > 你: 帮我逆向 https://www.example-airline.com 做成纯接口,要查询航班、加购、生单。最后用 314 框架交付。
 
-Claude 自动触发 `website-314-api-delivery`,先读 `99-SKILLS治理/06-网页逆向标准规划.md`,输出 5 阶段计划让你确认,再开始侦察。
+Claude 自动触发 `website-314-api-delivery`,先读 `99-SKILLS治理/06-网页逆向标准规划.md`,输出 6 阶段计划让你确认,再开始侦察。
 
 ### 场景 B:遇到 WAF token 被拒
 
@@ -102,15 +100,18 @@ Claude 触发 `skills-evaluation-governance`,跑 `score_skills.py` 四段分(结
 任何"逆向某站点"类请求,Claude 都会走这个固定流程(详见 [99-SKILLS治理/06](./99-SKILLS治理/06-网页逆向标准规划.md)):
 
 ```
-阶段 A: 侦察    域名 / WAF / 接口分布 / 站点经验库查重
+阶段 A: 侦察    域名 / WAF / 接口分布 / 逆向经验库 + 站点经验库查重
 阶段 B: 入口    sign / token / cookie 生成位置
 阶段 C: 还原    算法实现 / 补环境 / 解混淆
 阶段 D: 复现    Python/Node 接口可重复跑通
 阶段 E: 沉淀    known-failures.md / test-log-lessons.md / change-log.md / adapter.yaml / Skill 评分
 阶段 F: 一致性  fixtures 录制 / replay / diff / 一致率 ≥ 90% 才算交付
+阶段 G: 收尾    cleanup ledger / 删除临时历史废弃物 / encryption-algorithm-graph.md
 ```
 
-阶段 E 和 F 是**强制**的。没沉淀 = 没做完。没 fixtures = 数据可能错没人知道。
+阶段 E、F、G 是**强制**的。没沉淀 = 没做完。没 fixtures = 数据可能错没人知道。没清理和算法图 = 交付不干净、不完整。
+
+每次抓包前还要建立新的 `run_id`,并把 HAR、DevTools request id、script hash、browser profile、replay 输出挂到同一轮 run。跨轮复用任何值都必须写 old-vs-new diff。
 
 ---
 
@@ -120,10 +121,18 @@ Claude 触发 `skills-evaluation-governance`,跑 `score_skills.py` 四段分(结
 |---|---|
 | 真实支付链路自动测试 | 真实扣款,只在用户明示授权时跑 |
 | 把 fixtures 设成 `category: payment` | 一致性验证不录支付,见 07 规约 |
-| 跳过五阶段直接写代码 | 长链路任务必须先规划再执行 |
+| 跳过六阶段直接写代码 | 长链路任务必须先规划再执行 |
 | 跳过沉淀(阶段 E/F) | 不沉淀就是没做完 |
 | 把"评分高"等同于"真实能用" | 评分是结构指标,真实成功率看 fixtures 一致率 |
 | 把所有字段加 `ignore` 容忍度刷一致率 | 评分作弊,review 时盯防 |
+| 把推断/假设写成事实 | 结论必须按 observed / derived / assumed / unverified 分级 |
+| 把一次成功泛化成全链路成功 | market/stage/session 必须单独验证 |
+| 没跑并发阶梯却说支持并发 | 并发必须有 session/cache 隔离和失败率记录 |
+| 改端点/字段/请求头/指纹但不更新图谱 | 必须写 knowledge-graph.md 和 impact-regression.md |
+| 把旧 HAR/旧 token/旧浏览器 profile 当新证据 | 必须按 16 规约做 fresh/stale 标记和复测 |
+| 反复测试不写 reverse-memory | 下次仍会重新开荒,必须写 run/capture/replay 和旧新 diff |
+| 验证完成后留下临时测试文件/历史输出/废代码/废注释 | 必须按 17 规约写 cleanup ledger 后清理 |
+| sign/token 逆向没有整体算法图 | 必须补 encryption-algorithm-graph.md |
 | 自动上传抓包 / fixtures 到第三方 | 反爬数据敏感,不外传 |
 
 ---
@@ -142,4 +151,10 @@ Claude 触发 `skills-evaluation-governance`,跑 `score_skills.py` 四段分(结
 - 安装问题 → [INSTALL.md 的常见问题](./INSTALL.md#常见问题)
 - 不知道说什么会触发 → [TRIGGERS.md](./TRIGGERS.md)
 - 一致性验证流程 → [99-SKILLS治理/07-一致性验证规约.md](./99-SKILLS治理/07-一致性验证规约.md)
+- AI 事实证据 → [99-SKILLS治理/11-AI事实证据规约.md](./99-SKILLS治理/11-AI事实证据规约.md)
+- 反泛化收敛 → [99-SKILLS治理/12-反泛化与任务收敛规约.md](./99-SKILLS治理/12-反泛化与任务收敛规约.md)
+- 并发指纹隔离 → [99-SKILLS治理/13-并发指纹与会话隔离规约.md](./99-SKILLS治理/13-并发指纹与会话隔离规约.md)
+- 知识图谱关联 → [99-SKILLS治理/14-知识图谱行程与关联规约.md](./99-SKILLS治理/14-知识图谱行程与关联规约.md)
+- 影响回归校验 → [99-SKILLS治理/15-AI变更风险与回归校验规约.md](./99-SKILLS治理/15-AI变更风险与回归校验规约.md)
+- 收尾清理与加密算法图 → [99-SKILLS治理/17-交付收尾清理与加密算法图谱规约.md](./99-SKILLS治理/17-交付收尾清理与加密算法图谱规约.md)
 - 评分体系 → [99-SKILLS治理/05-当前评分与回测结果.md](./99-SKILLS治理/05-当前评分与回测结果.md)

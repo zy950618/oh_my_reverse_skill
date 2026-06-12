@@ -1,10 +1,36 @@
 ---
-name: skill-creator
+name: ai-reverse-skill-creator
 description: Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.
 platforms: [cross-platform]
 ---
 
 # Skill Creator
+
+## Hardened Tool Governance
+
+Version: 0.5.0
+
+Change log: 0.5.0 adds structured eval coverage, graph/impact templates, delivery gates, and anti-AI-error requirements for generated reverse-engineering skills.
+
+Workflow:
+1. Use `references/governance.md` before creating or modifying a reverse-engineering skill.
+2. Use `references/graph-impact-examples.md` when the new skill touches endpoint, field, state, protection, implementation, eval, or site-memory records.
+3. Generate skills with reusable resources instead of burying all details in one long `SKILL.md`.
+
+Success Criteria:
+- New or modified JS/Web/H5 reverse skills include `SKILL.md`, `agents/openai.yaml`, 8-12 structured evals, at least two references, and a metrics/failure-sample seed when the skill is operational.
+- Output a delivery gate requiring Evidence Map, Graph Delta, Impact Regression, Validation Commands, Fact Labels, and Scope Ledger.
+- Keep skill name, folder name, display metadata, trigger description, stage naming, and eval names consistent.
+- Update graph and impact-regression examples when changing endpoint/field/state/protection/implementation/eval behavior.
+
+Scope and Evidence Discipline:
+- Do not create skills that rely on hidden endpoint guesses, hardcoded headers, hardcoded fingerprints, or unverified session values.
+- Do not broaden scope from one task into unrelated markets, stages, sessions, or platforms without evidence.
+
+Governance:
+- Before final output, run or require score/CI validation and report the exact score delta.
+- If evals cannot run, write why they could not run and what command should run next.
+- Treat no-evidence claims, name mismatch, stale stage names, missing graph update, and missing impact regression as blocking defects.
 
 A skill for creating new skills and iteratively improving them.
 
@@ -45,6 +71,8 @@ It's OK to briefly explain terms if you're in doubt, and feel free to clarify te
 
 - **开始实现前 Read `~/.claude/skills/karpathy-guidelines/SKILL.md`**,确认 4 条原则:Think Before Coding / Simplicity First / Surgical Changes / Goal-Driven Execution。这是基础层规范,所有执行类 skill 强制依赖。
 - **遇到逆向运行时问题(断点/时间/cookie/TLS 指纹/风控恢复/接口变更)Read `~/.claude/skills/my_reverse_skill/99-SKILLS治理/10-逆向运行时常见问题.md`**。
+- **输出结论、扩范围或做并发前 Read `~/.claude/skills/my_reverse_skill/99-SKILLS治理/11-AI事实证据规约.md` / `12-反泛化与任务收敛规约.md` / `13-并发指纹与会话隔离规约.md`**。
+- **改端点/字段/状态/保护/实现/eval 前后 Read `14-知识图谱行程与关联规约.md` / `15-AI变更风险与回归校验规约.md`,并更新 knowledge-graph.md / impact-regression.md**。
 
 ---
 

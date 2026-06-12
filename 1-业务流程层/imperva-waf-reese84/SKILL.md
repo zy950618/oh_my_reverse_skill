@@ -12,7 +12,7 @@ platforms: [web, h5]
 - 目标网站的反爬不是 Imperva 系（Akamai / Cloudflare / Datadome / PerimeterX / Shape / kasada 等都不是本 skill 范围）→ 这类需另起 skill 或走通用 `reverse-js-crawler`
 - 用户只问普通 sign/token/cookie 生成（无 challenge HTML、无 Reese84 cookie、无 x-d-token、无 `_Incapsula_Resource` 标记） → 切到 `reverse-js-crawler`
 - 用户要求"完整 314 服务交付" → 切到 `website-314-api-delivery`（让它做总控，本 skill 只处理 WAF 子链）
-- 用户做的是移动端 App 的反爬（mobile WAF 经常有 SDK 形态）→ 切到 `mobile-app-reverse-delivery`
+- 用户做的不是 Web/H5 网站 WAF 链路 → 不属于本仓库范围
 - 用户只要"评估 WAF skill 本身好不好" → 切到 `skills-evaluation-governance`
 
 ## Purpose
@@ -61,6 +61,8 @@ platforms: [web, h5]
 
 - **开始实现前 Read `~/.claude/skills/karpathy-guidelines/SKILL.md`**,确认 4 条原则:Think Before Coding / Simplicity First / Surgical Changes / Goal-Driven Execution。这是基础层规范,所有执行类 skill 强制依赖。
 - **遇到逆向运行时问题(断点/时间/cookie/TLS 指纹/风控恢复/接口变更)Read `~/.claude/skills/my_reverse_skill/99-SKILLS治理/10-逆向运行时常见问题.md`**。
+- **输出结论、扩范围或做并发前 Read `~/.claude/skills/my_reverse_skill/99-SKILLS治理/11-AI事实证据规约.md` / `12-反泛化与任务收敛规约.md` / `13-并发指纹与会话隔离规约.md`**。
+- **改端点/字段/状态/保护/实现/eval 前后 Read `14-知识图谱行程与关联规约.md` / `15-AI变更风险与回归校验规约.md`,并更新 knowledge-graph.md / impact-regression.md**。
 
 ## Boundaries
 

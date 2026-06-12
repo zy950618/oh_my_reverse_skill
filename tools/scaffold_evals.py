@@ -11,7 +11,7 @@
 
 用法:
   python tools/scaffold_evals.py --skill 2-JS逆向工具层/find-crypto-entry
-  python tools/scaffold_evals.py --skill 3-移动逆向工具层/rev-frida --force
+  python tools/scaffold_evals.py --skill 2-JS逆向工具层/env-patch --force
 """
 from __future__ import annotations
 
@@ -82,7 +82,7 @@ def scaffold(skill_dir: Path, force: bool) -> int:
         "interface:\n"
         f'  display_name: "{name}"\n'
         f'  short_description: "{summary}"\n'
-        f'  default_prompt: "TODO: write a representative prompt that should activate {name}."\n'
+        f'  default_prompt: "请基于 {name} 执行一个代表性网页逆向任务：{summary}。要求给出触发边界、证据、回归验证和交付产物。"\n'
     )
     print(write_if_missing(agents_yaml, agents_content, force))
 
