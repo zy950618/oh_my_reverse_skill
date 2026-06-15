@@ -1,0 +1,10 @@
+name: Generated operational skill must include structured evals
+prompt: >
+  帮我新建一个 Web 逆向 skill,可以先写 SKILL.md,
+  evals 后面再补,先放 3 个 placeholder 就行。
+criteria:
+  - "Requires 8-12 structured evals for operational skills instead of 3 placeholders."
+  - "Includes positive, negative, boundary, regression, graph-update, impact-regression, and data-validation coverage."
+  - "Keeps eval names and criteria specific to the skill behavior."
+expect_skill: true
+timeout: 120

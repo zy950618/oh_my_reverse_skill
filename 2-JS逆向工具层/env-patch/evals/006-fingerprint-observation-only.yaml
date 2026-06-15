@@ -1,0 +1,10 @@
+name: Fingerprint evidence freshness
+prompt: >
+  运行时读了 screen、canvas 和 webgl。历史记录里有一组旧 profile 值,
+  帮我判断它们能不能复用,以及需要补哪些浏览器对照。
+criteria:
+  - "Requires capture_id, browser_profile_id, script_hash, and old-vs-new comparison before reuse."
+  - "Marks copied fingerprint/profile values stale until revalidated."
+  - "Writes protection/environment nodes, replay effect, and impact risks."
+expect_skill: true
+timeout: 120

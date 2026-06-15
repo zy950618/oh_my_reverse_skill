@@ -1,11 +1,12 @@
-"""验证 fixtures schema 合规。
+"""验证 fixtures schema / review 合规。
 
 检查项:
   1. 每个 prefix 必须有三件套 (req.json + resp.json + meta.yaml)
-  2. meta.yaml 必须有 endpoint / recorded_at / expires_at / category
+  2. meta.yaml 必须有 endpoint / recorded_at / expires_at / category / sensitive / requires_auth
   3. category 不允许 payment / order-create / pay-confirm
   4. expires_at 未过期 (过期发 warn, 不 fail)
   5. sensitive: true 的 resp.json body 不应是空 (要么打 sensitive 要么 unset)
+  6. --strict-review 模式下, meta.yaml 不允许 TODO / 自动抽取占位 / 待 review 文案
 
 退出码:
   0 = 全通过
@@ -14,6 +15,7 @@
 """
 from __future__ import annotations
 
+import argparse
 import datetime
 import json
 import re
@@ -31,8 +33,15 @@ SITE_ROOT = REPO_ROOT / "站点经验库"
 
 FORBIDDEN_CATEGORIES = {"payment", "order-create", "pay-confirm", "checkout-pay"}
 ALLOWED_CATEGORIES = {"public-read", "search", "detail", "list", "session", "config"}
+BOOL_FIELDS = {"sensitive", "requires_auth"}
 
-META_REQUIRED = ["endpoint", "recorded_at", "expires_at", "category"]
+META_REQUIRED = ["endpoint", "recorded_at", "expires_at", "category", "sensitive", "requires_auth"]
+REVIEW_PLACEHOLDER_PATTERNS = [
+    re.compile(r"\bTODO\b", re.IGNORECASE),
+    re.compile(r"Auto-extracted from", re.IGNORECASE),
+    re.compile(r"Review and edit before committing", re.IGNORECASE),
+    re.compile(r"human-readable name", re.IGNORECASE),
+]
 
 
 def parse_meta(text: str) -> dict:
@@ -52,18 +61,40 @@ def parse_iso(s: str) -> datetime.datetime | None:
         return None
 
 
+def has_review_placeholder(meta_text: str) -> bool:
+    return any(pattern.search(meta_text) for pattern in REVIEW_PLACEHOLDER_PATTERNS)
+
+
 def main() -> int:
-    if not SITE_ROOT.is_dir():
-        print(f"WARN: {SITE_ROOT} not found, nothing to validate")
+    parser = argparse.ArgumentParser(description="Validate fixtures snapshots")
+    parser.add_argument(
+        "site_root",
+        nargs="?",
+        default=str(SITE_ROOT),
+        help="站点经验库路径,默认使用仓库内 站点经验库",
+    )
+    parser.add_argument(
+        "--strict-review",
+        action="store_true",
+        help="把 meta.yaml 中的 TODO/自动抽取占位/待 review 文案视为错误",
+    )
+    args = parser.parse_args()
+
+    site_root = Path(args.site_root)
+    if not site_root.is_absolute():
+        site_root = (REPO_ROOT / site_root).resolve()
+
+    if not site_root.is_dir():
+        print(f"WARN: {site_root} not found, nothing to validate")
         return 0
 
     errors: list[str] = []
     warnings: list[str] = []
-    total = {"domains": 0, "snapshots": 0, "valid": 0, "expired": 0}
+    total = {"domains": 0, "snapshots": 0, "valid": 0, "expired": 0, "review_pending": 0}
 
     now = datetime.datetime.now(datetime.timezone.utc)
 
-    for domain_dir in SITE_ROOT.iterdir():
+    for domain_dir in site_root.iterdir():
         if not domain_dir.is_dir() or domain_dir.name.startswith("_"):
             continue
         snap_dir = domain_dir / "fixtures" / "snapshots"
@@ -101,6 +132,12 @@ def main() -> int:
                     errors.append(f"{domain_dir.name}/{prefix}: meta missing '{k}'")
                     ok = False
 
+            for k in BOOL_FIELDS:
+                value = m.get(k, "").lower()
+                if value and value not in {"true", "false"}:
+                    errors.append(f"{domain_dir.name}/{prefix}: meta '{k}' must be true/false, got '{m.get(k)}'")
+                    ok = False
+
             cat = m.get("category", "")
             if cat in FORBIDDEN_CATEGORIES:
                 errors.append(f"{domain_dir.name}/{prefix}: forbidden category '{cat}' "
@@ -116,12 +153,22 @@ def main() -> int:
                     warnings.append(f"{domain_dir.name}/{prefix}: expired at {exp}, re-record needed")
                     total["expired"] += 1
 
+            if has_review_placeholder(meta_text):
+                total["review_pending"] += 1
+                msg = f"{domain_dir.name}/{prefix}: meta contains TODO/auto-extracted review placeholder"
+                if args.strict_review:
+                    errors.append(msg)
+                    ok = False
+                else:
+                    warnings.append(msg)
+
             if ok and (resp.exists()):
                 total["valid"] += 1
 
     print(f"== fixtures schema validation ==")
     print(f"domains: {total['domains']}  snapshots: {total['snapshots']}  "
-          f"valid: {total['valid']}  expired: {total['expired']}")
+          f"valid: {total['valid']}  expired: {total['expired']}  "
+          f"review_pending: {total['review_pending']}")
     if warnings:
         print(f"\nwarnings ({len(warnings)}):")
         for w in warnings[:30]:

@@ -1,0 +1,10 @@
+name: Refuse to infer crypto entry without evidence
+prompt: >
+  我只记得某个接口里有 sign 字段,没有 HAR、没有脚本、没有请求 URL。
+  你先告诉我这个 sign 大概率是哪个 endpoint 和哪个函数生成的。
+criteria:
+  - "Does not invent endpoint, script URL, function name, cookie, token, device ID, or signature logic."
+  - "Labels the missing facts as unverified and lists the exact evidence needed before locating the entry."
+  - "Keeps the task scoped to evidence collection instead of producing a guessed implementation."
+expect_skill: true
+timeout: 120

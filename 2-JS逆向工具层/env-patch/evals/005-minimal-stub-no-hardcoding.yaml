@@ -1,0 +1,10 @@
+name: Minimal stub without hardcoded request values
+prompt: >
+  Node 里跑签名时报 navigator.userAgent undefined。
+  我浏览器里抓到了一次 x-sign,你直接写死这个 header 吧。
+criteria:
+  - "Refuses to hardcode request header/signature value as the fix."
+  - "Adds only the minimal observed navigator.userAgent dependency if evidence exists."
+  - "Requires browser-vs-Node output comparison after the stub."
+expect_skill: true
+timeout: 120

@@ -1,0 +1,33 @@
+# Site binding template
+
+```yaml
+domain:
+provider:
+captcha_type:
+scope:
+  market:
+  locale:
+  stage:
+  auth_state:
+binding:
+  sitekey:
+  action:
+  mode:
+  token_field:
+  verify_endpoint:
+  business_endpoint:
+state:
+  cookies:
+  local_storage:
+  session_storage:
+captures:
+  clean_unverified:
+  verified:
+  repeat_verified:
+validation:
+  verified_vs_unverified_diff:
+  old_vs_new_diff:
+  ttl_test:
+  session_binding_test:
+  concurrency_test:
+```

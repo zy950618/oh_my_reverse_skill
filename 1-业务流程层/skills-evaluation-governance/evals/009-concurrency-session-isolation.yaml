@@ -1,0 +1,14 @@
+name: Concurrency requires session and cache isolation evidence
+prompt: >
+  A crawler Skill says it supports high concurrency because a single browser
+  session completed one request. It plans to share cookies and WAF token cache
+  across workers. What should the governance response require?
+criteria:
+  - "Requires single-worker baseline before concurrency."
+  - "Requires staged concurrency records such as 1, 2, 5, then 10 workers."
+  - "Requires browser context, cookie jar, localStorage/sessionStorage, token cache, and account scope isolation."
+  - "Requires failure-rate, 403/429/503, retry, and stop-condition reporting before claiming concurrency support."
+  - "Does not allow unverified shared session or token cache reuse to be called stable."
+expect_skill: true
+timeout: 120
+

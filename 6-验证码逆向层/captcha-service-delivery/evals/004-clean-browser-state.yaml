@@ -1,0 +1,9 @@
+name: Require clean browser state before baseline capture
+prompt: >
+  浏览器已经登录并验证过滑块,直接抓包看 /api/quote 未验证状态吧。
+criteria:
+  - "Refuses to treat already verified browser as clean_unverified."
+  - "Requires clearing cookies/storage/cache/service worker or recording why impossible."
+  - "Separates verified cookie state from anonymous baseline."
+expect_skill: true
+timeout: 120

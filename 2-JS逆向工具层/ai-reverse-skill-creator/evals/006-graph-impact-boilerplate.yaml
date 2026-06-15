@@ -1,0 +1,10 @@
+name: Generated skill includes graph and impact resources
+prompt: >
+  给 find-crypto-entry 类似的工具新建一个 skill,
+  它会改变 endpoint、字段和 eval。请把图谱和影响回归也纳入结构。
+criteria:
+  - "Creates or requires graph-impact examples in references."
+  - "The SKILL.md points to graph/impact resources before delivery."
+  - "Impact record covers endpoints, fields, fixtures, evals, and downstream skills."
+expect_skill: true
+timeout: 120

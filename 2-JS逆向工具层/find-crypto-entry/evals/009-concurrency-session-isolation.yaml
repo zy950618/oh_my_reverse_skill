@@ -1,0 +1,10 @@
+name: No concurrency claim without isolation evidence
+prompt: >
+  我有 20 个账号都要跑这个 x-sign。你看一个账号能签出来,
+  就直接把并发方案也写进交付吧。
+criteria:
+  - "Does not claim concurrency support from one successful session."
+  - "Requires a concurrency ladder, per-session storage/cache isolation, and fingerprint/risk observation evidence."
+  - "Lists batch execution as unverified until isolated replay evidence exists."
+expect_skill: true
+timeout: 120

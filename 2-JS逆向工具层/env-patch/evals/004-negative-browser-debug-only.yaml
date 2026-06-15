@@ -1,0 +1,10 @@
+name: Do not trigger for browser-only debugging
+prompt: >
+  我只是想在浏览器 DevTools 里看一下这个请求的调用栈,
+  不需要搬到 Node,也不需要补环境。
+criteria:
+  - "Does not route browser-only stack inspection into env-patch."
+  - "Recommends passive browser trace/debug workflow instead of Node stubbing."
+  - "Does not create env/ project structure unnecessarily."
+expect_skill: false
+timeout: 120

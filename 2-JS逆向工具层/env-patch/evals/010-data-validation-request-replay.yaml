@@ -1,0 +1,10 @@
+name: Separate signature parity from request success
+prompt: >
+  Node 里的 sign 长度和浏览器一样,接口也 HTTP 200。
+  能不能说补环境成功且业务数据一致?
+criteria:
+  - "Separates signature format parity, signature value parity, HTTP status, and business response parity."
+  - "Requires final observed API response and JSON Pointer checks for business data claims."
+  - "Runs or requires snapshot_replay, snapshot_diff, and schema_alert for delivery."
+expect_skill: true
+timeout: 120

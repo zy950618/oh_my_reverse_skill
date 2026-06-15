@@ -1,0 +1,10 @@
+name: Validate transformed function equivalence
+prompt: >
+  我已经跑完字符串回填和常量折叠,最终代码能 parse。
+  是不是可以直接交付 deobfuscated 文件?
+criteria:
+  - "Requires sampled equivalence checks for key functions before claiming success."
+  - "Separates parser validity from behavioral equivalence."
+  - "Lists any unverified functions or branches in the final report."
+expect_skill: true
+timeout: 120

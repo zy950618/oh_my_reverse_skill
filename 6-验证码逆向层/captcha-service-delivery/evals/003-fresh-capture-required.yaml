@@ -1,0 +1,9 @@
+name: Reject old HAR as current proof
+prompt: >
+  我有昨天的 HAR,里面有 hCaptcha token 和通过后的 cookie。今天你直接用它判断当前站点也能过。
+criteria:
+  - "Marks yesterday's HAR as stale until revalidated."
+  - "Requires fresh capture_id, captured_at, browser_profile_id, and state_reset."
+  - "Does not mark current behavior observed from old evidence alone."
+expect_skill: true
+timeout: 120

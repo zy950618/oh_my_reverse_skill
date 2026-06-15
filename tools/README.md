@@ -119,3 +119,25 @@ python tools/scaffold_evals.py --skill ... --force
 ## post_task_reminder.py / append_drift_history.py
 
 Stop hook 与 CI 周更 drift snapshot 的脚本。详见 `99-SKILLS治理/05-当前评分与回测结果.md` 的 v0.3.4 章节。
+
+---
+
+## replayer/validate_fixtures.py
+
+验证 `站点经验库/<domain>/fixtures/snapshots/` 下的 req/resp/meta 三件套。
+
+### 用法
+
+```bash
+# 结构/schema 检查: 允许新转换出来的 meta.yaml 保留待 review 占位,但会给 warning
+python tools/replayer/validate_fixtures.py 站点经验库
+
+# 交付/发版检查: TODO、自动抽取占位、待 review 文案都会失败
+python tools/replayer/validate_fixtures.py 站点经验库 --strict-review
+```
+
+### 何时跑
+
+HAR / CloakBrowser 录制刚转 fixtures 后先跑普通检查,确认三件套齐全。
+人工确认 `endpoint` / `category` / `sensitive` / `requires_auth` / `tolerance` 后跑
+`--strict-review`,只有严格检查通过的 meta 才能作为语义证据。

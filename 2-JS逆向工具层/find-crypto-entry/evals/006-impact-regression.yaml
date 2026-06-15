@@ -1,0 +1,10 @@
+name: Impact regression for changed signature field
+prompt: >
+  /api/search 的签名字段从 header.x-sign 移到了 body.sign,
+  入口函数也从 addSign 变成 buildSearchSign。请写影响面和必跑回归。
+criteria:
+  - "Lists impacted endpoints, request fields, scripts, mappings, fixtures, and evals."
+  - "Requires snapshot_replay, snapshot_diff, and schema_alert or gives an evidence-backed reason they cannot run."
+  - "Marks previous graph edges stale instead of leaving old field mappings alive."
+expect_skill: true
+timeout: 120

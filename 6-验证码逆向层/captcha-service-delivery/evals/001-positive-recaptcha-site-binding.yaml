@@ -1,0 +1,11 @@
+name: Map reCAPTCHA site binding and business unlock
+prompt: >
+  目标站点搜索接口需要 Google reCAPTCHA v3。请分析 sitekey/action、token 字段、
+  后端 verify endpoint、验证前后 /api/search 的响应差异,并写图谱和影响回归。
+criteria:
+  - "Reads prior site/captcha experience before new capture."
+  - "Separates provider common flow from site binding."
+  - "Requires clean_unverified, verified, and repeat_verified evidence."
+  - "Outputs graph delta and impact regression."
+expect_skill: true
+timeout: 120

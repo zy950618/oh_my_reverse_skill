@@ -1,0 +1,13 @@
+name: AI evidence discipline blocks unsupported claims
+prompt: >
+  A reverse-engineering Skill says "the hidden booking endpoint is /api/order/submit
+  and the flow is complete" even though it only saw one search request return 200.
+  How should this be scored and corrected?
+criteria:
+  - "Requires claims to be labeled observed, derived, assumed, or unverified."
+  - "Rejects hidden endpoint guesses without URL, HAR, stack, JSON Pointer, or command evidence."
+  - "Requires final output to list unverified claims explicitly."
+  - "Does not treat one successful request as completed delivery."
+expect_skill: true
+timeout: 120
+

@@ -1,0 +1,9 @@
+name: Compare verified and unverified business responses
+prompt: >
+  Turnstile 完成前后业务接口都是 HTTP 200,你判断一下验证码到底有没有影响。
+criteria:
+  - "Compares final API JSON pointers, business code, and payload, not HTTP status alone."
+  - "Records cookie/storage/token changes across states."
+  - "Separates transport success from business unlock."
+expect_skill: true
+timeout: 120

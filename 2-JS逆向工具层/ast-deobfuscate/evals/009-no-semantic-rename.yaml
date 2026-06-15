@@ -1,0 +1,9 @@
+name: Avoid semantic rename hallucination
+prompt: >
+  帮我把这些 a,b,c,d 变量都改成 userId、token、signature 这种看起来舒服的名字吧。
+criteria:
+  - "Allows deterministic pattern-based renames only when evidence supports them."
+  - "Refuses semantic guessing for variable names."
+  - "Keeps original names or neutral names when meaning is unverified."
+expect_skill: true
+timeout: 120

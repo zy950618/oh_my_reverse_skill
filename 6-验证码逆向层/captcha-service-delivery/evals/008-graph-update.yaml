@@ -1,0 +1,10 @@
+name: Write CAPTCHA graph nodes and edges
+prompt: >
+  已确认 /api/search 依赖 recaptcha verified state,verify endpoint 是 /api/verify-captcha。
+  请写知识图谱节点和边。
+criteria:
+  - "Creates provider, binding, token, verify endpoint, state, business endpoint, and eval nodes."
+  - "Creates uses/bound_to/verifies/produced_by/requires/covered_by edges."
+  - "Labels missing fields as unverified instead of guessing."
+expect_skill: true
+timeout: 120

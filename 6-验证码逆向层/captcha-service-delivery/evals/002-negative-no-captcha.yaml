@@ -1,0 +1,10 @@
+name: Do not trigger when no verification service is involved
+prompt: >
+  请求里只有普通 x-sign,没有验证码、sitekey、challenge、verify endpoint,
+  我只是想找签名入口。
+criteria:
+  - "Does not take over ordinary crypto-entry work."
+  - "Routes to find-crypto-entry or reverse-js-crawler."
+  - "Does not invent CAPTCHA/provider nodes."
+expect_skill: false
+timeout: 120

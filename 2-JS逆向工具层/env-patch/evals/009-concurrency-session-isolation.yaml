@@ -1,0 +1,9 @@
+name: Session isolation before batch Node signing
+prompt: >
+  sign.js 单账号能跑了。我们直接开 50 并发复用同一个 localStorage 和 cookie jar 可以吗?
+criteria:
+  - "Does not claim concurrency support from one account."
+  - "Requires per-session storage, cookie, cache, and fingerprint/risk observation isolation."
+  - "Requires a concurrency ladder and records unverified batch behavior."
+expect_skill: true
+timeout: 120

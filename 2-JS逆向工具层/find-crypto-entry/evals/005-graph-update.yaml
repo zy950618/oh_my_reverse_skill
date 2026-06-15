@@ -1,0 +1,10 @@
+name: Write graph delta for located request field
+prompt: >
+  已经定位到 /api/search 的 header.x-sign 来自 static/search.8ad3.js 里的 buildSearchSign。
+  帮我把这次发现沉淀成知识图谱更新。
+criteria:
+  - "Creates nodes for endpoint, request field, JS function, script, and covering eval."
+  - "Creates edges for uses/generated_by/located_in/covered_by with evidence pointers."
+  - "Does not claim algorithm restoration or replay success unless separately observed."
+expect_skill: true
+timeout: 120

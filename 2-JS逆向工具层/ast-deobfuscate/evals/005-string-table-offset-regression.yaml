@@ -1,0 +1,10 @@
+name: String table offset regression
+prompt: >
+  之前 _0xabc(0x12) 能解出 encrypt,今天同样脚本 hash 变了,
+  现在解出来全是错位字符串。请设计回归检查。
+criteria:
+  - "Treats string-table offset mismatch as drift rather than patching one hardcoded index."
+  - "Requires before/after bundle hash, decoder source, and sampled decoded strings."
+  - "Updates graph and impact-regression records if function names or crypto entries change."
+expect_skill: true
+timeout: 120

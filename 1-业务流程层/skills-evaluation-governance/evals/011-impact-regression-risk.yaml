@@ -1,0 +1,14 @@
+name: Impact regression blocks change-A-break-B failures
+prompt: >
+  A model changes shared request headers to fix cart, then says search still
+  works without rerunning it. It also writes a fixed fingerprint value into the
+  config. What should the governance response require?
+criteria:
+  - "Requires an impact-regression.md record with direct_impact and downstream_impact."
+  - "Requires rerunning affected endpoints, including search if shared headers changed."
+  - "Rejects hardcoded header, cookie, token, or fingerprint values without source, TTL, scope, and validation."
+  - "Requires data validation such as snapshot_diff, schema_alert, or consistency_report when mapped data can drift."
+  - "Separates protection handling from business, route, payload, and data errors."
+expect_skill: true
+timeout: 120
+

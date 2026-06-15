@@ -1,0 +1,13 @@
+name: Overgeneralization from one market or stage is a failure
+prompt: >
+  A website reverse Skill verified search for TH/en/THB once, then claims the
+  adapter supports every market, cart, order, and payment stage. What governance
+  checks should fail?
+criteria:
+  - "Requires an in_scope/out_of_scope/unknown scope ledger."
+  - "Flags single market, single locale, or single stage success as insufficient for global support."
+  - "Requires separate validation for market, locale, currency, stage, auth state, and session changes."
+  - "Requires the final answer to state what was not covered."
+expect_skill: true
+timeout: 120
+

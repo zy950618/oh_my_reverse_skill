@@ -32,6 +32,7 @@ Score separately:
 - Site memory quality: test logs become known failures, market matrix, eval backlog, and change log.
 - Operational quality: CI, drift tracking, versioning, install path.
 - Karpathy behavior quality: assumptions surfaced, scope kept narrow, success criteria verifiable, changes traceable to the request.
+- Evidence/review quality: validation ledger, refusal ledger, human review gate, monitoring plan, and error-correction memory updates.
 
 ## Workflow
 
@@ -63,6 +64,12 @@ Score separately:
    - 回测至少一个正例、一个负例、一个历史回归例。
    - 更新 `99-SKILLS治理/05-当前评分与回测结果.md`。
 
+6. 防虚幻治理：
+   - 检查是否要求证据、验证、拒答、人工复核和监控。
+   - 检查错误发生后是否更新 memory / known-failures / eval / 图谱 / impact-regression。
+   - 检查错误代码、废弃输出和历史遗留是否被删除、迁移或登记为 legacy debt。
+   - 检查是否拒绝把辱骂性前缀、人格化称谓或情绪化口头禅写入强制交付格式。
+
 ## Karpathy Checks
 
 这些原则用于评价 Skill 行为，不替代后续 AGENT 编码规则：
@@ -79,6 +86,7 @@ Score separately:
 - 每个 Skill 至少有正例、负例和回归/边界 eval。
 - 测试日志中的重复失败能进入站点经验库或 eval backlog。
 - 改动后版本、变更记录和漂移测试要求同步更新。
+- 证据、验证、拒答、人工复核、监控和错误纠正都有明确门槛。
 
 ## Tool Policy
 
@@ -86,6 +94,7 @@ Score separately:
 - **遇到逆向运行时问题(断点/时间/cookie/TLS 指纹/风控恢复/接口变更)Read `~/.claude/skills/my_reverse_skill/99-SKILLS治理/10-逆向运行时常见问题.md`**。
 - **输出结论、扩范围或做并发前 Read `~/.claude/skills/my_reverse_skill/99-SKILLS治理/11-AI事实证据规约.md` / `12-反泛化与任务收敛规约.md` / `13-并发指纹与会话隔离规约.md`**。
 - **改端点/字段/状态/保护/实现/eval 前后 Read `14-知识图谱行程与关联规约.md` / `15-AI变更风险与回归校验规约.md`,并更新 knowledge-graph.md / impact-regression.md**。
+- **涉及证据不足、验证失败、拒答、人审、监控、错误纠正或历史遗留时 Read `18-证据验证拒答人工复核与监控规约.md`,并输出对应 ledger**。
 
 ## Boundaries
 

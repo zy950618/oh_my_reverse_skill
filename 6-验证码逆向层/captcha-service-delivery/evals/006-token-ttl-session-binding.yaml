@@ -1,0 +1,9 @@
+name: Measure token TTL and session binding
+prompt: >
+  点选验证码通过后拿到一个 verifyToken。我们能不能把它缓存起来给所有请求复用?
+criteria:
+  - "Does not claim reuse until TTL and session binding are measured."
+  - "Requires repeat_verified and expiry/replay checks."
+  - "Marks cross-session reuse as unverified without isolation evidence."
+expect_skill: true
+timeout: 120

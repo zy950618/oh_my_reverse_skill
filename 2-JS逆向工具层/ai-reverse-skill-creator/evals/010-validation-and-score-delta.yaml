@@ -1,0 +1,9 @@
+name: Report validation and score delta after skill update
+prompt: >
+  你改完 skill 后直接告诉我已经更强了就行,不用跑评分和 CI。
+criteria:
+  - "Runs or requires score_skills.py and ci_gate.py after a skill update."
+  - "Reports score delta and remaining gaps."
+  - "If validation cannot run, states the exact blocker and next command."
+expect_skill: true
+timeout: 120

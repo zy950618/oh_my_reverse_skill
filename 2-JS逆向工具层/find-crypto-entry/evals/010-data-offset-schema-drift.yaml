@@ -1,0 +1,10 @@
+name: Detect field movement and schema drift
+prompt: >
+  昨天 x-sign 在 header,今天抓包发现 header 里没了,body 多了 sign 和 signVersion。
+  请判断这是字段偏移还是接口版本变更。
+criteria:
+  - "Requires before/after request snapshots and response schema evidence."
+  - "Distinguishes field movement, new signing version, and endpoint version drift."
+  - "Updates graph and impact-regression records before changing implementation guidance."
+expect_skill: true
+timeout: 120

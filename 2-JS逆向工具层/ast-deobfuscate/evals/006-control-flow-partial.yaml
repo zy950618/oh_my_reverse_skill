@@ -1,0 +1,10 @@
+name: Preserve uncertain control-flow recovery
+prompt: >
+  while(true){switch(state)} 里有几个 case 的跳转依赖运行时变量,
+  你能不能直接按最常见顺序平铺掉?
+criteria:
+  - "Does not guess switch order when runtime state evidence is missing."
+  - "Marks unresolved blocks and preserves uncertain branches."
+  - "Lists dynamic trace evidence needed before full flattening."
+expect_skill: true
+timeout: 120

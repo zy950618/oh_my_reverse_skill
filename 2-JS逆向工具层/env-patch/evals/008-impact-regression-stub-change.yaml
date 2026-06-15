@@ -1,0 +1,10 @@
+name: Impact regression for changed stub
+prompt: >
+  我把 run.js 里的 location.href stub 从生产 URL 改成测试 URL,
+  签名格式没变。请判断影响面和必跑回归。
+criteria:
+  - "Lists affected signing function, request fields, endpoints, fixtures, and session/cache assumptions."
+  - "Requires browser-vs-Node value comparison, not only length/prefix comparison."
+  - "Requires replay/diff/schema checks before claiming API success."
+expect_skill: true
+timeout: 120

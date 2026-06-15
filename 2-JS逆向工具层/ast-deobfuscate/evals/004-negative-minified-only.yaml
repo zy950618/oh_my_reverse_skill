@@ -1,0 +1,10 @@
+name: Do not trigger for minified-only formatting
+prompt: >
+  这个 JS 只是压成了一行,变量名还挺正常,没有 _0x、字符串数组、控制流平坦化。
+  帮我格式化一下就行。
+criteria:
+  - "Does not treat minification-only formatting as AST deobfuscation."
+  - "Routes the task to formatting/beautify guidance instead of heavy deobfuscation workflow."
+  - "Does not invent obfuscation features."
+expect_skill: false
+timeout: 120

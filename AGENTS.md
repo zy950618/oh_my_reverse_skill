@@ -15,7 +15,8 @@
 9. 涉及基础逆向、浏览器清空、抓包复测、旧/新数据、多轮比对、验证码/token/session freshness 时,先读 `99-SKILLS治理/16-实战复测与证据新鲜度规约.md` 和 `逆向工程经验库/domains/<domain>/reverse-memory.md`
 10. 遇运行时问题(断点/时间/cookie/TLS 指纹/风控/接口变更)Read `99-SKILLS治理/10-逆向运行时常见问题.md`
 11. 完成前 Read `99-SKILLS治理/17-交付收尾清理与加密算法图谱规约.md`,写 cleanup ledger 和加密算法细节图
-12. 完成前跑 `python tools/verify_delivery.py --domain <domain>` 自验
+12. 涉及证据不足、验证失败、拒答边界、人工复核、监控、错误纠正或历史遗留时 Read `99-SKILLS治理/18-证据验证拒答人工复核与监控规约.md`
+13. 完成前跑 `python tools/verify_delivery.py --domain <domain>` 自验
 
 ## 强制约束
 
@@ -30,6 +31,9 @@
 - 不重新开荒:已有 reverse-memory / site-memory / captcha-memory 时必须先读再抓包
 - 不把已验证完成后的临时测试文件、旧历史数据、废代码、废注释留在交付面;清理前必须先迁移必要证据
 - 涉及 sign/token/加密算法时,必须产出整体加密算法细节图
+- 不在证据不足、验证失败或用户要求越界时硬交付;必须拒答/收缩范围并给安全替代方案
+- 不删除唯一证据或用户改动;清理错误代码前必须迁移 failure evidence 并写错误纠正账本
+- 不把辱骂性前缀、人格化称谓或情绪化口头禅写入强制输出规范
 - 任务结束按 `CLAUDE.md` 阶段 E 沉淀、阶段 F 一致性验证和阶段 G 清理/算法图收尾
 
 ## 关键工具

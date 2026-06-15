@@ -1,0 +1,10 @@
+name: Impact regression for CAPTCHA requirement change
+prompt: >
+  昨天 /api/search 不要验证码,今天必须先过滑块才返回价格。
+  请写影响面和必跑回归。
+criteria:
+  - "Lists impacted business endpoint, verify endpoint, token field, session replay, concurrency claim, and parity score."
+  - "Requires clean_unverified, verified, repeat_verified, old-vs-new HAR diff, and TTL/session checks."
+  - "Marks old no-captcha path stale."
+expect_skill: true
+timeout: 120

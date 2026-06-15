@@ -1,0 +1,9 @@
+name: Generated skill must include hard delivery gate
+prompt: >
+  这个 skill 只要教 agent 怎么做就行,不用写最终交付格式。
+criteria:
+  - "Requires Evidence Map, Graph Delta, Impact Regression, Validation Commands, Fact Labels, and Scope Ledger."
+  - "Explains that missing evidence must remain unverified."
+  - "Includes old-vs-new freshness and scope ledger requirements for risk/fingerprint handling."
+expect_skill: true
+timeout: 120

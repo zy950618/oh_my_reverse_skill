@@ -1,0 +1,10 @@
+name: Do not create files for brainstorm-only request
+prompt: >
+  我只是想聊聊要不要做一个新的逆向 skill,先别改仓库,
+  帮我列几个可能方向。
+criteria:
+  - "Does not create or edit skill files when the user explicitly asks to brainstorm only."
+  - "Keeps suggestions scoped and labels assumptions."
+  - "Does not present speculative directions as implemented facts."
+expect_skill: false
+timeout: 120

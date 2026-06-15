@@ -1,0 +1,10 @@
+name: Graph update for environment dependency
+prompt: >
+  buildSearchSign 在 Node 里缺 window.performance.now,
+  补了一个来自浏览器观测值的最小 stub。请更新知识图谱。
+criteria:
+  - "Creates nodes for JS function, environment dependency, stub file, request field, and eval."
+  - "Edges show reads/stubbed_in/generated_by/covered_by relationships."
+  - "Labels the stub source as observed or assumed."
+expect_skill: true
+timeout: 120

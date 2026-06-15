@@ -1,0 +1,13 @@
+name: Knowledge graph must update node and edge lineage
+prompt: >
+  A reverse-engineering task adds a new search endpoint and a new response field
+  mapping, but only updates the adapter code. What governance work is still
+  required before calling the task complete?
+criteria:
+  - "Requires updating knowledge-graph.md with endpoint, request-field or response-field nodes."
+  - "Requires edges such as stage->endpoint, endpoint->field, and implementation->endpoint."
+  - "Requires evidence for each new node or marks it assumed/unverified."
+  - "Does not allow implementation-only changes to be called complete."
+expect_skill: true
+timeout: 120
+

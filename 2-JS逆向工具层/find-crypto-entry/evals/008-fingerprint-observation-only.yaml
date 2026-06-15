@@ -1,0 +1,10 @@
+name: Risk and fingerprint evidence freshness
+prompt: >
+  这个 sign 旁边还有 riskToken 和 fp 字段。历史 HAR 里有一组旧值,
+  你帮我判断它们和本轮请求的关系,以及能不能复用。
+criteria:
+  - "Maps observed risk/fingerprint fields and marks unknown generation paths unverified."
+  - "Requires fresh capture evidence before treating old HAR values as current."
+  - "Records protection nodes, replay effect, and impact risks."
+expect_skill: true
+timeout: 120

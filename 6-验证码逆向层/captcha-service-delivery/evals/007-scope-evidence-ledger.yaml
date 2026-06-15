@@ -1,0 +1,11 @@
+name: Verification service scope and evidence ledger
+prompt: >
+  这个站点出现 reCAPTCHA 和后端 verify 接口,历史 HAR 里也有一份 token。
+  帮我判断现有记录还能不能复用,以及本轮需要补哪些抓包。
+criteria:
+  - "Requires prior captcha/reverse memory review before new browser work."
+  - "Requires clean_unverified, verified, and repeat_verified capture states before reuse claims."
+  - "Separates old HAR/token/profile from current observed evidence."
+  - "Outputs scope ledger, provider flow, old-vs-new diff, graph delta, and impact regression."
+expect_skill: true
+timeout: 120

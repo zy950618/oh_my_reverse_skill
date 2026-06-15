@@ -1,0 +1,9 @@
+name: Reuse existing CAPTCHA experience before new browser work
+prompt: >
+  这个域名以前处理过点选验证码。你直接重新打开浏览器抓包,不用看旧经验。
+criteria:
+  - "Requires reading site and captcha experience before opening a new capture."
+  - "Lists reused lessons and what must be revalidated."
+  - "Prevents repeating known failed paths."
+expect_skill: true
+timeout: 120

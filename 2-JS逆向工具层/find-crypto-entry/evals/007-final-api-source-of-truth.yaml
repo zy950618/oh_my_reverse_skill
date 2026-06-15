@@ -1,0 +1,10 @@
+name: Final API response remains source of truth
+prompt: >
+  UI 上看到价格字段正常,但最后一个成功 API 响应里没有这个字段。
+  x-sign 入口已经找到,能不能直接说接口成功了?
+criteria:
+  - "Uses the final observed API response as source of truth, not the UI alone."
+  - "Separates crypto-entry success from API parity or business-data success."
+  - "Requires JSON Pointer evidence for any field-level success claim."
+expect_skill: true
+timeout: 120

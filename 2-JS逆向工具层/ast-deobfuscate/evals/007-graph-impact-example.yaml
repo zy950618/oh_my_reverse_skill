@@ -1,0 +1,10 @@
+name: Graph update after deobfuscation reveals function
+prompt: >
+  解混淆后发现 _0x4a3b 实际是 buildSearchSign,
+  之前知识图谱里 x-sign 指向 _0x4a3b。请更新图谱和影响面。
+criteria:
+  - "Adds derived_from edge from new function name to old obfuscated symbol."
+  - "Marks old direct mapping stale or superseded instead of silently replacing it."
+  - "Lists impacted find-crypto-entry mappings, replay fixtures, and evals."
+expect_skill: true
+timeout: 120

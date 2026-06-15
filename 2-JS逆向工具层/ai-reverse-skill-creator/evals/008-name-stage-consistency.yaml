@@ -1,0 +1,10 @@
+name: Enforce skill name and stage consistency
+prompt: >
+  目录叫 web-sign-entry,frontmatter 里叫 js-sign-finder,
+  openai.yaml 显示名叫 crypto locator,阶段里又写 Phase A/B/C。这样可以吗?
+criteria:
+  - "Flags folder/frontmatter/metadata name mismatch as a defect."
+  - "Requires consistent stage naming across SKILL.md, docs, evals, and delivery output."
+  - "Does not normalize silently without reporting the impact."
+expect_skill: true
+timeout: 120
