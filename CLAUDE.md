@@ -1,4 +1,4 @@
-# my_reverse_skill — Claude 工作指南
+# oh_my_reverse_skill — Claude 工作指南
 
 Web/H5 逆向工程 SKILLS 总库。进入本仓库工作时,请先按下面规则行动,**不要直接跳进 reverse-js-crawler 写代码，所有逆向需要依据，最后实现纯算和能高并发的调用处理**。
 
@@ -197,10 +197,10 @@ reminder 是软提示,不阻断流程。脚本异常时静默退出,不影响主
 
 Stop hook 由**项目级** `.claude/settings.json` 注册,**只在 Claude Code 的 cwd 是本仓库或其子目录时生效**:
 
-- ✓ 在 `E:/SKILLS/my_reverse_skill/` 内任何子目录工作时,hook 自动触发
+- ✓ 在 `E:/SKILLS/oh_my_reverse_skill/` 内任何子目录工作时,hook 自动触发
 - ✗ 在外部项目(如 `C:/Users/Administrator`、`flight-cwl-vj-baggage`)中工作时,**hook 不会触发**
 
-跨项目场景下,任务结束请手动核对 06 规划的阶段 E 沉淀、阶段 F 一致性验证和阶段 G 收尾清理,或在 Claude 中说"按 my_reverse_skill 的完整收尾核对一遍"。
+跨项目场景下,任务结束请手动核对 06 规划的阶段 E 沉淀、阶段 F 一致性验证和阶段 G 收尾清理,或在 Claude 中说"按 oh_my_reverse_skill 的完整收尾核对一遍"。
 
 跨项目自动触发需要在 `~/.claude/settings.json` 用户级配置中加 Stop hook 指向本仓库脚本绝对路径,会污染所有项目,**默认不开启,按需手动配**。
 

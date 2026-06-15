@@ -363,7 +363,7 @@ def main() -> int:
             new_domains = {d for d in domains if d not in existing}
 
             if new_domains or not persisted:
-                rev_lines = ["[my_reverse_skill] 任务结束沉淀提醒:"]
+                rev_lines = ["[oh_my_reverse_skill] 任务结束沉淀提醒:"]
                 if new_domains:
                     rev_lines.append(
                         "  - 检测到未沉淀的 domain: " + ", ".join(sorted(new_domains))
@@ -400,13 +400,13 @@ def main() -> int:
                         )
                 if hard_lines:
                     reminders.append(
-                        "[my_reverse_skill] domain 产物硬检查 (mtime):\n"
+                        "[oh_my_reverse_skill] domain 产物硬检查 (mtime):\n"
                         + "\n".join(hard_lines)
                     )
 
     if needs_completion_reminder:
         comp_lines = [
-            "[my_reverse_skill] 完成度自评提醒:",
+            "[oh_my_reverse_skill] 完成度自评提醒:",
             "  你说\"完成\"了, 但 transcript 里没看到验证动作。",
             "  按 `99-SKILLS治理/08-完成度自评.md` 走 6 维自评:",
             "    1) 代码层: 主路径端到端跑过?",

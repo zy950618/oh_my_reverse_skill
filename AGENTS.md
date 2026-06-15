@@ -1,4 +1,4 @@
-# my_reverse_skill — AGENTS.md
+# oh_my_reverse_skill — AGENTS.md
 
 本仓库是 Web/H5 逆向工程 SKILLS 总库,11 个 skill 分 5 个分层。本文件是 OpenAI Codex CLI 的入口约定。
 

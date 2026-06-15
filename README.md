@@ -1,4 +1,4 @@
-# my_reverse_skill
+# oh_my_reverse_skill
 
 Web/H5 逆向工程 SKILLS 总库。覆盖 Web/JS 逆向、爬虫接口化、WAF 风控对抗、一致性验证、Skill 治理评测的完整工具链与流程。
 
@@ -23,7 +23,7 @@ Web/H5 逆向工程 SKILLS 总库。覆盖 Web/JS 逆向、爬虫接口化、WAF
 
 本仓库整合了三处来源:
 
-- 原 spider_skills 仓库（Web 业务流程 skill）
+- GitHub 仓库名统一为 `oh_my_reverse_skill`（Web 业务流程 skill）
 - 本机 `~/.claude/skills` 下的 Web/JS 原子工具与通用规范
 - obsidian 笔记中的工作流文档、站点案例与验证码经验库
 - 真实逆向 run/capture/replay 经验库
@@ -31,7 +31,7 @@ Web/H5 逆向工程 SKILLS 总库。覆盖 Web/JS 逆向、爬虫接口化、WAF
 ## 目录布局
 
 ```
-my_reverse_skill/
+oh_my_reverse_skill/
 ├── 1-业务流程层/   顶层入口，调度其他层
 │   ├── website-314-api-delivery       新站点 → 314 接口交付（Web 最常用入口）
 │   ├── reverse-js-crawler             JS 逆向主流程
@@ -87,24 +87,24 @@ my_reverse_skill/
 ```powershell
 # 业务流程层
 foreach ($n in @('website-314-api-delivery','reverse-js-crawler','imperva-waf-reese84','skills-evaluation-governance')) {
-  New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\$n" -Target "E:\SKILLS\my_reverse_skill\1-业务流程层\$n"
+  New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\$n" -Target "E:\SKILLS\oh_my_reverse_skill\1-业务流程层\$n"
 }
 # JS 工具层
 foreach ($n in @('find-crypto-entry','ast-deobfuscate','env-patch','ai-reverse-skill-creator')) {
-  New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\$n" -Target "E:\SKILLS\my_reverse_skill\2-JS逆向工具层\$n"
+  New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\$n" -Target "E:\SKILLS\oh_my_reverse_skill\2-JS逆向工具层\$n"
 }
 # 通用规范
-New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\karpathy-guidelines" -Target "E:\SKILLS\my_reverse_skill\4-通用规范层\karpathy-guidelines"
+New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\karpathy-guidelines" -Target "E:\SKILLS\oh_my_reverse_skill\4-通用规范层\karpathy-guidelines"
 # 沉淀工具
-New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\site-api-adapter" -Target "E:\SKILLS\my_reverse_skill\5-沉淀工具层\site-api-adapter"
+New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\site-api-adapter" -Target "E:\SKILLS\oh_my_reverse_skill\5-沉淀工具层\site-api-adapter"
 # 验证码逆向层
-New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\captcha-service-delivery" -Target "E:\SKILLS\my_reverse_skill\6-验证码逆向层\captcha-service-delivery"
+New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\captcha-service-delivery" -Target "E:\SKILLS\oh_my_reverse_skill\6-验证码逆向层\captcha-service-delivery"
 ```
 
 ### macOS / Linux（bash）
 
 ```bash
-REPO="$HOME/SKILLS/my_reverse_skill"   # 改成你本地实际路径
+REPO="$HOME/SKILLS/oh_my_reverse_skill"   # 改成你本地实际路径
 DST="$HOME/.claude/skills"
 mkdir -p "$DST"
 

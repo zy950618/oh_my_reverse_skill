@@ -1,5 +1,5 @@
 ---
-title: my_reverse_skill 索引
+title: oh_my_reverse_skill 索引
 tags:
   - codex
   - skills
@@ -8,7 +8,7 @@ tags:
   - governance
 ---
 
-# my_reverse_skill 索引
+# oh_my_reverse_skill 索引
 
 本仓库是 Web/H5 逆向工程 SKILLS 总库，分层组织，仓库为唯一来源，通过 Windows junction 安装到 `~/.claude/skills/`。
 
@@ -124,7 +124,7 @@ website-314-api-delivery（Web 总控）
 
 本地目录已有 `SKILL.md` 和 `evals/`，结构上具备被 Skill Bench 评测的能力。但要正式跑分还需要：
 
-- 把 skill 镜像到一个 Git 仓库（本仓库 my_reverse_skill 已具备）
+- 把 skill 镜像到一个 Git 仓库（本仓库 oh_my_reverse_skill 已具备）
 - 仓库可见路径，例如 `skills/<skill-name>/`（本仓库用分层目录，必要时再镜像一份扁平结构给 CI）
 - GitHub Actions 配置模型 API key secret（如 `ANTHROPIC_API_KEY`）
 - PR 触发 + 定时触发的 Skill Bench workflow

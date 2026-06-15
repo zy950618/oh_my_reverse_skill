@@ -29,15 +29,15 @@
 ### Step 1: clone 仓库
 
 ```bash
-git clone <repo-url> ~/SKILLS/my_reverse_skill
-cd ~/SKILLS/my_reverse_skill
+git clone <repo-url> ~/SKILLS/oh_my_reverse_skill
+cd ~/SKILLS/oh_my_reverse_skill
 ```
 
 Windows:
 
 ```powershell
-git clone <repo-url> E:\SKILLS\my_reverse_skill
-cd E:\SKILLS\my_reverse_skill
+git clone <repo-url> E:\SKILLS\oh_my_reverse_skill
+cd E:\SKILLS\oh_my_reverse_skill
 ```
 
 ### Step 2: 软链 11 个 Skill 到 ~/.claude/skills/
@@ -51,23 +51,23 @@ Claude Code 默认从 `~/.claude/skills/` 加载 Skill,本仓库分层放在子�
 ```powershell
 # 业务流程层 (4 个)
 foreach ($n in @('website-314-api-delivery','reverse-js-crawler','imperva-waf-reese84','skills-evaluation-governance')) {
-  New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\$n" -Target "E:\SKILLS\my_reverse_skill\1-业务流程层\$n" -Force
+  New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\$n" -Target "E:\SKILLS\oh_my_reverse_skill\1-业务流程层\$n" -Force
 }
 # JS 工具层 (4 个)
 foreach ($n in @('find-crypto-entry','ast-deobfuscate','env-patch','ai-reverse-skill-creator')) {
-  New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\$n" -Target "E:\SKILLS\my_reverse_skill\2-JS逆向工具层\$n" -Force
+  New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\$n" -Target "E:\SKILLS\oh_my_reverse_skill\2-JS逆向工具层\$n" -Force
 }
 # 通用规范 + 沉淀工具
-New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\karpathy-guidelines" -Target "E:\SKILLS\my_reverse_skill\4-通用规范层\karpathy-guidelines" -Force
-New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\site-api-adapter" -Target "E:\SKILLS\my_reverse_skill\5-沉淀工具层\site-api-adapter" -Force
+New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\karpathy-guidelines" -Target "E:\SKILLS\oh_my_reverse_skill\4-通用规范层\karpathy-guidelines" -Force
+New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\site-api-adapter" -Target "E:\SKILLS\oh_my_reverse_skill\5-沉淀工具层\site-api-adapter" -Force
 # 验证码逆向层
-New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\captcha-service-delivery" -Target "E:\SKILLS\my_reverse_skill\6-验证码逆向层\captcha-service-delivery" -Force
+New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\captcha-service-delivery" -Target "E:\SKILLS\oh_my_reverse_skill\6-验证码逆向层\captcha-service-delivery" -Force
 ```
 
 #### macOS / Linux
 
 ```bash
-REPO="$HOME/SKILLS/my_reverse_skill"   # 改成你本地实际路径
+REPO="$HOME/SKILLS/oh_my_reverse_skill"   # 改成你本地实际路径
 DST="$HOME/.claude/skills"
 mkdir -p "$DST"
 
@@ -115,7 +115,7 @@ pip install pyyaml
         "hooks": [
           {
             "type": "command",
-            "command": "python \"E:/SKILLS/my_reverse_skill/tools/post_task_reminder.py\""
+            "command": "python \"E:/SKILLS/oh_my_reverse_skill/tools/post_task_reminder.py\""
           }
         ]
       }
@@ -138,7 +138,7 @@ ls ~/.claude/skills/ | grep -E '(website-|reverse-js|imperva|find-crypto|ast-|en
 # 应该看到 11 个
 
 # 2. 跑评分(应该不报错)
-cd ~/SKILLS/my_reverse_skill   # 或 E:\SKILLS\my_reverse_skill
+cd ~/SKILLS/oh_my_reverse_skill   # 或 E:\SKILLS\oh_my_reverse_skill
 python "1-业务流程层/skills-evaluation-governance/scripts/score_skills.py" "1-业务流程层"
 # 应该输出 JSON,1 层 4 个 Skill 的分数
 
@@ -158,7 +158,7 @@ python tools/replayer/validate_fixtures.py
 (Get-ChildItem "$env:USERPROFILE\.claude\skills" -Directory).Count
 
 # 2. 跑评分
-cd E:\SKILLS\my_reverse_skill
+cd E:\SKILLS\oh_my_reverse_skill
 python "1-业务流程层/skills-evaluation-governance/scripts/score_skills.py" "1-业务流程层"
 
 # 3. 跑 fixtures 验证
@@ -174,7 +174,7 @@ python tools\replayer\validate_fixtures.py
 dir "%USERPROFILE%\.claude\skills" /B | find /C /V ""
 
 :: 2. 跑评分
-cd /d E:\SKILLS\my_reverse_skill
+cd /d E:\SKILLS\oh_my_reverse_skill
 python "1-业务流程层\skills-evaluation-governance\scripts\score_skills.py" "1-业务流程层"
 
 :: 3. 跑 fixtures 验证
@@ -186,7 +186,7 @@ python tools\replayer\validate_fixtures.py
 ## 升级
 
 ```bash
-cd ~/SKILLS/my_reverse_skill
+cd ~/SKILLS/oh_my_reverse_skill
 git pull
 # 软链指向本仓库目录,git pull 后自动生效。Skills 内容已更新。
 ```
@@ -207,7 +207,7 @@ for n in $(ls ~/.claude/skills/); do
 done
 ```
 
-仓库目录本身可以 `rm -rf ~/SKILLS/my_reverse_skill` 删除。
+仓库目录本身可以 `rm -rf ~/SKILLS/oh_my_reverse_skill` 删除。
 
 ---
 
@@ -220,7 +220,7 @@ A: 用**管理员**身份打开 PowerShell。普通用户没权限创建 Junctio
 替代方案:用 mklink /J:
 
 ```cmd
-mklink /J "%USERPROFILE%\.claude\skills\find-crypto-entry" "E:\SKILLS\my_reverse_skill\2-JS逆向工具层\find-crypto-entry"
+mklink /J "%USERPROFILE%\.claude\skills\find-crypto-entry" "E:\SKILLS\oh_my_reverse_skill\2-JS逆向工具层\find-crypto-entry"
 ```
 
 ### Q2: `python` 命令找不到(Windows Store 版 Python)
