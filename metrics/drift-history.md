@@ -49,3 +49,32 @@ tags:
 - 均分: total=98.0 (s=25.0/o=23.0/d=20.0)
 - `captcha-service-delivery` v0.1.0 total=98 (s=25/o=23/d=20) — 高可用,产出与真实一致
 
+
+## 2026-06-22
+
+### 1-业务流程层
+- 均分: total=91.5 (s=25.0/o=21.5/d=20.0)
+- `imperva-waf-reese84` v0.2.0 total=91 (s=25/o=21/d=20) — 高可用,产出与真实一致
+- `reverse-js-crawler` v0.2.0 total=91 (s=25/o=21/d=20) — 高可用,产出与真实一致
+- `skills-evaluation-governance` v0.2.0 total=91 (s=25/o=21/d=20) — 高可用,产出与真实一致
+- `website-314-api-delivery` v0.2.0 total=93 (s=25/o=23/d=20) — 高可用,产出与真实一致
+
+### 2-JS逆向工具层
+- 均分: total=87.5 (s=25.0/o=19.75/d=17.75)
+- `ai-reverse-skill-creator` v0.5.0 total=84 (s=25/o=17/d=17) — 可用,一致性证据待补
+- `ast-deobfuscate` v0.5.0 total=91 (s=25/o=21/d=20) — 高可用,产出与真实一致
+- `env-patch` v0.5.0 total=87 (s=25/o=20/d=17) — 可用,一致性证据待补
+- `find-crypto-entry` v0.5.0 total=88 (s=25/o=21/d=17) — 可用,一致性证据待补
+
+### 4-通用规范层
+- 均分: total=0 (s=0/o=0/d=0)
+- `karpathy-guidelines` vunknown total=20 (s=20/o=?/d=?) — 原始材料
+
+### 5-沉淀工具层
+- 均分: total=87.0 (s=25.0/o=21.0/d=16.0)
+- `site-api-adapter` v0.2.0 total=87 (s=25/o=21/d=16) — 可用,一致性证据待补
+
+### 6-验证码逆向层
+- 均分: total=93.0 (s=25.0/o=23.0/d=20.0)
+- `captcha-service-delivery` v0.1.0 total=93 (s=25/o=23/d=20) — 高可用,产出与真实一致
+
