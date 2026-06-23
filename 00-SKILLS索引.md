@@ -33,7 +33,7 @@ tags:
 
 | Skill | 适用场景 | 主要触发词 |
 |---|---|---|
-| `website-314-api-delivery` | 新网站 → 纯接口 → 查询/加车/生单/支付 → 314 交付 | 新站点接入、纯接口、314 基础框架、加解密全部实现 |
+| `website-314-api-delivery` | 新网站 → 纯接口 → FastAPI 接口测试交付 → 可选接入本地基础框架（314 是一个分支） | 新站点接入、纯接口、FastAPI接口测试、314 基础框架、加解密全部实现 |
 | `reverse-js-crawler` | 页面侦察、接口识别、签名/token 还原、采集脚本交付 | JS逆向、接口还原、加密参数、补环境、批量采集 |
 | `imperva-waf-reese84` | Imperva/Reese84/84 盾/x-d-token/WAF challenge | 84盾、Reese84逆向、Incapsula、WAF挑战、风控token |
 | `skills-evaluation-governance` | 给技能评分、补 eval、回测、漂移测试、版本治理 | SKILLS评分、Skill Bench、新增Skill准入、回测、漂移 |
@@ -85,12 +85,12 @@ website-314-api-delivery（Web 总控）
 
 ## 新网站接入入口
 
-任何新网站任务都从 `website-314-api-delivery` 开始。典型输入：
+任何新网站接口交付任务都从 `website-314-api-delivery` 开始。默认先做 Python/FastAPI 接口测试交付；接口全部成功后，再人工确认是否加入本地基础框架。典型输入：
 
 ```text
 目标网站：https://www.example.com/
 目标：纯接口实现查询、加车、生单、支付
-要求：加解密全部实现，最后使用 314 基础框架提供接口
+要求：加解密全部实现，先提供 FastAPI 接口测试；全部成功后询问是否接入本地基础框架，314 作为可选分支
 ```
 
 ## 长期进化闭环

@@ -1,0 +1,21 @@
+{
+  "name": "oh-my-reverse-skill",
+  "description": "Web/H5 reverse-engineering skills for API restoration, JS reverse engineering, WAF handling, CAPTCHA service analysis, adapter standardization, and skill governance.",
+  "version": "0.1.0",
+  "author": {
+    "name": "zy950618"
+  },
+  "repository": "https://github.com/zy950618/oh_my_reverse_skill",
+  "homepage": "https://github.com/zy950618/oh_my_reverse_skill",
+  "license": "MIT",
+  "keywords": [
+    "reverse-engineering",
+    "web",
+    "h5",
+    "javascript",
+    "crawler",
+    "waf",
+    "captcha",
+    "skills"
+  ]
+}

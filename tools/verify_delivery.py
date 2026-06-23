@@ -25,6 +25,23 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 DEFAULT_REPO_ROOT = SCRIPT_DIR.parent
 SITE_MEMORY_DIR = "站点经验库"
 REVERSE_MEMORY_DIR = "逆向工程经验库"
+CAPTCHA_MEMORY_DIR = "验证码经验库"
+DELIVERY_CODE_MARKERS = (
+    "/delivery_",
+    "/delivery-",
+    "/delivery/",
+    "/adapter/",
+    "/api/",
+    "/services/",
+    "/anti_bot/",
+    "/crypto/",
+    "/reverse/",
+)
+SUCCESS_DELIVERY_STATUSES = (
+    "success_browserless_verified",
+    "success_verified",
+    "complete",
+)
 
 # 与 08-完成度自评.md 一致的窗口:近 1h
 RECENT_WINDOW_SEC = 3600
@@ -428,6 +445,177 @@ def check_cleanup_workspace(changed: list[str], blockers: list[str]) -> int:
     return 0
 
 
+def check_captcha_completion_gate(domain: str, repo_root: Path, blockers: list[str]) -> dict:
+    """CAPTCHA delivery gate: blocked verified/repeat_verified cannot pass as complete.
+
+    This gate intentionally reads the persisted site CAPTCHA memory, because transcript/workspace
+    scoring alone can miss the core delivery state.
+    """
+    result = {
+        "applies": False,
+        "status": "not_applicable",
+        "memory": None,
+        "verified": None,
+        "repeat_verified": None,
+        "success_pointer": None,
+    }
+    if domain == "none":
+        return result
+
+    path = repo_root / CAPTCHA_MEMORY_DIR / "domains" / domain / "captcha-memory.md"
+    result["memory"] = str(path)
+    if not path.is_file():
+        return result
+
+    result["applies"] = True
+    try:
+        text = path.read_text(encoding="utf-8-sig", errors="replace")
+    except Exception as e:
+        blockers.append(f"Captcha gate: 无法读取 {path}: {e!r}")
+        result["status"] = "blocked"
+        return result
+
+    lower = text.lower()
+
+    def field_value(name: str) -> str | None:
+        # YAML-like memory files are simple enough for a conservative line parser.
+        for line in text.splitlines():
+            stripped = line.strip()
+            if stripped.lower().startswith(f"{name.lower()}:"):
+                return stripped.split(":", 1)[1].strip().strip("'\"")
+        return None
+
+    verified = field_value("verified")
+    repeat_verified = field_value("repeat_verified")
+    success_pointer = field_value("success_pointer")
+    result["verified"] = verified
+    result["repeat_verified"] = repeat_verified
+    result["success_pointer"] = success_pointer
+
+    blocked_markers = (
+        "blocked",
+        "manual",
+        "unverified",
+        "missing",
+        "none",
+        "todo",
+        "unknown",
+        "not_applicable",
+    )
+
+    bad_fields: list[str] = []
+    for name, value in (("verified", verified), ("repeat_verified", repeat_verified)):
+        if value is None:
+            bad_fields.append(f"{name}=missing")
+            continue
+        value_lower = value.lower()
+        if any(marker in value_lower for marker in blocked_markers):
+            bad_fields.append(f"{name}={value}")
+
+    if success_pointer is not None and any(marker in success_pointer.lower() for marker in ("unverified", "unknown", "missing")):
+        bad_fields.append(f"success_pointer={success_pointer}")
+
+    if bad_fields:
+        blockers.append(
+            "Captcha gate: verified/repeat_verified 未完成,不得通过完整交付门槛; "
+            + ", ".join(bad_fields)
+        )
+        result["status"] = "blocked"
+        return result
+
+    result["status"] = "complete"
+    return result
+
+
+def _read_text_safe(path: Path) -> str:
+    try:
+        return path.read_text(encoding="utf-8-sig", errors="replace")
+    except Exception:
+        return ""
+
+
+def _field_value_from_text(text: str, name: str) -> str | None:
+    for line in text.splitlines():
+        stripped = line.strip()
+        if stripped.lower().startswith(f"{name.lower()}:"):
+            return stripped.split(":", 1)[1].strip().strip("'\"")
+    return None
+
+
+def check_delivery_memory_separation_gate(
+    domain: str,
+    repo_root: Path,
+    changed: list[str],
+    blockers: list[str],
+) -> dict:
+    """Project delivery code must not live in experience memory or feed SKILLS."""
+    result = {
+        "applies": domain != "none",
+        "status": "not_applicable",
+        "mixed_delivery_code": [],
+        "bad_positive_memory": [],
+    }
+    if domain == "none":
+        return result
+
+    memory_prefixes = (
+        f"{SITE_MEMORY_DIR}/{domain}/",
+        f"{REVERSE_MEMORY_DIR}/domains/{domain}/",
+        f"{CAPTCHA_MEMORY_DIR}/domains/{domain}/",
+    )
+
+    mixed: list[str] = []
+    for rel in changed:
+        normalized = rel.replace("\\", "/")
+        if not normalized.startswith(memory_prefixes):
+            continue
+        lower = normalized.lower()
+        if lower.endswith((".py", ".js", ".ts", ".mjs", ".cjs", ".java", ".go", ".rs")) and any(
+            marker in lower for marker in DELIVERY_CODE_MARKERS
+        ):
+            mixed.append(normalized)
+    if mixed:
+        blockers.append(
+            "Delivery separation gate: 项目交付代码混入经验库目录; "
+            "交付项目代码不参与 SKILLS,请改为单独交付文件/交付包并只在经验库保留摘要: "
+            + ", ".join(mixed[:10])
+        )
+
+    bad_positive: list[str] = []
+    memory_files = (
+        repo_root / SITE_MEMORY_DIR / domain / "site-memory.md",
+        repo_root / SITE_MEMORY_DIR / domain / "test-log-lessons.md",
+        repo_root / REVERSE_MEMORY_DIR / "domains" / domain / "reverse-memory.md",
+        repo_root / CAPTCHA_MEMORY_DIR / "domains" / domain / "captcha-memory.md",
+    )
+    for path in memory_files:
+        if not path.is_file():
+            continue
+        text = _read_text_safe(path)
+        skills_participation = _field_value_from_text(text, "skills_participation")
+        delivery_status = _field_value_from_text(text, "delivery_status") or _field_value_from_text(
+            text, "completion_status"
+        )
+        if not skills_participation or skills_participation.lower() != "positive_allowed":
+            continue
+        if delivery_status is None or delivery_status.lower() not in SUCCESS_DELIVERY_STATUSES:
+            bad_positive.append(f"{path}: delivery_status={delivery_status or 'missing'}")
+
+    if bad_positive:
+        blockers.append(
+            "Delivery separation gate: 非成功经验库不得参与 SKILLS 正向评分; "
+            + ", ".join(bad_positive)
+        )
+
+    if mixed or bad_positive:
+        result["status"] = "blocked"
+    else:
+        result["status"] = "pass"
+    result["mixed_delivery_code"] = mixed
+    result["bad_positive_memory"] = bad_positive
+    return result
+
+
 # ---------------------------------------------------------------------------
 # 评分 + 输出
 # ---------------------------------------------------------------------------
@@ -517,6 +705,7 @@ def main() -> int:
         "honesty": 0,
         "cleanup": 0,
     }
+    changed: list[str] = []
     if use_workspace_evidence:
         changed = git_changed_files(repo_root, blockers)
         try:
@@ -572,7 +761,12 @@ def main() -> int:
     passed_count = sum(scores.values())
     skipped = 6 - passed_count
 
-    if skipped >= 2:
+    captcha_gate = check_captcha_completion_gate(domain, repo_root, blockers)
+    delivery_separation_gate = check_delivery_memory_separation_gate(domain, repo_root, changed, blockers)
+
+    if captcha_gate.get("status") == "blocked" or delivery_separation_gate.get("status") == "blocked":
+        exit_code = 2
+    elif skipped >= 2:
         exit_code = 2
     else:
         exit_code = 0
@@ -590,6 +784,8 @@ def main() -> int:
             "repo_root": str(repo_root),
             "ts_utc": datetime.fromtimestamp(now, tz=timezone.utc).isoformat(),
         },
+        "captcha_completion_gate": captcha_gate,
+        "delivery_memory_separation_gate": delivery_separation_gate,
     }
 
     payload = json.dumps(result, ensure_ascii=False, indent=2)

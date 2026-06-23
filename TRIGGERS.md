@@ -22,7 +22,7 @@
 
 | 关键词 (中) | 关键词 (en) | Skill | 层 | 做什么 | 不触发 |
 |---|---|---|---|---|---|
-| 逆向 XXX 网站 / 把 XXX 接入 314 / 纯接口实现 / 网站接入 | reverse XXX website / new site adapter / pure API / 314 framework | `website-314-api-delivery` | 1 | 六阶段总控,把网页 → adapter.yaml → 314 服务 | 只想看 HTML 内容 / 调浏览器自动化 |
+| 逆向 XXX 网站 / 纯接口实现 / FastAPI 接口测试 / 网站接入 / 把 XXX 接入 314 | reverse XXX website / new site adapter / pure API / FastAPI test API / 314 framework | `website-314-api-delivery` | 1 | 六阶段总控,把网页 → Python/FastAPI 可测接口 → 人工确认后可选接入本地基础框架 | 只想看 HTML 内容 / 调浏览器自动化 |
 | JS 逆向 / 接口还原 / 加密参数 / 补环境 / 批量采集 | JS reverse / API restoration / sign reverse / crawler delivery | `reverse-js-crawler` | 1 | 页面侦察 + 真实 API 识别 + sign 还原 + Python/Node 复现 | 静态分析 / 非 Web/H5 |
 | 84 盾 / Reese84 / Incapsula / x-d-token / WAF 挑战 / 风控 token / 浏览器指纹 / 反扒 / token 被拒 | reese84 / incapsula / imperva / x-d-token / browser fingerprint / WAF challenge / anti-bot | `imperva-waf-reese84` | 1 | 指纹模拟 + token 缓存 + 阶段化接受度验证 | 普通 cookie / 单纯 401(非 WAF) |
 | 验证码 / reCAPTCHA / hCaptcha / Turnstile / 滑块 / 点选 / sitekey / challenge / verify endpoint / captcha token / 验证前后响应不同 | captcha / recaptcha / hcaptcha / turnstile / slider / click captcha / sitekey / challenge / verify endpoint | `captcha-service-delivery` | 6 | provider 流程 + 站点绑定 + clean/verified/repeat 三轮抓包 + token 状态 + 图谱回归 | 普通 sign/x-sign 定位 |

@@ -1,15 +1,15 @@
 ---
 name: website-314-api-delivery
 description: >-
-  Use this skill when a user gives a new website or existing target site and asks for end-to-end pure-interface implementation, API service delivery, or integration with the 314 base framework. Trigger for requests such as new website crawler, pure API implementation, site-to-service delivery, search/cart/order/payment flow, flight booking interface, 314 framework, flight_cwl_common_314, 接口实现, 纯接口, 网站接入, 新站点接入, 查询/加车/生单/支付, 加解密全部实现, 314基础框架, 提供接口, 服务化, or 长期可维护接口交付.
+  Use this skill when a user gives a new website or existing target site and asks for end-to-end pure-interface implementation, FastAPI interface test delivery, API service delivery, or optional integration with a local base framework such as 314 after the Python interfaces are verified. Trigger for requests such as new website crawler, pure API implementation, FastAPI test API, site-to-service delivery, search/cart/order/payment flow, flight booking interface, 314 framework, flight_cwl_common_314, local base framework, 接口实现, 纯接口, FastAPI接口测试, 网站接入, 新站点接入, 查询/加车/生单/支付, 加解密全部实现, 314基础框架, 本地基础框架, 提供接口, 服务化, or 长期可维护接口交付.
 platforms: [web, h5]
 ---
 
-# Website 314 API Delivery
+# Website FastAPI Test API Delivery
 
 ## Do NOT Trigger When
 
-- 用户只要"采集一下数据"、单次性脚本，不提"长期维护"、"服务化"、"接入框架" → 切到 `reverse-js-crawler`
+- 用户只要"采集一下数据"、单次性脚本，不提"接口测试交付"、"长期维护"、"服务化"、"接入框架" → 切到 `reverse-js-crawler`
 - 用户只问"找加密入口"、"补环境"、"看一下 JS 怎么生成 sign" 等单点逆向问题 → 切到 `reverse-js-crawler`（或更具体的 `find-crypto-entry` / `env-patch`）
 - 用户只问 WAF/Reese84/84盾怎么过 → 切到 `imperva-waf-reese84`
 - 用户只要把已有结果"沉淀成 adapter / schema / runbook" → 切到 `site-api-adapter`
@@ -18,15 +18,17 @@ platforms: [web, h5]
 
 ## Purpose
 
-把一个新网站从“给 URL / 业务目标”推进到“纯接口实现 + 314 框架服务化 + 测试闭环 + 可持续沉淀”。这个 Skill 是总控流程，用来调度逆向、反爬、接口化、测试和长期治理。
+把一个新网站从“给 URL / 业务目标”推进到“纯接口实现 + FastAPI 接口测试交付 + 测试闭环 + 可持续沉淀”。Python/FastAPI 接口全部验证成功后，再人工确认是否接入本地基础框架；314 只是可选基础框架分支之一。这个 Skill 是总控流程，用来调度逆向、反爬、接口化、测试、可选框架接入和长期治理。
 
 ## When To Use
 
 使用这个 Skill 处理类似任务：
 
 - “给你一个网站，做纯接口实现”
+- “先做 FastAPI 接口测试交付”
 - “实现查询、加车、生单、支付”
 - “加解密全部实现”
+- “Python 接口全部成功后，再确认是否接入本地基础框架”
 - “最后用 314 基础框架提供接口”
 - “把这个站点接入长期可维护的服务”
 
@@ -73,12 +75,20 @@ platforms: [web, h5]
    - 生单：旅客、联系人、行李、附加服务、订单确认。
    - 支付：优先做 sandbox/dry-run/支付前置接口；真实扣款必须人工授权，不能默认执行不可逆交易。
 
-5. 314 框架接入：
-   - 只有用户明确要求 314 或项目已使用 314 时接入。
-   - 保留 314 的 trace/session id、日志、代理、请求执行器、并发生命周期。
+5. FastAPI 接口测试交付：
+   - 先用直接 Python 实现完成业务接口，不默认绑定任何基础框架。
+   - 提供 FastAPI 路由和可执行 HTTP 测试，覆盖已完成的 search/cart/order/payment preparation 阶段。
+   - 只有目标站点真实接受请求并返回阶段数据，才算该接口成功；本地 payload 构造成功不算成功。
+   - Python/FastAPI 接口全部成功前，不进入 314 或其他本地基础框架改写。
+
+6. 本地基础框架接入确认：
+   - 在 FastAPI 接口测试全部成功后暂停，向人工确认：是否接入本地基础框架？可选项包括 `否`、`314`、或用户指定的其他本地基础框架。
+   - 用户选择 `否`：保留 FastAPI 接口测试交付和沉淀材料，不继续改写框架。
+   - 用户选择 `314`：按 314 分支改写，保留 314 的 trace/session id、日志、代理、请求执行器、并发生命周期。
+   - 用户选择其他本地基础框架：先读取该框架的本地代码、接口约定、生命周期和测试方式，再按真实框架约束改写。
    - 服务层只放业务编排；加解密放 crypto/runtime；WAF 放 anti_bot。
 
-6. 测试闭环：
+7. 测试闭环：
    - service-level 单测。
    - HTTP API 测试。
    - 稳定性循环。
@@ -86,7 +96,7 @@ platforms: [web, h5]
    - 失败路径测试。
    - 从测试日志提炼失败模式：symptom、stage、market、currency、status、marker、root cause、correct handling。
 
-7. 沉淀：
+8. 沉淀：
    - 生成 adapter/runbook/case notes。
    - 更新相关 Skill references。
    - 把新失败点加入 eval。
@@ -101,6 +111,7 @@ platforms: [web, h5]
 - API 返回结构稳定。
 - 日志能定位入参、session_id、阶段、耗时、返回码、错误信息。
 - 失败时能区分业务错误、路由错误、加密错误、WAF、IP、支付不可逆风险。
+- FastAPI 接口测试全部成功后，是否接入本地基础框架有明确人工确认记录。
 - 结果能沉淀成下一次复用的 Skill/eval。
 - 同站点同 market/locale/currency/stage 的已知失败在执行前被检查，并且测试后有写回记录。
 
@@ -113,13 +124,14 @@ platforms: [web, h5]
 
 ## Boundaries
 
-- 这是新站点到接口服务的总控 Skill，不替代编码 AGENT。
+- 这是新站点到 FastAPI 接口测试交付和可选本地基础框架接入的总控 Skill，不替代编码 AGENT。
+- 314 不是默认交付目标，只是用户确认后的本地基础框架分支。
 - 不把 Karpathy 风格编码纪律写进这里；后续放 AGENT。
 - 支付阶段默认按 sandbox/dry-run/支付前置验证处理，真实扣款必须明确授权并满足合法合规要求。
 
 ## Governance
 
-- Version: 0.2.0
+- Version: 0.2.2
 - Status: site-memory baseline
 - Change log: record material trigger, workflow, reference, and eval changes in `references/governance.md`.
 - Drift tests: rerun evals after changing descriptions, adding new cases, or after important real-world failures.

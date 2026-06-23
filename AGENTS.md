@@ -22,6 +22,9 @@
 
 - 真实扣款不在自动化环境跑,除非用户明示授权
 - 不把"评分高"等同于"任务真实成功"
+- 不把项目交付代码、adapter、demo、临时复测脚本写进 SKILLS 能力层;交付项目只能作为交付文件/交付包管理
+- 不把项目交付物和项目经验库混在一起;经验库只记录沉淀后的结论、失败模式、证据摘要和回归要求
+- 不把 blocked / negative baseline / adapter-only / protected response 经验升级为可复用 SKILLS 能力;只有真实成功并完成回归的经验库条目才能参与 SKILLS 正向评分和能力泛化
 - 不把一次失败硬编码成只适配一个站点的规则
 - 不把 assumed / unverified 写成 observed 事实
 - 不把单接口、单 market、单 session 成功泛化成全链路成功

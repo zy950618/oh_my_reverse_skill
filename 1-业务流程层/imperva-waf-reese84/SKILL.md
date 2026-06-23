@@ -11,7 +11,7 @@ platforms: [web, h5]
 
 - 目标网站的反爬不是 Imperva 系（Akamai / Cloudflare / Datadome / PerimeterX / Shape / kasada 等都不是本 skill 范围）→ 这类需另起 skill 或走通用 `reverse-js-crawler`
 - 用户只问普通 sign/token/cookie 生成（无 challenge HTML、无 Reese84 cookie、无 x-d-token、无 `_Incapsula_Resource` 标记） → 切到 `reverse-js-crawler`
-- 用户要求"完整 314 服务交付" → 切到 `website-314-api-delivery`（让它做总控，本 skill 只处理 WAF 子链）
+- 用户要求"完整 FastAPI 接口测试交付"、314 接入请求或本地基础框架接入 → 切到 `website-314-api-delivery`（让它做总控，本 skill 只处理 WAF 子链）
 - 用户做的不是 Web/H5 网站 WAF 链路 → 不属于本仓库范围
 - 用户只要"评估 WAF skill 本身好不好" → 切到 `skills-evaluation-governance`
 
@@ -72,7 +72,7 @@ platforms: [web, h5]
 
 ## Governance
 
-If the user asks for a full website-to-service delivery with 314 framework, search/cart/order/payment stages, or long-term API service output, use `website-314-api-delivery` as the orchestrator and use this skill only for WAF/anti-bot parts.
+If the user asks for full website-to-service delivery, FastAPI interface test delivery, optional local base framework integration such as 314, search/cart/order/payment stages, or long-term API service output, use `website-314-api-delivery` as the orchestrator and use this skill only for WAF/anti-bot parts.
 
 - Version: 0.2.0
 - Status: scorecard baseline

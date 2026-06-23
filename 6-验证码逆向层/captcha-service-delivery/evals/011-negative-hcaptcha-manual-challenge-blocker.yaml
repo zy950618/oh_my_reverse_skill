@@ -1,0 +1,12 @@
+name: hCaptcha manual challenge must block verified claim
+prompt: >
+  hCaptcha checkbox clicked后出现拖拽/点选 challenge,没有 token,但是页面加载和 checksiteconfig 都是 200。
+  判断这个任务能不能算 verified 成功。
+criteria:
+  - "Does not treat provider script/config 200 as verification success."
+  - "Marks verified and repeat_verified as blocked/unverified until a manual or authorized solved capture exists."
+  - "Records the challenge as Human Review Ledger or blocker evidence."
+  - "Keeps empty-token backend failure as the clean_unverified negative baseline."
+expect_skill: true
+timeout: 120
+

@@ -18,9 +18,12 @@ provider widget/challenge
   -> business API unlock/deny
 ```
 
-Version: 0.1.0
+Version: 0.1.2
 
-Change log: 0.1.0 creates the Web/H5 CAPTCHA reverse layer with structured evals, provider/site memory, graph/impact examples, and real capture freshness gates.
+Change log:
+- 0.1.2 clarifies automation/human-review evidence modes: browser automation can be claimed only after authorized backend acceptance and repeat verification; blocked challenges cannot be written as auto-pass capability.
+- 0.1.1 adds delivery/memory/SKILLS separation: project delivery code cannot become positive SKILLS capability; only successful, repeat-verified experience memory can feed positive scoring.
+- 0.1.0 creates the Web/H5 CAPTCHA reverse layer with structured evals, provider/site memory, graph/impact examples, and real capture freshness gates.
 
 ## Workflow
 
@@ -33,8 +36,9 @@ Change log: 0.1.0 creates the Web/H5 CAPTCHA reverse layer with structured evals
    - `验证码经验库/domains/<domain>/captcha-memory.md`
 4. Classify provider and type: `recaptcha`, `hcaptcha`, `turnstile`, `slider`, `click-select`, `custom-risk-state`, or `unknown`.
 5. Capture at least three states: `clean_unverified`, `verified`, `repeat_verified`.
-6. Compare old vs new evidence, verified vs unverified response, token TTL, session binding, and business API unlock.
-7. Update graph and impact records before final output.
+6. If provider interaction requires a manual challenge, stop the success path, read `references/human-review-protocol.md`, output the protocol, and mark the task `blocked` until a solved capture exists.
+7. Compare old vs new evidence, verified vs unverified response, token TTL, session binding, and business API unlock.
+8. Update graph and impact records before final output.
 
 ## Hard Delivery Gate
 
@@ -50,6 +54,10 @@ Every final output must include:
 - Validation Commands or Artifacts: HAR path, DevTools request ids, replay/diff commands, or explicit blocker.
 - Fact Labels: observed, derived, assumed, unverified.
 - Scope Ledger: target domain, flow, auth_state, requested capability, evidence source, and unresolved blockers.
+- Completion Status: `complete`, `blocked`, or `incomplete`. If `verified` or `repeat_verified` is missing, the status cannot be `complete`.
+- Verification Mode: `browser_automated_verified`, `human_reviewed_verified`, `blocked_by_manual_challenge`, `blocked_by_protection`, or `unverified`.
+- Human Review Protocol: required when a CAPTCHA challenge blocks `verified` capture.
+- Delivery / Memory / Skills Separation: project delivery artifact, experience memory path, delivery status, and skills participation. CAPTCHA adapters, recorder scripts, and site-specific demos are delivery artifacts or tools; they do not become SKILLS positive capability unless the corresponding experience memory is successful and repeat-verified.
 
 ## Success Criteria
 
@@ -58,6 +66,10 @@ Every final output must include:
 - Write new lessons to `验证码经验库/domains/<domain>/captcha-memory.md` and relevant known failures/test log entries.
 - Mark stale captures, old tokens, old script ids, and uncleared browser profiles as `unverified` until revalidated.
 - This skill is not responsible for ordinary crypto-entry location, generic WAF token work, or site-api-adapter standardization.
+- Treat `clean_unverified` plus a blocked challenge as a valid failure sample, not as a completed delivery.
+- Do not pass delivery as complete unless `clean_unverified`, `verified`, and `repeat_verified` are all backed by fresh evidence or the final status is explicitly `blocked`.
+- Do not promote project delivery code, provider adapters, or blocked recorder output into SKILLS positive examples. Only successful, repeat-verified `验证码经验库/domains/<domain>/captcha-memory.md` entries may feed positive SKILLS scoring. Blocked and negative samples may feed only known-failures, test-log lessons, human-review/refusal ledgers, or negative evals.
+- Do not claim "automatic pass" for Turnstile, Akamai, Cloudflare, hCaptcha, reCAPTCHA, or any managed challenge unless an authorized browser automation run produced token/state evidence and the final business API accepted it in both `verified` and `repeat_verified` rounds.
 
 ## Scope Ledger
 
@@ -96,8 +108,11 @@ Graph Delta:
 Impact Regression:
 Validation Artifacts:
 Fact Labels:
+Verification Mode:
 Scope Ledger:
 Unverified / Blockers:
+Completion Status:
+Human Review Protocol:
 ```
 
 ## References
@@ -106,4 +121,5 @@ Unverified / Blockers:
 - `references/provider-flow.md`: provider common flow abstraction.
 - `references/site-binding.md`: site-specific binding schema.
 - `references/real-capture-protocol.md`: browser cleanup, HAR capture, multi-round comparison.
+- `references/human-review-protocol.md`: visible browser/profile/user-action/listener protocol when a CAPTCHA challenge requires human completion.
 - `references/graph-impact-examples.md`: graph and impact examples.

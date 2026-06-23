@@ -1,4 +1,4 @@
-Version: 0.1.0
+Version: 0.1.2
 
 # captcha-service-delivery governance
 
@@ -17,6 +17,47 @@ CAPTCHA reverse work fails when the agent treats an old token, old HAR, old brow
 7. Restart/refresh and capture `repeat_verified`.
 8. Compare all three captures plus any old evidence.
 9. Update graph and impact regression.
+
+## Completion gate
+
+Set an explicit completion status for every CAPTCHA task:
+
+```yaml
+completion_status: complete | blocked | incomplete
+```
+
+Use `complete` only when `clean_unverified`, `verified`, and `repeat_verified` all have fresh evidence. If a provider challenge blocks token generation or backend acceptance, use `blocked`, write a Human Review Protocol, and do not claim delivery success. A negative baseline is useful evidence, but it is not a completed verification flow.
+
+Record the verification mode for every run:
+
+```yaml
+verification_mode: browser_automated_verified | human_reviewed_verified | blocked_by_manual_challenge | blocked_by_protection | unverified
+backend_acceptance: <final business API JSON Pointer / status / code>
+repeat_verified: true | false
+authorization_scope: <user-approved scope>
+```
+
+`browser_automated_verified` requires an authorized browser automation run, token/state evidence, final business API backend acceptance, and repeat verification. A managed challenge, provider config response, token endpoint response, or 403 challenge page is not enough.
+
+## Delivery / memory / skills separation
+
+CAPTCHA work must keep three layers separate:
+
+```yaml
+project_delivery_artifact: <single file/package/tool path>
+experience_memory_path: 验证码经验库/domains/<domain>/captcha-memory.md
+completion_status: complete | blocked | incomplete
+skills_participation: positive_allowed | negative_eval_only | memory_only | prohibited
+```
+
+Rules:
+
+- Project delivery code, recorder tools, adapters, demos, and one-off scripts are deliverables or tools, not SKILLS positive capability.
+- Experience memory is a summarized, cleaned, post-run record. Do not place delivery code inside it.
+- `positive_allowed` requires fresh `clean_unverified`, `verified`, and `repeat_verified` evidence plus backend acceptance.
+- `blocked`, `incomplete`, `negative_baseline_only`, or `adapter_only` may only produce failure memory, human-review/refusal ledger, monitoring items, or negative evals.
+- Never use a blocked CAPTCHA run to raise the skill's positive score.
+- Never write a blocked managed challenge as "auto passed"; write the blocker, the evidence gap, and the next authorized capture step.
 
 ## Fresh evidence fields
 
@@ -43,6 +84,8 @@ source_freshness:
 - Same HAR replayed after provider changed sitekey/action.
 - Single successful verified session generalized to concurrency.
 - Captcha challenge classified by UI only, without backend verify endpoint evidence.
+- Provider script/config 200 treated as verified success.
+- Manual challenge blocker hidden behind a passing score.
 
 ## Known failures and test log
 
@@ -59,6 +102,7 @@ Do not claim success unless:
 - provider common flow is mapped;
 - site binding is mapped;
 - verified/unverified API delta is shown;
+- `verified` and `repeat_verified` have fresh captures, or the final status is explicitly `blocked`;
 - token/state lifecycle is measured or marked unverified;
 - old evidence is invalidated or revalidated;
 - graph and impact records are updated;

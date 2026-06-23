@@ -1,12 +1,18 @@
-# 314 Integration
+# Local Base Framework Integration
 
-## When To Use 314
+## When To Use A Local Base Framework
+
+Start with Python/FastAPI interface test delivery. Use a local base framework only after:
+
+- the target Python/FastAPI interfaces pass against the real upstream stage requirements
+- the user confirms whether to integrate a local base framework
+- the user chooses `314` or names another local framework
 
 Use 314 only when:
 
-- the user explicitly asks for 314, `flight_cwl_common_314`, or 314 base framework
-- the project already imports and depends on the 314 framework
-- the final output must be an API service rather than a standalone crawler
+- the user explicitly chooses 314, `flight_cwl_common_314`, or the 314 base framework after FastAPI tests pass
+- the project already imports and depends on the 314 framework and the user confirms that branch
+- the final output must be a 314 service rather than the standalone FastAPI test API
 
 ## Service Boundaries
 
@@ -49,6 +55,7 @@ Do not log full tokens, cookies, card data, or passenger sensitive data.
 
 ## Test Requirements
 
+- FastAPI HTTP tests must pass before framework rewrite starts
 - direct service tests
 - HTTP router tests
 - 2-3 stability loops for key endpoints

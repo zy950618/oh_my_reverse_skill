@@ -2,7 +2,7 @@
 
 > 一站式安装。从零到能用大约 5-10 分钟,加上 CloakBrowser 二进制下载额外 3-5 分钟。
 >
-> 别的入口:[USAGE](./USAGE.md) 使用 · [TRIGGERS](./TRIGGERS.md) 触发词速查
+> 别的入口:[USAGE](./USAGE.md) 使用 · [TRIGGERS](./TRIGGERS.md) 触发词速查 · [CHERRY_STUDIO](./CHERRY_STUDIO.md) GUI 适配
 
 ---
 
@@ -25,6 +25,10 @@
 ---
 
 ## 完整步骤
+
+### GUI / Cherry Studio
+
+如果使用 Cherry Studio 或其他 Claude-compatible GUI,先看 [CHERRY_STUDIO.md](./CHERRY_STUDIO.md)。本仓库提供 `.claude-plugin/plugin.json` 和 `.claude-plugin/marketplace.json`;GUI 导入后生成的本机 `plugins.json`、`contentHash`、`sourcePath` 不提交到仓库。
 
 ### Step 1: clone 仓库
 

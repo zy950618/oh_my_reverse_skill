@@ -30,3 +30,24 @@ tools/.reminder-stats.jsonl
 # 不入 git 的 recording 二进制(HAR/jsonl 单文件常 30MB+)
 站点经验库/*/fixtures/recordings/*.har
 站点经验库/*/fixtures/recordings/*.jsonl
+
+# 本地项目交付物(只在本机/交付包保留,不上传 GitHub)
+交付项目/
+
+# 本地实战项目库: GitHub 只保留 README、模板和通用规范
+站点经验库/*/
+!站点经验库/_templates/
+!站点经验库/_templates/**
+!站点经验库/README.md
+
+逆向工程经验库/domains/*/
+!逆向工程经验库/domains/_example.com/
+!逆向工程经验库/domains/_example.com/**
+
+验证码经验库/domains/*/
+!验证码经验库/domains/_example.com/
+!验证码经验库/domains/_example.com/**
+
+# 本地运行/评分/抓包产物(每轮可再生成,不上传 GitHub)
+metrics/captures/
+metrics/codex_score_current.json

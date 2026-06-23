@@ -44,7 +44,7 @@ Web/H5 逆向工程 SKILL 库,装到 Claude Code 后,**用自然语言**让 Clau
 
 | 我想做的事 | 我可以说 | 触发的 Skill | Skill 做什么 |
 |---|---|---|---|
-| 逆向一个新网站,做成纯接口 | "逆向 thaiairways.com 做接口" / "把 XXX 接入 314 框架" / "纯接口实现查询/加车/生单" | `website-314-api-delivery` | 六阶段总控:侦察→入口→还原→复现→沉淀→一致性验证 |
+| 逆向一个新网站,做成纯接口 | "逆向 thaiairways.com,先做 FastAPI 接口测试交付" / "纯接口实现查询/加车/生单" / "全部成功后再确认是否接入 314" | `website-314-api-delivery` | 六阶段总控:侦察→入口→还原→FastAPI测试接口→人工确认框架→沉淀 |
 | 爬虫接口还原 / sign 分析 | "JS 逆向 XXX" / "分析 X 网站请求" / "还原签名算法" / "做个采集脚本" | `reverse-js-crawler` | 页面侦察→真实 API 识别→sign/token 还原→Python/Node 复现 |
 | 84 盾 / WAF token 被拒 | "84 盾过不去" / "Reese84 token 失败" / "x-d-token 拒了" / "Imperva 挑战页" | `imperva-waf-reese84` | 指纹模拟 + token 缓存 + 接受度阶段化验证 |
 | 验证码/滑块/点选 | "reCAPTCHA 卡住" / "Turnstile 验证后接口才有数据" / "阿里滑块" / "携程点选" | `captcha-service-delivery` | provider 流程 + 站点绑定 + clean/verified/repeat 三轮抓包 + 图谱回归 |
@@ -65,7 +65,7 @@ Web/H5 逆向工程 SKILL 库,装到 Claude Code 后,**用自然语言**让 Clau
 
 ### 场景 A:逆向一个新网站做接口
 
-> 你: 帮我逆向 https://www.example-airline.com 做成纯接口,要查询航班、加购、生单。最后用 314 框架交付。
+> 你: 帮我逆向 https://www.example-airline.com 做成纯接口,要查询航班、加购、生单。先做 FastAPI 接口测试交付，全部成功后再确认是否接入 314 或其他本地基础框架。
 
 Claude 自动触发 `website-314-api-delivery`,先读 `99-SKILLS治理/06-网页逆向标准规划.md`,输出 6 阶段计划让你确认,再开始侦察。
 

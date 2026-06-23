@@ -9,7 +9,7 @@ platforms: [web, h5]
 
 ## Do NOT Trigger When
 
-- 用户明确要"314 基础框架"、"长期可维护服务"、"完整查询→加车→生单→支付链路交付" → 切到 `website-314-api-delivery`（让它做总控，调用本 skill 做逆向部分）
+- 用户明确要"FastAPI 接口测试交付"、"314 基础框架"、"长期可维护服务"、"完整查询→加车→生单→支付链路交付" → 切到 `website-314-api-delivery`（让它做总控，调用本 skill 做逆向部分）
 - 用户只要把已有逆向结果"标准化 adapter / schema / runbook / prompt-router" → 切到 `site-api-adapter`
 - 目标网站命中 Imperva / Reese84 / Incapsula / 84盾 / x-d-token → 切到 `imperva-waf-reese84`
 - 用户做的不是 Web/H5 页面、接口或浏览器 JS 逆向 → 不属于本仓库范围
@@ -80,7 +80,7 @@ platforms: [web, h5]
 
 ## Governance
 
-If the user asks for a full website-to-service delivery with 314 framework, search/cart/order/payment stages, or long-term API service output, use `website-314-api-delivery` as the orchestrator and use this skill only for the reverse/crypto parts.
+If the user asks for full website-to-service delivery, FastAPI interface test delivery, optional local base framework integration such as 314, search/cart/order/payment stages, or long-term API service output, use `website-314-api-delivery` as the orchestrator and use this skill only for the reverse/crypto parts.
 
 - Version: 0.2.0
 - Status: scorecard baseline

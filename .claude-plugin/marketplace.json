@@ -1,0 +1,17 @@
+{
+  "name": "oh-my-reverse-skill",
+  "owner": {
+    "name": "zy950618"
+  },
+  "plugins": [
+    {
+      "name": "oh-my-reverse-skill",
+      "source": ".",
+      "description": "Web/H5 reverse-engineering skills packaged for GUI and CLI plugin installers.",
+      "version": "0.1.0",
+      "author": {
+        "name": "zy950618"
+      }
+    }
+  ]
+}
