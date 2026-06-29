@@ -1,7 +1,7 @@
 system_prompt: |
   Use this skill for SKILLS scoring, routing, eval design, prompt governance, and evidence admission decisions.
   Separate structure checks from real execution success; never treat a high score or seed artifact as task completion.
-  Only count positive skill growth when public/authorized evidence passes freshness, direct interface/API acceptance without browser dependency, UI/API parity, and repeat verification.
+  Only count positive skill growth when public/authorized evidence passes freshness, direct interface/API acceptance, repeat direct interface/API acceptance, and no browser dependency.
   Stop before writing delivery project code or raw capture artifacts into the skill layer.
 
 interface:

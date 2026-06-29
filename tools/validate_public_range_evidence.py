@@ -51,21 +51,65 @@ def non_empty_pointers(value: object) -> bool:
     )
 
 
-def direct_interface_call_passes(backend: object) -> bool:
-    if not isinstance(backend, dict):
-        return False
-    direct = backend.get("direct_interface_call")
-    if not isinstance(direct, dict):
-        return False
-    if not is_pass(direct):
-        return False
-    if direct.get("browser_dependency") is not False:
-        return False
-    if not is_2xx(direct.get("observed_status")):
-        return False
-    if not non_empty_pointers(direct.get("json_pointers")):
-        return False
-    return True
+def interface_call_errors(call: object, label: str) -> list[str]:
+    errors: list[str] = []
+    if not isinstance(call, dict):
+        return [f"{label} is required"]
+    if not is_pass(call):
+        errors.append(f"{label}.status must be pass")
+    if call.get("browser_dependency") is not False:
+        errors.append(f"{label}.browser_dependency must be false")
+    for key in ("uses_browser_profile", "uses_live_storage", "uses_manual_cookie_or_token"):
+        if call.get(key) is not False:
+            errors.append(f"{label}.{key} must be false")
+    if not is_2xx(call.get("observed_status")):
+        errors.append(f"{label}.observed_status must be 2xx")
+    content_type = str(call.get("content_type", "")).lower()
+    json_type = str(call.get("json_type", "")).lower()
+    if "json" not in content_type and json_type not in {"dict", "list"}:
+        errors.append(f"{label} must return JSON business data")
+    if not non_empty_pointers(call.get("json_pointers")):
+        errors.append(f"{label}.json_pointers must be non-empty JSON Pointers")
+    return errors
+
+
+def sign_or_token_errors(payload: dict[str, Any]) -> list[str]:
+    sign = payload.get("sign_or_token")
+    if not isinstance(sign, dict) or sign.get("required") is not True:
+        return []
+    errors: list[str] = []
+    mode = sign.get("generation_mode")
+    if mode not in {"v8_env", "js_runtime", "node_vm", "wasm_crypto", "native_crypto", "adapter"}:
+        errors.append("sign_or_token.generation_mode must be non-browser reproducible")
+    if sign.get("browser_captured_replay") is not False:
+        errors.append("sign_or_token.browser_captured_replay must be false")
+    if not is_pass(sign.get("validation")):
+        errors.append("sign_or_token.validation.status must be pass")
+    return errors
+
+
+def concurrency_errors(payload: dict[str, Any]) -> list[str]:
+    decision = payload.get("decision")
+    if not isinstance(decision, dict) or decision.get("concurrency_positive") is not True:
+        return []
+    ladder = payload.get("concurrency_ladder")
+    if not isinstance(ladder, dict):
+        return ["concurrency_ladder is required when concurrency_positive=true"]
+    errors: list[str] = []
+    for worker in ("worker_1", "worker_2", "worker_5", "worker_10"):
+        item = ladder.get(worker)
+        if not isinstance(item, dict) or item.get("status") != "pass":
+            errors.append(f"concurrency_ladder.{worker}.status must be pass")
+            continue
+        if item.get("session_cache_token_isolated") is not True:
+            errors.append(f"concurrency_ladder.{worker}.session_cache_token_isolated must be true")
+        if item.get("backend_acceptance") is not True:
+            errors.append(f"concurrency_ladder.{worker}.backend_acceptance must be true")
+        if "failure_rate" not in item:
+            errors.append(f"concurrency_ladder.{worker}.failure_rate is required")
+        if not non_empty_string(item.get("stop_condition")):
+            errors.append(f"concurrency_ladder.{worker}.stop_condition is required")
+    return errors
 
 
 def hard_gate_errors(payload: dict[str, Any], max_age_days: int) -> list[str]:
@@ -84,23 +128,20 @@ def hard_gate_errors(payload: dict[str, Any], max_age_days: int) -> list[str]:
     if not is_pass(backend):
         errors.append("backend_acceptance.status must be pass")
     if isinstance(backend, dict):
+        if backend.get("final_api_endpoint_confirmed") is not True:
+            errors.append("backend_acceptance.final_api_endpoint_confirmed must be true")
         if not is_2xx(backend.get("observed_status")):
             errors.append("backend_acceptance.observed_status must be 2xx")
         if not non_empty_string(backend.get("endpoint")):
             errors.append("backend_acceptance.endpoint is required")
         if not non_empty_pointers(backend.get("json_pointers")):
             errors.append("backend_acceptance.json_pointers must be non-empty JSON Pointers")
-        if not direct_interface_call_passes(backend):
-            errors.append(
-                "backend_acceptance.direct_interface_call must pass without browser dependency"
-            )
-    if not is_pass(ui):
-        errors.append("ui_api_parity.status must be pass")
-    if payload.get("repeat_verified") is not True:
-        errors.append("repeat_verified must be true")
-    repeat_attempts = payload.get("repeat_attempts")
-    if not isinstance(repeat_attempts, list) or len(repeat_attempts) < 2:
-        errors.append("repeat_attempts must contain clean and repeat evidence")
+        errors.extend(interface_call_errors(backend.get("direct_interface_call"), "backend_acceptance.direct_interface_call"))
+        errors.extend(interface_call_errors(backend.get("repeat_direct_interface_call"), "backend_acceptance.repeat_direct_interface_call"))
+    if ui is not None and not is_pass(ui):
+        errors.append("ui_api_parity.status must be pass when UI parity is claimed")
+    errors.extend(sign_or_token_errors(payload))
+    errors.extend(concurrency_errors(payload))
     return errors
 
 

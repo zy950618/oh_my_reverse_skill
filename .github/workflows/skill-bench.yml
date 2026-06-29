@@ -12,12 +12,15 @@ on:
       - '4-通用规范层/**'
       - '5-沉淀工具层/**'
       - '6-验证码逆向层/**'
+      - '99-SKILLS治理/**'
       - '逆向工程经验库/**'
       - '验证码经验库/**'
+      - 'public-range-evidence/**'
       - '.github/workflows/**'
       - 'tools/ci_gate.py'
+      - 'tools/validate_public_range_evidence.py'
   push:
-    branches: [main]
+    branches: [main, test]
   schedule:
     - cron: '17 1 * * 1'  # 每周一 UTC 01:17,错开整点降低 GitHub Actions 高峰
   workflow_dispatch:

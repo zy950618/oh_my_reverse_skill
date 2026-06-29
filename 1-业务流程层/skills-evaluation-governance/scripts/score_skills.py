@@ -44,21 +44,57 @@ def _public_pointers_ok(value: object) -> bool:
     )
 
 
-def _public_direct_interface_call_ok(backend: object) -> bool:
-    if not isinstance(backend, dict):
+def _public_interface_call_ok(call: object) -> bool:
+    if not isinstance(call, dict):
         return False
-    direct = backend.get("direct_interface_call")
-    if not isinstance(direct, dict):
+    if str(call.get("status", "")).lower() != "pass":
         return False
-    if str(direct.get("status", "")).lower() != "pass":
+    if call.get("browser_dependency") is not False:
         return False
-    if direct.get("browser_dependency") is not False:
+    for key in ("uses_browser_profile", "uses_live_storage", "uses_manual_cookie_or_token"):
+        if call.get(key) is not False:
+            return False
+    if not isinstance(call.get("observed_status"), int):
         return False
-    if not isinstance(direct.get("observed_status"), int):
+    if not 200 <= call["observed_status"] < 300:
         return False
-    if not 200 <= direct["observed_status"] < 300:
+    content_type = str(call.get("content_type", "")).lower()
+    json_type = str(call.get("json_type", "")).lower()
+    if "json" not in content_type and json_type not in {"dict", "list"}:
         return False
-    return _public_pointers_ok(direct.get("json_pointers"))
+    return _public_pointers_ok(call.get("json_pointers"))
+
+
+def _public_sign_token_ok(payload: dict) -> bool:
+    sign = payload.get("sign_or_token")
+    if not isinstance(sign, dict) or sign.get("required") is not True:
+        return True
+    if sign.get("generation_mode") not in {"v8_env", "js_runtime", "node_vm", "wasm_crypto", "native_crypto", "adapter"}:
+        return False
+    if sign.get("browser_captured_replay") is not False:
+        return False
+    validation = sign.get("validation")
+    return isinstance(validation, dict) and str(validation.get("status", "")).lower() == "pass"
+
+
+def _public_concurrency_ok(payload: dict) -> bool:
+    decision = payload.get("decision")
+    if not isinstance(decision, dict) or decision.get("concurrency_positive") is not True:
+        return True
+    ladder = payload.get("concurrency_ladder")
+    if not isinstance(ladder, dict):
+        return False
+    for worker in ("worker_1", "worker_2", "worker_5", "worker_10"):
+        item = ladder.get(worker)
+        if not isinstance(item, dict) or item.get("status") != "pass":
+            return False
+        if item.get("session_cache_token_isolated") is not True:
+            return False
+        if item.get("backend_acceptance") is not True:
+            return False
+        if "failure_rate" not in item or not item.get("stop_condition"):
+            return False
+    return True
 
 
 def _public_evidence_passes_hard_gates(payload: dict) -> bool:
@@ -79,20 +115,26 @@ def _public_evidence_passes_hard_gates(payload: dict) -> bool:
     backend = payload.get("backend_acceptance")
     if not _public_section_pass(backend):
         return False
-    if not isinstance(backend, dict) or not isinstance(backend.get("observed_status"), int):
+    if not isinstance(backend, dict) or backend.get("final_api_endpoint_confirmed") is not True:
+        return False
+    if not isinstance(backend.get("observed_status"), int):
         return False
     if not 200 <= backend["observed_status"] < 300:
         return False
     if not _public_pointers_ok(backend.get("json_pointers")):
         return False
-    if not _public_direct_interface_call_ok(backend):
+    if not _public_interface_call_ok(backend.get("direct_interface_call")):
         return False
-    if not _public_section_pass(payload.get("ui_api_parity")):
+    if not _public_interface_call_ok(backend.get("repeat_direct_interface_call")):
         return False
-    if payload.get("repeat_verified") is not True:
+    ui = payload.get("ui_api_parity")
+    if ui is not None and not _public_section_pass(ui):
         return False
-    repeat_attempts = payload.get("repeat_attempts")
-    return isinstance(repeat_attempts, list) and len(repeat_attempts) >= 2
+    if not _public_sign_token_ok(payload):
+        return False
+    if not _public_concurrency_ok(payload):
+        return False
+    return True
 
 
 def has_positive_public_range_evidence(skill_name: str) -> bool:
@@ -434,7 +476,7 @@ def build_evidence(text: str, ref_text: str, evals: list[Path], refs: list[Path]
     if "站点经验库" in text or "site memory" in text.lower() or "site memory" in ref_text.lower():
         evidence.append("包含经验沉淀要求")
     if skill is not None and has_positive_public_range_evidence(skill.name):
-        evidence.append("public range positive evidence passed direct-interface/freshness/repeat hard gates")
+        evidence.append("public range positive evidence passed direct-interface/repeat-direct hard gates")
     return evidence
 
 
