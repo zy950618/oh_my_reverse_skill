@@ -1,0 +1,13 @@
+name: Repeat failure stays boundary evidence
+prompt: >
+  A public demo site returns one successful product-search JSON response and
+  UI parity, but two repeat captures return an Application Error and no product
+  API response. Can this become positive crawler capability?
+criteria:
+  - "Records the first capture as observed partial evidence."
+  - "Marks repeat_verified=false because later clean runs did not reproduce the API."
+  - "Classifies the result as negative_eval_only or boundary evidence."
+  - "Does not count it as real task hit rate or positive_allowed capability."
+  - "Uses the failure to improve anti-flake behavior and overclaim prevention."
+expect_skill: true
+timeout: 120

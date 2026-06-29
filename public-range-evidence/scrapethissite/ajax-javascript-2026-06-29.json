@@ -1,0 +1,107 @@
+{
+  "schema_version": "public-range-evidence/v1",
+  "target": {
+    "name": "Scrape This Site AJAX sandbox",
+    "url": "https://www.scrapethissite.com/pages/ajax-javascript/",
+    "authorization_scope": "Public sandbox for learning web scraping; anonymous, non-destructive AJAX field parity only"
+  },
+  "captured_at": "2026-06-29T07:13:42.764937+00:00",
+  "source_freshness": "fresh",
+  "auth_state": "anonymous",
+  "skills": [
+    "reverse-js-crawler",
+    "web-h5-loop-engineering",
+    "skills-evaluation-governance"
+  ],
+  "browser_execution": {
+    "engine": "python-playwright-chromium",
+    "state_reset": "new_browser_context_each_run",
+    "action": "open page, click year 2015, capture response events"
+  },
+  "backend_acceptance": {
+    "status": "pass",
+    "endpoint": "GET https://www.scrapethissite.com/pages/ajax-javascript/?ajax=true&year=2015",
+    "observed_status": 200,
+    "content_type": "application/json",
+    "body_sha256": "58407110fde954840b2d0066308d021fd1e827536cf420a91b4584697c85f078",
+    "body_length": 1570,
+    "json_type": "list",
+    "json_count": 16,
+    "json_pointers": [
+      "/0/title",
+      "/0/year",
+      "/0/awards"
+    ],
+    "observed_values": {
+      "/0/title": "Spotlight",
+      "/0/year": 2015,
+      "/0/awards": 2
+    },
+    "direct_replay": {
+      "status": "pass",
+      "command": "curl.exe -L --max-time 60 -H \"Accept: application/json\" \"https://www.scrapethissite.com/pages/ajax-javascript/?ajax=true&year=2015\"",
+      "observed_status": 200,
+      "body_length": 1570
+    }
+  },
+  "ui_api_parity": {
+    "status": "pass",
+    "ui_selector": ".film-title",
+    "ui_rows": 16,
+    "ui_visible_titles_sample": [
+      "Spotlight",
+      "Mad Max: Fury Road",
+      "The Revenant",
+      "Bridge of Spies",
+      "The Big Short"
+    ],
+    "api_pointer": "/0/title",
+    "normalized_ui_has_api_value": true
+  },
+  "repeat_verified": true,
+  "repeat_attempts": [
+    {
+      "run_id": "scrapethissite-clean-2026-06-29T07-13-27-057713+00-00",
+      "captured_at": "2026-06-29T07:13:34.644702+00:00",
+      "state_reset": "new_browser_context",
+      "backend_status": 200,
+      "body_sha256": "58407110fde954840b2d0066308d021fd1e827536cf420a91b4584697c85f078",
+      "ui_rows": 16,
+      "ui_api_parity": true
+    },
+    {
+      "run_id": "scrapethissite-repeat-2026-06-29T07-13-34-644814+00-00",
+      "captured_at": "2026-06-29T07:13:42.764937+00:00",
+      "state_reset": "new_browser_context",
+      "backend_status": 200,
+      "body_sha256": "58407110fde954840b2d0066308d021fd1e827536cf420a91b4584697c85f078",
+      "ui_rows": 16,
+      "ui_api_parity": true
+    }
+  ],
+  "loop_ledger": {
+    "status": "complete_for_public_ajax_parity",
+    "executor": "captured browser network response and DOM rows on the public AJAX sandbox",
+    "verifier": "repeated capture in a new browser context and replayed the AJAX endpoint directly",
+    "governor": "allows positive skill participation only for anonymous public AJAX discovery/parity; does not claim concurrency, CAPTCHA/WAF handling, auth, or 314 delivery"
+  },
+  "decision": {
+    "skills_participation": "positive_allowed",
+    "positive_allowed": true,
+    "positive_scope": [
+      "public sandbox AJAX endpoint discovery",
+      "browser-observed final API response",
+      "backend JSON acceptance",
+      "UI/API JSON Pointer parity",
+      "clean repeat verification"
+    ],
+    "not_claimed": [
+      "concurrency ladder",
+      "captcha solving",
+      "WAF bypass",
+      "auth verified state",
+      "314 service delivery",
+      "long-term stability"
+    ]
+  }
+}

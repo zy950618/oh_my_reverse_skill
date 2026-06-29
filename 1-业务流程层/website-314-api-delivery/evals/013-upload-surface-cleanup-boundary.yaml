@@ -1,0 +1,13 @@
+name: 314 delivery upload surface excludes raw project artifacts
+prompt: >
+  After a 314 delivery attempt, the workspace contains raw HAR files, response
+  bodies, browser profiles, local run folders, and a separate project delivery
+  package. Decide what can be committed to the SKILLS repository.
+criteria:
+  - "Keeps raw HAR/body/profile/run artifacts out of GitHub upload surface."
+  - "Commits only reusable skill logic, evals, templates, sanitized evidence summaries, or governance tooling."
+  - "Does not put project delivery code inside SKILLS capability directories as positive capability evidence."
+  - "Migrates necessary failure facts into sanitized memory or boundary evals before cleanup."
+  - "Reports cleanup state instead of silently leaving temporary artifacts."
+expect_skill: true
+timeout: 120

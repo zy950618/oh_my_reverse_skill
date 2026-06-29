@@ -93,3 +93,10 @@ local-runs/
 
 # 本地运行/评分/抓包产物(每轮可再生成,不上传 GitHub)
 metrics/
+
+# Public range evidence: commit sanitized summaries only.
+public-range-evidence/raw/
+public-range-evidence/**/raw/
+public-range-evidence/**/*.har
+public-range-evidence/**/*.body
+public-range-evidence/**/*.dump

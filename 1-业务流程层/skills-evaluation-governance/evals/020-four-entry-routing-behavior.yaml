@@ -1,0 +1,13 @@
+name: Four public entry skills route without over-triggering
+prompt: >
+  A user asks about public Web/H5 reverse work, 314 delivery, explicit LOOP
+  closure, and SKILLS scoring. Define which of the four public entry skills
+  should trigger for each case.
+criteria:
+  - "Routes full service/314 implementation to website-314-api-delivery."
+  - "Routes focused endpoint/JS/API/UI parity work to reverse-js-crawler."
+  - "Routes explicit LOOP or multi-agent closure to web-h5-loop-engineering."
+  - "Routes scoring, prompt governance, evals, and evidence admission to skills-evaluation-governance."
+  - "Keeps WAF, CAPTCHA, AST, env patch, crypto entry, and adapter skills as conditional support unless explicitly needed."
+expect_skill: true
+timeout: 120

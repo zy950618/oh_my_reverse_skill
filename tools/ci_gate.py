@@ -80,6 +80,22 @@ def run_web_h5_real_execution_gate(out_dir: Path) -> tuple[bool, str]:
     return result.returncode == 0, output.strip()
 
 
+def run_public_range_evidence_gate(out_dir: Path) -> tuple[bool, str]:
+    repo_root = out_dir.resolve().parent
+    script = repo_root / "tools" / "validate_public_range_evidence.py"
+    if not script.is_file():
+        return False, f"ERROR: missing public range evidence gate script: {script}"
+
+    result = subprocess.run(
+        [sys.executable, str(script), "--repo-root", str(repo_root)],
+        cwd=str(repo_root),
+        text=True,
+        capture_output=True,
+    )
+    output = (result.stdout or "") + (result.stderr or "")
+    return result.returncode == 0, output.strip()
+
+
 def run_fixture_freshness_report(out_dir: Path, strict_fresh: bool = False) -> tuple[bool, str]:
     repo_root = out_dir.resolve().parent
     script = repo_root / "tools" / "fixture_freshness_report.py"
@@ -206,6 +222,15 @@ def main():
     if not real_execution_gate_ok:
         print(f"\n{'!' * 70}")
         print("CI Gate 失败: Web/H5 real execution gate 未通过")
+        print(f"{'!' * 70}")
+        sys.exit(1)
+
+    public_range_ok, public_range_output = run_public_range_evidence_gate(out_dir)
+    print("\nPublic range evidence hard gate:")
+    print(public_range_output)
+    if not public_range_ok:
+        print(f"\n{'!' * 70}")
+        print("CI Gate failed: public range evidence freshness/acceptance/repeat hard gate did not pass")
         print(f"{'!' * 70}")
         sys.exit(1)
 

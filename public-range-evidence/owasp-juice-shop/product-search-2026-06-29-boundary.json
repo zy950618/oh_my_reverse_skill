@@ -1,0 +1,61 @@
+{
+  "schema_version": "public-range-evidence/v1",
+  "target": {
+    "name": "OWASP Juice Shop public demo",
+    "url": "http://demo.owasp-juice.shop",
+    "authorization_scope": "Public intentionally vulnerable training/demo instance; anonymous product search observation only"
+  },
+  "captured_at": "2026-06-29T07:10:34.723843+00:00",
+  "source_freshness": "fresh",
+  "auth_state": "anonymous",
+  "skills": [
+    "reverse-js-crawler",
+    "web-h5-loop-engineering",
+    "skills-evaluation-governance"
+  ],
+  "backend_acceptance": {
+    "status": "partial",
+    "endpoint": "GET http://demo.owasp-juice.shop/rest/products/search?q=",
+    "observed_status": 200,
+    "content_type": "application/json; charset=utf-8",
+    "body_sha256": "12a8a6f6d6d7b9157bb94d9c3b9326a98c804a54533df248b242f33668892601",
+    "body_length": 17387,
+    "json_pointers": [
+      "/status",
+      "/data",
+      "/data/0/name"
+    ],
+    "observed_values": {
+      "/status": "success",
+      "/data/0/name": "Apple Juice (1000ml)"
+    },
+    "product_count": 46
+  },
+  "ui_api_parity": {
+    "status": "pass",
+    "api_pointer": "/data/0/name",
+    "normalized_ui_has_api_value": true
+  },
+  "repeat_verified": false,
+  "repeat_attempts": [
+    {
+      "run_id": "juice-shop-repeat-2026-06-29T07-09-42-298097+00-00",
+      "captured_at": "2026-06-29T07:09:54.831841+00:00",
+      "title": "Application Error",
+      "api_observed": false,
+      "ui_api_parity": false
+    },
+    {
+      "run_id": "juice-shop-repeat2-2026-06-29T07-10-19-964228+00-00",
+      "captured_at": "2026-06-29T07:10:34.723843+00:00",
+      "title": "Application Error",
+      "api_observed": false,
+      "ui_api_parity": false
+    }
+  ],
+  "decision": {
+    "skills_participation": "negative_eval_only",
+    "positive_allowed": false,
+    "blocked_reason": "Initial browser capture reached API/UI parity, but repeat captures returned Application Error and did not observe the product API. This must remain boundary evidence, not positive skill capability."
+  }
+}

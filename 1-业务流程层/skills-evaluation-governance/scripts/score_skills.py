@@ -10,11 +10,87 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent.parent
+PUBLIC_RANGE_EVIDENCE_ROOT = REPO_ROOT / "public-range-evidence"
+PUBLIC_RANGE_MAX_AGE_DAYS = 30
 SITE_MEMORY_ROOT = REPO_ROOT / "站点经验库"
 
 
 def read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8-sig", errors="replace")
+
+
+def _parse_public_evidence_datetime(raw: object) -> datetime.datetime | None:
+    if not isinstance(raw, str) or not raw.strip():
+        return None
+    value = raw.strip()
+    if value.endswith("Z"):
+        value = value[:-1] + "+00:00"
+    try:
+        dt = datetime.datetime.fromisoformat(value)
+    except ValueError:
+        return None
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=datetime.timezone.utc)
+    return dt.astimezone(datetime.timezone.utc)
+
+
+def _public_section_pass(section: object) -> bool:
+    return isinstance(section, dict) and str(section.get("status", "")).lower() == "pass"
+
+
+def _public_pointers_ok(value: object) -> bool:
+    return isinstance(value, list) and bool(value) and all(
+        isinstance(item, str) and item.startswith("/") for item in value
+    )
+
+
+def _public_evidence_passes_hard_gates(payload: dict) -> bool:
+    decision = payload.get("decision")
+    if not isinstance(decision, dict):
+        return False
+    if decision.get("skills_participation") != "positive_allowed":
+        return False
+    if decision.get("positive_allowed") is not True:
+        return False
+    if payload.get("source_freshness") != "fresh":
+        return False
+    captured_at = _parse_public_evidence_datetime(payload.get("captured_at"))
+    if captured_at is None:
+        return False
+    if captured_at < datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=PUBLIC_RANGE_MAX_AGE_DAYS):
+        return False
+    backend = payload.get("backend_acceptance")
+    if not _public_section_pass(backend):
+        return False
+    if not isinstance(backend, dict) or not isinstance(backend.get("observed_status"), int):
+        return False
+    if not 200 <= backend["observed_status"] < 300:
+        return False
+    if not _public_pointers_ok(backend.get("json_pointers")):
+        return False
+    if not _public_section_pass(payload.get("ui_api_parity")):
+        return False
+    if payload.get("repeat_verified") is not True:
+        return False
+    repeat_attempts = payload.get("repeat_attempts")
+    return isinstance(repeat_attempts, list) and len(repeat_attempts) >= 2
+
+
+def has_positive_public_range_evidence(skill_name: str) -> bool:
+    if not PUBLIC_RANGE_EVIDENCE_ROOT.is_dir():
+        return False
+    for path in PUBLIC_RANGE_EVIDENCE_ROOT.rglob("*.json"):
+        if "raw" in {part.lower() for part in path.parts}:
+            continue
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8-sig"))
+        except Exception:
+            continue
+        if skill_name not in (payload.get("skills") or []):
+            continue
+        if _public_evidence_passes_hard_gates(payload):
+            return True
+    return False
 
 
 def is_todo_placeholder(path: Path) -> bool:
@@ -97,6 +173,8 @@ ARTIFACT_DIR_NAMES = {
 def has_real_metrics_artifact(skill: Path) -> bool:
     if not skill.is_dir():
         return False
+    if has_positive_public_range_evidence(skill.name):
+        return True
     for child in skill.iterdir():
         if not child.is_dir() or child.name.lower() not in ARTIFACT_DIR_NAMES:
             continue
@@ -316,7 +394,8 @@ def collect_consistency_evidence() -> dict:
     return aggregate_consistency_for_skill(["cross-platform"], by_domain)
 
 
-def build_evidence(text: str, ref_text: str, evals: list[Path], refs: list[Path], agents_exists: bool) -> list[str]:
+def build_evidence(text: str, ref_text: str, evals: list[Path], refs: list[Path], agents_exists: bool,
+                   skill: Path | None = None) -> list[str]:
     evidence: list[str] = []
     real_e = real_evals(evals)
     if text:
@@ -335,6 +414,8 @@ def build_evidence(text: str, ref_text: str, evals: list[Path], refs: list[Path]
         evidence.append("包含回归/边界 eval")
     if "站点经验库" in text or "site memory" in text.lower() or "site memory" in ref_text.lower():
         evidence.append("包含经验沉淀要求")
+    if skill is not None and has_positive_public_range_evidence(skill.name):
+        evidence.append("public range positive evidence passed freshness/acceptance/repeat hard gates")
     return evidence
 
 
@@ -535,7 +616,7 @@ def score_skill(skill: Path, consistency_by_domain: dict[str, dict],
             "has_negative_eval": has_negative_eval(evals),
             "has_regression_eval": has_regression_eval(evals),
             "criteria_count": criteria_count(evals),
-            "evidence": build_evidence(text, ref_text, evals, refs, agents.exists()),
+            "evidence": build_evidence(text, ref_text, evals, refs, agents.exists(), skill),
             "gaps": build_gaps(skill, text, ref_text, evals, refs, consistency),
             "checks": {
                 "structure": s_checks,
@@ -568,7 +649,7 @@ def score_skill(skill: Path, consistency_by_domain: dict[str, dict],
         "has_negative_eval": has_negative_eval(evals),
         "has_regression_eval": has_regression_eval(evals),
         "criteria_count": criteria_count(evals),
-        "evidence": build_evidence(text, ref_text, evals, refs, agents.exists()),
+        "evidence": build_evidence(text, ref_text, evals, refs, agents.exists(), skill),
         "gaps": build_gaps(skill, text, ref_text, evals, refs, consistency),
         "checks": {
             "structure": s_checks,

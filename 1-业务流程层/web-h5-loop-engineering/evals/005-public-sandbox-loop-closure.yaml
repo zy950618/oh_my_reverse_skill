@@ -1,0 +1,13 @@
+name: Public sandbox loop closes only within scoped evidence
+prompt: >
+  The user asks to LOOP on a public AJAX sandbox until it produces real
+  evidence. The run captures API/UI parity, direct backend replay, and a clean
+  repeat verification for anonymous AJAX data.
+criteria:
+  - "Triggers web-h5-loop-engineering because the user asks for LOOP closure."
+  - "Records executor, verifier, and governor decisions for the public target."
+  - "Allows positive evidence only for anonymous AJAX parity and repeat verification."
+  - "Lists not claimed scope such as concurrency, auth, CAPTCHA/WAF, long-term stability, and 314 delivery."
+  - "Does not stop at a single successful capture."
+expect_skill: true
+timeout: 120
