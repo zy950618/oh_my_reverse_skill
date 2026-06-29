@@ -1,7 +1,7 @@
 ---
 name: web-h5-loop-engineering
 description: >-
-  Use this skill to run Web/H5 reverse-engineering work as a bounded Loop Engineering workflow with three or more roles/agents: an executor, a verifier, and a governance or human-review checker, backed by a real execution ledger, acceptance report, fixture freshness report, and quantitative metrics. Trigger when the user asks for Loop Engineering, LOOP, Ralph-style loops, multi-agent closed-loop reverse work, repeated validation loops, autonomous crawler verification, real loop runner, execution ledger, quantitative crawler metrics, or Chinese requests such as 闭环处理, 多 agent 逆向, 三个 agent 验证, 循环执行验证修正, 反复抓包复测, 自动化验证闭环, 爬虫 LOOP, 真实 Loop Runner, 执行账本, 实战执行标准化, 结果量化沉淀, or fixtures 新鲜度治理.
+  Orchestration entry for Web/H5 reverse-engineering work only when the user explicitly asks for LOOP, closed-loop handling, multi-agent/three-role verification, repeated validation, execution ledger, acceptance report, or when a prior attempt failed because evidence, repeat verification, cleanup, impact, or backend acceptance was incomplete. It coordinates executor, verifier, and governor roles with loop ledger, acceptance report, fixture freshness, and metrics. Do not trigger for ordinary one-pass crawler tasks, simple fixture freshness checks, or single-tool JS work; use reverse-js-crawler or the relevant support tool first.
 platforms: [web, h5]
 ---
 

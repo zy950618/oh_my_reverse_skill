@@ -1,7 +1,7 @@
 ---
 name: site-api-adapter
 description: >-
-  Use this skill to turn reverse-engineering findings into a reusable site API adapter: adapter.yaml, request/response schema, route classification, prompt-router rules, runbook, smoke tests, and service boundary documentation. Trigger when the user asks to standardize a site, build an adapter, define API protocol, create prompt-router output, productize crawler reverse results into a maintainable interface, or Chinese requests such as 接口化沉淀, 站点接口化, adapter标准化, adapter.yaml, prompt-router, API协议模板, runbook, schema沉淀, 多站点复用, or 逆向结果工程化.
+  Conditional post-verification skill for turning already stable reverse-engineering findings into a reusable site API adapter: adapter.yaml, request/response schema, route classification, prompt-router rules, runbook, smoke tests, and service boundary documentation. Trigger only when the user explicitly asks for adapter标准化, adapter.yaml, schema/runbook/prompt-router, 接口化沉淀, or when website-314-api-delivery calls it after real API reproduction is verified. Do not trigger while endpoints, sign/token, CAPTCHA/WAF, or business acceptance are still being discovered.
 platforms: [web, h5]
 ---
 

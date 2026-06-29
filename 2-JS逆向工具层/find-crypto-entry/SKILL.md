@@ -1,8 +1,6 @@
 ---
 name: find-crypto-entry
-description: 定位 JS 加密参数的生成入口（函数位置+调用链）。
-  TRIGGER when: 用户提到请求中的加密字段、签名参数、token生成、加密入口，或要求分析请求头/URL/Body中某个参数怎么来的。包括但不限于"找加密入口"、"xxx在哪生成"、"请求头里的xxx"、"签名怎么算的"、"这个token哪来的"、"定位加密函数"。
-  DO NOT TRIGGER when: 用户只是想看请求内容、抓包、或分析非加密的普通参数。
+description: Internal/support tool for locating the JS source of one concrete encrypted request field, sign, x-sign, authKey, or token. Use directly only when the user explicitly asks for an atomic entry-location task such as "找加密入口", "签名怎么算", or "这个请求头字段哪里生成"; otherwise let reverse-js-crawler or website-314-api-delivery choose it. Do not trigger for generic crawler delivery, ordinary request inspection, CAPTCHA/WAF backend acceptance, or non-encrypted parameters.
 argument-hint: [参数名]
 platforms: [web, h5]
 ---

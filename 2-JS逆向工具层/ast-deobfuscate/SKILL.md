@@ -1,8 +1,6 @@
 ---
 name: ast-deobfuscate
-description: 用 Babel AST 还原混淆的 JS 代码（字符串解密、控制流还原、死代码删除）。
-  TRIGGER when: 用户要求解混淆、还原代码、反混淆、deobfuscate，或遇到 _0x 前缀变量、大型字符串数组、switch-case 控制流平坦化、sojson/OB 混淆等需要 AST 处理的代码。也包括"这段代码看不懂"、"代码全是乱码"、"还原一下这个 JS"。
-  DO NOT TRIGGER when: 代码只是 minified（压缩但未混淆），或用户只想格式化/美化代码。
+description: Internal/support tool for Babel AST deobfuscation of a specific obfuscated JavaScript file or snippet: string-array decoding, control-flow flattening, dead-code removal, and related transforms. Use directly only when the user explicitly asks for deobfuscation/还原/反混淆 or provides code with clear _0x/string-array/switch-flattening/sojson/OB markers. Do not trigger for ordinary minified code, generic JS reverse tasks, formatting, crawler delivery, or endpoint reproduction.
 argument-hint: [混淆代码文件路径或 URL]
 platforms: [web, h5]
 ---

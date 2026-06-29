@@ -1,4 +1,4 @@
-Version: 0.1.2
+Version: 0.1.3
 
 # captcha-service-delivery governance
 
@@ -58,6 +58,26 @@ Rules:
 - `blocked`, `incomplete`, `negative_baseline_only`, or `adapter_only` may only produce failure memory, human-review/refusal ledger, monitoring items, or negative evals.
 - Never use a blocked CAPTCHA run to raise the skill's positive score.
 - Never write a blocked managed challenge as "auto passed"; write the blocker, the evidence gap, and the next authorized capture step.
+
+## Validation-to-eval evolution
+
+Fresh validation should evolve the skill library through controlled artifacts:
+
+- If the run is `complete` with verified and repeat-verified backend acceptance, it may feed positive experience memory and later positive evals.
+- If the run is `blocked`, `incomplete`, `negative_baseline_only`, or only proves provider test endpoints, it may feed known failures, human-review ledgers, monitoring items, or negative/boundary evals.
+- Do not let local demo success, provider config responses, official test tokens, or blocked manual challenges increase positive SKILLS capability.
+- After adding or changing an eval, rerun local scoring and the CI gate before claiming the SKILLS library evolved.
+
+## Provider test-key boundary
+
+Official provider test keys, provider config responses, and standalone `siteverify` responses are useful only as boundary evidence, negative controls, or debugging references. They do not prove real visible challenge completion, production token lifecycle, or protected business API acceptance.
+
+Rules:
+
+- Do not add provider test-key tools as positive SKILLS capability.
+- Do not write provider endpoint success as `browser_automated_verified`.
+- Use provider test-key observations to create negative/boundary evals when an agent tries to overclaim them.
+- Continue the real task loop on a public authorized target only when it can produce real site token/state evidence, backend acceptance, and `repeat_verified`.
 
 ## Fresh evidence fields
 

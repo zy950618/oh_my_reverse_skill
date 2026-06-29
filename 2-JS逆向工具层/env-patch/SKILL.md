@@ -1,9 +1,7 @@
 ---
 name: env-patch
 description: >-
-  在 Node.js 中运行浏览器加密 JS（补环境）。env_core.js 提供函数伪装/原型链/Proxy 引擎，Claude 按诊断报告在 run.js 中按需编写存根。
-  TRIGGER when: 用户说"补环境"、"提取模块"、"Node里跑"、"webpack模块提取"、"环境模拟"、"把JS搞到Node跑"，或找到加密入口后需要脱离浏览器独立运行。
-  DO NOT TRIGGER when: 只是在浏览器调试、做 AST 解混淆、或写普通 Node.js 代码。
+  Internal/support tool for running a previously identified browser encryption module in Node.js with env_core.js, prototype/native-function shims, and minimal stubs. Use directly only when the user explicitly asks for 补环境, Node里跑, webpack模块提取, or when an entry skill has already located the module and needs browser-to-Node reproduction. Do not trigger for ordinary browser debugging, AST deobfuscation, generic Node.js code, crawler delivery, or unresolved API discovery.
 argument-hint: "[项目名] [可选：场景说明]"
 platforms: [web, h5]
 ---

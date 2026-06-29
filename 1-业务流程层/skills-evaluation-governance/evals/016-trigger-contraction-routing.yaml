@@ -1,0 +1,13 @@
+name: Trigger convergence keeps entry skills and support tools separated
+prompt: >
+  Review a Web/H5 reverse-engineering skills library with 12 SKILL.md files.
+  The user says the skills feel too many and messy. Decide how the library
+  should route future tasks without deleting existing specialized skills.
+criteria:
+  - "Keeps a small public entry set: full API/service delivery, focused crawler/API reverse work, explicit LOOP closure, and SKILLS governance."
+  - "Marks WAF, CAPTCHA, adapter, AST, crypto-entry, and env-patch skills as conditional escalation or internal support unless the user explicitly names them or evidence requires them."
+  - "Prevents generic words such as validation, token, anti-bot, fixture freshness, or verification from triggering every adjacent skill at once."
+  - "Requires trigger and negative-trigger changes to be recorded as governance/eval changes, then rerun score_skills and ci_gate."
+  - "Does not delete existing skill folders or historical evidence solely to make the workspace look smaller."
+expect_skill: true
+timeout: 120

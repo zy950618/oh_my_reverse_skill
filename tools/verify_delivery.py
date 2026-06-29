@@ -367,6 +367,29 @@ def git_changed_files(repo_root: Path, blockers: list[str]) -> list[str]:
             )
     except Exception:
         pass
+    try:
+        ignored_evidence = subprocess.run(
+            ["git", "-C", str(repo_root), "ls-files", "--others", "--ignored", "--exclude-standard"],
+            check=False,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+        )
+        if ignored_evidence.returncode == 0:
+            evidence_markers = (
+                "delivery-cleanup.md",
+                "error-correction-ledger.md",
+                "impact-regression.md",
+                "knowledge-graph.md",
+            )
+            changed.extend(
+                line.strip().replace("\\", "/")
+                for line in ignored_evidence.stdout.splitlines()
+                if line.strip() and any(marker in line.replace("\\", "/") for marker in evidence_markers)
+            )
+    except Exception:
+        pass
     return sorted(set(changed))
 
 

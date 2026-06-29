@@ -1,6 +1,6 @@
 ---
 name: ai-reverse-skill-creator
-description: Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.
+description: Internal governance support for creating or modifying reverse-engineering skill packages and trigger descriptions. Use when the user explicitly asks to create/update a reverse-engineering skill resource, optimize a SKILL.md description, or generate skill-specific evals. For scoring, admission, drift, trigger convergence, or SKILLS library governance, prefer skills-evaluation-governance. Do not trigger for ordinary Web/H5 reverse-engineering tasks or general code edits.
 platforms: [cross-platform]
 ---
 

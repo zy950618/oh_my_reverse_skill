@@ -1,7 +1,7 @@
 ---
 name: reverse-js-crawler
 description: >-
-  Use this skill for crawler reverse engineering and interface restoration: page reconnaissance, real API discovery, JavaScript sign/token/cookie analysis, browser runtime dependency tracing, request reproduction, batch collection, concurrency acceptance, risk-control evidence, UI/API parity, fixture freshness, and verified Python/Node.js delivery. Trigger when the user asks for JS reverse, crawler reverse, API restoration, encrypted parameters, sign/x-sign/authKey/token, web data collection, turning a page into stable collection scripts, concurrency crawler validation, anti-flake validation, or Chinese requests such as 逆向采集, JS逆向, 接口还原, 接口复现, 加密参数, 补环境, 浏览器环境模拟, 请求复现, 批量采集, 数据清洗, 采集脚本交付, 并发爬虫验收, 风控证据, 网页一致性, or fixtures 新鲜度治理.
+  Primary entry for focused Web/H5 crawler reverse engineering and interface restoration: page reconnaissance, real API discovery, JavaScript sign/token/cookie source tracing, request reproduction, data collection scripts, UI/API parity, and fresh replay evidence for a bounded route or stage. Trigger for JS reverse, crawler reverse, API restoration, encrypted parameters, sign/x-sign/authKey source tracing, web data collection, request reproduction, 逆向采集, JS逆向, 接口还原, 接口复现, 加密参数, 请求复现, 批量采集, 数据清洗, or 采集脚本交付. Do not use as the first entry for full FastAPI/service delivery, explicit LOOP/multi-agent closure, skill governance, stable adapter production, or CAPTCHA/WAF-specific evidence; route those to the corresponding entry or conditional skill.
 platforms: [web, h5]
 ---
 

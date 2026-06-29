@@ -6,6 +6,9 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 .pytest_cache/
+.venv/
+venv/
+env/
 
 # IDE
 .vscode/
@@ -14,6 +17,34 @@ __pycache__/
 # OS
 .DS_Store
 Thumbs.db
+
+# Node/frontend 本地依赖和构建产物
+node_modules/
+dist/
+build/
+coverage/
+htmlcov/
+
+# Playwright/浏览器自动化本地产物
+playwright-report/
+test-results/
+blob-report/
+.playwright/
+.auth/
+storage-state*.json
+*.storage-state.json
+trace.zip
+*.trace.zip
+*.webm
+*.mp4
+
+# 浏览器 profile / user-data-dir / 本地会话状态
+browser-profiles/
+.browser-profiles/
+user-data-dir/
+**/user-data-dir/
+profiles/
+.profiles/
 
 # Stop hook 校准数据(本地分析用,不入 git)
 tools/.reminder-stats.jsonl
@@ -24,12 +55,24 @@ tools/.reminder-stats.jsonl
 # Replay 临时产物(每次本地跑都会重新生成,不入 git)
 站点经验库/*/fixtures/actual/
 
-# Recording 原始抓包(30 天后删除,体积大,不入 git 默认值,需要时按 domain 取消注释)
-# 站点经验库/*/fixtures/recordings/
+# Recording 原始抓包(30 天后删除,体积大,不入 git)
+站点经验库/*/fixtures/recordings/
 
-# 不入 git 的 recording 二进制(HAR/jsonl 单文件常 30MB+)
+# 不入 git 的抓包/事件/响应体 dump
+*.har
+*.body
+*.dump
+*.tmp
+*.bak
 站点经验库/*/fixtures/recordings/*.har
 站点经验库/*/fixtures/recordings/*.jsonl
+
+# 本地 run/capture 输出目录；正式经验只写脱敏摘要和 fixtures meta
+runs/
+captures/
+.captures/
+recordings/
+local-runs/
 
 # 本地项目交付物(只在本机/交付包保留,不上传 GitHub)
 交付项目/
@@ -49,5 +92,4 @@ tools/.reminder-stats.jsonl
 !验证码经验库/domains/_example.com/**
 
 # 本地运行/评分/抓包产物(每轮可再生成,不上传 GitHub)
-metrics/captures/
-metrics/codex_score_current.json
+metrics/

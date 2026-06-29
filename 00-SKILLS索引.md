@@ -12,6 +12,24 @@ tags:
 
 本仓库是 Web/H5 逆向工程 SKILLS 总库，分层组织，仓库为唯一来源，通过 Windows junction 安装到 `~/.claude/skills/`。
 
+## 有效加载策略
+
+当前仓库保留 12 个 `SKILL.md`，但不等于 12 个都应直接响应用户自然语言。默认按三层加载：
+
+| 层级 | Skill | 触发规则 |
+|---|---|---|
+| 对外入口 | `website-314-api-delivery` | 用户要完整纯接口、FastAPI 接口测试、服务化、314/本地框架接入 |
+| 对外入口 | `reverse-js-crawler` | 用户要单站点/单链路的页面侦察、接口还原、JS sign/token、采集脚本 |
+| 对外入口 | `web-h5-loop-engineering` | 用户明确要求 LOOP/闭环/多 agent/反复验证，或前序任务因证据不完整需要循环修正 |
+| 对外入口 | `skills-evaluation-governance` | 用户在治理 SKILLS 本身：评分、触发收敛、准入、漂移、eval |
+| 条件升级 | `imperva-waf-reese84` | 仅当观察到 Imperva/Reese84/Incapsula/x-d-token 等明确证据，或用户明确点名 |
+| 条件升级 | `captcha-service-delivery` | 仅当观察到 CAPTCHA/verification-service 证据，或用户明确点名 provider/sitekey/challenge |
+| 条件升级 | `site-api-adapter` | 仅当接口已经稳定且用户要 adapter/schema/runbook/prompt-router |
+| 内部工具 | `find-crypto-entry` / `ast-deobfuscate` / `env-patch` | 由入口 skill 调度；只有用户明确提出原子任务时才直接使用 |
+| 内部治理 | `ai-reverse-skill-creator` / `karpathy-guidelines` | 用于创建/修改 skill 或编码纪律，不作为 Web/H5 逆向入口 |
+
+收敛原则：先选一个对外入口；只有出现明确证据或用户明确点名时才升级到专项 skill；工具层不能和业务入口抢触发。
+
 ## 层次划分
 
 | 层 | 目录 | 角色 |
@@ -29,7 +47,7 @@ tags:
 
 ## 全部 12 个 skill
 
-### 1-业务流程层（4 个）
+### 1-业务流程层（5 个）
 
 | Skill | 适用场景 | 主要触发词 |
 |---|---|---|
@@ -37,8 +55,9 @@ tags:
 | `reverse-js-crawler` | 页面侦察、接口识别、签名/token 还原、采集脚本交付 | JS逆向、接口还原、加密参数、补环境、批量采集 |
 | `imperva-waf-reese84` | Imperva/Reese84/84 盾/x-d-token/WAF challenge | 84盾、Reese84逆向、Incapsula、WAF挑战、风控token |
 | `skills-evaluation-governance` | 给技能评分、补 eval、回测、漂移测试、版本治理 | SKILLS评分、Skill Bench、新增Skill准入、回测、漂移 |
+| `web-h5-loop-engineering` | Web/H5 逆向需要闭环、多角色验证、执行账本和验收报告 | LOOP、闭环处理、多 agent、反复抓包复测、执行账本 |
 
-### 2-JS逆向工具层（4 个）
+### 2-JS逆向工具层（4 个，默认内部工具）
 
 | Skill | 适用场景 |
 |---|---|
@@ -57,7 +76,7 @@ tags:
 
 | Skill | 适用场景 |
 |---|---|
-| `site-api-adapter` | 把单站点稳定的逆向结果标准化为 adapter.yaml / schema.json / runbook / prompt-router（接口稳定后才用，被 1 层调用） |
+| `site-api-adapter` | 把单站点稳定的逆向结果标准化为 adapter.yaml / schema.json / runbook / prompt-router（接口稳定后才用，默认被 1 层调用） |
 
 ### 6-验证码逆向层（1 个）
 
@@ -162,13 +181,7 @@ website-314-api-delivery（Web 总控）
 
 ---
 
-## 2026-06-26 追加：Web/H5 Loop Engineering
-
-新增业务流程层 skill：
-
-| Skill | 适用场景 | 主要触发词 |
-|---|---|---|
-| `web-h5-loop-engineering` | Web/H5 逆向任务需要 3 个或多个角色/agent 闭环推进，并产出 execution ledger、acceptance report、fixture freshness 和 metrics，直到证据通过、停止或进入人工复核 | Loop Engineering、LOOP、闭环处理、多 agent 逆向、三个 agent 验证、循环执行验证修正、反复抓包复测、自动化验证闭环、爬虫 LOOP、真实 Loop Runner、执行账本、结果量化沉淀 |
+## Web/H5 Loop Engineering
 
 典型闭环：
 

@@ -111,8 +111,8 @@ When scoring crawler/reverse Skills, include site memory quality: test logs shou
 
 When a new real website task reveals a repeated gap, update the relevant Skill, add or revise evals, record the version change, and schedule drift testing. Do not let the skills library become static notes.
 
-- Version: 0.4.0
-- Status: real-execution-admission baseline
+- Version: 0.4.1
+- Status: trigger-convergence baseline
 - Change log: record material trigger, workflow, reference, score, and eval changes in `references/governance.md`.
 - Drift tests: rerun evals after changing descriptions, adding new cases, or after important real-world failures.
 - Review cadence: update examples and negative triggers when repeated user corrections show a gap.

@@ -1,6 +1,6 @@
 ---
 name: captcha-service-delivery
-description: 验证码逆向层总入口。TRIGGER when a Web/H5 reverse-engineering task involves CAPTCHA or verification-service flows such as Google reCAPTCHA, hCaptcha, Cloudflare Turnstile, slider CAPTCHA, click-select CAPTCHA, captcha token, sitekey/action, challenge config, backend verify endpoint, verified/unverified API differences, token TTL, session binding, or business API unlock. This skill maps provider common flow, site binding parameters, interface call chain, token/state lifecycle, knowledge graph, impact regression, and real multi-capture validation. DO NOT TRIGGER for ordinary sign/x-sign entry location without CAPTCHA evidence.
+description: Conditional CAPTCHA/verification-service skill for Web/H5 reverse-engineering tasks with explicit CAPTCHA evidence or provider terms: Google reCAPTCHA, hCaptcha, Cloudflare Turnstile, slider/click-select CAPTCHA, sitekey/action, challenge config, captcha token/state, backend verify endpoint, verified-vs-unverified API delta, token TTL, session binding, or business API unlock blocked by CAPTCHA. It maps provider flow, site binding, token lifecycle, repeat verification, knowledge graph, impact regression, and backend acceptance boundaries. Do not trigger for generic "验证/validation/test" wording, ordinary sign/x-sign entry location, WAF without CAPTCHA, or provider test-key checks that lack a real site/business acceptance target.
 platforms: [web, h5]
 ---
 
@@ -18,9 +18,10 @@ provider widget/challenge
   -> business API unlock/deny
 ```
 
-Version: 0.1.2
+Version: 0.1.3
 
 Change log:
+- 0.1.3 adds validation-to-eval evolution: fresh blocked/incomplete CAPTCHA validation can create negative or boundary evals, but cannot raise positive SKILLS capability without verified, repeat-verified backend acceptance.
 - 0.1.2 clarifies automation/human-review evidence modes: browser automation can be claimed only after authorized backend acceptance and repeat verification; blocked challenges cannot be written as auto-pass capability.
 - 0.1.1 adds delivery/memory/SKILLS separation: project delivery code cannot become positive SKILLS capability; only successful, repeat-verified experience memory can feed positive scoring.
 - 0.1.0 creates the Web/H5 CAPTCHA reverse layer with structured evals, provider/site memory, graph/impact examples, and real capture freshness gates.
@@ -90,6 +91,8 @@ If evidence is missing, mark the relevant claim `unverified` and write the captu
 - Before any concurrency claim, require session/cache/cookie/storage isolation and a replay ladder.
 - Before reusing prior experience, record the old capture and the fresh capture that revalidated it.
 - Every new real failure must update `known-failures.md`, `test-log-lessons.md`, or `验证码经验库/domains/<domain>/captcha-memory.md`.
+- Every fresh validation that exposes a blocked or incomplete CAPTCHA path should update or add a negative/boundary eval so the SKILLS library evolves, but only successful `verified` plus `repeat_verified` backend acceptance may become positive capability.
+- Official provider test keys, provider config responses, and standalone siteverify calls may be used only as boundary evidence or negative eval material. They must not become reusable positive capability without real site token/state evidence, final business API backend acceptance, and repeat verification.
 
 ## Output Template
 

@@ -1,7 +1,7 @@
 ---
 name: imperva-waf-reese84
 description: >-
-  Use this skill for Imperva/Incapsula/Reese84, x-d-token, reese84 cookies, SWJIYLWA/CWUDNSAI/SWUDNSAI challenge HTML, browser fingerprint simulation, token cache identity, and WAF acceptance testing. Trigger when the user asks to solve 84 shield, Reese84, Incapsula, WAF challenge, anti-bot token rejection, dynamic fingerprinting, protected flight/booking APIs, or Chinese requests such as 84盾, 84风控, Reese84逆向, Incapsula反爬, Imperva风控, x-d-token, reese84 cookie, WAF挑战, 风控token, 浏览器指纹, 指纹模拟, 反扒, 反爬, or token被拒.
+  Conditional escalation skill for confirmed Imperva/Incapsula/Reese84 work. Use only when the user explicitly names 84盾, Reese84, Incapsula, Imperva, x-d-token, reese84 cookie, or when current evidence shows Reese84/Incapsula markers such as SWJIYLWA/CWUDNSAI/SWUDNSAI challenge HTML or protected business API rejection tied to those markers. It records token identity, WAF acceptance evidence, and backend acceptance boundaries. Do not trigger for generic anti-bot, generic fingerprint, ordinary sign/token, Cloudflare/Akamai/DataDome, or crawler delivery without Imperva/Reese84 evidence.
 platforms: [web, h5]
 ---
 
