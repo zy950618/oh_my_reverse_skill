@@ -50,7 +50,7 @@ jobs:
           for layer in "1-业务流程层" "2-JS逆向工具层" "4-通用规范层" "5-沉淀工具层" "6-验证码逆向层"; do
             safe=$(echo "$layer" | tr / _)
             echo "::group::Scoring $layer"
-            python "$SCRIPT" "$layer" > ".ci-out/${safe}.json"
+            python "$SCRIPT" --output ".ci-out/${safe}.json" "$layer"
             cat ".ci-out/${safe}.json" | python -c "import json,sys; d=json.load(sys.stdin); [print(f\"  {s['skill']:40s} total={s['scores']['total']:3d}  rating={s['rating']}\") for s in d['skills']]"
             echo "::endgroup::"
           done
