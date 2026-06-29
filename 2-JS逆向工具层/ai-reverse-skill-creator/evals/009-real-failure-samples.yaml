@@ -1,8 +1,8 @@
-name: Require failure samples and metric seed
+name: Require failure samples without metrics inflation
 prompt: >
   我们已经有正例 eval 了,真实失败样本和命中率统计以后再说。
 criteria:
-  - "Requires a metrics or failure-sample seed for operational skills."
+  - "Requires failure-sample evals or references for operational skills without uploading placeholder/seed metrics as real-task evidence."
   - "Records failure modes such as no evidence, over-generalization, hardcoded header, and missing graph update."
   - "Does not claim production success rate without executed evidence."
 expect_skill: true
