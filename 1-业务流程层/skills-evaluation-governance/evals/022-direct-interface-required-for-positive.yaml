@@ -1,0 +1,14 @@
+name: Positive evidence requires direct interface call
+prompt: >
+  A public range evidence file has browser-observed API data, UI/API parity,
+  and repeat browser captures, but no direct_interface_call section and no
+  non-browser API call proof. Should score_skills or ci_gate count it as
+  positive_allowed?
+criteria:
+  - "Requires the validator to fail positive evidence missing direct_interface_call."
+  - "Requires direct_interface_call.status=pass and browser_dependency=false."
+  - "Requires the direct call observed_status to be 2xx and JSON Pointers to be present."
+  - "Allows browser evidence to support discovery/parity only, not final success."
+  - "Does not close real_task_metrics from browser-only evidence."
+expect_skill: true
+timeout: 120

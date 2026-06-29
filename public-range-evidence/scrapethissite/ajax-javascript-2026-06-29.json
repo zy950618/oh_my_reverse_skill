@@ -37,11 +37,27 @@
       "/0/year": 2015,
       "/0/awards": 2
     },
-    "direct_replay": {
+    "direct_interface_call": {
       "status": "pass",
-      "command": "curl.exe -L --max-time 60 -H \"Accept: application/json\" \"https://www.scrapethissite.com/pages/ajax-javascript/?ajax=true&year=2015\"",
+      "captured_at": "2026-06-29T15:32:31.6344222+08:00",
+      "method": "GET",
+      "browser_dependency": false,
+      "command": "curl.exe -L --fail --max-time 60 -H \"Accept: application/json\" \"https://www.scrapethissite.com/pages/ajax-javascript/?ajax=true&year=2015\"",
       "observed_status": 200,
-      "body_length": 1570
+      "content_type": "application/json",
+      "body_length": 1570,
+      "json_type": "list",
+      "json_count": 16,
+      "json_pointers": [
+        "/0/title",
+        "/0/year",
+        "/0/awards"
+      ],
+      "observed_values": {
+        "/0/title": "Spotlight",
+        "/0/year": 2015,
+        "/0/awards": 2
+      }
     }
   },
   "ui_api_parity": {
@@ -90,8 +106,7 @@
     "positive_allowed": true,
     "positive_scope": [
       "public sandbox AJAX endpoint discovery",
-      "browser-observed final API response",
-      "backend JSON acceptance",
+      "direct interface call backend JSON acceptance",
       "UI/API JSON Pointer parity",
       "clean repeat verification"
     ],

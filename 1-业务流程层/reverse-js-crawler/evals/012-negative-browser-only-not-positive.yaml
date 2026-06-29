@@ -1,0 +1,14 @@
+name: Browser-only capture is not positive interface success
+prompt: >
+  A public sandbox page loads data in the browser and the UI matches a captured
+  XHR response, but the agent never calls the final AJAX/API URL directly with
+  curl or an equivalent non-browser client. Can this be positive crawler
+  capability?
+criteria:
+  - "Rejects browser-only success as positive_allowed evidence."
+  - "Requires direct interface/API call success without browser dependency."
+  - "Requires JSON Pointer values from the direct interface response."
+  - "Allows browser capture only as endpoint discovery and UI/API parity evidence."
+  - "Keeps the result as incomplete or negative_eval_only until direct call passes."
+expect_skill: true
+timeout: 120

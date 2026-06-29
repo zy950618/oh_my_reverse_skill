@@ -51,6 +51,23 @@ def non_empty_pointers(value: object) -> bool:
     )
 
 
+def direct_interface_call_passes(backend: object) -> bool:
+    if not isinstance(backend, dict):
+        return False
+    direct = backend.get("direct_interface_call")
+    if not isinstance(direct, dict):
+        return False
+    if not is_pass(direct):
+        return False
+    if direct.get("browser_dependency") is not False:
+        return False
+    if not is_2xx(direct.get("observed_status")):
+        return False
+    if not non_empty_pointers(direct.get("json_pointers")):
+        return False
+    return True
+
+
 def hard_gate_errors(payload: dict[str, Any], max_age_days: int) -> list[str]:
     errors: list[str] = []
     captured_at = parse_dt(payload.get("captured_at"))
@@ -73,6 +90,10 @@ def hard_gate_errors(payload: dict[str, Any], max_age_days: int) -> list[str]:
             errors.append("backend_acceptance.endpoint is required")
         if not non_empty_pointers(backend.get("json_pointers")):
             errors.append("backend_acceptance.json_pointers must be non-empty JSON Pointers")
+        if not direct_interface_call_passes(backend):
+            errors.append(
+                "backend_acceptance.direct_interface_call must pass without browser dependency"
+            )
     if not is_pass(ui):
         errors.append("ui_api_parity.status must be pass")
     if payload.get("repeat_verified") is not True:

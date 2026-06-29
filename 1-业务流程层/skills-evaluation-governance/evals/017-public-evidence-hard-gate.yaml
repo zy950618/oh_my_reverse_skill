@@ -1,10 +1,11 @@
 name: Public range evidence hard gate controls positive scoring
 prompt: >
   A SKILLS repository wants public range runs to improve scores. One evidence
-  file has fresh capture, backend acceptance, UI/API parity, and repeat_verified.
-  Another has first-run success but repeat failure. How should scoring treat them?
+  file has fresh capture, direct interface/API acceptance without browser
+  dependency, UI/API parity, and repeat_verified. Another has first-run success
+  but repeat failure. How should scoring treat them?
 criteria:
-  - "Counts only the evidence with freshness, backend_acceptance pass, UI/API parity pass, and repeat_verified=true as positive_allowed."
+  - "Counts only the evidence with freshness, direct_interface_call pass, UI/API parity pass, and repeat_verified=true as positive_allowed."
   - "Keeps repeat-failed evidence as negative_eval_only or boundary evidence."
   - "Does not use placeholder metrics or seed files to fill real-task gaps."
   - "Requires the CI gate to fail if a positive evidence file lacks hard-gate fields."

@@ -44,6 +44,23 @@ def _public_pointers_ok(value: object) -> bool:
     )
 
 
+def _public_direct_interface_call_ok(backend: object) -> bool:
+    if not isinstance(backend, dict):
+        return False
+    direct = backend.get("direct_interface_call")
+    if not isinstance(direct, dict):
+        return False
+    if str(direct.get("status", "")).lower() != "pass":
+        return False
+    if direct.get("browser_dependency") is not False:
+        return False
+    if not isinstance(direct.get("observed_status"), int):
+        return False
+    if not 200 <= direct["observed_status"] < 300:
+        return False
+    return _public_pointers_ok(direct.get("json_pointers"))
+
+
 def _public_evidence_passes_hard_gates(payload: dict) -> bool:
     decision = payload.get("decision")
     if not isinstance(decision, dict):
@@ -67,6 +84,8 @@ def _public_evidence_passes_hard_gates(payload: dict) -> bool:
     if not 200 <= backend["observed_status"] < 300:
         return False
     if not _public_pointers_ok(backend.get("json_pointers")):
+        return False
+    if not _public_direct_interface_call_ok(backend):
         return False
     if not _public_section_pass(payload.get("ui_api_parity")):
         return False
@@ -415,7 +434,7 @@ def build_evidence(text: str, ref_text: str, evals: list[Path], refs: list[Path]
     if "站点经验库" in text or "site memory" in text.lower() or "site memory" in ref_text.lower():
         evidence.append("包含经验沉淀要求")
     if skill is not None and has_positive_public_range_evidence(skill.name):
-        evidence.append("public range positive evidence passed freshness/acceptance/repeat hard gates")
+        evidence.append("public range positive evidence passed direct-interface/freshness/repeat hard gates")
     return evidence
 
 

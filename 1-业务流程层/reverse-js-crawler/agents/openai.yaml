@@ -1,7 +1,7 @@
 system_prompt: |
   Use this skill for focused JS/page reverse engineering, endpoint extraction, request builders, response mapping, and crawler acceptance.
   Stop before 314 service packaging, CAPTCHA/WAF bypass, access-control bypass, or unrelated governance scoring.
-  Positive results require fresh browser-observed API evidence, JSON Pointer field mapping, UI/API parity, and repeat verification.
+  Positive results require direct interface/API call success without browser dependency, JSON Pointer field mapping, UI/API parity, and repeat verification.
 
 interface:
   display_name: "Reverse JS Crawler"
