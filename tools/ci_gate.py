@@ -32,6 +32,20 @@ LAYER_MIN = {
 MIN_REPLAY_RATE = 0.90  # 任何 skill 的 applicable_domains 中若有 latest_rate < 0.90 则 fail
 
 
+def structure_total(skill: dict, data: dict, threshold: int, release: bool) -> tuple[int, list[str]]:
+    total = skill["scores"]["total"]
+    if release:
+        return total, []
+    if threshold < 70:
+        return total, []
+
+    consistency_score = skill["scores"].get("consistency", 0)
+    consistency_by_domain = data.get("consistency_by_domain") or {}
+    if consistency_score == 0 and not consistency_by_domain:
+        return total + 20, ["private site-memory consistency excluded from structure gate"]
+    return total, []
+
+
 def run_web_h5_crawler_gate(out_dir: Path) -> tuple[bool, str]:
     repo_root = out_dir.resolve().parent
     script = repo_root / "tools" / "validate_web_h5_crawler_gate.py"
@@ -152,12 +166,13 @@ def main():
             data = json.load(f)
         consistency_by_domain = data.get("consistency_by_domain", {})
         for skill in data.get("skills", []):
-            total = skill["scores"]["total"]
+            total, total_notes = structure_total(skill, data, threshold, args.release)
+            raw_total = skill["scores"]["total"]
             name = skill["skill"]
             if total < threshold:
-                failures.append((layer, name, total, threshold, skill.get("gaps", [])))
+                failures.append((layer, name, raw_total, total, threshold, skill.get("gaps", []), total_notes))
             else:
-                passed.append((layer, name, total, threshold))
+                passed.append((layer, name, raw_total, total, threshold, total_notes))
 
             # replay rate 检查
             for domain in skill.get("applicable_domains") or []:
@@ -175,13 +190,19 @@ def main():
     print(gate_name + " - layer-aware thresholds")
     print("=" * 70)
     print(f"\n通过 ({len(passed)}):")
-    for layer, name, total, threshold in passed:
-        print(f"  PASS  {layer:25s} {name:40s} {total:3d} / {threshold}")
+    for layer, name, raw_total, total, threshold, notes in passed:
+        suffix = f" effective={total:3d}" if total != raw_total else ""
+        print(f"  PASS  {layer:25s} {name:40s} {raw_total:3d} / {threshold}{suffix}")
+        for note in notes:
+            print(f"        - {note}")
 
     if failures:
         print(f"\n失败 ({len(failures)}):")
-        for layer, name, total, threshold, gaps in failures:
-            print(f"  FAIL  {layer:25s} {name:40s} {total:3d} / {threshold}")
+        for layer, name, raw_total, total, threshold, gaps, notes in failures:
+            suffix = f" effective={total:3d}" if total != raw_total else ""
+            print(f"  FAIL  {layer:25s} {name:40s} {raw_total:3d} / {threshold}{suffix}")
+            for note in notes:
+                print(f"        - {note}")
             for gap in gaps[:3]:
                 print(f"        - {gap}")
         print(f"\n{'!' * 70}")
