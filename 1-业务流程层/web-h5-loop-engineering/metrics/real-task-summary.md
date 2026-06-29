@@ -14,7 +14,8 @@ tags:
 
 | 日期 | loop_id | domain | stage | iterations | strict freshness | concurrency | 状态 | 备注 |
 |---|---|---|---|---:|---|---|---|---|
-| TBD | TBD | TBD | TBD | 0 | unverified | unverified | unverified | 等待真实授权站点回填 |
+
+No accepted Web/H5 loop run has been recorded in this repository upload surface yet.
 
 ## 累计指标
 

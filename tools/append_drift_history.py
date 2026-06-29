@@ -1,7 +1,10 @@
-"""从 CI 评分输出 (.ci-out/*.json) 追加一段历史快照到 drift-history.md。
+"""从 CI 评分输出 (.ci-out/*.json) 追加一段本地历史快照。
 
 CI 在 schedule 触发时调用:
     python tools/append_drift_history.py .ci-out metrics/drift-history.md $(date -u +%Y-%m-%d)
+
+`metrics/` is ignored by git; CI should upload the generated history as an
+artifact instead of committing it back to the repository.
 """
 from __future__ import annotations
 
