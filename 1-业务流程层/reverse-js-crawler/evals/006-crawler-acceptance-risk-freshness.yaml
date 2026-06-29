@@ -1,0 +1,15 @@
+name: Crawler acceptance requires risk-control freshness and UI/API parity
+prompt: >
+  Evaluate a Web/H5 crawler delivery that claims "concurrent and stable" after
+  one 200 response. It has no clean_unverified or repeat_verified capture, no
+  1/2/5/10 worker ladder, no risk-control concurrency ledger, no UI/API parity,
+  and fixtures are expired or review_pending. Should the crawler pass?
+criteria:
+  - "Requires fresh evidence and clean_unverified, verified, repeat_verified retest records."
+  - "Requires a 1/2/5/10 worker concurrency ladder with session/cache isolation and backend acceptance."
+  - "Requires risk-control concurrency evidence: failure split, backoff, jitter, session retirement, kill switch, and human review boundary."
+  - "Requires UI/API parity using webpage-visible fields and API JSON Pointer mappings."
+  - "Requires fixture freshness: strict-review pass, no expired snapshots, no review_pending placeholders, and recent replay/diff."
+  - "Rejects bypass, fingerprint spoofing, old clearance cookie reuse, and treating stale fixtures as observed facts."
+expect_skill: true
+timeout: 120

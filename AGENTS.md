@@ -1,11 +1,12 @@
 # oh_my_reverse_skill — AGENTS.md
 
-本仓库是 Web/H5 逆向工程 SKILLS 总库,11 个 skill 分 5 个分层。本文件是 OpenAI Codex CLI 的入口约定。
+本仓库是 Web/H5 逆向工程 SKILLS 总库,12 个 skill 分 5 个分层。本文件是 OpenAI Codex CLI 的入口约定。
 
 ## 接到逆向任务时
 
 1. 读 `99-SKILLS治理/06-网页逆向标准规划.md` 输出 6 阶段规划
 2. 按 `00-SKILLS索引.md` 选 skill
+   - 用户明确要求 Loop Engineering、闭环处理、多 agent 逆向、三角色验证时,优先选 `1-业务流程层/web-h5-loop-engineering`
 3. 进入实现前 Read `4-通用规范层/karpathy-guidelines/SKILL.md` 确认 4 原则
 4. 输出结论前 Read `99-SKILLS治理/11-AI事实证据规约.md`，区分 observed / derived / assumed / unverified
 5. 扩展范围或跨 market/stage/session 前 Read `99-SKILLS治理/12-反泛化与任务收敛规约.md`
@@ -49,13 +50,19 @@
 - `tools/post_task_reminder.py`: Stop hook 沉淀提醒
 - `tools/sync_site_memory.py`: 跨项目同步 site memory
 - `tools/ci_gate.py`: CI 评分阈值
+- `tools/validate_web_h5_loop_gate.py`: Web/H5 Loop Engineering 三角色闭环结构检查
+- `tools/validate_web_h5_crawler_gate.py`: Web/H5 爬虫反偶发/清状态/并发隔离结构检查
+- `tools/validate_web_h5_real_execution_gate.py`: Web/H5 真实执行标准化结构检查
+- `tools/web_h5_loop_runner.py`: Loop Runner execution ledger 创建/追加/验证
+- `tools/web_h5_acceptance_report.py`: 并发/风控/UI一致性/freshness/metrics 验收报告
+- `tools/fixture_freshness_report.py`: fixtures expired/review_pending/recent replay 新鲜度报告
 - `1-业务流程层/skills-evaluation-governance/scripts/score_skills.py`: skill 评分
 
 ## 仓库分层
 
 | 层 | 目录 | 角色 |
 |---|---|---|
-| 1 | `1-业务流程层/` | 顶层入口(4 个 skill) |
+| 1 | `1-业务流程层/` | 顶层入口(5 个 skill) |
 | 2 | `2-JS逆向工具层/` | Web/JS 原子工具(4 个) |
 | 4 | `4-通用规范层/` | 基础层规范(karpathy-guidelines) |
 | 5 | `5-沉淀工具层/` | 接口稳定后的标准化(site-api-adapter) |

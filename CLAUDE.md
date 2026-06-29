@@ -41,7 +41,7 @@ WAF 预判:<是否存在 reese84/incapsula/akamai/cloudflare 痕迹>
 
 | 层 | 目录 | 角色 |
 |---|---|---|
-| 1 | `1-业务流程层/` | 顶层入口(4 个 skill),按需求调度 2/5 层 |
+| 1 | `1-业务流程层/` | 顶层入口(5 个 skill),按需求调度 2/5 层 |
 | 2 | `2-JS逆向工具层/` | Web/JS 原子工具(4 个) |
 | 4 | `4-通用规范层/` | 行为守则(karpathy-guidelines) |
 | 5 | `5-沉淀工具层/` | 接口稳定后的标准化(site-api-adapter) |
@@ -50,7 +50,7 @@ WAF 预判:<是否存在 reese84/incapsula/akamai/cloudflare 痕迹>
 | - | `站点经验库/` | 站点案例(按 domain/market/locale 拆分) |
 | - | `逆向工程经验库/` | run/capture/replay、旧新证据、工具失败和复测经验 |
 | - | `验证码经验库/` | 验证码 provider 与站点绑定经验 |
-| - | `tools/` | 仓库辅助脚本(`sync_site_memory.py`、`ci_gate.py`、`post_task_reminder.py`) |
+| - | `tools/` | 仓库辅助脚本(`sync_site_memory.py`、`ci_gate.py`、`web_h5_loop_runner.py`、`web_h5_acceptance_report.py`、`fixture_freshness_report.py`) |
 
 完整入口见 `00-SKILLS索引.md`,标准入口与目录详解见 `README.md`。
 

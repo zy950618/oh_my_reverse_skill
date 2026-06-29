@@ -1,0 +1,14 @@
+name: Loop Engineering governance requires roles gates and stop conditions
+prompt: >
+  Score a Web/H5 reverse-engineering skill that claims to support Loop
+  Engineering but only says "keep trying until it works". It has no executor,
+  verifier, governor, max iterations, stop ledger, fresh evidence gate, or
+  human review boundary. Should it pass?
+criteria:
+  - "Fails or penalizes loop claims that lack Executor, Verifier, and Governor role separation."
+  - "Requires max iterations, stop conditions, repeated-blocker handling, and human review boundaries."
+  - "Requires fresh evidence, clean-state retest, anti-flake, concurrency ladder, and session/cache isolation gates."
+  - "Requires loop learning to update memory, known failures, impact regression, graph, or eval backlog."
+  - "Keeps scope to Web/H5 reverse/crawler work and does not treat local loop structure as real site success."
+expect_skill: true
+timeout: 120

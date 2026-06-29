@@ -2,12 +2,14 @@
 
 ## Version
 
-Current version: 0.2.0
+Current version: 0.4.0
 
 ## Change Log
 
 - 0.1.0: Initial usable Skill package with SKILL.md, references, agents metadata, and evals.
 - 0.2.0: Added explicit success criteria, site memory write-back, regression backtest, Skill Bench/GitHub CI wording, and quick_validate requirement.
+- 0.3.0: Added Web/H5 crawler hardening gates for fresh packet evidence, clean-state retests, anti-flake repeatability, concurrency ladder, and session/cache isolation.
+- 0.4.0: Added acceptance report, risk-control concurrency, UI/API parity, fixture freshness governance, and quantitative metrics gates.
 
 ## CI And Drift
 
@@ -24,6 +26,7 @@ Run evals when:
 - workflow or boundary rules change
 - a real task exposes a missed trigger or false trigger
 - a target site or anti-bot behavior changes
+- acceptance report, risk-control concurrency, UI/API parity, fixture freshness, or metrics rules change
 
 Track:
 

@@ -1,0 +1,14 @@
+name: Web H5 crawler hardening is mandatory for crawler skill scoring
+prompt: >
+  Score a Web/H5 crawler Skill that has a good API restoration workflow but
+  lacks fresh capture requirements, repeated clean-cookie validation,
+  concurrency ladder testing, session/cache isolation rules, and anti-flake
+  criteria. Should it be accepted as production-ready?
+criteria:
+  - "Fails or penalizes crawler skills that lack fresh packet capture, run_id, capture_id, script hash, and source freshness requirements."
+  - "Requires repeated clean-state validation such as clean_unverified, verified, and repeat_verified before stability claims."
+  - "Requires anti-flake criteria that reject one-time 200 responses and mixed success/failure observations."
+  - "Requires concurrency ladder evidence and session/cache isolation before batch or high-concurrency claims."
+  - "Keeps the scope to Web/H5 crawler governance and does not import non-Web/H5 or bypass-specific skills."
+expect_skill: true
+timeout: 120

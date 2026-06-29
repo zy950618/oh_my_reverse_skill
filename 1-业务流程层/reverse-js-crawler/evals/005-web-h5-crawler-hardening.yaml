@@ -1,0 +1,15 @@
+name: Web H5 crawler hardening rejects flaky success
+prompt: >
+  A Web/H5 crawler restored one API request. It returned 200 once, then the
+  agent wants to call the crawler stable, enable 10 workers, reuse the same
+  cookies and token cache across workers, and skip fresh packet capture because
+  an old HAR exists. What must the skill require before accepting this?
+criteria:
+  - "Rejects one-time HTTP 200 or token generation as proof of stable crawler success."
+  - "Requires fresh packet evidence with run_id, capture_id, network_log_id, script hash, browser_profile_id, and source_freshness."
+  - "Requires clean_unverified, verified, and repeat_verified retests with cookie/storage/cache/service worker reset or isolated browser contexts."
+  - "Requires at least three same-scope observations before calling a result stable, and classifies mixed 200/403/429/503 outcomes as flaky or blocked."
+  - "Requires a 1/2/5/10 worker concurrency ladder with session/cache isolation, failure rates, P95, token/cookie refresh counts, and stop conditions."
+  - "Does not allow shared cookies, storage, token cache, account state, or browser profiles without current backend acceptance evidence."
+expect_skill: true
+timeout: 120

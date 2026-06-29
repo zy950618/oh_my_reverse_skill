@@ -1,6 +1,6 @@
 # oh_my_reverse_skill
 
-Web/H5 逆向工程 SKILLS 总库。覆盖 Web/JS 逆向、爬虫接口化、WAF 风控对抗、一致性验证、Skill 治理评测的完整工具链与流程。
+Web/H5 逆向工程 SKILLS 总库。覆盖 Web/JS 逆向、爬虫接口化、WAF 风控证据治理、Loop Runner 执行账本、一致性验证、Skill 治理评测的完整工具链与流程。
 
 一句话目标: 在授权范围内实现全站关键接口处理、加密/签名逆向和关键接口测试交付; 对 WAF/验证码/风控类状态只按真实接口证据声明能力,必要时引入人工参与协议。
 
@@ -10,7 +10,7 @@ Web/H5 逆向工程 SKILLS 总库。覆盖 Web/JS 逆向、爬虫接口化、WAF
 
 1. **[USAGE.md](./USAGE.md)** — 我想做 X,应该说什么(场景速查 + 典型对话)
 2. **[INSTALL.md](./INSTALL.md)** — 一站式安装(Skills 软链 + CloakBrowser + hooks + 验证)
-3. **[TRIGGERS.md](./TRIGGERS.md)** — 触发词速查表(中英双列,11 个 Skill 全覆盖)
+3. **[TRIGGERS.md](./TRIGGERS.md)** — 触发词速查表(中英双列,12 个 Skill 全覆盖)
 4. **[CHERRY_STUDIO.md](./CHERRY_STUDIO.md)** — Cherry Studio / GUI 适配说明
 
 进阶:
@@ -39,7 +39,8 @@ oh_my_reverse_skill/
 │   ├── website-314-api-delivery       新站点 → FastAPI 接口测试交付（Web 最常用入口，314 为可选本地基础框架分支）
 │   ├── reverse-js-crawler             JS 逆向主流程
 │   ├── imperva-waf-reese84            Imperva/Reese84/84 盾专攻
-│   └── skills-evaluation-governance   skill 评分/回测/治理
+│   ├── skills-evaluation-governance   skill 评分/回测/治理
+│   └── web-h5-loop-engineering        Loop Engineering 三角色闭环编排 + execution ledger
 │
 ├── 2-JS逆向工具层/   被 1-业务流程层 调用的 Web 原子工具
 │   ├── find-crypto-entry              定位 JS 加密参数生成入口
@@ -77,6 +78,9 @@ oh_my_reverse_skill/
 │
 └── tools/
     ├── sync_site_memory.py            手动同步 project memory → 站点经验库
+    ├── web_h5_loop_runner.py          Loop Runner execution ledger 创建/追加/验证
+    ├── web_h5_acceptance_report.py    并发/风控/UI一致性/freshness/metrics 验收报告
+    ├── fixture_freshness_report.py    fixtures expired/review_pending/recent replay 新鲜度报告
     └── README.md                      tools 说明
 ```
 
@@ -90,7 +94,7 @@ GUI / Cherry Studio 用户优先看 [CHERRY_STUDIO.md](./CHERRY_STUDIO.md)。CLI
 
 ```powershell
 # 业务流程层
-foreach ($n in @('website-314-api-delivery','reverse-js-crawler','imperva-waf-reese84','skills-evaluation-governance')) {
+foreach ($n in @('website-314-api-delivery','reverse-js-crawler','imperva-waf-reese84','skills-evaluation-governance','web-h5-loop-engineering')) {
   New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\$n" -Target "E:\SKILLS\oh_my_reverse_skill\1-业务流程层\$n"
 }
 # JS 工具层
@@ -113,7 +117,7 @@ DST="$HOME/.claude/skills"
 mkdir -p "$DST"
 
 # 业务流程层
-for n in website-314-api-delivery reverse-js-crawler imperva-waf-reese84 skills-evaluation-governance; do
+for n in website-314-api-delivery reverse-js-crawler imperva-waf-reese84 skills-evaluation-governance web-h5-loop-engineering; do
   ln -snf "$REPO/1-业务流程层/$n" "$DST/$n"
 done
 # JS 工具层

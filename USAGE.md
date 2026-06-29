@@ -22,7 +22,7 @@ Web/H5 逆向工程 SKILL 库,装到 Claude Code 后,**用自然语言**让 Clau
 - 完成后保持干净交付:删除已替代的临时测试文件、历史输出、废代码、废注释,并补整体加密算法细节图
 - 给自己产出的 Skill 打分 / 回测 / 治理
 
-仓库里有 **11 个 Skill** + 一套 fixtures 一致性验证工具链 + CI + 治理评分。
+仓库里有 **12 个 Skill** + 一套 fixtures 一致性验证工具链 + CI + 治理评分。
 
 ## 谁应该用
 
@@ -54,6 +54,8 @@ Web/H5 逆向工程 SKILL 库,装到 Claude Code 后,**用自然语言**让 Clau
 | 接口稳定后做 adapter | "接口化沉淀" / "做 adapter.yaml" / "prompt-router 输出" | `site-api-adapter` | 把逆向产出标准化为 adapter.yaml / schema / runbook |
 | 验证产出和网页一致 | "跑一致性" / "fixtures 验证" / "snapshot diff" / "重放对比" | (脚本工具链) | 见 [07 一致性验证规约](./99-SKILLS治理/07-一致性验证规约.md) |
 | 给 Skill 打分 / 评测 | "Skill 评分" / "Skill Bench" / "回测 Skill" / "新增 Skill 准入" | `skills-evaluation-governance` | 三段分 → 四段分评分,回测,漂移检测 |
+| 多 agent 闭环逆向 | "Loop Engineering" / "闭环处理" / "三个 agent 验证" / "爬虫 LOOP" | `web-h5-loop-engineering` | Executor + Verifier + Governor 闭环推进和停止/人审 |
+| 真实执行标准化 | "真实 Loop Runner" / "执行账本" / "结果量化沉淀" / "并发验收" / "fixtures 新鲜度治理" | `web-h5-loop-engineering` + `reverse-js-crawler` + tools | Loop Runner ledger + acceptance report + fixture freshness + metrics |
 | 创建 / 优化新 Skill | "新建一个 skill" / "优化 SKILL.md 描述" / "跑 eval 优化触发词" | `ai-reverse-skill-creator` | 起骨架,跑 eval loop,优化 description |
 | 写代码遵守行为守则 | (隐式触发,看 4-通用规范层) | `karpathy-guidelines` | 最小改动 / 不过度抽象 / 显式假设 |
 

@@ -12,9 +12,12 @@ ci_gate.py — 按"层"设阈值，读取 .ci-out/*.json，任何 skill 低于�
 
 用法:
   python tools/ci_gate.py .ci-out
+  python tools/ci_gate.py .ci-out --release
 """
 
+import argparse
 import json
+import subprocess
 import sys
 from pathlib import Path
 
@@ -29,17 +32,90 @@ LAYER_MIN = {
 MIN_REPLAY_RATE = 0.90  # 任何 skill 的 applicable_domains 中若有 latest_rate < 0.90 则 fail
 
 
+def run_web_h5_crawler_gate(out_dir: Path) -> tuple[bool, str]:
+    repo_root = out_dir.resolve().parent
+    script = repo_root / "tools" / "validate_web_h5_crawler_gate.py"
+    if not script.is_file():
+        return False, f"ERROR: 缺少 Web/H5 crawler gate 脚本: {script}"
+
+    result = subprocess.run(
+        [sys.executable, str(script), "--repo-root", str(repo_root)],
+        cwd=str(repo_root),
+        text=True,
+        capture_output=True,
+    )
+    output = (result.stdout or "") + (result.stderr or "")
+    return result.returncode == 0, output.strip()
+
+
+def run_web_h5_loop_gate(out_dir: Path) -> tuple[bool, str]:
+    repo_root = out_dir.resolve().parent
+    script = repo_root / "tools" / "validate_web_h5_loop_gate.py"
+    if not script.is_file():
+        return False, f"ERROR: 缺少 Web/H5 loop gate 脚本: {script}"
+
+    result = subprocess.run(
+        [sys.executable, str(script), "--repo-root", str(repo_root)],
+        cwd=str(repo_root),
+        text=True,
+        capture_output=True,
+    )
+    output = (result.stdout or "") + (result.stderr or "")
+    return result.returncode == 0, output.strip()
+
+
+def run_web_h5_real_execution_gate(out_dir: Path) -> tuple[bool, str]:
+    repo_root = out_dir.resolve().parent
+    script = repo_root / "tools" / "validate_web_h5_real_execution_gate.py"
+    if not script.is_file():
+        return False, f"ERROR: 缺少 Web/H5 real execution gate 脚本: {script}"
+
+    result = subprocess.run(
+        [sys.executable, str(script), "--repo-root", str(repo_root)],
+        cwd=str(repo_root),
+        text=True,
+        capture_output=True,
+    )
+    output = (result.stdout or "") + (result.stderr or "")
+    return result.returncode == 0, output.strip()
+
+
+def run_fixture_freshness_report(out_dir: Path, strict_fresh: bool = False) -> tuple[bool, str]:
+    repo_root = out_dir.resolve().parent
+    script = repo_root / "tools" / "fixture_freshness_report.py"
+    if not script.is_file():
+        return False, f"ERROR: 缺少 fixture freshness report 脚本: {script}"
+
+    command = [sys.executable, str(script), "站点经验库"]
+    if strict_fresh:
+        command.append("--strict-fresh")
+
+    result = subprocess.run(
+        command,
+        cwd=str(repo_root),
+        text=True,
+        capture_output=True,
+    )
+    output = (result.stdout or "") + (result.stderr or "")
+    return result.returncode == 0, output.strip()
+
+
 def layer_from_filename(name: str) -> str:
     # ".ci-out/1-业务流程层.json"  →  "1-业务流程层"
     return Path(name).stem.replace("_", "/")
 
 
 def main():
-    if len(sys.argv) != 2:
-        print("usage: ci_gate.py <ci-out-dir>", file=sys.stderr)
-        sys.exit(2)
+    parser = argparse.ArgumentParser(description="Layer-aware SKILLS gate")
+    parser.add_argument("out_dir", help=".ci-out directory")
+    parser.add_argument(
+        "--release",
+        action="store_true",
+        help="enforce release gates, including fixture_freshness_report.py --strict-fresh",
+    )
+    args = parser.parse_args()
 
-    out_dir = Path(sys.argv[1])
+    out_dir = Path(args.out_dir)
     if not out_dir.is_dir():
         print(f"ERROR: 目录不存在 {out_dir}", file=sys.stderr)
         sys.exit(2)
@@ -52,6 +128,8 @@ def main():
         layer = layer_from_filename(json_path.name)
         threshold = LAYER_MIN.get(layer)
         if threshold is None:
+            if json_path.name == "scores-current.json":
+                continue
             print(f"WARN: 未知层 {layer}, 跳过")
             continue
         with open(json_path, encoding="utf-8") as f:
@@ -77,7 +155,8 @@ def main():
                     replay_failures.append((layer, name, domain, rate, MIN_REPLAY_RATE))
 
     print("=" * 70)
-    print(f"Skill Bench CI Gate - layer-aware thresholds")
+    gate_name = "Skill Bench Release Gate" if args.release else "Skill Bench Structure Gate"
+    print(gate_name + " - layer-aware thresholds")
     print("=" * 70)
     print(f"\n通过 ({len(passed)}):")
     for layer, name, total, threshold in passed:
@@ -103,7 +182,50 @@ def main():
         print(f"{'!' * 70}")
         sys.exit(1)
 
-    print(f"\nCI Gate 通过: {len(passed)} 个 skill 全部达标")
+    crawler_gate_ok, crawler_gate_output = run_web_h5_crawler_gate(out_dir)
+    print("\nWeb/H5 crawler hardening gate:")
+    print(crawler_gate_output)
+    if not crawler_gate_ok:
+        print(f"\n{'!' * 70}")
+        print("CI Gate 失败: Web/H5 crawler hardening gate 未通过")
+        print(f"{'!' * 70}")
+        sys.exit(1)
+
+    loop_gate_ok, loop_gate_output = run_web_h5_loop_gate(out_dir)
+    print("\nWeb/H5 loop engineering gate:")
+    print(loop_gate_output)
+    if not loop_gate_ok:
+        print(f"\n{'!' * 70}")
+        print("CI Gate 失败: Web/H5 loop engineering gate 未通过")
+        print(f"{'!' * 70}")
+        sys.exit(1)
+
+    real_execution_gate_ok, real_execution_gate_output = run_web_h5_real_execution_gate(out_dir)
+    print("\nWeb/H5 real execution gate:")
+    print(real_execution_gate_output)
+    if not real_execution_gate_ok:
+        print(f"\n{'!' * 70}")
+        print("CI Gate 失败: Web/H5 real execution gate 未通过")
+        print(f"{'!' * 70}")
+        sys.exit(1)
+
+    freshness_ok, freshness_output = run_fixture_freshness_report(out_dir, strict_fresh=args.release)
+    freshness_label = "strict release gate" if args.release else "report-only for historical fixtures"
+    print(f"\nFixture freshness report ({freshness_label}):")
+    print(freshness_output)
+    if not freshness_ok:
+        print(f"\n{'!' * 70}")
+        if args.release:
+            print("Release Gate 失败: fixture freshness strict check 未通过")
+        else:
+            print("CI Gate 失败: fixture freshness report 无法运行")
+        print(f"{'!' * 70}")
+        sys.exit(1)
+
+    if args.release:
+        print(f"\nRelease Gate 通过: {len(passed)} 个 skill 达标且 strict freshness 通过")
+    else:
+        print(f"\nStructure Gate 通过: {len(passed)} 个 skill 达标；release 前必须另跑 `python tools/ci_gate.py {out_dir} --release`")
     sys.exit(0)
 
 

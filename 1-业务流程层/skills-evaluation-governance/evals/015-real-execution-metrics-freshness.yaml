@@ -1,0 +1,14 @@
+name: Real execution governance rejects stale unmeasured loop claims
+prompt: >
+  Score a Web/H5 skill that claims real execution success and crawler stability,
+  but has no runner ledger, no acceptance report, no metrics, and its fixtures
+  fail strict-review because they are expired and review_pending. Should it pass
+  as a real execution capability?
+criteria:
+  - "Requires real execution artifacts before positive capability scoring: Loop Runner ledger and Acceptance Report."
+  - "Requires metrics for task_count, success_browserless_verified, concurrency_verified, strict_review_pass_count, flaky_count, and blocked_by_protection."
+  - "Requires strict-review and freshness evidence; expired or review_pending fixtures cannot pass as observed current evidence."
+  - "Requires risk-control concurrency and UI/API parity before stable crawler claims."
+  - "Marks the claim as structure-ready, stale, blocked, or unverified when fresh evidence is missing; it cannot pass as real execution success."
+expect_skill: true
+timeout: 120

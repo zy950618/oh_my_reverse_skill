@@ -27,7 +27,7 @@ tags:
 | - | `验证码经验库/` | 验证码 provider 与站点绑定经验库 |
 | - | `tools/` | 仓库辅助脚本（sync_site_memory.py 等） |
 
-## 全部 11 个 skill
+## 全部 12 个 skill
 
 ### 1-业务流程层（4 个）
 
@@ -159,3 +159,26 @@ website-314-api-delivery（Web 总控）
 ```
 
 评分参考 `skills-evaluation-governance/references/scorecard-rubric.md`，吸收 Karpathy 行为守则（4-通用规范层/karpathy-guidelines）。
+
+---
+
+## 2026-06-26 追加：Web/H5 Loop Engineering
+
+新增业务流程层 skill：
+
+| Skill | 适用场景 | 主要触发词 |
+|---|---|---|
+| `web-h5-loop-engineering` | Web/H5 逆向任务需要 3 个或多个角色/agent 闭环推进，并产出 execution ledger、acceptance report、fixture freshness 和 metrics，直到证据通过、停止或进入人工复核 | Loop Engineering、LOOP、闭环处理、多 agent 逆向、三个 agent 验证、循环执行验证修正、反复抓包复测、自动化验证闭环、爬虫 LOOP、真实 Loop Runner、执行账本、结果量化沉淀 |
+
+典型闭环：
+
+```text
+目标/Scope
+  -> Loop Runner: execution ledger
+  -> Executor: 侦察、抓包、JS 入口、接口复现
+  -> Verifier: clean-state retest、acceptance report、replay、diff、schema、并发阶梯、UI/API parity
+  -> Governor: 事实等级、反泛化、session/cache 隔离、fixture freshness、metrics、图谱、影响回归、cleanup
+  -> Stop / Human Review / Next Iteration
+```
+
+本 skill 只适用于 Web/H5，不引入非 Web/H5 能力，不把本地 loop gate 通过写成真实站点成功。风控处理只记录授权范围内的并发隔离、退避、停止、session retirement、fresh replay 和人工复核，不沉淀绕过策略。

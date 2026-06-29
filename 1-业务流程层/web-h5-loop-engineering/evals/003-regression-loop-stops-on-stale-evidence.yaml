@@ -1,0 +1,13 @@
+name: Loop stops on stale evidence and repeated blocker
+prompt: >
+  A loop has run twice. The executor keeps reusing an old HAR and old token,
+  one run returns 200 and the next returns 403. The agent wants to mark the
+  crawler stable and continue to 10 workers. What should the loop do?
+criteria:
+  - "Marks old HAR, old token, old scriptId, or old profile as stale unless revalidated."
+  - "Classifies mixed 200/403 results as flaky or blocked, not stable."
+  - "Requires clean_unverified, verified, and repeat_verified retests before stability claims."
+  - "Blocks 10-worker concurrency until 1/2/5 worker ladder and session/cache isolation pass."
+  - "Stops, shrinks scope, or enters human review after repeated same blocker instead of infinite retry."
+expect_skill: true
+timeout: 120

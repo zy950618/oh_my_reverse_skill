@@ -141,3 +141,123 @@ python tools/replayer/validate_fixtures.py 站点经验库 --strict-review
 HAR / CloakBrowser 录制刚转 fixtures 后先跑普通检查,确认三件套齐全。
 人工确认 `endpoint` / `category` / `sensitive` / `requires_auth` / `tolerance` 后跑
 `--strict-review`,只有严格检查通过的 meta 才能作为语义证据。
+
+---
+
+## validate_web_h5_crawler_gate.py
+
+验证 Web/H5 爬虫 Skill 是否仍包含强制硬化结构：fresh packet evidence、清空 cookies/storage/cache 的多轮复测、反偶发成功、并发阶梯和 session/cache 隔离。
+
+### 用法
+
+```bash
+python tools/validate_web_h5_crawler_gate.py
+```
+
+### 何时跑
+
+修改 `reverse-js-crawler`、Web/H5 爬虫治理规约、评分 eval、并发/复测/抓包要求后必跑。它只验证能力层结构，不证明某个真实站点当天可用。
+
+---
+
+## validate_web_h5_loop_gate.py
+
+验证 Web/H5 Loop Engineering 是否仍包含至少三角色闭环结构：Executor、Verifier、Governor、最大迭代次数、停止条件、人工复核、fresh evidence、clean-state retest、anti-flake、并发阶梯和 session/cache 隔离。
+
+### 用法
+
+```bash
+python tools/validate_web_h5_loop_gate.py
+```
+
+### 何时跑
+
+修改 `web-h5-loop-engineering`、Loop Engineering eval、三角色 agent 编排、停止条件、ledger 模板或 CI gate 后必跑。它只验证闭环结构，不实际启动多个 agent，也不证明真实站点当天可用。
+
+---
+
+## web_h5_loop_runner.py
+
+创建、追加和验证 Web/H5 Loop Runner execution ledger。它管理证据账本,不打开网页,不绕过保护。
+
+### 用法
+
+```bash
+python tools/web_h5_loop_runner.py init \
+    --out loop-ledger.json \
+    --domain example.com \
+    --stage search \
+    --target-api POST:/api/search
+
+python tools/web_h5_loop_runner.py record-iteration \
+    --ledger loop-ledger.json \
+    --executor-action "capture search API" \
+    --verifier-result blocked \
+    --governor-result human_review
+
+python tools/web_h5_loop_runner.py validate --ledger loop-ledger.json
+python tools/web_h5_loop_runner.py validate --ledger loop-ledger.json --require-complete
+```
+
+### 何时跑
+
+真实 Loop Engineering 任务开始时先 `init`;每轮执行后 `record-iteration`;声明完成前 `validate --require-complete`。
+
+`validate` 默认只验证结构,成功状态是 `STRUCTURE_PASS`。`--require-complete` 只有在 fresh evidence、三组 clean-state retest、后端接受、数据验收、fixture freshness 和 stable decision 都齐全时才返回 `SUCCESS_PASS`。证据不齐返回 `BLOCKED`,不能声明完成。
+
+---
+
+## web_h5_acceptance_report.py
+
+生成和验证 Web/H5 crawler acceptance report,覆盖 clean-state retest、anti-flake、1/2/5/10 worker 并发阶梯、risk-control concurrency、UI/API parity、fixture freshness 和 metrics。
+
+### 用法
+
+```bash
+python tools/web_h5_acceptance_report.py template \
+    --out acceptance-report.json \
+    --domain example.com \
+    --stage search \
+    --target-api POST:/api/search
+
+python tools/web_h5_acceptance_report.py validate --report acceptance-report.json
+python tools/web_h5_acceptance_report.py validate --report acceptance-report.json --require-complete
+```
+
+### 何时跑
+
+涉及实战执行、并发、风控证据、网页一致性或稳定性声明时必跑。默认 `validate` 只返回 `STRUCTURE_PASS`。没有通过 `--require-complete` 并拿到 `SUCCESS_PASS`,不能声明并发、稳定或真实完成。`BLOCKED` 是有效阻塞结论,不是成功。
+
+---
+
+## fixture_freshness_report.py
+
+输出 fixtures 的新鲜度和 review 状态,包括 expired_count、review_pending_count、recent_report 和 source_freshness。
+
+### 用法
+
+```bash
+python tools/fixture_freshness_report.py 站点经验库
+python tools/fixture_freshness_report.py 站点经验库 --strict-fresh
+python tools/ci_gate.py .ci-out --release
+```
+
+### 何时跑
+
+每次声称网页一致性、fresh replay 或真实交付前跑。默认是 report-only;发版/交付前使用 `--strict-fresh` 或 `python tools/ci_gate.py .ci-out --release`。普通 `ci_gate.py .ci-out` 只是结构/评分门禁,不能作为 release freshness 证据。
+
+---
+
+## validate_web_h5_real_execution_gate.py
+
+验证真实实战执行标准化资产是否存在: Loop Runner、acceptance report、fixture freshness report、metrics、references 和 evals。
+
+### 用法
+
+```bash
+python tools/validate_web_h5_real_execution_gate.py
+```
+
+### 何时跑
+
+修改 runner、acceptance、freshness、metrics、真实执行 references/evals 或 `ci_gate.py` 后必跑。它只验证结构,不证明某个真实站点当天可用。

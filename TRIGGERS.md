@@ -24,6 +24,7 @@
 |---|---|---|---|---|---|
 | 逆向 XXX 网站 / 纯接口实现 / FastAPI 接口测试 / 网站接入 / 把 XXX 接入 314 | reverse XXX website / new site adapter / pure API / FastAPI test API / 314 framework | `website-314-api-delivery` | 1 | 六阶段总控,把网页 → Python/FastAPI 可测接口 → 人工确认后可选接入本地基础框架 | 只想看 HTML 内容 / 调浏览器自动化 |
 | JS 逆向 / 接口还原 / 加密参数 / 补环境 / 批量采集 | JS reverse / API restoration / sign reverse / crawler delivery | `reverse-js-crawler` | 1 | 页面侦察 + 真实 API 识别 + sign 还原 + Python/Node 复现 | 静态分析 / 非 Web/H5 |
+| Loop Engineering / LOOP / 闭环处理 / 多 agent 逆向 / 三个 agent 验证 / 循环执行验证修正 / 反复抓包复测 / 自动化验证闭环 / 爬虫 LOOP / 真实 Loop Runner / 执行账本 / 实战执行标准化 / 结果量化沉淀 | Loop Engineering / agent loop / multi-agent reverse loop / closed-loop verification / Ralph-style loop / loop runner / execution ledger / quantitative crawler metrics | `web-h5-loop-engineering` | 1 | Executor + Verifier + Governor 至少三角色闭环,并产出 runner ledger、acceptance report、fixture freshness 和 metrics | 单次加密入口定位 / 不需要多轮验证 |
 | 84 盾 / Reese84 / Incapsula / x-d-token / WAF 挑战 / 风控 token / 浏览器指纹 / 反扒 / token 被拒 | reese84 / incapsula / imperva / x-d-token / browser fingerprint / WAF challenge / anti-bot | `imperva-waf-reese84` | 1 | 指纹模拟 + token 缓存 + 阶段化接受度验证 | 普通 cookie / 单纯 401(非 WAF) |
 | 验证码 / reCAPTCHA / hCaptcha / Turnstile / 滑块 / 点选 / sitekey / challenge / verify endpoint / captcha token / 验证前后响应不同 | captcha / recaptcha / hcaptcha / turnstile / slider / click captcha / sitekey / challenge / verify endpoint | `captcha-service-delivery` | 6 | provider 流程 + 站点绑定 + clean/verified/repeat 三轮抓包 + token 状态 + 图谱回归 | 普通 sign/x-sign 定位 |
 | 找加密入口 / xxx 在哪生成 / 签名怎么算 / 请求头 xxx 哪来的 / 定位加密函数 | locate sign entry / find crypto entry / where is x-sign generated | `find-crypto-entry` | 2 | 静态搜参数名 + XHR 断点,只输出函数位置+调用链 | 抓包看请求 / 分析普通参数 |
@@ -42,6 +43,7 @@
 | HAR 导入 / 抓包导入 fixtures | HAR import / DevTools to fixtures | `tools/recorder/har_to_fixtures.py` | Chrome DevTools 导出的 HAR → snapshots 三件套 |
 | CloakBrowser 录制 / 反指纹浏览器录制 | CloakBrowser record / cloak record | `tools/recorder/cloak_recorder.py` | 启动带反指纹的 Chromium 录请求 |
 | 验证 fixtures 合规 / fixtures schema 检查 | validate fixtures schema | `tools/replayer/validate_fixtures.py` | 检查三件套齐 / category 合法 / expiry 未过 |
+| 真实 Loop / 并发验收 / 风控证据 / fixtures 新鲜度 / 结果量化 | loop runner / acceptance report / fixture freshness / real execution gate | `tools/web_h5_loop_runner.py` + `tools/web_h5_acceptance_report.py` + `tools/fixture_freshness_report.py` + `tools/validate_web_h5_real_execution_gate.py` | 建立执行账本、并发/风控/UI一致性验收、暴露 expired/review_pending 并沉淀 metrics |
 
 ---
 
@@ -65,6 +67,7 @@
 | 场景 | 触发顺序 |
 |---|---|
 | 新网站全链路接口 | `website-314-api-delivery` → `reverse-js-crawler` → `find-crypto-entry` → `ast-deobfuscate` / `env-patch` → 一致性验证 → `site-api-adapter` |
+| Web/H5 多 agent 闭环逆向 | `web-h5-loop-engineering` → Loop Runner ledger → `reverse-js-crawler` / `website-314-api-delivery` → acceptance report / fixture freshness → Verifier replay/diff/schema/concurrency → Governor evidence/scope/memory/cleanup/metrics |
 | WAF 拒接口 | 主链路任意触发 + `imperva-waf-reese84` 并行处理 token |
 | 验证码阻断业务 API | 主链路任意触发 + `captcha-service-delivery` 做 provider/site binding 与三轮抓包 |
 | 收尾治理 | (任意 Skill 工作完)→ reverse-memory + 站点经验库写回 + `skills-evaluation-governance` 打分 + cleanup ledger + 加密算法图 |

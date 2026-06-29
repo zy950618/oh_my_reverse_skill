@@ -85,6 +85,8 @@ Score separately:
 - 评分结果区分结构校验、本地回测和官方 Skill Bench 跑分。
 - 每个 Skill 至少有正例、负例和回归/边界 eval。
 - 测试日志中的重复失败能进入站点经验库或 eval backlog。
+- Web/H5 爬虫类 Skill 必须检查 fresh capture、clean-state retest、anti-flake repeatability、concurrency ladder 和 session/cache isolation。
+- Web/H5 实战执行类 Skill 必须检查 Loop Runner ledger、Acceptance Report、risk-control concurrency、UI/API parity、fixture freshness 和 quantitative metrics。
 - 改动后版本、变更记录和漂移测试要求同步更新。
 - 证据、验证、拒答、人工复核、监控和错误纠正都有明确门槛。
 
@@ -109,8 +111,8 @@ When scoring crawler/reverse Skills, include site memory quality: test logs shou
 
 When a new real website task reveals a repeated gap, update the relevant Skill, add or revise evals, record the version change, and schedule drift testing. Do not let the skills library become static notes.
 
-- Version: 0.2.0
-- Status: admission-and-backtest baseline
+- Version: 0.4.0
+- Status: real-execution-admission baseline
 - Change log: record material trigger, workflow, reference, score, and eval changes in `references/governance.md`.
 - Drift tests: rerun evals after changing descriptions, adding new cases, or after important real-world failures.
 - Review cadence: update examples and negative triggers when repeated user corrections show a gap.
