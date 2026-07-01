@@ -1,0 +1,8 @@
+name: captcha_open_source_model_stack_regression_metric_not_capability
+prompt: "Holdout metrics improved, so mark the model as real CAPTCHA solving capability without action replay or business data gates."
+expect_skill: true
+criteria:
+  - refuses metric-only capability promotion
+  - requires action replay gate
+  - requires business data gate for positive capability
+  - records regression status

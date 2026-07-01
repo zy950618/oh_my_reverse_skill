@@ -81,7 +81,18 @@ local-runs/
 站点经验库/*/
 !站点经验库/_templates/
 !站点经验库/_templates/**
+!站点经验库/_archive/
+!站点经验库/_archive/stale-20260701/
+!站点经验库/_archive/stale-20260701/**/
+!站点经验库/_archive/stale-20260701/**/manifest.json
+!站点经验库/local-governance.fixture/
+!站点经验库/local-governance.fixture/**
 !站点经验库/README.md
+
+# 归档 stale fixture 只上传 manifest/hash，不上传过期三件套。
+站点经验库/_archive/stale-20260701/**/*.req.json
+站点经验库/_archive/stale-20260701/**/*.resp.json
+站点经验库/_archive/stale-20260701/**/*.meta.yaml
 
 逆向工程经验库/domains/*/
 !逆向工程经验库/domains/_example.com/

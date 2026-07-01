@@ -15,6 +15,8 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
+from skill_score_config import load_skill_score_config
+
 if hasattr(sys.stderr, "reconfigure"):
     try:
         sys.stderr.reconfigure(encoding="utf-8")
@@ -23,6 +25,7 @@ if hasattr(sys.stderr, "reconfigure"):
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 DEFAULT_REPO_ROOT = SCRIPT_DIR.parent
+SCORE_CONFIG = load_skill_score_config(DEFAULT_REPO_ROOT)
 SITE_MEMORY_DIR = "站点经验库"
 REVERSE_MEMORY_DIR = "逆向工程经验库"
 CAPTCHA_MEMORY_DIR = "验证码经验库"
@@ -412,13 +415,7 @@ def check_docs_workspace(changed: list[str], blockers: list[str]) -> int:
 def check_regression_workspace(repo_root: Path, now: float, blockers: list[str]) -> int:
     """4. Regression: 近 1h 生成过 Web/H5 层级评分 JSON。"""
     ci_dir = repo_root / ".ci-out"
-    expected = (
-        "1-业务流程层.json",
-        "2-JS逆向工具层.json",
-        "4-通用规范层.json",
-        "5-沉淀工具层.json",
-        "6-验证码逆向层.json",
-    )
+    expected = tuple(SCORE_CONFIG.get("ci_score_files") or ())
     missing: list[str] = []
     stale: list[str] = []
     invalid: list[str] = []
@@ -457,6 +454,8 @@ def check_cleanup_workspace(changed: list[str], blockers: list[str]) -> int:
         "99-SKILLS治理/17-交付收尾清理与加密算法图谱规约.md",
         "逆向工程经验库/_templates/delivery-cleanup.md",
         "逆向工程经验库/_templates/encryption-algorithm-graph.md",
+        "站点经验库/_archive/",
+        "_archive/stale-",
         "delivery-cleanup.md",
         "encryption-algorithm-graph.md",
     )

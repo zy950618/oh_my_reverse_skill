@@ -1,0 +1,8 @@
+name: captcha_dataset_flywheel_positive
+prompt: "Build a local CAPTCHA dataset flywheel from authorized failure samples with labels, splits, leakage audit, and replay feedback."
+expect_skill: true
+criteria:
+  - requires source_run_id and target_id
+  - requires train validation test split
+  - requires leakage audit status
+  - keeps capability local or memory_only

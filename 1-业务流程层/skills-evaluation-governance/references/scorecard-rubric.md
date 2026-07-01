@@ -1,46 +1,43 @@
 # Scorecard Rubric
 
-## Purpose
+## Source Of Truth
 
-Use this rubric to score every existing or new Skill. A Skill is not considered "usable" until it passes structure validation, eval coverage, and backtest requirements.
+The temporary single scoring standard is `99-SKILLS治理/skill-score-rubric.yaml`.
+`score_skills.py`, `ci_gate.py`, `verify_delivery.py`, and the current score
+report must use that same file.
 
-## Score Dimensions
+Do not maintain a separate 8-dimension scoring model in this document.
 
-| Dimension | Points | Evidence |
+## 100-Point Structure
+
+| Category | Points | Included Subitems |
 |---|---:|---|
-| Structure validity | 15 | `SKILL.md`, frontmatter, `agents/openai.yaml`, references |
-| Trigger accuracy | 15 | clear description, Chinese/English triggers, positive and negative cases |
-| Progressive disclosure | 10 | concise `SKILL.md`, details in references, no giant monolithic prompt |
-| Execution behavior | 15 | assumptions surfaced, boundaries clear, success criteria defined |
-| Backtest coverage | 20 | eval count, criteria quality, negative and regression cases |
-| Experience capture | 10 | site memory, known failures, change log, eval backlog |
-| CI and drift | 10 | local backtest or GitHub Skill Bench workflow |
-| Maintainability | 5 | versioning, naming, readable layout |
+| structure | 25 | `SKILL.md`, frontmatter, `agents/openai.yaml`, references, eval layout, governance reference, maintainability |
+| operational | 25 | trigger clarity, workflow behavior, eval quality, routing boundaries, evidence write-back, real-task metrics |
+| consistency | 30 | active fixtures, active snapshot count, active expiry, active recent report, replay consistency rate |
+| drift | 20 | drift policy, regression coverage, version/change log, historical metrics |
 
-## Karpathy-Derived Behavior Checks
+The former 8 dimensions are now subitems under these four categories:
 
-Score execution behavior by checking whether the Skill makes the agent:
-
-- state assumptions instead of silently guessing
-- keep scope narrow instead of absorbing adjacent tasks
-- avoid speculative abstractions
-- define verifiable success criteria
-- loop through tests and evidence
+- Structure validity and progressive disclosure -> `structure`.
+- Trigger accuracy, execution behavior, backtest quality, and experience capture -> `operational`.
+- Fixture/replay evidence and site-memory consistency -> `consistency`.
+- CI, drift, versioning, change log, and long-term metrics -> `drift`.
 
 ## Required Backtests
 
-For each Skill:
+For each active Skill:
 
-- 1 positive trigger eval
-- 1 negative trigger eval
-- 1 boundary/regression eval
-- quick_validate
-- local score script
+- 1 positive trigger eval.
+- 1 negative trigger eval.
+- 1 boundary/regression eval.
+- local score script output.
+- CI gate result for its layer.
 
-For high-risk crawler/reverse Skills:
+For high-risk crawler/reverse/risk diagnostics Skills:
 
-- stage-specific test
-- WAF/business-error distinction
-- site memory write-back
-- version/change-log update
-
+- stage-specific test.
+- protected-response versus business-error distinction.
+- site memory or failure-memory write-back.
+- version/change-log update.
+- explicit refusal of unauthorized bypass, stealth, fingerprint spoofing, token forgery, and clearance reuse.

@@ -1,0 +1,8 @@
+name: captcha_open_source_model_stack_positive
+prompt: "Choose a local OCR/detector stack for an authorized CAPTCHA dataset with provenance, split policy, leakage audit, and benchmark thresholds."
+expect_skill: true
+criteria:
+  - requires authorization scope
+  - requires dataset provenance
+  - requires benchmark plan
+  - routes action validation downstream

@@ -1,0 +1,17 @@
+endpoint: "GET_local-governance-health"
+recorded_at: "2026-07-01T07:04:48.438765Z"
+captured_at: "2026-07-01T07:04:48.438765Z"
+expires_at: "2026-07-31T07:04:48.438765Z"
+category: "public-read"
+sensitive: false
+requires_auth: false
+volatile_fields: []
+tolerance: {}
+source: "local-governance-generated"
+schema_version: "fixture-meta-v2"
+hash: "sha256:b348ff53bbb14c83ec1f66ba765d6349f039182328bc54057581631e9a5803b0"
+freshness_status: "fresh"
+review_status: "reviewed"
+notes: |
+  Local governance fixture generated on 2026-07-01 to validate active fixture freshness gates.
+  This is not a live third-party site capture and must not be used as website behavior evidence.

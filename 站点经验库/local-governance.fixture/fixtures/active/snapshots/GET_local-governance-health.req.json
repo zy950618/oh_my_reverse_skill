@@ -1,0 +1,13 @@
+{
+  "method": "GET",
+  "url": "local://oh-my-reverse-skill/governance/health",
+  "headers": {
+    "accept": "application/json"
+  },
+  "body": null,
+  "_meta": {
+    "host": "local-governance.fixture",
+    "path": "oh-my-reverse-skill/governance/health",
+    "body_encoding": "none"
+  }
+}

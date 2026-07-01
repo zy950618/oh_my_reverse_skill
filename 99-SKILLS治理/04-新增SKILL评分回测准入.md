@@ -40,16 +40,17 @@ tags:
 
 ## 评分维度
 
-| 维度 | 分值 | 检查点 |
+唯一评分口径见 `99-SKILLS治理/skill-score-rubric.yaml`。当前临时验收标准采用
+`score_skills.py / ci_gate.py` 的 100 分结构:
+
+| 类别 | 分值 | 子项 |
 |---|---:|---|
-| 结构有效性 | 15 | 标准目录、frontmatter、agents、references |
-| 触发准确性 | 15 | 中英文触发词、正例、负例、近似负例 |
-| 渐进披露 | 10 | `SKILL.md` 简洁，细节放 references |
-| 执行行为 | 15 | 不假设、不混淆边界、有成功标准 |
-| 回测覆盖 | 20 | eval 数量、criteria 可判定、回归场景 |
-| 经验沉淀 | 10 | site memory、known failures、change log |
-| CI/漂移 | 10 | GitHub CI 或本地回测流程 |
-| 可维护性 | 5 | 版本、变更、命名、可读性 |
+| structure | 25 | `SKILL.md`、frontmatter、`agents/openai.yaml`、references、eval layout、governance reference、maintainability |
+| operational | 25 | trigger clarity、workflow behavior、eval quality、routing boundaries、evidence write-back、real-task metrics |
+| consistency | 30 | active fixtures、active snapshot count、active expiry、active recent report、consistency rate |
+| drift | 20 | drift policy、regression coverage、version/change log、historical metrics |
+
+旧 8 维不再作为独立评分规则；它们只作为以上四类的子项解释。
 
 执行行为评分必须检查 AI 自理能力：
 

@@ -21,13 +21,13 @@ import subprocess
 import sys
 from pathlib import Path
 
-LAYER_MIN = {
-    "1-业务流程层": 70,
-    "2-JS逆向工具层": 15,
-    "4-通用规范层": 15,
-    "5-沉淀工具层": 70,
-    "6-验证码逆向层": 70,
-}
+from skill_score_config import load_skill_score_config
+
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+SCORE_CONFIG = load_skill_score_config(REPO_ROOT)
+LAYER_MIN = SCORE_CONFIG["layer_thresholds"]
+LAYER_GATE_MODES = SCORE_CONFIG["layer_gate_modes"]
 
 MIN_REPLAY_RATE = 0.90  # 任何 skill 的 applicable_domains 中若有 latest_rate < 0.90 则 fail
 
@@ -110,6 +110,69 @@ def run_public_range_evidence_gate(out_dir: Path) -> tuple[bool, str]:
     return result.returncode == 0, output.strip()
 
 
+def run_real_execution_proof_gate(out_dir: Path) -> tuple[bool, str]:
+    repo_root = out_dir.resolve().parent
+    script = repo_root / "tools" / "validate_real_execution_proof.py"
+    if not script.is_file():
+        return False, f"ERROR: missing real execution proof gate script: {script}"
+
+    result = subprocess.run(
+        [sys.executable, str(script), "--repo-root", str(repo_root)],
+        cwd=str(repo_root),
+        text=True,
+        capture_output=True,
+    )
+    output = (result.stdout or "") + (result.stderr or "")
+    return result.returncode == 0, output.strip()
+
+
+def run_business_data_gate(out_dir: Path) -> tuple[bool, str]:
+    repo_root = out_dir.resolve().parent
+    script = repo_root / "tools" / "validate_business_data_assertions.py"
+    if not script.is_file():
+        return False, f"ERROR: missing business data assertion gate script: {script}"
+
+    result = subprocess.run(
+        [sys.executable, str(script), "--repo-root", str(repo_root)],
+        cwd=str(repo_root),
+        text=True,
+        capture_output=True,
+    )
+    output = (result.stdout or "") + (result.stderr or "")
+    return result.returncode == 0, output.strip()
+
+
+def run_scope_contract_gate(out_dir: Path) -> tuple[bool, str]:
+    repo_root = out_dir.resolve().parent
+    script = repo_root / "tools" / "validate_scope_contract.py"
+    config = repo_root / "configs" / "range_scope_contract.yaml"
+    if not script.is_file():
+        return False, f"ERROR: missing scope contract gate script: {script}"
+    if not config.is_file():
+        return False, f"ERROR: missing scope contract config: {config}"
+
+    result = subprocess.run(
+        [sys.executable, str(script), "--config", str(config), "--repo-root", str(repo_root)],
+        cwd=str(repo_root),
+        text=True,
+        capture_output=True,
+    )
+    output = (result.stdout or "") + (result.stderr or "")
+    return result.returncode == 0, output.strip()
+
+
+def parse_gate_json(output: str) -> dict:
+    start = output.find("{")
+    end = output.rfind("}")
+    if start == -1 or end == -1 or end <= start:
+        return {}
+    try:
+        payload = json.loads(output[start:end + 1])
+    except Exception:
+        return {}
+    return payload if isinstance(payload, dict) else {}
+
+
 def run_fixture_freshness_report(out_dir: Path, strict_fresh: bool = False) -> tuple[bool, str]:
     repo_root = out_dir.resolve().parent
     script = repo_root / "tools" / "fixture_freshness_report.py"
@@ -152,6 +215,7 @@ def main():
 
     failures = []
     passed = []
+    advisory = []
     replay_failures = []
 
     for json_path in sorted(out_dir.glob("*.json")):
@@ -162,6 +226,7 @@ def main():
                 continue
             print(f"WARN: 未知层 {layer}, 跳过")
             continue
+        gate_mode = LAYER_GATE_MODES.get(layer, "active")
         with open(json_path, encoding="utf-8") as f:
             data = json.load(f)
         consistency_by_domain = data.get("consistency_by_domain", {})
@@ -169,6 +234,9 @@ def main():
             total, total_notes = structure_total(skill, data, threshold, args.release)
             raw_total = skill["scores"]["total"]
             name = skill["skill"]
+            if gate_mode in {"advisory", "experimental", "excluded"}:
+                advisory.append((layer, name, raw_total, total, threshold, gate_mode, total_notes))
+                continue
             if total < threshold:
                 failures.append((layer, name, raw_total, total, threshold, skill.get("gaps", []), total_notes))
             else:
@@ -195,6 +263,14 @@ def main():
         print(f"  PASS  {layer:25s} {name:40s} {raw_total:3d} / {threshold}{suffix}")
         for note in notes:
             print(f"        - {note}")
+
+    if advisory:
+        print(f"\n纳入但不作为 active gate ({len(advisory)}):")
+        for layer, name, raw_total, total, threshold, mode, notes in advisory:
+            suffix = f" effective={total:3d}" if total != raw_total else ""
+            print(f"  {mode.upper():8s} {layer:25s} {name:40s} {raw_total:3d} / {threshold}{suffix}")
+            for note in notes:
+                print(f"        - {note}")
 
     if failures:
         print(f"\n失败 ({len(failures)}):")
@@ -246,14 +322,70 @@ def main():
         print(f"{'!' * 70}")
         sys.exit(1)
 
-    public_range_ok, public_range_output = run_public_range_evidence_gate(out_dir)
-    print("\nPublic range evidence hard gate:")
-    print(public_range_output)
-    if not public_range_ok:
-        print(f"\n{'!' * 70}")
-        print("CI Gate failed: public range evidence freshness/acceptance/repeat hard gate did not pass")
-        print(f"{'!' * 70}")
-        sys.exit(1)
+    if args.release:
+        public_range_ok, public_range_output = run_public_range_evidence_gate(out_dir)
+        print("\nPublic range evidence hard gate:")
+        print(public_range_output)
+        if not public_range_ok:
+            print(f"\n{'!' * 70}")
+            print("CI Gate failed: public range evidence freshness/acceptance/repeat hard gate did not pass")
+            print(f"{'!' * 70}")
+            sys.exit(1)
+        public_range_payload = parse_gate_json(public_range_output)
+
+        real_execution_ok, real_execution_output = run_real_execution_proof_gate(out_dir)
+        print("\nReal execution proof gate:")
+        print(real_execution_output)
+        if not real_execution_ok:
+            print(f"\n{'!' * 70}")
+            print("CI Gate failed: real execution proof gate found invalid execution evidence")
+            print(f"{'!' * 70}")
+            sys.exit(1)
+        real_execution_payload = parse_gate_json(real_execution_output)
+        business_data_ok, business_data_output = run_business_data_gate(out_dir)
+        print("\nBusiness data assertion gate:")
+        print(business_data_output)
+        if not business_data_ok:
+            print(f"\n{'!' * 70}")
+            print("CI Gate failed: business data assertions did not pass")
+            print(f"{'!' * 70}")
+            sys.exit(1)
+        business_data_payload = parse_gate_json(business_data_output)
+
+        scope_contract_ok, scope_contract_output = run_scope_contract_gate(out_dir)
+        print("\nScope contract gate:")
+        print(scope_contract_output)
+        if not scope_contract_ok:
+            print(f"\n{'!' * 70}")
+            print("CI Gate failed: scope contract did not pass")
+            print(f"{'!' * 70}")
+            sys.exit(1)
+
+        print("\nFour-layer gate summary:")
+        print("  execution gate: validate_real_execution_proof.py")
+        print("  control-flow gate: validate_public_range_evidence.py control_flow_status")
+        print("  business-data gate: validate_business_data_assertions.py")
+        print("  capability gate: positive_allowed only after execution/control-flow plus either business-data pass or scope-limited solver/diagnostics gates")
+        print(
+            "  REAL_EXECUTION_PASS files are execution proof only; positive capability is counted only by "
+            "capability_status=positive_allowed after public-range, scope-contract, and applicable hard gates."
+        )
+        print(f"  real_execution_pass_count={real_execution_payload.get('real_execution_pass_count', 'unknown')}")
+        print(f"  control_flow_counts={real_execution_payload.get('control_flow_counts', {})}")
+        print(f"  business_data_pass_count={business_data_payload.get('business_data_pass_count', 'unknown')}")
+        print(f"  total_positive_count={public_range_payload.get('total_positive_count', 'unknown')}")
+        print(f"  positive_allowed_count={public_range_payload.get('positive_allowed_count', 'unknown')}")
+        print(f"  positive_candidate_count={public_range_payload.get('positive_candidate_count', 'unknown')}")
+        print(f"  positive_verified_count={public_range_payload.get('positive_verified_count', 'unknown')}")
+        print(f"  stable_positive_count={public_range_payload.get('stable_positive_count', 'unknown')}")
+        print(f"  negative_eval_only_count={real_execution_payload.get('negative_eval_only_count', 'unknown')}")
+    else:
+        print("\nRelease-only evidence gates: SKIPPED in default structure gate")
+        print("  skipped: validate_public_range_evidence.py")
+        print("  skipped: validate_real_execution_proof.py")
+        print("  skipped: validate_business_data_assertions.py")
+        print("  skipped: validate_scope_contract.py")
+        print("  run with --release to enforce public-range, execution-proof, business-data, scope-contract, and strict freshness gates")
 
     freshness_ok, freshness_output = run_fixture_freshness_report(out_dir, strict_fresh=args.release)
     freshness_label = "strict release gate" if args.release else "report-only for historical fixtures"
@@ -271,7 +403,11 @@ def main():
     if args.release:
         print(f"\nRelease Gate 通过: {len(passed)} 个 skill 达标且 strict freshness 通过")
     else:
-        print(f"\nStructure Gate 通过: {len(passed)} 个 skill 达标；release 前必须另跑 `python tools/ci_gate.py {out_dir} --release`")
+        print(
+            f"\nStructure Gate 通过: {len(passed)} 个 active skill 达标；"
+            f"{len(advisory)} 个 advisory/experimental/excluded skill 已纳入报告但不计 active gate；"
+            f"release 前必须另跑 `python tools/ci_gate.py {out_dir} --release`"
+        )
     sys.exit(0)
 
 

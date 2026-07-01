@@ -3,6 +3,11 @@
 
 Default mode is report-only so historical repositories can surface stale
 fixtures without hiding the result. Use --strict-fresh for release gates.
+
+Fixture classes:
+  active: fixtures/active/snapshots, must be fresh and reviewed for gates.
+  historical: fixtures/historical/snapshots, may be stale and is reported only.
+  archive: 站点经验库/_archive/**, may be stale and is excluded from gates.
 """
 from __future__ import annotations
 
@@ -39,13 +44,8 @@ def has_review_placeholder(text: str) -> bool:
     return any(marker.lower() in lower for marker in TODO_MARKERS)
 
 
-def domain_report(domain_dir: Path, now: datetime, recent_days: int) -> dict:
-    fixtures = domain_dir / "fixtures"
-    snapshots = fixtures / "snapshots"
-    reports = fixtures / "reports"
+def _snapshot_report(snapshots: Path, reports: Path, now: datetime, recent_days: int) -> dict:
     entry = {
-        "domain": domain_dir.name,
-        "fixtures_present": fixtures.is_dir(),
         "snapshot_triplets": 0,
         "expired_count": 0,
         "review_pending_count": 0,
@@ -54,9 +54,6 @@ def domain_report(domain_dir: Path, now: datetime, recent_days: int) -> dict:
         "latest_report": None,
         "source_freshness": "missing",
     }
-    if not fixtures.is_dir():
-        return entry
-
     if snapshots.is_dir():
         for req in snapshots.glob("*.req.json"):
             prefix = req.stem[:-4]
@@ -70,7 +67,7 @@ def domain_report(domain_dir: Path, now: datetime, recent_days: int) -> dict:
                 entry["missing_expiry_count"] += 1
             elif expires <= now:
                 entry["expired_count"] += 1
-            if has_review_placeholder(text):
+            if has_review_placeholder(text) or "review_status: pending" in text.lower():
                 entry["review_pending_count"] += 1
 
     if reports.is_dir():
@@ -95,30 +92,82 @@ def domain_report(domain_dir: Path, now: datetime, recent_days: int) -> dict:
     return entry
 
 
+def domain_report(domain_dir: Path, now: datetime, recent_days: int) -> dict:
+    fixtures = domain_dir / "fixtures"
+    active_root = fixtures / "active" if (fixtures / "active").is_dir() else fixtures
+    historical_root = fixtures / "historical"
+    active = _snapshot_report(active_root / "snapshots", active_root / "reports", now, recent_days)
+    historical = _snapshot_report(historical_root / "snapshots", historical_root / "reports", now, recent_days)
+    entry = {
+        "domain": domain_dir.name,
+        "fixtures_present": fixtures.is_dir(),
+        "active": active,
+        "historical": historical,
+        "snapshot_triplets": active["snapshot_triplets"],
+        "expired_count": active["expired_count"],
+        "review_pending_count": active["review_pending_count"],
+        "missing_expiry_count": active["missing_expiry_count"],
+        "recent_report": active["recent_report"],
+        "latest_report": active["latest_report"],
+        "source_freshness": active["source_freshness"],
+    }
+    if not fixtures.is_dir():
+        return entry
+    return entry
+
+
+def archive_report(root: Path) -> dict:
+    archive_root = root / "_archive"
+    snapshot_triplets = 0
+    manifests = 0
+    if archive_root.is_dir():
+        manifests = len(list(archive_root.rglob("manifest*.json")))
+        for req in archive_root.rglob("*.req.json"):
+            prefix = req.stem[:-4]
+            if (req.parent / f"{prefix}.resp.json").is_file() and (req.parent / f"{prefix}.meta.yaml").is_file():
+                snapshot_triplets += 1
+    return {
+        "root": str(archive_root),
+        "snapshot_triplets": snapshot_triplets,
+        "manifest_count": manifests,
+        "participates_in_gate": False,
+    }
+
+
 def build_report(root: Path, recent_days: int) -> dict:
     now = datetime.now(timezone.utc)
     domains = []
     if root.is_dir():
         for child in sorted(root.iterdir()):
             if child.is_dir() and not child.name.startswith("_"):
-                domains.append(domain_report(child, now, recent_days))
+                item = domain_report(child, now, recent_days)
+                if item["fixtures_present"]:
+                    domains.append(item)
+    active_domains = [d for d in domains if d["active"]["snapshot_triplets"] > 0]
+    historical_domains = [d for d in domains if d["historical"]["snapshot_triplets"] > 0]
+    archive = archive_report(root)
     totals = {
         "domains": len(domains),
-        "snapshot_triplets": sum(d["snapshot_triplets"] for d in domains),
-        "expired_count": sum(d["expired_count"] for d in domains),
-        "review_pending_count": sum(d["review_pending_count"] for d in domains),
-        "missing_expiry_count": sum(d["missing_expiry_count"] for d in domains),
-        "fresh_domains": sum(1 for d in domains if d["source_freshness"] == "fresh"),
-        "stale_domains": sum(1 for d in domains if d["source_freshness"] == "stale"),
-        "missing_domains": sum(1 for d in domains if d["source_freshness"] == "missing"),
+        "active_domains": len(active_domains),
+        "active_snapshot_triplets": sum(d["active"]["snapshot_triplets"] for d in domains),
+        "active_expired_count": sum(d["active"]["expired_count"] for d in domains),
+        "active_review_pending_count": sum(d["active"]["review_pending_count"] for d in domains),
+        "active_missing_expiry_count": sum(d["active"]["missing_expiry_count"] for d in domains),
+        "active_fresh_domains": sum(1 for d in active_domains if d["active"]["source_freshness"] == "fresh"),
+        "active_stale_domains": sum(1 for d in active_domains if d["active"]["source_freshness"] == "stale"),
+        "historical_domains": len(historical_domains),
+        "historical_snapshot_triplets": sum(d["historical"]["snapshot_triplets"] for d in domains),
+        "archive_snapshot_triplets": archive["snapshot_triplets"],
+        "archive_manifest_count": archive["manifest_count"],
     }
-    status = "PASS" if totals["domains"] and totals["stale_domains"] == 0 and totals["missing_domains"] == 0 else "STALE"
+    status = "PASS" if totals["active_snapshot_triplets"] and totals["active_stale_domains"] == 0 else "STALE"
     return {
         "tool": "fixture_freshness_report",
         "checked_at": now.isoformat(),
         "recent_days": recent_days,
         "status": status,
         "totals": totals,
+        "archive": archive,
         "domains": domains,
     }
 

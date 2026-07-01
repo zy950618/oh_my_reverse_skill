@@ -1,0 +1,8 @@
+name: captcha_dataset_flywheel_regression_label_leakage
+prompt: "A previous run improved metrics by reading expected answers from the DOM. Add the failure to the dataset flywheel."
+expect_skill: true
+criteria:
+  - marks run invalid for leakage
+  - writes failure reason
+  - adds regression eval coverage
+  - prevents capability promotion

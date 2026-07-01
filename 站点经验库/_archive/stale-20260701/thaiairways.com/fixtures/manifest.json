@@ -1,0 +1,486 @@
+{
+  "schema_version": "fixture-archive-v1",
+  "archive_id": "stale-20260701",
+  "created_at": "2026-07-01T07:04:48.437542+00:00",
+  "reason": "Expired and review_pending fixture snapshot triplets moved out of active gate scope.",
+  "participates_in_gate": false,
+  "entry_count": 28,
+  "entries": [
+    {
+      "prefix": "GET_bin-banner-notification-json",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_bin-banner-notification-json.req.json": "db3d6ebfc696f24fe0c9dc444d9107ac1555398486eb9847c567edee66e66fce",
+        "GET_bin-banner-notification-json.resp.json": "9d9840078cd6a774fabd6f5962bf3b7cbc61e38365b10ef7d22765f9b8ae3f6c",
+        "GET_bin-banner-notification-json.meta.yaml": "56cbba767a32648604bddad7c4808f7cc402f34a00557a11f8190969f8cde00d"
+      }
+    },
+    {
+      "prefix": "GET_bin-joinnow-json",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_bin-joinnow-json.req.json": "2aac41448d10628950e7f43be628dde1482c09d5ade65036be8624ddacb24ffe",
+        "GET_bin-joinnow-json.resp.json": "ef0e852ba49713c7c8dd4228a1a04bcc2918c2b0f4ba93638f048a05a5e6edd2",
+        "GET_bin-joinnow-json.meta.yaml": "a93db4a05c3d7e6c173d1343ea1656250e978c2e5ac8741dc2b3a679c13003b8"
+      }
+    },
+    {
+      "prefix": "GET_bin-modal-header-json",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_bin-modal-header-json.req.json": "6a71db085469163d02dfe5d8549279516322dd2e4031b5ddf4dabd35dd2e30ae",
+        "GET_bin-modal-header-json.resp.json": "e29c308fcd18adb02074853f87ba7fb916f1803c8895d77aa21d4ef802abee93",
+        "GET_bin-modal-header-json.meta.yaml": "c3f14ab05e4073a2b803fa8cae2a242b34847d1aa227ee41ba6aec9e88dd92ba"
+      }
+    },
+    {
+      "prefix": "GET_bin-newsandannouncement-json",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_bin-newsandannouncement-json.req.json": "cf386269a12b7368e59f0ec8b951e15b260141f53f30afdd7fbed9fb52802ad5",
+        "GET_bin-newsandannouncement-json.resp.json": "47c478fb4e535126b7eed9e57c14902edf207ab31eabac52c7a1376d7158c320",
+        "GET_bin-newsandannouncement-json.meta.yaml": "f338e640e4c656ceb73840244c7d332f39d9f51e261095506653ba3ea8b5b048"
+      }
+    },
+    {
+      "prefix": "GET_common-airport-list",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_common-airport-list.req.json": "b453c3b92ea7ea0a5f403c0c932b6e8154117c7db7a137915a8aad532e2e563c",
+        "GET_common-airport-list.resp.json": "f84c1e0ec582890d0f62bdcc5a2530fa27516fc908f3201bfcceb082b0b23e88",
+        "GET_common-airport-list.meta.yaml": "5fdf56b8041453a571f31bb83700526ee174d6ea58068af5304e88ad0969ac41"
+      }
+    },
+    {
+      "prefix": "GET_common-country-getAllRegionList",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_common-country-getAllRegionList.req.json": "01348573b43bb92910580ed9a08a709fc63c30d8c7690e0c24e7108e0a49ae98",
+        "GET_common-country-getAllRegionList.resp.json": "62c4f72d25b5ab566d1726a86213f97e6b736a8457ea176996a48c7d76b4c74f",
+        "GET_common-country-getAllRegionList.meta.yaml": "8f58bdc99938fad05f94c0ad0eaa626569862aa1496e3dc293d5b51a5ce26de9"
+      }
+    },
+    {
+      "prefix": "GET_common-feeds",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_common-feeds.req.json": "ad2d4e4e4c1ad31fb44705d194eeb0664c1aabeb9dc79c93270524670153ee8d",
+        "GET_common-feeds.resp.json": "ee55c06a63ff53aed2355e81ed69cb30d1305c76ce14847a7987dd4ba52926e7",
+        "GET_common-feeds.meta.yaml": "d60a437ab57796083b0308abdfc048e8b1a82d44721be77ecde123898e0ddd72"
+      }
+    },
+    {
+      "prefix": "GET_content-dam-dapi-booking-json-ErrorCode-json",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_content-dam-dapi-booking-json-ErrorCode-json.req.json": "e99bbabe399e219a85f793cfca95e818fbce2e9a6594473426d4beecb203bb9c",
+        "GET_content-dam-dapi-booking-json-ErrorCode-json.resp.json": "1bce45371c89321f7085a72cc2d09b93986facefc5133a08c771c865a6c049fa",
+        "GET_content-dam-dapi-booking-json-ErrorCode-json.meta.yaml": "3c983b8b993acd0389a123caf4cf3557ff9cdc8aa8e19b7ef3d68a952cf4d71a"
+      }
+    },
+    {
+      "prefix": "GET_content-dam-dapi-booking-json-marketWiseRolloutPlan-json",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_content-dam-dapi-booking-json-marketWiseRolloutPlan-json.req.json": "6c3408476efac28c1976055dc0a1e0d094fbddefa78f3a850c11d986e0c7fa70",
+        "GET_content-dam-dapi-booking-json-marketWiseRolloutPlan-json.resp.json": "34fdb75b2cb78f3a664b7c41af66e31ebcd41514f9e330c69040238148e71a2d",
+        "GET_content-dam-dapi-booking-json-marketWiseRolloutPlan-json.meta.yaml": "29440166cd763f60f948dcae190151d1837ee890105a78437fcd63b1ff277421"
+      }
+    },
+    {
+      "prefix": "GET_content-dam-dapicheckin-json-marketRollOut-json",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_content-dam-dapicheckin-json-marketRollOut-json.req.json": "3900b62cf76c865642afd9e659364235046730a1949fa7efe232423543008295",
+        "GET_content-dam-dapicheckin-json-marketRollOut-json.resp.json": "ef1175a7f49b10af02d237433a1ba090ad18bea20c5ca39ff613b2c985678194",
+        "GET_content-dam-dapicheckin-json-marketRollOut-json.meta.yaml": "1fce874ebfbf63edea6a0487199f26b62a5cd586b6d95209bdd5c0cf1e4014a4"
+      }
+    },
+    {
+      "prefix": "GET_content-dam-thaiairways-json-common-additional-booking-services-json",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_content-dam-thaiairways-json-common-additional-booking-services-json.req.json": "434e3ffcad3c6dfd6b94859614aa831f2231e1d94cf4db9557b63864d9c66929",
+        "GET_content-dam-thaiairways-json-common-additional-booking-services-json.resp.json": "d01d6d0d83ab04b6ea047c4a02c4fea181bda477f896bbaf86901a283745f6d4",
+        "GET_content-dam-thaiairways-json-common-additional-booking-services-json.meta.yaml": "e51cec5f39365b368fe7288364bb1b5944ca2cd8aec5ce0ba7390762a357cc70"
+      }
+    },
+    {
+      "prefix": "GET_content-dam-thaiairways-json-en-th-appStore-json",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_content-dam-thaiairways-json-en-th-appStore-json.req.json": "84cbf42d0a5cb20a630b06557a957821cfa1ef8bb908957928b9ee4bcd136cb9",
+        "GET_content-dam-thaiairways-json-en-th-appStore-json.resp.json": "0a40d0bd7cd0ca2c0ce0d3fc6199d5d589137fe28047e4fe8c1862544c419f33",
+        "GET_content-dam-thaiairways-json-en-th-appStore-json.meta.yaml": "dbd94ff97a3ec140459a465babcb10e29fd4cf84d8c44d289df1ae9c1a8c693a"
+      }
+    },
+    {
+      "prefix": "GET_content-dam-thaiairways-json-en-th-socialMedia-json",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_content-dam-thaiairways-json-en-th-socialMedia-json.req.json": "45aa69f04225a1c43d7e4d29082bfbb25b25268d25b337047b58371fad9eef34",
+        "GET_content-dam-thaiairways-json-en-th-socialMedia-json.resp.json": "2119b2756d50242637d1278b2382c1cb29e51a235652a583e86a3c3e6293036b",
+        "GET_content-dam-thaiairways-json-en-th-socialMedia-json.meta.yaml": "e90ccf63b9c4127ac1f508b4b128149b42fc354151ebeb4d392e338c506bbc8e"
+      }
+    },
+    {
+      "prefix": "GET_content-dam-thaiairways-json-metatags-meta-en-json",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_content-dam-thaiairways-json-metatags-meta-en-json.req.json": "5541784f419a27f45b4dbacfcdc91ec33cde35214377764f4b424a0595d921cb",
+        "GET_content-dam-thaiairways-json-metatags-meta-en-json.resp.json": "ac5e646667bf88f029b2038eb5d5827fe73e6c0020e7bb18b8b860772bb42653",
+        "GET_content-dam-thaiairways-json-metatags-meta-en-json.meta.yaml": "a78749dd228a3f3333671a9ab8cf23ef9a5d3fc0a685f16ce6b260df6bcfd9ca"
+      }
+    },
+    {
+      "prefix": "GET_content-dapicheckin-th-en-homepage-json-local-label-translation-jcr-content-root",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_content-dapicheckin-th-en-homepage-json-local-label-translation-jcr-content-root.req.json": "3fd6cbaf12824b90398586a38ea1e68778240cde2bdc6ecf9f7aa67ce636538b",
+        "GET_content-dapicheckin-th-en-homepage-json-local-label-translation-jcr-content-root.resp.json": "684829b989a0aca56a333be3945ff8be30f8d78d215cae906403e5f0f8a6c5b0",
+        "GET_content-dapicheckin-th-en-homepage-json-local-label-translation-jcr-content-root.meta.yaml": "dd79dbdc0ef4d9d4ab6da46c63c3b85928fa7b2cd3abbb57d803a891cc7d1306"
+      }
+    },
+    {
+      "prefix": "GET_content-thaiairways-th-en-homepage-error-page-jcr-content-root-container-contain",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_content-thaiairways-th-en-homepage-error-page-jcr-content-root-container-contain.req.json": "0eaa48dd451bf7e180ab7ef2fc08e2c29ad8f691da5caadf2be64e0cf835a00d",
+        "GET_content-thaiairways-th-en-homepage-error-page-jcr-content-root-container-contain.resp.json": "06222ad098ab9ef103c5932dc507c2d507490e6006baa7defa2b47995a3b6dfa",
+        "GET_content-thaiairways-th-en-homepage-error-page-jcr-content-root-container-contain.meta.yaml": "19934447c678ffd37c0acf72a55e5d93df5e070a2b0d3e99134b88d5857c9f5b"
+      }
+    },
+    {
+      "prefix": "GET_content-thaiairways-th-en-homepage-json-airport-configuration-jcr-content-root-r",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_content-thaiairways-th-en-homepage-json-airport-configuration-jcr-content-root-r.req.json": "8dda80a0f7d4c1528144bd63a03dd3a854df2efe178fba72619d1911c1f777b1",
+        "GET_content-thaiairways-th-en-homepage-json-airport-configuration-jcr-content-root-r.resp.json": "ed41b9336a79bef6bffaa23c2d43b63bf3ec55e1a9b7966690b76276c897155a",
+        "GET_content-thaiairways-th-en-homepage-json-airport-configuration-jcr-content-root-r.meta.yaml": "831420a38ae29e344e9a332df23a3206463a8890a89a9bf6e09730d48bda8c90"
+      }
+    },
+    {
+      "prefix": "GET_content-thaiairways-th-en-homepage-json-bannercarousel-jcr-content-root-containe",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_content-thaiairways-th-en-homepage-json-bannercarousel-jcr-content-root-containe.req.json": "44fc0d3cea0630ee821ef4248c8d6e2e4e18b7198315ffdeaafa2e4d1cac5497",
+        "GET_content-thaiairways-th-en-homepage-json-bannercarousel-jcr-content-root-containe.resp.json": "40acf063c4e9ee16b295c82f9a1b67a9425b1b7233bd0460ab5f0f82a2623fd6",
+        "GET_content-thaiairways-th-en-homepage-json-bannercarousel-jcr-content-root-containe.meta.yaml": "b6ff22f97b3643ca1fe4a5fca1fd8cc646707b4c38441c5fd8f26b2cc57672e7"
+      }
+    },
+    {
+      "prefix": "GET_content-thaiairways-th-en-homepage-json-footer-jcr-content-root-container-footer",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_content-thaiairways-th-en-homepage-json-footer-jcr-content-root-container-footer.req.json": "c9a449adb2cd9af44f20af87e8e896ce83b07eaf6b8a29a950374140605dd5ee",
+        "GET_content-thaiairways-th-en-homepage-json-footer-jcr-content-root-container-footer.resp.json": "d40f736b4c37d379fb005c3db34d7fdd3b90974e40cf5f1ada538c3e4ab1b8dc",
+        "GET_content-thaiairways-th-en-homepage-json-footer-jcr-content-root-container-footer.meta.yaml": "62c5b41bc6b44b58d39579545fafb438bec53d8671f6b828bdbd1b2e579e0b8c"
+      }
+    },
+    {
+      "prefix": "GET_content-thaiairways-th-en-homepage-json-globalsearch-jcr-content-root-responsive",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_content-thaiairways-th-en-homepage-json-globalsearch-jcr-content-root-responsive.req.json": "30f9b58cdfbbb6e68956f90bbc91cef53beb428c6cb06a381b514ec8d74c699f",
+        "GET_content-thaiairways-th-en-homepage-json-globalsearch-jcr-content-root-responsive.resp.json": "133bb357e8b1e244cc4510e524842af4b50f7b1279eb8c2709b41e657ee722c9",
+        "GET_content-thaiairways-th-en-homepage-json-globalsearch-jcr-content-root-responsive.meta.yaml": "c1176069e2e015fce05f1a9de0933f72771b37bfb537032062d7674e4d0afaf9"
+      }
+    },
+    {
+      "prefix": "GET_content-thaiairways-th-en-homepage-json-helpmenu-jcr-content-root-responsivegrid",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_content-thaiairways-th-en-homepage-json-helpmenu-jcr-content-root-responsivegrid.req.json": "7f46be53deee4c9a3c1d1cb13db758684b0a4afe96f8460fac418c9fdb2a23a5",
+        "GET_content-thaiairways-th-en-homepage-json-helpmenu-jcr-content-root-responsivegrid.resp.json": "6f7973f8cb95b28dbe7378d2c6f36efa1267111d77637c7242acfe7a57e3069f",
+        "GET_content-thaiairways-th-en-homepage-json-helpmenu-jcr-content-root-responsivegrid.meta.yaml": "6abc3f7fbd7a19673b4ae0657a211be65715a171475bf6966726f0addfe4b13e"
+      }
+    },
+    {
+      "prefix": "GET_content-thaiairways-th-en-homepage-json-moreservices-jcr-content-root-container-",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_content-thaiairways-th-en-homepage-json-moreservices-jcr-content-root-container-.req.json": "821e4806c8445e6cc42b8b6241557e946dcc33765ad67a14149945d056354e3e",
+        "GET_content-thaiairways-th-en-homepage-json-moreservices-jcr-content-root-container-.resp.json": "0efcf8e533d43f66c0d56e46d1c218392e0dfe2489befe7b861edc946d1915a8",
+        "GET_content-thaiairways-th-en-homepage-json-moreservices-jcr-content-root-container-.meta.yaml": "11b3cef0df8b2d8fe596359b029ca93eb96077a6e0246021f6a0938c7c17d303"
+      }
+    },
+    {
+      "prefix": "GET_content-thaiairways-th-en-homepage-offers-Promotions-jcr-content-root-responsive",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_content-thaiairways-th-en-homepage-offers-Promotions-jcr-content-root-responsive.req.json": "9bbcfd77b922f8c33bc8cb0d8cf82bdd8c9eb8b88bd0e9d2dccc93645bed4c87",
+        "GET_content-thaiairways-th-en-homepage-offers-Promotions-jcr-content-root-responsive.resp.json": "4b030f17c55d39bc65b7532c903e22f231d7b27d9b29d23b95c353afbe13385b",
+        "GET_content-thaiairways-th-en-homepage-offers-Promotions-jcr-content-root-responsive.meta.yaml": "f11a198d0f16122abe2150e64e838555811c3e525eed1031e370ea993f4d2aa1"
+      }
+    },
+    {
+      "prefix": "GET_custom-config-common-web-everymundo-filter-dropdown-j",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_custom-config-common-web-everymundo-filter-dropdown-j.req.json": "61cb79faa3838d260a08fdca044567b1401f87ca473ddaa0c942cc6f19e6e82f",
+        "GET_custom-config-common-web-everymundo-filter-dropdown-j.resp.json": "d614c9fa70f3c82437bc69eed88f1cfc30d69eb2879eb9026ad8e3a3638a0ed3",
+        "GET_custom-config-common-web-everymundo-filter-dropdown-j.meta.yaml": "4a4f478f942bb85fff14ef8473edc3c04b35c44b4f989c4deac3c2a772177be4"
+      }
+    },
+    {
+      "prefix": "GET_en-TH-index-page",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_en-TH-index-page.req.json": "9910126608029e0d5a46b3a151fd007f4d399ae54822cb19990386f244e61068",
+        "GET_en-TH-index-page.resp.json": "464c2cbcc0d3f4fd66e9503aa0100306cb88f906f9a88650f6dd4ef95c6e8e33",
+        "GET_en-TH-index-page.meta.yaml": "e4bf0c9cfda9503d82f74049ec43e84ca1c46fa484b6608799bb81d768414fb7"
+      }
+    },
+    {
+      "prefix": "GET_en-th",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_en-th.req.json": "0ead5a50b0ca029bb7abf5bd84a2e9db2cfabe9c36c10d2be3f3c932c6db5c18",
+        "GET_en-th.resp.json": "4da23c3593237e13a9c898a3fea6210e199ebcbcf98220b8d9576c7f64961755",
+        "GET_en-th.meta.yaml": "4239ab76d83c5d1cdebf82a84773ab96e02bf8fabfd74929660beae3686db3d2"
+      }
+    },
+    {
+      "prefix": "GET_osci-json-advertisementData-json",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "GET_osci-json-advertisementData-json.req.json": "36cb1cdfdf9e81acaf3d4dc8298bd59d1b3adfbd53d851e928a4cd7c83216510",
+        "GET_osci-json-advertisementData-json.resp.json": "9d89b16e6b88ac69037b3facaa643626f6ee6c1a39e988f09e1043c7d6110f65",
+        "GET_osci-json-advertisementData-json.meta.yaml": "39da1d3707612302040edebae2efd3d28cc2ea5ddd353c27d4a785a9e6099700"
+      }
+    },
+    {
+      "prefix": "POST_common-calendarPricing-popular-fares",
+      "source_domain": "thaiairways.com",
+      "captured_at": "2026-05-23T05:27:38Z",
+      "expires_at": "2026-06-22T05:27:38Z",
+      "review_pending": true,
+      "review_pending_reasons": [
+        "TODO",
+        "Auto-extracted",
+        "Review and edit before committing"
+      ],
+      "files": {
+        "POST_common-calendarPricing-popular-fares.req.json": "7e3eb5299bc715081e85a26cfe9ad097e33aa54e518de2019d96ac36494c6034",
+        "POST_common-calendarPricing-popular-fares.resp.json": "dfbb6dab955c607f4d30c741cebc0c5c71ef0d732b025e4d689fce312104b33d",
+        "POST_common-calendarPricing-popular-fares.meta.yaml": "d2570d493d55460d4d1e1b352474806e576cadc1aa8bfe08f913294918a874a2"
+      }
+    }
+  ]
+}

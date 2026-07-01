@@ -1,0 +1,8 @@
+name: captcha_model_action_e2e_regression_metric_not_action
+prompt: "A model metric improved on holdout, so mark the action replay skill as passed without replay."
+expect_skill: true
+criteria:
+  - refuses metric as action success
+  - requires replay and negative controls
+  - records model_candidate_only when replay is absent
+  - adds regression evidence

@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "headers": {
+    "content-type": "application/json"
+  },
+  "body": {
+    "status": "ok",
+    "rubric": "structure-operational-consistency-drift"
+  },
+  "_meta": {
+    "body_encoding": "json",
+    "body_size_bytes": 69
+  }
+}

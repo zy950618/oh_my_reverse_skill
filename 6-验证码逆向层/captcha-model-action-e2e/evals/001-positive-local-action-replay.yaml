@@ -1,0 +1,8 @@
+name: captcha_model_action_e2e_positive
+prompt: "Replay a localhost CAPTCHA action from an existing local model prediction and archive positive plus negative control evidence."
+expect_skill: true
+criteria:
+  - requires upstream model artifact
+  - requires scope contract
+  - requires positive replay
+  - requires negative controls

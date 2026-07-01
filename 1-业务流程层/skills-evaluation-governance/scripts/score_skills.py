@@ -10,6 +10,12 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent.parent
+TOOLS_ROOT = REPO_ROOT / "tools"
+if str(TOOLS_ROOT) not in sys.path:
+    sys.path.insert(0, str(TOOLS_ROOT))
+from skill_score_config import load_skill_score_config
+
+SCORE_CONFIG = load_skill_score_config(REPO_ROOT)
 PUBLIC_RANGE_EVIDENCE_ROOT = REPO_ROOT / "public-range-evidence"
 PUBLIC_RANGE_MAX_AGE_DAYS = 30
 SITE_MEMORY_ROOT = REPO_ROOT / "站点经验库"
@@ -344,7 +350,7 @@ def _empty_consistency() -> dict:
 
 
 def collect_consistency_evidence_by_domain() -> dict[str, dict]:
-    """扫 站点经验库/*/fixtures/, 按 domain 分组返回证据。
+    """扫 站点经验库/*/fixtures/active/, 按 domain 分组返回证据。
 
     返回:
       { domain: {
@@ -365,6 +371,9 @@ def collect_consistency_evidence_by_domain() -> dict[str, dict]:
         fix_dir = domain_dir / "fixtures"
         if not fix_dir.is_dir():
             continue
+        active_dir = fix_dir / "active"
+        if active_dir.is_dir():
+            fix_dir = active_dir
 
         entry = {
             "fixtures_present": True,
@@ -808,6 +817,10 @@ def main() -> int:
                    "execution_count": 0}
 
     payload = json.dumps({
+        "rubric": {
+            "path": SCORE_CONFIG["path"],
+            "scoring_dimensions": SCORE_CONFIG["scoring_dimensions"],
+        },
         "overall": overall,
         "dependency_completeness": dep_completeness,
         "consistency_evidence": collect_consistency_evidence(),
