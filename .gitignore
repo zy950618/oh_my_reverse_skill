@@ -132,6 +132,7 @@ datasets/**/checkpoints/
 public-range-labs/vendor/OpenCaptchaWorld/
 public-range-labs/vendor/go-captcha-example/
 public-range-labs/vendor/go-captcha-service/
+authorized-live-tests/authorized-live-targets.local.yaml
 *.pt
 *.pth
 *.onnx

@@ -1,0 +1,31 @@
+targets:
+  - id: example-airline-readonly
+    name: Example Airline Readonly
+    domain: example.com
+    authorization_level: authorized_readonly
+    owner: user-provided
+    evidence_source: user_provided
+    allowed_actions:
+      - open_page
+      - capture_network_inventory
+      - detect_challenge_state
+      - run_readonly_query
+    forbidden_actions:
+      - production_order_create
+      - production_payment
+      - inventory_lock
+      - high_frequency_requests
+      - credential_reuse
+    rate_limit:
+      requests_per_minute: 5
+      max_total_requests: 30
+    credentials:
+      mode: env
+      env_prefix: TARGET_EXAMPLE
+    redaction:
+      redact_cookie: true
+      redact_token: true
+      redact_pii: true
+      redact_order_id: true
+    output:
+      report_dir: authorized-live-tests/reports/example-airline-readonly/

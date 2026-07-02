@@ -1,0 +1,30 @@
+# Schema for authorized live test targets.
+required_top_level: targets
+required_target_fields:
+  - id
+  - name
+  - domain
+  - authorization_level
+  - owner
+  - evidence_source
+  - allowed_actions
+  - forbidden_actions
+  - rate_limit
+  - credentials
+  - redaction
+  - output
+allowed_authorization_levels:
+  - observation_only
+  - authorized_readonly
+  - authorized_sandbox_mutation
+  - authorized_fullflow
+forbidden_committed_fields:
+  - real_cookie
+  - real_token
+  - real_har
+  - cookie
+  - token
+  - har
+  - account_password
+  - passenger_info
+  - payment_info
