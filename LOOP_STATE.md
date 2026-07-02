@@ -28,3 +28,17 @@ cleanup: PASS
 artifact_reference: PASS
 sensitive_scan: PASS
 large_artifact_scan: PASS
+
+## Continuous Supervisor
+
+status: AUTHORIZED_LIVE_READINESS_READY
+branch: feature/authorized-live-readonly-tests
+base_phase4_commit: 75f5d14
+continuous_validate_rounds: 3 / 3 PASS
+local_auth_config_exists: YES
+local_auth_config_ignored: YES
+observation_execute: NOT_RUN_FLAG_DISABLED
+readonly_execute: NOT_RUN_FLAG_DISABLED
+live_website_execution: NOT_RUN
+raw_live_evidence_committed: NO
+local_auth_config_committed: NO
