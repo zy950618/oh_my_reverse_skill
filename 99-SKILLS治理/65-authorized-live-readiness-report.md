@@ -2,9 +2,11 @@
 
 branch: feature/authorized-live-readonly-tests
 
-current_commit: 75f5d14
+baseline_commit_before_readiness_report: 75f5d14
 
-remote_branch: pending push
+readiness_commit: 5a0e871
+
+remote_branch: origin/feature/authorized-live-readonly-tests
 
 PR URL: https://github.com/zy950618/oh_my_reverse_skill/pull/new/feature/phase4-labs-live-tests
 
