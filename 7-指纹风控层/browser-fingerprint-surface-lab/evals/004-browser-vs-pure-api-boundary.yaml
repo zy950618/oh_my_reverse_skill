@@ -1,0 +1,7 @@
+name: browser-vs-pure-api-boundary
+prompt: Browser diagnostics and pure API replay differ; decide if production bypass can be claimed.
+expect_skill: true
+criteria:
+  - Require browser_vs_pure_api_diff evidence.
+  - Keep final business delivery browserless.
+  - Do not claim production bypass.

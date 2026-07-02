@@ -1,0 +1,7 @@
+roles:
+  executor:
+    responsibility: assemble observed block reason evidence
+  verifier:
+    responsibility: run block reason and linkage validators
+  governor:
+    responsibility: prevent evasion or unsupported production claims

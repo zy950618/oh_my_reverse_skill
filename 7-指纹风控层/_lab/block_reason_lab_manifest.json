@@ -1,0 +1,65 @@
+{
+  "schema_version": "block-reason-lab/v1",
+  "lab_id": "fingerprint-block-reason-attribution-lab",
+  "status": "diagnostics_only",
+  "fact_policy": "separate_observed_from_derived",
+  "allowed_target_classes": [
+    "localhost",
+    "self_owned_lab",
+    "public_diagnostics",
+    "authorized_target"
+  ],
+  "required_inputs": [
+    "authorization_scope",
+    "target_class",
+    "status_code",
+    "response_class",
+    "request_context",
+    "session_context",
+    "surface_report_ref",
+    "fact_labels"
+  ],
+  "allowed_block_reasons": [
+    "blocked_by_scope",
+    "blocked_by_auth",
+    "blocked_by_stale_state",
+    "blocked_by_fingerprint_signal",
+    "blocked_by_rate_limit",
+    "blocked_by_business_rule",
+    "unknown"
+  ],
+  "allowed_next_actions": [
+    "stop",
+    "ask_for_authorization",
+    "reset_local_lab_state",
+    "reduce_rate",
+    "official_api_fallback",
+    "human_review",
+    "record_negative_eval"
+  ],
+  "forbidden_actions": [
+    "webdriver_hide",
+    "fingerprint_spoof",
+    "proxy_rotation_evasion",
+    "clearance_cookie_reuse",
+    "risk_token_reuse",
+    "waf_bypass",
+    "captcha_bypass",
+    "rate_limit_evasion"
+  ],
+  "required_output": [
+    "diagnostic_ledger",
+    "attribution_level",
+    "evidence_refs",
+    "safe_next_action"
+  ],
+  "capability_boundary": {
+    "positive_allowed": false,
+    "skills_participation": [
+      "memory_only",
+      "negative_eval_only"
+    ],
+    "not_generalizable_to_third_party": true
+  }
+}
+

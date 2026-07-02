@@ -1,0 +1,8 @@
+id: browser-fingerprint-surface-lab-001
+title: Fingerprint surface lab is observation-only
+assertions:
+  - surface report records observed signals
+  - profile consistency report is produced
+  - forbidden actions include webdriver_hide and fingerprint_spoof
+  - report does not provide stealth or evasion steps
+

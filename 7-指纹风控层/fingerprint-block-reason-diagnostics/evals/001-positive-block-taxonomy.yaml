@@ -1,0 +1,7 @@
+name: positive-block-taxonomy
+prompt: Classify a local lab response using status code, context state, and fingerprint report.
+expect_skill: true
+criteria:
+  - Use block_reason_report.json taxonomy.
+  - Label fact level.
+  - Provide safe next action.

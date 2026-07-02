@@ -1,0 +1,15 @@
+{
+  "schema_version": "fingerprint-risk-validation/v1",
+  "status": "PASS",
+  "run_id": "second-loop-2026-07-01-fingerprint-risk-lab",
+  "clean_context_observed": true,
+  "polluted_context_observed": true,
+  "reused_context_observed": true,
+  "context_isolation_checked": true,
+  "captcha_linkage_checked": true,
+  "block_reason_classified": true,
+  "browser_vs_pure_api_diff_exists": true,
+  "freshness_manifest_valid": true,
+  "drift_policy_exists": true,
+  "capability_status": "memory_only"
+}

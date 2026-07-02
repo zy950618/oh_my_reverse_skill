@@ -1,0 +1,78 @@
+{
+  "schema_version": "fingerprint-surface-lab/v1",
+  "lab_id": "fingerprint-surface-observation-lab",
+  "status": "observation_only",
+  "fact_policy": "observed_derived_assumed_unverified_required",
+  "allowed_target_classes": [
+    "localhost",
+    "self_owned_lab",
+    "public_diagnostics",
+    "authorized_target"
+  ],
+  "allowed_actions": [
+    "surface_inventory",
+    "surface_hash",
+    "profile_consistency",
+    "drift_report",
+    "screenshot_capture",
+    "network_summary",
+    "memory_only",
+    "negative_eval_only"
+  ],
+  "forbidden_actions": [
+    "webdriver_hide",
+    "fingerprint_spoof",
+    "proxy_rotation_evasion",
+    "clearance_cookie_reuse",
+    "risk_token_reuse",
+    "waf_bypass",
+    "captcha_bypass",
+    "unauthorized_challenge_processing"
+  ],
+  "required_surfaces": [
+    "navigator.webdriver",
+    "navigator.userAgent",
+    "navigator.platform",
+    "navigator.languages",
+    "navigator.plugins",
+    "hardwareConcurrency",
+    "deviceMemory",
+    "screen",
+    "timezone",
+    "locale",
+    "canvas",
+    "webgl",
+    "audio",
+    "fonts",
+    "permissions",
+    "webrtc",
+    "clientHints",
+    "networkTiming",
+    "storageState"
+  ],
+  "evidence_requirements": {
+    "scope": [
+      "target_class",
+      "authorization_scope",
+      "profile_id",
+      "repeat_count"
+    ],
+    "artifacts": [
+      "surface_report",
+      "surface_hash",
+      "drift_count",
+      "fact_labels"
+    ],
+    "minimum_repeat_count_for_consistency": 3,
+    "minimum_profile_count_for_consistency": 2
+  },
+  "capability_boundary": {
+    "positive_allowed": false,
+    "skills_participation": [
+      "memory_only",
+      "negative_eval_only"
+    ],
+    "not_generalizable_to_third_party": true
+  }
+}
+

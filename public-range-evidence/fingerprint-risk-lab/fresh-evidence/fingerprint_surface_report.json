@@ -1,0 +1,26 @@
+{
+  "schema_version": "fingerprint-surface-report/v1",
+  "run_id": "second-loop-2026-07-01-fingerprint-risk-lab",
+  "source_freshness": "fresh",
+  "clean_context_observed": true,
+  "polluted_context_observed": true,
+  "reused_context_observed": true,
+  "surfaces": [
+    "navigator.webdriver",
+    "userAgent",
+    "viewport",
+    "timezone",
+    "language",
+    "platform",
+    "hardwareConcurrency",
+    "deviceMemory",
+    "canvas_surface",
+    "webgl_surface",
+    "audio_context_surface",
+    "cookie_storage_state",
+    "local_storage_state",
+    "session_storage_state"
+  ],
+  "forbidden_actions_absent": true,
+  "capability_status": "memory_only"
+}

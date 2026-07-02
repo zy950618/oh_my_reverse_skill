@@ -1,0 +1,107 @@
+{
+  "schema_version": "public-range-evidence/v1",
+  "run_id": "run-20260701-phase4a-smoke",
+  "capture_id": "cap-run-20260701-phase4a-smoke-sannysoft",
+  "captured_at": "2026-07-01T01:40:27.013544+00:00",
+  "source_freshness": "fresh",
+  "execution_status": "REAL_EXECUTION_PASS",
+  "control_flow_status": "CONTROL_FLOW_PASS",
+  "business_data_status": "NOT_RUN",
+  "capability_status": "memory_only",
+  "target": {
+    "id": "fingerprint-diagnostics",
+    "name": "Public fingerprint diagnostics - sannysoft",
+    "url": "https://bot.sannysoft.com/",
+    "host": "bot.sannysoft.com",
+    "type": "bot_signal_diagnostics",
+    "authorization_scope": "Observation-only public diagnostics page; no evasion or bypass."
+  },
+  "skills": [
+    "browser-fingerprint-surface-lab",
+    "fingerprint-block-reason-diagnostics"
+  ],
+  "execution_proof": {
+    "command": "python tools\\fingerprint_range_runner.py --target sannysoft --run-id run-20260701-phase4a-smoke --repeat 1 --profiles 1",
+    "cwd": "E:\\SKILLS\\oh_my_reverse_skill",
+    "exit_code": 0,
+    "started_at": "2026-07-01T01:39:49.661207+00:00",
+    "ended_at": "2026-07-01T01:40:27.013544+00:00",
+    "stdout_log": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\fingerprint-diagnostics\\run-20260701-phase4a-smoke\\sannysoft\\fingerprint-range-runner.stdout.log",
+    "stderr_log": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\fingerprint-diagnostics\\run-20260701-phase4a-smoke\\sannysoft\\fingerprint-range-runner.stderr.log",
+    "screenshot_paths": [
+      "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\fingerprint-diagnostics\\run-20260701-phase4a-smoke\\sannysoft\\fingerprint-page-profile1-repeat1.png"
+    ],
+    "network_summary_paths": [
+      "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\fingerprint-diagnostics\\run-20260701-phase4a-smoke\\sannysoft\\fingerprint-network-summary.json"
+    ],
+    "browser_trace_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\fingerprint-diagnostics\\run-20260701-phase4a-smoke\\sannysoft\\fingerprint-trace.zip",
+    "generated_by": "tools/fingerprint_range_runner.py",
+    "synthetic": false
+  },
+  "scope_decision": {
+    "target_id": "fingerprint-diagnostics",
+    "scope_type": "public_diagnostics",
+    "authorization": "public_diagnostics_page",
+    "allowed_mode": "fingerprint_diagnostics",
+    "allowed_hosts_match": true,
+    "scope_contract_path": "configs/range_scope_contract.yaml",
+    "in_scope": true,
+    "why_in_scope": "Public diagnostics page is used for observation only; no webdriver hide, spoofing, proxy evasion, or bypass is attempted.",
+    "why_out_of_scope": "",
+    "positive_allowed_scope": "",
+    "external_generalization_allowed": false
+  },
+  "capability_status_detail": {
+    "status": "memory_only",
+    "scope_limited_positive": "",
+    "local_only": false,
+    "public_range_only": true,
+    "authorized_only": false,
+    "not_generalizable_to_third_party": true,
+    "why": "Public diagnostics candidate only; no evasion, spoofing, webdriver hide, proxy evasion, or bypass capability is claimed."
+  },
+  "fingerprint_surface_report": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\fingerprint-diagnostics\\run-20260701-phase4a-smoke\\sannysoft\\fingerprint-surface-report.json",
+  "fingerprint_surface_matrix": {
+    "webdriver": true,
+    "canvas": true,
+    "webgl": false,
+    "webrtc": true,
+    "timezone": true,
+    "language": true,
+    "permissions": true,
+    "client_hints": true,
+    "tls": "not_observable_from_page_js",
+    "http2": "not_observable_from_page_js"
+  },
+  "profile_consistency": {
+    "status": "pass",
+    "repeat_count": 1,
+    "profile_count": 1,
+    "capture_count": 1,
+    "surface_hashes": [
+      "5eeaaf2e4482827f9e043c49a39493108da6221741cf4672b4d3360001c22332"
+    ],
+    "unique_surface_hash_count": 1,
+    "drift_count": 0,
+    "consistent": true
+  },
+  "surface_hashes": [
+    "5eeaaf2e4482827f9e043c49a39493108da6221741cf4672b4d3360001c22332"
+  ],
+  "drift_count": 0,
+  "ui_api_parity": {
+    "status": "pass",
+    "observed_status": 200,
+    "endpoint": "GET https://bot.sannysoft.com/",
+    "json_pointers": [
+      "/fingerprint_surface_report"
+    ]
+  },
+  "repeat_verified": true,
+  "decision": {
+    "skills_participation": "memory_only",
+    "positive_allowed": false,
+    "blocked_reason": "Fingerprint diagnostics are observation-only and cannot promote evasion capability.",
+    "why_candidate": ""
+  }
+}

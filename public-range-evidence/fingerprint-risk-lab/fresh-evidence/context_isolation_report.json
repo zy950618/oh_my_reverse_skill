@@ -1,0 +1,19 @@
+{
+  "schema_version": "context-isolation-report/v1",
+  "run_id": "second-loop-2026-07-01-fingerprint-risk-lab",
+  "context_isolation_checked": true,
+  "clean_context": {
+    "cookie_storage_state": "empty",
+    "local_storage_state": "empty",
+    "session_storage_state": "empty"
+  },
+  "polluted_context": {
+    "cookie_storage_state": "synthetic_lab_cookie",
+    "local_storage_state": "synthetic_lab_local_storage",
+    "session_storage_state": "synthetic_lab_session_storage"
+  },
+  "reused_context": {
+    "reuse_detected": true,
+    "handling": "retire_session"
+  }
+}

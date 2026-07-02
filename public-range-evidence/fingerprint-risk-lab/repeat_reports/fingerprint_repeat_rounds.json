@@ -1,0 +1,248 @@
+{
+  "schema_version": "fingerprint-repeat-report/v1",
+  "status": "PASS",
+  "checked_at": "2026-07-01T09:42:33.920716+00:00",
+  "rounds_requested": 5,
+  "rounds_passed": 5,
+  "rounds_failed": 0,
+  "pythondontwritebytecode": "1",
+  "commands_per_round": [
+    "python tools\\validate_fingerprint_surface_lab.py",
+    "python tools\\validate_block_reason_lab.py",
+    "python tools\\validate_browser_context_isolation.py",
+    "python tools\\validate_captcha_fingerprint_linkage.py",
+    "python public-range-evidence\\fingerprint-risk-lab\\drift_cases\\validate_drift_cases.py"
+  ],
+  "rounds": [
+    {
+      "round": 1,
+      "status": "PASS",
+      "commands": [
+        {
+          "command": "python tools\\validate_fingerprint_surface_lab.py",
+          "exit_code": 0,
+          "duration_seconds": 0.079,
+          "status": "PASS",
+          "stdout_tail": "{\n  \"tool\": \"validate_fingerprint_surface_lab\",\n  \"status\": \"PASS\",\n  \"manifest\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\7-指纹风控层\\\\_lab\\\\fingerprint_surface_lab_manifest.json\",\n  \"failures\": [],\n  \"warnings\": []\n}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": "python tools\\validate_block_reason_lab.py",
+          "exit_code": 0,
+          "duration_seconds": 0.083,
+          "status": "PASS",
+          "stdout_tail": "{\n  \"tool\": \"validate_block_reason_lab\",\n  \"status\": \"PASS\",\n  \"manifest\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\7-指纹风控层\\\\_lab\\\\block_reason_lab_manifest.json\",\n  \"failures\": [],\n  \"warnings\": []\n}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": "python tools\\validate_browser_context_isolation.py",
+          "exit_code": 0,
+          "duration_seconds": 0.082,
+          "status": "PASS",
+          "stdout_tail": "{\n  \"tool\": \"validate_browser_context_isolation\",\n  \"status\": \"PASS\",\n  \"manifest\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\7-指纹风控层\\\\_lab\\\\browser_context_isolation_manifest.json\",\n  \"airline_lab\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\",\n  \"failures\": [],\n  \"warnings\": []\n}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": "python tools\\validate_captcha_fingerprint_linkage.py",
+          "exit_code": 0,
+          "duration_seconds": 0.079,
+          "status": "PASS",
+          "stdout_tail": "{\n  \"tool\": \"validate_captcha_fingerprint_linkage\",\n  \"status\": \"PASS\",\n  \"manifest\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\7-指纹风控层\\\\_lab\\\\captcha_fingerprint_linkage_manifest.json\",\n  \"packs_root\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\",\n  \"pack_count\": 7,\n  \"failures\": [],\n  \"pack_results\": [\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\5j\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\cz\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\mh\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\scoot\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\sq\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\tg\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\vn\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    }\n  ]\n}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": "python public-range-evidence\\fingerprint-risk-lab\\drift_cases\\validate_drift_cases.py",
+          "exit_code": 0,
+          "duration_seconds": 0.077,
+          "status": "PASS",
+          "stdout_tail": "{\n  \"tool\": \"validate_drift_cases\",\n  \"status\": \"PASS\",\n  \"checked_at\": \"2026-07-01T09:42:32.402380+00:00\",\n  \"case_file\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\fingerprint-risk-lab\\\\drift_cases\\\\drift_cases.json\",\n  \"case_count\": 10,\n  \"classified_cases\": [\n    \"browser_vs_pure_api_diff_missing\",\n    \"captcha_linkage_missing\",\n    \"dirty_storage_leak\",\n    \"inconsistent_user_agent_platform\",\n    \"missing_canvas_surface\",\n    \"missing_webdriver_field\",\n    \"missing_webgl_surface\",\n    \"reused_context_leak\",\n    \"timezone_language_mismatch\",\n    \"unknown_block_reason\"\n  ],\n  \"rejected_cases\": [\n    \"browser_vs_pure_api_diff_missing\",\n    \"captcha_linkage_missing\",\n    \"dirty_storage_leak\",\n    \"inconsistent_user_agent_platform\",\n    \"missing_canvas_surface\",\n    \"missing_webdriver_field\",\n    \"missing_webgl_surface\",\n    \"reused_context_leak\",\n    \"timezone_language_mismatch\",\n    \"unknown_block_reason\"\n  ],\n  \"failures\": []\n}\n",
+          "stderr_tail": ""
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "status": "PASS",
+      "commands": [
+        {
+          "command": "python tools\\validate_fingerprint_surface_lab.py",
+          "exit_code": 0,
+          "duration_seconds": 0.082,
+          "status": "PASS",
+          "stdout_tail": "{\n  \"tool\": \"validate_fingerprint_surface_lab\",\n  \"status\": \"PASS\",\n  \"manifest\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\7-指纹风控层\\\\_lab\\\\fingerprint_surface_lab_manifest.json\",\n  \"failures\": [],\n  \"warnings\": []\n}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": "python tools\\validate_block_reason_lab.py",
+          "exit_code": 0,
+          "duration_seconds": 0.077,
+          "status": "PASS",
+          "stdout_tail": "{\n  \"tool\": \"validate_block_reason_lab\",\n  \"status\": \"PASS\",\n  \"manifest\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\7-指纹风控层\\\\_lab\\\\block_reason_lab_manifest.json\",\n  \"failures\": [],\n  \"warnings\": []\n}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": "python tools\\validate_browser_context_isolation.py",
+          "exit_code": 0,
+          "duration_seconds": 0.078,
+          "status": "PASS",
+          "stdout_tail": "{\n  \"tool\": \"validate_browser_context_isolation\",\n  \"status\": \"PASS\",\n  \"manifest\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\7-指纹风控层\\\\_lab\\\\browser_context_isolation_manifest.json\",\n  \"airline_lab\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\",\n  \"failures\": [],\n  \"warnings\": []\n}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": "python tools\\validate_captcha_fingerprint_linkage.py",
+          "exit_code": 0,
+          "duration_seconds": 0.075,
+          "status": "PASS",
+          "stdout_tail": "{\n  \"tool\": \"validate_captcha_fingerprint_linkage\",\n  \"status\": \"PASS\",\n  \"manifest\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\7-指纹风控层\\\\_lab\\\\captcha_fingerprint_linkage_manifest.json\",\n  \"packs_root\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\",\n  \"pack_count\": 7,\n  \"failures\": [],\n  \"pack_results\": [\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\5j\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\cz\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\mh\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\scoot\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\sq\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\tg\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\vn\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    }\n  ]\n}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": "python public-range-evidence\\fingerprint-risk-lab\\drift_cases\\validate_drift_cases.py",
+          "exit_code": 0,
+          "duration_seconds": 0.073,
+          "status": "PASS",
+          "stdout_tail": "{\n  \"tool\": \"validate_drift_cases\",\n  \"status\": \"PASS\",\n  \"checked_at\": \"2026-07-01T09:42:32.787733+00:00\",\n  \"case_file\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\fingerprint-risk-lab\\\\drift_cases\\\\drift_cases.json\",\n  \"case_count\": 10,\n  \"classified_cases\": [\n    \"browser_vs_pure_api_diff_missing\",\n    \"captcha_linkage_missing\",\n    \"dirty_storage_leak\",\n    \"inconsistent_user_agent_platform\",\n    \"missing_canvas_surface\",\n    \"missing_webdriver_field\",\n    \"missing_webgl_surface\",\n    \"reused_context_leak\",\n    \"timezone_language_mismatch\",\n    \"unknown_block_reason\"\n  ],\n  \"rejected_cases\": [\n    \"browser_vs_pure_api_diff_missing\",\n    \"captcha_linkage_missing\",\n    \"dirty_storage_leak\",\n    \"inconsistent_user_agent_platform\",\n    \"missing_canvas_surface\",\n    \"missing_webdriver_field\",\n    \"missing_webgl_surface\",\n    \"reused_context_leak\",\n    \"timezone_language_mismatch\",\n    \"unknown_block_reason\"\n  ],\n  \"failures\": []\n}\n",
+          "stderr_tail": ""
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "status": "PASS",
+      "commands": [
+        {
+          "command": "python tools\\validate_fingerprint_surface_lab.py",
+          "exit_code": 0,
+          "duration_seconds": 0.072,
+          "status": "PASS",
+          "stdout_tail": "{\n  \"tool\": \"validate_fingerprint_surface_lab\",\n  \"status\": \"PASS\",\n  \"manifest\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\7-指纹风控层\\\\_lab\\\\fingerprint_surface_lab_manifest.json\",\n  \"failures\": [],\n  \"warnings\": []\n}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": "python tools\\validate_block_reason_lab.py",
+          "exit_code": 0,
+          "duration_seconds": 0.074,
+          "status": "PASS",
+          "stdout_tail": "{\n  \"tool\": \"validate_block_reason_lab\",\n  \"status\": \"PASS\",\n  \"manifest\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\7-指纹风控层\\\\_lab\\\\block_reason_lab_manifest.json\",\n  \"failures\": [],\n  \"warnings\": []\n}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": "python tools\\validate_browser_context_isolation.py",
+          "exit_code": 0,
+          "duration_seconds": 0.072,
+          "status": "PASS",
+          "stdout_tail": "{\n  \"tool\": \"validate_browser_context_isolation\",\n  \"status\": \"PASS\",\n  \"manifest\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\7-指纹风控层\\\\_lab\\\\browser_context_isolation_manifest.json\",\n  \"airline_lab\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\",\n  \"failures\": [],\n  \"warnings\": []\n}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": "python tools\\validate_captcha_fingerprint_linkage.py",
+          "exit_code": 0,
+          "duration_seconds": 0.073,
+          "status": "PASS",
+          "stdout_tail": "{\n  \"tool\": \"validate_captcha_fingerprint_linkage\",\n  \"status\": \"PASS\",\n  \"manifest\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\7-指纹风控层\\\\_lab\\\\captcha_fingerprint_linkage_manifest.json\",\n  \"packs_root\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\",\n  \"pack_count\": 7,\n  \"failures\": [],\n  \"pack_results\": [\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\5j\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\cz\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\mh\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\scoot\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\sq\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\tg\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\vn\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    }\n  ]\n}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": "python public-range-evidence\\fingerprint-risk-lab\\drift_cases\\validate_drift_cases.py",
+          "exit_code": 0,
+          "duration_seconds": 0.069,
+          "status": "PASS",
+          "stdout_tail": "{\n  \"tool\": \"validate_drift_cases\",\n  \"status\": \"PASS\",\n  \"checked_at\": \"2026-07-01T09:42:33.148466+00:00\",\n  \"case_file\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\fingerprint-risk-lab\\\\drift_cases\\\\drift_cases.json\",\n  \"case_count\": 10,\n  \"classified_cases\": [\n    \"browser_vs_pure_api_diff_missing\",\n    \"captcha_linkage_missing\",\n    \"dirty_storage_leak\",\n    \"inconsistent_user_agent_platform\",\n    \"missing_canvas_surface\",\n    \"missing_webdriver_field\",\n    \"missing_webgl_surface\",\n    \"reused_context_leak\",\n    \"timezone_language_mismatch\",\n    \"unknown_block_reason\"\n  ],\n  \"rejected_cases\": [\n    \"browser_vs_pure_api_diff_missing\",\n    \"captcha_linkage_missing\",\n    \"dirty_storage_leak\",\n    \"inconsistent_user_agent_platform\",\n    \"missing_canvas_surface\",\n    \"missing_webdriver_field\",\n    \"missing_webgl_surface\",\n    \"reused_context_leak\",\n    \"timezone_language_mismatch\",\n    \"unknown_block_reason\"\n  ],\n  \"failures\": []\n}\n",
+          "stderr_tail": ""
+        }
+      ]
+    },
+    {
+      "round": 4,
+      "status": "PASS",
+      "commands": [
+        {
+          "command": "python tools\\validate_fingerprint_surface_lab.py",
+          "exit_code": 0,
+          "duration_seconds": 0.068,
+          "status": "PASS",
+          "stdout_tail": "{\n  \"tool\": \"validate_fingerprint_surface_lab\",\n  \"status\": \"PASS\",\n  \"manifest\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\7-指纹风控层\\\\_lab\\\\fingerprint_surface_lab_manifest.json\",\n  \"failures\": [],\n  \"warnings\": []\n}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": "python tools\\validate_block_reason_lab.py",
+          "exit_code": 0,
+          "duration_seconds": 0.069,
+          "status": "PASS",
+          "stdout_tail": "{\n  \"tool\": \"validate_block_reason_lab\",\n  \"status\": \"PASS\",\n  \"manifest\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\7-指纹风控层\\\\_lab\\\\block_reason_lab_manifest.json\",\n  \"failures\": [],\n  \"warnings\": []\n}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": "python tools\\validate_browser_context_isolation.py",
+          "exit_code": 0,
+          "duration_seconds": 0.068,
+          "status": "PASS",
+          "stdout_tail": "{\n  \"tool\": \"validate_browser_context_isolation\",\n  \"status\": \"PASS\",\n  \"manifest\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\7-指纹风控层\\\\_lab\\\\browser_context_isolation_manifest.json\",\n  \"airline_lab\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\",\n  \"failures\": [],\n  \"warnings\": []\n}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": "python tools\\validate_captcha_fingerprint_linkage.py",
+          "exit_code": 0,
+          "duration_seconds": 0.071,
+          "status": "PASS",
+          "stdout_tail": "{\n  \"tool\": \"validate_captcha_fingerprint_linkage\",\n  \"status\": \"PASS\",\n  \"manifest\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\7-指纹风控层\\\\_lab\\\\captcha_fingerprint_linkage_manifest.json\",\n  \"packs_root\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\",\n  \"pack_count\": 7,\n  \"failures\": [],\n  \"pack_results\": [\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\5j\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\cz\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\mh\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\scoot\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\sq\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\tg\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\vn\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    }\n  ]\n}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": "python public-range-evidence\\fingerprint-risk-lab\\drift_cases\\validate_drift_cases.py",
+          "exit_code": 0,
+          "duration_seconds": 0.07,
+          "status": "PASS",
+          "stdout_tail": "{\n  \"tool\": \"validate_drift_cases\",\n  \"status\": \"PASS\",\n  \"checked_at\": \"2026-07-01T09:42:33.495316+00:00\",\n  \"case_file\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\fingerprint-risk-lab\\\\drift_cases\\\\drift_cases.json\",\n  \"case_count\": 10,\n  \"classified_cases\": [\n    \"browser_vs_pure_api_diff_missing\",\n    \"captcha_linkage_missing\",\n    \"dirty_storage_leak\",\n    \"inconsistent_user_agent_platform\",\n    \"missing_canvas_surface\",\n    \"missing_webdriver_field\",\n    \"missing_webgl_surface\",\n    \"reused_context_leak\",\n    \"timezone_language_mismatch\",\n    \"unknown_block_reason\"\n  ],\n  \"rejected_cases\": [\n    \"browser_vs_pure_api_diff_missing\",\n    \"captcha_linkage_missing\",\n    \"dirty_storage_leak\",\n    \"inconsistent_user_agent_platform\",\n    \"missing_canvas_surface\",\n    \"missing_webdriver_field\",\n    \"missing_webgl_surface\",\n    \"reused_context_leak\",\n    \"timezone_language_mismatch\",\n    \"unknown_block_reason\"\n  ],\n  \"failures\": []\n}\n",
+          "stderr_tail": ""
+        }
+      ]
+    },
+    {
+      "round": 5,
+      "status": "PASS",
+      "commands": [
+        {
+          "command": "python tools\\validate_fingerprint_surface_lab.py",
+          "exit_code": 0,
+          "duration_seconds": 0.071,
+          "status": "PASS",
+          "stdout_tail": "{\n  \"tool\": \"validate_fingerprint_surface_lab\",\n  \"status\": \"PASS\",\n  \"manifest\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\7-指纹风控层\\\\_lab\\\\fingerprint_surface_lab_manifest.json\",\n  \"failures\": [],\n  \"warnings\": []\n}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": "python tools\\validate_block_reason_lab.py",
+          "exit_code": 0,
+          "duration_seconds": 0.082,
+          "status": "PASS",
+          "stdout_tail": "{\n  \"tool\": \"validate_block_reason_lab\",\n  \"status\": \"PASS\",\n  \"manifest\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\7-指纹风控层\\\\_lab\\\\block_reason_lab_manifest.json\",\n  \"failures\": [],\n  \"warnings\": []\n}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": "python tools\\validate_browser_context_isolation.py",
+          "exit_code": 0,
+          "duration_seconds": 0.085,
+          "status": "PASS",
+          "stdout_tail": "{\n  \"tool\": \"validate_browser_context_isolation\",\n  \"status\": \"PASS\",\n  \"manifest\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\7-指纹风控层\\\\_lab\\\\browser_context_isolation_manifest.json\",\n  \"airline_lab\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\",\n  \"failures\": [],\n  \"warnings\": []\n}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": "python tools\\validate_captcha_fingerprint_linkage.py",
+          "exit_code": 0,
+          "duration_seconds": 0.088,
+          "status": "PASS",
+          "stdout_tail": "{\n  \"tool\": \"validate_captcha_fingerprint_linkage\",\n  \"status\": \"PASS\",\n  \"manifest\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\7-指纹风控层\\\\_lab\\\\captcha_fingerprint_linkage_manifest.json\",\n  \"packs_root\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\",\n  \"pack_count\": 7,\n  \"failures\": [],\n  \"pack_results\": [\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\5j\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\cz\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\mh\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\scoot\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\sq\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\tg\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    },\n    {\n      \"path\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\real-site-observation-pack\\\\airlines\\\\vn\\\\observation-pack.json\",\n      \"status\": \"PASS\",\n      \"failures\": [],\n      \"warnings\": []\n    }\n  ]\n}\n",
+          "stderr_tail": ""
+        },
+        {
+          "command": "python public-range-evidence\\fingerprint-risk-lab\\drift_cases\\validate_drift_cases.py",
+          "exit_code": 0,
+          "duration_seconds": 0.092,
+          "status": "PASS",
+          "stdout_tail": "{\n  \"tool\": \"validate_drift_cases\",\n  \"status\": \"PASS\",\n  \"checked_at\": \"2026-07-01T09:42:33.911240+00:00\",\n  \"case_file\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\fingerprint-risk-lab\\\\drift_cases\\\\drift_cases.json\",\n  \"case_count\": 10,\n  \"classified_cases\": [\n    \"browser_vs_pure_api_diff_missing\",\n    \"captcha_linkage_missing\",\n    \"dirty_storage_leak\",\n    \"inconsistent_user_agent_platform\",\n    \"missing_canvas_surface\",\n    \"missing_webdriver_field\",\n    \"missing_webgl_surface\",\n    \"reused_context_leak\",\n    \"timezone_language_mismatch\",\n    \"unknown_block_reason\"\n  ],\n  \"rejected_cases\": [\n    \"browser_vs_pure_api_diff_missing\",\n    \"captcha_linkage_missing\",\n    \"dirty_storage_leak\",\n    \"inconsistent_user_agent_platform\",\n    \"missing_canvas_surface\",\n    \"missing_webdriver_field\",\n    \"missing_webgl_surface\",\n    \"reused_context_leak\",\n    \"timezone_language_mismatch\",\n    \"unknown_block_reason\"\n  ],\n  \"failures\": []\n}\n",
+          "stderr_tail": ""
+        }
+      ]
+    }
+  ]
+}

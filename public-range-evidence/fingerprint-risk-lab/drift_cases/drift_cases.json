@@ -1,0 +1,115 @@
+{
+  "schema_version": "fingerprint-drift-cases/v1",
+  "status": "negative_and_drift_classification",
+  "evidence_scope": "local_lab",
+  "live_site_calls_performed": false,
+  "capability_boundary": {
+    "positive_allowed": false,
+    "not_generalizable_to_third_party": true,
+    "forbidden_actions_absent": true
+  },
+  "required_cases": [
+    "missing_webdriver_field",
+    "inconsistent_user_agent_platform",
+    "timezone_language_mismatch",
+    "dirty_storage_leak",
+    "reused_context_leak",
+    "missing_canvas_surface",
+    "missing_webgl_surface",
+    "unknown_block_reason",
+    "captcha_linkage_missing",
+    "browser_vs_pure_api_diff_missing"
+  ],
+  "cases": [
+    {
+      "id": "missing_webdriver_field",
+      "category": "surface_missing",
+      "input_surface": "navigator.webdriver",
+      "observed_signal": "field_absent",
+      "expected_classification": "fingerprint_surface_incomplete",
+      "expected_result": "REJECTED",
+      "safe_next_action": "recapture_authorized_observation_without_runtime_modification"
+    },
+    {
+      "id": "inconsistent_user_agent_platform",
+      "category": "surface_inconsistent",
+      "input_surface": "navigator.userAgent+navigator.platform",
+      "observed_signal": "windows_user_agent_with_android_platform",
+      "expected_classification": "surface_consistency_error",
+      "expected_result": "REJECTED",
+      "safe_next_action": "mark_context_invalid_and_recapture_clean_profile"
+    },
+    {
+      "id": "timezone_language_mismatch",
+      "category": "locale_mismatch",
+      "input_surface": "timezone+locale+navigator.languages",
+      "observed_signal": "asia_shanghai_timezone_with_en_US_only_language",
+      "expected_classification": "locale_timezone_consistency_error",
+      "expected_result": "REJECTED",
+      "safe_next_action": "record_mismatch_as_drift_without_adjusting_runtime"
+    },
+    {
+      "id": "dirty_storage_leak",
+      "category": "context_pollution",
+      "input_surface": "local_storage+session_storage+indexed_db",
+      "observed_signal": "previous_session_keys_present",
+      "expected_classification": "storage_state_polluted",
+      "expected_result": "REJECTED",
+      "safe_next_action": "discard_context_and_start_clean_authorized_session"
+    },
+    {
+      "id": "reused_context_leak",
+      "category": "context_reuse",
+      "input_surface": "browser_context+cookie_jar+token_cache",
+      "observed_signal": "session_owner_mismatch",
+      "expected_classification": "cross_session_context_leak",
+      "expected_result": "REJECTED",
+      "safe_next_action": "isolate_worker_context_and_rotate_local_lab_fixture"
+    },
+    {
+      "id": "missing_canvas_surface",
+      "category": "surface_missing",
+      "input_surface": "canvas",
+      "observed_signal": "canvas_hash_missing",
+      "expected_classification": "fingerprint_surface_incomplete",
+      "expected_result": "REJECTED",
+      "safe_next_action": "recapture_surface_or_mark_observation_incomplete"
+    },
+    {
+      "id": "missing_webgl_surface",
+      "category": "surface_missing",
+      "input_surface": "webgl",
+      "observed_signal": "webgl_vendor_renderer_missing",
+      "expected_classification": "fingerprint_surface_incomplete",
+      "expected_result": "REJECTED",
+      "safe_next_action": "recapture_surface_or_mark_observation_incomplete"
+    },
+    {
+      "id": "unknown_block_reason",
+      "category": "block_reason_unknown",
+      "input_surface": "block_reason_report",
+      "observed_signal": "response_class_unmapped",
+      "expected_classification": "unknown_block_reason_requires_manual_review",
+      "expected_result": "REJECTED",
+      "safe_next_action": "stop_positive_claim_and_request_manual_review"
+    },
+    {
+      "id": "captcha_linkage_missing",
+      "category": "linkage_missing",
+      "input_surface": "captcha_linkage_report",
+      "observed_signal": "captcha_event_without_fingerprint_context_ref",
+      "expected_classification": "captcha_fingerprint_linkage_incomplete",
+      "expected_result": "REJECTED",
+      "safe_next_action": "rerun_local_fixture_with_linkage_evidence"
+    },
+    {
+      "id": "browser_vs_pure_api_diff_missing",
+      "category": "diff_missing",
+      "input_surface": "browser_vs_pure_api_diff",
+      "observed_signal": "diff_report_absent",
+      "expected_classification": "browser_pure_api_parity_unverified",
+      "expected_result": "REJECTED",
+      "safe_next_action": "generate_diff_before_any_positive_delivery_claim"
+    }
+  ]
+}

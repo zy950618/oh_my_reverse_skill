@@ -1,0 +1,32 @@
+{
+  "tool": "validate_drift_cases",
+  "status": "PASS",
+  "checked_at": "2026-07-01T09:32:52.786037+00:00",
+  "case_file": "E:\\ai_project\\oh_my_reverse_skill\\public-range-evidence\\fingerprint-risk-lab\\drift_cases\\drift_cases.json",
+  "case_count": 10,
+  "classified_cases": [
+    "browser_vs_pure_api_diff_missing",
+    "captcha_linkage_missing",
+    "dirty_storage_leak",
+    "inconsistent_user_agent_platform",
+    "missing_canvas_surface",
+    "missing_webdriver_field",
+    "missing_webgl_surface",
+    "reused_context_leak",
+    "timezone_language_mismatch",
+    "unknown_block_reason"
+  ],
+  "rejected_cases": [
+    "browser_vs_pure_api_diff_missing",
+    "captcha_linkage_missing",
+    "dirty_storage_leak",
+    "inconsistent_user_agent_platform",
+    "missing_canvas_surface",
+    "missing_webdriver_field",
+    "missing_webgl_surface",
+    "reused_context_leak",
+    "timezone_language_mismatch",
+    "unknown_block_reason"
+  ],
+  "failures": []
+}

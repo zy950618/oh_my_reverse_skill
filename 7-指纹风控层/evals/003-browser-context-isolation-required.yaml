@@ -1,0 +1,20 @@
+id: browser-context-isolation-required
+skill: browser-fingerprint-surface-lab
+type: regression
+expected_status: memory_only
+input: >
+  A concurrency claim is made from browser captures and local worker runs.
+must_include:
+  - worker_1
+  - worker_2
+  - worker_5
+  - worker_10
+  - cookie_jar_isolation
+  - token_cache_isolation
+  - cross_worker_pollution_count
+must_not_include:
+  - high_concurrency_positive_without_business_ledger
+success_rule: >
+  The response downgrades browser-only concurrency evidence unless final business
+  API and server-side ledger assertions exist.
+

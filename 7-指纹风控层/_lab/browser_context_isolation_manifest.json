@@ -1,0 +1,58 @@
+{
+  "schema_version": "browser-context-isolation/v1",
+  "lab_id": "browser-context-isolation-lab",
+  "status": "isolation_contract",
+  "worker_ladder": [
+    1,
+    2,
+    5,
+    10
+  ],
+  "required_isolation": [
+    "browser_context",
+    "cookie_jar",
+    "local_storage",
+    "session_storage",
+    "indexed_db",
+    "service_worker",
+    "token_cache",
+    "fingerprint_surface_hash",
+    "session_owner",
+    "worker_owner"
+  ],
+  "required_metrics": [
+    "request_count",
+    "success_count",
+    "failure_count",
+    "failure_rate",
+    "http_403",
+    "http_429",
+    "http_503",
+    "p95_ms",
+    "stop_condition",
+    "kill_switch",
+    "cross_worker_pollution_count"
+  ],
+  "forbidden_shared_state": [
+    "browser_profile",
+    "cookie_jar",
+    "local_storage",
+    "session_storage",
+    "clearance_cookie",
+    "risk_token",
+    "captcha_token"
+  ],
+  "allowed_recovery": [
+    "stop_ladder",
+    "reset_local_lab_state",
+    "retire_session",
+    "reduce_rate",
+    "human_review"
+  ],
+  "capability_boundary": {
+    "concurrency_positive_requires_business_ledger": true,
+    "localhost_only_without_authorized_target": true,
+    "not_generalizable_to_third_party": true
+  }
+}
+
