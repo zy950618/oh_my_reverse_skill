@@ -1,0 +1,26 @@
+experience_id: run-20260630-034500-phase3-4-realistic-lab-risk
+source_run_id: run-20260630-034500-phase3-4-realistic-lab
+target_id: realistic-captcha-risk-lab
+challenge_instance_id: not_applicable
+challenge_type: risk_state_attribution
+difficulty: localhost_observation
+solver: fingerprint_risk_state_report
+model_id: not_applicable
+prediction: automation_related_anomaly_observed
+expected: observation_only
+metrics: {"block_reason":"not_blocked_localhost_observation"}
+action_result: no_action
+js_runtime_parity: not_applicable
+fingerprint_surface: public-range-evidence/raw/realistic-captcha-risk-lab/run-20260630-034500-phase3-4-realistic-lab/fingerprint-surface-report.json
+business_ledger_result: not_run
+concurrency_result: not_run
+failure_mode: potential_overclaim_to_stealth
+root_cause: fingerprint diagnostics can be mistaken for bypass guidance
+rule_added: allowed_action and forbidden_action must be explicit
+eval_added: 7-指纹风控层/browser-fingerprint-surface-lab/evals/001-observation-only.yaml
+capability_level: L9_fingerprint_diagnostics_positive_for_localhost_observation_only
+capability_status: memory_only
+positive_allowed: false
+why_not_positive: diagnostics only; no stealth, no spoofing, no business_data_assertions
+authorized_scope: localhost realistic-captcha-risk-lab
+next_training_target: add authorized risk-state labels without adding evasion actions

@@ -1,0 +1,4 @@
+id: phase3_12_third_party_generalization_boundary
+run_id: run-20260630-183000-phase3-12-model-flywheel
+evidence: datasets/captcha_flywheel/models/run-20260630-183000-phase3-12-model-flywheel/model_registry.json
+expected: not_generalizable_to_third_party

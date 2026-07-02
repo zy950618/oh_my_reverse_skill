@@ -1,0 +1,75 @@
+{
+  "run_id": "run-20260630-173000-phase3-11-type-matrix",
+  "cards": [
+    {
+      "id": "phase3-11-shumei-no-sense-family-gap",
+      "failure": "Shumei-compatible matrix previously lacked no_sense coverage.",
+      "fix": "Added no_sense state-machine-only family and reran 350 samples.",
+      "retest": "public-range-evidence/shumei-compatible-lab/run-20260630-173000-phase3-11-type-matrix.json",
+      "decision": "memory_only for no_sense; not no-sense bypass capability"
+    },
+    {
+      "id": "phase3-11-aliyun-no-trace-variant-gap",
+      "failure": "Aliyun-compatible no_trace was a single one-click flow.",
+      "fix": "Added no_trace_pass, no_trace_fail_then_slider, no_trace_fail_then_puzzle, and no_trace_fail_then_image_restore state variants.",
+      "retest": "public-range-evidence/aliyun-compatible-lab/run-20260630-173000-phase3-11-type-matrix.json",
+      "decision": "memory_only for no_trace; state-machine observation only"
+    },
+    {
+      "id": "phase3-11-aliyun-image-restore-failure",
+      "failure": "image_restore replay failed 350/350 in the compatible lab.",
+      "fix": "No solver fix was claimed; family was kept as negative_eval_only and failure cases were retained.",
+      "retest": "public-range-evidence/raw/aliyun-compatible-lab/run-20260630-173000-phase3-11-type-matrix/failure-cases.json",
+      "decision": "training_needed/negative_eval_only for image_restore"
+    },
+    {
+      "id": "phase3-11-shield-profile-missing",
+      "failure": "Five-second shield previously did not exercise the required profile matrix.",
+      "fix": "Added nine profiles including retry_after_gate, rate_limit_gate, and multi_stage_gate.",
+      "retest": "public-range-evidence/five-second-shield-lab/run-20260630-173000-phase3-11-type-matrix.json",
+      "decision": "local_waf_lab positive_candidate only"
+    },
+    {
+      "id": "phase3-11-shield-negative-depth",
+      "failure": "Negative eval count was below the new 15-case gate.",
+      "fix": "Added wrong redirect stage, missing/stale cookie, wrong session/UA/signature/nonce/time, retry-after, rate-limit, and cross-worker pollution negatives.",
+      "retest": "public-range-evidence/five-second-shield-lab/run-20260630-173000-phase3-11-type-matrix.json",
+      "decision": "19 negative evals passed with ledger_delta=0"
+    },
+    {
+      "id": "phase3-11-shield-worker-ladder",
+      "failure": "The ladder needed to include worker_20 and target the business API.",
+      "fix": "Reran concurrency 1/2/5/10/20 against /api/concurrency/business with isolated sessions.",
+      "retest": "public-range-evidence/five-second-shield-lab/run-20260630-173000-phase3-11-type-matrix.json",
+      "decision": "business_data_status DATA_ASSERTION_PASS"
+    },
+    {
+      "id": "phase3-11-official-trial-config",
+      "failure": "Official vendor trial could be silently skipped or confused with compatible lab evidence.",
+      "fix": "Added vendor_trial.local.example.yaml and explicit CONFIG_MISSING/BLOCKED_AUTH_REQUIRED states.",
+      "retest": "public-range-evidence/raw/vendor-trial-adapter/run-20260630-173000-phase3-11-type-matrix/",
+      "decision": "official_trial_not_run; no fake credentials"
+    },
+    {
+      "id": "phase3-11-official-demo-readonly",
+      "failure": "Official demo observation could be over-read as action success.",
+      "fix": "Added official_demo_result with readonly/action_allowed/self_owned_trial_required fields.",
+      "retest": "public-range-evidence/shumei-captcha-demo/run-20260630-173000-phase3-11-type-matrix.json",
+      "decision": "memory_only until explicit action permission and self-owned verify flow"
+    },
+    {
+      "id": "phase3-11-fingerprint-target-coverage",
+      "failure": "Fingerprint diagnostics did not cover all four requested public targets with repeat/profile depth.",
+      "fix": "Ran Sannysoft, CreepJS, BrowserLeaks, and Incolumitas with repeat=5 and profiles=3.",
+      "retest": "public-range-evidence/fingerprint-diagnostics/",
+      "decision": "diagnostics candidate only; no evasion positive"
+    },
+    {
+      "id": "phase3-11-realism-audit-too-easy-risk",
+      "failure": "Compatible labs needed explicit checks against fixed answers, fixed geometry, missing family/difficulty, and official generalization risk.",
+      "fix": "Expanded challenge_realism_audit.py and reran it after type matrix and shield profile runs.",
+      "retest": "public-range-evidence/raw/challenge-realism-audit/run-20260630-173000-phase3-11-type-matrix/challenge-realism-audit.json",
+      "decision": "realism audit PASS; compatible lab remains candidate-only"
+    }
+  ]
+}

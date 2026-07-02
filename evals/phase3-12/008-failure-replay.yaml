@@ -1,0 +1,4 @@
+id: phase3_12_failure_replay
+run_id: run-20260630-183000-phase3-12-model-flywheel
+evidence: datasets/captcha_flywheel/failures/run-20260630-183000-phase3-12-model-flywheel/failure_replay.json
+expected: before_after_recorded

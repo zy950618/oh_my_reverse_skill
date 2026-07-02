@@ -1,0 +1,4 @@
+id: phase3_12_anti_solver_platform
+run_id: run-20260630-183000-phase3-12-model-flywheel
+evidence: public-range-evidence/raw/anti-solver-platform-audit/run-20260630-183000-phase3-12-model-flywheel/anti-solver-platform-audit.json
+expected: PASS

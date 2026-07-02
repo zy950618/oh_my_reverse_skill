@@ -1,0 +1,126 @@
+targets:
+  - id: shumei-captcha-demo
+    vendor: "Shumei / 数美"
+    category: captcha_provider
+    scope_type: official_demo
+    official_refs:
+      - https://help.ishumei.com/docs/tw/captcha/web/developDoc/
+      - https://castatic.fengkongcloud.cn/pr/v1.0.4/demo.html
+    expected_modes: [slide, auto_slide, text_select, icon_select, seq_select, spatial_select]
+    allowed_modes:
+      - provider_diagnostics
+      - visual_solver_training_if_demo_allows
+      - action_replay_if_demo_allows
+      - state_observer
+      - leakage_audit
+      - failure_case_collection
+      - experience_card
+    forbidden_modes:
+      - unauthorized_site_generalization
+      - token_forgery
+      - production_bypass
+      - fingerprint_evasion
+    positive_allowed_scope:
+      - official_demo_candidate
+      - official_demo_verified_if_multi_family_threshold_pass
+    required_evidence:
+      - official_doc_or_demo_ref
+      - screenshot
+      - network_summary
+      - blackbox_gate
+      - leakage_audit
+      - per_mode_metrics
+      - capability_decision
+
+  - id: aliyun-captcha-demo
+    vendor: "Aliyun / 阿里云验证码"
+    category: captcha_provider
+    scope_type: official_demo_or_self_owned_trial
+    official_refs:
+      - https://help.aliyun.com/zh/captcha/captcha2-0/user-guide/first-level-node-2/
+      - https://help.aliyun.com/zh/captcha/web-and-h5-client-v2-architecture-access
+    expected_modes: [slider, puzzle, spatial_reasoning, no_trace, one_click, image_restore]
+    allowed_modes:
+      - provider_diagnostics
+      - official_demo_state_observer
+      - self_owned_trial_integration
+      - visual_solver_training_if_allowed
+      - business_verify_flow_if_self_owned
+      - CaptchaVerifyParam_flow_observation
+    forbidden_modes:
+      - unauthorized_site_processing
+      - token_forgery
+      - production_bypass
+      - risk_score_manipulation
+    positive_allowed_scope:
+      - official_demo_candidate
+      - self_owned_trial_positive
+    required_evidence:
+      - scene_id_or_test_scope
+      - screenshot
+      - network_summary
+      - state_observer
+      - backend_business_flow_if_self_owned
+      - business_data_assertions_if_self_owned
+
+  - id: five-second-shield-lab
+    vendor: generic_5s_shield
+    category: waf_js_challenge
+    scope_type: localhost_waf_lab
+    expected_modes: [js_challenge, delay_gate, cookie_gate, redirect_chain, risk_state, browser_state_binding]
+    allowed_modes:
+      - local_waf_challenge_simulation
+      - js_runtime_parity
+      - state_observer
+      - business_api_after_challenge
+      - negative_eval
+      - concurrency_ladder
+      - failure_case_collection
+    forbidden_modes:
+      - real_site_waf_bypass
+      - clearance_cookie_reuse
+      - production_evasion
+      - proxy_rotation_evasion
+    positive_allowed_scope:
+      - local_waf_lab_positive_candidate
+      - local_waf_lab_positive_verified
+    required_evidence:
+      - execution_proof
+      - js_runtime_parity
+      - state_transition
+      - business_data_assertions
+      - negative_eval_ledger_delta_zero
+      - concurrency_ledger
+
+  - id: aliyun-risk-compatible-lab
+    vendor: aliyun_like
+    category: self_owned_simulation
+    scope_type: localhost_vendor_compatible_lab
+    expected_modes: [slider, puzzle, spatial_reasoning, no_trace, business_verify_param]
+    allowed_modes:
+      - self_owned_simulation
+      - visual_solver_training
+      - js_runtime_parity
+      - backend_business_flow
+      - negative_eval
+    positive_allowed_scope:
+      - local_vendor_compatible_positive_candidate
+    required_evidence:
+      - explicit_compatible_not_official_label
+      - not_generalizable_to_aliyun_production
+
+  - id: shumei-compatible-lab
+    vendor: shumei_like
+    category: self_owned_simulation
+    scope_type: localhost_vendor_compatible_lab
+    expected_modes: [slide, select, icon_select, seq_select, spatial_select]
+    allowed_modes:
+      - self_owned_simulation
+      - visual_solver_training
+      - action_replay
+      - negative_eval
+    positive_allowed_scope:
+      - local_vendor_compatible_positive_candidate
+    required_evidence:
+      - explicit_compatible_not_official_label
+      - not_generalizable_to_shumei_production

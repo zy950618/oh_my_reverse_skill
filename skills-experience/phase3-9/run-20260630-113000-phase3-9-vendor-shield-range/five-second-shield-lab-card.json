@@ -1,0 +1,6 @@
+{
+  "title": "Five-second shield local lab requires business API proof",
+  "run_id": "run-20260630-113000-phase3-9-vendor-shield-range",
+  "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\five-second-shield-lab\\run-20260630-113000-phase3-9-vendor-shield-range.json",
+  "lesson": "Challenge verify success is not business success; clearance must bind session, nonce, UA hash, expiry, and worker."
+}

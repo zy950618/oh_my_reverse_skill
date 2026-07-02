@@ -1,0 +1,16 @@
+experience_id: run-20260630-041500-phase3-5-longrun-experience-05
+source_run_id: run-20260630-041500-phase3-5-longrun
+component: js_page_runtime_parity
+challenge_type: mixed_longrun
+difficulty: easy_medium_hard_adversarial
+runtime: Browser_Node_PageRuntime
+fingerprint_surface: observation_only
+concurrency_stage: worker_1_2_5_10_20
+failure_mode: longrun parity remained stable
+root_cause: longrun parity remained stable
+fix_or_rule_added: expand mutation corpus
+eval_added: evals/longrun/phase3-5/001-longrun-capability-boundary.yaml
+metric_before: phase3_4_minimal_loop
+metric_after: phase3_5_longrun
+capability_impact: blocks positive unless thresholds and business data assertions pass
+next_training_target: expand mutation corpus

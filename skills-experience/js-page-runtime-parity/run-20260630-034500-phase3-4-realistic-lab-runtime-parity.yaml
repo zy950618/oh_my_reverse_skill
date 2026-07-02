@@ -1,0 +1,27 @@
+experience_id: run-20260630-034500-phase3-4-realistic-lab-runtime-parity
+source_run_id: run-20260630-034500-phase3-4-realistic-lab
+target_id: realistic-captcha-risk-lab
+challenge_instance_id: not_applicable
+challenge_type: js_signature_fixture
+difficulty: local_fixture
+solver: js_page_runtime_parity_runner
+model_id: not_applicable
+prediction: parity_status_pass
+expected: browser_node_page_runtime_same_signature_output
+metrics: {"parity_status":"pass","repeat_parity_status":"pass"}
+action_result: not_applicable
+js_runtime_parity: public-range-evidence/raw/realistic-captcha-risk-lab/run-20260630-034500-phase3-4-realistic-lab/runtime-parity-report.json
+fingerprint_surface: not_applicable
+business_ledger_result: not_run
+concurrency_result: not_run
+failure_mode: none_for_fixture
+root_cause: local fixture used minimal navigator/location shims
+rule_added: runtime parity does not imply risk-token generation
+eval_added: 2-JS逆向工具层/js-page-runtime-parity/evals/001-runtime-parity-fixture.yaml
+capability_level: L8_runtime_parity_positive_for_localhost_fixture_only
+capability_status: memory_only
+positive_allowed: false
+why_not_positive: no authorized external target and no business_data_assertions
+authorized_scope: localhost realistic-captcha-risk-lab
+next_training_target: expand fixture dependency map to crypto/performance/storage without using live cookies
+

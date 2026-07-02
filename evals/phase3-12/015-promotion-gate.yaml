@@ -1,0 +1,4 @@
+id: phase3_12_promotion_gate
+run_id: run-20260630-183000-phase3-12-model-flywheel
+evidence: public-range-evidence/raw/capability-promotion/run-20260630-183000-phase3-12-model-flywheel/promotion-decision.json
+expected: no_stable_positive

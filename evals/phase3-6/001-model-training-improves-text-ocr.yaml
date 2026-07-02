@@ -1,0 +1,7 @@
+id: phase3-6-model-training-improves-text-ocr
+source_run_id: run-20260630-053000-phase3-6-public-model
+assertions:
+  - captcha_model_train writes a checkpoint, split manifest, model config, training log, validation metrics, and test metrics
+  - trained text-captcha char_accuracy must exceed the previous baseline
+  - failure-before-after must include improved/regressed/still-failed buckets
+  - leakage audit must pass before any promotion decision

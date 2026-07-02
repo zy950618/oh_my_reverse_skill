@@ -1,0 +1,5 @@
+id: phase3_9_five_second_shield_lab
+run_id: run-20260630-113000-phase3-9-vendor-shield-range
+title: Local five-second shield lab must prove challenge to business API closure
+evidence: public-range-evidence/five-second-shield-lab/run-20260630-113000-phase3-9-vendor-shield-range.json
+expected_status: local_waf_lab_positive_candidate_or_verified

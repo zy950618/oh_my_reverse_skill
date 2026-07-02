@@ -6,6 +6,7 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 .pytest_cache/
+.cache/
 .venv/
 venv/
 env/
@@ -41,8 +42,11 @@ trace.zip
 # 浏览器 profile / user-data-dir / 本地会话状态
 browser-profiles/
 .browser-profiles/
+browser-profile/
 user-data-dir/
+userDataDir/
 **/user-data-dir/
+**/userDataDir/
 profiles/
 .profiles/
 
@@ -51,6 +55,7 @@ tools/.reminder-stats.jsonl
 
 # Claude Code 本地权限缓存
 .claude/settings.local.json
+.codex/
 
 # Replay 临时产物(每次本地跑都会重新生成,不入 git)
 站点经验库/*/fixtures/actual/
@@ -64,6 +69,13 @@ tools/.reminder-stats.jsonl
 *.dump
 *.tmp
 *.bak
+*.old
+*.orig
+*.log
+*.cookies
+*.cookie
+*.tokens
+*.token
 站点经验库/*/fixtures/recordings/*.har
 站点经验库/*/fixtures/recordings/*.jsonl
 
@@ -111,3 +123,21 @@ public-range-evidence/**/raw/
 public-range-evidence/**/*.har
 public-range-evidence/**/*.body
 public-range-evidence/**/*.dump
+public-range-evidence/_archive/manual-review/
+public-range-evidence/_archive/manual-review-private/
+datasets/**/raw/
+datasets/**/models/
+datasets/**/checkpoints/
+**/checkpoints/
+public-range-labs/vendor/OpenCaptchaWorld/
+public-range-labs/vendor/go-captcha-example/
+public-range-labs/vendor/go-captcha-service/
+*.pt
+*.pth
+*.onnx
+*.safetensors
+*.pkl
+*.joblib
+*.zip
+*.tar
+*.gz

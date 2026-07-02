@@ -1,0 +1,41 @@
+{
+  "run_id": "run-20260630-163000-phase3-10-realism-hardening",
+  "status": "recorded",
+  "entries": [
+    {
+      "id": "phase3-10-shumei-slide-decoy-gap",
+      "failure": "Phase 3.9 slide lab was too clean: fixed offset, no decoy gaps, p95=0.",
+      "fix": "Added texture, edge noise, multi decoy gaps, scale, DPR, canvas offset, and trajectory-sensitive metadata.",
+      "retest_evidence": "public-range-evidence/shumei-compatible-lab/run-20260630-163000-phase3-10-realism-hardening.json",
+      "result": "slide hard 91/100, adversarial 29/50; overall candidate only."
+    },
+    {
+      "id": "phase3-10-shumei-sequence-order",
+      "failure": "Sequence select had no wrong-order or missing-point pressure.",
+      "fix": "Added randomized sequence prompts, rotated/noisy options, hard/adversarial degradation, and failure case writeback.",
+      "retest_evidence": "public-range-evidence/shumei-compatible-lab/run-20260630-163000-phase3-10-realism-hardening.json",
+      "result": "seq_select hard 91/100, adversarial 29/50; failures preserved for training."
+    },
+    {
+      "id": "phase3-10-aliyun-slider-multigap",
+      "failure": "Aliyun-compatible slider baseline used a single obvious gap.",
+      "fix": "Added background compression, multi-gap decoys, shape interference, randomized DPR/viewport/canvas offset.",
+      "retest_evidence": "public-range-evidence/aliyun-compatible-lab/run-20260630-163000-phase3-10-realism-hardening.json",
+      "result": "slider hard 88/100, adversarial 25/50; no 100/100 promotion."
+    },
+    {
+      "id": "phase3-10-aliyun-spatial-offset",
+      "failure": "Spatial reasoning had fixed coordinates and weak coordinate transform pressure.",
+      "fix": "Added randomized object placement, canvas offset, scale, rotated shapes, and coordinate tolerance.",
+      "retest_evidence": "public-range-evidence/aliyun-compatible-lab/run-20260630-163000-phase3-10-realism-hardening.json",
+      "result": "spatial_reasoning hard 83/100, adversarial 31/50; candidate only."
+    },
+    {
+      "id": "phase3-10-shield-static-js",
+      "failure": "Phase 3.9 shield JS was static and lacked mutation, p99, 20-worker ladder, and browser-only negative eval.",
+      "fix": "Added /protected -> /shield redirect, per-run script hash, mutation input, time window, runtime contract, 11 negative evals, and 20-worker ladder.",
+      "retest_evidence": "public-range-evidence/five-second-shield-lab/run-20260630-163000-phase3-10-realism-hardening.json",
+      "result": "500/500 dynamic JS cases, 11 negative eval ledger_delta=0, 1/2/5/10/20 worker ladder PASS."
+    }
+  ]
+}

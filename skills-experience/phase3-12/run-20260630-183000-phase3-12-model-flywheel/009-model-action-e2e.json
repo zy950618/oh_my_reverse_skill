@@ -1,0 +1,1 @@
+{"run_id":"run-20260630-183000-phase3-12-model-flywheel","lesson":"Model metrics are not action success; action replay before/after must record delta, threshold, remaining failures, and promotion decision.","evidence":"datasets/captcha_flywheel/failures/run-20260630-183000-phase3-12-model-flywheel/failure_replay.json"}

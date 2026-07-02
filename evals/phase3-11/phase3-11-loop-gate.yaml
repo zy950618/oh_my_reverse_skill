@@ -1,0 +1,11 @@
+id: phase3_11_loop_gate
+run_id: run-20260630-173000-phase3-11-type-matrix
+required_fields:
+  - execution_status
+  - capability_status
+  - scope_decision
+  - blackbox_gate
+  - leakage_audit
+  - realism_audit
+  - business_data_assertions_when_applicable
+negative_boundary: no_memory_only_promotion_without_evidence

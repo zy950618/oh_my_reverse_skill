@@ -1,0 +1,8 @@
+id: phase3_11_fingerprint_diagnostics_matrix
+run_id: run-20260630-173000-phase3-11-type-matrix
+targets: [sannysoft, creepjs, browserleaks, incolumitas]
+required:
+  repeat_min: 5
+  profiles_min: 3
+  surfaces: [webdriver, canvas, webgl, webrtc, timezone, language, permissions, client_hints, tls_if_observable, http2_if_observable]
+negative_boundary: diagnostics_only_not_fingerprint_evasion

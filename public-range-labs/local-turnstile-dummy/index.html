@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Local Turnstile Boundary Dummy</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 32px; color: #17202a; }
+    main { max-width: 760px; }
+    .widget { border: 1px solid #ccd3dd; border-radius: 8px; padding: 20px; }
+    .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 12px 0; }
+    button { min-height: 36px; padding: 0 12px; }
+    code { background: #eef3f8; padding: 2px 4px; }
+    pre { background: #f5f7fa; padding: 12px; overflow: auto; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Local Turnstile Boundary Dummy</h1>
+    <p>This page simulates official testing-key boundaries on localhost. It is not Cloudflare production traffic and does not prove business API acceptance.</p>
+    <section class="widget" data-provider="turnstile" data-mode="local-testing-boundary">
+      <h2>Testing States</h2>
+      <div class="row">
+        <button data-token="always-pass-token" type="button">Always pass</button>
+        <button data-token="always-fail-token" type="button">Always fail</button>
+        <button data-token="expired-token" type="button">Expired</button>
+        <button data-token="duplicate-token" type="button">Duplicate token</button>
+        <button id="verify" type="button">Siteverify dummy</button>
+      </div>
+      <p>Selected token: <code id="token">none</code></p>
+      <p id="result" role="status">state: idle</p>
+      <pre id="state"></pre>
+    </section>
+  </main>
+  <script>
+    window.__turnstileBoundary = {
+      provider: "turnstile",
+      mode: "local-testing-boundary",
+      sitekey: "1x00000000000000000000AA-local-dummy",
+      selectedToken: null,
+      statesSeen: [],
+      lastVerify: null,
+      businessApiAcceptance: false,
+      positiveAllowed: false
+    };
+
+    const state = document.querySelector("#state");
+    const token = document.querySelector("#token");
+    const result = document.querySelector("#result");
+
+    function render() {
+      token.textContent = window.__turnstileBoundary.selectedToken || "none";
+      result.textContent = `state: ${window.__turnstileBoundary.lastVerify ? window.__turnstileBoundary.lastVerify.state : "idle"}`;
+      state.textContent = JSON.stringify(window.__turnstileBoundary, null, 2);
+    }
+
+    document.querySelectorAll("button[data-token]").forEach(button => {
+      button.addEventListener("click", () => {
+        window.__turnstileBoundary.selectedToken = button.dataset.token;
+        window.__turnstileBoundary.statesSeen.push(button.dataset.token);
+        render();
+      });
+    });
+
+    document.querySelector("#verify").addEventListener("click", async () => {
+      const response = await fetch("/api/turnstile/siteverify", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          sitekey: window.__turnstileBoundary.sitekey,
+          response: window.__turnstileBoundary.selectedToken
+        })
+      });
+      const payload = await response.json();
+      window.__turnstileBoundary.lastVerify = payload;
+      window.__turnstileBoundary.statesSeen.push(payload.state);
+      render();
+    });
+
+    render();
+  </script>
+</body>
+</html>

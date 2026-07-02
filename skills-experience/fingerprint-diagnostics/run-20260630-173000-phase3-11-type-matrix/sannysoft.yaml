@@ -1,0 +1,7 @@
+experience_id: run-20260630-173000-phase3-11-type-matrix-sannysoft-fingerprint-diagnostics
+source_run_id: run-20260630-173000-phase3-11-type-matrix
+target: sannysoft
+status: PASS
+blocked_reason: 
+webdriver_exposed: true
+capability_impact: observation-only diagnostics, no evasion positive

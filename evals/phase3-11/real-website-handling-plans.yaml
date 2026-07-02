@@ -1,0 +1,9 @@
+id: phase3_11_real_website_handling_plans
+run_id: run-20260630-173000-phase3-11-type-matrix
+required_examples:
+  - unknown_third_party_captcha
+  - official_demo
+  - self_owned_trial
+  - five_second_shield_lab
+  - authorized_business_api
+negative_boundary: unknown_scope_observation_only_no_bypass_guidance

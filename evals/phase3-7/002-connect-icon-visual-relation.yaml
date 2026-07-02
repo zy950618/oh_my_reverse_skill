@@ -1,0 +1,5 @@
+id: phase3_7_002_connect_icon_visual_relation
+title: Connect_icon visual relation replay keeps failures
+run_id: run-20260630-083000-phase3-7-real-public-range
+evidence: E:\SKILLS\oh_my_reverse_skill\public-range-evidence\raw\opencaptchaworld\run-20260630-083000-phase3-7-real-public-range\opencaptchaworld-action-replay-records.jsonl
+expected_status: scoped_public_range_only

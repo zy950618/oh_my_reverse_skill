@@ -1,0 +1,11 @@
+id: phase3_6_1_scope_candidate_not_stable
+source_run_id: run-20260630-071500-phase3-6-1-candidate
+assertions:
+  - local-gocaptcha-compatible-lab single-run evidence may promote only to positive_candidate.
+  - self-owned compatible labs must not be described as real GoCaptcha open-source components.
+  - positive_verified requires multi-sample, multi-difficulty, multi-round threshold PASS and blackbox gate PASS.
+  - stable_positive requires longrun stability, regression pass, and failure feedback.
+  - fingerprint diagnostics candidates must not be described as evasion capability.
+required_commands:
+  - python tools/captcha_blackbox_solver_gate.py --run-id run-20260630-071500-phase3-6-1-candidate
+  - python tools/capability_promotion_gate.py --run-id run-20260630-071500-phase3-6-1-candidate

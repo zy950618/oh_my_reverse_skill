@@ -1,0 +1,16 @@
+experience_id: run-20260630-041500-phase3-5-longrun-experience-03
+source_run_id: run-20260630-041500-phase3-5-longrun
+component: captcha_slider
+challenge_type: mixed_longrun
+difficulty: easy_medium_hard_adversarial
+runtime: Browser_Node_PageRuntime
+fingerprint_surface: observation_only
+concurrency_stage: worker_1_2_5_10_20
+failure_mode: harder gap distractors defeat simple edge/brightness scan
+root_cause: harder gap distractors defeat simple edge/brightness scan
+fix_or_rule_added: add gap template matching and hard negative mining
+eval_added: evals/longrun/phase3-5/001-longrun-capability-boundary.yaml
+metric_before: phase3_4_minimal_loop
+metric_after: phase3_5_longrun
+capability_impact: blocks positive unless thresholds and business data assertions pass
+next_training_target: add gap template matching and hard negative mining

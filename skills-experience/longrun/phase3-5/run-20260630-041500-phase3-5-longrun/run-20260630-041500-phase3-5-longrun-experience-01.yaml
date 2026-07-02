@@ -1,0 +1,16 @@
+experience_id: run-20260630-041500-phase3-5-longrun-experience-01
+source_run_id: run-20260630-041500-phase3-5-longrun
+component: captcha_multi_image
+challenge_type: mixed_longrun
+difficulty: easy_medium_hard_adversarial
+runtime: Browser_Node_PageRuntime
+fingerprint_surface: observation_only
+concurrency_stage: worker_1_2_5_10_20
+failure_mode: Phase 3.4 toolchain did not include multi-image-select generator/solver/benchmark
+root_cause: Phase 3.4 toolchain did not include multi-image-select generator/solver/benchmark
+fix_or_rule_added: added multi-image-select support before formal longrun
+eval_added: evals/longrun/phase3-5/001-longrun-capability-boundary.yaml
+metric_before: phase3_4_minimal_loop
+metric_after: phase3_5_longrun
+capability_impact: blocks positive unless thresholds and business data assertions pass
+next_training_target: added multi-image-select support before formal longrun

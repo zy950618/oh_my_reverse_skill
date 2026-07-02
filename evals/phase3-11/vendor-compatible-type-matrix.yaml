@@ -1,0 +1,11 @@
+id: phase3_11_vendor_compatible_type_matrix
+run_id: run-20260630-173000-phase3-11-type-matrix
+evidence:
+  - public-range-evidence/shumei-compatible-lab/run-20260630-173000-phase3-11-type-matrix.json
+  - public-range-evidence/aliyun-compatible-lab/run-20260630-173000-phase3-11-type-matrix.json
+required:
+  shumei_families: [slide, select, icon_select, seq_select, spatial_select, no_sense]
+  aliyun_families: [slider, puzzle, image_restore, spatial_reasoning, one_click, no_trace]
+  difficulty: [easy, medium, hard, adversarial]
+  audits: [blackbox_gate, leakage_audit, realism_audit]
+negative_boundary: compatible_lab_not_official_vendor_production

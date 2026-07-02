@@ -1,0 +1,27 @@
+experience_id: run-20260630-034500-phase3-4-realistic-lab-scope
+source_run_id: run-20260630-034500-phase3-4-realistic-lab
+target_id: realistic-captcha-risk-lab
+challenge_instance_id: local_challenge_instances
+challenge_type: authorized_local_lab
+difficulty: local
+solver: authorized-target-adapter
+model_id: not_applicable
+prediction: scope_allowed
+expected: localhost_only
+metrics: {"allowed_hosts":["127.0.0.1","localhost"]}
+action_result: local_lab_executed
+js_runtime_parity: pass
+fingerprint_surface: observed
+business_ledger_result: raw_ladder_only
+concurrency_result: public-range-evidence/raw/realistic-captcha-risk-lab/run-20260630-034500-phase3-4-realistic-lab/business-concurrency-ladder.json
+failure_mode: positive_blocked_without_business_data_assertions
+root_cause: local lab raw report is not authorized external target evidence
+rule_added: localhost lab cannot be promoted to external positive
+eval_added: none
+capability_level: local_lab_concurrency_only
+capability_status: memory_only
+positive_allowed: false
+why_not_positive: no final authorized target business ledger gate
+authorized_scope: self-owned localhost
+next_training_target: connect owned target with explicit allowed_hosts and rate limits
+

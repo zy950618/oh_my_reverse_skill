@@ -1,0 +1,4 @@
+id: phase3_12_puzzle_restore_training
+run_id: run-20260630-183000-phase3-12-model-flywheel
+evidence: datasets/captcha_flywheel/models/run-20260630-183000-phase3-12-model-flywheel/puzzle_restore_detector_training_result.json
+expected: local_model_checkpoint

@@ -1,0 +1,7 @@
+id: phase3-5-longrun-004
+title: Phase 3.5 longrun regression 4
+source_run_id: run-20260630-041500-phase3-5-longrun
+assertions:
+  - capability decision must not promote memory_only to positive_allowed
+  - issue ledger must exist
+  - failure cases must exist

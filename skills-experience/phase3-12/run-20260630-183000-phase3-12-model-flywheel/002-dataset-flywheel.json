@@ -1,0 +1,1 @@
+{"run_id":"run-20260630-183000-phase3-12-model-flywheel","lesson":"Failure samples need dataset, label, split, prediction, failure, model, eval, and export manifests before SKILLS feedback.","evidence":"datasets/captcha_flywheel/manifests/run-20260630-183000-phase3-12-model-flywheel/dataset_manifest.json"}

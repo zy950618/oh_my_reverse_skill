@@ -1,0 +1,36 @@
+run:
+  run_id_prefix: run-20260701-phase4a-smoke
+  artifact_root: public-range-evidence/longrun
+  checkpoint: true
+  stop_on_command_failure: false
+  python: python
+
+smoke:
+  gocaptcha:
+    families: [rotate, click]
+    samples_per_family: 20
+  opencaptchaworld:
+    families: [Connect_icon, Image_Matching]
+    samples_per_family: 20
+  shumei_compatible:
+    families: [select, icon_select, seq_select]
+    difficulties: [hard, adversarial]
+    samples_per_family: 30
+  aliyun_compatible:
+    families: [image_restore, select, icon_select]
+    difficulties: [easy, medium, hard, adversarial]
+    samples_per_family: 30
+  five_second_shield:
+    samples: 12
+    profiles: [simple_delay_gate, js_signature_gate, redirect_chain_gate]
+    concurrency: [1, 2, 5, 10]
+  fingerprint:
+    targets: [sannysoft, creepjs]
+    repeat: 1
+    profiles: 1
+  model_training:
+    tasks: [click_icon_detector]
+
+thresholds:
+  positive_candidate_success_rate: 0.8
+  regression_delta: -0.05

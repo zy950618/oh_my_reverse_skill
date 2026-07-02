@@ -25,6 +25,7 @@ REQUIRED_VERIFICATION = [
     "session_cache_isolation",
     "risk_control",
     "data_acceptance",
+    "business_data_assertions",
     "fixture_freshness",
 ]
 REQUIRED_WORKERS = ["worker_1", "worker_2", "worker_5", "worker_10"]
@@ -123,6 +124,18 @@ def template(args: argparse.Namespace) -> dict:
                 "json_pointers": [],
                 "consistency_rate": None,
                 "adapter_target": "",
+            },
+            "business_data_assertions": {
+                "business_data_status": "NOT_RUN",
+                "server_ledger_path": "",
+                "business_object_source": "",
+                "list_detail_submit_chain": "",
+                "server_ledger_delta": "",
+                "negative_eval_side_effects": "",
+                "concurrency_order_session_worker_ownership": "",
+                "positive_assertions": [],
+                "negative_assertions": [],
+                "concurrency_assertions": {},
             },
             "fixture_freshness": {
                 "strict_review_exit_code": None,
@@ -258,6 +271,19 @@ def validate_ledger(payload: dict, require_complete: bool = False) -> dict:
             blockers.append("require_complete: data_acceptance.ui_api_parity is missing")
         if blankish(data.get("json_pointers")):
             blockers.append("require_complete: data_acceptance.json_pointers is missing")
+        business = payload.get("verification", {}).get("business_data_assertions", {})
+        if business.get("business_data_status") != "DATA_ASSERTION_PASS":
+            blockers.append("require_complete: business_data_assertions.business_data_status must be DATA_ASSERTION_PASS")
+        for key in (
+            "server_ledger_path",
+            "business_object_source",
+            "list_detail_submit_chain",
+            "server_ledger_delta",
+            "negative_eval_side_effects",
+            "concurrency_order_session_worker_ownership",
+        ):
+            if blankish(business.get(key)):
+                blockers.append(f"require_complete: business_data_assertions.{key} is missing")
 
         freshness = payload.get("verification", {}).get("fixture_freshness", {})
         if freshness.get("source_freshness") != "fresh":
@@ -295,6 +321,11 @@ def add_iteration(args: argparse.Namespace) -> dict:
         "started_at": now_iso(),
         "executor_action": args.executor_action,
         "executor_evidence": args.executor_evidence,
+        "business_object_source": args.business_object_source,
+        "list_detail_submit_chain": args.list_detail_submit_chain,
+        "server_ledger_delta": args.server_ledger_delta,
+        "negative_eval_no_side_effect": args.negative_eval_no_side_effect,
+        "concurrency_order_session_worker_ownership": args.concurrency_order_session_worker_ownership,
         "verifier_checks": args.verifier_checks,
         "verifier_result": args.verifier_result,
         "governor_checks": args.governor_checks,
@@ -329,6 +360,11 @@ def main() -> int:
     record_p.add_argument("--iteration", type=int)
     record_p.add_argument("--executor-action", required=True)
     record_p.add_argument("--executor-evidence", default="")
+    record_p.add_argument("--business-object-source", default="")
+    record_p.add_argument("--list-detail-submit-chain", default="")
+    record_p.add_argument("--server-ledger-delta", default="")
+    record_p.add_argument("--negative-eval-no-side-effect", default="")
+    record_p.add_argument("--concurrency-order-session-worker-ownership", default="")
     record_p.add_argument("--verifier-checks", default="")
     record_p.add_argument("--verifier-result", choices=["pass", "fail", "blocked"], default="blocked")
     record_p.add_argument("--governor-checks", default="")

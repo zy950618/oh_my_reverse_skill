@@ -1,0 +1,1 @@
+{"run_id":"run-20260630-183000-phase3-12-model-flywheel","lesson":"Click/icon/text select detector uses visible image cells and instruction text only; labels are for training/scoring and cannot be read during inference.","evidence":"datasets/captcha_flywheel/models/run-20260630-183000-phase3-12-model-flywheel/click_icon_detector_training_result.json"}

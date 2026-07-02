@@ -1,0 +1,4 @@
+id: phase3_12_authorized_sample_policy
+run_id: run-20260630-183000-phase3-12-model-flywheel
+evidence: docs/REAL_WEBSITE_HANDLING_PLAYBOOK.md
+expected: observation_only_without_authorization

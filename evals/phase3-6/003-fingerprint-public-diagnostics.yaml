@@ -1,0 +1,7 @@
+id: phase3-6-fingerprint-public-diagnostics
+source_run_id: run-20260630-053000-phase3-6-public-model
+assertions:
+  - public fingerprint target is observation-only
+  - webdriver hiding, spoofing, proxy evasion, and clearance reuse are forbidden
+  - evidence remains memory_only or negative_eval_only
+  - experience card records observed signals and risk attribution

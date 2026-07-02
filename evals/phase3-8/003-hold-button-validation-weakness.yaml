@@ -1,0 +1,5 @@
+id: phase3_8_003_hold_button_validation_weakness
+title: Hold_Button validation weakness is range-specific
+run_id: run-20260701-phase4a-smoke
+evidence: E:\SKILLS\oh_my_reverse_skill\public-range-evidence\raw\opencaptchaworld\run-20260701-phase4a-smoke\opencaptchaworld-action-replay-records.jsonl
+expected_status: scoped_public_range_only

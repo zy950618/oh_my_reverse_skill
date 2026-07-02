@@ -1,0 +1,11 @@
+id: phase3_8_js_runtime_parity_boundary
+title: JS runtime parity is not real-site token or WAF capability
+run_id: run-20260630-101500-phase3-8-family-hardening
+evidence:
+  - public-range-evidence/raw/capability-promotion-gate/run-20260630-101500-phase3-8-family-hardening/capability-promotion-decision.json
+expected:
+  runtime_parity_scope: authorized_or_local_only
+  prohibited:
+    - real_site_token_forgery_claim
+    - waf_bypass_claim
+    - fingerprint_evasion_claim

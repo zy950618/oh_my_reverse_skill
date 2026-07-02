@@ -1,0 +1,4 @@
+id: phase3_12_blackbox_gate
+run_id: run-20260630-183000-phase3-12-model-flywheel
+evidence: public-range-evidence/raw/captcha-blackbox-gate/run-20260630-183000-phase3-12-model-flywheel/blackbox-gate.json
+expected: PASS

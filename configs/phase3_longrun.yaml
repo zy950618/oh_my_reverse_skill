@@ -1,0 +1,67 @@
+run:
+  run_id: run-20260630-041500-phase3-5-longrun
+  seed_start: 20260630
+  seed_count: 2
+  rounds: 2
+  max_failures_before_stop: 200
+  continue_on_failure: true
+  artifact_root: public-range-evidence/longrun/phase3-5
+
+captcha:
+  enabled: true
+  challenge_types:
+    - text-captcha
+    - slider-captcha
+    - rotate-captcha
+    - click-captcha
+    - multi-image-select
+  difficulties:
+    - easy
+    - medium
+    - hard
+    - adversarial
+  samples_per_type_per_difficulty: 60
+  leakage_check: true
+  action_replay: true
+
+runtime_parity:
+  enabled: true
+  repeat_count: 3
+  random_inputs: true
+  mutation_inputs: true
+  require_browser_node_page_runtime_match: true
+
+fingerprint:
+  enabled: true
+  repeat_count: 2
+  profile_count: 2
+  drift_check: true
+  consistency_check: true
+  observation_only: true
+
+concurrency:
+  enabled: true
+  workers: [1, 2, 5, 10, 20]
+  rounds_per_worker: 2
+  business_ledger_required: true
+  chaos_enabled: true
+
+chaos:
+  enabled: true
+  delay_jitter_ms: [0, 50]
+  token_expiry_cases: 2
+  duplicate_submit_cases: 2
+  wrong_session_cases: 2
+  wrong_action_cases: 2
+  cross_worker_pollution_cases: 2
+  stale_signature_cases: 2
+  network_timeout_cases: 1
+  retry_cases: 2
+
+acceptance:
+  require_execution_status: REAL_EXECUTION_PASS
+  require_control_flow_status: CONTROL_FLOW_PASS
+  require_business_data_status_for_positive: DATA_ASSERTION_PASS
+  require_failure_cases: true
+  require_issue_ledger: true
+  require_experience_cards: true

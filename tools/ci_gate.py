@@ -17,9 +17,13 @@ ci_gate.py — 按"层"设阈值，读取 .ci-out/*.json，任何 skill 低于�
 
 import argparse
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
+
+sys.dont_write_bytecode = True
+os.environ["PYTHONDONTWRITEBYTECODE"] = "1"
 
 from skill_score_config import load_skill_score_config
 
@@ -159,6 +163,56 @@ def run_scope_contract_gate(out_dir: Path) -> tuple[bool, str]:
     )
     output = (result.stdout or "") + (result.stderr or "")
     return result.returncode == 0, output.strip()
+
+
+def run_repo_command(out_dir: Path, command: list[str]) -> tuple[bool, str]:
+    repo_root = out_dir.resolve().parent
+    env = os.environ.copy()
+    env["PYTHONDONTWRITEBYTECODE"] = "1"
+    result = subprocess.run(
+        [sys.executable, *command],
+        cwd=str(repo_root),
+        env=env,
+        text=True,
+        capture_output=True,
+    )
+    output = (result.stdout or "") + (result.stderr or "")
+    return result.returncode == 0, output.strip()
+
+
+def run_second_loop_release_gates(out_dir: Path) -> tuple[bool, str]:
+    checks = [
+        ("pure_api_lab", ["tools/validate_pure_api_delivery.py", "public-range-evidence/pure-api-lab"]),
+        ("airline_pure_api_lab", ["tools/validate_pure_api_delivery.py", "public-range-evidence/airline-lab-order-flow"]),
+        ("captcha_action_schema", ["tools/validate_captcha_action_schema.py"]),
+        ("captcha_dataset", ["tools/validate_captcha_dataset.py"]),
+        ("captcha_training_report", ["tools/validate_captcha_training_report.py"]),
+        ("captcha_model_package", ["tools/validate_captcha_model_package.py"]),
+        ("captcha_pass_rate", ["tools/validate_captcha_pass_rate.py"]),
+        ("captcha_sample_infer", ["public-range-evidence/captcha-model-lab/inference/sample_infer.py"]),
+        ("captcha_evaluate_pass_rate", ["public-range-evidence/captcha-model-lab/eval/evaluate_pass_rate.py"]),
+        ("fingerprint_surface_lab", ["tools/validate_fingerprint_surface_lab.py"]),
+        ("block_reason_lab", ["tools/validate_block_reason_lab.py"]),
+        ("browser_context_isolation", ["tools/validate_browser_context_isolation.py"]),
+        ("captcha_fingerprint_linkage", ["tools/validate_captcha_fingerprint_linkage.py"]),
+        ("real_site_observation_pack", ["tools/validate_real_site_observation_pack.py", "public-range-evidence/real-site-observation-pack"]),
+        ("airline_replay", ["public-range-evidence/airline-lab-order-flow/replay/replay.py"]),
+        ("airline_deep_validation", ["public-range-evidence/airline-lab-order-flow/tests/run_order_flow_tests.py"]),
+        ("cleanup_check", ["tools/cleanup_workspace.py", "--check"]),
+    ]
+    failures: list[str] = []
+    lines: list[str] = []
+    for label, command in checks:
+        ok, output = run_repo_command(out_dir, command)
+        status = "PASS" if ok else "FAIL"
+        lines.append(f"{label}: {status}")
+        if output:
+            lines.append(output)
+        if not ok:
+            failures.append(label)
+    if failures:
+        lines.append(f"second_loop_release_failures={failures}")
+    return not failures, "\n".join(lines)
 
 
 def parse_gate_json(output: str) -> dict:
@@ -358,6 +412,15 @@ def main():
         if not scope_contract_ok:
             print(f"\n{'!' * 70}")
             print("CI Gate failed: scope contract did not pass")
+            print(f"{'!' * 70}")
+            sys.exit(1)
+
+        second_loop_ok, second_loop_output = run_second_loop_release_gates(out_dir)
+        print("\nSecond LOOP release gates:")
+        print(second_loop_output)
+        if not second_loop_ok:
+            print(f"\n{'!' * 70}")
+            print("CI Gate failed: second LOOP release checks did not pass")
             print(f"{'!' * 70}")
             sys.exit(1)
 

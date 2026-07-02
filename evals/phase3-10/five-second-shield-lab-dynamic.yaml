@@ -1,0 +1,5 @@
+id: phase3_10_five_second_shield_lab_dynamic
+run_id: run-20260701-phase4a-smoke
+title: Local dynamic five-second shield lab must prove challenge to business API closure
+evidence: public-range-evidence/five-second-shield-lab/run-20260701-phase4a-smoke.json
+expected_status: local_waf_lab_positive_candidate_or_verified

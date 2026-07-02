@@ -1,0 +1,18 @@
+id: phase3_11_five_second_shield_profile_matrix
+run_id: run-20260630-173000-phase3-11-type-matrix
+evidence: public-range-evidence/five-second-shield-lab/run-20260630-173000-phase3-11-type-matrix.json
+profiles:
+  - simple_delay_gate
+  - js_signature_gate
+  - redirect_chain_gate
+  - cookie_clearance_gate
+  - browser_state_binding_gate
+  - dynamic_script_mutation_gate
+  - retry_after_gate
+  - rate_limit_gate
+  - multi_stage_gate
+required:
+  negative_eval_count_min: 15
+  concurrency: [1, 2, 5, 10, 20]
+  final_api: /api/business
+negative_boundary: local_shield_lab_not_real_waf_bypass

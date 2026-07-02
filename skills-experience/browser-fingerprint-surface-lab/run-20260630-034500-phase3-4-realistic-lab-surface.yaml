@@ -1,0 +1,27 @@
+experience_id: run-20260630-034500-phase3-4-realistic-lab-surface
+source_run_id: run-20260630-034500-phase3-4-realistic-lab
+target_id: realistic-captcha-risk-lab
+challenge_instance_id: not_applicable
+challenge_type: fingerprint_surface
+difficulty: localhost_observation
+solver: fingerprint_surface_capture
+model_id: not_applicable
+prediction: observed_surface_hash
+expected: observation_only
+metrics: {"profile_consistency":true}
+action_result: observation_only
+js_runtime_parity: not_applicable
+fingerprint_surface: public-range-evidence/raw/realistic-captcha-risk-lab/run-20260630-034500-phase3-4-realistic-lab/fingerprint-surface-report.json
+business_ledger_result: not_run
+concurrency_result: not_run
+failure_mode: webdriver_exposed_in_playwright
+root_cause: automation-related anomaly observed in local Playwright context
+rule_added: diagnostics may record webdriver exposure but must not provide hiding steps
+eval_added: 7-指纹风控层/browser-fingerprint-surface-lab/evals/001-observation-only.yaml
+capability_level: L9_fingerprint_diagnostics_positive_for_localhost_observation_only
+capability_status: memory_only
+positive_allowed: false
+why_not_positive: fingerprint observation is not evasion and has no business_data_assertions
+authorized_scope: localhost realistic-captcha-risk-lab
+next_training_target: compare stock Chromium profile in authorized lab without spoofing
+

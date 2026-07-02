@@ -1,0 +1,14 @@
+id: phase3_8_fingerprint_diagnostics_observation_only
+title: Fingerprint diagnostics are observation only, not evasion positive
+run_id: run-20260630-101500-phase3-8-family-hardening
+evidence:
+  - public-range-evidence/fingerprint-diagnostics/run-20260630-101500-phase3-8-family-hardening-sannysoft.json
+  - public-range-evidence/fingerprint-diagnostics/run-20260630-101500-phase3-8-family-hardening-creepjs.json
+  - public-range-evidence/fingerprint-diagnostics/run-20260630-101500-phase3-8-family-hardening-browserleaks.json
+expected:
+  capability_status: memory_only_or_diagnostics_candidate
+  prohibited:
+    - fingerprint_evasion_positive
+    - webdriver_hide
+    - proxy_evasion
+    - clearance_reuse

@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>High-Fidelity Local Risk Lab</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f7f8;
+      color: #1b2528;
+    }
+    body {
+      margin: 0;
+      padding: 28px;
+    }
+    main {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 28px;
+      margin: 0 0 8px;
+    }
+    p {
+      margin: 0 0 18px;
+      color: #526267;
+    }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    button {
+      border: 1px solid #8aa0a6;
+      background: #fff;
+      color: #1b2528;
+      border-radius: 6px;
+      padding: 9px 12px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    button:hover {
+      background: #e8f0f1;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    section {
+      background: #fff;
+      border: 1px solid #d2dcdf;
+      border-radius: 8px;
+      padding: 14px;
+    }
+    h2 {
+      font-size: 16px;
+      margin: 0 0 10px;
+    }
+    pre {
+      min-height: 260px;
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 12px;
+      line-height: 1.45;
+      background: #102428;
+      color: #d7fbff;
+      border-radius: 6px;
+      padding: 12px;
+      overflow: auto;
+    }
+    .state {
+      display: inline-block;
+      min-width: 170px;
+      padding: 7px 10px;
+      border-radius: 6px;
+      background: #18333a;
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    @media (max-width: 780px) {
+      body {
+        padding: 16px;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>High-Fidelity Local Risk Lab</h1>
+    <p>Local business API, server-side token lifecycle, and worker isolation evidence range.</p>
+    <div class="state" id="state">state: boot</div>
+    <div class="toolbar">
+      <button id="start">Session</button>
+      <button id="list">List</button>
+      <button id="detail">Detail</button>
+      <button id="submitBefore">Submit Before Challenge</button>
+      <button id="challenge">Challenge</button>
+      <button id="verify">Verify</button>
+      <button id="submitAfter">Submit After Verify</button>
+    </div>
+    <div class="grid">
+      <section>
+        <h2>Latest Response</h2>
+        <pre id="latest">{}</pre>
+      </section>
+      <section>
+        <h2>Run Log</h2>
+        <pre id="log"></pre>
+      </section>
+    </div>
+  </main>
+  <script>
+    window.__riskLab = {
+      session: null,
+      list: null,
+      detail: null,
+      challenge: null,
+      latest: null,
+      events: []
+    };
+
+    const latestEl = document.querySelector("#latest");
+    const logEl = document.querySelector("#log");
+    const stateEl = document.querySelector("#state");
+
+    function render(label, status, body) {
+      window.__riskLab.latest = { label, status, body };
+      window.__riskLab.events.push({ label, status, body, at: new Date().toISOString() });
+      latestEl.textContent = JSON.stringify(window.__riskLab.latest, null, 2);
+      logEl.textContent = JSON.stringify(window.__riskLab.events, null, 2);
+      if (body && body.state) {
+        stateEl.textContent = "state: " + body.state;
+      }
+    }
+
+    async function requestJson(label, url, options) {
+      const response = await fetch(url, options);
+      const body = await response.json();
+      render(label, response.status, body);
+      return { status: response.status, body };
+    }
+
+    document.querySelector("#start").addEventListener("click", async () => {
+      const result = await requestJson("session", "/api/session", {});
+      window.__riskLab.session = result.body;
+    });
+
+    document.querySelector("#list").addEventListener("click", async () => {
+      const result = await requestJson("list", "/api/list", {});
+      window.__riskLab.list = result.body;
+    });
+
+    document.querySelector("#detail").addEventListener("click", async () => {
+      const result = await requestJson("detail", "/api/detail?id=risk-item-1", {});
+      window.__riskLab.detail = result.body.item;
+    });
+
+    document.querySelector("#submitBefore").addEventListener("click", async () => {
+      const detail = window.__riskLab.detail || {};
+      await requestJson("submit_before_challenge", "/api/submit", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          item_id: "risk-item-1",
+          item_version: detail.item_version,
+          detail_nonce: detail.detail_nonce
+        })
+      });
+    });
+
+    document.querySelector("#challenge").addEventListener("click", async () => {
+      const result = await requestJson("risk_challenge", "/api/risk/challenge", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ action: "submit" })
+      });
+      window.__riskLab.challenge = result.body;
+    });
+
+    document.querySelector("#verify").addEventListener("click", async () => {
+      const challenge = window.__riskLab.challenge || {};
+      await requestJson("risk_verify", "/api/risk/verify", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          token: challenge.token,
+          nonce: challenge.nonce,
+          action: "submit"
+        })
+      });
+    });
+
+    document.querySelector("#submitAfter").addEventListener("click", async () => {
+      const detail = window.__riskLab.detail || {};
+      await requestJson("submit_after_verify", "/api/submit", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          item_id: "risk-item-1",
+          item_version: detail.item_version,
+          detail_nonce: detail.detail_nonce
+        })
+      });
+    });
+  </script>
+</body>
+</html>

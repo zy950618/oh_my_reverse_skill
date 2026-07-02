@@ -1,0 +1,53 @@
+# Copy to configs/vendor_trial.local.yaml and fill only with self-owned trial values.
+# Do not commit real AccessKey, secret, app key, org id, or private endpoints.
+shumei:
+  enabled: false
+  organization_id: ""
+  app_id: ""
+  scene_id: ""
+  test_domain: "https://self-owned-trial.example.invalid"
+  allowed_host: "self-owned-trial.example.invalid"
+  server_verify_endpoint: "/api/self-owned/shumei/verify"
+  rate_limit:
+    max_requests_per_minute: 30
+    stop_on_403_or_429: true
+  stop_condition:
+    max_failures: 3
+    max_runtime_seconds: 300
+  evidence_redaction:
+    redact_headers:
+      - authorization
+      - x-access-key
+      - x-signature
+    redact_body_fields:
+      - accessKey
+      - secret
+      - token
+
+aliyun:
+  enabled: false
+  scene_id: ""
+  captcha_config:
+    captcha_id: ""
+    app_key: ""
+    endpoint: ""
+  test_domain: "https://self-owned-trial.example.invalid"
+  allowed_host: "self-owned-trial.example.invalid"
+  client_integration:
+    page_url: "https://self-owned-trial.example.invalid/captcha-demo"
+    action_allowed: false
+  server_verify_endpoint: "/api/self-owned/aliyun/verify"
+  business_data_assertions:
+    endpoint: "/api/self-owned/business"
+    required_json_pointers:
+      - /ok
+      - /data
+  evidence_redaction:
+    redact_headers:
+      - authorization
+      - x-acs-signature
+      - x-acs-accesskey-id
+    redact_body_fields:
+      - accessKeyId
+      - accessKeySecret
+      - token

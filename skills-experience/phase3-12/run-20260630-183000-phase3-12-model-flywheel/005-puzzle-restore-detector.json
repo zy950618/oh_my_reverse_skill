@@ -1,0 +1,1 @@
+{"run_id":"run-20260630-183000-phase3-12-model-flywheel","lesson":"Puzzle/image_restore training must report baseline vs trained metrics and keep family promotion blocked until action replay confirms improvement.","evidence":"datasets/captcha_flywheel/models/run-20260630-183000-phase3-12-model-flywheel/puzzle_restore_detector_training_result.json"}

@@ -25,6 +25,11 @@ REQUIRED_TOP = [
     "data_acceptance",
     "fixtures_freshness",
     "metrics",
+    "business_data_status",
+    "business_data_assertions",
+    "business_ledger_summary",
+    "negative_eval_side_effect_summary",
+    "concurrency_data_consistency_summary",
     "decision",
 ]
 REQUIRED_FRESH = [
@@ -134,6 +139,29 @@ def report_template(args: argparse.Namespace) -> dict:
             "consistency_rate": None,
             "adapter_target": "",
             "screenshot_or_dom_evidence": "",
+        },
+        "business_data_status": "NOT_RUN",
+        "business_ledger_summary": {
+            "server_ledger_path": "",
+            "positive_assertion_count": 0,
+            "negative_assertion_count": 0,
+        },
+        "negative_eval_side_effect_summary": {
+            "all_negative_ledger_delta_zero": False,
+        },
+        "concurrency_data_consistency_summary": {
+            "worker_1": {},
+            "worker_2": {},
+            "worker_5": {},
+            "worker_10": {},
+        },
+        "business_data_assertions": {
+            "status": "not_run",
+            "server_ledger_path": "",
+            "positive_assertions": [],
+            "negative_assertions": [],
+            "concurrency_assertions": {},
+            "final_decision": {"data_assertion_pass": False, "why_not_pass": ["not_run"]},
         },
         "fixtures_freshness": {
             "strict_review_exit_code": None,
@@ -263,6 +291,18 @@ def validate_report(payload: dict, require_complete: bool = False) -> dict:
         if not has_key(payload, ["data_acceptance", key]):
             failures.append(f"missing data_acceptance.{key}")
 
+    if payload.get("business_data_status") not in {"DATA_ASSERTION_PASS", "DATA_ASSERTION_FAIL", "NOT_RUN"}:
+        failures.append("business_data_status must be DATA_ASSERTION_PASS, DATA_ASSERTION_FAIL, or NOT_RUN")
+    bda = payload.get("business_data_assertions")
+    if not isinstance(bda, dict):
+        failures.append("missing business_data_assertions object")
+    if not isinstance(payload.get("business_ledger_summary"), dict):
+        failures.append("missing business_ledger_summary object")
+    if not isinstance(payload.get("negative_eval_side_effect_summary"), dict):
+        failures.append("missing negative_eval_side_effect_summary object")
+    if not isinstance(payload.get("concurrency_data_consistency_summary"), dict):
+        failures.append("missing concurrency_data_consistency_summary object")
+
     for key in FRESHNESS_KEYS:
         if not has_key(payload, ["fixtures_freshness", key]):
             failures.append(f"missing fixtures_freshness.{key}")
@@ -296,6 +336,19 @@ def validate_report(payload: dict, require_complete: bool = False) -> dict:
             blockers.append("require_complete: data_acceptance.ui_api_parity is missing")
         if blankish(data.get("json_pointers")):
             blockers.append("require_complete: data_acceptance.json_pointers is missing")
+        if payload.get("business_data_status") != "DATA_ASSERTION_PASS":
+            blockers.append("require_complete: business_data_status must be DATA_ASSERTION_PASS")
+        bda = payload.get("business_data_assertions", {})
+        if not isinstance(bda, dict) or bda.get("status") != "pass":
+            blockers.append("require_complete: business_data_assertions.status must be pass")
+        elif bda.get("final_decision", {}).get("data_assertion_pass") is not True:
+            blockers.append("require_complete: business_data_assertions.final_decision.data_assertion_pass must be true")
+        if payload.get("negative_eval_side_effect_summary", {}).get("all_negative_ledger_delta_zero") is not True:
+            blockers.append("require_complete: all negative evals must prove ledger_delta=0")
+        consistency = payload.get("concurrency_data_consistency_summary", {})
+        for worker in WORKERS:
+            if not isinstance(consistency.get(worker), dict) or consistency[worker].get("status") != "pass":
+                blockers.append(f"require_complete: concurrency_data_consistency_summary.{worker}.status must be pass")
 
         freshness = payload.get("fixtures_freshness", {})
         if freshness.get("source_freshness") != "fresh":

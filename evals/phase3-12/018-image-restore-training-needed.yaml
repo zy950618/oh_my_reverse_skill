@@ -1,0 +1,4 @@
+id: phase3_12_image_restore_training_needed_boundary
+run_id: run-20260630-183000-phase3-12-model-flywheel
+evidence: public-range-evidence/aliyun-compatible-lab/run-20260630-183000-phase3-12-model-flywheel.json
+expected: candidate_only_not_official_aliyun
