@@ -12,6 +12,8 @@ Current version: 0.2.0
 
 ## Change Log
 
+- 0.2.1: Added Phase 2 high-fidelity localhost risk-lab evidence boundary from `run-20260630-013842-high-fidelity-risk-lab`; positive scope is limited to self-owned risk state machine, final business API direct repeat, token lifecycle negatives, and localhost business API worker isolation.
+- 0.2.2: Added Phase 2.1 business data assertion gate from `run-20260630-022227-high-fidelity-risk-lab`; positive LOOP acceptance now requires server-side business ledger assertions, negative ledger_delta=0, and concurrency order/session/worker ownership.
 - 0.2.0: Added real execution standard with Loop Runner, acceptance report, fixture freshness report, quantitative metrics, and real execution gate.
 - 0.1.0: Added Web/H5 Loop Engineering skill with three-role loop, ledgers, evals, and local validation gate.
 
@@ -23,6 +25,7 @@ Run after changing loop roles, ledgers, evals, or crawler hardening:
 python tools/validate_web_h5_loop_gate.py
 python tools/validate_web_h5_crawler_gate.py
 python tools/validate_web_h5_real_execution_gate.py
+python tools/validate_business_data_assertions.py public-range-evidence
 python tools/ci_gate.py .ci-out
 ```
 

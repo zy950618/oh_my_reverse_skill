@@ -1,6 +1,13 @@
 ---
 name: ast-deobfuscate
-description: Internal/support tool for Babel AST deobfuscation of a specific obfuscated JavaScript file or snippet: string-array decoding, control-flow flattening, dead-code removal, and related transforms. Use directly only when the user explicitly asks for deobfuscation/还原/反混淆 or provides code with clear _0x/string-array/switch-flattening/sojson/OB markers. Do not trigger for ordinary minified code, generic JS reverse tasks, formatting, crawler delivery, or endpoint reproduction.
+description: >-
+  Internal/support tool for Babel AST deobfuscation of a specific obfuscated
+  JavaScript file or snippet: string-array decoding, control-flow flattening,
+  dead-code removal, and related transforms. Use directly only when the user
+  explicitly asks for deobfuscation/还原/反混淆 or provides code with clear
+  _0x/string-array/switch-flattening/sojson/OB markers. Do not trigger for
+  ordinary minified code, generic JS reverse tasks, formatting, crawler
+  delivery, or endpoint reproduction.
 argument-hint: [混淆代码文件路径或 URL]
 platforms: [web, h5]
 ---

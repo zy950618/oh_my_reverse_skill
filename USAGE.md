@@ -56,6 +56,7 @@ Web/H5 逆向工程 SKILL 库,装到 Claude Code 后,**用自然语言**让 Clau
 | 给 Skill 打分 / 评测 | "Skill 评分" / "Skill Bench" / "回测 Skill" / "新增 Skill 准入" | `skills-evaluation-governance` | 三段分 → 四段分评分,回测,漂移检测 |
 | 多 agent 闭环逆向 | "Loop Engineering" / "闭环处理" / "三个 agent 验证" / "爬虫 LOOP" | `web-h5-loop-engineering` | Executor + Verifier + Governor 闭环推进和停止/人审 |
 | 真实执行标准化 | "真实 Loop Runner" / "执行账本" / "结果量化沉淀" / "并发验收" / "fixtures 新鲜度治理" | `web-h5-loop-engineering` + `reverse-js-crawler` + tools | Loop Runner ledger + acceptance report + fixture freshness + metrics |
+| 公开靶场训练进化 SKILLS | "用公开靶场实战进化 SKILLS" / "跑 public-range-evidence" / "靶场训练进化 SKILLS" | `web-h5-loop-engineering` + `skills-evaluation-governance`，遇验证码证据再加 `captcha-service-delivery` | 先查 allowlist，再跑靶场，产 evidence JSON、ledger、acceptance report、负例/边界 eval 和 positive gate 判断 |
 | 创建 / 优化新 Skill | "新建一个 skill" / "优化 SKILL.md 描述" / "跑 eval 优化触发词" | `ai-reverse-skill-creator` | 起骨架,跑 eval loop,优化 description |
 | 写代码遵守行为守则 | (隐式触发,看 4-通用规范层) | `karpathy-guidelines` | 最小改动 / 不过度抽象 / 显式假设 |
 
@@ -126,6 +127,7 @@ Claude 触发 `skills-evaluation-governance`,跑 `score_skills.py` 四段分(结
 | 跳过六阶段直接写代码 | 长链路任务必须先规划再执行 |
 | 跳过沉淀(阶段 E/F) | 不沉淀就是没做完 |
 | 把"评分高"等同于"真实能用" | 评分是结构指标,真实成功率看 fixtures 一致率 |
+| 把 provider testing key / 官方 demo 成功写成 CAPTCHA 自动通过能力 | 这类结果只能作为边界或负例,没有真实业务 API repeat acceptance 不能 positive_allowed |
 | 把所有字段加 `ignore` 容忍度刷一致率 | 评分作弊,review 时盯防 |
 | 把推断/假设写成事实 | 结论必须按 observed / derived / assumed / unverified 分级 |
 | 把一次成功泛化成全链路成功 | market/stage/session 必须单独验证 |
@@ -160,3 +162,70 @@ Claude 触发 `skills-evaluation-governance`,跑 `score_skills.py` 四段分(结
 - 影响回归校验 → [99-SKILLS治理/15-AI变更风险与回归校验规约.md](./99-SKILLS治理/15-AI变更风险与回归校验规约.md)
 - 收尾清理与加密算法图 → [99-SKILLS治理/17-交付收尾清理与加密算法图谱规约.md](./99-SKILLS治理/17-交付收尾清理与加密算法图谱规约.md)
 - 评分体系 → [99-SKILLS治理/05-当前评分与回测结果.md](./99-SKILLS治理/05-当前评分与回测结果.md)
+
+## Phase 3 CAPTCHA Local Training
+
+Example request:
+
+```text
+进入 Phase 3, 训练 text/slider/rotate CAPTCHA baseline, 输出 metrics、failure cases、experience cards, 并在 localhost action replay。
+```
+
+Expected workflow:
+
+1. Generate synthetic samples with `tools/captcha_vision_dataset_generator.py`.
+2. Run baseline recognition with `tools/captcha_vision_baseline_solver.py`.
+3. Benchmark metrics and failure cases with `tools/captcha_vision_benchmark.py`.
+4. Replay at least one recognized action on `public-range-labs/captcha-vision-lab/` with `tools/captcha_action_replay_lab.py`.
+5. Store evidence under `public-range-evidence/captcha-vision-lab/` and experience cards under `skills-experience/`.
+
+Capability boundary:
+
+- Algorithm benchmark proves only local algorithm behavior.
+- Localhost action replay proves only local page action/state transition.
+- Real-site positive capability still requires Phase 2.1 final business API, server-side ledger, and `DATA_ASSERTION_PASS`.
+
+## Phase 3.4 Runtime Parity And Fingerprint Surface
+
+Example:
+
+```text
+进入 Phase 3.4, 跑 realistic-captcha-risk-lab, 做 Browser/Node/PageRuntime parity、fingerprint surface observation、captcha eval 和 1/2/5/10 business ladder。
+```
+
+Expected commands:
+
+- `python tools/js_page_runtime_parity_runner.py --run-id <run_id>`
+- `python tools/fingerprint_surface_capture.py --run-id <run_id>`
+- `python tools/fingerprint_profile_consistency_check.py --run-id <run_id>`
+- `python tools/realistic_captcha_risk_lab_concurrency.py --run-id <run_id>`
+
+Boundary:
+
+- Runtime parity proves local JS fixture consistency only.
+- Fingerprint surface reports observed values only.
+- Local business ladder proves localhost ledger isolation only.
+- None of these imply third-party CAPTCHA/WAF bypass or fingerprint evasion.
+
+## Phase 3.5 Longrun Verification
+
+Example:
+
+```text
+进入 Phase 3.5，运行 longrun，覆盖 CAPTCHA、JS runtime parity、fingerprint diagnostics、business API concurrency、chaos rejection、issue ledger、experience cards 和 regression evals。
+```
+
+Expected commands:
+
+- `python tools/phase3_longrun_runner.py --config configs/phase3_longrun.yaml`
+- `python tools/captcha_model_eval.py --run-id <run_id>`
+- `python tools/captcha_vision_benchmark.py --run-id <run_id> --require-threshold-report`
+- `python tools/js_page_runtime_parity_runner.py --run-id <run_id> --longrun-verify`
+- `python tools/fingerprint_surface_capture.py --run-id <run_id> --longrun-verify`
+- `python tools/fingerprint_profile_consistency_check.py --run-id <run_id> --longrun-verify`
+
+Boundary:
+
+- Longrun evidence must include `failure-cases.json`, `issue-ledger.json`, `regression-report.json`, `capability-decision.json`, and experience cards.
+- Longrun hardening remains `memory_only` unless final business API data assertions pass.
+- Local chaos rejection proves local state-machine behavior only; it is not third-party CAPTCHA/WAF capability.

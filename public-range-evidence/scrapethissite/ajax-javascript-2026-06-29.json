@@ -1,18 +1,44 @@
 {
   "schema_version": "public-range-evidence/v1",
+  "run_id": "run-20260629-085616-scrapethissite",
+  "capture_id": "cap-20260629-085616-scrapethissite-direct",
   "target": {
+    "id": "scrapethissite",
     "name": "Scrape This Site AJAX sandbox",
     "url": "https://www.scrapethissite.com/pages/ajax-javascript/",
+    "host": "www.scrapethissite.com",
+    "type": "public_training_range",
     "authorization_scope": "Public sandbox for learning web scraping; anonymous, non-destructive AJAX field parity only"
   },
-  "captured_at": "2026-06-29T07:13:42.764937+00:00",
+  "captured_at": "2026-06-29T08:56:16.111640+00:00",
   "source_freshness": "fresh",
+  "control_flow_status": "CONTROL_FLOW_PASS",
+  "business_data_status": "NOT_RUN",
+  "capability_status": "memory_only",
   "auth_state": "anonymous",
   "skills": [
     "reverse-js-crawler",
     "web-h5-loop-engineering",
     "skills-evaluation-governance"
   ],
+  "scope": {
+    "domain": "scrapethissite",
+    "stage": "public_ajax_replay",
+    "auth_state": "none",
+    "mode": "direct_interface_replay",
+    "in_scope": [
+      "anonymous AJAX endpoint discovery",
+      "direct non-browser JSON replay",
+      "repeat direct JSON replay",
+      "JSON Pointer field acceptance"
+    ],
+    "out_of_scope": [
+      "authentication",
+      "CAPTCHA/WAF handling",
+      "concurrency ladder",
+      "long-term stability"
+    ]
+  },
   "browser_execution": {
     "engine": "python-playwright-chromium",
     "state_reset": "new_browser_context_each_run",
@@ -40,14 +66,14 @@
     },
     "direct_interface_call": {
       "status": "pass",
-      "captured_at": "2026-06-29T15:32:31.6344222+08:00",
-      "client": "curl",
+      "captured_at": "2026-06-29T08:56:16.111640+00:00",
+      "client": "python-urllib",
       "method": "GET",
       "browser_dependency": false,
       "uses_browser_profile": false,
       "uses_live_storage": false,
       "uses_manual_cookie_or_token": false,
-      "command": "curl.exe -L --fail --max-time 60 -H \"Accept: application/json\" \"https://www.scrapethissite.com/pages/ajax-javascript/?ajax=true&year=2015\"",
+      "command": "python urllib.request with Accept: application/json and public-range user agent",
       "observed_status": 200,
       "content_type": "application/json",
       "body_length": 1570,
@@ -59,7 +85,7 @@
         "/0/awards"
       ],
       "observed_values": {
-        "/0/title": "Spotlight",
+        "/0/title": "Spotlight  ",
         "/0/year": 2015,
         "/0/awards": 2
       }
@@ -109,6 +135,25 @@
   "sign_or_token": {
     "required": false
   },
+  "provider_flow": {
+    "provider": "none",
+    "widget_detected": false,
+    "script_src": [],
+    "iframe_src": [],
+    "sitekey_or_action_observed": false,
+    "token_field_observed": false,
+    "backend_verify_observed": false,
+    "business_api_observed": true
+  },
+  "state_observer": {
+    "states_seen": [
+      "anonymous_direct_json_accepted",
+      "repeat_direct_json_accepted"
+    ],
+    "clean_unverified": "not_run",
+    "verified": "not_run",
+    "repeat_verified": "not_run"
+  },
   "repeat_verified": true,
   "repeat_attempts": [
     {
@@ -136,11 +181,33 @@
     "verifier": "repeated capture in a new browser context and replayed the AJAX endpoint directly",
     "governor": "allows positive skill participation only for anonymous public AJAX discovery/parity; does not claim concurrency, CAPTCHA/WAF handling, auth, or 314 delivery"
   },
+  "fact_labels": {
+    "observed": [
+      "Direct non-browser request returned HTTP 200 application/json with 16 list items.",
+      "JSON Pointer /0/title, /0/year, and /0/awards were present in the direct response.",
+      "Repeat direct call evidence exists for the same endpoint and JSON Pointers."
+    ],
+    "derived": [
+      "This public sandbox AJAX endpoint can be used as positive evidence for direct interface replay only."
+    ],
+    "assumed": [],
+    "unverified": [
+      "Concurrency ladder was not run.",
+      "No authenticated state, CAPTCHA, WAF, or long-term stability was tested."
+    ]
+  },
   "decision": {
-    "skills_participation": "positive_allowed",
-    "positive_allowed": true,
+    "skills_participation": "memory_only",
+    "positive_allowed": false,
     "concurrency_positive": false,
-    "positive_scope": [
+    "blocked_reason": "This pre-v2.1 public sandbox evidence proves direct JSON replay but has no server-side business ledger or business_data_assertions.",
+    "why_not_positive": [
+      "business_data_status is NOT_RUN",
+      "business_data_assertions is missing",
+      "no server-side business ledger exists for this public AJAX endpoint",
+      "no business side-effect assertions were recorded"
+    ],
+    "memory_scope": [
       "public sandbox AJAX endpoint discovery",
       "direct interface call backend JSON acceptance",
       "repeat direct interface call backend JSON acceptance",

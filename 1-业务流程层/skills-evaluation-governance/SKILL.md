@@ -87,6 +87,7 @@ Score separately:
 - 测试日志中的重复失败能进入站点经验库或 eval backlog。
 - Web/H5 爬虫类 Skill 必须检查 fresh capture、clean-state retest、anti-flake repeatability、concurrency ladder 和 session/cache isolation。
 - Web/H5 实战执行类 Skill 必须检查 Loop Runner ledger、Acceptance Report、risk-control concurrency、UI/API parity、fixture freshness 和 quantitative metrics。
+- public-range evidence 必须区分 `REAL_EXECUTION_PASS`、`STRUCTURE_ONLY`、`BLOCKED` 和 `INVALID`；没有 `execution_proof` 的 JSON 不能作为真实实战进化证据。
 - 改动后版本、变更记录和漂移测试要求同步更新。
 - 证据、验证、拒答、人工复核、监控和错误纠正都有明确门槛。
 
@@ -111,11 +112,39 @@ When scoring crawler/reverse Skills, include site memory quality: test logs shou
 
 When a new real website task reveals a repeated gap, update the relevant Skill, add or revise evals, record the version change, and schedule drift testing. Do not let the skills library become static notes.
 
-- Version: 0.4.1
-- Status: trigger-convergence baseline
+- Version: 0.4.3
+- Status: business-data-assertion governance baseline
 - Change log: record material trigger, workflow, reference, score, and eval changes in `references/governance.md`.
 - Drift tests: rerun evals after changing descriptions, adding new cases, or after important real-world failures.
 - Review cadence: update examples and negative triggers when repeated user corrections show a gap.
+
+## Evidence-Backed Phase 1 Update
+
+- Evidence run_id: `run-20260629-091645-gocaptcha-local-dummy`, `run-20260629-091645-cloudflare-turnstile-local-dummy`, `run-20260629-091645-concurrency-localhost`.
+- Triggered failure: local structure and public-range validators alone did not separate real execution proof from structure-only evidence.
+- Skill change: governance review must require `tools/validate_real_execution_proof.py` output and must not count `STRUCTURE_ONLY` files as real-run evidence.
+- Added eval: `evals/023-real-execution-proof-required.yaml`.
+- Regression commands: `python tools/validate_real_execution_proof.py public-range-evidence`; `python tools/ci_gate.py .ci-out`.
+
+## Evidence-Backed Phase 2 Update
+
+- Evidence run_id: `run-20260630-013842-high-fidelity-risk-lab`.
+- Triggered failure evidence: Phase 1.1 governance separated `execution_status` from `capability_status`, but still lacked a high-fidelity local target with server-side token state, final business API direct repeat, negative token lifecycle evals, and a business API concurrency ladder.
+- Skill change: governance admission may count this run as `positive_allowed` only within the self-owned localhost risk-lab scope after `validate_public_range_evidence` and `validate_real_execution_proof` pass; it must keep third-party CAPTCHA/WAF/fingerprint/production concurrency claims unverified.
+- Added eval: `evals/024-high-fidelity-risk-lab-governance-boundary.yaml`.
+- Regression commands: `python tools/run_phase2_high_fidelity_risk_lab.py`; `python tools/validate_public_range_evidence.py public-range-evidence`; `python tools/validate_real_execution_proof.py public-range-evidence`; `python tools/ci_gate.py .ci-out`.
+
+Phase 2 classification: governance now has one positive local-lab evidence item for final business API acceptance, direct interface repeat, negative eval coverage, and worker isolation. It remains a local-range result, not official Skill Bench scoring and not real third-party risk-control capability.
+
+## Evidence-Backed Phase 2.1 Update
+
+- Evidence run_id: `run-20260630-022227-high-fidelity-risk-lab`.
+- Triggered failure evidence: historical `positive_allowed` evidence without server-side business ledger or `business_data_assertions` could overclaim interface/control-flow success as business success.
+- Skill change: governance admission now requires four distinct statuses and downgrades any positive evidence missing `business_data_status=DATA_ASSERTION_PASS`.
+- Added eval: `evals/025-business-data-assertion-governance.yaml`.
+- Regression commands: `python tools/validate_business_data_assertions.py public-range-evidence`; `python tools/validate_public_range_evidence.py public-range-evidence`; `python tools/validate_real_execution_proof.py public-range-evidence`; `python tools/ci_gate.py .ci-out`.
+
+Phase 2.1 classification: `positive_allowed_count` is counted only after execution, control-flow, and business-data gates pass. Evidence that only proves direct replay or control-flow remains `memory_only`, `negative_eval_only`, or `unverified`.
 
 ## References
 
@@ -124,3 +153,35 @@ When a new real website task reveals a repeated gap, update the relevant Skill, 
 - `references/governance.md`: versioning, change log, and drift-test policy.
 - `references/scoring-rubric.md`: scoring details.
 - `references/skill-bench.md`: Skill Bench setup requirements.
+
+## Evidence-Backed Phase 3.5 Update
+
+- Evidence run_id: `run-20260630-041500-phase3-5-longrun`.
+- Failure evidence: `public-range-evidence/longrun/phase3-5/run-20260630-041500-phase3-5-longrun/failure-cases.json` and `public-range-evidence/longrun/phase3-5/run-20260630-041500-phase3-5-longrun/issue-ledger.json`.
+- Skill change: governance admission now requires longrun issue ledger, experience cards, regression evals, and capability-decision output before any Phase 3 CAPTCHA/runtime/fingerprint hardening can be discussed.
+- Added eval: `evals/longrun/phase3-5/001-phase3-5-longrun-regression.yaml`.
+- Regression commands: `python tools/phase3_longrun_runner.py --config configs/phase3_longrun.yaml`; `python tools/validate_public_range_evidence.py public-range-evidence`; `python tools/validate_real_execution_proof.py public-range-evidence`; `python tools/validate_business_data_assertions.py public-range-evidence`; `python tools/ci_gate.py .ci-out`.
+
+Phase 3.5 classification: longrun evidence can harden local baselines and governance gates. It remains `memory_only` unless final business API data assertions pass; it is not real third-party CAPTCHA/WAF capability.
+
+## Evidence-Backed Phase 3.6 Update
+
+- Evidence run_id: `run-20260630-053000-phase3-6-public-model`.
+- Training evidence: `public-range-evidence/raw/captcha-model-training/run-20260630-053000-phase3-6-public-model/model-eval.json`.
+- Public/local action replay evidence: `public-range-evidence/gocaptcha-local/run-20260630-053000-phase3-6-public-model.json`.
+- Public fingerprint diagnostics evidence: `public-range-evidence/fingerprint-diagnostics/run-20260630-053000-phase3-6-public-model-sannysoft.json`.
+- Skill change: governance now distinguishes local solver improvement, public/local action replay pass, observation-only fingerprint diagnostics, and public evidence `positive_allowed`.
+- Added evals: `evals/phase3-6/001-model-training-improves-text-ocr.yaml`, `evals/phase3-6/002-gocaptcha-local-action-replay.yaml`, `evals/phase3-6/003-fingerprint-public-diagnostics.yaml`.
+- Regression commands: `python tools/captcha_model_train.py --run-id <run_id>`; `python tools/captcha_model_eval.py --run-id <run_id>`; `python tools/captcha_action_replay_lab.py --target gocaptcha-local --run-id <run_id>`; `python tools/captcha_leakage_audit.py --run-id <run_id>`; `python tools/capability_promotion_gate.py --run-id <run_id>`.
+
+Phase 3.6 classification: text OCR has a measured local model improvement and GoCaptcha-local action replay executed. Public evidence remains non-positive without final business API `DATA_ASSERTION_PASS`.
+
+## Evidence-Backed Phase 3.10 Update
+
+- Evidence run_id: `run-20260630-163000-phase3-10-realism-hardening`.
+- Evidence: `public-range-evidence/shumei-compatible-lab/run-20260630-163000-phase3-10-realism-hardening.json`, `public-range-evidence/aliyun-compatible-lab/run-20260630-163000-phase3-10-realism-hardening.json`, `public-range-evidence/five-second-shield-lab/run-20260630-163000-phase3-10-realism-hardening.json`, and `public-range-evidence/raw/challenge-realism-audit/run-20260630-163000-phase3-10-realism-hardening/challenge-realism-audit.json`.
+- Evals: `evals/phase3-10/shumei-compatible-lab-hardening.yaml`, `evals/phase3-10/aliyun-compatible-lab-hardening.yaml`, and `evals/phase3-10/five-second-shield-lab-dynamic.yaml`.
+- Scope: local compatible labs and local WAF lab only; self-owned official trial adapters are BLOCKED without private config.
+- Capability level: family-scoped `positive_candidate`; no `stable_positive`, no verified vendor solver, and no production WAF bypass.
+- Failure cases: realism audit requires hard/adversarial failures or sufficient difficulty evidence; 100/100 p95=0 cannot promote beyond candidate.
+- Next training goal: require self-owned official trial evidence, longrun soak, failure replay fixes, and repeated drift gates before verified/stable.

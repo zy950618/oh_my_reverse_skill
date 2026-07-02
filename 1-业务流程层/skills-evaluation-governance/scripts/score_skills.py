@@ -18,6 +18,32 @@ from skill_score_config import load_skill_score_config
 SCORE_CONFIG = load_skill_score_config(REPO_ROOT)
 PUBLIC_RANGE_EVIDENCE_ROOT = REPO_ROOT / "public-range-evidence"
 PUBLIC_RANGE_MAX_AGE_DAYS = 30
+PUBLIC_RANGE_SCAN_EXCLUDED_PARTS = {
+    "raw",
+    "_archive",
+    "fixtures",
+    "replay",
+    "reports",
+    "manifests",
+    "samples",
+    "model",
+    "inference",
+    "eval",
+    "mock_server",
+    "fastapi_adapter",
+    "sdk_examples",
+    "tests",
+    "negative_cases",
+    "repeat_reports",
+    "drift_cases",
+}
+PUBLIC_RANGE_SCAN_EXCLUDED_ROOTS = {
+    "airline-lab-order-flow",
+    "captcha-model-lab",
+    "fingerprint-risk-lab",
+    "pure-api-lab",
+    "real-site-observation-pack",
+}
 SITE_MEMORY_ROOT = REPO_ROOT / "站点经验库"
 
 
@@ -147,11 +173,18 @@ def has_positive_public_range_evidence(skill_name: str) -> bool:
     if not PUBLIC_RANGE_EVIDENCE_ROOT.is_dir():
         return False
     for path in PUBLIC_RANGE_EVIDENCE_ROOT.rglob("*.json"):
-        if "raw" in {part.lower() for part in path.parts}:
+        relative_parts = [part.lower() for part in path.relative_to(PUBLIC_RANGE_EVIDENCE_ROOT).parts]
+        if not relative_parts:
+            continue
+        if relative_parts[0] in PUBLIC_RANGE_SCAN_EXCLUDED_ROOTS:
+            continue
+        if PUBLIC_RANGE_SCAN_EXCLUDED_PARTS & set(relative_parts[:-1]):
             continue
         try:
             payload = json.loads(path.read_text(encoding="utf-8-sig"))
         except Exception:
+            continue
+        if not isinstance(payload, dict):
             continue
         if skill_name not in (payload.get("skills") or []):
             continue

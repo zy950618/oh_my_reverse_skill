@@ -1,5 +1,6 @@
 ---
 name: website-314-api-delivery
+standard_type: external_entry
 description: >-
   Use this skill when a user gives a new website or existing target site and asks for end-to-end pure-interface implementation, FastAPI interface test delivery, API service delivery, or optional integration with a local base framework such as 314 after the Python interfaces are verified. Trigger for requests such as new website crawler, pure API implementation, FastAPI test API, site-to-service delivery, search/cart/order/payment flow, flight booking interface, 314 framework, flight_cwl_common_314, local base framework, 接口实现, 纯接口, FastAPI接口测试, 网站接入, 新站点接入, 查询/加车/生单/支付, 加解密全部实现, 314基础框架, 本地基础框架, 提供接口, 服务化, or 长期可维护接口交付.
 platforms: [web, h5]
@@ -19,6 +20,10 @@ platforms: [web, h5]
 ## Purpose
 
 把一个新网站从“给 URL / 业务目标”推进到“纯接口实现 + FastAPI 接口测试交付 + 测试闭环 + 可持续沉淀”。Python/FastAPI 接口全部验证成功后，再人工确认是否接入本地基础框架；314 只是可选基础框架分支之一。这个 Skill 是总控流程，用来调度逆向、反爬、接口化、测试、可选框架接入和长期治理。
+
+## Standard LOOP Pure API Gate
+
+This skill is an `external_entry` and `pure_api_delivery` owner. Final business delivery must be browserless: browser tooling is permitted for reconnaissance, script location, runtime trace, sample collection, and parity checks, but final business flow must pass `tools/validate_pure_api_delivery.py` against a delivery lab or package that has no Playwright/Puppeteer/Camoufox/profile/manual-cookie dependency.
 
 ## When To Use
 

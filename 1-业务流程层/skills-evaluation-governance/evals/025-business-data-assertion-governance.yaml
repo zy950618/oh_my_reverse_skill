@@ -1,0 +1,24 @@
+name: Governance downgrades positive evidence without business data assertions
+prompt: >
+  The evidence library contains public-range JSON files. Some have final API
+  direct repeat and historical positive_allowed status, but no
+  business_data_status or business_data_assertions. The agent wants CI to keep
+  counting them as positive capability.
+criteria:
+  - "Runs validate_business_data_assertions.py as a separate gate."
+  - "Counts positive_allowed only when business_data_status=DATA_ASSERTION_PASS."
+  - "Reports execution, control-flow, business-data, and capability gates separately."
+  - "Allows historical interface-only evidence to remain as memory_only without deletion."
+  - "Requires CI summary to expose business_data_pass_count."
+  - "Does not count HTTP 200, JSON Pointer presence, or worker PASS as business-data PASS."
+expect_skill: true
+evidence_run_id:
+  - run-20260630-022227-high-fidelity-risk-lab
+failure_evidence:
+  - historical positive evidence without business_data_assertions was rejected by the new business data validator.
+regression_command:
+  - python tools/validate_business_data_assertions.py public-range-evidence
+  - python tools/validate_public_range_evidence.py public-range-evidence
+  - python tools/validate_real_execution_proof.py public-range-evidence
+  - python tools/ci_gate.py .ci-out
+timeout: 180

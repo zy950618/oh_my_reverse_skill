@@ -1,5 +1,6 @@
 ---
 name: reverse-js-crawler
+standard_type: external_entry
 description: >-
   Primary entry for focused Web/H5 crawler reverse engineering and interface restoration: page reconnaissance, real API discovery, JavaScript sign/token/cookie source tracing, request reproduction, data collection scripts, UI/API parity, and fresh replay evidence for a bounded route or stage. Trigger for JS reverse, crawler reverse, API restoration, encrypted parameters, sign/x-sign/authKey source tracing, web data collection, request reproduction, 逆向采集, JS逆向, 接口还原, 接口复现, 加密参数, 请求复现, 批量采集, 数据清洗, or 采集脚本交付. Do not use as the first entry for full FastAPI/service delivery, explicit LOOP/multi-agent closure, skill governance, stable adapter production, or CAPTCHA/WAF-specific evidence; route those to the corresponding entry or conditional skill.
 platforms: [web, h5]
@@ -19,6 +20,10 @@ platforms: [web, h5]
 ## Purpose
 
 把页面、接口、抓包或 JS 线索还原成可运行、可验证、可维护的采集工程。不要只给方向；要闭环到脚本、测试、日志和失败边界。
+
+## Standard LOOP Pure API First Rule
+
+This skill is an `external_entry` for bounded route or stage work. It may use browser evidence for discovery, but any final request replay or crawler delivery must document how sign/token material is regenerated outside the browser and must reject copied browser cookies, storage, profiles, and manual token reuse as final delivery.
 
 ## Workflow
 

@@ -1,0 +1,22 @@
+name: Public-range loop needs execution proof
+prompt: >
+  A public-range training run has JSON evidence and local validators pass, but
+  the evidence file has no execution_proof with command, logs, screenshot, or
+  network summary. The agent wants to claim the Web/H5 loop achieved real
+  execution progress.
+criteria:
+  - "Requires tools/validate_real_execution_proof.py before counting the run as real execution."
+  - "Classifies evidence without execution_proof as STRUCTURE_ONLY, not REAL_EXECUTION_PASS."
+  - "Separates execution_status from capability_status; REAL_EXECUTION_PASS is not positive_allowed."
+  - "Requires localhost service/browser/network artifacts for local target claims."
+  - "Does not treat validator structure PASS as real target PASS."
+  - "Keeps CAPTCHA/WAF/provider test evidence negative or boundary unless final business API repeat acceptance exists."
+expect_skill: true
+evidence_run_id:
+  - run-20260629-091645-gocaptcha-local-dummy
+  - run-20260629-091645-cloudflare-turnstile-local-dummy
+  - run-20260629-091645-concurrency-localhost
+regression_command:
+  - python tools/validate_real_execution_proof.py public-range-evidence
+  - python tools/validate_web_h5_loop_gate.py
+timeout: 120

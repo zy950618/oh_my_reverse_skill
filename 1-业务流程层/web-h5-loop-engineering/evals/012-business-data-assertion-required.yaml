@@ -1,0 +1,26 @@
+name: Business data assertion is required for LOOP positive
+prompt: >
+  A Web/H5 loop run has real execution proof, browser flow, direct repeat, JSON
+  Pointers, and a 1/2/5/10 worker ladder. The agent wants to keep it
+  positive_allowed, but the evidence has no server-side business ledger and no
+  business_data_assertions.
+criteria:
+  - "Rejects positive_allowed unless execution_status=REAL_EXECUTION_PASS."
+  - "Rejects positive_allowed unless control_flow_status=CONTROL_FLOW_PASS."
+  - "Rejects positive_allowed unless business_data_status=DATA_ASSERTION_PASS."
+  - "Requires server-side business ledger assertions for list/detail/submit consistency."
+  - "Requires negative evals to prove expected_ledger_delta=0 and actual_ledger_delta=0."
+  - "Requires concurrency assertions for worker_1/2/5/10 order/session/worker ownership."
+  - "Downgrades interface-only or control-flow-only evidence to memory_only, negative_eval_only, or unverified."
+expect_skill: true
+evidence_run_id:
+  - run-20260630-022227-high-fidelity-risk-lab
+failure_evidence:
+  - run-20260630-013842-high-fidelity-risk-lab lacked business_data_assertions and was downgraded to memory_only.
+  - run-20260629-085616-scrapethissite lacked server-side business ledger and was downgraded to memory_only.
+regression_command:
+  - python tools/validate_business_data_assertions.py public-range-evidence
+  - python tools/validate_public_range_evidence.py public-range-evidence
+  - python tools/web_h5_acceptance_report.py validate --report <report> --require-complete
+  - python tools/ci_gate.py .ci-out
+timeout: 180

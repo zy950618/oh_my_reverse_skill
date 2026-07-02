@@ -6,7 +6,12 @@
 
 1. 读 `99-SKILLS治理/06-网页逆向标准规划.md` 输出 6 阶段规划
 2. 按 `00-SKILLS索引.md` 选 skill
-   - 用户明确要求 Loop Engineering、闭环处理、多 agent 逆向、三角色验证时,优先选 `1-业务流程层/web-h5-loop-engineering`
+   - 路由优先级: 用户明确要求 Loop Engineering、闭环处理、多 agent 逆向、三角色验证、反复验证或 execution ledger 时,优先选 `1-业务流程层/web-h5-loop-engineering`
+   - 用户要求完整新站点纯接口、FastAPI 接口测试交付、服务化、314/本地基础框架接入时,选 `1-业务流程层/website-314-api-delivery`
+   - 用户要求聚焦单链路 JS 逆向、接口还原、加密参数、采集脚本或请求复现时,选 `1-业务流程层/reverse-js-crawler`
+   - `4-通用规范层/karpathy-guidelines` 只是基础工程规范,只能作为其他 Skill 执行时的辅助规范,不得作为 Web/H5/CAPTCHA/WAF/业务任务主入口
+   - CAPTCHA 模型栈选择/训练/评测走 `6-验证码逆向层/captcha-open-source-model-stack`; 已有模型预测后的动作回放、失败复测和 promotion gate 走 `6-验证码逆向层/captcha-model-action-e2e`
+   - fingerprint surface inventory 走 `7-指纹风控层/browser-fingerprint-surface-lab`; block reason 归因走 `7-指纹风控层/fingerprint-block-reason-diagnostics`
 3. 进入实现前 Read `4-通用规范层/karpathy-guidelines/SKILL.md` 确认 4 原则
 4. 输出结论前 Read `99-SKILLS治理/11-AI事实证据规约.md`，区分 observed / derived / assumed / unverified
 5. 扩展范围或跨 market/stage/session 前 Read `99-SKILLS治理/12-反泛化与任务收敛规约.md`
@@ -70,3 +75,12 @@
 | 99 | `99-SKILLS治理/` | 生命周期/分类/评分/漂移/准入/运行时方法论 |
 
 完整规则见 `CLAUDE.md`。
+
+## Standard LOOP 本地交付补充
+
+- 入口、升级、内部工具、辅助规范和交付类型以 `99-SKILLS治理/20-routing-contract.md` 为准。
+- `karpathy-guidelines` 固定为 `auxiliary_policy`,只作为执行类 Skill 的工程 checklist。
+- 最终业务链路必须纯接口；浏览器只允许用于分析、抓包、runtime trace、parity 和训练样本采集。
+- 验证码交付必须包含 action schema、dataset/training/pass-rate/model packaging 结构和 validator。
+- 第 7 层指纹风控必须先落本地靶场、reference、eval 和 validator；不允许把 observation 写成绕过能力。
+- 完成前必须产出 cleanup ledger、known failures、release gate 和 standard-loop-score。

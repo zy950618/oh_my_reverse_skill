@@ -59,7 +59,7 @@ layer_gate_modes:
   "4-通用规范层": active
   "5-沉淀工具层": active
   "6-验证码逆向层": active
-  "7-指纹风控层": advisory
+  "7-指纹风控层": active-ready
 
 ci_score_files:
   - "1-业务流程层.json"
@@ -70,7 +70,7 @@ ci_score_files:
   - "7-指纹风控层.json"
 
 layer7_boundary:
-  status: advisory
+  status: active-ready
   allowed:
     - authorized fingerprint surface diagnostics
     - block reason diagnostics

@@ -1,0 +1,24 @@
+name: Governance admits local risk lab without overclaiming
+prompt: >
+  A Phase 2 high-fidelity localhost risk lab passes public-range evidence gates.
+  It includes real browser access, final business API acceptance, direct repeat,
+  token lifecycle negatives, and worker isolation. The agent wants to score the
+  skills library as improved.
+criteria:
+  - "Requires validate_public_range_evidence.py and validate_real_execution_proof.py to pass."
+  - "Allows positive_allowed only for the local high-fidelity risk-lab scope."
+  - "Reports run_id and failure evidence before changing SKILLS."
+  - "Keeps third-party CAPTCHA/WAF/risk-control, production fingerprint, and external concurrency claims unverified."
+  - "Distinguishes local validator/evidence PASS from official Skill Bench scoring."
+  - "Requires regression commands to include the Phase 2 runner and CI gate."
+expect_skill: true
+evidence_run_id:
+  - run-20260630-013842-high-fidelity-risk-lab
+failure_evidence:
+  - "Phase 1.1 governance patch separated execution_status/capability_status but had no high-fidelity local final business API acceptance."
+regression_command:
+  - python tools/run_phase2_high_fidelity_risk_lab.py
+  - python tools/validate_public_range_evidence.py public-range-evidence
+  - python tools/validate_real_execution_proof.py public-range-evidence
+  - python tools/ci_gate.py .ci-out
+timeout: 180

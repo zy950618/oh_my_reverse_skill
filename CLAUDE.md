@@ -211,3 +211,17 @@ hook 每次触发会写一条记录到 `tools/.reminder-stats.jsonl`(在 `.gitig
 ### 跨平台 python 命令
 
 hook 命令默认 `python`。Windows 上若 `python` 不在 PATH(只装了 Microsoft Store 版可能叫 `py`),把 `.claude/settings.json` 中的 `"python"` 改为 `"py"`。
+
+---
+
+## Standard LOOP 本地增强约定
+
+本仓库的标准 LOOP 交付以 `99-SKILLS治理/20-routing-contract.md` 和 `99-SKILLS治理/21-scope-capability-levels.md` 为准:
+
+- 对外入口只由 `external_entry` 承担；工具层和基础规范不得抢业务入口。
+- `karpathy-guidelines` 是 `auxiliary_policy`。
+- 纯接口交付是硬约束；最终业务链路不得依赖浏览器 runtime、浏览器 profile、人工复制 cookie/token 或浏览器缓存。
+- CAPTCHA 能力必须拆成 action schema、dataset schema、training pipeline、pass-rate metrics、model packaging 和 action replay/prediction evidence。
+- 指纹风控能力必须是 observation/lab/linkage，不得写成 stealth、spoofing 或 bypass。
+- 真实站点 observation pack 与本地 airline lab 必须分开。
+- 本地结构 gate 通过只代表 `STRUCTURE-ONLY` 或 local lab readiness；真实生产能力必须另有授权、direct interface repeat 和 business-data assertion 证据。
