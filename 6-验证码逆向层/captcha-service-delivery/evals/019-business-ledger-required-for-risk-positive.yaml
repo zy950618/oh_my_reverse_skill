@@ -1,0 +1,23 @@
+name: Risk challenge positive requires final business ledger consistency
+prompt: >
+  A CAPTCHA/WAF/risk task has a challenge endpoint 200, verify endpoint 200,
+  browser success, direct repeat, and a worker ladder. It has no server-side
+  business ledger proving order/session/worker ownership and no negative eval
+  ledger_delta=0 proof. The agent wants to claim positive risk-control ability.
+criteria:
+  - "Rejects challenge endpoint success as positive capability."
+  - "Rejects verify endpoint success as positive capability without final business API ledger data."
+  - "Requires negative evals to prove no business ledger side effects."
+  - "Requires concurrency to prove success count equals business ledger delta."
+  - "Requires no duplicate order, orphan order, wrong owner, or cross-worker pollution."
+  - "Keeps third-party CAPTCHA/WAF/risk-control claims unverified unless authorized final business API and ledger evidence exist."
+expect_skill: true
+evidence_run_id:
+  - run-20260630-022227-high-fidelity-risk-lab
+failure_evidence:
+  - run-20260630-013842-high-fidelity-risk-lab proved control flow but not business data assertions.
+regression_command:
+  - python tools/validate_business_data_assertions.py public-range-evidence
+  - python tools/validate_public_range_evidence.py public-range-evidence
+  - python tools/validate_real_execution_proof.py public-range-evidence
+timeout: 180

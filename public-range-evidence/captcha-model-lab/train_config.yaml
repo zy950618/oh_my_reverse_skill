@@ -1,0 +1,14 @@
+schema_version: captcha_train_config/v1
+run_id: train-20260701-sample
+dataset_manifest: dataset_manifest.json
+model_family: baseline-template-matcher
+seed: 1337
+splits:
+  train: 1
+  validation: 1
+  test: 1
+metrics:
+  tolerance_css_px: 3
+boundary:
+  local_lab_only: true
+  third_party_positive_claim: false

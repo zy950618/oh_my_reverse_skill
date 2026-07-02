@@ -1,0 +1,12 @@
+name: Validate mobile H5 coordinates, provider signals, state machine, and labels
+prompt: >
+  A mobile H5 click-select CAPTCHA was captured from an authorized lab. Define
+  how to detect provider class, label the sample, transform coordinates, and
+  track state.
+criteria:
+  - "Requires provider detection signals from script, DOM, request, or backend fields."
+  - "Requires mobile_h5_transform with DPR, image size, element bbox, scroll offset, and safe area."
+  - "Requires challenge_state_machine with provider_accepted, business_accepted, and repeat_verified as separate states."
+  - "Requires manual label review metadata and preserves disagreement/failure samples."
+expect_skill: true
+timeout: 120

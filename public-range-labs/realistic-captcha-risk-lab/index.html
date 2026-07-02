@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Realistic Captcha Risk Lab</title>
+</head>
+<body>
+  <h1>Realistic Captcha Risk Lab</h1>
+  <button id="sign">Sign Fixture</button>
+  <pre id="out"></pre>
+  <script src="/runtime-signature.js"></script>
+  <script>
+    document.getElementById('sign').onclick = () => {
+      const payload = { item_id: 'risk-item-1', action: 'submit', nonce: 'nonce-local', ts: 1700000000000 };
+      const result = window.__REALISTIC_LAB__.signPayload(payload);
+      document.getElementById('out').textContent = JSON.stringify(result, null, 2);
+      window.__REALISTIC_LAB_RESULT__ = result;
+    };
+  </script>
+</body>
+</html>
+

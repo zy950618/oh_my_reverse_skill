@@ -1,0 +1,8 @@
+id: captcha-action-planner-002
+title: Action replay binds solver output to the same challenge instance
+assertions:
+  - action replay includes sample_id or challenge_instance_id
+  - solver prediction comes from challenge_image
+  - localhost expected answer initialization is not counted as solver input
+  - localhost action success is not real provider positive
+

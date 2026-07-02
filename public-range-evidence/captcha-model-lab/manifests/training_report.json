@@ -1,0 +1,27 @@
+{
+  "manifest_type": "captcha_training_report",
+  "schema_version": "0.1.0",
+  "run_id": "train-20260701-sample",
+  "dataset_id": "captcha-model-lab-sample",
+  "model_family": "baseline-template-matcher",
+  "pipeline": ["dataset_audit", "label_audit", "train", "evaluate", "failure_review", "package"],
+  "reproducibility": {
+    "seed": 1337,
+    "code_version": "local-sample",
+    "python": "standard-library-validator-compatible"
+  },
+  "metrics": {
+    "validation_accuracy": 1.0,
+    "test_accuracy": 1.0,
+    "mean_action_error_css_px": 0.0
+  },
+  "artifacts": [
+    {"role": "model", "path": "../model/sample-model.json"},
+    {"role": "failures", "path": "../reports/failure-cases.json"}
+  ],
+  "capability_boundary": {
+    "skills_participation": "memory_only",
+    "third_party_positive_claim": false,
+    "requires_business_api_repeat_verified": true
+  }
+}

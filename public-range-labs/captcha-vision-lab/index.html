@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Captcha Vision Lab</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; color: #17202a; }
+    main { max-width: 900px; margin: 0 auto; }
+    .row { display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start; }
+    canvas { border: 1px solid #9aa5b1; background: #f7f9fb; }
+    button, input { font: inherit; padding: 8px 10px; }
+    #state { margin-top: 12px; padding: 10px; background: #eef3f7; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Captcha Vision Lab</h1>
+    <div class="row">
+      <canvas id="slider" width="320" height="160"></canvas>
+      <div>
+        <label>Predicted offset <input id="offset" type="number" value="0"></label>
+        <button id="apply">Apply Slider Action</button>
+        <div id="state">state=ready</div>
+      </div>
+    </div>
+  </main>
+  <script>
+    const canvas = document.getElementById('slider');
+    const ctx = canvas.getContext('2d');
+    const state = document.getElementById('state');
+    const gapX = Number(new URLSearchParams(location.search).get('expected') || 172);
+    function draw(offset) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#dce5ec';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#91a7b8';
+      for (let x = 0; x < 320; x += 32) ctx.fillRect(x, 0, 12, 160);
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(gapX, 56, 38, 38);
+      ctx.strokeStyle = '#394b59';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(gapX, 56, 38, 38);
+      ctx.fillStyle = '#2f80ed';
+      ctx.fillRect(Number(offset), 116, 38, 28);
+    }
+    draw(0);
+    document.getElementById('apply').addEventListener('click', () => {
+      const offset = Number(document.getElementById('offset').value);
+      draw(offset);
+      const ok = Math.abs(offset - gapX) <= 5;
+      state.textContent = ok ? 'state=backend_accepted' : 'state=backend_rejected';
+      window.__captchaVisionLabState = { ok, offset, expected: gapX, state: state.textContent };
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+{
+  "capability_boundary": {
+    "evidence_scope": "local_lab",
+    "provider_token_used": false,
+    "remote_solver_api_used": false,
+    "third_party_positive_claim": false
+  },
+  "dataset_id": "captcha-model-lab-sample",
+  "model_family": "baseline-template-matcher",
+  "model_id": "sample-local-lab-model",
+  "package_manifest_ref": "manifests/package_manifest.json",
+  "prediction_source": "local_action_manifest_template",
+  "predictions": [
+    {
+      "actions": [
+        {
+          "kind": "pointer_down",
+          "time_ms": 0,
+          "x": 61,
+          "y": 330
+        },
+        {
+          "kind": "pointer_move",
+          "time_ms": 420,
+          "x": 196,
+          "y": 330
+        },
+        {
+          "kind": "pointer_up",
+          "time_ms": 520,
+          "x": 196,
+          "y": 330
+        }
+      ],
+      "challenge_type": "slider",
+      "confidence": 1.0,
+      "error_modes": [],
+      "image_path": "../samples/images/sample-slider-001.ppm",
+      "predicted_offset_css_px": 135,
+      "prediction_status": "ok",
+      "provider": "custom",
+      "sample_id": "sample-slider-001",
+      "split": "train"
+    },
+    {
+      "actions": [
+        {
+          "kind": "pointer_down",
+          "time_ms": 0,
+          "x": 61,
+          "y": 330
+        },
+        {
+          "kind": "pointer_move",
+          "time_ms": 420,
+          "x": 196,
+          "y": 330
+        },
+        {
+          "kind": "pointer_up",
+          "time_ms": 520,
+          "x": 196,
+          "y": 330
+        }
+      ],
+      "challenge_type": "slider",
+      "confidence": 1.0,
+      "error_modes": [],
+      "image_path": "../samples/images/sample-slider-002.ppm",
+      "predicted_offset_css_px": 135,
+      "prediction_status": "ok",
+      "provider": "custom",
+      "sample_id": "sample-slider-002",
+      "split": "validation"
+    },
+    {
+      "actions": [
+        {
+          "kind": "pointer_down",
+          "time_ms": 0,
+          "x": 61,
+          "y": 330
+        },
+        {
+          "kind": "pointer_move",
+          "time_ms": 420,
+          "x": 196,
+          "y": 330
+        },
+        {
+          "kind": "pointer_up",
+          "time_ms": 520,
+          "x": 196,
+          "y": 330
+        }
+      ],
+      "challenge_type": "slider",
+      "confidence": 1.0,
+      "error_modes": [],
+      "image_path": "../samples/images/sample-slider-003.ppm",
+      "predicted_offset_css_px": 135,
+      "prediction_status": "ok",
+      "provider": "custom",
+      "sample_id": "sample-slider-003",
+      "split": "test"
+    }
+  ],
+  "run_id": "infer-20260701-sample",
+  "schema_version": "captcha_sample_predictions/v1"
+}

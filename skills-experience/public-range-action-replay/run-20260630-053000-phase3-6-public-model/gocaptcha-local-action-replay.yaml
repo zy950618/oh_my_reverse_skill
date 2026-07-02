@@ -1,0 +1,9 @@
+experience_id: run-20260630-053000-phase3-6-public-model-gocaptcha-local-action-replay
+source_run_id: run-20260630-053000-phase3-6-public-model
+target: gocaptcha-local
+challenge_type: slider-captcha
+sample_id: slider-easy-0000
+prediction_source: browser_challenge_image_screenshot
+action_success: true
+abs_error: 3
+capability_impact: public range action replay executed but remains memory_only without business_data_assertions

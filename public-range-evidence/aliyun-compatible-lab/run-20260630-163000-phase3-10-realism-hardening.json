@@ -1,0 +1,1057 @@
+{
+  "schema_version": "public-range-evidence/v1",
+  "run_id": "run-20260630-163000-phase3-10-realism-hardening",
+  "target": {
+    "id": "aliyun-compatible-lab",
+    "type": "localhost_vendor_compatible_lab",
+    "url": "http://127.0.0.1:18211"
+  },
+  "captured_at": "2026-06-30T07:45:55.568819Z",
+  "source_freshness": "fresh",
+  "skills": [
+    "captcha-provider-diagnostics",
+    "captcha-visual-recognition-lab",
+    "captcha-action-planner"
+  ],
+  "execution_status": "REAL_EXECUTION_PASS",
+  "capability_status": "positive_candidate",
+  "control_flow_status": "CONTROL_FLOW_PASS",
+  "business_data_status": "NOT_RUN",
+  "compatible_lab": true,
+  "official_vendor": false,
+  "not_generalizable_to_vendor_production": true,
+  "challenge_families": [
+    "slider",
+    "puzzle",
+    "spatial_reasoning",
+    "no_trace",
+    "one_click"
+  ],
+  "capabilities": {
+    "aliyun-compatible-lab": {
+      "slider": {
+        "sample_count": 350,
+        "success_count": 313,
+        "failure_count": 37,
+        "success_rate": 0.8942857142857142,
+        "p95_error": 999.0,
+        "per_difficulty_metrics": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "p95_error": 0.0
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "p95_error": 0.0
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 88,
+            "failure_count": 12,
+            "success_rate": 0.88,
+            "p95_error": 999.0
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 25,
+            "failure_count": 25,
+            "success_rate": 0.5,
+            "p95_error": 999.0
+          }
+        },
+        "capability_status": "positive_candidate",
+        "capability_level": "candidate",
+        "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+      },
+      "puzzle": {
+        "sample_count": 350,
+        "success_count": 317,
+        "failure_count": 33,
+        "success_rate": 0.9057142857142857,
+        "p95_error": 999.0,
+        "per_difficulty_metrics": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "p95_error": 0.0
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 99,
+            "failure_count": 1,
+            "success_rate": 0.99,
+            "p95_error": 0.0
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 85,
+            "failure_count": 15,
+            "success_rate": 0.85,
+            "p95_error": 999.0
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 33,
+            "failure_count": 17,
+            "success_rate": 0.66,
+            "p95_error": 999.0
+          }
+        },
+        "capability_status": "positive_candidate",
+        "capability_level": "candidate",
+        "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+      },
+      "spatial_reasoning": {
+        "sample_count": 350,
+        "success_count": 312,
+        "failure_count": 38,
+        "success_rate": 0.8914285714285715,
+        "p95_error": 999.0,
+        "per_difficulty_metrics": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "p95_error": 0.0
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 98,
+            "failure_count": 2,
+            "success_rate": 0.98,
+            "p95_error": 0.0
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 83,
+            "failure_count": 17,
+            "success_rate": 0.83,
+            "p95_error": 999.0
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 31,
+            "failure_count": 19,
+            "success_rate": 0.62,
+            "p95_error": 999.0
+          }
+        },
+        "capability_status": "positive_candidate",
+        "capability_level": "candidate",
+        "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+      },
+      "no_trace": {
+        "sample_count": 350,
+        "success_count": 350,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "p95_error": 0.0,
+        "per_difficulty_metrics": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "p95_error": 0.0
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "p95_error": 0.0
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "p95_error": 0.0
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 50,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "p95_error": 0.0
+          }
+        },
+        "capability_status": "memory_only",
+        "capability_level": "memory_only",
+        "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+      },
+      "one_click": {
+        "sample_count": 350,
+        "success_count": 350,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "p95_error": 0.0,
+        "per_difficulty_metrics": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "p95_error": 0.0
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "p95_error": 0.0
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "p95_error": 0.0
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 50,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "p95_error": 0.0
+          }
+        },
+        "capability_status": "memory_only",
+        "capability_level": "memory_only",
+        "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+      }
+    }
+  },
+  "per_family_capability_decision": {
+    "slider": {
+      "sample_count": 350,
+      "success_count": 313,
+      "failure_count": 37,
+      "success_rate": 0.8942857142857142,
+      "p95_error": 999.0,
+      "per_difficulty_metrics": {
+        "easy": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "p95_error": 0.0
+        },
+        "medium": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "p95_error": 0.0
+        },
+        "hard": {
+          "sample_count": 100,
+          "success_count": 88,
+          "failure_count": 12,
+          "success_rate": 0.88,
+          "p95_error": 999.0
+        },
+        "adversarial": {
+          "sample_count": 50,
+          "success_count": 25,
+          "failure_count": 25,
+          "success_rate": 0.5,
+          "p95_error": 999.0
+        }
+      },
+      "capability_status": "positive_candidate",
+      "capability_level": "candidate",
+      "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+    },
+    "puzzle": {
+      "sample_count": 350,
+      "success_count": 317,
+      "failure_count": 33,
+      "success_rate": 0.9057142857142857,
+      "p95_error": 999.0,
+      "per_difficulty_metrics": {
+        "easy": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "p95_error": 0.0
+        },
+        "medium": {
+          "sample_count": 100,
+          "success_count": 99,
+          "failure_count": 1,
+          "success_rate": 0.99,
+          "p95_error": 0.0
+        },
+        "hard": {
+          "sample_count": 100,
+          "success_count": 85,
+          "failure_count": 15,
+          "success_rate": 0.85,
+          "p95_error": 999.0
+        },
+        "adversarial": {
+          "sample_count": 50,
+          "success_count": 33,
+          "failure_count": 17,
+          "success_rate": 0.66,
+          "p95_error": 999.0
+        }
+      },
+      "capability_status": "positive_candidate",
+      "capability_level": "candidate",
+      "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+    },
+    "spatial_reasoning": {
+      "sample_count": 350,
+      "success_count": 312,
+      "failure_count": 38,
+      "success_rate": 0.8914285714285715,
+      "p95_error": 999.0,
+      "per_difficulty_metrics": {
+        "easy": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "p95_error": 0.0
+        },
+        "medium": {
+          "sample_count": 100,
+          "success_count": 98,
+          "failure_count": 2,
+          "success_rate": 0.98,
+          "p95_error": 0.0
+        },
+        "hard": {
+          "sample_count": 100,
+          "success_count": 83,
+          "failure_count": 17,
+          "success_rate": 0.83,
+          "p95_error": 999.0
+        },
+        "adversarial": {
+          "sample_count": 50,
+          "success_count": 31,
+          "failure_count": 19,
+          "success_rate": 0.62,
+          "p95_error": 999.0
+        }
+      },
+      "capability_status": "positive_candidate",
+      "capability_level": "candidate",
+      "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+    },
+    "no_trace": {
+      "sample_count": 350,
+      "success_count": 350,
+      "failure_count": 0,
+      "success_rate": 1.0,
+      "p95_error": 0.0,
+      "per_difficulty_metrics": {
+        "easy": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "p95_error": 0.0
+        },
+        "medium": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "p95_error": 0.0
+        },
+        "hard": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "p95_error": 0.0
+        },
+        "adversarial": {
+          "sample_count": 50,
+          "success_count": 50,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "p95_error": 0.0
+        }
+      },
+      "capability_status": "memory_only",
+      "capability_level": "memory_only",
+      "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+    },
+    "one_click": {
+      "sample_count": 350,
+      "success_count": 350,
+      "failure_count": 0,
+      "success_rate": 1.0,
+      "p95_error": 0.0,
+      "per_difficulty_metrics": {
+        "easy": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "p95_error": 0.0
+        },
+        "medium": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "p95_error": 0.0
+        },
+        "hard": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "p95_error": 0.0
+        },
+        "adversarial": {
+          "sample_count": 50,
+          "success_count": 50,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "p95_error": 0.0
+        }
+      },
+      "capability_status": "memory_only",
+      "capability_level": "memory_only",
+      "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+    }
+  },
+  "per_difficulty_metrics": {
+    "slider": {
+      "easy": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "p95_error": 0.0
+      },
+      "medium": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "p95_error": 0.0
+      },
+      "hard": {
+        "sample_count": 100,
+        "success_count": 88,
+        "failure_count": 12,
+        "success_rate": 0.88,
+        "p95_error": 999.0
+      },
+      "adversarial": {
+        "sample_count": 50,
+        "success_count": 25,
+        "failure_count": 25,
+        "success_rate": 0.5,
+        "p95_error": 999.0
+      }
+    },
+    "puzzle": {
+      "easy": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "p95_error": 0.0
+      },
+      "medium": {
+        "sample_count": 100,
+        "success_count": 99,
+        "failure_count": 1,
+        "success_rate": 0.99,
+        "p95_error": 0.0
+      },
+      "hard": {
+        "sample_count": 100,
+        "success_count": 85,
+        "failure_count": 15,
+        "success_rate": 0.85,
+        "p95_error": 999.0
+      },
+      "adversarial": {
+        "sample_count": 50,
+        "success_count": 33,
+        "failure_count": 17,
+        "success_rate": 0.66,
+        "p95_error": 999.0
+      }
+    },
+    "spatial_reasoning": {
+      "easy": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "p95_error": 0.0
+      },
+      "medium": {
+        "sample_count": 100,
+        "success_count": 98,
+        "failure_count": 2,
+        "success_rate": 0.98,
+        "p95_error": 0.0
+      },
+      "hard": {
+        "sample_count": 100,
+        "success_count": 83,
+        "failure_count": 17,
+        "success_rate": 0.83,
+        "p95_error": 999.0
+      },
+      "adversarial": {
+        "sample_count": 50,
+        "success_count": 31,
+        "failure_count": 19,
+        "success_rate": 0.62,
+        "p95_error": 999.0
+      }
+    },
+    "no_trace": {
+      "easy": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "p95_error": 0.0
+      },
+      "medium": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "p95_error": 0.0
+      },
+      "hard": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "p95_error": 0.0
+      },
+      "adversarial": {
+        "sample_count": 50,
+        "success_count": 50,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "p95_error": 0.0
+      }
+    },
+    "one_click": {
+      "easy": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "p95_error": 0.0
+      },
+      "medium": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "p95_error": 0.0
+      },
+      "hard": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "p95_error": 0.0
+      },
+      "adversarial": {
+        "sample_count": 50,
+        "success_count": 50,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "p95_error": 0.0
+      }
+    }
+  },
+  "sample_count": 1750,
+  "success_rate": 0.9382857142857143,
+  "realism_status": "HARDENED_BASELINE",
+  "failure_cases_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-163000-phase3-10-realism-hardening\\failure-cases.json",
+  "experience_cards": [
+    "E:\\SKILLS\\oh_my_reverse_skill\\skills-experience\\phase3-10\\run-20260630-163000-phase3-10-realism-hardening\\aliyun-compatible-lab-compatible-lab-card.json"
+  ],
+  "evals": [
+    "E:\\SKILLS\\oh_my_reverse_skill\\evals\\phase3-10\\aliyun-compatible-lab-compatible-lab-hardening.yaml"
+  ],
+  "action_replay": {
+    "status": "pass",
+    "metrics": {
+      "target": "aliyun-compatible-lab",
+      "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-163000-phase3-10-realism-hardening\\aliyun-compatible-lab-action-replay-records.jsonl",
+      "families": {
+        "slider": {
+          "sample_count": 350,
+          "success_count": 313,
+          "failure_count": 37,
+          "success_rate": 0.8942857142857142,
+          "p95_error": 999.0,
+          "per_difficulty_metrics": {
+            "easy": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "p95_error": 0.0
+            },
+            "medium": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "p95_error": 0.0
+            },
+            "hard": {
+              "sample_count": 100,
+              "success_count": 88,
+              "failure_count": 12,
+              "success_rate": 0.88,
+              "p95_error": 999.0
+            },
+            "adversarial": {
+              "sample_count": 50,
+              "success_count": 25,
+              "failure_count": 25,
+              "success_rate": 0.5,
+              "p95_error": 999.0
+            }
+          },
+          "capability_status": "positive_candidate",
+          "capability_level": "candidate",
+          "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+        },
+        "puzzle": {
+          "sample_count": 350,
+          "success_count": 317,
+          "failure_count": 33,
+          "success_rate": 0.9057142857142857,
+          "p95_error": 999.0,
+          "per_difficulty_metrics": {
+            "easy": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "p95_error": 0.0
+            },
+            "medium": {
+              "sample_count": 100,
+              "success_count": 99,
+              "failure_count": 1,
+              "success_rate": 0.99,
+              "p95_error": 0.0
+            },
+            "hard": {
+              "sample_count": 100,
+              "success_count": 85,
+              "failure_count": 15,
+              "success_rate": 0.85,
+              "p95_error": 999.0
+            },
+            "adversarial": {
+              "sample_count": 50,
+              "success_count": 33,
+              "failure_count": 17,
+              "success_rate": 0.66,
+              "p95_error": 999.0
+            }
+          },
+          "capability_status": "positive_candidate",
+          "capability_level": "candidate",
+          "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+        },
+        "spatial_reasoning": {
+          "sample_count": 350,
+          "success_count": 312,
+          "failure_count": 38,
+          "success_rate": 0.8914285714285715,
+          "p95_error": 999.0,
+          "per_difficulty_metrics": {
+            "easy": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "p95_error": 0.0
+            },
+            "medium": {
+              "sample_count": 100,
+              "success_count": 98,
+              "failure_count": 2,
+              "success_rate": 0.98,
+              "p95_error": 0.0
+            },
+            "hard": {
+              "sample_count": 100,
+              "success_count": 83,
+              "failure_count": 17,
+              "success_rate": 0.83,
+              "p95_error": 999.0
+            },
+            "adversarial": {
+              "sample_count": 50,
+              "success_count": 31,
+              "failure_count": 19,
+              "success_rate": 0.62,
+              "p95_error": 999.0
+            }
+          },
+          "capability_status": "positive_candidate",
+          "capability_level": "candidate",
+          "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+        },
+        "no_trace": {
+          "sample_count": 350,
+          "success_count": 350,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "p95_error": 0.0,
+          "per_difficulty_metrics": {
+            "easy": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "p95_error": 0.0
+            },
+            "medium": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "p95_error": 0.0
+            },
+            "hard": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "p95_error": 0.0
+            },
+            "adversarial": {
+              "sample_count": 50,
+              "success_count": 50,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "p95_error": 0.0
+            }
+          },
+          "capability_status": "memory_only",
+          "capability_level": "memory_only",
+          "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+        },
+        "one_click": {
+          "sample_count": 350,
+          "success_count": 350,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "p95_error": 0.0,
+          "per_difficulty_metrics": {
+            "easy": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "p95_error": 0.0
+            },
+            "medium": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "p95_error": 0.0
+            },
+            "hard": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "p95_error": 0.0
+            },
+            "adversarial": {
+              "sample_count": 50,
+              "success_count": 50,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "p95_error": 0.0
+            }
+          },
+          "capability_status": "memory_only",
+          "capability_level": "memory_only",
+          "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+        }
+      },
+      "total_samples": 1750,
+      "total_success": 1642,
+      "success_rate": 0.9382857142857143,
+      "prediction_source": "challenge_image_instruction_action_schema_only",
+      "per_difficulty_metrics": {
+        "slider": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "p95_error": 0.0
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "p95_error": 0.0
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 88,
+            "failure_count": 12,
+            "success_rate": 0.88,
+            "p95_error": 999.0
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 25,
+            "failure_count": 25,
+            "success_rate": 0.5,
+            "p95_error": 999.0
+          }
+        },
+        "puzzle": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "p95_error": 0.0
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 99,
+            "failure_count": 1,
+            "success_rate": 0.99,
+            "p95_error": 0.0
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 85,
+            "failure_count": 15,
+            "success_rate": 0.85,
+            "p95_error": 999.0
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 33,
+            "failure_count": 17,
+            "success_rate": 0.66,
+            "p95_error": 999.0
+          }
+        },
+        "spatial_reasoning": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "p95_error": 0.0
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 98,
+            "failure_count": 2,
+            "success_rate": 0.98,
+            "p95_error": 0.0
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 83,
+            "failure_count": 17,
+            "success_rate": 0.83,
+            "p95_error": 999.0
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 31,
+            "failure_count": 19,
+            "success_rate": 0.62,
+            "p95_error": 999.0
+          }
+        },
+        "no_trace": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "p95_error": 0.0
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "p95_error": 0.0
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "p95_error": 0.0
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 50,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "p95_error": 0.0
+          }
+        },
+        "one_click": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "p95_error": 0.0
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "p95_error": 0.0
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "p95_error": 0.0
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 50,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "p95_error": 0.0
+          }
+        }
+      },
+      "failure_cases_top_50": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-163000-phase3-10-realism-hardening\\failure-cases.json",
+      "threshold_pass": true,
+      "realism_features": {
+        "difficulty_levels": [
+          "easy",
+          "medium",
+          "hard",
+          "adversarial"
+        ],
+        "random_viewport": true,
+        "random_dpr": true,
+        "random_canvas_offset": true,
+        "action_timing_recorded": true,
+        "hard_adversarial_present": true
+      }
+    }
+  },
+  "leakage_audit": {
+    "status": "pass",
+    "path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\captcha-leakage-audit\\run-20260630-163000-phase3-10-realism-hardening\\leakage-audit.json"
+  },
+  "blackbox_gate": {
+    "status": "pass",
+    "path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\captcha-blackbox-gate\\run-20260630-163000-phase3-10-realism-hardening\\blackbox-gate.json"
+  },
+  "backend_acceptance": {
+    "status": "pass",
+    "final_api_endpoint_confirmed": true,
+    "endpoint": "/api/verify",
+    "observed_status": 200
+  },
+  "ui_api_parity": {
+    "status": "pass",
+    "browser_opened": true,
+    "api_feedback_observed": true
+  },
+  "scope_decision": {
+    "target_id": "aliyun-compatible-lab",
+    "scope_type": "localhost_vendor_compatible_lab",
+    "authorization": "self_owned",
+    "allowed_mode": "action_replay",
+    "in_scope": true,
+    "external_generalization_allowed": false,
+    "positive_allowed_scope": "local_vendor_compatible_positive_candidate",
+    "scope_contract_path": "configs/range_scope_contract.yaml",
+    "why_in_scope": "Self-owned localhost vendor-compatible training lab; explicitly not official vendor production."
+  },
+  "capability_status_detail": {
+    "status": "positive_candidate",
+    "scope_limited_positive": "local_vendor_compatible_positive_candidate",
+    "public_range_only": false,
+    "local_only": true,
+    "not_generalizable_to_third_party": true,
+    "stable_positive": false
+  },
+  "execution_proof": {
+    "command": "D:\\python3.14\\python.exe tools/real_public_range_runner.py --target aliyun-compatible-lab --run-id run-20260630-163000-phase3-10-realism-hardening --family slider,puzzle,spatial_reasoning,no_trace,one_click --samples-per-family 350",
+    "cwd": "E:\\SKILLS\\oh_my_reverse_skill",
+    "started_at": "2026-06-30T07:45:20.307815Z",
+    "ended_at": "2026-06-30T07:45:55.568895Z",
+    "stdout_log": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-163000-phase3-10-realism-hardening\\runner.stdout.log",
+    "stderr_log": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-163000-phase3-10-realism-hardening\\runner.stderr.log",
+    "exit_code": 0,
+    "synthetic": false,
+    "generated_by": "tools/real_public_range_runner.py",
+    "screenshot_paths": [
+      "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-163000-phase3-10-realism-hardening\\aliyun-compatible-lab-browser.png"
+    ],
+    "network_summary_paths": [
+      "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-163000-phase3-10-realism-hardening\\aliyun-compatible-lab-network-summary.json"
+    ],
+    "browser_trace_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-163000-phase3-10-realism-hardening\\aliyun-compatible-lab-trace.zip"
+  },
+  "decision": {
+    "skills_participation": "positive_candidate",
+    "positive_allowed": false,
+    "blocked_reason": ""
+  },
+  "blocked": {
+    "blocked_reason": "",
+    "browser_error": "",
+    "startup": {
+      "status": "started",
+      "script": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-labs\\vendor-compatible-labs\\aliyun-compatible-lab\\lab_server.py",
+      "port": 18211
+    }
+  },
+  "realism_audit": {
+    "status": "pass",
+    "path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\challenge-realism-audit\\run-20260630-163000-phase3-10-realism-hardening\\challenge-realism-audit.json",
+    "realism_status": "HARDENED_BASELINE"
+  },
+  "public_range_answer_leakage_audit": {
+    "status": "pass",
+    "path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\public-range-answer-leakage-audit\\run-20260630-163000-phase3-10-realism-hardening\\public-range-answer-leakage-audit.json"
+  }
+}

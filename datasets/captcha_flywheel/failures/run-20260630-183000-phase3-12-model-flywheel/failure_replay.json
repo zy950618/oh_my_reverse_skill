@@ -1,0 +1,87 @@
+{
+  "run_id": "run-20260630-183000-phase3-12-model-flywheel",
+  "created_at": "2026-06-30T10:36:19.118942Z",
+  "before_after_action_replay": [
+    {
+      "family": "Image_Matching,image_restore,rotate,seq_select",
+      "before_success_rate": 0.4911242603550296,
+      "after_success_rate": 1.0,
+      "delta": 0.5088757396449703,
+      "threshold_met": true,
+      "failure_remaining": 0,
+      "promotion_decision": "training_improved_waiting_action_replay"
+    },
+    {
+      "family": "Connect_icon,Coordinates,click,icon_select,select,spatial_select",
+      "before_success_rate": 1.0,
+      "after_success_rate": 1.0,
+      "delta": 0.0,
+      "threshold_met": true,
+      "failure_remaining": 0,
+      "promotion_decision": "training_needed"
+    }
+  ],
+  "public_action_replay_observed": [
+    {
+      "family": "aliyun-compatible-lab:image_restore",
+      "after_success_rate": 0.8942857142857142,
+      "failure_remaining": 37,
+      "promotion_decision": "positive_candidate"
+    },
+    {
+      "family": "shumei-compatible-lab:select",
+      "after_success_rate": 0.76,
+      "failure_remaining": 48,
+      "promotion_decision": "training_needed"
+    },
+    {
+      "family": "shumei-compatible-lab:icon_select",
+      "after_success_rate": 0.81,
+      "failure_remaining": 38,
+      "promotion_decision": "positive_candidate"
+    },
+    {
+      "family": "shumei-compatible-lab:seq_select",
+      "after_success_rate": 0.745,
+      "failure_remaining": 51,
+      "promotion_decision": "training_needed"
+    },
+    {
+      "family": "shumei-compatible-lab:spatial_select",
+      "after_success_rate": 0.735,
+      "failure_remaining": 53,
+      "promotion_decision": "training_needed"
+    },
+    {
+      "family": "gocaptcha-official:rotate-default",
+      "after_success_rate": 0.31,
+      "failure_remaining": 138,
+      "promotion_decision": "training_needed"
+    },
+    {
+      "family": "gocaptcha-official:click-default-en",
+      "after_success_rate": 0.0,
+      "failure_remaining": 200,
+      "promotion_decision": "training_needed"
+    },
+    {
+      "family": "opencaptchaworld:Connect_icon",
+      "after_success_rate": 0.35,
+      "failure_remaining": 65,
+      "promotion_decision": "training_needed"
+    },
+    {
+      "family": "opencaptchaworld:Image_Matching",
+      "after_success_rate": 0.15,
+      "failure_remaining": 85,
+      "promotion_decision": "training_needed"
+    },
+    {
+      "family": "opencaptchaworld:Coordinates",
+      "after_success_rate": 0.21,
+      "failure_remaining": 79,
+      "promotion_decision": "training_needed"
+    }
+  ],
+  "decision": "model_failure_replay_improved"
+}

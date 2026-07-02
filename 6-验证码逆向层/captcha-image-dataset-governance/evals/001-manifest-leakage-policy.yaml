@@ -1,0 +1,7 @@
+id: captcha-image-dataset-governance-001
+title: Dataset manifest records provenance and leakage policy
+assertions:
+  - each sample has sample_id, split, generator_version, transform_pipeline, synthetic, authorized_sample, and source_scope
+  - solver output does not use label, DOM, query param, or metadata answer
+  - invalid leakage is blocked from capability promotion
+

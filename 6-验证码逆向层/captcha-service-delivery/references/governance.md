@@ -113,6 +113,10 @@ Write real failures to `站点经验库/<domain>/known-failures.md` and test les
 
 ## Drift policy
 
+Phase 2 local risk-lab update: `run-20260630-013842-high-fidelity-risk-lab` is positive only for self-owned localhost server-side token lifecycle, final business API direct repeat, negative token/session/action/worker evals, and localhost business API worker isolation. It is not third-party CAPTCHA, WAF, managed challenge, stealth, or production fingerprint capability.
+
+Phase 2.1 business-data update: `run-20260630-022227-high-fidelity-risk-lab` is the first positive local evidence that also includes server-side business ledger assertions. Any CAPTCHA/WAF/risk evidence without `business_data_status=DATA_ASSERTION_PASS` remains non-positive, even if challenge/verify endpoints, direct repeat, or worker ladder pass.
+
 Treat provider script hash changes, sitekey/action drift, token field movement, verify endpoint changes, response JSON Pointer drift, cache/service-worker effects, and changed business unlock behavior as drift. Drift must invalidate old mappings until fresh capture revalidates them.
 
 ## Delivery gate
@@ -127,3 +131,5 @@ Do not claim success unless:
 - old evidence is invalidated or revalidated;
 - graph and impact records are updated;
 - scope ledger is present, and every reused old capture is explicitly revalidated or marked stale.
+- `business_data_status=DATA_ASSERTION_PASS` is present before any positive capability claim.
+- server-side business ledger proves final business API data consistency and no negative-eval side effects.

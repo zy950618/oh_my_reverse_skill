@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Local CAPTCHA Dummy Lab</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 32px; color: #17202a; }
+    main { max-width: 720px; }
+    .lab { border: 1px solid #ccd3dd; border-radius: 8px; padding: 20px; }
+    .track { position: relative; height: 48px; border: 1px solid #8fa0b3; background: #eef3f8; border-radius: 6px; }
+    .knob { position: absolute; top: 4px; left: 4px; width: 40px; height: 40px; border: 0; border-radius: 6px; background: #275f8f; color: white; cursor: grab; }
+    .target { margin-top: 12px; height: 64px; border: 1px dashed #8fa0b3; display: grid; place-items: center; }
+    .row { display: flex; gap: 8px; align-items: center; margin-top: 12px; flex-wrap: wrap; }
+    button { min-height: 36px; padding: 0 12px; }
+    pre { background: #f5f7fa; padding: 12px; overflow: auto; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Local CAPTCHA Dummy Lab</h1>
+    <p id="lab-boundary">Local dummy only: state observer, provider/type detection, failure path, and human-in-loop protocol. This is not a third-party CAPTCHA and not CAPTCHA solving capability.</p>
+    <section class="lab" data-provider="local-dummy" data-captcha-type="slide">
+      <h2>Slide Boundary</h2>
+      <div id="track" class="track" aria-label="slide challenge track">
+        <button id="knob" class="knob" type="button" aria-label="drag handle">⇢</button>
+      </div>
+      <div class="target" id="target">Move handle to 90% or more, then verify.</div>
+      <div class="row">
+        <button id="verify" type="button">Verify</button>
+        <button id="reset" type="button">Reset</button>
+        <span id="result" role="status">state: idle</span>
+      </div>
+      <pre id="state"></pre>
+    </section>
+  </main>
+  <script>
+    window.__captchaState = {
+      provider: "local-dummy",
+      type: "slide",
+      boundary: "negative_eval_only",
+      position: 0,
+      challengeId: null,
+      attempts: [],
+      lastResult: "idle",
+      humanInLoopProtocol: "Visible browser user drags the handle, then stops after result text and network verify response are captured."
+    };
+
+    const knob = document.querySelector("#knob");
+    const track = document.querySelector("#track");
+    const state = document.querySelector("#state");
+    const result = document.querySelector("#result");
+    let dragging = false;
+
+    function render() {
+      const max = track.clientWidth - knob.clientWidth - 8;
+      knob.style.left = `${4 + (max * window.__captchaState.position / 100)}px`;
+      result.textContent = `state: ${window.__captchaState.lastResult}`;
+      state.textContent = JSON.stringify(window.__captchaState, null, 2);
+    }
+
+    function setPositionFromClientX(clientX) {
+      const rect = track.getBoundingClientRect();
+      const max = rect.width - knob.offsetWidth - 8;
+      const px = Math.max(0, Math.min(max, clientX - rect.left - 20));
+      window.__captchaState.position = Math.round((px / max) * 100);
+      render();
+    }
+
+    knob.addEventListener("mousedown", event => {
+      dragging = true;
+      event.preventDefault();
+    });
+    window.addEventListener("mousemove", event => {
+      if (dragging) setPositionFromClientX(event.clientX);
+    });
+    window.addEventListener("mouseup", () => {
+      dragging = false;
+    });
+
+    document.querySelector("#verify").addEventListener("click", async () => {
+      const response = await fetch("/api/captcha/verify", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          challenge_id: window.__captchaState.challengeId,
+          position: window.__captchaState.position
+        })
+      });
+      const payload = await response.json();
+      window.__captchaState.lastResult = payload.state;
+      window.__captchaState.attempts.push(payload);
+      render();
+    });
+
+    document.querySelector("#reset").addEventListener("click", () => {
+      window.__captchaState.position = 0;
+      window.__captchaState.lastResult = "reset";
+      render();
+    });
+
+    (async function boot() {
+      const response = await fetch("/api/captcha/challenge");
+      const payload = await response.json();
+      window.__captchaState.challengeId = payload.challenge_id;
+      window.__captchaState.lastResult = "challenge_loaded";
+      render();
+    })();
+  </script>
+</body>
+</html>

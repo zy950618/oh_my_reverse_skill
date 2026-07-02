@@ -1,0 +1,7 @@
+id: phase3-6-gocaptcha-local-action-replay
+source_run_id: run-20260630-053000-phase3-6-public-model
+assertions:
+  - browser opens the gocaptcha-local page
+  - challenge image screenshot is used as solver input
+  - DOM answer, query expected, label path, and metadata answer are not prediction inputs
+  - action replay records screenshot, network summary, trace, metrics, evidence, and experience card

@@ -1,0 +1,8 @@
+name: phase-3-9-action-planner-negative-regression
+run_id: run-20260630-113000-phase3-9-vendor-shield-range
+expect_skill: false
+criteria:
+  - action replay uses expected answer directly
+  - official demo action replay lacks explicit permission
+  - compatible-lab result is generalized to vendor production
+  - leakage audit failure is ignored

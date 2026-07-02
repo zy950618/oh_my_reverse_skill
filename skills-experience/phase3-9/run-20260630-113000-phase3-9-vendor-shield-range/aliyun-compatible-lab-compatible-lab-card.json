@@ -1,0 +1,6 @@
+{
+  "title": "aliyun-compatible-lab is compatible training, not official vendor capability",
+  "run_id": "run-20260630-113000-phase3-9-vendor-shield-range",
+  "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\aliyun-compatible-lab\\run-20260630-113000-phase3-9-vendor-shield-range.json",
+  "lesson": "Compatible labs can promote local candidate families only when blackbox/leakage gates pass; they must not generalize to vendor production."
+}

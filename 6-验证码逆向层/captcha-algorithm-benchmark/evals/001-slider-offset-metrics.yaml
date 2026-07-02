@@ -1,0 +1,9 @@
+id: captcha-algorithm-benchmark-001
+title: Slider CAPTCHA benchmark reports offset error thresholds
+challenge_type: slider-captcha
+assertions:
+  - metrics include mean_abs_offset_error
+  - metrics include pass_rate_within_3px
+  - metrics include pass_rate_within_5px
+  - benchmark accuracy is not written as real business capability
+

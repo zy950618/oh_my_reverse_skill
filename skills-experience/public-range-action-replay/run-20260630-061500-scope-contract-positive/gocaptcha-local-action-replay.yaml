@@ -1,0 +1,8 @@
+experience_id: run-20260630-061500-scope-contract-positive-gocaptcha-local-action-replay
+source_run_id: run-20260630-061500-scope-contract-positive
+target: gocaptcha-local
+challenge_type: slide_click_rotate_drag_drop
+prediction_source: browser_challenge_image_screenshot
+action_success: true
+passed_challenge_count: 4
+capability_impact: scope-limited local_open_source_range_positive; third-party generalization remains forbidden

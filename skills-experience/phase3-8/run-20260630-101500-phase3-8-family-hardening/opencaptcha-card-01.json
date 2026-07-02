@@ -1,0 +1,6 @@
+{
+  "title": "OpenCaptchaWorld API exposes answer-shaped fields",
+  "run_id": "run-20260630-101500-phase3-8-family-hardening",
+  "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\opencaptchaworld\\run-20260630-101500-phase3-8-family-hardening\\opencaptchaworld-action-replay-records.jsonl",
+  "lesson": "Public range payloads can include correct_option_index; blackbox rows must prove predictions did not consume those fields."
+}

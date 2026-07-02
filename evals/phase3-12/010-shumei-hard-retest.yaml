@@ -1,0 +1,4 @@
+id: phase3_12_shumei_hard_retest
+run_id: run-20260630-183000-phase3-12-model-flywheel
+evidence: public-range-evidence/shumei-compatible-lab/run-20260630-183000-phase3-12-model-flywheel.json
+expected: hard_adversarial_action_replay_recorded

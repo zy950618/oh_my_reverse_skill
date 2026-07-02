@@ -1,0 +1,8 @@
+name: phase-3-9-algorithm-benchmark-negative-boundary
+run_id: run-20260630-113000-phase3-9-vendor-shield-range
+expect_skill: false
+criteria:
+  - benchmark reads answer metadata
+  - train and test samples are mixed
+  - compatible-lab metric is promoted to vendor production
+  - failure cases are omitted after a failed sample

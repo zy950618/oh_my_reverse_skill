@@ -1,0 +1,8 @@
+id: captcha-visual-recognition-lab-002
+title: Phase 3.1 requires easy medium hard difficulty tiers
+assertions:
+  - dataset manifest includes easy samples
+  - dataset manifest includes medium samples
+  - dataset manifest includes hard samples
+  - synthetic easy pass is not promoted to real-site positive
+

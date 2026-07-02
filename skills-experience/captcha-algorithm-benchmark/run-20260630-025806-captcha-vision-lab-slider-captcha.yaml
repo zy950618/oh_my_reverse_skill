@@ -1,0 +1,14 @@
+experience_id: run-20260630-025806-captcha-vision-lab-slider-captcha
+source_run_id: run-20260630-025806-captcha-vision-lab
+challenge_type: slider-captcha
+dataset: public-range-evidence\raw\captcha-vision-lab\run-20260630-025806-captcha-vision-lab\dataset\slider-captcha
+solver: white_gap_scan_baseline
+metrics: {"sample_count": 100, "mean_abs_offset_error": 0.0, "pass_rate_within_3px": 1.0, "pass_rate_within_5px": 1.0}
+failure_modes: ["white gap scan works on high-contrast synthetic gaps but is brittle to natural backgrounds"]
+root_causes: ["first-round local baseline limitation", "synthetic-only evidence boundary"]
+rule_added: Algorithm metrics require failure cases and cannot become real-site positive without business_data_assertions.
+eval_added: see evals under the corresponding Phase 3 skill
+positive_allowed: False
+why_not_positive: Local algorithm benchmark has business_data_status=NOT_RUN and no final business API ledger.
+authorized_scope: localhost synthetic captcha-vision-lab only
+next_training_target: add edge/template matching with distractors

@@ -1,0 +1,6 @@
+{
+  "title": "GoCaptcha click needs target detection and coordinate diagnostics",
+  "run_id": "run-20260701-phase4a-smoke",
+  "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\gocaptcha-official\\run-20260701-phase4a-smoke\\failure-cases.json",
+  "lesson": "Click failures require bbox, center, DPR, viewport, canvas transform, and timing diagnostics."
+}

@@ -1,0 +1,11 @@
+name: Validate CAPTCHA dataset manifest and labels
+prompt: >
+  Build a dataset manifest for synthetic and authorized local CAPTCHA samples
+  used by a model training lab.
+criteria:
+  - "Requires dataset_id, license_scope, split counts, samples, image paths, label paths, and provenance."
+  - "Requires labels to use the action schema coordinate rules."
+  - "Rejects token values, cookies, raw provider payloads, or user identifiers in dataset records."
+  - "Separates local dataset quality from third-party provider success claims."
+expect_skill: true
+timeout: 120

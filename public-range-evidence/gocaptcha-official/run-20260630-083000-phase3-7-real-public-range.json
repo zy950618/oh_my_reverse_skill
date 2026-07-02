@@ -1,0 +1,149 @@
+{
+  "schema_version": "public-range-evidence/v1",
+  "run_id": "run-20260630-083000-phase3-7-real-public-range",
+  "target": {
+    "id": "gocaptcha-official",
+    "type": "local_open_source_range",
+    "url": "http://127.0.0.1:18080",
+    "repo_url": "https://github.com/wenlng/go-captcha-service.git",
+    "commit": "54206275001d7341d7b752920e70ae87868f2d45"
+  },
+  "captured_at": "2026-06-30T06:09:25.476030Z",
+  "source_freshness": "fresh",
+  "skills": [
+    "captcha-service-delivery",
+    "captcha-visual-recognition-lab",
+    "captcha-action-planner"
+  ],
+  "execution_status": "REAL_EXECUTION_PASS",
+  "capability_status": "positive_candidate",
+  "control_flow_status": "CONTROL_FLOW_PASS",
+  "business_data_status": "NOT_RUN",
+  "official_repo_confirmed": true,
+  "install_command": "docker pull wenlng/go-captcha-service:1.0.3",
+  "install_exit_code": 0,
+  "startup_command": "docker run -d --name gocaptcha-phase37-blic-range -p 18080:8080 -p 15051:50051 wenlng/go-captcha-service:1.0.3",
+  "startup_exit_code": 0,
+  "service_url": "http://127.0.0.1:18080",
+  "browser_opened": true,
+  "challenge_families": [
+    "slide-default",
+    "drag-default",
+    "rotate-default",
+    "click-default-en"
+  ],
+  "sample_count": 200,
+  "difficulty_distribution": {
+    "official_default": 200
+  },
+  "success_rate": 0.495,
+  "p95_error": null,
+  "p95_error_reason": "official service returns binary feedback; no ground-truth coordinate/angle is read",
+  "failure_cases_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\gocaptcha-official\\run-20260630-083000-phase3-7-real-public-range\\failure-cases.json",
+  "action_replay": {
+    "status": "pass",
+    "metrics": {
+      "target": "gocaptcha-official",
+      "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\gocaptcha-official\\run-20260630-083000-phase3-7-real-public-range\\gocaptcha-official-action-replay-records.jsonl",
+      "families": {
+        "slide-default": {
+          "sample_count": 50,
+          "success_count": 49,
+          "failure_count": 1,
+          "success_rate": 0.98
+        },
+        "drag-default": {
+          "sample_count": 50,
+          "success_count": 50,
+          "failure_count": 0,
+          "success_rate": 1.0
+        },
+        "rotate-default": {
+          "sample_count": 50,
+          "success_count": 0,
+          "failure_count": 50,
+          "success_rate": 0.0
+        },
+        "click-default-en": {
+          "sample_count": 50,
+          "success_count": 0,
+          "failure_count": 50,
+          "success_rate": 0.0
+        }
+      },
+      "total_samples": 200,
+      "total_success": 99,
+      "success_rate": 0.495,
+      "prediction_source": "master_thumb_images_only",
+      "threshold_pass": true
+    }
+  },
+  "leakage_audit": {
+    "status": "pass",
+    "path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\captcha-leakage-audit\\run-20260630-083000-phase3-7-real-public-range\\leakage-audit.json"
+  },
+  "blackbox_gate": {
+    "status": "pass",
+    "path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\captcha-blackbox-gate\\run-20260630-083000-phase3-7-real-public-range\\blackbox-gate.json"
+  },
+  "backend_acceptance": {
+    "status": "pass",
+    "final_api_endpoint_confirmed": true,
+    "endpoint": "/api/v1/public/check-data",
+    "observed_status": 200
+  },
+  "ui_api_parity": {
+    "status": "pass",
+    "browser_opened": true,
+    "api_feedback_observed": true
+  },
+  "scope_decision": {
+    "target_id": "gocaptcha-official",
+    "scope_type": "local_open_source_range",
+    "authorization": "public_open_source_local",
+    "allowed_mode": "action_replay",
+    "in_scope": true,
+    "external_generalization_allowed": false,
+    "positive_allowed_scope": "local_open_source_range_positive",
+    "scope_contract_path": "configs/range_scope_contract.yaml",
+    "why_in_scope": "Official GoCaptcha service Docker image running on localhost; no third-party target."
+  },
+  "capability_status_detail": {
+    "status": "positive_candidate",
+    "scope_limited_positive": "local_open_source_range_positive",
+    "public_range_only": false,
+    "local_only": true,
+    "not_generalizable_to_third_party": true,
+    "stable_positive": false
+  },
+  "execution_proof": {
+    "command": "D:\\python3.14\\python.exe tools/real_public_range_runner.py --target gocaptcha-official --run-id run-20260630-083000-phase3-7-real-public-range",
+    "cwd": "E:\\SKILLS\\oh_my_reverse_skill",
+    "started_at": "2026-06-30T06:08:59.468134Z",
+    "ended_at": "2026-06-30T06:09:25.476087Z",
+    "stdout_log": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\gocaptcha-official\\run-20260630-083000-phase3-7-real-public-range\\runner.stdout.log",
+    "stderr_log": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\gocaptcha-official\\run-20260630-083000-phase3-7-real-public-range\\runner.stderr.log",
+    "exit_code": 0,
+    "synthetic": false,
+    "generated_by": "tools/real_public_range_runner.py",
+    "screenshot_paths": [
+      "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\gocaptcha-official\\run-20260630-083000-phase3-7-real-public-range\\gocaptcha-official-browser.png"
+    ],
+    "network_summary_paths": [
+      "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\gocaptcha-official\\run-20260630-083000-phase3-7-real-public-range\\gocaptcha-official-network-summary.json"
+    ],
+    "browser_trace_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\gocaptcha-official\\run-20260630-083000-phase3-7-real-public-range\\gocaptcha-official-trace.zip"
+  },
+  "decision": {
+    "skills_participation": "positive_candidate",
+    "positive_allowed": false,
+    "blocked_reason": ""
+  },
+  "blocked": {
+    "blocked_reason": "",
+    "missing_dependency": "",
+    "install_error": "",
+    "startup_error": "",
+    "browser_error": ""
+  }
+}

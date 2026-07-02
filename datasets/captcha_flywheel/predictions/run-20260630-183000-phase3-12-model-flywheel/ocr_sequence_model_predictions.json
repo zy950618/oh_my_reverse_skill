@@ -1,0 +1,6 @@
+{
+  "run_id": "run-20260630-183000-phase3-12-model-flywheel",
+  "task": "ocr_sequence_model",
+  "model_id": "run-20260630-183000-phase3-12-model-flywheel-ocr_sequence_model-local-v1",
+  "predictions": []
+}

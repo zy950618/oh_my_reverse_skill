@@ -1,0 +1,14 @@
+experience_id: run-20260630-025806-captcha-vision-lab-text-captcha
+source_run_id: run-20260630-025806-captcha-vision-lab
+challenge_type: text-captcha
+dataset: public-range-evidence\raw\captcha-vision-lab\run-20260630-025806-captcha-vision-lab\dataset\text-captcha
+solver: fixed_unknown_text_baseline
+metrics: {"sample_count": 100, "char_accuracy": 0.0, "sequence_accuracy": 0.0}
+failure_modes: ["OCR baseline cannot read noisy synthetic glyphs yet"]
+root_causes: ["first-round local baseline limitation", "synthetic-only evidence boundary"]
+rule_added: Algorithm metrics require failure cases and cannot become real-site positive without business_data_assertions.
+eval_added: see evals under the corresponding Phase 3 skill
+positive_allowed: False
+why_not_positive: Local algorithm benchmark has business_data_status=NOT_RUN and no final business API ledger.
+authorized_scope: localhost synthetic captcha-vision-lab only
+next_training_target: add template or model OCR training

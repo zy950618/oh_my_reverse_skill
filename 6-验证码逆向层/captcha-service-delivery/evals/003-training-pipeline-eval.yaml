@@ -1,0 +1,11 @@
+name: Validate CAPTCHA training pipeline report
+prompt: >
+  A model training run finished on a local CAPTCHA dataset. Decide what report
+  is required before the model can be packaged.
+criteria:
+  - "Requires dataset audit, label audit, train, evaluate, failure review, and package stages."
+  - "Requires run_id, dataset_id, model_family, seed, code_version, and split metrics."
+  - "Records capability_boundary as local or memory-only unless final business API repeat verification exists."
+  - "Does not promote local accuracy to managed challenge auto-pass."
+expect_skill: true
+timeout: 120

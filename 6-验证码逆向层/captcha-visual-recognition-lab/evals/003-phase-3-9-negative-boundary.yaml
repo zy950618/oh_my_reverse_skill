@@ -1,0 +1,8 @@
+name: phase-3-9-visual-recognition-negative-boundary
+run_id: run-20260630-113000-phase3-9-vendor-shield-range
+expect_skill: false
+criteria:
+  - recognition reads DOM answer
+  - recognition reads query expected
+  - compatible-lab candidate is generalized to production vendor
+  - failure cases are not written back

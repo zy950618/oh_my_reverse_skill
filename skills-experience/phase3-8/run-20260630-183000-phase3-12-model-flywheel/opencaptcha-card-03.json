@@ -1,0 +1,6 @@
+{
+  "title": "Hold_Button has a validation weakness",
+  "run_id": "run-20260630-183000-phase3-12-model-flywheel",
+  "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\opencaptchaworld\\run-20260630-183000-phase3-12-model-flywheel\\opencaptchaworld-action-replay-records.jsonl",
+  "lesson": "The local public range accepts zero-second holds because the check bounds are inverted; record as range-specific, not CAPTCHA vision ability."
+}

@@ -1,0 +1,12 @@
+sample_id: click-hard-0056
+source_run_id: run-20260630-041500-phase3-5-longrun
+challenge_type: click-captcha
+difficulty: hard
+expected: [{"x": 200, "y": 123, "target_index": 0}, {"x": 184, "y": 69, "target_index": 1}, {"x": 194, "y": 44, "target_index": 2}]
+predicted: [{"x": 187, "y": 55}, {"x": 200, "y": 123}]
+error: 9.118741957893883
+image_path: public-range-evidence\raw\captcha-vision-lab\run-20260630-041500-phase3-5-longrun\dataset\click-captcha\hard\click-hard-0056.jpg
+label_path: public-range-evidence\raw\captcha-vision-lab\run-20260630-041500-phase3-5-longrun\dataset\click-captcha\hard\click-hard-0056.json
+root_cause: hard target component detection missed or merged target regions
+suggested_fix: add color normalization and target/non-target classifier
+whether_eval_added: true

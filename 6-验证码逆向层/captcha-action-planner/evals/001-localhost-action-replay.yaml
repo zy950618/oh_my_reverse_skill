@@ -1,0 +1,9 @@
+id: captcha-action-planner-001
+title: Localhost action replay records state transition evidence
+challenge_type: slider-captcha
+assertions:
+  - replay target is localhost or explicitly authorized
+  - action_success_rate is recorded
+  - state_transition_success_rate is recorded
+  - screenshot and network summary paths are retained
+

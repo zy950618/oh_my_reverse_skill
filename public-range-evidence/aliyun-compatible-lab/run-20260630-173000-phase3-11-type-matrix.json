@@ -1,0 +1,4297 @@
+{
+  "schema_version": "public-range-evidence/v1",
+  "run_id": "run-20260630-173000-phase3-11-type-matrix",
+  "target": {
+    "id": "aliyun-compatible-lab",
+    "type": "localhost_vendor_compatible_lab",
+    "url": "http://127.0.0.1:18211"
+  },
+  "captured_at": "2026-06-30T08:08:24.811345Z",
+  "source_freshness": "fresh",
+  "skills": [
+    "captcha-provider-diagnostics",
+    "captcha-visual-recognition-lab",
+    "captcha-action-planner"
+  ],
+  "execution_status": "REAL_EXECUTION_PASS",
+  "capability_status": "positive_candidate",
+  "control_flow_status": "CONTROL_FLOW_PASS",
+  "business_data_status": "NOT_RUN",
+  "compatible_lab": true,
+  "official_vendor": false,
+  "not_generalizable_to_vendor_production": true,
+  "challenge_families": [
+    "slider",
+    "puzzle",
+    "image_restore",
+    "spatial_reasoning",
+    "one_click",
+    "no_trace"
+  ],
+  "capabilities": {
+    "aliyun-compatible-lab": {
+      "slider": {
+        "sample_count": 350,
+        "success_count": 323,
+        "failure_count": 27,
+        "success_rate": 0.9228571428571428,
+        "mean_error": 77.06571428571428,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "slider-medium-166",
+          "slider-hard-215",
+          "slider-hard-227",
+          "slider-hard-235",
+          "slider-hard-237",
+          "slider-hard-248",
+          "slider-hard-258",
+          "slider-hard-259",
+          "slider-hard-289",
+          "slider-adversarial-301",
+          "slider-adversarial-302",
+          "slider-adversarial-303",
+          "slider-adversarial-304",
+          "slider-adversarial-305",
+          "slider-adversarial-306",
+          "slider-adversarial-312",
+          "slider-adversarial-318",
+          "slider-adversarial-321",
+          "slider-adversarial-327",
+          "slider-adversarial-333"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        },
+        "per_difficulty_metrics": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 99,
+            "failure_count": 1,
+            "success_rate": 0.99,
+            "mean_error": 9.99,
+            "p95_error": 0.0,
+            "failure_cases": [
+              "slider-medium-166"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 92,
+            "failure_count": 8,
+            "success_rate": 0.92,
+            "mean_error": 79.92,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "slider-hard-215",
+              "slider-hard-227",
+              "slider-hard-235",
+              "slider-hard-237",
+              "slider-hard-248",
+              "slider-hard-258",
+              "slider-hard-259",
+              "slider-hard-289"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 32,
+            "failure_count": 18,
+            "success_rate": 0.64,
+            "mean_error": 359.64,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "slider-adversarial-301",
+              "slider-adversarial-302",
+              "slider-adversarial-303",
+              "slider-adversarial-304",
+              "slider-adversarial-305",
+              "slider-adversarial-306",
+              "slider-adversarial-312",
+              "slider-adversarial-318",
+              "slider-adversarial-321",
+              "slider-adversarial-327"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "capability_status": "positive_candidate",
+        "capability_level": "candidate",
+        "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+      },
+      "puzzle": {
+        "sample_count": 350,
+        "success_count": 320,
+        "failure_count": 30,
+        "success_rate": 0.9142857142857143,
+        "mean_error": 85.62857142857143,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "puzzle-medium-109",
+          "puzzle-medium-122",
+          "puzzle-medium-155",
+          "puzzle-hard-206",
+          "puzzle-hard-207",
+          "puzzle-hard-208",
+          "puzzle-hard-214",
+          "puzzle-hard-224",
+          "puzzle-hard-240",
+          "puzzle-hard-250",
+          "puzzle-hard-251",
+          "puzzle-hard-256",
+          "puzzle-hard-261",
+          "puzzle-hard-268",
+          "puzzle-hard-272",
+          "puzzle-hard-278",
+          "puzzle-hard-282",
+          "puzzle-hard-286",
+          "puzzle-hard-287",
+          "puzzle-hard-295"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        },
+        "per_difficulty_metrics": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 97,
+            "failure_count": 3,
+            "success_rate": 0.97,
+            "mean_error": 29.97,
+            "p95_error": 0.0,
+            "failure_cases": [
+              "puzzle-medium-109",
+              "puzzle-medium-122",
+              "puzzle-medium-155"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 83,
+            "failure_count": 17,
+            "success_rate": 0.83,
+            "mean_error": 169.83,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "puzzle-hard-206",
+              "puzzle-hard-207",
+              "puzzle-hard-208",
+              "puzzle-hard-214",
+              "puzzle-hard-224",
+              "puzzle-hard-240",
+              "puzzle-hard-250",
+              "puzzle-hard-251",
+              "puzzle-hard-256",
+              "puzzle-hard-261"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 40,
+            "failure_count": 10,
+            "success_rate": 0.8,
+            "mean_error": 199.8,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "puzzle-adversarial-302",
+              "puzzle-adversarial-303",
+              "puzzle-adversarial-305",
+              "puzzle-adversarial-312",
+              "puzzle-adversarial-320",
+              "puzzle-adversarial-328",
+              "puzzle-adversarial-339",
+              "puzzle-adversarial-341",
+              "puzzle-adversarial-346",
+              "puzzle-adversarial-347"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "capability_status": "positive_candidate",
+        "capability_level": "candidate",
+        "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+      },
+      "image_restore": {
+        "sample_count": 350,
+        "success_count": 0,
+        "failure_count": 350,
+        "success_rate": 0.0,
+        "mean_error": 999.0,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "image_restore-easy-000",
+          "image_restore-easy-001",
+          "image_restore-easy-002",
+          "image_restore-easy-003",
+          "image_restore-easy-004",
+          "image_restore-easy-005",
+          "image_restore-easy-006",
+          "image_restore-easy-007",
+          "image_restore-easy-008",
+          "image_restore-easy-009",
+          "image_restore-easy-010",
+          "image_restore-easy-011",
+          "image_restore-easy-012",
+          "image_restore-easy-013",
+          "image_restore-easy-014",
+          "image_restore-easy-015",
+          "image_restore-easy-016",
+          "image_restore-easy-017",
+          "image_restore-easy-018",
+          "image_restore-easy-019"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        },
+        "per_difficulty_metrics": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 0,
+            "failure_count": 100,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "image_restore-easy-000",
+              "image_restore-easy-001",
+              "image_restore-easy-002",
+              "image_restore-easy-003",
+              "image_restore-easy-004",
+              "image_restore-easy-005",
+              "image_restore-easy-006",
+              "image_restore-easy-007",
+              "image_restore-easy-008",
+              "image_restore-easy-009"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 0,
+            "failure_count": 100,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "image_restore-medium-100",
+              "image_restore-medium-101",
+              "image_restore-medium-102",
+              "image_restore-medium-103",
+              "image_restore-medium-104",
+              "image_restore-medium-105",
+              "image_restore-medium-106",
+              "image_restore-medium-107",
+              "image_restore-medium-108",
+              "image_restore-medium-109"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 0,
+            "failure_count": 100,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "image_restore-hard-200",
+              "image_restore-hard-201",
+              "image_restore-hard-202",
+              "image_restore-hard-203",
+              "image_restore-hard-204",
+              "image_restore-hard-205",
+              "image_restore-hard-206",
+              "image_restore-hard-207",
+              "image_restore-hard-208",
+              "image_restore-hard-209"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 0,
+            "failure_count": 50,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "image_restore-adversarial-300",
+              "image_restore-adversarial-301",
+              "image_restore-adversarial-302",
+              "image_restore-adversarial-303",
+              "image_restore-adversarial-304",
+              "image_restore-adversarial-305",
+              "image_restore-adversarial-306",
+              "image_restore-adversarial-307",
+              "image_restore-adversarial-308",
+              "image_restore-adversarial-309"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "capability_status": "negative_eval_only",
+        "capability_level": "negative_eval_only",
+        "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+      },
+      "spatial_reasoning": {
+        "sample_count": 350,
+        "success_count": 320,
+        "failure_count": 30,
+        "success_rate": 0.9142857142857143,
+        "mean_error": 85.62857142857143,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "spatial_reasoning-medium-119",
+          "spatial_reasoning-medium-126",
+          "spatial_reasoning-medium-142",
+          "spatial_reasoning-medium-158",
+          "spatial_reasoning-hard-208",
+          "spatial_reasoning-hard-210",
+          "spatial_reasoning-hard-225",
+          "spatial_reasoning-hard-235",
+          "spatial_reasoning-hard-247",
+          "spatial_reasoning-hard-257",
+          "spatial_reasoning-hard-258",
+          "spatial_reasoning-hard-274",
+          "spatial_reasoning-hard-276",
+          "spatial_reasoning-hard-290",
+          "spatial_reasoning-adversarial-302",
+          "spatial_reasoning-adversarial-303",
+          "spatial_reasoning-adversarial-305",
+          "spatial_reasoning-adversarial-307",
+          "spatial_reasoning-adversarial-312",
+          "spatial_reasoning-adversarial-314"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        },
+        "per_difficulty_metrics": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 96,
+            "failure_count": 4,
+            "success_rate": 0.96,
+            "mean_error": 39.96,
+            "p95_error": 0.0,
+            "failure_cases": [
+              "spatial_reasoning-medium-119",
+              "spatial_reasoning-medium-126",
+              "spatial_reasoning-medium-142",
+              "spatial_reasoning-medium-158"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 90,
+            "failure_count": 10,
+            "success_rate": 0.9,
+            "mean_error": 99.9,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "spatial_reasoning-hard-208",
+              "spatial_reasoning-hard-210",
+              "spatial_reasoning-hard-225",
+              "spatial_reasoning-hard-235",
+              "spatial_reasoning-hard-247",
+              "spatial_reasoning-hard-257",
+              "spatial_reasoning-hard-258",
+              "spatial_reasoning-hard-274",
+              "spatial_reasoning-hard-276",
+              "spatial_reasoning-hard-290"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 34,
+            "failure_count": 16,
+            "success_rate": 0.68,
+            "mean_error": 319.68,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "spatial_reasoning-adversarial-302",
+              "spatial_reasoning-adversarial-303",
+              "spatial_reasoning-adversarial-305",
+              "spatial_reasoning-adversarial-307",
+              "spatial_reasoning-adversarial-312",
+              "spatial_reasoning-adversarial-314",
+              "spatial_reasoning-adversarial-318",
+              "spatial_reasoning-adversarial-320",
+              "spatial_reasoning-adversarial-324",
+              "spatial_reasoning-adversarial-325"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "capability_status": "positive_candidate",
+        "capability_level": "candidate",
+        "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+      },
+      "one_click": {
+        "sample_count": 350,
+        "success_count": 350,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "mean_error": 0.0,
+        "p95_error": 0.0,
+        "failure_cases": [],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        },
+        "per_difficulty_metrics": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 50,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "capability_status": "memory_only",
+        "capability_level": "memory_only",
+        "why": "state-machine-only observation, not no-sense bypass"
+      },
+      "no_trace": {
+        "sample_count": 350,
+        "success_count": 350,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "mean_error": 0.0,
+        "p95_error": 0.0,
+        "failure_cases": [],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        },
+        "per_difficulty_metrics": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 50,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "capability_status": "memory_only",
+        "capability_level": "memory_only",
+        "why": "state-machine-only observation, not no-sense bypass"
+      }
+    }
+  },
+  "per_family_capability_decision": {
+    "slider": {
+      "sample_count": 350,
+      "success_count": 323,
+      "failure_count": 27,
+      "success_rate": 0.9228571428571428,
+      "mean_error": 77.06571428571428,
+      "p95_error": 999.0,
+      "failure_cases": [
+        "slider-medium-166",
+        "slider-hard-215",
+        "slider-hard-227",
+        "slider-hard-235",
+        "slider-hard-237",
+        "slider-hard-248",
+        "slider-hard-258",
+        "slider-hard-259",
+        "slider-hard-289",
+        "slider-adversarial-301",
+        "slider-adversarial-302",
+        "slider-adversarial-303",
+        "slider-adversarial-304",
+        "slider-adversarial-305",
+        "slider-adversarial-306",
+        "slider-adversarial-312",
+        "slider-adversarial-318",
+        "slider-adversarial-321",
+        "slider-adversarial-327",
+        "slider-adversarial-333"
+      ],
+      "action_trace": {
+        "present": true,
+        "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+      },
+      "blackbox_gate": {
+        "status": "pending",
+        "answer_read_for_prediction": false
+      },
+      "leakage_audit": {
+        "status": "pending"
+      },
+      "realism_audit": {
+        "status": "pending"
+      },
+      "per_difficulty_metrics": {
+        "easy": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "mean_error": 0.0,
+          "p95_error": 0.0,
+          "failure_cases": [],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "medium": {
+          "sample_count": 100,
+          "success_count": 99,
+          "failure_count": 1,
+          "success_rate": 0.99,
+          "mean_error": 9.99,
+          "p95_error": 0.0,
+          "failure_cases": [
+            "slider-medium-166"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "hard": {
+          "sample_count": 100,
+          "success_count": 92,
+          "failure_count": 8,
+          "success_rate": 0.92,
+          "mean_error": 79.92,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "slider-hard-215",
+            "slider-hard-227",
+            "slider-hard-235",
+            "slider-hard-237",
+            "slider-hard-248",
+            "slider-hard-258",
+            "slider-hard-259",
+            "slider-hard-289"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "adversarial": {
+          "sample_count": 50,
+          "success_count": 32,
+          "failure_count": 18,
+          "success_rate": 0.64,
+          "mean_error": 359.64,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "slider-adversarial-301",
+            "slider-adversarial-302",
+            "slider-adversarial-303",
+            "slider-adversarial-304",
+            "slider-adversarial-305",
+            "slider-adversarial-306",
+            "slider-adversarial-312",
+            "slider-adversarial-318",
+            "slider-adversarial-321",
+            "slider-adversarial-327"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        }
+      },
+      "capability_status": "positive_candidate",
+      "capability_level": "candidate",
+      "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+    },
+    "puzzle": {
+      "sample_count": 350,
+      "success_count": 320,
+      "failure_count": 30,
+      "success_rate": 0.9142857142857143,
+      "mean_error": 85.62857142857143,
+      "p95_error": 999.0,
+      "failure_cases": [
+        "puzzle-medium-109",
+        "puzzle-medium-122",
+        "puzzle-medium-155",
+        "puzzle-hard-206",
+        "puzzle-hard-207",
+        "puzzle-hard-208",
+        "puzzle-hard-214",
+        "puzzle-hard-224",
+        "puzzle-hard-240",
+        "puzzle-hard-250",
+        "puzzle-hard-251",
+        "puzzle-hard-256",
+        "puzzle-hard-261",
+        "puzzle-hard-268",
+        "puzzle-hard-272",
+        "puzzle-hard-278",
+        "puzzle-hard-282",
+        "puzzle-hard-286",
+        "puzzle-hard-287",
+        "puzzle-hard-295"
+      ],
+      "action_trace": {
+        "present": true,
+        "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+      },
+      "blackbox_gate": {
+        "status": "pending",
+        "answer_read_for_prediction": false
+      },
+      "leakage_audit": {
+        "status": "pending"
+      },
+      "realism_audit": {
+        "status": "pending"
+      },
+      "per_difficulty_metrics": {
+        "easy": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "mean_error": 0.0,
+          "p95_error": 0.0,
+          "failure_cases": [],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "medium": {
+          "sample_count": 100,
+          "success_count": 97,
+          "failure_count": 3,
+          "success_rate": 0.97,
+          "mean_error": 29.97,
+          "p95_error": 0.0,
+          "failure_cases": [
+            "puzzle-medium-109",
+            "puzzle-medium-122",
+            "puzzle-medium-155"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "hard": {
+          "sample_count": 100,
+          "success_count": 83,
+          "failure_count": 17,
+          "success_rate": 0.83,
+          "mean_error": 169.83,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "puzzle-hard-206",
+            "puzzle-hard-207",
+            "puzzle-hard-208",
+            "puzzle-hard-214",
+            "puzzle-hard-224",
+            "puzzle-hard-240",
+            "puzzle-hard-250",
+            "puzzle-hard-251",
+            "puzzle-hard-256",
+            "puzzle-hard-261"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "adversarial": {
+          "sample_count": 50,
+          "success_count": 40,
+          "failure_count": 10,
+          "success_rate": 0.8,
+          "mean_error": 199.8,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "puzzle-adversarial-302",
+            "puzzle-adversarial-303",
+            "puzzle-adversarial-305",
+            "puzzle-adversarial-312",
+            "puzzle-adversarial-320",
+            "puzzle-adversarial-328",
+            "puzzle-adversarial-339",
+            "puzzle-adversarial-341",
+            "puzzle-adversarial-346",
+            "puzzle-adversarial-347"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        }
+      },
+      "capability_status": "positive_candidate",
+      "capability_level": "candidate",
+      "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+    },
+    "image_restore": {
+      "sample_count": 350,
+      "success_count": 0,
+      "failure_count": 350,
+      "success_rate": 0.0,
+      "mean_error": 999.0,
+      "p95_error": 999.0,
+      "failure_cases": [
+        "image_restore-easy-000",
+        "image_restore-easy-001",
+        "image_restore-easy-002",
+        "image_restore-easy-003",
+        "image_restore-easy-004",
+        "image_restore-easy-005",
+        "image_restore-easy-006",
+        "image_restore-easy-007",
+        "image_restore-easy-008",
+        "image_restore-easy-009",
+        "image_restore-easy-010",
+        "image_restore-easy-011",
+        "image_restore-easy-012",
+        "image_restore-easy-013",
+        "image_restore-easy-014",
+        "image_restore-easy-015",
+        "image_restore-easy-016",
+        "image_restore-easy-017",
+        "image_restore-easy-018",
+        "image_restore-easy-019"
+      ],
+      "action_trace": {
+        "present": true,
+        "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+      },
+      "blackbox_gate": {
+        "status": "pending",
+        "answer_read_for_prediction": false
+      },
+      "leakage_audit": {
+        "status": "pending"
+      },
+      "realism_audit": {
+        "status": "pending"
+      },
+      "per_difficulty_metrics": {
+        "easy": {
+          "sample_count": 100,
+          "success_count": 0,
+          "failure_count": 100,
+          "success_rate": 0.0,
+          "mean_error": 999.0,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "image_restore-easy-000",
+            "image_restore-easy-001",
+            "image_restore-easy-002",
+            "image_restore-easy-003",
+            "image_restore-easy-004",
+            "image_restore-easy-005",
+            "image_restore-easy-006",
+            "image_restore-easy-007",
+            "image_restore-easy-008",
+            "image_restore-easy-009"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "medium": {
+          "sample_count": 100,
+          "success_count": 0,
+          "failure_count": 100,
+          "success_rate": 0.0,
+          "mean_error": 999.0,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "image_restore-medium-100",
+            "image_restore-medium-101",
+            "image_restore-medium-102",
+            "image_restore-medium-103",
+            "image_restore-medium-104",
+            "image_restore-medium-105",
+            "image_restore-medium-106",
+            "image_restore-medium-107",
+            "image_restore-medium-108",
+            "image_restore-medium-109"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "hard": {
+          "sample_count": 100,
+          "success_count": 0,
+          "failure_count": 100,
+          "success_rate": 0.0,
+          "mean_error": 999.0,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "image_restore-hard-200",
+            "image_restore-hard-201",
+            "image_restore-hard-202",
+            "image_restore-hard-203",
+            "image_restore-hard-204",
+            "image_restore-hard-205",
+            "image_restore-hard-206",
+            "image_restore-hard-207",
+            "image_restore-hard-208",
+            "image_restore-hard-209"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "adversarial": {
+          "sample_count": 50,
+          "success_count": 0,
+          "failure_count": 50,
+          "success_rate": 0.0,
+          "mean_error": 999.0,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "image_restore-adversarial-300",
+            "image_restore-adversarial-301",
+            "image_restore-adversarial-302",
+            "image_restore-adversarial-303",
+            "image_restore-adversarial-304",
+            "image_restore-adversarial-305",
+            "image_restore-adversarial-306",
+            "image_restore-adversarial-307",
+            "image_restore-adversarial-308",
+            "image_restore-adversarial-309"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        }
+      },
+      "capability_status": "negative_eval_only",
+      "capability_level": "negative_eval_only",
+      "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+    },
+    "spatial_reasoning": {
+      "sample_count": 350,
+      "success_count": 320,
+      "failure_count": 30,
+      "success_rate": 0.9142857142857143,
+      "mean_error": 85.62857142857143,
+      "p95_error": 999.0,
+      "failure_cases": [
+        "spatial_reasoning-medium-119",
+        "spatial_reasoning-medium-126",
+        "spatial_reasoning-medium-142",
+        "spatial_reasoning-medium-158",
+        "spatial_reasoning-hard-208",
+        "spatial_reasoning-hard-210",
+        "spatial_reasoning-hard-225",
+        "spatial_reasoning-hard-235",
+        "spatial_reasoning-hard-247",
+        "spatial_reasoning-hard-257",
+        "spatial_reasoning-hard-258",
+        "spatial_reasoning-hard-274",
+        "spatial_reasoning-hard-276",
+        "spatial_reasoning-hard-290",
+        "spatial_reasoning-adversarial-302",
+        "spatial_reasoning-adversarial-303",
+        "spatial_reasoning-adversarial-305",
+        "spatial_reasoning-adversarial-307",
+        "spatial_reasoning-adversarial-312",
+        "spatial_reasoning-adversarial-314"
+      ],
+      "action_trace": {
+        "present": true,
+        "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+      },
+      "blackbox_gate": {
+        "status": "pending",
+        "answer_read_for_prediction": false
+      },
+      "leakage_audit": {
+        "status": "pending"
+      },
+      "realism_audit": {
+        "status": "pending"
+      },
+      "per_difficulty_metrics": {
+        "easy": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "mean_error": 0.0,
+          "p95_error": 0.0,
+          "failure_cases": [],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "medium": {
+          "sample_count": 100,
+          "success_count": 96,
+          "failure_count": 4,
+          "success_rate": 0.96,
+          "mean_error": 39.96,
+          "p95_error": 0.0,
+          "failure_cases": [
+            "spatial_reasoning-medium-119",
+            "spatial_reasoning-medium-126",
+            "spatial_reasoning-medium-142",
+            "spatial_reasoning-medium-158"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "hard": {
+          "sample_count": 100,
+          "success_count": 90,
+          "failure_count": 10,
+          "success_rate": 0.9,
+          "mean_error": 99.9,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "spatial_reasoning-hard-208",
+            "spatial_reasoning-hard-210",
+            "spatial_reasoning-hard-225",
+            "spatial_reasoning-hard-235",
+            "spatial_reasoning-hard-247",
+            "spatial_reasoning-hard-257",
+            "spatial_reasoning-hard-258",
+            "spatial_reasoning-hard-274",
+            "spatial_reasoning-hard-276",
+            "spatial_reasoning-hard-290"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "adversarial": {
+          "sample_count": 50,
+          "success_count": 34,
+          "failure_count": 16,
+          "success_rate": 0.68,
+          "mean_error": 319.68,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "spatial_reasoning-adversarial-302",
+            "spatial_reasoning-adversarial-303",
+            "spatial_reasoning-adversarial-305",
+            "spatial_reasoning-adversarial-307",
+            "spatial_reasoning-adversarial-312",
+            "spatial_reasoning-adversarial-314",
+            "spatial_reasoning-adversarial-318",
+            "spatial_reasoning-adversarial-320",
+            "spatial_reasoning-adversarial-324",
+            "spatial_reasoning-adversarial-325"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        }
+      },
+      "capability_status": "positive_candidate",
+      "capability_level": "candidate",
+      "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+    },
+    "one_click": {
+      "sample_count": 350,
+      "success_count": 350,
+      "failure_count": 0,
+      "success_rate": 1.0,
+      "mean_error": 0.0,
+      "p95_error": 0.0,
+      "failure_cases": [],
+      "action_trace": {
+        "present": true,
+        "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+      },
+      "blackbox_gate": {
+        "status": "pending",
+        "answer_read_for_prediction": false
+      },
+      "leakage_audit": {
+        "status": "pending"
+      },
+      "realism_audit": {
+        "status": "pending"
+      },
+      "per_difficulty_metrics": {
+        "easy": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "mean_error": 0.0,
+          "p95_error": 0.0,
+          "failure_cases": [],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "medium": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "mean_error": 0.0,
+          "p95_error": 0.0,
+          "failure_cases": [],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "hard": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "mean_error": 0.0,
+          "p95_error": 0.0,
+          "failure_cases": [],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "adversarial": {
+          "sample_count": 50,
+          "success_count": 50,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "mean_error": 0.0,
+          "p95_error": 0.0,
+          "failure_cases": [],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        }
+      },
+      "capability_status": "memory_only",
+      "capability_level": "memory_only",
+      "why": "state-machine-only observation, not no-sense bypass"
+    },
+    "no_trace": {
+      "sample_count": 350,
+      "success_count": 350,
+      "failure_count": 0,
+      "success_rate": 1.0,
+      "mean_error": 0.0,
+      "p95_error": 0.0,
+      "failure_cases": [],
+      "action_trace": {
+        "present": true,
+        "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+      },
+      "blackbox_gate": {
+        "status": "pending",
+        "answer_read_for_prediction": false
+      },
+      "leakage_audit": {
+        "status": "pending"
+      },
+      "realism_audit": {
+        "status": "pending"
+      },
+      "per_difficulty_metrics": {
+        "easy": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "mean_error": 0.0,
+          "p95_error": 0.0,
+          "failure_cases": [],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "medium": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "mean_error": 0.0,
+          "p95_error": 0.0,
+          "failure_cases": [],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "hard": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "mean_error": 0.0,
+          "p95_error": 0.0,
+          "failure_cases": [],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "adversarial": {
+          "sample_count": 50,
+          "success_count": 50,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "mean_error": 0.0,
+          "p95_error": 0.0,
+          "failure_cases": [],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        }
+      },
+      "capability_status": "memory_only",
+      "capability_level": "memory_only",
+      "why": "state-machine-only observation, not no-sense bypass"
+    }
+  },
+  "per_difficulty_metrics": {
+    "slider": {
+      "easy": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "mean_error": 0.0,
+        "p95_error": 0.0,
+        "failure_cases": [],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "medium": {
+        "sample_count": 100,
+        "success_count": 99,
+        "failure_count": 1,
+        "success_rate": 0.99,
+        "mean_error": 9.99,
+        "p95_error": 0.0,
+        "failure_cases": [
+          "slider-medium-166"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "hard": {
+        "sample_count": 100,
+        "success_count": 92,
+        "failure_count": 8,
+        "success_rate": 0.92,
+        "mean_error": 79.92,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "slider-hard-215",
+          "slider-hard-227",
+          "slider-hard-235",
+          "slider-hard-237",
+          "slider-hard-248",
+          "slider-hard-258",
+          "slider-hard-259",
+          "slider-hard-289"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "adversarial": {
+        "sample_count": 50,
+        "success_count": 32,
+        "failure_count": 18,
+        "success_rate": 0.64,
+        "mean_error": 359.64,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "slider-adversarial-301",
+          "slider-adversarial-302",
+          "slider-adversarial-303",
+          "slider-adversarial-304",
+          "slider-adversarial-305",
+          "slider-adversarial-306",
+          "slider-adversarial-312",
+          "slider-adversarial-318",
+          "slider-adversarial-321",
+          "slider-adversarial-327"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      }
+    },
+    "puzzle": {
+      "easy": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "mean_error": 0.0,
+        "p95_error": 0.0,
+        "failure_cases": [],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "medium": {
+        "sample_count": 100,
+        "success_count": 97,
+        "failure_count": 3,
+        "success_rate": 0.97,
+        "mean_error": 29.97,
+        "p95_error": 0.0,
+        "failure_cases": [
+          "puzzle-medium-109",
+          "puzzle-medium-122",
+          "puzzle-medium-155"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "hard": {
+        "sample_count": 100,
+        "success_count": 83,
+        "failure_count": 17,
+        "success_rate": 0.83,
+        "mean_error": 169.83,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "puzzle-hard-206",
+          "puzzle-hard-207",
+          "puzzle-hard-208",
+          "puzzle-hard-214",
+          "puzzle-hard-224",
+          "puzzle-hard-240",
+          "puzzle-hard-250",
+          "puzzle-hard-251",
+          "puzzle-hard-256",
+          "puzzle-hard-261"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "adversarial": {
+        "sample_count": 50,
+        "success_count": 40,
+        "failure_count": 10,
+        "success_rate": 0.8,
+        "mean_error": 199.8,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "puzzle-adversarial-302",
+          "puzzle-adversarial-303",
+          "puzzle-adversarial-305",
+          "puzzle-adversarial-312",
+          "puzzle-adversarial-320",
+          "puzzle-adversarial-328",
+          "puzzle-adversarial-339",
+          "puzzle-adversarial-341",
+          "puzzle-adversarial-346",
+          "puzzle-adversarial-347"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      }
+    },
+    "image_restore": {
+      "easy": {
+        "sample_count": 100,
+        "success_count": 0,
+        "failure_count": 100,
+        "success_rate": 0.0,
+        "mean_error": 999.0,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "image_restore-easy-000",
+          "image_restore-easy-001",
+          "image_restore-easy-002",
+          "image_restore-easy-003",
+          "image_restore-easy-004",
+          "image_restore-easy-005",
+          "image_restore-easy-006",
+          "image_restore-easy-007",
+          "image_restore-easy-008",
+          "image_restore-easy-009"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "medium": {
+        "sample_count": 100,
+        "success_count": 0,
+        "failure_count": 100,
+        "success_rate": 0.0,
+        "mean_error": 999.0,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "image_restore-medium-100",
+          "image_restore-medium-101",
+          "image_restore-medium-102",
+          "image_restore-medium-103",
+          "image_restore-medium-104",
+          "image_restore-medium-105",
+          "image_restore-medium-106",
+          "image_restore-medium-107",
+          "image_restore-medium-108",
+          "image_restore-medium-109"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "hard": {
+        "sample_count": 100,
+        "success_count": 0,
+        "failure_count": 100,
+        "success_rate": 0.0,
+        "mean_error": 999.0,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "image_restore-hard-200",
+          "image_restore-hard-201",
+          "image_restore-hard-202",
+          "image_restore-hard-203",
+          "image_restore-hard-204",
+          "image_restore-hard-205",
+          "image_restore-hard-206",
+          "image_restore-hard-207",
+          "image_restore-hard-208",
+          "image_restore-hard-209"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "adversarial": {
+        "sample_count": 50,
+        "success_count": 0,
+        "failure_count": 50,
+        "success_rate": 0.0,
+        "mean_error": 999.0,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "image_restore-adversarial-300",
+          "image_restore-adversarial-301",
+          "image_restore-adversarial-302",
+          "image_restore-adversarial-303",
+          "image_restore-adversarial-304",
+          "image_restore-adversarial-305",
+          "image_restore-adversarial-306",
+          "image_restore-adversarial-307",
+          "image_restore-adversarial-308",
+          "image_restore-adversarial-309"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      }
+    },
+    "spatial_reasoning": {
+      "easy": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "mean_error": 0.0,
+        "p95_error": 0.0,
+        "failure_cases": [],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "medium": {
+        "sample_count": 100,
+        "success_count": 96,
+        "failure_count": 4,
+        "success_rate": 0.96,
+        "mean_error": 39.96,
+        "p95_error": 0.0,
+        "failure_cases": [
+          "spatial_reasoning-medium-119",
+          "spatial_reasoning-medium-126",
+          "spatial_reasoning-medium-142",
+          "spatial_reasoning-medium-158"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "hard": {
+        "sample_count": 100,
+        "success_count": 90,
+        "failure_count": 10,
+        "success_rate": 0.9,
+        "mean_error": 99.9,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "spatial_reasoning-hard-208",
+          "spatial_reasoning-hard-210",
+          "spatial_reasoning-hard-225",
+          "spatial_reasoning-hard-235",
+          "spatial_reasoning-hard-247",
+          "spatial_reasoning-hard-257",
+          "spatial_reasoning-hard-258",
+          "spatial_reasoning-hard-274",
+          "spatial_reasoning-hard-276",
+          "spatial_reasoning-hard-290"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "adversarial": {
+        "sample_count": 50,
+        "success_count": 34,
+        "failure_count": 16,
+        "success_rate": 0.68,
+        "mean_error": 319.68,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "spatial_reasoning-adversarial-302",
+          "spatial_reasoning-adversarial-303",
+          "spatial_reasoning-adversarial-305",
+          "spatial_reasoning-adversarial-307",
+          "spatial_reasoning-adversarial-312",
+          "spatial_reasoning-adversarial-314",
+          "spatial_reasoning-adversarial-318",
+          "spatial_reasoning-adversarial-320",
+          "spatial_reasoning-adversarial-324",
+          "spatial_reasoning-adversarial-325"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      }
+    },
+    "one_click": {
+      "easy": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "mean_error": 0.0,
+        "p95_error": 0.0,
+        "failure_cases": [],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "medium": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "mean_error": 0.0,
+        "p95_error": 0.0,
+        "failure_cases": [],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "hard": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "mean_error": 0.0,
+        "p95_error": 0.0,
+        "failure_cases": [],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "adversarial": {
+        "sample_count": 50,
+        "success_count": 50,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "mean_error": 0.0,
+        "p95_error": 0.0,
+        "failure_cases": [],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      }
+    },
+    "no_trace": {
+      "easy": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "mean_error": 0.0,
+        "p95_error": 0.0,
+        "failure_cases": [],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "medium": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "mean_error": 0.0,
+        "p95_error": 0.0,
+        "failure_cases": [],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "hard": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "mean_error": 0.0,
+        "p95_error": 0.0,
+        "failure_cases": [],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "adversarial": {
+        "sample_count": 50,
+        "success_count": 50,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "mean_error": 0.0,
+        "p95_error": 0.0,
+        "failure_cases": [],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      }
+    }
+  },
+  "sample_count": 2100,
+  "success_rate": 0.7919047619047619,
+  "realism_status": "PASS",
+  "failure_cases_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\failure-cases.json",
+  "experience_cards": [
+    "E:\\SKILLS\\oh_my_reverse_skill\\skills-experience\\phase3-10\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-compatible-lab-card.json"
+  ],
+  "evals": [
+    "E:\\SKILLS\\oh_my_reverse_skill\\evals\\phase3-10\\aliyun-compatible-lab-compatible-lab-hardening.yaml"
+  ],
+  "action_replay": {
+    "status": "pass",
+    "metrics": {
+      "target": "aliyun-compatible-lab",
+      "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl",
+      "families": {
+        "slider": {
+          "sample_count": 350,
+          "success_count": 323,
+          "failure_count": 27,
+          "success_rate": 0.9228571428571428,
+          "mean_error": 77.06571428571428,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "slider-medium-166",
+            "slider-hard-215",
+            "slider-hard-227",
+            "slider-hard-235",
+            "slider-hard-237",
+            "slider-hard-248",
+            "slider-hard-258",
+            "slider-hard-259",
+            "slider-hard-289",
+            "slider-adversarial-301",
+            "slider-adversarial-302",
+            "slider-adversarial-303",
+            "slider-adversarial-304",
+            "slider-adversarial-305",
+            "slider-adversarial-306",
+            "slider-adversarial-312",
+            "slider-adversarial-318",
+            "slider-adversarial-321",
+            "slider-adversarial-327",
+            "slider-adversarial-333"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          },
+          "per_difficulty_metrics": {
+            "easy": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "mean_error": 0.0,
+              "p95_error": 0.0,
+              "failure_cases": [],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "medium": {
+              "sample_count": 100,
+              "success_count": 99,
+              "failure_count": 1,
+              "success_rate": 0.99,
+              "mean_error": 9.99,
+              "p95_error": 0.0,
+              "failure_cases": [
+                "slider-medium-166"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "hard": {
+              "sample_count": 100,
+              "success_count": 92,
+              "failure_count": 8,
+              "success_rate": 0.92,
+              "mean_error": 79.92,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "slider-hard-215",
+                "slider-hard-227",
+                "slider-hard-235",
+                "slider-hard-237",
+                "slider-hard-248",
+                "slider-hard-258",
+                "slider-hard-259",
+                "slider-hard-289"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "adversarial": {
+              "sample_count": 50,
+              "success_count": 32,
+              "failure_count": 18,
+              "success_rate": 0.64,
+              "mean_error": 359.64,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "slider-adversarial-301",
+                "slider-adversarial-302",
+                "slider-adversarial-303",
+                "slider-adversarial-304",
+                "slider-adversarial-305",
+                "slider-adversarial-306",
+                "slider-adversarial-312",
+                "slider-adversarial-318",
+                "slider-adversarial-321",
+                "slider-adversarial-327"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            }
+          },
+          "capability_status": "positive_candidate",
+          "capability_level": "candidate",
+          "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+        },
+        "puzzle": {
+          "sample_count": 350,
+          "success_count": 320,
+          "failure_count": 30,
+          "success_rate": 0.9142857142857143,
+          "mean_error": 85.62857142857143,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "puzzle-medium-109",
+            "puzzle-medium-122",
+            "puzzle-medium-155",
+            "puzzle-hard-206",
+            "puzzle-hard-207",
+            "puzzle-hard-208",
+            "puzzle-hard-214",
+            "puzzle-hard-224",
+            "puzzle-hard-240",
+            "puzzle-hard-250",
+            "puzzle-hard-251",
+            "puzzle-hard-256",
+            "puzzle-hard-261",
+            "puzzle-hard-268",
+            "puzzle-hard-272",
+            "puzzle-hard-278",
+            "puzzle-hard-282",
+            "puzzle-hard-286",
+            "puzzle-hard-287",
+            "puzzle-hard-295"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          },
+          "per_difficulty_metrics": {
+            "easy": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "mean_error": 0.0,
+              "p95_error": 0.0,
+              "failure_cases": [],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "medium": {
+              "sample_count": 100,
+              "success_count": 97,
+              "failure_count": 3,
+              "success_rate": 0.97,
+              "mean_error": 29.97,
+              "p95_error": 0.0,
+              "failure_cases": [
+                "puzzle-medium-109",
+                "puzzle-medium-122",
+                "puzzle-medium-155"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "hard": {
+              "sample_count": 100,
+              "success_count": 83,
+              "failure_count": 17,
+              "success_rate": 0.83,
+              "mean_error": 169.83,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "puzzle-hard-206",
+                "puzzle-hard-207",
+                "puzzle-hard-208",
+                "puzzle-hard-214",
+                "puzzle-hard-224",
+                "puzzle-hard-240",
+                "puzzle-hard-250",
+                "puzzle-hard-251",
+                "puzzle-hard-256",
+                "puzzle-hard-261"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "adversarial": {
+              "sample_count": 50,
+              "success_count": 40,
+              "failure_count": 10,
+              "success_rate": 0.8,
+              "mean_error": 199.8,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "puzzle-adversarial-302",
+                "puzzle-adversarial-303",
+                "puzzle-adversarial-305",
+                "puzzle-adversarial-312",
+                "puzzle-adversarial-320",
+                "puzzle-adversarial-328",
+                "puzzle-adversarial-339",
+                "puzzle-adversarial-341",
+                "puzzle-adversarial-346",
+                "puzzle-adversarial-347"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            }
+          },
+          "capability_status": "positive_candidate",
+          "capability_level": "candidate",
+          "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+        },
+        "image_restore": {
+          "sample_count": 350,
+          "success_count": 0,
+          "failure_count": 350,
+          "success_rate": 0.0,
+          "mean_error": 999.0,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "image_restore-easy-000",
+            "image_restore-easy-001",
+            "image_restore-easy-002",
+            "image_restore-easy-003",
+            "image_restore-easy-004",
+            "image_restore-easy-005",
+            "image_restore-easy-006",
+            "image_restore-easy-007",
+            "image_restore-easy-008",
+            "image_restore-easy-009",
+            "image_restore-easy-010",
+            "image_restore-easy-011",
+            "image_restore-easy-012",
+            "image_restore-easy-013",
+            "image_restore-easy-014",
+            "image_restore-easy-015",
+            "image_restore-easy-016",
+            "image_restore-easy-017",
+            "image_restore-easy-018",
+            "image_restore-easy-019"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          },
+          "per_difficulty_metrics": {
+            "easy": {
+              "sample_count": 100,
+              "success_count": 0,
+              "failure_count": 100,
+              "success_rate": 0.0,
+              "mean_error": 999.0,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "image_restore-easy-000",
+                "image_restore-easy-001",
+                "image_restore-easy-002",
+                "image_restore-easy-003",
+                "image_restore-easy-004",
+                "image_restore-easy-005",
+                "image_restore-easy-006",
+                "image_restore-easy-007",
+                "image_restore-easy-008",
+                "image_restore-easy-009"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "medium": {
+              "sample_count": 100,
+              "success_count": 0,
+              "failure_count": 100,
+              "success_rate": 0.0,
+              "mean_error": 999.0,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "image_restore-medium-100",
+                "image_restore-medium-101",
+                "image_restore-medium-102",
+                "image_restore-medium-103",
+                "image_restore-medium-104",
+                "image_restore-medium-105",
+                "image_restore-medium-106",
+                "image_restore-medium-107",
+                "image_restore-medium-108",
+                "image_restore-medium-109"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "hard": {
+              "sample_count": 100,
+              "success_count": 0,
+              "failure_count": 100,
+              "success_rate": 0.0,
+              "mean_error": 999.0,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "image_restore-hard-200",
+                "image_restore-hard-201",
+                "image_restore-hard-202",
+                "image_restore-hard-203",
+                "image_restore-hard-204",
+                "image_restore-hard-205",
+                "image_restore-hard-206",
+                "image_restore-hard-207",
+                "image_restore-hard-208",
+                "image_restore-hard-209"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "adversarial": {
+              "sample_count": 50,
+              "success_count": 0,
+              "failure_count": 50,
+              "success_rate": 0.0,
+              "mean_error": 999.0,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "image_restore-adversarial-300",
+                "image_restore-adversarial-301",
+                "image_restore-adversarial-302",
+                "image_restore-adversarial-303",
+                "image_restore-adversarial-304",
+                "image_restore-adversarial-305",
+                "image_restore-adversarial-306",
+                "image_restore-adversarial-307",
+                "image_restore-adversarial-308",
+                "image_restore-adversarial-309"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            }
+          },
+          "capability_status": "negative_eval_only",
+          "capability_level": "negative_eval_only",
+          "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+        },
+        "spatial_reasoning": {
+          "sample_count": 350,
+          "success_count": 320,
+          "failure_count": 30,
+          "success_rate": 0.9142857142857143,
+          "mean_error": 85.62857142857143,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "spatial_reasoning-medium-119",
+            "spatial_reasoning-medium-126",
+            "spatial_reasoning-medium-142",
+            "spatial_reasoning-medium-158",
+            "spatial_reasoning-hard-208",
+            "spatial_reasoning-hard-210",
+            "spatial_reasoning-hard-225",
+            "spatial_reasoning-hard-235",
+            "spatial_reasoning-hard-247",
+            "spatial_reasoning-hard-257",
+            "spatial_reasoning-hard-258",
+            "spatial_reasoning-hard-274",
+            "spatial_reasoning-hard-276",
+            "spatial_reasoning-hard-290",
+            "spatial_reasoning-adversarial-302",
+            "spatial_reasoning-adversarial-303",
+            "spatial_reasoning-adversarial-305",
+            "spatial_reasoning-adversarial-307",
+            "spatial_reasoning-adversarial-312",
+            "spatial_reasoning-adversarial-314"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          },
+          "per_difficulty_metrics": {
+            "easy": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "mean_error": 0.0,
+              "p95_error": 0.0,
+              "failure_cases": [],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "medium": {
+              "sample_count": 100,
+              "success_count": 96,
+              "failure_count": 4,
+              "success_rate": 0.96,
+              "mean_error": 39.96,
+              "p95_error": 0.0,
+              "failure_cases": [
+                "spatial_reasoning-medium-119",
+                "spatial_reasoning-medium-126",
+                "spatial_reasoning-medium-142",
+                "spatial_reasoning-medium-158"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "hard": {
+              "sample_count": 100,
+              "success_count": 90,
+              "failure_count": 10,
+              "success_rate": 0.9,
+              "mean_error": 99.9,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "spatial_reasoning-hard-208",
+                "spatial_reasoning-hard-210",
+                "spatial_reasoning-hard-225",
+                "spatial_reasoning-hard-235",
+                "spatial_reasoning-hard-247",
+                "spatial_reasoning-hard-257",
+                "spatial_reasoning-hard-258",
+                "spatial_reasoning-hard-274",
+                "spatial_reasoning-hard-276",
+                "spatial_reasoning-hard-290"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "adversarial": {
+              "sample_count": 50,
+              "success_count": 34,
+              "failure_count": 16,
+              "success_rate": 0.68,
+              "mean_error": 319.68,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "spatial_reasoning-adversarial-302",
+                "spatial_reasoning-adversarial-303",
+                "spatial_reasoning-adversarial-305",
+                "spatial_reasoning-adversarial-307",
+                "spatial_reasoning-adversarial-312",
+                "spatial_reasoning-adversarial-314",
+                "spatial_reasoning-adversarial-318",
+                "spatial_reasoning-adversarial-320",
+                "spatial_reasoning-adversarial-324",
+                "spatial_reasoning-adversarial-325"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            }
+          },
+          "capability_status": "positive_candidate",
+          "capability_level": "candidate",
+          "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+        },
+        "one_click": {
+          "sample_count": 350,
+          "success_count": 350,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "mean_error": 0.0,
+          "p95_error": 0.0,
+          "failure_cases": [],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          },
+          "per_difficulty_metrics": {
+            "easy": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "mean_error": 0.0,
+              "p95_error": 0.0,
+              "failure_cases": [],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "medium": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "mean_error": 0.0,
+              "p95_error": 0.0,
+              "failure_cases": [],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "hard": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "mean_error": 0.0,
+              "p95_error": 0.0,
+              "failure_cases": [],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "adversarial": {
+              "sample_count": 50,
+              "success_count": 50,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "mean_error": 0.0,
+              "p95_error": 0.0,
+              "failure_cases": [],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            }
+          },
+          "capability_status": "memory_only",
+          "capability_level": "memory_only",
+          "why": "state-machine-only observation, not no-sense bypass"
+        },
+        "no_trace": {
+          "sample_count": 350,
+          "success_count": 350,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "mean_error": 0.0,
+          "p95_error": 0.0,
+          "failure_cases": [],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          },
+          "per_difficulty_metrics": {
+            "easy": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "mean_error": 0.0,
+              "p95_error": 0.0,
+              "failure_cases": [],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "medium": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "mean_error": 0.0,
+              "p95_error": 0.0,
+              "failure_cases": [],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "hard": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "mean_error": 0.0,
+              "p95_error": 0.0,
+              "failure_cases": [],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "adversarial": {
+              "sample_count": 50,
+              "success_count": 50,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "mean_error": 0.0,
+              "p95_error": 0.0,
+              "failure_cases": [],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            }
+          },
+          "capability_status": "memory_only",
+          "capability_level": "memory_only",
+          "why": "state-machine-only observation, not no-sense bypass"
+        }
+      },
+      "total_samples": 2100,
+      "total_success": 1663,
+      "success_rate": 0.7919047619047619,
+      "prediction_source": "challenge_image_instruction_action_schema_only",
+      "per_difficulty_metrics": {
+        "slider": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 99,
+            "failure_count": 1,
+            "success_rate": 0.99,
+            "mean_error": 9.99,
+            "p95_error": 0.0,
+            "failure_cases": [
+              "slider-medium-166"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 92,
+            "failure_count": 8,
+            "success_rate": 0.92,
+            "mean_error": 79.92,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "slider-hard-215",
+              "slider-hard-227",
+              "slider-hard-235",
+              "slider-hard-237",
+              "slider-hard-248",
+              "slider-hard-258",
+              "slider-hard-259",
+              "slider-hard-289"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 32,
+            "failure_count": 18,
+            "success_rate": 0.64,
+            "mean_error": 359.64,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "slider-adversarial-301",
+              "slider-adversarial-302",
+              "slider-adversarial-303",
+              "slider-adversarial-304",
+              "slider-adversarial-305",
+              "slider-adversarial-306",
+              "slider-adversarial-312",
+              "slider-adversarial-318",
+              "slider-adversarial-321",
+              "slider-adversarial-327"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "puzzle": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 97,
+            "failure_count": 3,
+            "success_rate": 0.97,
+            "mean_error": 29.97,
+            "p95_error": 0.0,
+            "failure_cases": [
+              "puzzle-medium-109",
+              "puzzle-medium-122",
+              "puzzle-medium-155"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 83,
+            "failure_count": 17,
+            "success_rate": 0.83,
+            "mean_error": 169.83,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "puzzle-hard-206",
+              "puzzle-hard-207",
+              "puzzle-hard-208",
+              "puzzle-hard-214",
+              "puzzle-hard-224",
+              "puzzle-hard-240",
+              "puzzle-hard-250",
+              "puzzle-hard-251",
+              "puzzle-hard-256",
+              "puzzle-hard-261"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 40,
+            "failure_count": 10,
+            "success_rate": 0.8,
+            "mean_error": 199.8,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "puzzle-adversarial-302",
+              "puzzle-adversarial-303",
+              "puzzle-adversarial-305",
+              "puzzle-adversarial-312",
+              "puzzle-adversarial-320",
+              "puzzle-adversarial-328",
+              "puzzle-adversarial-339",
+              "puzzle-adversarial-341",
+              "puzzle-adversarial-346",
+              "puzzle-adversarial-347"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "image_restore": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 0,
+            "failure_count": 100,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "image_restore-easy-000",
+              "image_restore-easy-001",
+              "image_restore-easy-002",
+              "image_restore-easy-003",
+              "image_restore-easy-004",
+              "image_restore-easy-005",
+              "image_restore-easy-006",
+              "image_restore-easy-007",
+              "image_restore-easy-008",
+              "image_restore-easy-009"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 0,
+            "failure_count": 100,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "image_restore-medium-100",
+              "image_restore-medium-101",
+              "image_restore-medium-102",
+              "image_restore-medium-103",
+              "image_restore-medium-104",
+              "image_restore-medium-105",
+              "image_restore-medium-106",
+              "image_restore-medium-107",
+              "image_restore-medium-108",
+              "image_restore-medium-109"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 0,
+            "failure_count": 100,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "image_restore-hard-200",
+              "image_restore-hard-201",
+              "image_restore-hard-202",
+              "image_restore-hard-203",
+              "image_restore-hard-204",
+              "image_restore-hard-205",
+              "image_restore-hard-206",
+              "image_restore-hard-207",
+              "image_restore-hard-208",
+              "image_restore-hard-209"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 0,
+            "failure_count": 50,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "image_restore-adversarial-300",
+              "image_restore-adversarial-301",
+              "image_restore-adversarial-302",
+              "image_restore-adversarial-303",
+              "image_restore-adversarial-304",
+              "image_restore-adversarial-305",
+              "image_restore-adversarial-306",
+              "image_restore-adversarial-307",
+              "image_restore-adversarial-308",
+              "image_restore-adversarial-309"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "spatial_reasoning": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 96,
+            "failure_count": 4,
+            "success_rate": 0.96,
+            "mean_error": 39.96,
+            "p95_error": 0.0,
+            "failure_cases": [
+              "spatial_reasoning-medium-119",
+              "spatial_reasoning-medium-126",
+              "spatial_reasoning-medium-142",
+              "spatial_reasoning-medium-158"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 90,
+            "failure_count": 10,
+            "success_rate": 0.9,
+            "mean_error": 99.9,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "spatial_reasoning-hard-208",
+              "spatial_reasoning-hard-210",
+              "spatial_reasoning-hard-225",
+              "spatial_reasoning-hard-235",
+              "spatial_reasoning-hard-247",
+              "spatial_reasoning-hard-257",
+              "spatial_reasoning-hard-258",
+              "spatial_reasoning-hard-274",
+              "spatial_reasoning-hard-276",
+              "spatial_reasoning-hard-290"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 34,
+            "failure_count": 16,
+            "success_rate": 0.68,
+            "mean_error": 319.68,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "spatial_reasoning-adversarial-302",
+              "spatial_reasoning-adversarial-303",
+              "spatial_reasoning-adversarial-305",
+              "spatial_reasoning-adversarial-307",
+              "spatial_reasoning-adversarial-312",
+              "spatial_reasoning-adversarial-314",
+              "spatial_reasoning-adversarial-318",
+              "spatial_reasoning-adversarial-320",
+              "spatial_reasoning-adversarial-324",
+              "spatial_reasoning-adversarial-325"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "one_click": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 50,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "no_trace": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 50,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        }
+      },
+      "failure_cases_top_50": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\failure-cases.json",
+      "threshold_pass": false,
+      "realism_features": {
+        "difficulty_levels": [
+          "easy",
+          "medium",
+          "hard",
+          "adversarial"
+        ],
+        "random_viewport": true,
+        "random_dpr": true,
+        "random_canvas_offset": true,
+        "action_timing_recorded": true,
+        "hard_adversarial_present": true
+      }
+    }
+  },
+  "leakage_audit": {
+    "status": "pass",
+    "path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\captcha-leakage-audit\\run-20260630-173000-phase3-11-type-matrix\\leakage-audit.json"
+  },
+  "blackbox_gate": {
+    "status": "pass",
+    "path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\captcha-blackbox-gate\\run-20260630-173000-phase3-11-type-matrix\\blackbox-gate.json"
+  },
+  "backend_acceptance": {
+    "status": "pass",
+    "final_api_endpoint_confirmed": true,
+    "endpoint": "/api/verify",
+    "observed_status": 200
+  },
+  "ui_api_parity": {
+    "status": "pass",
+    "browser_opened": true,
+    "api_feedback_observed": true
+  },
+  "scope_decision": {
+    "target_id": "aliyun-compatible-lab",
+    "scope_type": "localhost_vendor_compatible_lab",
+    "authorization": "self_owned",
+    "allowed_mode": "action_replay",
+    "in_scope": true,
+    "external_generalization_allowed": false,
+    "positive_allowed_scope": "local_vendor_compatible_positive_candidate",
+    "scope_contract_path": "configs/range_scope_contract.yaml",
+    "why_in_scope": "Self-owned localhost vendor-compatible training lab; explicitly not official vendor production."
+  },
+  "capability_status_detail": {
+    "status": "positive_candidate",
+    "scope_limited_positive": "local_vendor_compatible_positive_candidate",
+    "public_range_only": false,
+    "local_only": true,
+    "not_generalizable_to_third_party": true,
+    "stable_positive": false
+  },
+  "execution_proof": {
+    "command": "D:\\python3.14\\python.exe tools/real_public_range_runner.py --target aliyun-compatible-lab --run-id run-20260630-173000-phase3-11-type-matrix --family slider,puzzle,image_restore,spatial_reasoning,one_click,no_trace --samples-per-family 350",
+    "cwd": "E:\\SKILLS\\oh_my_reverse_skill",
+    "started_at": "2026-06-30T08:07:46.554347Z",
+    "ended_at": "2026-06-30T08:08:24.811403Z",
+    "stdout_log": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\runner.stdout.log",
+    "stderr_log": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\runner.stderr.log",
+    "exit_code": 0,
+    "synthetic": false,
+    "generated_by": "tools/real_public_range_runner.py",
+    "screenshot_paths": [
+      "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-browser.png"
+    ],
+    "network_summary_paths": [
+      "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-network-summary.json"
+    ],
+    "browser_trace_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\aliyun-compatible-lab-trace.zip"
+  },
+  "decision": {
+    "skills_participation": "positive_candidate",
+    "positive_allowed": false,
+    "blocked_reason": ""
+  },
+  "blocked": {
+    "blocked_reason": "",
+    "browser_error": "",
+    "startup": {
+      "status": "started",
+      "script": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-labs\\vendor-compatible-labs\\aliyun-compatible-lab\\lab_server.py",
+      "port": 18211
+    }
+  },
+  "realism_audit": {
+    "status": "PASS",
+    "too_clean_metrics": [],
+    "fixed_answer_risk": false,
+    "geometry_fixed_risk": false,
+    "missing_family": [],
+    "missing_difficulty": [],
+    "missing_negative_eval": [],
+    "missing_state_binding": [],
+    "official_generalization_risk": false,
+    "path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\challenge-realism-audit\\run-20260630-173000-phase3-11-type-matrix\\challenge-realism-audit.json",
+    "realism_status": "PASS"
+  }
+}

@@ -1,0 +1,8 @@
+name: phase-3-9-model-training-regression
+run_id: run-20260630-113000-phase3-9-vendor-shield-range
+expect_skill: true
+criteria:
+  - leakage audit failure invalidates model run
+  - missing checkpoint blocks promotion
+  - missing validation metrics blocks promotion
+  - failure samples are added to eval backlog

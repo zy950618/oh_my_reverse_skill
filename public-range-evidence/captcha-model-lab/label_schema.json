@@ -1,0 +1,18 @@
+{
+  "schema_version": "captcha_label_schema/v1",
+  "challenge_type": "slider",
+  "coordinate_space": "viewport_css_px",
+  "required_fields": [
+    "sample_id",
+    "challenge_type",
+    "provider",
+    "label_protocol",
+    "ground_truth.target_offset_css_px",
+    "actions"
+  ],
+  "action_schema_ref": "manifests/action_manifest.json",
+  "boundary": {
+    "dataset_scope": "local_synthetic",
+    "third_party_positive_claim": false
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "input": {
+    "image": "redacted local lab image path",
+    "coordinate_space": "image_px",
+    "viewport": "mobile H5 viewport metadata"
+  },
+  "output": "captcha_action_schema@0.1.0",
+  "errors": ["low_confidence", "unsupported_challenge", "invalid_geometry"]
+}

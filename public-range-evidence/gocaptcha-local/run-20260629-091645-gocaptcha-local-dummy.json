@@ -1,0 +1,187 @@
+{
+  "schema_version": "public-range-evidence/v1",
+  "run_id": "run-20260629-091645-gocaptcha-local-dummy",
+  "capture_id": "cap-20260629-091645-local-slide-dummy",
+  "captured_at": "2026-06-29T09:16:54.132653+00:00",
+  "source_freshness": "fresh",
+  "execution_status": "REAL_EXECUTION_PASS",
+  "capability_status": "negative_eval_only",
+  "target": {
+    "id": "gocaptcha-local",
+    "name": "Local CAPTCHA dummy lab fallback",
+    "url": "http://127.0.0.1:55622/local-captcha-dummy/",
+    "host": "127.0.0.1",
+    "type": "local_open_source_range",
+    "authorization_scope": "Local dummy lab only; no third-party CAPTCHA and no bypass."
+  },
+  "skills": [
+    "web-h5-loop-engineering",
+    "skills-evaluation-governance",
+    "captcha-service-delivery"
+  ],
+  "skill_invocation": [
+    "web-h5-loop-engineering",
+    "skills-evaluation-governance",
+    "captcha-service-delivery",
+    "99-SKILLS治理/11-AI事实证据规约.md",
+    "99-SKILLS治理/13-并发指纹与会话隔离规约.md",
+    "99-SKILLS治理/16-实战复测与证据新鲜度规约.md",
+    "99-SKILLS治理/18-证据验证拒答人工复核与监控规约.md"
+  ],
+  "scope": {
+    "domain": "gocaptcha-local",
+    "stage": "local_dummy_visual_interaction",
+    "auth_state": "local",
+    "mode": "visual_interaction_lab",
+    "in_scope": [
+      "provider/type detect",
+      "slide state observer",
+      "failure path",
+      "human-in-loop protocol"
+    ],
+    "out_of_scope": [
+      "third-party CAPTCHA",
+      "CAPTCHA bypass",
+      "positive CAPTCHA automation capability",
+      "protected business API acceptance"
+    ]
+  },
+  "execution_proof": {
+    "command": "python.exe tools/run_phase1_local_targets.py --ledger public-range-evidence/raw/phase1-real-run-ledger.json --stdout-log E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\phase1-command-logs\\python-tools-run-phase1-local-targets-py.stdout.log --stderr-log E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\phase1-command-logs\\python-tools-run-phase1-local-targets-py.stderr.log",
+    "cwd": "E:\\SKILLS\\oh_my_reverse_skill",
+    "exit_code": 0,
+    "started_at": "2026-06-29T09:16:45.755663+00:00",
+    "ended_at": "2026-06-29T09:16:54.132653+00:00",
+    "stdout_log": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\phase1-command-logs\\python-tools-run-phase1-local-targets-py.stdout.log",
+    "stderr_log": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\phase1-command-logs\\python-tools-run-phase1-local-targets-py.stderr.log",
+    "screenshot_paths": [
+      "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\phase1-browser-artifacts\\run-20260629-091645-gocaptcha-local-dummy\\captcha-dummy.png"
+    ],
+    "network_summary_paths": [
+      "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\phase1-browser-artifacts\\run-20260629-091645-gocaptcha-local-dummy\\captcha-network-summary.json"
+    ],
+    "browser_trace_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\phase1-browser-artifacts\\run-20260629-091645-gocaptcha-local-dummy\\captcha-trace.zip",
+    "generated_by": "tools/run_phase1_local_targets.py",
+    "synthetic": false
+  },
+  "browser_execution": {
+    "browser_used": "python-playwright-chromium",
+    "url": "http://127.0.0.1:55622/local-captcha-dummy/",
+    "state_reset": "new_browser_context",
+    "actions": [
+      "open page",
+      "verify at 0 percent for failure path",
+      "drag slide handle",
+      "verify local dummy pass state"
+    ]
+  },
+  "provider_flow": {
+    "provider": "local-dummy",
+    "widget_detected": true,
+    "captcha_type": "slide",
+    "script_src": [],
+    "iframe_src": [],
+    "sitekey_or_action_observed": false,
+    "token_field_observed": false,
+    "backend_verify_observed": true,
+    "business_api_observed": false
+  },
+  "state_observer": {
+    "states_seen": [
+      {
+        "state": "dummy_failed",
+        "success": false,
+        "challenge_id": "local-slide-001",
+        "position": 0,
+        "positive_allowed": false,
+        "reason": "local dummy state observer only"
+      },
+      {
+        "state": "dummy_passed",
+        "success": true,
+        "challenge_id": "local-slide-001",
+        "position": 100,
+        "positive_allowed": false,
+        "reason": "local dummy state observer only"
+      }
+    ],
+    "clean_unverified": "challenge_loaded",
+    "verified": "local_dummy_pass_only",
+    "repeat_verified": "not_run",
+    "state_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\phase1-browser-artifacts\\run-20260629-091645-gocaptcha-local-dummy\\captcha-state.json"
+  },
+  "backend_acceptance": {
+    "status": "fail",
+    "final_api_endpoint_confirmed": false,
+    "endpoint": "POST /api/captcha/verify",
+    "observed_status": 400,
+    "content_type": "application/json",
+    "json_pointers": [
+      "/success",
+      "/state"
+    ],
+    "direct_interface_call": {
+      "status": "not_run",
+      "browser_dependency": false,
+      "uses_browser_profile": false,
+      "uses_live_storage": false,
+      "uses_manual_cookie_or_token": false,
+      "observed_status": 0,
+      "content_type": "",
+      "json_type": "",
+      "json_pointers": []
+    },
+    "repeat_direct_interface_call": {
+      "status": "not_run",
+      "browser_dependency": false,
+      "uses_browser_profile": false,
+      "uses_live_storage": false,
+      "uses_manual_cookie_or_token": false,
+      "observed_status": 0,
+      "content_type": "",
+      "json_type": "",
+      "json_pointers": []
+    }
+  },
+  "ui_api_parity": {
+    "status": "pass",
+    "api_pointer": "/state",
+    "normalized_ui_has_api_value": true
+  },
+  "human_review_protocol": {
+    "visible_browser": "run the same localhost URL in a visible browser if manual challenge review is required",
+    "url": "http://127.0.0.1:55622/local-captcha-dummy/",
+    "user_action": "drag only the visible local dummy handle; stop after result text and network response are captured",
+    "stop_after": "state text changes to dummy_failed or dummy_passed",
+    "completion_criteria": "state observer and network summary captured; no positive CAPTCHA claim"
+  },
+  "repeat_verified": false,
+  "fact_labels": {
+    "observed": [
+      "A real Chromium context opened the localhost dummy page.",
+      "Browser network captured challenge and verify requests.",
+      "The first verify attempt returned the local dummy failure path.",
+      "A screenshot, DOM snapshot, state JSON, and Playwright trace were written."
+    ],
+    "derived": [
+      "This is useful boundary evidence for CAPTCHA state observer and human-in-loop protocol."
+    ],
+    "assumed": [],
+    "unverified": [
+      "No third-party CAPTCHA was run.",
+      "No protected business API accepted a CAPTCHA token.",
+      "No repeat_verified real provider state exists."
+    ]
+  },
+  "decision": {
+    "positive_allowed": false,
+    "skills_participation": "negative_eval_only",
+    "blocked_reason": "Local dummy CAPTCHA lab proves state observation and failure path only; it is not a third-party CAPTCHA or protected business API acceptance.",
+    "why_not_positive": [
+      "final_api_endpoint_confirmed is false",
+      "business_api_observed is false",
+      "repeat_direct_interface_call.status is not_run",
+      "local dummy challenge cannot upgrade CAPTCHA automation capability"
+    ]
+  }
+}

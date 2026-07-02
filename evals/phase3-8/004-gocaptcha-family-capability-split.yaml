@@ -1,0 +1,5 @@
+id: phase3_8_004_gocaptcha_family_capability_split
+title: GoCaptcha family-level capability split is mandatory
+run_id: run-20260701-phase4a-smoke
+evidence: E:\SKILLS\oh_my_reverse_skill\public-range-evidence\raw\gocaptcha-official\run-20260701-phase4a-smoke\gocaptcha-official-action-replay-records.jsonl
+expected_status: family_scoped_candidate_or_training_needed

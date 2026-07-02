@@ -1,0 +1,6 @@
+{
+  "title": "GoCaptcha rotate needs angle and action mapping hardening",
+  "run_id": "run-20260701-phase4a-smoke",
+  "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\gocaptcha-official\\run-20260701-phase4a-smoke\\failure-cases.json",
+  "lesson": "Rotation failures must be attributed to angle prediction, direction, action mapping, threshold, or feedback state before promotion."
+}

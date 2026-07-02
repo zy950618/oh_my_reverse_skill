@@ -1,0 +1,2527 @@
+{
+  "schema_version": "public-range-evidence/v1",
+  "run_id": "run-20260701-phase4a-smoke",
+  "target": {
+    "id": "aliyun-compatible-lab",
+    "type": "localhost_vendor_compatible_lab",
+    "url": "http://127.0.0.1:18211"
+  },
+  "captured_at": "2026-07-01T01:39:40.772755Z",
+  "source_freshness": "fresh",
+  "skills": [
+    "captcha-provider-diagnostics",
+    "captcha-visual-recognition-lab",
+    "captcha-action-planner"
+  ],
+  "execution_status": "REAL_EXECUTION_PASS",
+  "capability_status": "negative_eval_only",
+  "control_flow_status": "CONTROL_FLOW_PASS",
+  "business_data_status": "NOT_RUN",
+  "compatible_lab": true,
+  "model_registry_path": "E:\\SKILLS\\oh_my_reverse_skill\\datasets\\captcha_flywheel\\models\\run-20260701-phase4a-smoke\\model_registry.json",
+  "solver_source": {
+    "type": "locally_trained_model",
+    "model_id": "run-20260701-phase4a-smoke-click_icon_detector-local-v1",
+    "local_only": true,
+    "external_api_used": false,
+    "third_party_solver_used": false,
+    "label_leakage": false
+  },
+  "official_vendor": false,
+  "not_generalizable_to_vendor_production": true,
+  "challenge_families": [
+    "image_restore",
+    "select",
+    "icon_select"
+  ],
+  "capabilities": {
+    "aliyun-compatible-lab": {
+      "image_restore": {
+        "sample_count": 30,
+        "success_count": 0,
+        "failure_count": 30,
+        "success_rate": 0.0,
+        "mean_error": 999.0,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "image_restore-easy-000",
+          "image_restore-medium-001",
+          "image_restore-hard-002",
+          "image_restore-adversarial-003",
+          "image_restore-easy-004",
+          "image_restore-medium-005",
+          "image_restore-hard-006",
+          "image_restore-adversarial-007",
+          "image_restore-easy-008",
+          "image_restore-medium-009",
+          "image_restore-hard-010",
+          "image_restore-adversarial-011",
+          "image_restore-easy-012",
+          "image_restore-medium-013",
+          "image_restore-hard-014",
+          "image_restore-adversarial-015",
+          "image_restore-easy-016",
+          "image_restore-medium-017",
+          "image_restore-hard-018",
+          "image_restore-adversarial-019"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        },
+        "per_difficulty_metrics": {
+          "easy": {
+            "sample_count": 8,
+            "success_count": 0,
+            "failure_count": 8,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "image_restore-easy-000",
+              "image_restore-easy-004",
+              "image_restore-easy-008",
+              "image_restore-easy-012",
+              "image_restore-easy-016",
+              "image_restore-easy-020",
+              "image_restore-easy-024",
+              "image_restore-easy-028"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 8,
+            "success_count": 0,
+            "failure_count": 8,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "image_restore-medium-001",
+              "image_restore-medium-005",
+              "image_restore-medium-009",
+              "image_restore-medium-013",
+              "image_restore-medium-017",
+              "image_restore-medium-021",
+              "image_restore-medium-025",
+              "image_restore-medium-029"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 7,
+            "success_count": 0,
+            "failure_count": 7,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "image_restore-hard-002",
+              "image_restore-hard-006",
+              "image_restore-hard-010",
+              "image_restore-hard-014",
+              "image_restore-hard-018",
+              "image_restore-hard-022",
+              "image_restore-hard-026"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 7,
+            "success_count": 0,
+            "failure_count": 7,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "image_restore-adversarial-003",
+              "image_restore-adversarial-007",
+              "image_restore-adversarial-011",
+              "image_restore-adversarial-015",
+              "image_restore-adversarial-019",
+              "image_restore-adversarial-023",
+              "image_restore-adversarial-027"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "capability_status": "negative_eval_only",
+        "capability_level": "negative_eval_only",
+        "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+      },
+      "select": {
+        "sample_count": 30,
+        "success_count": 0,
+        "failure_count": 30,
+        "success_rate": 0.0,
+        "mean_error": 999.0,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "select-easy-000",
+          "select-medium-001",
+          "select-hard-002",
+          "select-adversarial-003",
+          "select-easy-004",
+          "select-medium-005",
+          "select-hard-006",
+          "select-adversarial-007",
+          "select-easy-008",
+          "select-medium-009",
+          "select-hard-010",
+          "select-adversarial-011",
+          "select-easy-012",
+          "select-medium-013",
+          "select-hard-014",
+          "select-adversarial-015",
+          "select-easy-016",
+          "select-medium-017",
+          "select-hard-018",
+          "select-adversarial-019"
+        ],
+        "action_trace": {
+          "present": false,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        },
+        "per_difficulty_metrics": {
+          "easy": {
+            "sample_count": 8,
+            "success_count": 0,
+            "failure_count": 8,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "select-easy-000",
+              "select-easy-004",
+              "select-easy-008",
+              "select-easy-012",
+              "select-easy-016",
+              "select-easy-020",
+              "select-easy-024",
+              "select-easy-028"
+            ],
+            "action_trace": {
+              "present": false,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 8,
+            "success_count": 0,
+            "failure_count": 8,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "select-medium-001",
+              "select-medium-005",
+              "select-medium-009",
+              "select-medium-013",
+              "select-medium-017",
+              "select-medium-021",
+              "select-medium-025",
+              "select-medium-029"
+            ],
+            "action_trace": {
+              "present": false,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 7,
+            "success_count": 0,
+            "failure_count": 7,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "select-hard-002",
+              "select-hard-006",
+              "select-hard-010",
+              "select-hard-014",
+              "select-hard-018",
+              "select-hard-022",
+              "select-hard-026"
+            ],
+            "action_trace": {
+              "present": false,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 7,
+            "success_count": 0,
+            "failure_count": 7,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "select-adversarial-003",
+              "select-adversarial-007",
+              "select-adversarial-011",
+              "select-adversarial-015",
+              "select-adversarial-019",
+              "select-adversarial-023",
+              "select-adversarial-027"
+            ],
+            "action_trace": {
+              "present": false,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "capability_status": "negative_eval_only",
+        "capability_level": "negative_eval_only",
+        "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+      },
+      "icon_select": {
+        "sample_count": 30,
+        "success_count": 0,
+        "failure_count": 30,
+        "success_rate": 0.0,
+        "mean_error": 999.0,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "icon_select-easy-000",
+          "icon_select-medium-001",
+          "icon_select-hard-002",
+          "icon_select-adversarial-003",
+          "icon_select-easy-004",
+          "icon_select-medium-005",
+          "icon_select-hard-006",
+          "icon_select-adversarial-007",
+          "icon_select-easy-008",
+          "icon_select-medium-009",
+          "icon_select-hard-010",
+          "icon_select-adversarial-011",
+          "icon_select-easy-012",
+          "icon_select-medium-013",
+          "icon_select-hard-014",
+          "icon_select-adversarial-015",
+          "icon_select-easy-016",
+          "icon_select-medium-017",
+          "icon_select-hard-018",
+          "icon_select-adversarial-019"
+        ],
+        "action_trace": {
+          "present": false,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        },
+        "per_difficulty_metrics": {
+          "easy": {
+            "sample_count": 8,
+            "success_count": 0,
+            "failure_count": 8,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "icon_select-easy-000",
+              "icon_select-easy-004",
+              "icon_select-easy-008",
+              "icon_select-easy-012",
+              "icon_select-easy-016",
+              "icon_select-easy-020",
+              "icon_select-easy-024",
+              "icon_select-easy-028"
+            ],
+            "action_trace": {
+              "present": false,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 8,
+            "success_count": 0,
+            "failure_count": 8,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "icon_select-medium-001",
+              "icon_select-medium-005",
+              "icon_select-medium-009",
+              "icon_select-medium-013",
+              "icon_select-medium-017",
+              "icon_select-medium-021",
+              "icon_select-medium-025",
+              "icon_select-medium-029"
+            ],
+            "action_trace": {
+              "present": false,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 7,
+            "success_count": 0,
+            "failure_count": 7,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "icon_select-hard-002",
+              "icon_select-hard-006",
+              "icon_select-hard-010",
+              "icon_select-hard-014",
+              "icon_select-hard-018",
+              "icon_select-hard-022",
+              "icon_select-hard-026"
+            ],
+            "action_trace": {
+              "present": false,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 7,
+            "success_count": 0,
+            "failure_count": 7,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "icon_select-adversarial-003",
+              "icon_select-adversarial-007",
+              "icon_select-adversarial-011",
+              "icon_select-adversarial-015",
+              "icon_select-adversarial-019",
+              "icon_select-adversarial-023",
+              "icon_select-adversarial-027"
+            ],
+            "action_trace": {
+              "present": false,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "capability_status": "negative_eval_only",
+        "capability_level": "negative_eval_only",
+        "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+      }
+    }
+  },
+  "per_family_capability_decision": {
+    "image_restore": {
+      "sample_count": 30,
+      "success_count": 0,
+      "failure_count": 30,
+      "success_rate": 0.0,
+      "mean_error": 999.0,
+      "p95_error": 999.0,
+      "failure_cases": [
+        "image_restore-easy-000",
+        "image_restore-medium-001",
+        "image_restore-hard-002",
+        "image_restore-adversarial-003",
+        "image_restore-easy-004",
+        "image_restore-medium-005",
+        "image_restore-hard-006",
+        "image_restore-adversarial-007",
+        "image_restore-easy-008",
+        "image_restore-medium-009",
+        "image_restore-hard-010",
+        "image_restore-adversarial-011",
+        "image_restore-easy-012",
+        "image_restore-medium-013",
+        "image_restore-hard-014",
+        "image_restore-adversarial-015",
+        "image_restore-easy-016",
+        "image_restore-medium-017",
+        "image_restore-hard-018",
+        "image_restore-adversarial-019"
+      ],
+      "action_trace": {
+        "present": true,
+        "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+      },
+      "blackbox_gate": {
+        "status": "pending",
+        "answer_read_for_prediction": false
+      },
+      "leakage_audit": {
+        "status": "pending"
+      },
+      "realism_audit": {
+        "status": "pending"
+      },
+      "per_difficulty_metrics": {
+        "easy": {
+          "sample_count": 8,
+          "success_count": 0,
+          "failure_count": 8,
+          "success_rate": 0.0,
+          "mean_error": 999.0,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "image_restore-easy-000",
+            "image_restore-easy-004",
+            "image_restore-easy-008",
+            "image_restore-easy-012",
+            "image_restore-easy-016",
+            "image_restore-easy-020",
+            "image_restore-easy-024",
+            "image_restore-easy-028"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "medium": {
+          "sample_count": 8,
+          "success_count": 0,
+          "failure_count": 8,
+          "success_rate": 0.0,
+          "mean_error": 999.0,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "image_restore-medium-001",
+            "image_restore-medium-005",
+            "image_restore-medium-009",
+            "image_restore-medium-013",
+            "image_restore-medium-017",
+            "image_restore-medium-021",
+            "image_restore-medium-025",
+            "image_restore-medium-029"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "hard": {
+          "sample_count": 7,
+          "success_count": 0,
+          "failure_count": 7,
+          "success_rate": 0.0,
+          "mean_error": 999.0,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "image_restore-hard-002",
+            "image_restore-hard-006",
+            "image_restore-hard-010",
+            "image_restore-hard-014",
+            "image_restore-hard-018",
+            "image_restore-hard-022",
+            "image_restore-hard-026"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "adversarial": {
+          "sample_count": 7,
+          "success_count": 0,
+          "failure_count": 7,
+          "success_rate": 0.0,
+          "mean_error": 999.0,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "image_restore-adversarial-003",
+            "image_restore-adversarial-007",
+            "image_restore-adversarial-011",
+            "image_restore-adversarial-015",
+            "image_restore-adversarial-019",
+            "image_restore-adversarial-023",
+            "image_restore-adversarial-027"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        }
+      },
+      "capability_status": "negative_eval_only",
+      "capability_level": "negative_eval_only",
+      "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+    },
+    "select": {
+      "sample_count": 30,
+      "success_count": 0,
+      "failure_count": 30,
+      "success_rate": 0.0,
+      "mean_error": 999.0,
+      "p95_error": 999.0,
+      "failure_cases": [
+        "select-easy-000",
+        "select-medium-001",
+        "select-hard-002",
+        "select-adversarial-003",
+        "select-easy-004",
+        "select-medium-005",
+        "select-hard-006",
+        "select-adversarial-007",
+        "select-easy-008",
+        "select-medium-009",
+        "select-hard-010",
+        "select-adversarial-011",
+        "select-easy-012",
+        "select-medium-013",
+        "select-hard-014",
+        "select-adversarial-015",
+        "select-easy-016",
+        "select-medium-017",
+        "select-hard-018",
+        "select-adversarial-019"
+      ],
+      "action_trace": {
+        "present": false,
+        "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+      },
+      "blackbox_gate": {
+        "status": "pending",
+        "answer_read_for_prediction": false
+      },
+      "leakage_audit": {
+        "status": "pending"
+      },
+      "realism_audit": {
+        "status": "pending"
+      },
+      "per_difficulty_metrics": {
+        "easy": {
+          "sample_count": 8,
+          "success_count": 0,
+          "failure_count": 8,
+          "success_rate": 0.0,
+          "mean_error": 999.0,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "select-easy-000",
+            "select-easy-004",
+            "select-easy-008",
+            "select-easy-012",
+            "select-easy-016",
+            "select-easy-020",
+            "select-easy-024",
+            "select-easy-028"
+          ],
+          "action_trace": {
+            "present": false,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "medium": {
+          "sample_count": 8,
+          "success_count": 0,
+          "failure_count": 8,
+          "success_rate": 0.0,
+          "mean_error": 999.0,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "select-medium-001",
+            "select-medium-005",
+            "select-medium-009",
+            "select-medium-013",
+            "select-medium-017",
+            "select-medium-021",
+            "select-medium-025",
+            "select-medium-029"
+          ],
+          "action_trace": {
+            "present": false,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "hard": {
+          "sample_count": 7,
+          "success_count": 0,
+          "failure_count": 7,
+          "success_rate": 0.0,
+          "mean_error": 999.0,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "select-hard-002",
+            "select-hard-006",
+            "select-hard-010",
+            "select-hard-014",
+            "select-hard-018",
+            "select-hard-022",
+            "select-hard-026"
+          ],
+          "action_trace": {
+            "present": false,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "adversarial": {
+          "sample_count": 7,
+          "success_count": 0,
+          "failure_count": 7,
+          "success_rate": 0.0,
+          "mean_error": 999.0,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "select-adversarial-003",
+            "select-adversarial-007",
+            "select-adversarial-011",
+            "select-adversarial-015",
+            "select-adversarial-019",
+            "select-adversarial-023",
+            "select-adversarial-027"
+          ],
+          "action_trace": {
+            "present": false,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        }
+      },
+      "capability_status": "negative_eval_only",
+      "capability_level": "negative_eval_only",
+      "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+    },
+    "icon_select": {
+      "sample_count": 30,
+      "success_count": 0,
+      "failure_count": 30,
+      "success_rate": 0.0,
+      "mean_error": 999.0,
+      "p95_error": 999.0,
+      "failure_cases": [
+        "icon_select-easy-000",
+        "icon_select-medium-001",
+        "icon_select-hard-002",
+        "icon_select-adversarial-003",
+        "icon_select-easy-004",
+        "icon_select-medium-005",
+        "icon_select-hard-006",
+        "icon_select-adversarial-007",
+        "icon_select-easy-008",
+        "icon_select-medium-009",
+        "icon_select-hard-010",
+        "icon_select-adversarial-011",
+        "icon_select-easy-012",
+        "icon_select-medium-013",
+        "icon_select-hard-014",
+        "icon_select-adversarial-015",
+        "icon_select-easy-016",
+        "icon_select-medium-017",
+        "icon_select-hard-018",
+        "icon_select-adversarial-019"
+      ],
+      "action_trace": {
+        "present": false,
+        "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+      },
+      "blackbox_gate": {
+        "status": "pending",
+        "answer_read_for_prediction": false
+      },
+      "leakage_audit": {
+        "status": "pending"
+      },
+      "realism_audit": {
+        "status": "pending"
+      },
+      "per_difficulty_metrics": {
+        "easy": {
+          "sample_count": 8,
+          "success_count": 0,
+          "failure_count": 8,
+          "success_rate": 0.0,
+          "mean_error": 999.0,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "icon_select-easy-000",
+            "icon_select-easy-004",
+            "icon_select-easy-008",
+            "icon_select-easy-012",
+            "icon_select-easy-016",
+            "icon_select-easy-020",
+            "icon_select-easy-024",
+            "icon_select-easy-028"
+          ],
+          "action_trace": {
+            "present": false,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "medium": {
+          "sample_count": 8,
+          "success_count": 0,
+          "failure_count": 8,
+          "success_rate": 0.0,
+          "mean_error": 999.0,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "icon_select-medium-001",
+            "icon_select-medium-005",
+            "icon_select-medium-009",
+            "icon_select-medium-013",
+            "icon_select-medium-017",
+            "icon_select-medium-021",
+            "icon_select-medium-025",
+            "icon_select-medium-029"
+          ],
+          "action_trace": {
+            "present": false,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "hard": {
+          "sample_count": 7,
+          "success_count": 0,
+          "failure_count": 7,
+          "success_rate": 0.0,
+          "mean_error": 999.0,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "icon_select-hard-002",
+            "icon_select-hard-006",
+            "icon_select-hard-010",
+            "icon_select-hard-014",
+            "icon_select-hard-018",
+            "icon_select-hard-022",
+            "icon_select-hard-026"
+          ],
+          "action_trace": {
+            "present": false,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "adversarial": {
+          "sample_count": 7,
+          "success_count": 0,
+          "failure_count": 7,
+          "success_rate": 0.0,
+          "mean_error": 999.0,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "icon_select-adversarial-003",
+            "icon_select-adversarial-007",
+            "icon_select-adversarial-011",
+            "icon_select-adversarial-015",
+            "icon_select-adversarial-019",
+            "icon_select-adversarial-023",
+            "icon_select-adversarial-027"
+          ],
+          "action_trace": {
+            "present": false,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        }
+      },
+      "capability_status": "negative_eval_only",
+      "capability_level": "negative_eval_only",
+      "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+    }
+  },
+  "per_difficulty_metrics": {
+    "image_restore": {
+      "easy": {
+        "sample_count": 8,
+        "success_count": 0,
+        "failure_count": 8,
+        "success_rate": 0.0,
+        "mean_error": 999.0,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "image_restore-easy-000",
+          "image_restore-easy-004",
+          "image_restore-easy-008",
+          "image_restore-easy-012",
+          "image_restore-easy-016",
+          "image_restore-easy-020",
+          "image_restore-easy-024",
+          "image_restore-easy-028"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "medium": {
+        "sample_count": 8,
+        "success_count": 0,
+        "failure_count": 8,
+        "success_rate": 0.0,
+        "mean_error": 999.0,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "image_restore-medium-001",
+          "image_restore-medium-005",
+          "image_restore-medium-009",
+          "image_restore-medium-013",
+          "image_restore-medium-017",
+          "image_restore-medium-021",
+          "image_restore-medium-025",
+          "image_restore-medium-029"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "hard": {
+        "sample_count": 7,
+        "success_count": 0,
+        "failure_count": 7,
+        "success_rate": 0.0,
+        "mean_error": 999.0,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "image_restore-hard-002",
+          "image_restore-hard-006",
+          "image_restore-hard-010",
+          "image_restore-hard-014",
+          "image_restore-hard-018",
+          "image_restore-hard-022",
+          "image_restore-hard-026"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "adversarial": {
+        "sample_count": 7,
+        "success_count": 0,
+        "failure_count": 7,
+        "success_rate": 0.0,
+        "mean_error": 999.0,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "image_restore-adversarial-003",
+          "image_restore-adversarial-007",
+          "image_restore-adversarial-011",
+          "image_restore-adversarial-015",
+          "image_restore-adversarial-019",
+          "image_restore-adversarial-023",
+          "image_restore-adversarial-027"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      }
+    },
+    "select": {
+      "easy": {
+        "sample_count": 8,
+        "success_count": 0,
+        "failure_count": 8,
+        "success_rate": 0.0,
+        "mean_error": 999.0,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "select-easy-000",
+          "select-easy-004",
+          "select-easy-008",
+          "select-easy-012",
+          "select-easy-016",
+          "select-easy-020",
+          "select-easy-024",
+          "select-easy-028"
+        ],
+        "action_trace": {
+          "present": false,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "medium": {
+        "sample_count": 8,
+        "success_count": 0,
+        "failure_count": 8,
+        "success_rate": 0.0,
+        "mean_error": 999.0,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "select-medium-001",
+          "select-medium-005",
+          "select-medium-009",
+          "select-medium-013",
+          "select-medium-017",
+          "select-medium-021",
+          "select-medium-025",
+          "select-medium-029"
+        ],
+        "action_trace": {
+          "present": false,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "hard": {
+        "sample_count": 7,
+        "success_count": 0,
+        "failure_count": 7,
+        "success_rate": 0.0,
+        "mean_error": 999.0,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "select-hard-002",
+          "select-hard-006",
+          "select-hard-010",
+          "select-hard-014",
+          "select-hard-018",
+          "select-hard-022",
+          "select-hard-026"
+        ],
+        "action_trace": {
+          "present": false,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "adversarial": {
+        "sample_count": 7,
+        "success_count": 0,
+        "failure_count": 7,
+        "success_rate": 0.0,
+        "mean_error": 999.0,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "select-adversarial-003",
+          "select-adversarial-007",
+          "select-adversarial-011",
+          "select-adversarial-015",
+          "select-adversarial-019",
+          "select-adversarial-023",
+          "select-adversarial-027"
+        ],
+        "action_trace": {
+          "present": false,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      }
+    },
+    "icon_select": {
+      "easy": {
+        "sample_count": 8,
+        "success_count": 0,
+        "failure_count": 8,
+        "success_rate": 0.0,
+        "mean_error": 999.0,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "icon_select-easy-000",
+          "icon_select-easy-004",
+          "icon_select-easy-008",
+          "icon_select-easy-012",
+          "icon_select-easy-016",
+          "icon_select-easy-020",
+          "icon_select-easy-024",
+          "icon_select-easy-028"
+        ],
+        "action_trace": {
+          "present": false,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "medium": {
+        "sample_count": 8,
+        "success_count": 0,
+        "failure_count": 8,
+        "success_rate": 0.0,
+        "mean_error": 999.0,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "icon_select-medium-001",
+          "icon_select-medium-005",
+          "icon_select-medium-009",
+          "icon_select-medium-013",
+          "icon_select-medium-017",
+          "icon_select-medium-021",
+          "icon_select-medium-025",
+          "icon_select-medium-029"
+        ],
+        "action_trace": {
+          "present": false,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "hard": {
+        "sample_count": 7,
+        "success_count": 0,
+        "failure_count": 7,
+        "success_rate": 0.0,
+        "mean_error": 999.0,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "icon_select-hard-002",
+          "icon_select-hard-006",
+          "icon_select-hard-010",
+          "icon_select-hard-014",
+          "icon_select-hard-018",
+          "icon_select-hard-022",
+          "icon_select-hard-026"
+        ],
+        "action_trace": {
+          "present": false,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "adversarial": {
+        "sample_count": 7,
+        "success_count": 0,
+        "failure_count": 7,
+        "success_rate": 0.0,
+        "mean_error": 999.0,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "icon_select-adversarial-003",
+          "icon_select-adversarial-007",
+          "icon_select-adversarial-011",
+          "icon_select-adversarial-015",
+          "icon_select-adversarial-019",
+          "icon_select-adversarial-023",
+          "icon_select-adversarial-027"
+        ],
+        "action_trace": {
+          "present": false,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      }
+    }
+  },
+  "sample_count": 90,
+  "success_rate": 0.0,
+  "realism_status": "HARDENED_BASELINE",
+  "failure_cases_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\failure-cases.json",
+  "experience_cards": [
+    "E:\\SKILLS\\oh_my_reverse_skill\\skills-experience\\phase3-10\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-compatible-lab-card.json"
+  ],
+  "evals": [
+    "E:\\SKILLS\\oh_my_reverse_skill\\evals\\phase3-10\\aliyun-compatible-lab-compatible-lab-hardening.yaml"
+  ],
+  "action_replay": {
+    "status": "fail",
+    "metrics": {
+      "target": "aliyun-compatible-lab",
+      "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl",
+      "families": {
+        "image_restore": {
+          "sample_count": 30,
+          "success_count": 0,
+          "failure_count": 30,
+          "success_rate": 0.0,
+          "mean_error": 999.0,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "image_restore-easy-000",
+            "image_restore-medium-001",
+            "image_restore-hard-002",
+            "image_restore-adversarial-003",
+            "image_restore-easy-004",
+            "image_restore-medium-005",
+            "image_restore-hard-006",
+            "image_restore-adversarial-007",
+            "image_restore-easy-008",
+            "image_restore-medium-009",
+            "image_restore-hard-010",
+            "image_restore-adversarial-011",
+            "image_restore-easy-012",
+            "image_restore-medium-013",
+            "image_restore-hard-014",
+            "image_restore-adversarial-015",
+            "image_restore-easy-016",
+            "image_restore-medium-017",
+            "image_restore-hard-018",
+            "image_restore-adversarial-019"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          },
+          "per_difficulty_metrics": {
+            "easy": {
+              "sample_count": 8,
+              "success_count": 0,
+              "failure_count": 8,
+              "success_rate": 0.0,
+              "mean_error": 999.0,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "image_restore-easy-000",
+                "image_restore-easy-004",
+                "image_restore-easy-008",
+                "image_restore-easy-012",
+                "image_restore-easy-016",
+                "image_restore-easy-020",
+                "image_restore-easy-024",
+                "image_restore-easy-028"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "medium": {
+              "sample_count": 8,
+              "success_count": 0,
+              "failure_count": 8,
+              "success_rate": 0.0,
+              "mean_error": 999.0,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "image_restore-medium-001",
+                "image_restore-medium-005",
+                "image_restore-medium-009",
+                "image_restore-medium-013",
+                "image_restore-medium-017",
+                "image_restore-medium-021",
+                "image_restore-medium-025",
+                "image_restore-medium-029"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "hard": {
+              "sample_count": 7,
+              "success_count": 0,
+              "failure_count": 7,
+              "success_rate": 0.0,
+              "mean_error": 999.0,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "image_restore-hard-002",
+                "image_restore-hard-006",
+                "image_restore-hard-010",
+                "image_restore-hard-014",
+                "image_restore-hard-018",
+                "image_restore-hard-022",
+                "image_restore-hard-026"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "adversarial": {
+              "sample_count": 7,
+              "success_count": 0,
+              "failure_count": 7,
+              "success_rate": 0.0,
+              "mean_error": 999.0,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "image_restore-adversarial-003",
+                "image_restore-adversarial-007",
+                "image_restore-adversarial-011",
+                "image_restore-adversarial-015",
+                "image_restore-adversarial-019",
+                "image_restore-adversarial-023",
+                "image_restore-adversarial-027"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            }
+          },
+          "capability_status": "negative_eval_only",
+          "capability_level": "negative_eval_only",
+          "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+        },
+        "select": {
+          "sample_count": 30,
+          "success_count": 0,
+          "failure_count": 30,
+          "success_rate": 0.0,
+          "mean_error": 999.0,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "select-easy-000",
+            "select-medium-001",
+            "select-hard-002",
+            "select-adversarial-003",
+            "select-easy-004",
+            "select-medium-005",
+            "select-hard-006",
+            "select-adversarial-007",
+            "select-easy-008",
+            "select-medium-009",
+            "select-hard-010",
+            "select-adversarial-011",
+            "select-easy-012",
+            "select-medium-013",
+            "select-hard-014",
+            "select-adversarial-015",
+            "select-easy-016",
+            "select-medium-017",
+            "select-hard-018",
+            "select-adversarial-019"
+          ],
+          "action_trace": {
+            "present": false,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          },
+          "per_difficulty_metrics": {
+            "easy": {
+              "sample_count": 8,
+              "success_count": 0,
+              "failure_count": 8,
+              "success_rate": 0.0,
+              "mean_error": 999.0,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "select-easy-000",
+                "select-easy-004",
+                "select-easy-008",
+                "select-easy-012",
+                "select-easy-016",
+                "select-easy-020",
+                "select-easy-024",
+                "select-easy-028"
+              ],
+              "action_trace": {
+                "present": false,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "medium": {
+              "sample_count": 8,
+              "success_count": 0,
+              "failure_count": 8,
+              "success_rate": 0.0,
+              "mean_error": 999.0,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "select-medium-001",
+                "select-medium-005",
+                "select-medium-009",
+                "select-medium-013",
+                "select-medium-017",
+                "select-medium-021",
+                "select-medium-025",
+                "select-medium-029"
+              ],
+              "action_trace": {
+                "present": false,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "hard": {
+              "sample_count": 7,
+              "success_count": 0,
+              "failure_count": 7,
+              "success_rate": 0.0,
+              "mean_error": 999.0,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "select-hard-002",
+                "select-hard-006",
+                "select-hard-010",
+                "select-hard-014",
+                "select-hard-018",
+                "select-hard-022",
+                "select-hard-026"
+              ],
+              "action_trace": {
+                "present": false,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "adversarial": {
+              "sample_count": 7,
+              "success_count": 0,
+              "failure_count": 7,
+              "success_rate": 0.0,
+              "mean_error": 999.0,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "select-adversarial-003",
+                "select-adversarial-007",
+                "select-adversarial-011",
+                "select-adversarial-015",
+                "select-adversarial-019",
+                "select-adversarial-023",
+                "select-adversarial-027"
+              ],
+              "action_trace": {
+                "present": false,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            }
+          },
+          "capability_status": "negative_eval_only",
+          "capability_level": "negative_eval_only",
+          "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+        },
+        "icon_select": {
+          "sample_count": 30,
+          "success_count": 0,
+          "failure_count": 30,
+          "success_rate": 0.0,
+          "mean_error": 999.0,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "icon_select-easy-000",
+            "icon_select-medium-001",
+            "icon_select-hard-002",
+            "icon_select-adversarial-003",
+            "icon_select-easy-004",
+            "icon_select-medium-005",
+            "icon_select-hard-006",
+            "icon_select-adversarial-007",
+            "icon_select-easy-008",
+            "icon_select-medium-009",
+            "icon_select-hard-010",
+            "icon_select-adversarial-011",
+            "icon_select-easy-012",
+            "icon_select-medium-013",
+            "icon_select-hard-014",
+            "icon_select-adversarial-015",
+            "icon_select-easy-016",
+            "icon_select-medium-017",
+            "icon_select-hard-018",
+            "icon_select-adversarial-019"
+          ],
+          "action_trace": {
+            "present": false,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          },
+          "per_difficulty_metrics": {
+            "easy": {
+              "sample_count": 8,
+              "success_count": 0,
+              "failure_count": 8,
+              "success_rate": 0.0,
+              "mean_error": 999.0,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "icon_select-easy-000",
+                "icon_select-easy-004",
+                "icon_select-easy-008",
+                "icon_select-easy-012",
+                "icon_select-easy-016",
+                "icon_select-easy-020",
+                "icon_select-easy-024",
+                "icon_select-easy-028"
+              ],
+              "action_trace": {
+                "present": false,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "medium": {
+              "sample_count": 8,
+              "success_count": 0,
+              "failure_count": 8,
+              "success_rate": 0.0,
+              "mean_error": 999.0,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "icon_select-medium-001",
+                "icon_select-medium-005",
+                "icon_select-medium-009",
+                "icon_select-medium-013",
+                "icon_select-medium-017",
+                "icon_select-medium-021",
+                "icon_select-medium-025",
+                "icon_select-medium-029"
+              ],
+              "action_trace": {
+                "present": false,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "hard": {
+              "sample_count": 7,
+              "success_count": 0,
+              "failure_count": 7,
+              "success_rate": 0.0,
+              "mean_error": 999.0,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "icon_select-hard-002",
+                "icon_select-hard-006",
+                "icon_select-hard-010",
+                "icon_select-hard-014",
+                "icon_select-hard-018",
+                "icon_select-hard-022",
+                "icon_select-hard-026"
+              ],
+              "action_trace": {
+                "present": false,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "adversarial": {
+              "sample_count": 7,
+              "success_count": 0,
+              "failure_count": 7,
+              "success_rate": 0.0,
+              "mean_error": 999.0,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "icon_select-adversarial-003",
+                "icon_select-adversarial-007",
+                "icon_select-adversarial-011",
+                "icon_select-adversarial-015",
+                "icon_select-adversarial-019",
+                "icon_select-adversarial-023",
+                "icon_select-adversarial-027"
+              ],
+              "action_trace": {
+                "present": false,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            }
+          },
+          "capability_status": "negative_eval_only",
+          "capability_level": "negative_eval_only",
+          "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+        }
+      },
+      "total_samples": 90,
+      "total_success": 0,
+      "success_rate": 0.0,
+      "prediction_source": "challenge_image_instruction_action_schema_only",
+      "per_difficulty_metrics": {
+        "image_restore": {
+          "easy": {
+            "sample_count": 8,
+            "success_count": 0,
+            "failure_count": 8,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "image_restore-easy-000",
+              "image_restore-easy-004",
+              "image_restore-easy-008",
+              "image_restore-easy-012",
+              "image_restore-easy-016",
+              "image_restore-easy-020",
+              "image_restore-easy-024",
+              "image_restore-easy-028"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 8,
+            "success_count": 0,
+            "failure_count": 8,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "image_restore-medium-001",
+              "image_restore-medium-005",
+              "image_restore-medium-009",
+              "image_restore-medium-013",
+              "image_restore-medium-017",
+              "image_restore-medium-021",
+              "image_restore-medium-025",
+              "image_restore-medium-029"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 7,
+            "success_count": 0,
+            "failure_count": 7,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "image_restore-hard-002",
+              "image_restore-hard-006",
+              "image_restore-hard-010",
+              "image_restore-hard-014",
+              "image_restore-hard-018",
+              "image_restore-hard-022",
+              "image_restore-hard-026"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 7,
+            "success_count": 0,
+            "failure_count": 7,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "image_restore-adversarial-003",
+              "image_restore-adversarial-007",
+              "image_restore-adversarial-011",
+              "image_restore-adversarial-015",
+              "image_restore-adversarial-019",
+              "image_restore-adversarial-023",
+              "image_restore-adversarial-027"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "select": {
+          "easy": {
+            "sample_count": 8,
+            "success_count": 0,
+            "failure_count": 8,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "select-easy-000",
+              "select-easy-004",
+              "select-easy-008",
+              "select-easy-012",
+              "select-easy-016",
+              "select-easy-020",
+              "select-easy-024",
+              "select-easy-028"
+            ],
+            "action_trace": {
+              "present": false,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 8,
+            "success_count": 0,
+            "failure_count": 8,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "select-medium-001",
+              "select-medium-005",
+              "select-medium-009",
+              "select-medium-013",
+              "select-medium-017",
+              "select-medium-021",
+              "select-medium-025",
+              "select-medium-029"
+            ],
+            "action_trace": {
+              "present": false,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 7,
+            "success_count": 0,
+            "failure_count": 7,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "select-hard-002",
+              "select-hard-006",
+              "select-hard-010",
+              "select-hard-014",
+              "select-hard-018",
+              "select-hard-022",
+              "select-hard-026"
+            ],
+            "action_trace": {
+              "present": false,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 7,
+            "success_count": 0,
+            "failure_count": 7,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "select-adversarial-003",
+              "select-adversarial-007",
+              "select-adversarial-011",
+              "select-adversarial-015",
+              "select-adversarial-019",
+              "select-adversarial-023",
+              "select-adversarial-027"
+            ],
+            "action_trace": {
+              "present": false,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "icon_select": {
+          "easy": {
+            "sample_count": 8,
+            "success_count": 0,
+            "failure_count": 8,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "icon_select-easy-000",
+              "icon_select-easy-004",
+              "icon_select-easy-008",
+              "icon_select-easy-012",
+              "icon_select-easy-016",
+              "icon_select-easy-020",
+              "icon_select-easy-024",
+              "icon_select-easy-028"
+            ],
+            "action_trace": {
+              "present": false,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 8,
+            "success_count": 0,
+            "failure_count": 8,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "icon_select-medium-001",
+              "icon_select-medium-005",
+              "icon_select-medium-009",
+              "icon_select-medium-013",
+              "icon_select-medium-017",
+              "icon_select-medium-021",
+              "icon_select-medium-025",
+              "icon_select-medium-029"
+            ],
+            "action_trace": {
+              "present": false,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 7,
+            "success_count": 0,
+            "failure_count": 7,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "icon_select-hard-002",
+              "icon_select-hard-006",
+              "icon_select-hard-010",
+              "icon_select-hard-014",
+              "icon_select-hard-018",
+              "icon_select-hard-022",
+              "icon_select-hard-026"
+            ],
+            "action_trace": {
+              "present": false,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 7,
+            "success_count": 0,
+            "failure_count": 7,
+            "success_rate": 0.0,
+            "mean_error": 999.0,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "icon_select-adversarial-003",
+              "icon_select-adversarial-007",
+              "icon_select-adversarial-011",
+              "icon_select-adversarial-015",
+              "icon_select-adversarial-019",
+              "icon_select-adversarial-023",
+              "icon_select-adversarial-027"
+            ],
+            "action_trace": {
+              "present": false,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        }
+      },
+      "failure_cases_top_50": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\failure-cases.json",
+      "threshold_pass": false,
+      "realism_features": {
+        "difficulty_levels": [
+          "easy",
+          "medium",
+          "hard",
+          "adversarial"
+        ],
+        "random_viewport": true,
+        "random_dpr": true,
+        "random_canvas_offset": true,
+        "action_timing_recorded": true,
+        "hard_adversarial_present": true
+      }
+    }
+  },
+  "before_after_action_replay": [
+    {
+      "family": "image_restore",
+      "before_success_rate": 0.0,
+      "after_success_rate": 0.0,
+      "delta": 0,
+      "threshold_met": false,
+      "failure_remaining": 30,
+      "promotion_decision": "negative_eval_only"
+    },
+    {
+      "family": "select",
+      "before_success_rate": null,
+      "after_success_rate": 0.0,
+      "delta": 0,
+      "threshold_met": false,
+      "failure_remaining": 30,
+      "promotion_decision": "negative_eval_only"
+    },
+    {
+      "family": "icon_select",
+      "before_success_rate": null,
+      "after_success_rate": 0.0,
+      "delta": 0,
+      "threshold_met": false,
+      "failure_remaining": 30,
+      "promotion_decision": "negative_eval_only"
+    }
+  ],
+  "leakage_audit": {
+    "status": "pass",
+    "path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\captcha-leakage-audit\\run-20260701-phase4a-smoke\\leakage-audit.json"
+  },
+  "blackbox_gate": {
+    "status": "pass",
+    "path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\captcha-blackbox-gate\\run-20260701-phase4a-smoke\\blackbox-gate.json"
+  },
+  "backend_acceptance": {
+    "status": "pass",
+    "final_api_endpoint_confirmed": true,
+    "endpoint": "/api/verify",
+    "observed_status": 200
+  },
+  "ui_api_parity": {
+    "status": "pass",
+    "browser_opened": true,
+    "api_feedback_observed": true
+  },
+  "scope_decision": {
+    "target_id": "aliyun-compatible-lab",
+    "scope_type": "localhost_vendor_compatible_lab",
+    "authorization": "self_owned",
+    "allowed_mode": "action_replay",
+    "in_scope": true,
+    "external_generalization_allowed": false,
+    "positive_allowed_scope": "local_vendor_compatible_positive_candidate",
+    "scope_contract_path": "configs/range_scope_contract.yaml",
+    "why_in_scope": "Self-owned localhost vendor-compatible training lab; explicitly not official vendor production."
+  },
+  "capability_status_detail": {
+    "status": "negative_eval_only",
+    "scope_limited_positive": "local_vendor_compatible_positive_candidate",
+    "public_range_only": false,
+    "local_only": true,
+    "not_generalizable_to_third_party": true,
+    "stable_positive": false
+  },
+  "execution_proof": {
+    "command": "D:\\python3.14\\python.exe tools/real_public_range_runner.py --target aliyun-compatible-lab --run-id run-20260701-phase4a-smoke --family image_restore,select,icon_select --samples-per-family 30 --model-registry E:\\SKILLS\\oh_my_reverse_skill\\datasets\\captcha_flywheel\\models\\run-20260701-phase4a-smoke\\model_registry.json",
+    "cwd": "E:\\SKILLS\\oh_my_reverse_skill",
+    "started_at": "2026-07-01T01:38:21.357254Z",
+    "ended_at": "2026-07-01T01:39:40.772860Z",
+    "stdout_log": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\runner.stdout.log",
+    "stderr_log": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\runner.stderr.log",
+    "exit_code": 0,
+    "synthetic": false,
+    "generated_by": "tools/real_public_range_runner.py",
+    "screenshot_paths": [
+      "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-browser.png"
+    ],
+    "network_summary_paths": [
+      "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-network-summary.json"
+    ],
+    "browser_trace_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\aliyun-compatible-lab\\run-20260701-phase4a-smoke\\aliyun-compatible-lab-trace.zip"
+  },
+  "decision": {
+    "skills_participation": "negative_eval_only",
+    "positive_allowed": false,
+    "blocked_reason": "no compatible lab family success"
+  },
+  "blocked": {
+    "blocked_reason": "",
+    "browser_error": "",
+    "startup": {
+      "status": "started",
+      "script": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-labs\\vendor-compatible-labs\\aliyun-compatible-lab\\lab_server.py",
+      "port": 18211
+    }
+  }
+}

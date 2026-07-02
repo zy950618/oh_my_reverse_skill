@@ -1,0 +1,6 @@
+{
+  "title": "shumei-compatible-lab is compatible training, not official vendor capability",
+  "run_id": "run-smoke-phase3-10",
+  "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\shumei-compatible-lab\\run-smoke-phase3-10.json",
+  "lesson": "Hard/adversarial compatible labs expose baseline solver failures; local candidates must not generalize to vendor production."
+}

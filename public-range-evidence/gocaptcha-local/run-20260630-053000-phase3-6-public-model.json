@@ -1,0 +1,83 @@
+{
+  "schema_version": "public-range-evidence/v1",
+  "run_id": "run-20260630-053000-phase3-6-public-model",
+  "capture_id": "cap-run-20260630-053000-phase3-6-public-model-gocaptcha-local",
+  "captured_at": "2026-06-30T04:23:01.847975+00:00",
+  "source_freshness": "fresh",
+  "execution_status": "REAL_EXECUTION_PASS",
+  "control_flow_status": "CONTROL_FLOW_PASS",
+  "business_data_status": "NOT_RUN",
+  "capability_status": "memory_only",
+  "target": {
+    "id": "gocaptcha-local",
+    "name": "GoCaptcha Local Action Replay Range",
+    "url": "http://127.0.0.1:50521/gocaptcha-local",
+    "host": "127.0.0.1",
+    "type": "local_open_source_range",
+    "authorization_scope": "Self-owned localhost GoCaptcha-style action replay range."
+  },
+  "skills": [
+    "captcha-visual-recognition-lab",
+    "captcha-action-planner",
+    "authorized-target-adapter"
+  ],
+  "execution_proof": {
+    "command": "python tools\\captcha_action_replay_lab.py --target gocaptcha-local --run-id run-20260630-053000-phase3-6-public-model",
+    "cwd": "E:\\SKILLS\\oh_my_reverse_skill",
+    "exit_code": 0,
+    "started_at": "2026-06-30T04:22:59.102038+00:00",
+    "ended_at": "2026-06-30T04:23:01.847975+00:00",
+    "stdout_log": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\gocaptcha-local\\run-20260630-053000-phase3-6-public-model\\gocaptcha-action-replay.stdout.log",
+    "stderr_log": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\gocaptcha-local\\run-20260630-053000-phase3-6-public-model\\gocaptcha-action-replay.stderr.log",
+    "screenshot_paths": [
+      "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\gocaptcha-local\\run-20260630-053000-phase3-6-public-model\\gocaptcha-page.png",
+      "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\gocaptcha-local\\run-20260630-053000-phase3-6-public-model\\gocaptcha-challenge-image.png"
+    ],
+    "network_summary_paths": [
+      "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\gocaptcha-local\\run-20260630-053000-phase3-6-public-model\\gocaptcha-network-summary.json"
+    ],
+    "browser_trace_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\gocaptcha-local\\run-20260630-053000-phase3-6-public-model\\gocaptcha-trace.zip",
+    "generated_by": "tools/captcha_action_replay_lab.py",
+    "synthetic": false
+  },
+  "action_replay": {
+    "status": "pass",
+    "metrics": {
+      "status": "pass",
+      "target": "gocaptcha-local",
+      "challenge_type": "slider-captcha",
+      "sample_id": "slider-easy-0000",
+      "prediction_source": "browser_challenge_image_screenshot",
+      "solver_input_sources": [
+        "challenge_image_screenshot"
+      ],
+      "label_read_for_prediction": false,
+      "dom_read_for_prediction": false,
+      "query_param_read_for_prediction": false,
+      "metadata_answer_read_for_prediction": false,
+      "expected_x_server_side_only": 244,
+      "predicted_x": 247,
+      "confidence": 0.85,
+      "abs_error": 3,
+      "action_success": true
+    },
+    "metrics_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\gocaptcha-local\\run-20260630-053000-phase3-6-public-model\\gocaptcha-action-replay-metrics.json"
+  },
+  "ui_api_parity": {
+    "status": "pass",
+    "observed_status": 200,
+    "endpoint": "POST /api/gocaptcha/verify",
+    "json_pointers": [
+      "/success",
+      "/state",
+      "/abs_error"
+    ]
+  },
+  "repeat_verified": true,
+  "decision": {
+    "skills_participation": "memory_only",
+    "positive_allowed": false,
+    "concurrency_positive": false,
+    "blocked_reason": "Local GoCaptcha-style action replay has no final business API or DATA_ASSERTION_PASS."
+  }
+}

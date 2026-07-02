@@ -1,0 +1,8 @@
+name: phase-3-9-provider-diagnostics-regression
+run_id: run-20260630-113000-phase3-9-vendor-shield-range
+expect_skill: true
+criteria:
+  - stale provider evidence blocks promotion
+  - missing screenshot or network summary blocks real execution proof
+  - leakage audit failure invalidates the run
+  - scope contract failure blocks positive candidate status

@@ -1,0 +1,8 @@
+name: phase-3-9-model-training-negative-boundary
+run_id: run-20260630-113000-phase3-9-vendor-shield-range
+expect_skill: false
+criteria:
+  - solver reads label_path
+  - solver reads metadata answer
+  - benchmark mixes train and test
+  - local compatible-lab result is claimed as production vendor success

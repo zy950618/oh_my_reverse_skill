@@ -1,0 +1,11 @@
+name: Validate CAPTCHA action schema before replay
+prompt: >
+  A local slider model returns only x=196,y=330. Package this as an action
+  output that a replay layer can consume on mobile H5.
+criteria:
+  - "Requires coordinate_space, viewport, device_pixel_ratio, and target_element geometry."
+  - "Requires monotonic time_ms and typed pointer/tap actions."
+  - "Includes challenge_state_machine and provider_detection_signals without raw tokens."
+  - "Does not treat the action schema as provider or business API acceptance."
+expect_skill: true
+timeout: 120

@@ -1,0 +1,12 @@
+sample_id: slider-hard-0066
+source_run_id: run-20260630-071500-phase3-6-1-candidate
+challenge_type: slider-captcha
+difficulty: hard
+expected: {"x": 243, "y": 64}
+predicted: {"x": 111, "y": 95}
+error: 135.5912976558599
+image_path: public-range-evidence\raw\captcha-vision-lab\run-20260630-071500-phase3-6-1-candidate\dataset\slider-captcha\hard\slider-hard-0066.jpg
+label_path: public-range-evidence\raw\captcha-vision-lab\run-20260630-071500-phase3-6-1-candidate\dataset\slider-captcha\hard\slider-hard-0066.json
+root_cause: hard low-contrast or distractor gap confused edge/brightness scan
+suggested_fix: add template matching with gap-shape priors and reject distractor gaps
+whether_eval_added: true

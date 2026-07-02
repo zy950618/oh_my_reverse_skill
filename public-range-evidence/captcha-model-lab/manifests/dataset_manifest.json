@@ -1,0 +1,50 @@
+{
+  "manifest_type": "captcha_dataset",
+  "schema_version": "0.1.0",
+  "dataset_id": "captcha-model-lab-sample",
+  "license_scope": "authorized_public_lab",
+  "created_at": "2026-07-01T00:00:00Z",
+  "label_schema": "captcha_action_schema@0.1.0",
+  "splits": {"train": 1, "validation": 1, "test": 1},
+  "samples": [
+    {
+      "sample_id": "sample-slider-001",
+      "split": "train",
+      "provider": "custom",
+      "challenge_type": "slider",
+      "image_path": "../samples/images/sample-slider-001.ppm",
+      "label_path": "../samples/labels/sample-slider-001.json",
+      "provenance": {
+        "source": "local_synthetic",
+        "authorization": "owned_lab",
+        "redaction": "no_tokens_no_user_data"
+      }
+    },
+    {
+      "sample_id": "sample-slider-002",
+      "split": "validation",
+      "provider": "custom",
+      "challenge_type": "slider",
+      "image_path": "../samples/images/sample-slider-002.ppm",
+      "label_path": "../samples/labels/sample-slider-002.json",
+      "provenance": {
+        "source": "local_synthetic",
+        "authorization": "owned_lab",
+        "redaction": "no_tokens_no_user_data"
+      }
+    },
+    {
+      "sample_id": "sample-slider-003",
+      "split": "test",
+      "provider": "custom",
+      "challenge_type": "slider",
+      "image_path": "../samples/images/sample-slider-003.ppm",
+      "label_path": "../samples/labels/sample-slider-003.json",
+      "provenance": {
+        "source": "local_synthetic",
+        "authorization": "owned_lab",
+        "redaction": "no_tokens_no_user_data"
+      }
+    }
+  ]
+}

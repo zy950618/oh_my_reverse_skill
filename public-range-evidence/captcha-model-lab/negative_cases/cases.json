@@ -1,0 +1,87 @@
+{
+  "manifest_type": "captcha_negative_cases",
+  "schema_version": "0.1.0",
+  "scope": "local_lab_only",
+  "capability_boundary": {
+    "third_party_positive_claim": false,
+    "remote_solver_api_used": false,
+    "provider_token_used": false
+  },
+  "cases": [
+    {
+      "name": "invalid_image_size",
+      "expected_reason": "image_size_invalid",
+      "payload": {
+        "image_size_px": {"width": 0, "height": 240}
+      }
+    },
+    {
+      "name": "missing_label",
+      "expected_reason": "label_missing",
+      "payload": {
+        "sample_id": "negative-missing-label",
+        "label_path": "../samples/labels/does-not-exist.json"
+      }
+    },
+    {
+      "name": "bad_coordinate_out_of_bounds",
+      "expected_reason": "coordinate_out_of_bounds",
+      "payload": {
+        "viewport": {"width": 390, "height": 844},
+        "action": {"kind": "pointer_move", "x": 999, "y": 330, "time_ms": 420}
+      }
+    },
+    {
+      "name": "bad_slider_offset",
+      "expected_reason": "slider_offset_out_of_tolerance",
+      "payload": {
+        "expected_offset_css_px": 135,
+        "predicted_offset_css_px": 180,
+        "tolerance_css_px": 3
+      }
+    },
+    {
+      "name": "wrong_captcha_type",
+      "expected_reason": "unsupported_captcha_type",
+      "payload": {
+        "challenge_type": "rotate",
+        "supported_challenge_types": ["slider"]
+      }
+    },
+    {
+      "name": "low_confidence_prediction",
+      "expected_reason": "confidence_below_threshold",
+      "payload": {
+        "confidence": 0.42,
+        "minimum_confidence": 0.8
+      }
+    },
+    {
+      "name": "missing_model_artifact",
+      "expected_reason": "model_artifact_missing",
+      "payload": {
+        "package_file": {"role": "model", "path": "../model/missing-model.json"}
+      }
+    },
+    {
+      "name": "broken_package_manifest",
+      "expected_reason": "package_manifest_invalid",
+      "payload": {
+        "manifest": {
+          "manifest_type": "captcha_model_package",
+          "schema_version": "0.1.0",
+          "model_package_id": "broken-local-negative"
+        },
+        "missing_required_keys": ["package_version", "dataset_ref", "training_report_ref", "pass_rate_report_ref"]
+      }
+    },
+    {
+      "name": "mobile_h5_dpr_mismatch",
+      "expected_reason": "mobile_h5_dpr_mismatch",
+      "payload": {
+        "viewport": {"device_pixel_ratio": 3.0},
+        "mobile_h5_transform": {"device_pixel_ratio": 2.0}
+      }
+    }
+  ]
+}

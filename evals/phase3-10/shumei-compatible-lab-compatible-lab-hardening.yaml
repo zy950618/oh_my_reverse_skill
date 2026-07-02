@@ -1,0 +1,6 @@
+id: phase3_10_shumei_compatible_lab_compatible_lab_hardening
+title: shumei-compatible-lab hard/adversarial compatible lab remains scoped candidate only
+run_id: run-20260701-phase4a-smoke
+evidence: public-range-evidence/shumei-compatible-lab/run-20260701-phase4a-smoke.json
+expected_status: local_vendor_compatible_positive_candidate_or_training_needed
+negative_boundary: not_official_vendor_production

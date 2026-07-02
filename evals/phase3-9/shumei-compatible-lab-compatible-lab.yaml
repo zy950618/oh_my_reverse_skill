@@ -1,0 +1,5 @@
+id: phase3_9_shumei_compatible_lab_compatible_lab
+title: shumei-compatible-lab compatible lab cannot claim official vendor capability
+run_id: run-20260630-113000-phase3-9-vendor-shield-range
+evidence: public-range-evidence/shumei-compatible-lab/run-20260630-113000-phase3-9-vendor-shield-range.json
+expected_status: local_vendor_compatible_positive_candidate_or_training_needed

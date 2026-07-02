@@ -1,0 +1,319 @@
+{
+  "schema_version": "public-range-evidence/v1",
+  "run_id": "run-20260630-031500-captcha-vision-hardening",
+  "capture_id": "cap-run-20260630-031500-captcha-vision-hardening",
+  "captured_at": "2026-06-30T03:17:26.825843+00:00",
+  "source_freshness": "fresh",
+  "execution_status": "REAL_EXECUTION_PASS",
+  "control_flow_status": "CONTROL_FLOW_PASS",
+  "business_data_status": "NOT_RUN",
+  "capability_status": "memory_only",
+  "target": {
+    "id": "captcha-vision-lab",
+    "name": "Captcha Vision Local Lab",
+    "url": "http://127.0.0.1:58863/?expected=244",
+    "host": "127.0.0.1",
+    "type": "local_synthetic_training_range",
+    "authorization_scope": "Self-owned localhost synthetic CAPTCHA vision lab only."
+  },
+  "skills": [
+    "captcha-visual-recognition-lab",
+    "captcha-image-dataset-governance",
+    "captcha-algorithm-benchmark",
+    "captcha-action-planner"
+  ],
+  "skill_invocation": [
+    "captcha-visual-recognition-lab",
+    "captcha-image-dataset-governance",
+    "captcha-algorithm-benchmark",
+    "captcha-action-planner",
+    "authorized-target-adapter"
+  ],
+  "scope": {
+    "domain": "captcha-vision-lab",
+    "stage": "phase3_local_algorithm_training",
+    "auth_state": "self_owned_localhost",
+    "mode": "synthetic_dataset_baseline_and_localhost_action_replay",
+    "in_scope": [
+      "synthetic dataset generation",
+      "baseline image recognition",
+      "localhost action replay"
+    ],
+    "out_of_scope": [
+      "third-party CAPTCHA solving",
+      "production WAF bypass",
+      "fingerprint evasion",
+      "real-site positive capability"
+    ]
+  },
+  "execution_proof": {
+    "command": "python tools\\captcha_action_replay_lab.py --predictions public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-031500-captcha-vision-hardening\\baseline-predictions.json --metrics public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-031500-captcha-vision-hardening\\benchmark-metrics.json",
+    "cwd": "E:\\SKILLS\\oh_my_reverse_skill",
+    "exit_code": 0,
+    "started_at": "2026-06-30T03:17:24.900320+00:00",
+    "ended_at": "2026-06-30T03:17:26.825843+00:00",
+    "stdout_log": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-031500-captcha-vision-hardening\\captcha-action-replay.stdout.log",
+    "stderr_log": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-031500-captcha-vision-hardening\\captcha-action-replay.stderr.log",
+    "screenshot_paths": [
+      "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-031500-captcha-vision-hardening\\action-replay.png"
+    ],
+    "network_summary_paths": [
+      "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-031500-captcha-vision-hardening\\action-replay-network-summary.json"
+    ],
+    "browser_trace_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-031500-captcha-vision-hardening\\action-replay-trace.zip",
+    "generated_by": "tools/captcha_action_replay_lab.py",
+    "synthetic": false
+  },
+  "dataset_generation": {
+    "manifest_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-031500-captcha-vision-hardening\\dataset-manifest.json",
+    "prediction_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-031500-captcha-vision-hardening\\baseline-predictions.json",
+    "metrics_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-031500-captcha-vision-hardening\\benchmark-metrics.json",
+    "failure_cases_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-031500-captcha-vision-hardening\\failure-cases.json",
+    "sample_counts": {
+      "text-captcha": 330,
+      "slider-captcha": 330,
+      "rotate-captcha": 330,
+      "click-captcha": 330
+    },
+    "per_difficulty_metrics_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-031500-captcha-vision-hardening\\benchmark-metrics.json",
+    "leakage_check": {
+      "status": "pass",
+      "solver_input_sources": [
+        "challenge_image"
+      ],
+      "answer_source": "challenge_image",
+      "violations": []
+    }
+  },
+  "algorithm_hardening": {
+    "metrics_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-031500-captcha-vision-hardening\\benchmark-metrics.json",
+    "per_difficulty_metrics": {
+      "text-captcha": {
+        "easy": {
+          "sample_count": 100,
+          "char_accuracy": 0.044,
+          "sequence_accuracy": 0.0
+        },
+        "medium": {
+          "sample_count": 100,
+          "char_accuracy": 0.022,
+          "sequence_accuracy": 0.0
+        },
+        "hard": {
+          "sample_count": 100,
+          "char_accuracy": 0.03,
+          "sequence_accuracy": 0.0
+        },
+        "adversarial": {
+          "sample_count": 30,
+          "char_accuracy": 0.02666666666666667,
+          "sequence_accuracy": 0.0
+        }
+      },
+      "slider-captcha": {
+        "easy": {
+          "sample_count": 100,
+          "mean_abs_offset_error": 2.8284271247461903,
+          "mean_abs_x_error": 2.0,
+          "mean_abs_y_error": 2.0,
+          "pass_rate_within_3px": 1.0,
+          "pass_rate_within_5px": 1.0
+        },
+        "medium": {
+          "sample_count": 100,
+          "mean_abs_offset_error": 77.43230650170261,
+          "mean_abs_x_error": 68.43,
+          "mean_abs_y_error": 28.31,
+          "pass_rate_within_3px": 0.0,
+          "pass_rate_within_5px": 0.0
+        },
+        "hard": {
+          "sample_count": 100,
+          "mean_abs_offset_error": 83.43859742155901,
+          "mean_abs_x_error": 74.22,
+          "mean_abs_y_error": 27.14,
+          "pass_rate_within_3px": 0.0,
+          "pass_rate_within_5px": 0.01
+        },
+        "adversarial": {
+          "sample_count": 30,
+          "mean_abs_offset_error": 84.92704993630744,
+          "mean_abs_x_error": 71.46666666666667,
+          "mean_abs_y_error": 33.5,
+          "pass_rate_within_3px": 0.0,
+          "pass_rate_within_5px": 0.03333333333333333
+        }
+      },
+      "rotate-captcha": {
+        "easy": {
+          "sample_count": 100,
+          "mean_abs_angle_error": 0.72,
+          "pass_rate_within_3deg": 1.0,
+          "pass_rate_within_5deg": 1.0,
+          "error_distribution": {
+            "0-3": 56,
+            "3-5": 0,
+            "5-10": 0,
+            "10-20": 0,
+            "20-45": 0,
+            ">45": 0
+          }
+        },
+        "medium": {
+          "sample_count": 100,
+          "mean_abs_angle_error": 0.87,
+          "pass_rate_within_3deg": 1.0,
+          "pass_rate_within_5deg": 1.0,
+          "error_distribution": {
+            "0-3": 69,
+            "3-5": 0,
+            "5-10": 0,
+            "10-20": 0,
+            "20-45": 0,
+            ">45": 0
+          }
+        },
+        "hard": {
+          "sample_count": 100,
+          "mean_abs_angle_error": 3.04,
+          "pass_rate_within_3deg": 0.66,
+          "pass_rate_within_5deg": 0.87,
+          "error_distribution": {
+            "0-3": 60,
+            "3-5": 21,
+            "5-10": 13,
+            "10-20": 0,
+            "20-45": 0,
+            ">45": 0
+          }
+        },
+        "adversarial": {
+          "sample_count": 30,
+          "mean_abs_angle_error": 4.133333333333334,
+          "pass_rate_within_3deg": 0.4666666666666667,
+          "pass_rate_within_5deg": 0.7333333333333333,
+          "error_distribution": {
+            "0-3": 12,
+            "3-5": 8,
+            "5-10": 8,
+            "10-20": 0,
+            "20-45": 0,
+            ">45": 0
+          }
+        }
+      },
+      "click-captcha": {
+        "easy": {
+          "sample_count": 100,
+          "target_precision": 1.0,
+          "target_recall": 1.0,
+          "click_distance_mean": 0.14135562914111455,
+          "click_success_rate": 1.0
+        },
+        "medium": {
+          "sample_count": 100,
+          "target_precision": 0.99,
+          "target_recall": 0.99,
+          "click_distance_mean": 1.133343701114657,
+          "click_success_rate": 0.98
+        },
+        "hard": {
+          "sample_count": 100,
+          "target_precision": 0.9423728813559322,
+          "target_recall": 0.9266666666666666,
+          "click_distance_mean": 2.1071065885933415,
+          "click_success_rate": 0.83
+        },
+        "adversarial": {
+          "sample_count": 30,
+          "target_precision": 0.9753086419753086,
+          "target_recall": 0.8777777777777778,
+          "click_distance_mean": 2.295773464698856,
+          "click_success_rate": 0.7
+        }
+      }
+    },
+    "failure_case_counts": {
+      "text-captcha": 20,
+      "slider-captcha": 20,
+      "rotate-captcha": 20,
+      "click-captcha": 5
+    },
+    "failure_cases_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-031500-captcha-vision-hardening\\failure-cases.json",
+    "per_sample_predictions_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-031500-captcha-vision-hardening\\per-sample-predictions.json",
+    "regression_thresholds": {
+      "text-captcha": {
+        "easy_char_accuracy_min": 0.1,
+        "hard_char_accuracy_min": 0.01
+      },
+      "slider-captcha": {
+        "easy_within_5px_min": 0.6,
+        "hard_nonzero_error_required": true
+      },
+      "rotate-captcha": {
+        "easy_within_5deg_min": 0.6,
+        "error_distribution_required": true
+      },
+      "click-captcha": {
+        "easy_precision_min": 0.5,
+        "failure_cases_required": true
+      }
+    },
+    "current_capability_levels": {
+      "text-captcha": "L1_synthetic_easy_baseline_training_needed",
+      "slider-captcha": "L3_local_action_replay_for_synthetic_easy_only",
+      "rotate-captcha": "L2_synthetic_hard_benchmark",
+      "click-captcha": "L2_synthetic_hard_benchmark"
+    }
+  },
+  "action_replay": {
+    "status": "pass",
+    "challenge_type": "slider-captcha",
+    "state_before": "state=ready",
+    "state_after": "state=backend_accepted",
+    "metrics": {
+      "action_success_rate": 1.0,
+      "state_transition_success_rate": 1.0,
+      "backend_acceptance_rate": 1.0,
+      "expected_offset": 244,
+      "predicted_offset": 246,
+      "abs_offset_error": 2,
+      "sample_id": "slider-easy-0000",
+      "solver_input_sources": [
+        "challenge_image"
+      ]
+    },
+    "metrics_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-031500-captcha-vision-hardening\\action-replay-metrics.json"
+  },
+  "ui_api_parity": {
+    "status": "pass",
+    "observed_status": 200,
+    "endpoint": "GET /",
+    "json_pointers": [
+      "/action_replay/metrics/action_success_rate"
+    ],
+    "note": "Local browser UI state transitioned using baseline recognition output; no business API ledger was run."
+  },
+  "repeat_verified": true,
+  "backend_acceptance": {
+    "status": "not_run",
+    "final_api_endpoint_confirmed": false,
+    "observed_status": null,
+    "endpoint": "",
+    "json_pointers": []
+  },
+  "business_data_assertions": null,
+  "decision": {
+    "skills_participation": "memory_only",
+    "positive_allowed": false,
+    "concurrency_positive": false,
+    "blocked_reason": "Phase 3 run is local algorithm benchmark and localhost action replay only; business_data_status=NOT_RUN.",
+    "why_not_positive": "No final business API and no server-side business ledger; benchmark accuracy cannot become real-site positive capability."
+  },
+  "capability_boundary": {
+    "local_lab_positive": true,
+    "real_site_positive": false,
+    "algorithm_benchmark_only": true,
+    "third_party_captcha_waf_verified": false
+  }
+}

@@ -1,0 +1,6 @@
+experience_id: run-20260630-071500-phase3-6-1-candidate-local-gocaptcha-compatible-lab-action-replay
+source_run_id: run-20260630-071500-phase3-6-1-candidate
+target: local-gocaptcha-compatible-lab
+target_authenticity: self_owned_compatible_lab_not_real_gocaptcha
+capability_status: positive_candidate
+next_promotion_requires: multi_seed_multi_round_blackbox_threshold_pass

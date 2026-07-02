@@ -1,0 +1,12 @@
+sample_id: text-easy-0011
+source_run_id: run-20260630-083000-phase3-7-real-public-range
+challenge_type: text-captcha
+difficulty: easy
+expected: "Q0R91"
+predicted: "VYYY4"
+error: 5.0
+image_path: public-range-evidence\raw\captcha-vision-lab\run-20260630-083000-phase3-7-real-public-range\dataset\text-captcha\easy\text-easy-0011.png
+label_path: public-range-evidence\raw\captcha-vision-lab\run-20260630-083000-phase3-7-real-public-range\dataset\text-captcha\easy\text-easy-0011.json
+root_cause: easy text segmentation/template matching failed under noise, rotation, or sticky glyphs
+suggested_fix: add connected-component segmentation and train a glyph classifier on hard samples
+whether_eval_added: true

@@ -1,0 +1,11 @@
+name: Validate CAPTCHA pass-rate metrics
+prompt: >
+  The lab replayed 30 model actions and 27 worked. Write pass-rate evidence
+  that is precise and not overclaimed.
+criteria:
+  - "Computes pass_rate from passes / attempts."
+  - "Buckets metrics by provider and challenge_type."
+  - "Includes negative controls and confidence interval metadata."
+  - "Keeps local replay pass rate separate from provider or business API acceptance."
+expect_skill: true
+timeout: 120

@@ -1,0 +1,12 @@
+sample_id: click-adversarial-0046
+source_run_id: run-20260630-041500-phase3-5-longrun
+challenge_type: click-captcha
+difficulty: adversarial
+expected: [{"x": 216, "y": 96, "target_index": 0}, {"x": 212, "y": 76, "target_index": 1}, {"x": 189, "y": 42, "target_index": 2}]
+predicted: [{"x": 182, "y": 42}, {"x": 210, "y": 73}]
+error: 11.458426641157805
+image_path: public-range-evidence\raw\captcha-vision-lab\run-20260630-041500-phase3-5-longrun\dataset\click-captcha\adversarial\click-adversarial-0046.jpg
+label_path: public-range-evidence\raw\captcha-vision-lab\run-20260630-041500-phase3-5-longrun\dataset\click-captcha\adversarial\click-adversarial-0046.json
+root_cause: adversarial target component detection missed or merged target regions
+suggested_fix: add color normalization and target/non-target classifier
+whether_eval_added: true

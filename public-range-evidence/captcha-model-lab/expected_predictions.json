@@ -1,0 +1,25 @@
+{
+  "schema_version": "captcha_expected_predictions/v1",
+  "dataset_id": "captcha-model-lab-sample",
+  "expected_predictions": [
+    {
+      "sample_id": "sample-slider-001",
+      "expected_offset_css_px": 135,
+      "expected_status": "PASS"
+    },
+    {
+      "sample_id": "sample-slider-002",
+      "expected_offset_css_px": 135,
+      "expected_status": "PASS"
+    },
+    {
+      "sample_id": "sample-slider-003",
+      "expected_offset_css_px": 135,
+      "expected_status": "PASS"
+    }
+  ],
+  "boundary": {
+    "local_lab_only": true,
+    "third_party_positive_claim": false
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "captcha-fingerprint-linkage-report/v1",
+  "run_id": "second-loop-2026-07-01-fingerprint-risk-lab",
+  "captcha_linkage_checked": true,
+  "states": [
+    "no_challenge",
+    "captcha_detected",
+    "fingerprint_challenge_detected",
+    "pass_rate_below_threshold",
+    "pure_api_replay_blocked",
+    "pure_api_replay_ready"
+  ],
+  "linkage_policy": "diagnostic_only"
+}

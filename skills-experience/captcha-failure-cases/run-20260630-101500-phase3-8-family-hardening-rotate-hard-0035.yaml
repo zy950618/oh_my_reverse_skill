@@ -1,0 +1,12 @@
+sample_id: rotate-hard-0035
+source_run_id: run-20260630-101500-phase3-8-family-hardening
+challenge_type: rotate-captcha
+difficulty: hard
+expected: 140
+predicted: 131
+error: 9.0
+image_path: public-range-evidence\raw\captcha-vision-lab\run-20260630-101500-phase3-8-family-hardening\dataset\rotate-captcha\hard\rotate-hard-0035.jpg
+label_path: public-range-evidence\raw\captcha-vision-lab\run-20260630-101500-phase3-8-family-hardening\dataset\rotate-captcha\hard\rotate-hard-0035.json
+root_cause: hard red orientation feature degraded by blur, center offset, or symmetric distractor
+suggested_fix: add center estimation and orientation scan over edge maps
+whether_eval_added: true

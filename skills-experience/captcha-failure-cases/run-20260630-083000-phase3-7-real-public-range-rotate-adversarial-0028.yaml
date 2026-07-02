@@ -1,0 +1,12 @@
+sample_id: rotate-adversarial-0028
+source_run_id: run-20260630-083000-phase3-7-real-public-range
+challenge_type: rotate-captcha
+difficulty: adversarial
+expected: 327
+predicted: 335
+error: 8.0
+image_path: public-range-evidence\raw\captcha-vision-lab\run-20260630-083000-phase3-7-real-public-range\dataset\rotate-captcha\adversarial\rotate-adversarial-0028.jpg
+label_path: public-range-evidence\raw\captcha-vision-lab\run-20260630-083000-phase3-7-real-public-range\dataset\rotate-captcha\adversarial\rotate-adversarial-0028.json
+root_cause: adversarial red orientation feature degraded by blur, center offset, or symmetric distractor
+suggested_fix: add center estimation and orientation scan over edge maps
+whether_eval_added: true

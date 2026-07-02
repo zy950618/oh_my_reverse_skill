@@ -1,0 +1,5 @@
+{
+  "model_family": "baseline-template-matcher",
+  "model_id": "sample-local-lab-model",
+  "weights": "sample-placeholder-no-production-use"
+}

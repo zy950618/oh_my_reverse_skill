@@ -1,0 +1,8 @@
+name: phase-3-9-model-training-positive
+run_id: run-20260630-113000-phase3-9-vendor-shield-range
+expect_skill: true
+criteria:
+  - dataset manifest exists
+  - train val test split is explicit
+  - checkpoint and metrics are recorded
+  - baseline comparison is included

@@ -1,0 +1,4395 @@
+{
+  "schema_version": "public-range-evidence/v1",
+  "run_id": "run-20260630-173000-phase3-11-type-matrix",
+  "target": {
+    "id": "shumei-compatible-lab",
+    "type": "localhost_vendor_compatible_lab",
+    "url": "http://127.0.0.1:18210"
+  },
+  "captured_at": "2026-06-30T08:07:39.712111Z",
+  "source_freshness": "fresh",
+  "skills": [
+    "captcha-provider-diagnostics",
+    "captcha-visual-recognition-lab",
+    "captcha-action-planner"
+  ],
+  "execution_status": "REAL_EXECUTION_PASS",
+  "capability_status": "positive_candidate",
+  "control_flow_status": "CONTROL_FLOW_PASS",
+  "business_data_status": "NOT_RUN",
+  "compatible_lab": true,
+  "official_vendor": false,
+  "not_generalizable_to_vendor_production": true,
+  "challenge_families": [
+    "slide",
+    "select",
+    "icon_select",
+    "seq_select",
+    "spatial_select",
+    "no_sense"
+  ],
+  "capabilities": {
+    "shumei-compatible-lab": {
+      "slide": {
+        "sample_count": 350,
+        "success_count": 320,
+        "failure_count": 30,
+        "success_rate": 0.9142857142857143,
+        "mean_error": 85.62857142857143,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "slide-medium-137",
+          "slide-medium-141",
+          "slide-medium-171",
+          "slide-medium-186",
+          "slide-hard-201",
+          "slide-hard-206",
+          "slide-hard-211",
+          "slide-hard-228",
+          "slide-hard-251",
+          "slide-hard-267",
+          "slide-hard-277",
+          "slide-hard-299",
+          "slide-adversarial-303",
+          "slide-adversarial-304",
+          "slide-adversarial-307",
+          "slide-adversarial-308",
+          "slide-adversarial-313",
+          "slide-adversarial-321",
+          "slide-adversarial-323",
+          "slide-adversarial-324"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        },
+        "per_difficulty_metrics": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 96,
+            "failure_count": 4,
+            "success_rate": 0.96,
+            "mean_error": 39.96,
+            "p95_error": 0.0,
+            "failure_cases": [
+              "slide-medium-137",
+              "slide-medium-141",
+              "slide-medium-171",
+              "slide-medium-186"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 92,
+            "failure_count": 8,
+            "success_rate": 0.92,
+            "mean_error": 79.92,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "slide-hard-201",
+              "slide-hard-206",
+              "slide-hard-211",
+              "slide-hard-228",
+              "slide-hard-251",
+              "slide-hard-267",
+              "slide-hard-277",
+              "slide-hard-299"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 32,
+            "failure_count": 18,
+            "success_rate": 0.64,
+            "mean_error": 359.64,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "slide-adversarial-303",
+              "slide-adversarial-304",
+              "slide-adversarial-307",
+              "slide-adversarial-308",
+              "slide-adversarial-313",
+              "slide-adversarial-321",
+              "slide-adversarial-323",
+              "slide-adversarial-324",
+              "slide-adversarial-328",
+              "slide-adversarial-331"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "capability_status": "positive_candidate",
+        "capability_level": "candidate",
+        "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+      },
+      "select": {
+        "sample_count": 350,
+        "success_count": 316,
+        "failure_count": 34,
+        "success_rate": 0.9028571428571428,
+        "mean_error": 97.04571428571428,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "select-medium-140",
+          "select-medium-154",
+          "select-medium-178",
+          "select-hard-205",
+          "select-hard-212",
+          "select-hard-218",
+          "select-hard-222",
+          "select-hard-224",
+          "select-hard-225",
+          "select-hard-255",
+          "select-hard-257",
+          "select-hard-258",
+          "select-hard-260",
+          "select-hard-263",
+          "select-hard-289",
+          "select-hard-293",
+          "select-hard-294",
+          "select-hard-299",
+          "select-adversarial-300",
+          "select-adversarial-304"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        },
+        "per_difficulty_metrics": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 97,
+            "failure_count": 3,
+            "success_rate": 0.97,
+            "mean_error": 29.97,
+            "p95_error": 0.0,
+            "failure_cases": [
+              "select-medium-140",
+              "select-medium-154",
+              "select-medium-178"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 85,
+            "failure_count": 15,
+            "success_rate": 0.85,
+            "mean_error": 149.85,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "select-hard-205",
+              "select-hard-212",
+              "select-hard-218",
+              "select-hard-222",
+              "select-hard-224",
+              "select-hard-225",
+              "select-hard-255",
+              "select-hard-257",
+              "select-hard-258",
+              "select-hard-260"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 34,
+            "failure_count": 16,
+            "success_rate": 0.68,
+            "mean_error": 319.68,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "select-adversarial-300",
+              "select-adversarial-304",
+              "select-adversarial-311",
+              "select-adversarial-313",
+              "select-adversarial-319",
+              "select-adversarial-320",
+              "select-adversarial-321",
+              "select-adversarial-322",
+              "select-adversarial-324",
+              "select-adversarial-327"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "capability_status": "positive_candidate",
+        "capability_level": "candidate",
+        "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+      },
+      "icon_select": {
+        "sample_count": 350,
+        "success_count": 323,
+        "failure_count": 27,
+        "success_rate": 0.9228571428571428,
+        "mean_error": 77.06571428571428,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "icon_select-medium-153",
+          "icon_select-hard-204",
+          "icon_select-hard-208",
+          "icon_select-hard-222",
+          "icon_select-hard-223",
+          "icon_select-hard-226",
+          "icon_select-hard-230",
+          "icon_select-hard-237",
+          "icon_select-hard-248",
+          "icon_select-hard-249",
+          "icon_select-hard-261",
+          "icon_select-hard-270",
+          "icon_select-hard-284",
+          "icon_select-adversarial-308",
+          "icon_select-adversarial-310",
+          "icon_select-adversarial-316",
+          "icon_select-adversarial-317",
+          "icon_select-adversarial-318",
+          "icon_select-adversarial-321",
+          "icon_select-adversarial-323"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        },
+        "per_difficulty_metrics": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 99,
+            "failure_count": 1,
+            "success_rate": 0.99,
+            "mean_error": 9.99,
+            "p95_error": 0.0,
+            "failure_cases": [
+              "icon_select-medium-153"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 88,
+            "failure_count": 12,
+            "success_rate": 0.88,
+            "mean_error": 119.88,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "icon_select-hard-204",
+              "icon_select-hard-208",
+              "icon_select-hard-222",
+              "icon_select-hard-223",
+              "icon_select-hard-226",
+              "icon_select-hard-230",
+              "icon_select-hard-237",
+              "icon_select-hard-248",
+              "icon_select-hard-249",
+              "icon_select-hard-261"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 36,
+            "failure_count": 14,
+            "success_rate": 0.72,
+            "mean_error": 279.72,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "icon_select-adversarial-308",
+              "icon_select-adversarial-310",
+              "icon_select-adversarial-316",
+              "icon_select-adversarial-317",
+              "icon_select-adversarial-318",
+              "icon_select-adversarial-321",
+              "icon_select-adversarial-323",
+              "icon_select-adversarial-326",
+              "icon_select-adversarial-336",
+              "icon_select-adversarial-339"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "capability_status": "positive_candidate",
+        "capability_level": "candidate",
+        "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+      },
+      "seq_select": {
+        "sample_count": 350,
+        "success_count": 320,
+        "failure_count": 30,
+        "success_rate": 0.9142857142857143,
+        "mean_error": 85.62857142857143,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "seq_select-medium-113",
+          "seq_select-medium-121",
+          "seq_select-medium-133",
+          "seq_select-medium-161",
+          "seq_select-medium-178",
+          "seq_select-hard-201",
+          "seq_select-hard-219",
+          "seq_select-hard-246",
+          "seq_select-hard-255",
+          "seq_select-hard-258",
+          "seq_select-hard-269",
+          "seq_select-hard-288",
+          "seq_select-hard-293",
+          "seq_select-adversarial-302",
+          "seq_select-adversarial-303",
+          "seq_select-adversarial-307",
+          "seq_select-adversarial-308",
+          "seq_select-adversarial-312",
+          "seq_select-adversarial-313",
+          "seq_select-adversarial-315"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        },
+        "per_difficulty_metrics": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 95,
+            "failure_count": 5,
+            "success_rate": 0.95,
+            "mean_error": 49.95,
+            "p95_error": 0.0,
+            "failure_cases": [
+              "seq_select-medium-113",
+              "seq_select-medium-121",
+              "seq_select-medium-133",
+              "seq_select-medium-161",
+              "seq_select-medium-178"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 92,
+            "failure_count": 8,
+            "success_rate": 0.92,
+            "mean_error": 79.92,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "seq_select-hard-201",
+              "seq_select-hard-219",
+              "seq_select-hard-246",
+              "seq_select-hard-255",
+              "seq_select-hard-258",
+              "seq_select-hard-269",
+              "seq_select-hard-288",
+              "seq_select-hard-293"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 33,
+            "failure_count": 17,
+            "success_rate": 0.66,
+            "mean_error": 339.66,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "seq_select-adversarial-302",
+              "seq_select-adversarial-303",
+              "seq_select-adversarial-307",
+              "seq_select-adversarial-308",
+              "seq_select-adversarial-312",
+              "seq_select-adversarial-313",
+              "seq_select-adversarial-315",
+              "seq_select-adversarial-318",
+              "seq_select-adversarial-319",
+              "seq_select-adversarial-320"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "capability_status": "positive_candidate",
+        "capability_level": "candidate",
+        "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+      },
+      "spatial_select": {
+        "sample_count": 350,
+        "success_count": 323,
+        "failure_count": 27,
+        "success_rate": 0.9228571428571428,
+        "mean_error": 77.06571428571428,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "spatial_select-medium-103",
+          "spatial_select-medium-112",
+          "spatial_select-hard-204",
+          "spatial_select-hard-208",
+          "spatial_select-hard-220",
+          "spatial_select-hard-225",
+          "spatial_select-hard-232",
+          "spatial_select-hard-258",
+          "spatial_select-hard-259",
+          "spatial_select-hard-264",
+          "spatial_select-hard-283",
+          "spatial_select-hard-285",
+          "spatial_select-hard-287",
+          "spatial_select-hard-288",
+          "spatial_select-hard-294",
+          "spatial_select-hard-299",
+          "spatial_select-adversarial-311",
+          "spatial_select-adversarial-312",
+          "spatial_select-adversarial-314",
+          "spatial_select-adversarial-321"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        },
+        "per_difficulty_metrics": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 98,
+            "failure_count": 2,
+            "success_rate": 0.98,
+            "mean_error": 19.98,
+            "p95_error": 0.0,
+            "failure_cases": [
+              "spatial_select-medium-103",
+              "spatial_select-medium-112"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 86,
+            "failure_count": 14,
+            "success_rate": 0.86,
+            "mean_error": 139.86,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "spatial_select-hard-204",
+              "spatial_select-hard-208",
+              "spatial_select-hard-220",
+              "spatial_select-hard-225",
+              "spatial_select-hard-232",
+              "spatial_select-hard-258",
+              "spatial_select-hard-259",
+              "spatial_select-hard-264",
+              "spatial_select-hard-283",
+              "spatial_select-hard-285"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 39,
+            "failure_count": 11,
+            "success_rate": 0.78,
+            "mean_error": 219.78,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "spatial_select-adversarial-311",
+              "spatial_select-adversarial-312",
+              "spatial_select-adversarial-314",
+              "spatial_select-adversarial-321",
+              "spatial_select-adversarial-324",
+              "spatial_select-adversarial-327",
+              "spatial_select-adversarial-329",
+              "spatial_select-adversarial-337",
+              "spatial_select-adversarial-340",
+              "spatial_select-adversarial-341"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "capability_status": "positive_candidate",
+        "capability_level": "candidate",
+        "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+      },
+      "no_sense": {
+        "sample_count": 350,
+        "success_count": 350,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "mean_error": 0.0,
+        "p95_error": 0.0,
+        "failure_cases": [],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        },
+        "per_difficulty_metrics": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 50,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "capability_status": "memory_only",
+        "capability_level": "memory_only",
+        "why": "state-machine-only observation, not no-sense bypass"
+      }
+    }
+  },
+  "per_family_capability_decision": {
+    "slide": {
+      "sample_count": 350,
+      "success_count": 320,
+      "failure_count": 30,
+      "success_rate": 0.9142857142857143,
+      "mean_error": 85.62857142857143,
+      "p95_error": 999.0,
+      "failure_cases": [
+        "slide-medium-137",
+        "slide-medium-141",
+        "slide-medium-171",
+        "slide-medium-186",
+        "slide-hard-201",
+        "slide-hard-206",
+        "slide-hard-211",
+        "slide-hard-228",
+        "slide-hard-251",
+        "slide-hard-267",
+        "slide-hard-277",
+        "slide-hard-299",
+        "slide-adversarial-303",
+        "slide-adversarial-304",
+        "slide-adversarial-307",
+        "slide-adversarial-308",
+        "slide-adversarial-313",
+        "slide-adversarial-321",
+        "slide-adversarial-323",
+        "slide-adversarial-324"
+      ],
+      "action_trace": {
+        "present": true,
+        "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+      },
+      "blackbox_gate": {
+        "status": "pending",
+        "answer_read_for_prediction": false
+      },
+      "leakage_audit": {
+        "status": "pending"
+      },
+      "realism_audit": {
+        "status": "pending"
+      },
+      "per_difficulty_metrics": {
+        "easy": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "mean_error": 0.0,
+          "p95_error": 0.0,
+          "failure_cases": [],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "medium": {
+          "sample_count": 100,
+          "success_count": 96,
+          "failure_count": 4,
+          "success_rate": 0.96,
+          "mean_error": 39.96,
+          "p95_error": 0.0,
+          "failure_cases": [
+            "slide-medium-137",
+            "slide-medium-141",
+            "slide-medium-171",
+            "slide-medium-186"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "hard": {
+          "sample_count": 100,
+          "success_count": 92,
+          "failure_count": 8,
+          "success_rate": 0.92,
+          "mean_error": 79.92,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "slide-hard-201",
+            "slide-hard-206",
+            "slide-hard-211",
+            "slide-hard-228",
+            "slide-hard-251",
+            "slide-hard-267",
+            "slide-hard-277",
+            "slide-hard-299"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "adversarial": {
+          "sample_count": 50,
+          "success_count": 32,
+          "failure_count": 18,
+          "success_rate": 0.64,
+          "mean_error": 359.64,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "slide-adversarial-303",
+            "slide-adversarial-304",
+            "slide-adversarial-307",
+            "slide-adversarial-308",
+            "slide-adversarial-313",
+            "slide-adversarial-321",
+            "slide-adversarial-323",
+            "slide-adversarial-324",
+            "slide-adversarial-328",
+            "slide-adversarial-331"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        }
+      },
+      "capability_status": "positive_candidate",
+      "capability_level": "candidate",
+      "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+    },
+    "select": {
+      "sample_count": 350,
+      "success_count": 316,
+      "failure_count": 34,
+      "success_rate": 0.9028571428571428,
+      "mean_error": 97.04571428571428,
+      "p95_error": 999.0,
+      "failure_cases": [
+        "select-medium-140",
+        "select-medium-154",
+        "select-medium-178",
+        "select-hard-205",
+        "select-hard-212",
+        "select-hard-218",
+        "select-hard-222",
+        "select-hard-224",
+        "select-hard-225",
+        "select-hard-255",
+        "select-hard-257",
+        "select-hard-258",
+        "select-hard-260",
+        "select-hard-263",
+        "select-hard-289",
+        "select-hard-293",
+        "select-hard-294",
+        "select-hard-299",
+        "select-adversarial-300",
+        "select-adversarial-304"
+      ],
+      "action_trace": {
+        "present": true,
+        "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+      },
+      "blackbox_gate": {
+        "status": "pending",
+        "answer_read_for_prediction": false
+      },
+      "leakage_audit": {
+        "status": "pending"
+      },
+      "realism_audit": {
+        "status": "pending"
+      },
+      "per_difficulty_metrics": {
+        "easy": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "mean_error": 0.0,
+          "p95_error": 0.0,
+          "failure_cases": [],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "medium": {
+          "sample_count": 100,
+          "success_count": 97,
+          "failure_count": 3,
+          "success_rate": 0.97,
+          "mean_error": 29.97,
+          "p95_error": 0.0,
+          "failure_cases": [
+            "select-medium-140",
+            "select-medium-154",
+            "select-medium-178"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "hard": {
+          "sample_count": 100,
+          "success_count": 85,
+          "failure_count": 15,
+          "success_rate": 0.85,
+          "mean_error": 149.85,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "select-hard-205",
+            "select-hard-212",
+            "select-hard-218",
+            "select-hard-222",
+            "select-hard-224",
+            "select-hard-225",
+            "select-hard-255",
+            "select-hard-257",
+            "select-hard-258",
+            "select-hard-260"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "adversarial": {
+          "sample_count": 50,
+          "success_count": 34,
+          "failure_count": 16,
+          "success_rate": 0.68,
+          "mean_error": 319.68,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "select-adversarial-300",
+            "select-adversarial-304",
+            "select-adversarial-311",
+            "select-adversarial-313",
+            "select-adversarial-319",
+            "select-adversarial-320",
+            "select-adversarial-321",
+            "select-adversarial-322",
+            "select-adversarial-324",
+            "select-adversarial-327"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        }
+      },
+      "capability_status": "positive_candidate",
+      "capability_level": "candidate",
+      "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+    },
+    "icon_select": {
+      "sample_count": 350,
+      "success_count": 323,
+      "failure_count": 27,
+      "success_rate": 0.9228571428571428,
+      "mean_error": 77.06571428571428,
+      "p95_error": 999.0,
+      "failure_cases": [
+        "icon_select-medium-153",
+        "icon_select-hard-204",
+        "icon_select-hard-208",
+        "icon_select-hard-222",
+        "icon_select-hard-223",
+        "icon_select-hard-226",
+        "icon_select-hard-230",
+        "icon_select-hard-237",
+        "icon_select-hard-248",
+        "icon_select-hard-249",
+        "icon_select-hard-261",
+        "icon_select-hard-270",
+        "icon_select-hard-284",
+        "icon_select-adversarial-308",
+        "icon_select-adversarial-310",
+        "icon_select-adversarial-316",
+        "icon_select-adversarial-317",
+        "icon_select-adversarial-318",
+        "icon_select-adversarial-321",
+        "icon_select-adversarial-323"
+      ],
+      "action_trace": {
+        "present": true,
+        "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+      },
+      "blackbox_gate": {
+        "status": "pending",
+        "answer_read_for_prediction": false
+      },
+      "leakage_audit": {
+        "status": "pending"
+      },
+      "realism_audit": {
+        "status": "pending"
+      },
+      "per_difficulty_metrics": {
+        "easy": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "mean_error": 0.0,
+          "p95_error": 0.0,
+          "failure_cases": [],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "medium": {
+          "sample_count": 100,
+          "success_count": 99,
+          "failure_count": 1,
+          "success_rate": 0.99,
+          "mean_error": 9.99,
+          "p95_error": 0.0,
+          "failure_cases": [
+            "icon_select-medium-153"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "hard": {
+          "sample_count": 100,
+          "success_count": 88,
+          "failure_count": 12,
+          "success_rate": 0.88,
+          "mean_error": 119.88,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "icon_select-hard-204",
+            "icon_select-hard-208",
+            "icon_select-hard-222",
+            "icon_select-hard-223",
+            "icon_select-hard-226",
+            "icon_select-hard-230",
+            "icon_select-hard-237",
+            "icon_select-hard-248",
+            "icon_select-hard-249",
+            "icon_select-hard-261"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "adversarial": {
+          "sample_count": 50,
+          "success_count": 36,
+          "failure_count": 14,
+          "success_rate": 0.72,
+          "mean_error": 279.72,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "icon_select-adversarial-308",
+            "icon_select-adversarial-310",
+            "icon_select-adversarial-316",
+            "icon_select-adversarial-317",
+            "icon_select-adversarial-318",
+            "icon_select-adversarial-321",
+            "icon_select-adversarial-323",
+            "icon_select-adversarial-326",
+            "icon_select-adversarial-336",
+            "icon_select-adversarial-339"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        }
+      },
+      "capability_status": "positive_candidate",
+      "capability_level": "candidate",
+      "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+    },
+    "seq_select": {
+      "sample_count": 350,
+      "success_count": 320,
+      "failure_count": 30,
+      "success_rate": 0.9142857142857143,
+      "mean_error": 85.62857142857143,
+      "p95_error": 999.0,
+      "failure_cases": [
+        "seq_select-medium-113",
+        "seq_select-medium-121",
+        "seq_select-medium-133",
+        "seq_select-medium-161",
+        "seq_select-medium-178",
+        "seq_select-hard-201",
+        "seq_select-hard-219",
+        "seq_select-hard-246",
+        "seq_select-hard-255",
+        "seq_select-hard-258",
+        "seq_select-hard-269",
+        "seq_select-hard-288",
+        "seq_select-hard-293",
+        "seq_select-adversarial-302",
+        "seq_select-adversarial-303",
+        "seq_select-adversarial-307",
+        "seq_select-adversarial-308",
+        "seq_select-adversarial-312",
+        "seq_select-adversarial-313",
+        "seq_select-adversarial-315"
+      ],
+      "action_trace": {
+        "present": true,
+        "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+      },
+      "blackbox_gate": {
+        "status": "pending",
+        "answer_read_for_prediction": false
+      },
+      "leakage_audit": {
+        "status": "pending"
+      },
+      "realism_audit": {
+        "status": "pending"
+      },
+      "per_difficulty_metrics": {
+        "easy": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "mean_error": 0.0,
+          "p95_error": 0.0,
+          "failure_cases": [],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "medium": {
+          "sample_count": 100,
+          "success_count": 95,
+          "failure_count": 5,
+          "success_rate": 0.95,
+          "mean_error": 49.95,
+          "p95_error": 0.0,
+          "failure_cases": [
+            "seq_select-medium-113",
+            "seq_select-medium-121",
+            "seq_select-medium-133",
+            "seq_select-medium-161",
+            "seq_select-medium-178"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "hard": {
+          "sample_count": 100,
+          "success_count": 92,
+          "failure_count": 8,
+          "success_rate": 0.92,
+          "mean_error": 79.92,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "seq_select-hard-201",
+            "seq_select-hard-219",
+            "seq_select-hard-246",
+            "seq_select-hard-255",
+            "seq_select-hard-258",
+            "seq_select-hard-269",
+            "seq_select-hard-288",
+            "seq_select-hard-293"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "adversarial": {
+          "sample_count": 50,
+          "success_count": 33,
+          "failure_count": 17,
+          "success_rate": 0.66,
+          "mean_error": 339.66,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "seq_select-adversarial-302",
+            "seq_select-adversarial-303",
+            "seq_select-adversarial-307",
+            "seq_select-adversarial-308",
+            "seq_select-adversarial-312",
+            "seq_select-adversarial-313",
+            "seq_select-adversarial-315",
+            "seq_select-adversarial-318",
+            "seq_select-adversarial-319",
+            "seq_select-adversarial-320"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        }
+      },
+      "capability_status": "positive_candidate",
+      "capability_level": "candidate",
+      "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+    },
+    "spatial_select": {
+      "sample_count": 350,
+      "success_count": 323,
+      "failure_count": 27,
+      "success_rate": 0.9228571428571428,
+      "mean_error": 77.06571428571428,
+      "p95_error": 999.0,
+      "failure_cases": [
+        "spatial_select-medium-103",
+        "spatial_select-medium-112",
+        "spatial_select-hard-204",
+        "spatial_select-hard-208",
+        "spatial_select-hard-220",
+        "spatial_select-hard-225",
+        "spatial_select-hard-232",
+        "spatial_select-hard-258",
+        "spatial_select-hard-259",
+        "spatial_select-hard-264",
+        "spatial_select-hard-283",
+        "spatial_select-hard-285",
+        "spatial_select-hard-287",
+        "spatial_select-hard-288",
+        "spatial_select-hard-294",
+        "spatial_select-hard-299",
+        "spatial_select-adversarial-311",
+        "spatial_select-adversarial-312",
+        "spatial_select-adversarial-314",
+        "spatial_select-adversarial-321"
+      ],
+      "action_trace": {
+        "present": true,
+        "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+      },
+      "blackbox_gate": {
+        "status": "pending",
+        "answer_read_for_prediction": false
+      },
+      "leakage_audit": {
+        "status": "pending"
+      },
+      "realism_audit": {
+        "status": "pending"
+      },
+      "per_difficulty_metrics": {
+        "easy": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "mean_error": 0.0,
+          "p95_error": 0.0,
+          "failure_cases": [],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "medium": {
+          "sample_count": 100,
+          "success_count": 98,
+          "failure_count": 2,
+          "success_rate": 0.98,
+          "mean_error": 19.98,
+          "p95_error": 0.0,
+          "failure_cases": [
+            "spatial_select-medium-103",
+            "spatial_select-medium-112"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "hard": {
+          "sample_count": 100,
+          "success_count": 86,
+          "failure_count": 14,
+          "success_rate": 0.86,
+          "mean_error": 139.86,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "spatial_select-hard-204",
+            "spatial_select-hard-208",
+            "spatial_select-hard-220",
+            "spatial_select-hard-225",
+            "spatial_select-hard-232",
+            "spatial_select-hard-258",
+            "spatial_select-hard-259",
+            "spatial_select-hard-264",
+            "spatial_select-hard-283",
+            "spatial_select-hard-285"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "adversarial": {
+          "sample_count": 50,
+          "success_count": 39,
+          "failure_count": 11,
+          "success_rate": 0.78,
+          "mean_error": 219.78,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "spatial_select-adversarial-311",
+            "spatial_select-adversarial-312",
+            "spatial_select-adversarial-314",
+            "spatial_select-adversarial-321",
+            "spatial_select-adversarial-324",
+            "spatial_select-adversarial-327",
+            "spatial_select-adversarial-329",
+            "spatial_select-adversarial-337",
+            "spatial_select-adversarial-340",
+            "spatial_select-adversarial-341"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        }
+      },
+      "capability_status": "positive_candidate",
+      "capability_level": "candidate",
+      "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+    },
+    "no_sense": {
+      "sample_count": 350,
+      "success_count": 350,
+      "failure_count": 0,
+      "success_rate": 1.0,
+      "mean_error": 0.0,
+      "p95_error": 0.0,
+      "failure_cases": [],
+      "action_trace": {
+        "present": true,
+        "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+      },
+      "blackbox_gate": {
+        "status": "pending",
+        "answer_read_for_prediction": false
+      },
+      "leakage_audit": {
+        "status": "pending"
+      },
+      "realism_audit": {
+        "status": "pending"
+      },
+      "per_difficulty_metrics": {
+        "easy": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "mean_error": 0.0,
+          "p95_error": 0.0,
+          "failure_cases": [],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "medium": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "mean_error": 0.0,
+          "p95_error": 0.0,
+          "failure_cases": [],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "hard": {
+          "sample_count": 100,
+          "success_count": 100,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "mean_error": 0.0,
+          "p95_error": 0.0,
+          "failure_cases": [],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        },
+        "adversarial": {
+          "sample_count": 50,
+          "success_count": 50,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "mean_error": 0.0,
+          "p95_error": 0.0,
+          "failure_cases": [],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          }
+        }
+      },
+      "capability_status": "memory_only",
+      "capability_level": "memory_only",
+      "why": "state-machine-only observation, not no-sense bypass"
+    }
+  },
+  "per_difficulty_metrics": {
+    "slide": {
+      "easy": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "mean_error": 0.0,
+        "p95_error": 0.0,
+        "failure_cases": [],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "medium": {
+        "sample_count": 100,
+        "success_count": 96,
+        "failure_count": 4,
+        "success_rate": 0.96,
+        "mean_error": 39.96,
+        "p95_error": 0.0,
+        "failure_cases": [
+          "slide-medium-137",
+          "slide-medium-141",
+          "slide-medium-171",
+          "slide-medium-186"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "hard": {
+        "sample_count": 100,
+        "success_count": 92,
+        "failure_count": 8,
+        "success_rate": 0.92,
+        "mean_error": 79.92,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "slide-hard-201",
+          "slide-hard-206",
+          "slide-hard-211",
+          "slide-hard-228",
+          "slide-hard-251",
+          "slide-hard-267",
+          "slide-hard-277",
+          "slide-hard-299"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "adversarial": {
+        "sample_count": 50,
+        "success_count": 32,
+        "failure_count": 18,
+        "success_rate": 0.64,
+        "mean_error": 359.64,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "slide-adversarial-303",
+          "slide-adversarial-304",
+          "slide-adversarial-307",
+          "slide-adversarial-308",
+          "slide-adversarial-313",
+          "slide-adversarial-321",
+          "slide-adversarial-323",
+          "slide-adversarial-324",
+          "slide-adversarial-328",
+          "slide-adversarial-331"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      }
+    },
+    "select": {
+      "easy": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "mean_error": 0.0,
+        "p95_error": 0.0,
+        "failure_cases": [],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "medium": {
+        "sample_count": 100,
+        "success_count": 97,
+        "failure_count": 3,
+        "success_rate": 0.97,
+        "mean_error": 29.97,
+        "p95_error": 0.0,
+        "failure_cases": [
+          "select-medium-140",
+          "select-medium-154",
+          "select-medium-178"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "hard": {
+        "sample_count": 100,
+        "success_count": 85,
+        "failure_count": 15,
+        "success_rate": 0.85,
+        "mean_error": 149.85,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "select-hard-205",
+          "select-hard-212",
+          "select-hard-218",
+          "select-hard-222",
+          "select-hard-224",
+          "select-hard-225",
+          "select-hard-255",
+          "select-hard-257",
+          "select-hard-258",
+          "select-hard-260"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "adversarial": {
+        "sample_count": 50,
+        "success_count": 34,
+        "failure_count": 16,
+        "success_rate": 0.68,
+        "mean_error": 319.68,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "select-adversarial-300",
+          "select-adversarial-304",
+          "select-adversarial-311",
+          "select-adversarial-313",
+          "select-adversarial-319",
+          "select-adversarial-320",
+          "select-adversarial-321",
+          "select-adversarial-322",
+          "select-adversarial-324",
+          "select-adversarial-327"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      }
+    },
+    "icon_select": {
+      "easy": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "mean_error": 0.0,
+        "p95_error": 0.0,
+        "failure_cases": [],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "medium": {
+        "sample_count": 100,
+        "success_count": 99,
+        "failure_count": 1,
+        "success_rate": 0.99,
+        "mean_error": 9.99,
+        "p95_error": 0.0,
+        "failure_cases": [
+          "icon_select-medium-153"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "hard": {
+        "sample_count": 100,
+        "success_count": 88,
+        "failure_count": 12,
+        "success_rate": 0.88,
+        "mean_error": 119.88,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "icon_select-hard-204",
+          "icon_select-hard-208",
+          "icon_select-hard-222",
+          "icon_select-hard-223",
+          "icon_select-hard-226",
+          "icon_select-hard-230",
+          "icon_select-hard-237",
+          "icon_select-hard-248",
+          "icon_select-hard-249",
+          "icon_select-hard-261"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "adversarial": {
+        "sample_count": 50,
+        "success_count": 36,
+        "failure_count": 14,
+        "success_rate": 0.72,
+        "mean_error": 279.72,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "icon_select-adversarial-308",
+          "icon_select-adversarial-310",
+          "icon_select-adversarial-316",
+          "icon_select-adversarial-317",
+          "icon_select-adversarial-318",
+          "icon_select-adversarial-321",
+          "icon_select-adversarial-323",
+          "icon_select-adversarial-326",
+          "icon_select-adversarial-336",
+          "icon_select-adversarial-339"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      }
+    },
+    "seq_select": {
+      "easy": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "mean_error": 0.0,
+        "p95_error": 0.0,
+        "failure_cases": [],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "medium": {
+        "sample_count": 100,
+        "success_count": 95,
+        "failure_count": 5,
+        "success_rate": 0.95,
+        "mean_error": 49.95,
+        "p95_error": 0.0,
+        "failure_cases": [
+          "seq_select-medium-113",
+          "seq_select-medium-121",
+          "seq_select-medium-133",
+          "seq_select-medium-161",
+          "seq_select-medium-178"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "hard": {
+        "sample_count": 100,
+        "success_count": 92,
+        "failure_count": 8,
+        "success_rate": 0.92,
+        "mean_error": 79.92,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "seq_select-hard-201",
+          "seq_select-hard-219",
+          "seq_select-hard-246",
+          "seq_select-hard-255",
+          "seq_select-hard-258",
+          "seq_select-hard-269",
+          "seq_select-hard-288",
+          "seq_select-hard-293"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "adversarial": {
+        "sample_count": 50,
+        "success_count": 33,
+        "failure_count": 17,
+        "success_rate": 0.66,
+        "mean_error": 339.66,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "seq_select-adversarial-302",
+          "seq_select-adversarial-303",
+          "seq_select-adversarial-307",
+          "seq_select-adversarial-308",
+          "seq_select-adversarial-312",
+          "seq_select-adversarial-313",
+          "seq_select-adversarial-315",
+          "seq_select-adversarial-318",
+          "seq_select-adversarial-319",
+          "seq_select-adversarial-320"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      }
+    },
+    "spatial_select": {
+      "easy": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "mean_error": 0.0,
+        "p95_error": 0.0,
+        "failure_cases": [],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "medium": {
+        "sample_count": 100,
+        "success_count": 98,
+        "failure_count": 2,
+        "success_rate": 0.98,
+        "mean_error": 19.98,
+        "p95_error": 0.0,
+        "failure_cases": [
+          "spatial_select-medium-103",
+          "spatial_select-medium-112"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "hard": {
+        "sample_count": 100,
+        "success_count": 86,
+        "failure_count": 14,
+        "success_rate": 0.86,
+        "mean_error": 139.86,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "spatial_select-hard-204",
+          "spatial_select-hard-208",
+          "spatial_select-hard-220",
+          "spatial_select-hard-225",
+          "spatial_select-hard-232",
+          "spatial_select-hard-258",
+          "spatial_select-hard-259",
+          "spatial_select-hard-264",
+          "spatial_select-hard-283",
+          "spatial_select-hard-285"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "adversarial": {
+        "sample_count": 50,
+        "success_count": 39,
+        "failure_count": 11,
+        "success_rate": 0.78,
+        "mean_error": 219.78,
+        "p95_error": 999.0,
+        "failure_cases": [
+          "spatial_select-adversarial-311",
+          "spatial_select-adversarial-312",
+          "spatial_select-adversarial-314",
+          "spatial_select-adversarial-321",
+          "spatial_select-adversarial-324",
+          "spatial_select-adversarial-327",
+          "spatial_select-adversarial-329",
+          "spatial_select-adversarial-337",
+          "spatial_select-adversarial-340",
+          "spatial_select-adversarial-341"
+        ],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      }
+    },
+    "no_sense": {
+      "easy": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "mean_error": 0.0,
+        "p95_error": 0.0,
+        "failure_cases": [],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "medium": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "mean_error": 0.0,
+        "p95_error": 0.0,
+        "failure_cases": [],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "hard": {
+        "sample_count": 100,
+        "success_count": 100,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "mean_error": 0.0,
+        "p95_error": 0.0,
+        "failure_cases": [],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      },
+      "adversarial": {
+        "sample_count": 50,
+        "success_count": 50,
+        "failure_count": 0,
+        "success_rate": 1.0,
+        "mean_error": 0.0,
+        "p95_error": 0.0,
+        "failure_cases": [],
+        "action_trace": {
+          "present": true,
+          "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+        },
+        "blackbox_gate": {
+          "status": "pending",
+          "answer_read_for_prediction": false
+        },
+        "leakage_audit": {
+          "status": "pending"
+        },
+        "realism_audit": {
+          "status": "pending"
+        }
+      }
+    }
+  },
+  "sample_count": 2100,
+  "success_rate": 0.9295238095238095,
+  "realism_status": "PASS",
+  "failure_cases_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\failure-cases.json",
+  "experience_cards": [
+    "E:\\SKILLS\\oh_my_reverse_skill\\skills-experience\\phase3-10\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-compatible-lab-card.json"
+  ],
+  "evals": [
+    "E:\\SKILLS\\oh_my_reverse_skill\\evals\\phase3-10\\shumei-compatible-lab-compatible-lab-hardening.yaml"
+  ],
+  "action_replay": {
+    "status": "pass",
+    "metrics": {
+      "target": "shumei-compatible-lab",
+      "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl",
+      "families": {
+        "slide": {
+          "sample_count": 350,
+          "success_count": 320,
+          "failure_count": 30,
+          "success_rate": 0.9142857142857143,
+          "mean_error": 85.62857142857143,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "slide-medium-137",
+            "slide-medium-141",
+            "slide-medium-171",
+            "slide-medium-186",
+            "slide-hard-201",
+            "slide-hard-206",
+            "slide-hard-211",
+            "slide-hard-228",
+            "slide-hard-251",
+            "slide-hard-267",
+            "slide-hard-277",
+            "slide-hard-299",
+            "slide-adversarial-303",
+            "slide-adversarial-304",
+            "slide-adversarial-307",
+            "slide-adversarial-308",
+            "slide-adversarial-313",
+            "slide-adversarial-321",
+            "slide-adversarial-323",
+            "slide-adversarial-324"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          },
+          "per_difficulty_metrics": {
+            "easy": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "mean_error": 0.0,
+              "p95_error": 0.0,
+              "failure_cases": [],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "medium": {
+              "sample_count": 100,
+              "success_count": 96,
+              "failure_count": 4,
+              "success_rate": 0.96,
+              "mean_error": 39.96,
+              "p95_error": 0.0,
+              "failure_cases": [
+                "slide-medium-137",
+                "slide-medium-141",
+                "slide-medium-171",
+                "slide-medium-186"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "hard": {
+              "sample_count": 100,
+              "success_count": 92,
+              "failure_count": 8,
+              "success_rate": 0.92,
+              "mean_error": 79.92,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "slide-hard-201",
+                "slide-hard-206",
+                "slide-hard-211",
+                "slide-hard-228",
+                "slide-hard-251",
+                "slide-hard-267",
+                "slide-hard-277",
+                "slide-hard-299"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "adversarial": {
+              "sample_count": 50,
+              "success_count": 32,
+              "failure_count": 18,
+              "success_rate": 0.64,
+              "mean_error": 359.64,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "slide-adversarial-303",
+                "slide-adversarial-304",
+                "slide-adversarial-307",
+                "slide-adversarial-308",
+                "slide-adversarial-313",
+                "slide-adversarial-321",
+                "slide-adversarial-323",
+                "slide-adversarial-324",
+                "slide-adversarial-328",
+                "slide-adversarial-331"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            }
+          },
+          "capability_status": "positive_candidate",
+          "capability_level": "candidate",
+          "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+        },
+        "select": {
+          "sample_count": 350,
+          "success_count": 316,
+          "failure_count": 34,
+          "success_rate": 0.9028571428571428,
+          "mean_error": 97.04571428571428,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "select-medium-140",
+            "select-medium-154",
+            "select-medium-178",
+            "select-hard-205",
+            "select-hard-212",
+            "select-hard-218",
+            "select-hard-222",
+            "select-hard-224",
+            "select-hard-225",
+            "select-hard-255",
+            "select-hard-257",
+            "select-hard-258",
+            "select-hard-260",
+            "select-hard-263",
+            "select-hard-289",
+            "select-hard-293",
+            "select-hard-294",
+            "select-hard-299",
+            "select-adversarial-300",
+            "select-adversarial-304"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          },
+          "per_difficulty_metrics": {
+            "easy": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "mean_error": 0.0,
+              "p95_error": 0.0,
+              "failure_cases": [],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "medium": {
+              "sample_count": 100,
+              "success_count": 97,
+              "failure_count": 3,
+              "success_rate": 0.97,
+              "mean_error": 29.97,
+              "p95_error": 0.0,
+              "failure_cases": [
+                "select-medium-140",
+                "select-medium-154",
+                "select-medium-178"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "hard": {
+              "sample_count": 100,
+              "success_count": 85,
+              "failure_count": 15,
+              "success_rate": 0.85,
+              "mean_error": 149.85,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "select-hard-205",
+                "select-hard-212",
+                "select-hard-218",
+                "select-hard-222",
+                "select-hard-224",
+                "select-hard-225",
+                "select-hard-255",
+                "select-hard-257",
+                "select-hard-258",
+                "select-hard-260"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "adversarial": {
+              "sample_count": 50,
+              "success_count": 34,
+              "failure_count": 16,
+              "success_rate": 0.68,
+              "mean_error": 319.68,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "select-adversarial-300",
+                "select-adversarial-304",
+                "select-adversarial-311",
+                "select-adversarial-313",
+                "select-adversarial-319",
+                "select-adversarial-320",
+                "select-adversarial-321",
+                "select-adversarial-322",
+                "select-adversarial-324",
+                "select-adversarial-327"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            }
+          },
+          "capability_status": "positive_candidate",
+          "capability_level": "candidate",
+          "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+        },
+        "icon_select": {
+          "sample_count": 350,
+          "success_count": 323,
+          "failure_count": 27,
+          "success_rate": 0.9228571428571428,
+          "mean_error": 77.06571428571428,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "icon_select-medium-153",
+            "icon_select-hard-204",
+            "icon_select-hard-208",
+            "icon_select-hard-222",
+            "icon_select-hard-223",
+            "icon_select-hard-226",
+            "icon_select-hard-230",
+            "icon_select-hard-237",
+            "icon_select-hard-248",
+            "icon_select-hard-249",
+            "icon_select-hard-261",
+            "icon_select-hard-270",
+            "icon_select-hard-284",
+            "icon_select-adversarial-308",
+            "icon_select-adversarial-310",
+            "icon_select-adversarial-316",
+            "icon_select-adversarial-317",
+            "icon_select-adversarial-318",
+            "icon_select-adversarial-321",
+            "icon_select-adversarial-323"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          },
+          "per_difficulty_metrics": {
+            "easy": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "mean_error": 0.0,
+              "p95_error": 0.0,
+              "failure_cases": [],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "medium": {
+              "sample_count": 100,
+              "success_count": 99,
+              "failure_count": 1,
+              "success_rate": 0.99,
+              "mean_error": 9.99,
+              "p95_error": 0.0,
+              "failure_cases": [
+                "icon_select-medium-153"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "hard": {
+              "sample_count": 100,
+              "success_count": 88,
+              "failure_count": 12,
+              "success_rate": 0.88,
+              "mean_error": 119.88,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "icon_select-hard-204",
+                "icon_select-hard-208",
+                "icon_select-hard-222",
+                "icon_select-hard-223",
+                "icon_select-hard-226",
+                "icon_select-hard-230",
+                "icon_select-hard-237",
+                "icon_select-hard-248",
+                "icon_select-hard-249",
+                "icon_select-hard-261"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "adversarial": {
+              "sample_count": 50,
+              "success_count": 36,
+              "failure_count": 14,
+              "success_rate": 0.72,
+              "mean_error": 279.72,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "icon_select-adversarial-308",
+                "icon_select-adversarial-310",
+                "icon_select-adversarial-316",
+                "icon_select-adversarial-317",
+                "icon_select-adversarial-318",
+                "icon_select-adversarial-321",
+                "icon_select-adversarial-323",
+                "icon_select-adversarial-326",
+                "icon_select-adversarial-336",
+                "icon_select-adversarial-339"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            }
+          },
+          "capability_status": "positive_candidate",
+          "capability_level": "candidate",
+          "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+        },
+        "seq_select": {
+          "sample_count": 350,
+          "success_count": 320,
+          "failure_count": 30,
+          "success_rate": 0.9142857142857143,
+          "mean_error": 85.62857142857143,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "seq_select-medium-113",
+            "seq_select-medium-121",
+            "seq_select-medium-133",
+            "seq_select-medium-161",
+            "seq_select-medium-178",
+            "seq_select-hard-201",
+            "seq_select-hard-219",
+            "seq_select-hard-246",
+            "seq_select-hard-255",
+            "seq_select-hard-258",
+            "seq_select-hard-269",
+            "seq_select-hard-288",
+            "seq_select-hard-293",
+            "seq_select-adversarial-302",
+            "seq_select-adversarial-303",
+            "seq_select-adversarial-307",
+            "seq_select-adversarial-308",
+            "seq_select-adversarial-312",
+            "seq_select-adversarial-313",
+            "seq_select-adversarial-315"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          },
+          "per_difficulty_metrics": {
+            "easy": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "mean_error": 0.0,
+              "p95_error": 0.0,
+              "failure_cases": [],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "medium": {
+              "sample_count": 100,
+              "success_count": 95,
+              "failure_count": 5,
+              "success_rate": 0.95,
+              "mean_error": 49.95,
+              "p95_error": 0.0,
+              "failure_cases": [
+                "seq_select-medium-113",
+                "seq_select-medium-121",
+                "seq_select-medium-133",
+                "seq_select-medium-161",
+                "seq_select-medium-178"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "hard": {
+              "sample_count": 100,
+              "success_count": 92,
+              "failure_count": 8,
+              "success_rate": 0.92,
+              "mean_error": 79.92,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "seq_select-hard-201",
+                "seq_select-hard-219",
+                "seq_select-hard-246",
+                "seq_select-hard-255",
+                "seq_select-hard-258",
+                "seq_select-hard-269",
+                "seq_select-hard-288",
+                "seq_select-hard-293"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "adversarial": {
+              "sample_count": 50,
+              "success_count": 33,
+              "failure_count": 17,
+              "success_rate": 0.66,
+              "mean_error": 339.66,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "seq_select-adversarial-302",
+                "seq_select-adversarial-303",
+                "seq_select-adversarial-307",
+                "seq_select-adversarial-308",
+                "seq_select-adversarial-312",
+                "seq_select-adversarial-313",
+                "seq_select-adversarial-315",
+                "seq_select-adversarial-318",
+                "seq_select-adversarial-319",
+                "seq_select-adversarial-320"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            }
+          },
+          "capability_status": "positive_candidate",
+          "capability_level": "candidate",
+          "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+        },
+        "spatial_select": {
+          "sample_count": 350,
+          "success_count": 323,
+          "failure_count": 27,
+          "success_rate": 0.9228571428571428,
+          "mean_error": 77.06571428571428,
+          "p95_error": 999.0,
+          "failure_cases": [
+            "spatial_select-medium-103",
+            "spatial_select-medium-112",
+            "spatial_select-hard-204",
+            "spatial_select-hard-208",
+            "spatial_select-hard-220",
+            "spatial_select-hard-225",
+            "spatial_select-hard-232",
+            "spatial_select-hard-258",
+            "spatial_select-hard-259",
+            "spatial_select-hard-264",
+            "spatial_select-hard-283",
+            "spatial_select-hard-285",
+            "spatial_select-hard-287",
+            "spatial_select-hard-288",
+            "spatial_select-hard-294",
+            "spatial_select-hard-299",
+            "spatial_select-adversarial-311",
+            "spatial_select-adversarial-312",
+            "spatial_select-adversarial-314",
+            "spatial_select-adversarial-321"
+          ],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          },
+          "per_difficulty_metrics": {
+            "easy": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "mean_error": 0.0,
+              "p95_error": 0.0,
+              "failure_cases": [],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "medium": {
+              "sample_count": 100,
+              "success_count": 98,
+              "failure_count": 2,
+              "success_rate": 0.98,
+              "mean_error": 19.98,
+              "p95_error": 0.0,
+              "failure_cases": [
+                "spatial_select-medium-103",
+                "spatial_select-medium-112"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "hard": {
+              "sample_count": 100,
+              "success_count": 86,
+              "failure_count": 14,
+              "success_rate": 0.86,
+              "mean_error": 139.86,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "spatial_select-hard-204",
+                "spatial_select-hard-208",
+                "spatial_select-hard-220",
+                "spatial_select-hard-225",
+                "spatial_select-hard-232",
+                "spatial_select-hard-258",
+                "spatial_select-hard-259",
+                "spatial_select-hard-264",
+                "spatial_select-hard-283",
+                "spatial_select-hard-285"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "adversarial": {
+              "sample_count": 50,
+              "success_count": 39,
+              "failure_count": 11,
+              "success_rate": 0.78,
+              "mean_error": 219.78,
+              "p95_error": 999.0,
+              "failure_cases": [
+                "spatial_select-adversarial-311",
+                "spatial_select-adversarial-312",
+                "spatial_select-adversarial-314",
+                "spatial_select-adversarial-321",
+                "spatial_select-adversarial-324",
+                "spatial_select-adversarial-327",
+                "spatial_select-adversarial-329",
+                "spatial_select-adversarial-337",
+                "spatial_select-adversarial-340",
+                "spatial_select-adversarial-341"
+              ],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            }
+          },
+          "capability_status": "positive_candidate",
+          "capability_level": "candidate",
+          "why": "local vendor-compatible lab only; hard/adversarial baseline is not official vendor production capability"
+        },
+        "no_sense": {
+          "sample_count": 350,
+          "success_count": 350,
+          "failure_count": 0,
+          "success_rate": 1.0,
+          "mean_error": 0.0,
+          "p95_error": 0.0,
+          "failure_cases": [],
+          "action_trace": {
+            "present": true,
+            "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+          },
+          "blackbox_gate": {
+            "status": "pending",
+            "answer_read_for_prediction": false
+          },
+          "leakage_audit": {
+            "status": "pending"
+          },
+          "realism_audit": {
+            "status": "pending"
+          },
+          "per_difficulty_metrics": {
+            "easy": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "mean_error": 0.0,
+              "p95_error": 0.0,
+              "failure_cases": [],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "medium": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "mean_error": 0.0,
+              "p95_error": 0.0,
+              "failure_cases": [],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "hard": {
+              "sample_count": 100,
+              "success_count": 100,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "mean_error": 0.0,
+              "p95_error": 0.0,
+              "failure_cases": [],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            },
+            "adversarial": {
+              "sample_count": 50,
+              "success_count": 50,
+              "failure_count": 0,
+              "success_rate": 1.0,
+              "mean_error": 0.0,
+              "p95_error": 0.0,
+              "failure_cases": [],
+              "action_trace": {
+                "present": true,
+                "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+              },
+              "blackbox_gate": {
+                "status": "pending",
+                "answer_read_for_prediction": false
+              },
+              "leakage_audit": {
+                "status": "pending"
+              },
+              "realism_audit": {
+                "status": "pending"
+              }
+            }
+          },
+          "capability_status": "memory_only",
+          "capability_level": "memory_only",
+          "why": "state-machine-only observation, not no-sense bypass"
+        }
+      },
+      "total_samples": 2100,
+      "total_success": 1952,
+      "success_rate": 0.9295238095238095,
+      "prediction_source": "challenge_image_instruction_action_schema_only",
+      "per_difficulty_metrics": {
+        "slide": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 96,
+            "failure_count": 4,
+            "success_rate": 0.96,
+            "mean_error": 39.96,
+            "p95_error": 0.0,
+            "failure_cases": [
+              "slide-medium-137",
+              "slide-medium-141",
+              "slide-medium-171",
+              "slide-medium-186"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 92,
+            "failure_count": 8,
+            "success_rate": 0.92,
+            "mean_error": 79.92,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "slide-hard-201",
+              "slide-hard-206",
+              "slide-hard-211",
+              "slide-hard-228",
+              "slide-hard-251",
+              "slide-hard-267",
+              "slide-hard-277",
+              "slide-hard-299"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 32,
+            "failure_count": 18,
+            "success_rate": 0.64,
+            "mean_error": 359.64,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "slide-adversarial-303",
+              "slide-adversarial-304",
+              "slide-adversarial-307",
+              "slide-adversarial-308",
+              "slide-adversarial-313",
+              "slide-adversarial-321",
+              "slide-adversarial-323",
+              "slide-adversarial-324",
+              "slide-adversarial-328",
+              "slide-adversarial-331"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "select": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 97,
+            "failure_count": 3,
+            "success_rate": 0.97,
+            "mean_error": 29.97,
+            "p95_error": 0.0,
+            "failure_cases": [
+              "select-medium-140",
+              "select-medium-154",
+              "select-medium-178"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 85,
+            "failure_count": 15,
+            "success_rate": 0.85,
+            "mean_error": 149.85,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "select-hard-205",
+              "select-hard-212",
+              "select-hard-218",
+              "select-hard-222",
+              "select-hard-224",
+              "select-hard-225",
+              "select-hard-255",
+              "select-hard-257",
+              "select-hard-258",
+              "select-hard-260"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 34,
+            "failure_count": 16,
+            "success_rate": 0.68,
+            "mean_error": 319.68,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "select-adversarial-300",
+              "select-adversarial-304",
+              "select-adversarial-311",
+              "select-adversarial-313",
+              "select-adversarial-319",
+              "select-adversarial-320",
+              "select-adversarial-321",
+              "select-adversarial-322",
+              "select-adversarial-324",
+              "select-adversarial-327"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "icon_select": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 99,
+            "failure_count": 1,
+            "success_rate": 0.99,
+            "mean_error": 9.99,
+            "p95_error": 0.0,
+            "failure_cases": [
+              "icon_select-medium-153"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 88,
+            "failure_count": 12,
+            "success_rate": 0.88,
+            "mean_error": 119.88,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "icon_select-hard-204",
+              "icon_select-hard-208",
+              "icon_select-hard-222",
+              "icon_select-hard-223",
+              "icon_select-hard-226",
+              "icon_select-hard-230",
+              "icon_select-hard-237",
+              "icon_select-hard-248",
+              "icon_select-hard-249",
+              "icon_select-hard-261"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 36,
+            "failure_count": 14,
+            "success_rate": 0.72,
+            "mean_error": 279.72,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "icon_select-adversarial-308",
+              "icon_select-adversarial-310",
+              "icon_select-adversarial-316",
+              "icon_select-adversarial-317",
+              "icon_select-adversarial-318",
+              "icon_select-adversarial-321",
+              "icon_select-adversarial-323",
+              "icon_select-adversarial-326",
+              "icon_select-adversarial-336",
+              "icon_select-adversarial-339"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "seq_select": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 95,
+            "failure_count": 5,
+            "success_rate": 0.95,
+            "mean_error": 49.95,
+            "p95_error": 0.0,
+            "failure_cases": [
+              "seq_select-medium-113",
+              "seq_select-medium-121",
+              "seq_select-medium-133",
+              "seq_select-medium-161",
+              "seq_select-medium-178"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 92,
+            "failure_count": 8,
+            "success_rate": 0.92,
+            "mean_error": 79.92,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "seq_select-hard-201",
+              "seq_select-hard-219",
+              "seq_select-hard-246",
+              "seq_select-hard-255",
+              "seq_select-hard-258",
+              "seq_select-hard-269",
+              "seq_select-hard-288",
+              "seq_select-hard-293"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 33,
+            "failure_count": 17,
+            "success_rate": 0.66,
+            "mean_error": 339.66,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "seq_select-adversarial-302",
+              "seq_select-adversarial-303",
+              "seq_select-adversarial-307",
+              "seq_select-adversarial-308",
+              "seq_select-adversarial-312",
+              "seq_select-adversarial-313",
+              "seq_select-adversarial-315",
+              "seq_select-adversarial-318",
+              "seq_select-adversarial-319",
+              "seq_select-adversarial-320"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "spatial_select": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 98,
+            "failure_count": 2,
+            "success_rate": 0.98,
+            "mean_error": 19.98,
+            "p95_error": 0.0,
+            "failure_cases": [
+              "spatial_select-medium-103",
+              "spatial_select-medium-112"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 86,
+            "failure_count": 14,
+            "success_rate": 0.86,
+            "mean_error": 139.86,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "spatial_select-hard-204",
+              "spatial_select-hard-208",
+              "spatial_select-hard-220",
+              "spatial_select-hard-225",
+              "spatial_select-hard-232",
+              "spatial_select-hard-258",
+              "spatial_select-hard-259",
+              "spatial_select-hard-264",
+              "spatial_select-hard-283",
+              "spatial_select-hard-285"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 39,
+            "failure_count": 11,
+            "success_rate": 0.78,
+            "mean_error": 219.78,
+            "p95_error": 999.0,
+            "failure_cases": [
+              "spatial_select-adversarial-311",
+              "spatial_select-adversarial-312",
+              "spatial_select-adversarial-314",
+              "spatial_select-adversarial-321",
+              "spatial_select-adversarial-324",
+              "spatial_select-adversarial-327",
+              "spatial_select-adversarial-329",
+              "spatial_select-adversarial-337",
+              "spatial_select-adversarial-340",
+              "spatial_select-adversarial-341"
+            ],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        },
+        "no_sense": {
+          "easy": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "medium": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "hard": {
+            "sample_count": 100,
+            "success_count": 100,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          },
+          "adversarial": {
+            "sample_count": 50,
+            "success_count": 50,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "mean_error": 0.0,
+            "p95_error": 0.0,
+            "failure_cases": [],
+            "action_trace": {
+              "present": true,
+              "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-action-replay-records.jsonl"
+            },
+            "blackbox_gate": {
+              "status": "pending",
+              "answer_read_for_prediction": false
+            },
+            "leakage_audit": {
+              "status": "pending"
+            },
+            "realism_audit": {
+              "status": "pending"
+            }
+          }
+        }
+      },
+      "failure_cases_top_50": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\failure-cases.json",
+      "threshold_pass": true,
+      "realism_features": {
+        "difficulty_levels": [
+          "easy",
+          "medium",
+          "hard",
+          "adversarial"
+        ],
+        "random_viewport": true,
+        "random_dpr": true,
+        "random_canvas_offset": true,
+        "action_timing_recorded": true,
+        "hard_adversarial_present": true
+      }
+    }
+  },
+  "leakage_audit": {
+    "status": "pass",
+    "path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\captcha-leakage-audit\\run-20260630-173000-phase3-11-type-matrix\\leakage-audit.json"
+  },
+  "blackbox_gate": {
+    "status": "pass",
+    "path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\captcha-blackbox-gate\\run-20260630-173000-phase3-11-type-matrix\\blackbox-gate.json"
+  },
+  "backend_acceptance": {
+    "status": "pass",
+    "final_api_endpoint_confirmed": true,
+    "endpoint": "/api/verify",
+    "observed_status": 200
+  },
+  "ui_api_parity": {
+    "status": "pass",
+    "browser_opened": true,
+    "api_feedback_observed": true
+  },
+  "scope_decision": {
+    "target_id": "shumei-compatible-lab",
+    "scope_type": "localhost_vendor_compatible_lab",
+    "authorization": "self_owned",
+    "allowed_mode": "action_replay",
+    "in_scope": true,
+    "external_generalization_allowed": false,
+    "positive_allowed_scope": "local_vendor_compatible_positive_candidate",
+    "scope_contract_path": "configs/range_scope_contract.yaml",
+    "why_in_scope": "Self-owned localhost vendor-compatible training lab; explicitly not official vendor production."
+  },
+  "capability_status_detail": {
+    "status": "positive_candidate",
+    "scope_limited_positive": "local_vendor_compatible_positive_candidate",
+    "public_range_only": false,
+    "local_only": true,
+    "not_generalizable_to_third_party": true,
+    "stable_positive": false
+  },
+  "execution_proof": {
+    "command": "D:\\python3.14\\python.exe tools/real_public_range_runner.py --target shumei-compatible-lab --run-id run-20260630-173000-phase3-11-type-matrix --family slide,select,icon_select,seq_select,spatial_select,no_sense --samples-per-family 350",
+    "cwd": "E:\\SKILLS\\oh_my_reverse_skill",
+    "started_at": "2026-06-30T08:06:57.675947Z",
+    "ended_at": "2026-06-30T08:07:39.712167Z",
+    "stdout_log": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\runner.stdout.log",
+    "stderr_log": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\runner.stderr.log",
+    "exit_code": 0,
+    "synthetic": false,
+    "generated_by": "tools/real_public_range_runner.py",
+    "screenshot_paths": [
+      "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-browser.png"
+    ],
+    "network_summary_paths": [
+      "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-network-summary.json"
+    ],
+    "browser_trace_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix\\shumei-compatible-lab-trace.zip"
+  },
+  "decision": {
+    "skills_participation": "positive_candidate",
+    "positive_allowed": false,
+    "blocked_reason": ""
+  },
+  "blocked": {
+    "blocked_reason": "",
+    "browser_error": "",
+    "startup": {
+      "status": "started",
+      "script": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-labs\\vendor-compatible-labs\\shumei-compatible-lab\\lab_server.py",
+      "port": 18210
+    }
+  },
+  "realism_audit": {
+    "status": "PASS",
+    "too_clean_metrics": [],
+    "fixed_answer_risk": false,
+    "geometry_fixed_risk": false,
+    "missing_family": [],
+    "missing_difficulty": [],
+    "missing_negative_eval": [],
+    "missing_state_binding": [],
+    "official_generalization_risk": false,
+    "path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\challenge-realism-audit\\run-20260630-173000-phase3-11-type-matrix\\challenge-realism-audit.json",
+    "realism_status": "PASS"
+  }
+}

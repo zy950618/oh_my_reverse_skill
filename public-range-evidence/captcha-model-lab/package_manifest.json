@@ -1,0 +1,54 @@
+{
+  "manifest_type": "captcha_model_package",
+  "schema_version": "0.1.0",
+  "model_package_id": "captcha-model-lab-sample-package",
+  "package_version": "0.1.0",
+  "canonical_manifest": "manifests/package_manifest.json",
+  "dataset_ref": "dataset_manifest.json",
+  "training_report_ref": "manifests/training_report.json",
+  "pass_rate_report_ref": "metrics.json",
+  "files": [
+    {
+      "role": "model",
+      "path": "model/sample-model.json"
+    },
+    {
+      "role": "inference_contract",
+      "path": "model/inference-contract.json"
+    },
+    {
+      "role": "sample_predictions",
+      "path": "sample_predictions.json"
+    },
+    {
+      "role": "expected_predictions",
+      "path": "expected_predictions.json"
+    },
+    {
+      "role": "pass_rate_markdown",
+      "path": "pass_rate_report.md"
+    },
+    {
+      "role": "failure_cases",
+      "path": "failure_cases.json"
+    }
+  ],
+  "inference_contract": {
+    "input": "redacted captcha image plus coordinate metadata",
+    "output": "captcha_action_schema@0.1.0",
+    "error_modes": [
+      "low_confidence",
+      "unsupported_challenge",
+      "invalid_geometry"
+    ]
+  },
+  "allowed_use": [
+    "local_lab",
+    "owned_authorized_target"
+  ],
+  "prohibited_claims": [
+    "third_party_captcha_bypass",
+    "managed_challenge_auto_pass",
+    "provider_success_without_business_repeat_verified"
+  ]
+}

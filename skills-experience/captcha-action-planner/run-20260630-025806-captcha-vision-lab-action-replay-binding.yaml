@@ -1,0 +1,14 @@
+experience_id: run-20260630-025806-captcha-vision-lab-action-replay-binding
+source_run_id: run-20260630-025806-captcha-vision-lab
+challenge_type: slider-captcha
+dataset: public-range-evidence/raw/captcha-vision-lab/run-20260630-025806-captcha-vision-lab/dataset/slider-captcha
+solver: white_gap_scan_baseline
+metrics: {"first_replay_action_success": false, "rerun_action_success": true}
+failure_modes: ["prediction was replayed against a localhost page with a different expected gap"]
+root_causes: ["challenge instance binding was missing between dataset sample and action replay page"]
+rule_added: recognition result must carry expected-answer or challenge-instance binding into action replay
+eval_added: 6-验证码逆向层/captcha-action-planner/evals/001-localhost-action-replay.yaml
+positive_allowed: false
+why_not_positive: localhost action replay has business_data_status=NOT_RUN and no final business API ledger
+authorized_scope: localhost synthetic captcha-vision-lab only
+next_training_target: add challenge_instance_id to generated labels and replay payloads

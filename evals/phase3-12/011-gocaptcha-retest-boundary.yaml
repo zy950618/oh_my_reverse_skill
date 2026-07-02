@@ -1,0 +1,4 @@
+id: phase3_12_gocaptcha_retest_boundary
+run_id: run-20260630-183000-phase3-12-model-flywheel
+evidence: public-range-evidence/gocaptcha-official/run-20260630-183000-phase3-12-model-flywheel.json
+expected: no_external_solver

@@ -1,0 +1,10 @@
+name: Validate CAPTCHA model package manifest
+prompt: >
+  Prepare a local CAPTCHA recognition model package for handoff.
+criteria:
+  - "Requires model_package_id, package_version, dataset_ref, training_report_ref, pass_rate_report_ref, and files."
+  - "Requires inference_contract input, output, and error modes."
+  - "Requires allowed_use and prohibited_claims to travel with the package."
+  - "Does not include raw provider tokens, cookies, challenge payloads, or unsupported positive claims."
+expect_skill: true
+timeout: 120

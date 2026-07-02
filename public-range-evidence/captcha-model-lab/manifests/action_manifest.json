@@ -1,0 +1,53 @@
+{
+  "schema_version": "0.1.0",
+  "manifest_type": "captcha_action_schema",
+  "challenge_type": "slider",
+  "provider": "custom",
+  "coordinate_space": {
+    "origin": "viewport_css_px",
+    "units": "css_px",
+    "rounding": "nearest_int"
+  },
+  "viewport": {
+    "width": 390,
+    "height": 844,
+    "device_pixel_ratio": 3.0
+  },
+  "target_element": {
+    "selector_hint": "[data-captcha-root]",
+    "bbox_css_px": {"x": 12, "y": 220, "width": 366, "height": 240}
+  },
+  "mobile_h5_transform": {
+    "input_space": "image_px",
+    "output_space": "viewport_css_px",
+    "device_pixel_ratio": 3.0,
+    "image_size_px": {"width": 366, "height": 240},
+    "element_bbox_css_px": {"x": 12, "y": 220, "width": 366, "height": 240},
+    "scroll_offset_css_px": {"x": 0, "y": 0},
+    "safe_area_css_px": {"top": 0, "right": 0, "bottom": 0, "left": 0}
+  },
+  "provider_detection_signals": [
+    {"kind": "dom", "value": "[data-provider='custom-slider']"},
+    {"kind": "network_path", "value": "/captcha/local-lab/challenge"}
+  ],
+  "actions": [
+    {"kind": "pointer_down", "x": 61, "y": 330, "time_ms": 0},
+    {"kind": "pointer_move", "x": 196, "y": 330, "time_ms": 420},
+    {"kind": "pointer_up", "x": 196, "y": 330, "time_ms": 520}
+  ],
+  "challenge_state_machine": {
+    "initial_state": "loaded",
+    "terminal_states": ["accepted", "rejected", "blocked"],
+    "states": ["loaded", "predicted", "action_ready", "submitted", "accepted", "rejected", "blocked"],
+    "transitions": [
+      {"from": "loaded", "event": "model_prediction", "to": "predicted"},
+      {"from": "predicted", "event": "geometry_validated", "to": "action_ready"},
+      {"from": "action_ready", "event": "action_replay", "to": "submitted"},
+      {"from": "submitted", "event": "local_lab_accept", "to": "accepted"}
+    ]
+  },
+  "capability_boundary": {
+    "evidence_scope": "local_lab",
+    "third_party_positive_claim": false
+  }
+}

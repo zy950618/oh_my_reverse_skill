@@ -1,0 +1,9 @@
+id: captcha-algorithm-benchmark-002
+title: Benchmark emits per-difficulty metrics and regression thresholds
+assertions:
+  - per_type metrics are present
+  - per_difficulty metrics are present
+  - per_sample predictions are retained
+  - failure_cases are retained
+  - regression_thresholds are present
+

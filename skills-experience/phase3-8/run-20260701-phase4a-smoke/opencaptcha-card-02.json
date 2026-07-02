@@ -1,0 +1,6 @@
+{
+  "title": "Connect_icon requires relation matching, not raw image equality",
+  "run_id": "run-20260701-phase4a-smoke",
+  "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\opencaptchaworld\\run-20260701-phase4a-smoke\\failure-cases.json",
+  "lesson": "Simple perceptual similarity is weak when the target is a connected pair relation."
+}

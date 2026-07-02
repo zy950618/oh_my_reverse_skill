@@ -1,0 +1,47 @@
+{
+  "schema_version": "captcha-fingerprint-linkage/v1",
+  "lab_id": "captcha-fingerprint-linkage-diagnostics-lab",
+  "status": "diagnostics_only",
+  "allowed_linkage_observations": [
+    "provider_marker",
+    "widget_or_challenge_id",
+    "risk_state_transition",
+    "surface_hash_ref",
+    "session_context_ref",
+    "backend_acceptance_ref",
+    "fact_labels"
+  ],
+  "required_boundaries": [
+    "challenge_endpoint_success_is_not_business_success",
+    "captcha_token_is_not_reused",
+    "fingerprint_surface_is_not_spoofed",
+    "final_business_api_required_for_positive",
+    "repeat_verified_required_for_success_claim"
+  ],
+  "allowed_next_actions": [
+    "record_linkage",
+    "record_negative_eval",
+    "human_review_protocol",
+    "official_api_fallback",
+    "stop"
+  ],
+  "forbidden_actions": [
+    "captcha_bypass",
+    "solver_token_reuse",
+    "webdriver_hide",
+    "fingerprint_spoof",
+    "proxy_rotation_evasion",
+    "clearance_cookie_reuse",
+    "risk_token_reuse",
+    "unauthorized_challenge_processing"
+  ],
+  "capability_boundary": {
+    "positive_allowed": false,
+    "skills_participation": [
+      "memory_only",
+      "negative_eval_only"
+    ],
+    "not_generalizable_to_third_party": true
+  }
+}
+

@@ -1,0 +1,6 @@
+{
+  "title": "shumei-compatible-lab is compatible training, not official vendor capability",
+  "run_id": "run-20260630-163000-phase3-10-realism-hardening",
+  "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\shumei-compatible-lab\\run-20260630-163000-phase3-10-realism-hardening.json",
+  "lesson": "Hard/adversarial compatible labs expose baseline solver failures; local candidates must not generalize to vendor production."
+}

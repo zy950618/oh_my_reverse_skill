@@ -1,0 +1,12 @@
+sample_id: text-hard-0028
+source_run_id: run-20260630-053000-phase3-6-public-model
+challenge_type: text-captcha
+difficulty: hard
+expected: "6WMBI"
+predicted: "S3WWY"
+error: 5.0
+image_path: public-range-evidence\raw\captcha-vision-lab\run-20260630-053000-phase3-6-public-model\dataset\text-captcha\hard\text-hard-0028.jpg
+label_path: public-range-evidence\raw\captcha-vision-lab\run-20260630-053000-phase3-6-public-model\dataset\text-captcha\hard\text-hard-0028.json
+root_cause: hard text segmentation/template matching failed under noise, rotation, or sticky glyphs
+suggested_fix: add connected-component segmentation and train a glyph classifier on hard samples
+whether_eval_added: true

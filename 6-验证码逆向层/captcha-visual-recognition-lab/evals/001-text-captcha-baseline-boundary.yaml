@@ -1,0 +1,8 @@
+id: captcha-visual-recognition-lab-001
+title: Text CAPTCHA baseline must report metrics and not claim real-site positive
+challenge_type: text-captcha
+assertions:
+  - metrics include char_accuracy and sequence_accuracy
+  - evidence capability_status is not positive_allowed without business_data_status DATA_ASSERTION_PASS
+  - failure cases are retained when sequence_accuracy is below target
+

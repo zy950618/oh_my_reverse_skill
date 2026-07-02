@@ -1,0 +1,282 @@
+{
+  "schema_version": "public-range-evidence/v1",
+  "run_id": "run-20260630-034500-phase3-4-realistic-lab",
+  "capture_id": "cap-run-20260630-034500-phase3-4-realistic-lab",
+  "captured_at": "2026-06-30T03:54:19.393329+00:00",
+  "source_freshness": "fresh",
+  "execution_status": "REAL_EXECUTION_PASS",
+  "control_flow_status": "CONTROL_FLOW_PASS",
+  "business_data_status": "NOT_RUN",
+  "capability_status": "memory_only",
+  "target": {
+    "id": "realistic-captcha-risk-lab",
+    "name": "Realistic Captcha Risk Lab v2",
+    "url": "http://127.0.0.1:61444/",
+    "host": "127.0.0.1",
+    "type": "local_open_source_range",
+    "authorization_scope": "Self-owned localhost lab only."
+  },
+  "skills": [
+    "js-page-runtime-parity",
+    "browser-fingerprint-surface-lab",
+    "captcha-visual-recognition-lab",
+    "authorized-target-adapter"
+  ],
+  "execution_proof": {
+    "command": "python tools\\js_page_runtime_parity_runner.py --run-id run-20260630-034500-phase3-4-realistic-lab",
+    "cwd": "E:\\SKILLS\\oh_my_reverse_skill",
+    "exit_code": 0,
+    "started_at": "2026-06-30T03:54:12.496934+00:00",
+    "ended_at": "2026-06-30T03:54:19.393329+00:00",
+    "stdout_log": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\realistic-captcha-risk-lab\\run-20260630-034500-phase3-4-realistic-lab\\js-page-runtime-parity.stdout.log",
+    "stderr_log": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\realistic-captcha-risk-lab\\run-20260630-034500-phase3-4-realistic-lab\\js-page-runtime-parity.stderr.log",
+    "screenshot_paths": [
+      "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\realistic-captcha-risk-lab\\run-20260630-034500-phase3-4-realistic-lab\\js-runtime-browser.png"
+    ],
+    "network_summary_paths": [
+      "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\realistic-captcha-risk-lab\\run-20260630-034500-phase3-4-realistic-lab\\js-runtime-network.json"
+    ],
+    "browser_trace_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\realistic-captcha-risk-lab\\run-20260630-034500-phase3-4-realistic-lab\\js-runtime-trace.zip",
+    "generated_by": "tools/js_page_runtime_parity_runner.py",
+    "synthetic": false
+  },
+  "js_runtime_parity": {
+    "script_id": "runtime-signature-fnv1a-v1",
+    "signature_endpoint": "POST /api/runtime/signature-check",
+    "browser_output": {
+      "algorithm": "fnv1a-demo-signature",
+      "input_hash": "f699f446",
+      "signature": "0a50ac4c",
+      "env_hash": "357b2f37",
+      "dependencies": [
+        "navigator.userAgent",
+        "navigator.platform",
+        "navigator.language",
+        "location.href"
+      ],
+      "output": "{\"action\":\"submit\",\"item_id\":\"risk-item-1\",\"nonce\":\"nonce-local\",\"ts\":1700000000000}"
+    },
+    "node_output": {
+      "algorithm": "fnv1a-demo-signature",
+      "input_hash": "f699f446",
+      "signature": "0a50ac4c",
+      "env_hash": "dca92b3d",
+      "dependencies": [
+        "navigator.userAgent",
+        "navigator.platform",
+        "navigator.language",
+        "location.href"
+      ],
+      "output": "{\"action\":\"submit\",\"item_id\":\"risk-item-1\",\"nonce\":\"nonce-local\",\"ts\":1700000000000}"
+    },
+    "v8_output": {
+      "algorithm": "fnv1a-demo-signature",
+      "input_hash": "f699f446",
+      "signature": "0a50ac4c",
+      "env_hash": "dca92b3d",
+      "dependencies": [
+        "navigator.userAgent",
+        "navigator.platform",
+        "navigator.language",
+        "location.href"
+      ],
+      "output": "{\"action\":\"submit\",\"item_id\":\"risk-item-1\",\"nonce\":\"nonce-local\",\"ts\":1700000000000}"
+    },
+    "page_runtime_output": {
+      "algorithm": "fnv1a-demo-signature",
+      "input_hash": "f699f446",
+      "signature": "0a50ac4c",
+      "env_hash": "4bae03d3",
+      "dependencies": [
+        "navigator.userAgent",
+        "navigator.platform",
+        "navigator.language",
+        "location.href"
+      ],
+      "output": "{\"action\":\"submit\",\"item_id\":\"risk-item-1\",\"nonce\":\"nonce-local\",\"ts\":1700000000000}"
+    },
+    "repeat_output": {
+      "algorithm": "fnv1a-demo-signature",
+      "input_hash": "f699f446",
+      "signature": "0a50ac4c",
+      "env_hash": "4bae03d3",
+      "dependencies": [
+        "navigator.userAgent",
+        "navigator.platform",
+        "navigator.language",
+        "location.href"
+      ],
+      "output": "{\"action\":\"submit\",\"item_id\":\"risk-item-1\",\"nonce\":\"nonce-local\",\"ts\":1700000000000}"
+    },
+    "browser_output_hash": "14be01449aa9f0e3d5e192479dd33813e8e738b8f2eec6bd83bf2bed063e178b",
+    "node_output_hash": "14be01449aa9f0e3d5e192479dd33813e8e738b8f2eec6bd83bf2bed063e178b",
+    "v8_output_hash": "14be01449aa9f0e3d5e192479dd33813e8e738b8f2eec6bd83bf2bed063e178b",
+    "page_runtime_output_hash": "14be01449aa9f0e3d5e192479dd33813e8e738b8f2eec6bd83bf2bed063e178b",
+    "repeat_output_hash": "14be01449aa9f0e3d5e192479dd33813e8e738b8f2eec6bd83bf2bed063e178b",
+    "missing_apis": [],
+    "shim_used": [
+      "navigator",
+      "location"
+    ],
+    "shim_scope": "minimal PageRuntime fixture shim",
+    "environment_contract_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\realistic-captcha-risk-lab\\run-20260630-034500-phase3-4-realistic-lab\\environment-contract.json",
+    "diff_report_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\realistic-captcha-risk-lab\\run-20260630-034500-phase3-4-realistic-lab\\runtime-diff-report.json",
+    "regression_fixture_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\realistic-captcha-risk-lab\\run-20260630-034500-phase3-4-realistic-lab\\runtime-regression-fixture.json",
+    "parity_status": "pass",
+    "repeat_parity_status": "pass",
+    "positive_allowed": false,
+    "why_not_positive": "Local JS signature parity fixture only; no authorized external target or final business API positive claim."
+  },
+  "ui_api_parity": {
+    "status": "pass",
+    "observed_status": 200,
+    "endpoint": "GET /",
+    "json_pointers": [
+      "/js_runtime_parity/parity_status"
+    ]
+  },
+  "repeat_verified": true,
+  "decision": {
+    "skills_participation": "memory_only",
+    "positive_allowed": false,
+    "concurrency_positive": false,
+    "blocked_reason": "Localhost runtime parity/fingerprint/concurrency lab has no business_data_assertions and no authorized external target; keep memory_only."
+  },
+  "browser_fingerprint_surface": {
+    "status": "observed",
+    "stock_chromium": "not_run",
+    "playwright": {
+      "run_id": "run-20260630-034500-phase3-4-realistic-lab",
+      "browser_profile_id": "playwright-default-isolated-context",
+      "runtime_type": "playwright-chromium",
+      "surface_values": {
+        "navigator": {
+          "webdriver": true,
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36",
+          "platform": "Win32",
+          "languages": [
+            "zh-CN"
+          ],
+          "plugins": [],
+          "hardwareConcurrency": 16,
+          "deviceMemory": 8
+        },
+        "screen": {
+          "width": 1280,
+          "height": 720,
+          "colorDepth": 24
+        },
+        "timezone": "Asia/Shanghai",
+        "locale": "zh-CN",
+        "canvasDataUrlLength": 702,
+        "webgl": {},
+        "permissions": {
+          "notifications": "prompt"
+        },
+        "webrtcAvailable": true,
+        "clientHintsAvailable": true,
+        "storage": {
+          "localStorage": true,
+          "sessionStorage": true
+        }
+      },
+      "surface_hash": "b740179b870ac60008654d85cb80555048e47a7c87272f8991f4cfb36c485c06",
+      "drift_from_baseline": "baseline_created",
+      "observed_signals": {
+        "webdriver_exposed": true,
+        "client_hints_available": true,
+        "webrtc_available": true
+      },
+      "derived_risk": [
+        "automation_related_anomaly_observed"
+      ],
+      "assumed": [],
+      "unverified": [
+        "TLS/JA3/JA4 not measured by local browser script"
+      ],
+      "block_reason": "not_blocked_localhost_observation",
+      "allowed_action": [
+        "observation_only",
+        "profile_isolation",
+        "authorized_lab_regression",
+        "memory_only"
+      ],
+      "forbidden_action": [
+        "webdriver_hide",
+        "fingerprint_spoof",
+        "proxy_rotation_evasion",
+        "clearance_cookie_reuse",
+        "waf_bypass",
+        "risk_token_reuse",
+        "unauthorized_challenge_processing"
+      ]
+    },
+    "page_runtime": "not_applicable_observation_only",
+    "node_v8": "not_applicable_observation_only",
+    "surface_diff": {
+      "drift_from_baseline": "baseline_created",
+      "surface_hash": "b740179b870ac60008654d85cb80555048e47a7c87272f8991f4cfb36c485c06"
+    },
+    "drift_report_path": "public-range-evidence\\raw\\realistic-captcha-risk-lab\\run-20260630-034500-phase3-4-realistic-lab\\fingerprint-surface-report.json",
+    "profile_consistency": {
+      "browser_profile_id": "playwright-default-isolated-context",
+      "surface_hash": "b740179b870ac60008654d85cb80555048e47a7c87272f8991f4cfb36c485c06",
+      "same_run_repeat_hash": "b740179b870ac60008654d85cb80555048e47a7c87272f8991f4cfb36c485c06",
+      "consistent": true
+    },
+    "block_reason": "not_blocked_localhost_observation",
+    "capability_status": "memory_only",
+    "why_not_positive": "Fingerprint surface observation is diagnostics only and does not provide stealth or evasion capability."
+  },
+  "business_concurrency_ladder": {
+    "status": "pass",
+    "report_path": "public-range-evidence\\raw\\realistic-captcha-risk-lab\\run-20260630-034500-phase3-4-realistic-lab\\business-concurrency-ladder.json",
+    "workers": [
+      "worker_1",
+      "worker_2",
+      "worker_5",
+      "worker_10"
+    ],
+    "ledger_summary": {
+      "worker_1": {
+        "expected_ledger_delta": 1,
+        "actual_ledger_delta": 1,
+        "duplicate_count": 0,
+        "wrong_owner_count": 0,
+        "cross_worker_pollution_count": 0
+      },
+      "worker_2": {
+        "expected_ledger_delta": 2,
+        "actual_ledger_delta": 2,
+        "duplicate_count": 0,
+        "wrong_owner_count": 0,
+        "cross_worker_pollution_count": 0
+      },
+      "worker_5": {
+        "expected_ledger_delta": 5,
+        "actual_ledger_delta": 5,
+        "duplicate_count": 0,
+        "wrong_owner_count": 0,
+        "cross_worker_pollution_count": 0
+      },
+      "worker_10": {
+        "expected_ledger_delta": 10,
+        "actual_ledger_delta": 10,
+        "duplicate_count": 0,
+        "wrong_owner_count": 0,
+        "cross_worker_pollution_count": 0
+      }
+    },
+    "capability_status": "memory_only",
+    "why_not_positive": "Localhost business ladder raw report only; public evidence business_data_status remains NOT_RUN."
+  },
+  "capability_levels": {
+    "captcha_text": "L1_synthetic_easy",
+    "captcha_slider": "L4_local_action_replay_for_localhost_only",
+    "captcha_rotate": "L3_synthetic_hard",
+    "captcha_click": "L3_synthetic_hard",
+    "js_runtime_parity": "L8_runtime_parity_positive_for_localhost_fixture_only",
+    "fingerprint_diagnostics": "L9_fingerprint_diagnostics_positive_for_localhost_observation_only",
+    "business_concurrency": "local_lab_concurrency_only_not_L7_authorized_target"
+  }
+}

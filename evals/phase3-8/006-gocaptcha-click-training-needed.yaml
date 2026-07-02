@@ -1,0 +1,5 @@
+id: phase3_8_006_gocaptcha_click_training_needed
+title: GoCaptcha click remains training_needed until target detection and action pass
+run_id: run-20260701-phase4a-smoke
+evidence: E:\SKILLS\oh_my_reverse_skill\public-range-evidence\raw\gocaptcha-official\run-20260701-phase4a-smoke\gocaptcha-official-action-replay-records.jsonl
+expected_status: family_scoped_candidate_or_training_needed

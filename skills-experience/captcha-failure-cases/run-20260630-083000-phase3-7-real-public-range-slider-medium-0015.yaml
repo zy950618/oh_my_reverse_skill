@@ -1,0 +1,12 @@
+sample_id: slider-medium-0015
+source_run_id: run-20260630-083000-phase3-7-real-public-range
+challenge_type: slider-captcha
+difficulty: medium
+expected: {"x": 90, "y": 84}
+predicted: {"x": 223, "y": 101}
+error: 134.08206442324789
+image_path: public-range-evidence\raw\captcha-vision-lab\run-20260630-083000-phase3-7-real-public-range\dataset\slider-captcha\medium\slider-medium-0015.png
+label_path: public-range-evidence\raw\captcha-vision-lab\run-20260630-083000-phase3-7-real-public-range\dataset\slider-captcha\medium\slider-medium-0015.json
+root_cause: medium low-contrast or distractor gap confused edge/brightness scan
+suggested_fix: add template matching with gap-shape priors and reject distractor gaps
+whether_eval_added: true

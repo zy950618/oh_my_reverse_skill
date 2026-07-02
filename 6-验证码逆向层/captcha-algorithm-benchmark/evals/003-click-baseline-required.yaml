@@ -1,0 +1,8 @@
+id: captcha-algorithm-benchmark-003
+title: Click CAPTCHA baseline reports detection metrics
+assertions:
+  - click-captcha generator emits bounding boxes
+  - click-captcha generator emits click points
+  - benchmark reports target_precision
+  - benchmark reports target_recall
+  - benchmark reports click_distance_mean

@@ -1,0 +1,27 @@
+experience_id: run-20260630-034500-phase3-4-realistic-lab-action
+source_run_id: run-20260630-034500-phase3-4-realistic-lab
+target_id: captcha-vision-lab
+challenge_instance_id: run-20260630-031500-captcha-vision-hardening
+challenge_type: slider-captcha
+difficulty: easy
+solver: connected_component_or_edge_brightness_gap_scan
+model_id: baseline_solver
+prediction: localhost action replay reused Phase 3.1 solver output
+expected: state_transition_success
+metrics: {"action_success_rate":1.0}
+action_result: pass
+js_runtime_parity: not_applicable
+fingerprint_surface: not_applicable
+business_ledger_result: not_run
+concurrency_result: not_run
+failure_mode: medium_hard_slider_errors_remain
+root_cause: hard distractor gaps and low contrast are not solved by easy connected component baseline
+rule_added: L4 local action replay does not imply hard synthetic or real provider success
+eval_added: 6-验证码逆向层/captcha-action-planner/evals/002-challenge-instance-binding.yaml
+capability_level: L4_local_action_replay
+capability_status: memory_only
+positive_allowed: false
+why_not_positive: localhost action replay only and business_data_status NOT_RUN
+authorized_scope: localhost synthetic captcha-vision-lab
+next_training_target: train hard slider gap detector with distractor rejection
+
