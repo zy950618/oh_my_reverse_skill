@@ -1,0 +1,10 @@
+cookie: SESSION_FAKE_VALUE
+set-cookie: SESSION_FAKE_VALUE
+authorization: Bearer FAKE_TOKEN
+token: TOKEN_FAKE_VALUE
+access_token: ACCESS_FAKE_TOKEN
+refresh_token: REFRESH_FAKE_TOKEN
+passenger: FAKE PASSENGER
+order_id: ORDER_FAKE_123
+email: fake@example.com
+phone: "+10000000000"
