@@ -1,25 +1,30 @@
-# Standard LOOP State
+# Phase 4 Loop State
 
-run_id: standard-loop-2026-07-01-local
+status: PHASE4_LABS_READY
 
-| round | agent | task | status | changed_files | validation_commands | validation_result | errors | fixes | cleanup | next_action |
-|---|---|---|---|---|---|---|---|---|---|---|
-| 0 | Agent 0 Loop Supervisor | local repo, branch, dirty worktree and baseline checks | OBSERVED | `LOOP_STATE.md` | `git status --short`; `git branch --show-current`; `git remote -v` | local project on branch `test`; worktree already dirty | none | none | no deletion | integrate agent slices |
-| 1 | Agent 1 Repo Baseline & Cleanup | baseline report, cleanup plan and conservative cleanup tool | PATCHED | `99-SKILLS治理/23-baseline-audit-report.md`; `99-SKILLS治理/24-cleanup-plan.md`; `tools/cleanup_workspace.py` | pending final gate | pending | missing artifacts | added structural reports and checker | deletion gated | run cleanup check |
-| 2 | Agent 2 Routing & Trigger | standard routing and capability level contract | PATCHED | `99-SKILLS治理/20-routing-contract.md`; `99-SKILLS治理/21-scope-capability-levels.md`; `00-SKILLS索引.md`; `TRIGGERS.md`; `AGENTS.md`; `CLAUDE.md` | pending final gate | pending | no type contract | added standard type taxonomy | no deletion | validate docs |
-| 3 | Agent 3 Tool Contract | tool contract pack | IN_PROGRESS | `tool-contracts/*.contract.md` | pending subagent | pending | missing contracts | subagent assigned | no deletion | integrate |
-| 4 | Agent 4 Pure API Delivery | pure API lab and validator | PATCHED | `tools/validate_pure_api_delivery.py`; `public-range-evidence/pure-api-lab/*` | `python tools/validate_pure_api_delivery.py public-range-evidence/pure-api-lab` | pending | missing validator/lab | added lab manifest and gate | no deletion | run validator |
-| 5 | Agent 5 Captcha Model Delivery | CAPTCHA action/dataset/training/model/pass-rate structure | IN_PROGRESS | `6-验证码逆向层/captcha-service-delivery/*`; `public-range-evidence/captcha-model-lab/*`; `tools/validate_captcha_*.py` | pending subagent | pending | missing model delivery structure | subagent assigned | no deletion | integrate |
-| 6 | Agent 6 Captcha Dynamic State | challenge state and provider detection | IN_PROGRESS | `6-验证码逆向层/captcha-service-delivery/references/*state*` | pending subagent | pending | missing state machine | subagent assigned | no deletion | integrate |
-| 7 | Agent 7 Fingerprint Risk Linkage | fingerprint labs, references and validators | IN_PROGRESS | `7-指纹风控层/_lab/*`; `7-指纹风控层/references/*`; `tools/validate_fingerprint_*.py` | pending subagent | pending | missing layer-7 lab | subagent assigned | no deletion | integrate |
-| 8 | Agent 8 Real Site Observation | real-site observation packs | IN_PROGRESS | `public-range-evidence/real-site-observation-pack/*` | pending subagent | pending | missing task packs | subagent assigned | no deletion | integrate |
-| 9 | Agent 9 Airline Lab Order Flow | local order-flow lab skeleton | IN_PROGRESS | `public-range-evidence/airline-lab-order-flow/*` | pending subagent | pending | missing local lab | subagent assigned | no deletion | integrate |
-| 10 | Agent 10 Score & Release Gate | before/after, release gate, known failures, score | PATCHED | `99-SKILLS治理/25-before-after-score-report.md`; `99-SKILLS治理/26-release-gate-report.md`; `99-SKILLS治理/27-known-failures-and-deferred-items.md`; `99-SKILLS治理/29-standard-loop-score.md` | pending final gate | pending | score artifacts missing | added score reports | no deletion | run gates |
-| 11 | Agent 0 Third Loop Supervisor | sustained readiness reset and third-loop ledger | PATCHED | `99-SKILLS治理/34-third-loop-reassessment.md`; `99-SKILLS治理/35-third-loop-execution-ledger.md` | pending repeated gates | pending | single-round PASS_LOCAL_RELEASE insufficient | initialized third-loop hard gates | no deletion | run repeated validators, mutation, artifact references, diff review |
-| 12 | Agent 1 Repeated Release Gate | 5x default and release gate stability | VERIFIED_LOCAL_REPEATED_RELEASE_GATE | `99-SKILLS治理/36-repeated-release-gate-report.md` | `python tools\ci_gate.py .ci-out`; `python tools\ci_gate.py .ci-out --release` | 5 / 5 rounds PASS | none | none | no candidate created | aggregate final sustained score |
-| 13 | Agent 2 Core Validator Stress | 5x core validators after score refresh | VERIFIED_LOCAL_CORE_VALIDATORS | `99-SKILLS治理/37-core-validator-stress-report.md`; `.ci-out/*.json`; `1-业务流程层/skills-evaluation-governance/scripts/score_skills.py` | 35 command runs | 35 / 35 PASS | initial stale `.ci-out` failure | refreshed scores and skipped non-object public evidence JSON in scorer | pending final cleanup | aggregate |
-| 14 | Agent 3 CAPTCHA Repeat | 10x CAPTCHA inference/pass-rate and 9 negative cases | VERIFIED_LOCAL_CAPTCHA_REPEAT | `99-SKILLS治理/38-captcha-repeat-and-negative-report.md`; `public-range-evidence/captcha-model-lab/negative_cases/*`; `public-range-evidence/captcha-model-lab/repeat_reports/*` | `run_repeat.py`; negative validator | 10 / 10 PASS | none | added negative cases | pending final cleanup | aggregate |
-| 15 | Agent 4 Fingerprint Stress | 5x fingerprint validators and 10 drift cases | VERIFIED_LOCAL_FINGERPRINT_STRESS | `99-SKILLS治理/39-fingerprint-stress-drift-report.md`; `public-range-evidence/fingerprint-risk-lab/drift_cases/*`; `public-range-evidence/fingerprint-risk-lab/repeat_reports/*` | `run_fingerprint_repeat.py --rounds 5` | 5 / 5 PASS | none | added drift cases | pending final cleanup | aggregate |
-| 16 | Agent 5 Airline Stress | 10x airline order-flow and 12 negative cases | VERIFIED_LOCAL_AIRLINE_STRESS | `99-SKILLS治理/40-airline-lab-stress-report.md`; `public-range-evidence/airline-lab-order-flow/negative_cases/*`; `repeat_reports/*` | `run_airline_repeat_stress.py --rounds 10` | 10 / 10 PASS | none | added negative cases | pending final cleanup | aggregate |
-| 17 | Agent 6 Real-Site Pack Hardening | 7 real-site observation packs hardened | VERIFIED_LOCAL_OBSERVATION_PACK | `99-SKILLS治理/41-real-site-observation-hardening-report.md`; `public-range-evidence/real-site-observation-pack/airlines/*/*template*`; `cleanup_policy.md`; `pure_api_feasibility_checklist.md` | `validate_real_site_observation_pack.py` | 7 / 7 PASS | no live authorization | kept live status NOT_RUN_NO_AUTHORIZATION_INPUT | pending final cleanup | aggregate |
-| 18 | Agent 0 Artifact/Diff Review | artifact references and dirty worktree categorization | PATCHED | `tools/validate_artifact_references.py`; `99-SKILLS治理/43-artifact-reference-integrity-report.md`; `99-SKILLS治理/44-diff-review-and-commit-plan.md` | `validate_artifact_references.py`; git status/diff commands | artifact PASS; diff reviewed | first artifact scan timed out and then failed on entrypoint classification | optimized scan and classified entrypoint artifacts | pending final cleanup | run final sweep |
+PHASE4_LOOP_MAX: 10
+STOP_ON_FIRST_ERROR: false
+RETRY_PER_FAILURE: 3
+REPEAT_PER_FAILURE: 3
+REPEAT_NEW_LAB_VALIDATORS: 5
+REPEAT_LIVE_CONFIG_VALIDATORS: 3
+REPEAT_RELEASE_GATE: 3
+CLEANUP_EVERY_ROUND: true
+NO_COMMIT: true
+NO_PUSH: true
+
+## Current Round
+
+round: 1
+steps: PLAN, IMPLEMENT, VALIDATE, ADD_NEGATIVE_CASES, REPEAT, CLEANUP, REPORT
+result: PASS_LOCAL_VALIDATED
+
+## Repeat Validation
+
+new_lab_validators: 5 / 5 PASS
+authorized_live_config_validators: 3 / 3 PASS
+release_gate: 3 / 3 PASS
+cleanup: PASS
+artifact_reference: PASS
+sensitive_scan: PASS
+large_artifact_scan: PASS
