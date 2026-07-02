@@ -1,0 +1,1135 @@
+{
+  "schema_version": "public-range-evidence/v1",
+  "run_id": "run-20260630-173000-phase3-11-type-matrix",
+  "target": {
+    "id": "five-second-shield-lab",
+    "type": "localhost_waf_lab",
+    "url": "http://127.0.0.1:18212"
+  },
+  "captured_at": "2026-06-30T08:09:26.714319Z",
+  "source_freshness": "fresh",
+  "skills": [
+    "js-page-runtime-parity",
+    "web-h5-loop-engineering",
+    "authorized-target-adapter"
+  ],
+  "execution_status": "REAL_EXECUTION_PASS",
+  "capability_status": "positive_candidate",
+  "control_flow_status": "CONTROL_FLOW_PASS",
+  "business_data_status": "DATA_ASSERTION_PASS",
+  "js_runtime_parity": {
+    "status": "pass",
+    "browser": "88ac3e68cb1fada586516d22",
+    "node": "88ac3e68cb1fada586516d22",
+    "page_runtime": "88ac3e68cb1fada586516d22",
+    "v8_parity": true,
+    "missing_api_detection": {
+      "status": "pass",
+      "missing": []
+    },
+    "environment_contract": {
+      "status": "pass",
+      "required_apis": [
+        "crypto.subtle.digest",
+        "TextEncoder",
+        "Date.now",
+        "fetch"
+      ]
+    },
+    "repeat_parity": "pass",
+    "mutation_parity": "pass",
+    "mutation_inputs": {
+      "sid_bound": true,
+      "nonce_bound": true,
+      "ua_hash_bound": true,
+      "script_hash_bound": true,
+      "mutation_bound": true,
+      "action_bound": true
+    }
+  },
+  "dynamic_js_challenge": {
+    "status": "pass",
+    "samples": 1000,
+    "unique_script_hashes": 1000,
+    "unique_mutations": 1000,
+    "redirect_chain": [
+      "/protected",
+      "/shield",
+      "/challenge.js",
+      "/challenge/verify",
+      "/api/business"
+    ],
+    "time_window": true,
+    "expires_at": true,
+    "replay_protection": true,
+    "mutation_inputs": [
+      "sid",
+      "nonce",
+      "ua_hash",
+      "script_hash",
+      "mutation",
+      "action"
+    ],
+    "profiles": {
+      "simple_delay_gate": {
+        "sample_count": 112,
+        "success_count": 112,
+        "success_rate": 1.0,
+        "p95_ms": 85.82589984871447,
+        "p99_ms": 99.30290002375841,
+        "unique_script_hashes": 112,
+        "unique_mutations": 112,
+        "dynamic_script_hash": true,
+        "nonce": true,
+        "time_window": true,
+        "expires_at": true,
+        "replay_protection": true,
+        "js_mutation": true,
+        "redirect_chain": true,
+        "challenge_verify": true,
+        "final_business_api": true
+      },
+      "js_signature_gate": {
+        "sample_count": 111,
+        "success_count": 111,
+        "success_rate": 1.0,
+        "p95_ms": 79.82990005984902,
+        "p99_ms": 98.012899979949,
+        "unique_script_hashes": 111,
+        "unique_mutations": 111,
+        "dynamic_script_hash": true,
+        "nonce": true,
+        "time_window": true,
+        "expires_at": true,
+        "replay_protection": true,
+        "js_mutation": true,
+        "redirect_chain": true,
+        "challenge_verify": true,
+        "final_business_api": true
+      },
+      "redirect_chain_gate": {
+        "sample_count": 111,
+        "success_count": 111,
+        "success_rate": 1.0,
+        "p95_ms": 81.01690001785755,
+        "p99_ms": 88.16049993038177,
+        "unique_script_hashes": 111,
+        "unique_mutations": 111,
+        "dynamic_script_hash": true,
+        "nonce": true,
+        "time_window": true,
+        "expires_at": true,
+        "replay_protection": true,
+        "js_mutation": true,
+        "redirect_chain": true,
+        "challenge_verify": true,
+        "final_business_api": true
+      },
+      "cookie_clearance_gate": {
+        "sample_count": 111,
+        "success_count": 111,
+        "success_rate": 1.0,
+        "p95_ms": 79.92330007255077,
+        "p99_ms": 98.16119982860982,
+        "unique_script_hashes": 111,
+        "unique_mutations": 111,
+        "dynamic_script_hash": true,
+        "nonce": true,
+        "time_window": true,
+        "expires_at": true,
+        "replay_protection": true,
+        "js_mutation": true,
+        "redirect_chain": true,
+        "challenge_verify": true,
+        "final_business_api": true
+      },
+      "browser_state_binding_gate": {
+        "sample_count": 111,
+        "success_count": 111,
+        "success_rate": 1.0,
+        "p95_ms": 84.08339996822178,
+        "p99_ms": 87.05019997432828,
+        "unique_script_hashes": 111,
+        "unique_mutations": 111,
+        "dynamic_script_hash": true,
+        "nonce": true,
+        "time_window": true,
+        "expires_at": true,
+        "replay_protection": true,
+        "js_mutation": true,
+        "redirect_chain": true,
+        "challenge_verify": true,
+        "final_business_api": true
+      },
+      "dynamic_script_mutation_gate": {
+        "sample_count": 111,
+        "success_count": 111,
+        "success_rate": 1.0,
+        "p95_ms": 83.65459996275604,
+        "p99_ms": 88.26630003750324,
+        "unique_script_hashes": 111,
+        "unique_mutations": 111,
+        "dynamic_script_hash": true,
+        "nonce": true,
+        "time_window": true,
+        "expires_at": true,
+        "replay_protection": true,
+        "js_mutation": true,
+        "redirect_chain": true,
+        "challenge_verify": true,
+        "final_business_api": true
+      },
+      "retry_after_gate": {
+        "sample_count": 111,
+        "success_count": 111,
+        "success_rate": 1.0,
+        "p95_ms": 77.96439994126558,
+        "p99_ms": 88.01890001632273,
+        "unique_script_hashes": 111,
+        "unique_mutations": 111,
+        "dynamic_script_hash": true,
+        "nonce": true,
+        "time_window": true,
+        "expires_at": true,
+        "replay_protection": true,
+        "js_mutation": true,
+        "redirect_chain": true,
+        "challenge_verify": true,
+        "final_business_api": true
+      },
+      "rate_limit_gate": {
+        "sample_count": 111,
+        "success_count": 111,
+        "success_rate": 1.0,
+        "p95_ms": 69.41520003601909,
+        "p99_ms": 80.62199992127717,
+        "unique_script_hashes": 111,
+        "unique_mutations": 111,
+        "dynamic_script_hash": true,
+        "nonce": true,
+        "time_window": true,
+        "expires_at": true,
+        "replay_protection": true,
+        "js_mutation": true,
+        "redirect_chain": true,
+        "challenge_verify": true,
+        "final_business_api": true
+      },
+      "multi_stage_gate": {
+        "sample_count": 111,
+        "success_count": 111,
+        "success_rate": 1.0,
+        "p95_ms": 84.4147999305278,
+        "p99_ms": 90.53299995139241,
+        "unique_script_hashes": 111,
+        "unique_mutations": 111,
+        "dynamic_script_hash": true,
+        "nonce": true,
+        "time_window": true,
+        "expires_at": true,
+        "replay_protection": true,
+        "js_mutation": true,
+        "redirect_chain": true,
+        "challenge_verify": true,
+        "final_business_api": true
+      }
+    }
+  },
+  "state_transition": {
+    "initial_business_status": 403,
+    "protected_status": 403,
+    "redirect_chain": [
+      302,
+      403
+    ],
+    "verify_status": 200,
+    "business_status_after_challenge": 200,
+    "submit_status": 200
+  },
+  "action_replay": {
+    "status": "pass",
+    "metrics": {
+      "target": "five-second-shield-lab",
+      "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\five-second-shield-lab\\run-20260630-173000-phase3-11-type-matrix\\five-second-shield-action-records.jsonl",
+      "total_samples": 1000,
+      "total_success": 1000,
+      "success_rate": 1.0,
+      "families": {
+        "js_challenge": {
+          "sample_count": 1000,
+          "success_count": 1000,
+          "success_rate": 1.0,
+          "p95_error": 0,
+          "capability_status": "positive_candidate"
+        }
+      },
+      "dynamic_js": {
+        "enabled": false,
+        "unique_script_hashes": 1000,
+        "unique_mutations": 1000,
+        "p95_ms": 83.19210004992783,
+        "p99_ms": 98.16119982860982,
+        "redirect_chain": "/protected -> /shield -> /challenge.js -> /challenge/verify -> /api/business"
+      },
+      "profiles": {
+        "simple_delay_gate": {
+          "sample_count": 112,
+          "success_count": 112,
+          "success_rate": 1.0,
+          "p95_ms": 85.82589984871447,
+          "p99_ms": 99.30290002375841,
+          "unique_script_hashes": 112,
+          "unique_mutations": 112,
+          "dynamic_script_hash": true,
+          "nonce": true,
+          "time_window": true,
+          "expires_at": true,
+          "replay_protection": true,
+          "js_mutation": true,
+          "redirect_chain": true,
+          "challenge_verify": true,
+          "final_business_api": true
+        },
+        "js_signature_gate": {
+          "sample_count": 111,
+          "success_count": 111,
+          "success_rate": 1.0,
+          "p95_ms": 79.82990005984902,
+          "p99_ms": 98.012899979949,
+          "unique_script_hashes": 111,
+          "unique_mutations": 111,
+          "dynamic_script_hash": true,
+          "nonce": true,
+          "time_window": true,
+          "expires_at": true,
+          "replay_protection": true,
+          "js_mutation": true,
+          "redirect_chain": true,
+          "challenge_verify": true,
+          "final_business_api": true
+        },
+        "redirect_chain_gate": {
+          "sample_count": 111,
+          "success_count": 111,
+          "success_rate": 1.0,
+          "p95_ms": 81.01690001785755,
+          "p99_ms": 88.16049993038177,
+          "unique_script_hashes": 111,
+          "unique_mutations": 111,
+          "dynamic_script_hash": true,
+          "nonce": true,
+          "time_window": true,
+          "expires_at": true,
+          "replay_protection": true,
+          "js_mutation": true,
+          "redirect_chain": true,
+          "challenge_verify": true,
+          "final_business_api": true
+        },
+        "cookie_clearance_gate": {
+          "sample_count": 111,
+          "success_count": 111,
+          "success_rate": 1.0,
+          "p95_ms": 79.92330007255077,
+          "p99_ms": 98.16119982860982,
+          "unique_script_hashes": 111,
+          "unique_mutations": 111,
+          "dynamic_script_hash": true,
+          "nonce": true,
+          "time_window": true,
+          "expires_at": true,
+          "replay_protection": true,
+          "js_mutation": true,
+          "redirect_chain": true,
+          "challenge_verify": true,
+          "final_business_api": true
+        },
+        "browser_state_binding_gate": {
+          "sample_count": 111,
+          "success_count": 111,
+          "success_rate": 1.0,
+          "p95_ms": 84.08339996822178,
+          "p99_ms": 87.05019997432828,
+          "unique_script_hashes": 111,
+          "unique_mutations": 111,
+          "dynamic_script_hash": true,
+          "nonce": true,
+          "time_window": true,
+          "expires_at": true,
+          "replay_protection": true,
+          "js_mutation": true,
+          "redirect_chain": true,
+          "challenge_verify": true,
+          "final_business_api": true
+        },
+        "dynamic_script_mutation_gate": {
+          "sample_count": 111,
+          "success_count": 111,
+          "success_rate": 1.0,
+          "p95_ms": 83.65459996275604,
+          "p99_ms": 88.26630003750324,
+          "unique_script_hashes": 111,
+          "unique_mutations": 111,
+          "dynamic_script_hash": true,
+          "nonce": true,
+          "time_window": true,
+          "expires_at": true,
+          "replay_protection": true,
+          "js_mutation": true,
+          "redirect_chain": true,
+          "challenge_verify": true,
+          "final_business_api": true
+        },
+        "retry_after_gate": {
+          "sample_count": 111,
+          "success_count": 111,
+          "success_rate": 1.0,
+          "p95_ms": 77.96439994126558,
+          "p99_ms": 88.01890001632273,
+          "unique_script_hashes": 111,
+          "unique_mutations": 111,
+          "dynamic_script_hash": true,
+          "nonce": true,
+          "time_window": true,
+          "expires_at": true,
+          "replay_protection": true,
+          "js_mutation": true,
+          "redirect_chain": true,
+          "challenge_verify": true,
+          "final_business_api": true
+        },
+        "rate_limit_gate": {
+          "sample_count": 111,
+          "success_count": 111,
+          "success_rate": 1.0,
+          "p95_ms": 69.41520003601909,
+          "p99_ms": 80.62199992127717,
+          "unique_script_hashes": 111,
+          "unique_mutations": 111,
+          "dynamic_script_hash": true,
+          "nonce": true,
+          "time_window": true,
+          "expires_at": true,
+          "replay_protection": true,
+          "js_mutation": true,
+          "redirect_chain": true,
+          "challenge_verify": true,
+          "final_business_api": true
+        },
+        "multi_stage_gate": {
+          "sample_count": 111,
+          "success_count": 111,
+          "success_rate": 1.0,
+          "p95_ms": 84.4147999305278,
+          "p99_ms": 90.53299995139241,
+          "unique_script_hashes": 111,
+          "unique_mutations": 111,
+          "dynamic_script_hash": true,
+          "nonce": true,
+          "time_window": true,
+          "expires_at": true,
+          "replay_protection": true,
+          "js_mutation": true,
+          "redirect_chain": true,
+          "challenge_verify": true,
+          "final_business_api": true
+        }
+      },
+      "threshold_pass": true
+    }
+  },
+  "leakage_audit": {
+    "status": "pass",
+    "path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\captcha-leakage-audit\\run-20260630-173000-phase3-11-type-matrix\\leakage-audit.json"
+  },
+  "blackbox_gate": {
+    "status": "pass",
+    "path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\captcha-blackbox-gate\\run-20260630-173000-phase3-11-type-matrix\\blackbox-gate.json"
+  },
+  "backend_acceptance": {
+    "status": "pass",
+    "final_api_endpoint_confirmed": true,
+    "endpoint": "/api/business",
+    "observed_status": 200,
+    "content_type": "application/json",
+    "json_type": "dict",
+    "json_pointers": [
+      "/items/0/sku",
+      "/session_id"
+    ],
+    "direct_interface_call": {
+      "status": "pass",
+      "browser_dependency": false,
+      "uses_browser_profile": false,
+      "uses_live_storage": false,
+      "uses_manual_cookie_or_token": false,
+      "observed_status": 200,
+      "content_type": "application/json",
+      "json_type": "dict",
+      "json_pointers": [
+        "/items/0/sku"
+      ]
+    },
+    "repeat_direct_interface_call": {
+      "status": "pass",
+      "browser_dependency": false,
+      "uses_browser_profile": false,
+      "uses_live_storage": false,
+      "uses_manual_cookie_or_token": false,
+      "observed_status": 200,
+      "content_type": "application/json",
+      "json_type": "dict",
+      "json_pointers": [
+        "/items/0/sku"
+      ]
+    }
+  },
+  "ui_api_parity": {
+    "status": "pass",
+    "browser_opened": true,
+    "api_feedback_observed": true
+  },
+  "business_data_assertions": {
+    "status": "pass",
+    "server_ledger_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\five-second-shield-lab\\run-20260630-173000-phase3-11-type-matrix\\server-business-ledger.json",
+    "positive_assertions": [
+      {
+        "name": "challenge_after_business_api_success",
+        "status": "pass"
+      },
+      {
+        "name": "submit_writes_server_ledger",
+        "status": "pass"
+      }
+    ],
+    "negative_assertions": [
+      {
+        "name": "missing challenge",
+        "status": "pass",
+        "observed_status": 403,
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0,
+        "response": {
+          "error": "shield_required"
+        }
+      },
+      {
+        "name": "stale nonce",
+        "status": "pass",
+        "observed_status": 403,
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0,
+        "response": {
+          "error": "stale_nonce"
+        }
+      },
+      {
+        "name": "wrong signature",
+        "status": "pass",
+        "observed_status": 403,
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0,
+        "response": {
+          "error": "wrong_signature_or_stale"
+        }
+      },
+      {
+        "name": "challenge success not business success",
+        "status": "pass",
+        "observed_status": 200,
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0,
+        "response": {
+          "verify_status": 200,
+          "ledger_delta": 0
+        }
+      },
+      {
+        "name": "reused clearance",
+        "status": "pass",
+        "observed_status": 403,
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0,
+        "response": {
+          "error": "reused_clearance"
+        }
+      },
+      {
+        "name": "wrong session",
+        "status": "pass",
+        "observed_status": 403,
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0,
+        "response": {
+          "error": "wrong_session"
+        }
+      },
+      {
+        "name": "expired clearance",
+        "status": "pass",
+        "observed_status": 403,
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0,
+        "response": {
+          "verify": {
+            "protected_status": 403,
+            "redirect_chain": [
+              302,
+              403
+            ],
+            "nonce": "1791b89e351c5eec",
+            "sid": "4925432ee3790050",
+            "script_hash": "0605112aec2370c7",
+            "mutation": "61e63fabc4",
+            "action": "business_api_after_challenge",
+            "min_delay_ms": 68,
+            "elapsed_ms": 78,
+            "signature": "9f07e0b9b1cf4fba67a727b4",
+            "verify_status": 200,
+            "verify_json": {
+              "ok": true,
+              "state": "backend_accepted"
+            },
+            "profile": "simple_delay_gate"
+          }
+        }
+      },
+      {
+        "name": "cross-worker clearance pollution",
+        "status": "pass",
+        "observed_status": 403,
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0,
+        "response": {
+          "error": "cross_worker_pollution"
+        }
+      },
+      {
+        "name": "JS runtime mismatch",
+        "status": "pass",
+        "observed_status": 403,
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0,
+        "response": {
+          "error": "js_runtime_mismatch"
+        }
+      },
+      {
+        "name": "delay window",
+        "status": "pass",
+        "observed_status": 403,
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0,
+        "response": {
+          "error": "delay_window"
+        }
+      },
+      {
+        "name": "browser-only success not direct repeat",
+        "status": "pass",
+        "observed_status": 403,
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0,
+        "response": {
+          "repeat_direct_status": 200
+        }
+      },
+      {
+        "name": "wrong redirect stage",
+        "status": "pass",
+        "observed_status": 404,
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0,
+        "response": {
+          "error": "wrong_redirect_stage"
+        }
+      },
+      {
+        "name": "missing cookie",
+        "status": "pass",
+        "observed_status": 403,
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0,
+        "response": {
+          "error": "missing_cookie"
+        }
+      },
+      {
+        "name": "stale cookie",
+        "status": "pass",
+        "observed_status": 403,
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0,
+        "response": {
+          "error": "stale_cookie"
+        }
+      },
+      {
+        "name": "clearance wrong session",
+        "status": "pass",
+        "observed_status": 403,
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0,
+        "response": {
+          "error": "clearance_wrong_session"
+        }
+      },
+      {
+        "name": "clearance wrong UA hash",
+        "status": "pass",
+        "observed_status": 403,
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0,
+        "response": {
+          "error": "clearance_wrong_ua_hash"
+        }
+      },
+      {
+        "name": "time skew",
+        "status": "pass",
+        "observed_status": 403,
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0,
+        "response": {
+          "error": "time_skew"
+        }
+      },
+      {
+        "name": "retry-after ignored",
+        "status": "pass",
+        "observed_status": 429,
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0,
+        "response": {
+          "error": "retry_after_ignored",
+          "retry_after_seconds": 2
+        }
+      },
+      {
+        "name": "rate limit exceeded",
+        "status": "pass",
+        "observed_status": 429,
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0,
+        "response": {
+          "error": "rate_limit_exceeded",
+          "limit": "local_session_bucket"
+        }
+      }
+    ],
+    "concurrency_assertions": {
+      "worker_1": {
+        "status": "pass",
+        "expected_success_count": 1,
+        "actual_success_count": 1,
+        "expected_ledger_delta": 1,
+        "actual_ledger_delta": 1,
+        "duplicate_order_count": 0,
+        "cross_worker_pollution_count": 0,
+        "wrong_owner_count": 0,
+        "orphan_order_count": 0
+      },
+      "worker_2": {
+        "status": "pass",
+        "expected_success_count": 2,
+        "actual_success_count": 2,
+        "expected_ledger_delta": 2,
+        "actual_ledger_delta": 2,
+        "duplicate_order_count": 0,
+        "cross_worker_pollution_count": 0,
+        "wrong_owner_count": 0,
+        "orphan_order_count": 0
+      },
+      "worker_5": {
+        "status": "pass",
+        "expected_success_count": 5,
+        "actual_success_count": 5,
+        "expected_ledger_delta": 5,
+        "actual_ledger_delta": 5,
+        "duplicate_order_count": 0,
+        "cross_worker_pollution_count": 0,
+        "wrong_owner_count": 0,
+        "orphan_order_count": 0
+      },
+      "worker_10": {
+        "status": "pass",
+        "expected_success_count": 10,
+        "actual_success_count": 10,
+        "expected_ledger_delta": 10,
+        "actual_ledger_delta": 10,
+        "duplicate_order_count": 0,
+        "cross_worker_pollution_count": 0,
+        "wrong_owner_count": 0,
+        "orphan_order_count": 0
+      },
+      "worker_20": {
+        "status": "pass",
+        "expected_success_count": 20,
+        "actual_success_count": 20,
+        "expected_ledger_delta": 20,
+        "actual_ledger_delta": 20,
+        "duplicate_order_count": 0,
+        "cross_worker_pollution_count": 0,
+        "wrong_owner_count": 0,
+        "orphan_order_count": 0
+      }
+    },
+    "final_decision": {
+      "data_assertion_pass": true
+    }
+  },
+  "negative_evals": [
+    {
+      "name": "missing challenge",
+      "status": "pass",
+      "observed_status": 403,
+      "expected_ledger_delta": 0,
+      "actual_ledger_delta": 0,
+      "response": {
+        "error": "shield_required"
+      }
+    },
+    {
+      "name": "stale nonce",
+      "status": "pass",
+      "observed_status": 403,
+      "expected_ledger_delta": 0,
+      "actual_ledger_delta": 0,
+      "response": {
+        "error": "stale_nonce"
+      }
+    },
+    {
+      "name": "wrong signature",
+      "status": "pass",
+      "observed_status": 403,
+      "expected_ledger_delta": 0,
+      "actual_ledger_delta": 0,
+      "response": {
+        "error": "wrong_signature_or_stale"
+      }
+    },
+    {
+      "name": "challenge success not business success",
+      "status": "pass",
+      "observed_status": 200,
+      "expected_ledger_delta": 0,
+      "actual_ledger_delta": 0,
+      "response": {
+        "verify_status": 200,
+        "ledger_delta": 0
+      }
+    },
+    {
+      "name": "reused clearance",
+      "status": "pass",
+      "observed_status": 403,
+      "expected_ledger_delta": 0,
+      "actual_ledger_delta": 0,
+      "response": {
+        "error": "reused_clearance"
+      }
+    },
+    {
+      "name": "wrong session",
+      "status": "pass",
+      "observed_status": 403,
+      "expected_ledger_delta": 0,
+      "actual_ledger_delta": 0,
+      "response": {
+        "error": "wrong_session"
+      }
+    },
+    {
+      "name": "expired clearance",
+      "status": "pass",
+      "observed_status": 403,
+      "expected_ledger_delta": 0,
+      "actual_ledger_delta": 0,
+      "response": {
+        "verify": {
+          "protected_status": 403,
+          "redirect_chain": [
+            302,
+            403
+          ],
+          "nonce": "1791b89e351c5eec",
+          "sid": "4925432ee3790050",
+          "script_hash": "0605112aec2370c7",
+          "mutation": "61e63fabc4",
+          "action": "business_api_after_challenge",
+          "min_delay_ms": 68,
+          "elapsed_ms": 78,
+          "signature": "9f07e0b9b1cf4fba67a727b4",
+          "verify_status": 200,
+          "verify_json": {
+            "ok": true,
+            "state": "backend_accepted"
+          },
+          "profile": "simple_delay_gate"
+        }
+      }
+    },
+    {
+      "name": "cross-worker clearance pollution",
+      "status": "pass",
+      "observed_status": 403,
+      "expected_ledger_delta": 0,
+      "actual_ledger_delta": 0,
+      "response": {
+        "error": "cross_worker_pollution"
+      }
+    },
+    {
+      "name": "JS runtime mismatch",
+      "status": "pass",
+      "observed_status": 403,
+      "expected_ledger_delta": 0,
+      "actual_ledger_delta": 0,
+      "response": {
+        "error": "js_runtime_mismatch"
+      }
+    },
+    {
+      "name": "delay window",
+      "status": "pass",
+      "observed_status": 403,
+      "expected_ledger_delta": 0,
+      "actual_ledger_delta": 0,
+      "response": {
+        "error": "delay_window"
+      }
+    },
+    {
+      "name": "browser-only success not direct repeat",
+      "status": "pass",
+      "observed_status": 403,
+      "expected_ledger_delta": 0,
+      "actual_ledger_delta": 0,
+      "response": {
+        "repeat_direct_status": 200
+      }
+    },
+    {
+      "name": "wrong redirect stage",
+      "status": "pass",
+      "observed_status": 404,
+      "expected_ledger_delta": 0,
+      "actual_ledger_delta": 0,
+      "response": {
+        "error": "wrong_redirect_stage"
+      }
+    },
+    {
+      "name": "missing cookie",
+      "status": "pass",
+      "observed_status": 403,
+      "expected_ledger_delta": 0,
+      "actual_ledger_delta": 0,
+      "response": {
+        "error": "missing_cookie"
+      }
+    },
+    {
+      "name": "stale cookie",
+      "status": "pass",
+      "observed_status": 403,
+      "expected_ledger_delta": 0,
+      "actual_ledger_delta": 0,
+      "response": {
+        "error": "stale_cookie"
+      }
+    },
+    {
+      "name": "clearance wrong session",
+      "status": "pass",
+      "observed_status": 403,
+      "expected_ledger_delta": 0,
+      "actual_ledger_delta": 0,
+      "response": {
+        "error": "clearance_wrong_session"
+      }
+    },
+    {
+      "name": "clearance wrong UA hash",
+      "status": "pass",
+      "observed_status": 403,
+      "expected_ledger_delta": 0,
+      "actual_ledger_delta": 0,
+      "response": {
+        "error": "clearance_wrong_ua_hash"
+      }
+    },
+    {
+      "name": "time skew",
+      "status": "pass",
+      "observed_status": 403,
+      "expected_ledger_delta": 0,
+      "actual_ledger_delta": 0,
+      "response": {
+        "error": "time_skew"
+      }
+    },
+    {
+      "name": "retry-after ignored",
+      "status": "pass",
+      "observed_status": 429,
+      "expected_ledger_delta": 0,
+      "actual_ledger_delta": 0,
+      "response": {
+        "error": "retry_after_ignored",
+        "retry_after_seconds": 2
+      }
+    },
+    {
+      "name": "rate limit exceeded",
+      "status": "pass",
+      "observed_status": 429,
+      "expected_ledger_delta": 0,
+      "actual_ledger_delta": 0,
+      "response": {
+        "error": "rate_limit_exceeded",
+        "limit": "local_session_bucket"
+      }
+    }
+  ],
+  "concurrency_ladder": {
+    "worker_1": {
+      "status": "pass",
+      "session_cache_token_isolated": true,
+      "backend_acceptance": true,
+      "failure_rate": 0.0,
+      "p95_ms": 54.165099980309606,
+      "p99_ms": 54.165099980309606,
+      "http_403": 0,
+      "http_429": 0,
+      "http_503": 0,
+      "stop_condition": "stop on any ledger mismatch or cross-worker clearance pollution",
+      "kill_switch": "local process terminate"
+    },
+    "worker_2": {
+      "status": "pass",
+      "session_cache_token_isolated": true,
+      "backend_acceptance": true,
+      "failure_rate": 0.0,
+      "p95_ms": 31.84359986335039,
+      "p99_ms": 31.84359986335039,
+      "http_403": 0,
+      "http_429": 0,
+      "http_503": 0,
+      "stop_condition": "stop on any ledger mismatch or cross-worker clearance pollution",
+      "kill_switch": "local process terminate"
+    },
+    "worker_5": {
+      "status": "pass",
+      "session_cache_token_isolated": true,
+      "backend_acceptance": true,
+      "failure_rate": 0.0,
+      "p95_ms": 57.54119995981455,
+      "p99_ms": 57.54119995981455,
+      "http_403": 0,
+      "http_429": 0,
+      "http_503": 0,
+      "stop_condition": "stop on any ledger mismatch or cross-worker clearance pollution",
+      "kill_switch": "local process terminate"
+    },
+    "worker_10": {
+      "status": "pass",
+      "session_cache_token_isolated": true,
+      "backend_acceptance": true,
+      "failure_rate": 0.0,
+      "p95_ms": 58.52439999580383,
+      "p99_ms": 58.52439999580383,
+      "http_403": 0,
+      "http_429": 0,
+      "http_503": 0,
+      "stop_condition": "stop on any ledger mismatch or cross-worker clearance pollution",
+      "kill_switch": "local process terminate"
+    },
+    "worker_20": {
+      "status": "pass",
+      "session_cache_token_isolated": true,
+      "backend_acceptance": true,
+      "failure_rate": 0.0,
+      "p95_ms": 49.79530000127852,
+      "p99_ms": 49.79530000127852,
+      "http_403": 0,
+      "http_429": 0,
+      "http_503": 0,
+      "stop_condition": "stop on any ledger mismatch or cross-worker clearance pollution",
+      "kill_switch": "local process terminate"
+    }
+  },
+  "experience_cards": [
+    "E:\\SKILLS\\oh_my_reverse_skill\\skills-experience\\phase3-10\\run-20260630-173000-phase3-11-type-matrix\\five-second-shield-lab-card.json"
+  ],
+  "evals": [
+    "E:\\SKILLS\\oh_my_reverse_skill\\evals\\phase3-10\\five-second-shield-lab-dynamic.yaml"
+  ],
+  "scope_decision": {
+    "target_id": "five-second-shield-lab",
+    "scope_type": "localhost_waf_lab",
+    "authorization": "self_owned",
+    "allowed_mode": "business_api_after_challenge",
+    "in_scope": true,
+    "external_generalization_allowed": false,
+    "positive_allowed_scope": "local_waf_lab_positive_candidate",
+    "scope_contract_path": "configs/range_scope_contract.yaml",
+    "why_in_scope": "Self-owned localhost WAF/shield simulation; not real-site WAF bypass."
+  },
+  "capability_status_detail": {
+    "status": "positive_candidate",
+    "scope_limited_positive": "local_waf_lab_positive_candidate",
+    "public_range_only": false,
+    "local_only": true,
+    "not_generalizable_to_third_party": true,
+    "stable_positive": false
+  },
+  "execution_proof": {
+    "command": "D:\\python3.14\\python.exe tools/real_public_range_runner.py --target five-second-shield-lab --run-id run-20260630-173000-phase3-11-type-matrix --samples 1000 --profiles simple_delay_gate,js_signature_gate,redirect_chain_gate,cookie_clearance_gate,browser_state_binding_gate,dynamic_script_mutation_gate,retry_after_gate,rate_limit_gate,multi_stage_gate --concurrency 1,2,5,10,20",
+    "cwd": "E:\\SKILLS\\oh_my_reverse_skill",
+    "started_at": "2026-06-30T08:08:32.736820Z",
+    "ended_at": "2026-06-30T08:09:26.714405Z",
+    "stdout_log": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\five-second-shield-lab\\run-20260630-173000-phase3-11-type-matrix\\runner.stdout.log",
+    "stderr_log": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\five-second-shield-lab\\run-20260630-173000-phase3-11-type-matrix\\runner.stderr.log",
+    "exit_code": 0,
+    "synthetic": false,
+    "generated_by": "tools/real_public_range_runner.py",
+    "screenshot_paths": [
+      "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\five-second-shield-lab\\run-20260630-173000-phase3-11-type-matrix\\five-second-shield-lab-browser.png"
+    ],
+    "network_summary_paths": [
+      "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\five-second-shield-lab\\run-20260630-173000-phase3-11-type-matrix\\five-second-shield-lab-network-summary.json"
+    ],
+    "browser_trace_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\five-second-shield-lab\\run-20260630-173000-phase3-11-type-matrix\\five-second-shield-lab-trace.zip"
+  },
+  "decision": {
+    "skills_participation": "positive_candidate",
+    "positive_allowed": false,
+    "concurrency_positive": true,
+    "blocked_reason": ""
+  },
+  "blocked": {
+    "blocked_reason": "",
+    "browser_error": "",
+    "startup": {
+      "status": "started",
+      "script": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-labs\\five-second-shield-lab\\lab_server.py",
+      "port": 18212
+    }
+  },
+  "realism_audit": {
+    "status": "PASS",
+    "too_clean_metrics": [],
+    "fixed_answer_risk": false,
+    "geometry_fixed_risk": false,
+    "missing_family": [],
+    "missing_difficulty": [],
+    "missing_negative_eval": [],
+    "missing_state_binding": [],
+    "official_generalization_risk": false,
+    "path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\challenge-realism-audit\\run-20260630-173000-phase3-11-type-matrix\\challenge-realism-audit.json",
+    "realism_status": "DYNAMIC_JS_HARDENED"
+  },
+  "realism_status": "DYNAMIC_JS_HARDENED"
+}

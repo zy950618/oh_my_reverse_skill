@@ -1,0 +1,347 @@
+{
+  "run_id": "run-20260630-041500-phase3-5-longrun",
+  "generated_at": "2026-06-30T04:12:09.237887+00:00",
+  "manifest_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset-manifest.json",
+  "prediction_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\baseline-predictions.json",
+  "per_sample_predictions_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\per-sample-predictions.json",
+  "metrics": {
+    "text-captcha": {
+      "sample_count": 240,
+      "char_accuracy": 0.03166666666666667,
+      "sequence_accuracy": 0.0
+    },
+    "slider-captcha": {
+      "sample_count": 240,
+      "mean_abs_offset_error": 61.35360750333998,
+      "mean_abs_x_error": 53.92916666666667,
+      "mean_abs_y_error": 21.075,
+      "pass_rate_within_3px": 0.25,
+      "pass_rate_within_5px": 0.25416666666666665
+    },
+    "rotate-captcha": {
+      "sample_count": 240,
+      "mean_abs_angle_error": 2.120833333333333,
+      "pass_rate_within_3deg": 0.8,
+      "pass_rate_within_5deg": 0.9083333333333333,
+      "error_distribution": {
+        "0-3": 144,
+        "3-5": 26,
+        "5-10": 22,
+        "10-20": 0,
+        "20-45": 0,
+        ">45": 0
+      }
+    },
+    "click-captcha": {
+      "sample_count": 240,
+      "target_precision": 0.9499036608863198,
+      "target_recall": 0.912962962962963,
+      "click_distance_mean": 1.9565212386344883,
+      "click_success_rate": 0.8541666666666666
+    },
+    "multi-image-select": {
+      "sample_count": 240,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact_match": 1.0
+    }
+  },
+  "per_difficulty_metrics": {
+    "text-captcha": {
+      "easy": {
+        "sample_count": 60,
+        "char_accuracy": 0.043333333333333335,
+        "sequence_accuracy": 0.0
+      },
+      "medium": {
+        "sample_count": 60,
+        "char_accuracy": 0.02666666666666667,
+        "sequence_accuracy": 0.0
+      },
+      "hard": {
+        "sample_count": 60,
+        "char_accuracy": 0.02666666666666667,
+        "sequence_accuracy": 0.0
+      },
+      "adversarial": {
+        "sample_count": 60,
+        "char_accuracy": 0.03,
+        "sequence_accuracy": 0.0
+      }
+    },
+    "slider-captcha": {
+      "easy": {
+        "sample_count": 60,
+        "mean_abs_offset_error": 2.8284271247461903,
+        "mean_abs_x_error": 2.0,
+        "mean_abs_y_error": 2.0,
+        "pass_rate_within_3px": 1.0,
+        "pass_rate_within_5px": 1.0
+      },
+      "medium": {
+        "sample_count": 60,
+        "mean_abs_offset_error": 77.42565021896938,
+        "mean_abs_x_error": 68.06666666666666,
+        "mean_abs_y_error": 27.666666666666668,
+        "pass_rate_within_3px": 0.0,
+        "pass_rate_within_5px": 0.0
+      },
+      "hard": {
+        "sample_count": 60,
+        "mean_abs_offset_error": 78.03458729255861,
+        "mean_abs_x_error": 67.71666666666667,
+        "mean_abs_y_error": 27.916666666666668,
+        "pass_rate_within_3px": 0.0,
+        "pass_rate_within_5px": 0.0
+      },
+      "adversarial": {
+        "sample_count": 60,
+        "mean_abs_offset_error": 87.12576537708576,
+        "mean_abs_x_error": 77.93333333333334,
+        "mean_abs_y_error": 26.716666666666665,
+        "pass_rate_within_3px": 0.0,
+        "pass_rate_within_5px": 0.016666666666666666
+      }
+    },
+    "rotate-captcha": {
+      "easy": {
+        "sample_count": 60,
+        "mean_abs_angle_error": 0.6833333333333333,
+        "pass_rate_within_3deg": 1.0,
+        "pass_rate_within_5deg": 1.0,
+        "error_distribution": {
+          "0-3": 34,
+          "3-5": 0,
+          "5-10": 0,
+          "10-20": 0,
+          "20-45": 0,
+          ">45": 0
+        }
+      },
+      "medium": {
+        "sample_count": 60,
+        "mean_abs_angle_error": 0.9166666666666666,
+        "pass_rate_within_3deg": 1.0,
+        "pass_rate_within_5deg": 1.0,
+        "error_distribution": {
+          "0-3": 45,
+          "3-5": 0,
+          "5-10": 0,
+          "10-20": 0,
+          "20-45": 0,
+          ">45": 0
+        }
+      },
+      "hard": {
+        "sample_count": 60,
+        "mean_abs_angle_error": 3.433333333333333,
+        "pass_rate_within_3deg": 0.5666666666666667,
+        "pass_rate_within_5deg": 0.8166666666666667,
+        "error_distribution": {
+          "0-3": 30,
+          "3-5": 15,
+          "5-10": 11,
+          "10-20": 0,
+          "20-45": 0,
+          ">45": 0
+        }
+      },
+      "adversarial": {
+        "sample_count": 60,
+        "mean_abs_angle_error": 3.45,
+        "pass_rate_within_3deg": 0.6333333333333333,
+        "pass_rate_within_5deg": 0.8166666666666667,
+        "error_distribution": {
+          "0-3": 35,
+          "3-5": 11,
+          "5-10": 11,
+          "10-20": 0,
+          "20-45": 0,
+          ">45": 0
+        }
+      }
+    },
+    "click-captcha": {
+      "easy": {
+        "sample_count": 60,
+        "target_precision": 1.0,
+        "target_recall": 1.0,
+        "click_distance_mean": 0.117741585037433,
+        "click_success_rate": 1.0
+      },
+      "medium": {
+        "sample_count": 60,
+        "target_precision": 0.9833333333333333,
+        "target_recall": 0.9833333333333333,
+        "click_distance_mean": 1.215740091651708,
+        "click_success_rate": 0.9666666666666667
+      },
+      "hard": {
+        "sample_count": 60,
+        "target_precision": 0.9152542372881356,
+        "target_recall": 0.9,
+        "click_distance_mean": 2.436237662676888,
+        "click_success_rate": 0.7666666666666667
+      },
+      "adversarial": {
+        "sample_count": 60,
+        "target_precision": 0.9444444444444444,
+        "target_recall": 0.85,
+        "click_distance_mean": 2.6621429040557985,
+        "click_success_rate": 0.6833333333333333
+      }
+    },
+    "multi-image-select": {
+      "easy": {
+        "sample_count": 60,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact_match": 1.0
+      },
+      "medium": {
+        "sample_count": 60,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact_match": 1.0
+      },
+      "hard": {
+        "sample_count": 60,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact_match": 1.0
+      },
+      "adversarial": {
+        "sample_count": 60,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact_match": 1.0
+      }
+    }
+  },
+  "failure_cases_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\failure-cases.json",
+  "failure_cases_by_type_dir": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\failure-cases-by-type",
+  "failure_case_counts": {
+    "text-captcha": 20,
+    "slider-captcha": 20,
+    "rotate-captcha": 20,
+    "click-captcha": 12,
+    "multi-image-select": 0
+  },
+  "failure_experience_cards": [
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-text-easy-0000.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-text-easy-0003.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-text-easy-0004.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-text-easy-0005.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-text-easy-0007.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-text-easy-0008.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-text-easy-0009.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-text-easy-0010.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-text-easy-0011.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-text-easy-0012.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-text-easy-0013.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-text-easy-0014.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-text-easy-0016.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-text-easy-0017.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-text-easy-0018.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-text-easy-0019.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-text-easy-0020.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-text-easy-0021.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-text-easy-0022.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-text-easy-0023.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-slider-adversarial-0009.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-slider-adversarial-0008.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-slider-medium-0020.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-slider-hard-0036.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-slider-medium-0059.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-slider-hard-0051.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-slider-hard-0000.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-slider-adversarial-0054.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-slider-medium-0004.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-slider-medium-0023.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-slider-hard-0013.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-slider-adversarial-0024.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-slider-adversarial-0051.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-slider-medium-0054.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-slider-medium-0015.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-slider-medium-0014.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-slider-medium-0055.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-slider-hard-0003.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-slider-hard-0008.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-slider-medium-0057.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-rotate-adversarial-0023.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-rotate-hard-0010.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-rotate-hard-0035.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-rotate-adversarial-0006.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-rotate-hard-0004.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-rotate-hard-0047.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-rotate-hard-0059.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-rotate-adversarial-0000.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-rotate-adversarial-0028.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-rotate-hard-0000.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-rotate-hard-0012.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-rotate-hard-0036.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-rotate-adversarial-0022.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-rotate-adversarial-0035.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-rotate-hard-0041.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-rotate-hard-0050.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-rotate-hard-0054.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-rotate-adversarial-0012.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-rotate-adversarial-0016.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-rotate-adversarial-0021.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-click-adversarial-0030.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-click-adversarial-0039.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-click-adversarial-0046.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-click-hard-0045.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-click-adversarial-0036.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-click-adversarial-0033.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-click-adversarial-0027.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-click-adversarial-0017.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-click-hard-0038.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-click-hard-0056.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-click-adversarial-0037.yaml",
+    "skills-experience\\captcha-failure-cases\\run-20260630-041500-phase3-5-longrun-click-adversarial-0047.yaml"
+  ],
+  "leakage_check": {
+    "status": "pass",
+    "solver_input_sources": [
+      "challenge_image"
+    ],
+    "answer_source": "challenge_image",
+    "violations": []
+  },
+  "regression_thresholds": {
+    "text-captcha": {
+      "easy_char_accuracy_min": 0.1,
+      "hard_char_accuracy_min": 0.01
+    },
+    "slider-captcha": {
+      "easy_within_5px_min": 0.6,
+      "hard_nonzero_error_required": true
+    },
+    "rotate-captcha": {
+      "easy_within_5deg_min": 0.6,
+      "error_distribution_required": true
+    },
+    "click-captcha": {
+      "easy_precision_min": 0.5,
+      "failure_cases_required": true
+    },
+    "multi-image-select": {
+      "easy_f1_min": 0.75,
+      "medium_f1_min": 0.55,
+      "hard_f1_min": 0.35
+    }
+  },
+  "threshold_report_required": true,
+  "previous_run_comparison": {
+    "previous_run_path": null,
+    "loaded": false,
+    "note": "no previous run supplied"
+  },
+  "capability_boundary": "synthetic_algorithm_benchmark_only_not_real_site_positive"
+}

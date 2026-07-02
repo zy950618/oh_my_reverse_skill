@@ -1,0 +1,32 @@
+{
+  "run_id": "run-20260630-053000-phase3-6-public-model",
+  "captcha_solver": {
+    "checks": {
+      "public_range_action_replay_pass": true,
+      "leakage_audit_pass": true,
+      "threshold_report_present": true,
+      "failure_cases_returned": true,
+      "eval_added": true,
+      "skill_updated": true,
+      "model_checkpoint_better_than_baseline": true
+    },
+    "decision": "local_solver_promoted",
+    "capability_status": "local_solver_promoted",
+    "positive_allowed_public_evidence": false,
+    "why": "Promotion is local solver/action-replay capability only; public evidence remains non-positive without final business API DATA_ASSERTION_PASS."
+  },
+  "authorized_target": {
+    "decision": "not_promoted",
+    "reason": "No external authorized target with business_data_assertions PASS was run in this phase."
+  },
+  "runtime_parity": {
+    "decision": "not_promoted",
+    "reason": "Phase 3.6 focus is CAPTCHA model/action replay; runtime mutation gate not expanded in this run."
+  },
+  "fingerprint_diagnostics": {
+    "status": "diagnostics_memory_only",
+    "reason": "fingerprint diagnostics may not promote to evasion positive"
+  },
+  "new_positive_allowed_count": 0,
+  "actual_capability_change": true
+}

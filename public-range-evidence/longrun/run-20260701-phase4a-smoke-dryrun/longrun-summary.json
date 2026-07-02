@@ -1,0 +1,15 @@
+{
+  "run_id": "run-20260701-phase4a-smoke-dryrun",
+  "mode": "smoke",
+  "created_at": "2026-07-01T01:19:06.841157Z",
+  "independent_runner": true,
+  "checkpoint_resume_supported": true,
+  "targets_families": [],
+  "command_failures": [],
+  "dataset_manifest_path": "E:\\SKILLS\\oh_my_reverse_skill\\datasets\\captcha_flywheel\\manifests\\run-20260701-phase4a-smoke-dryrun\\dataset_manifest.json",
+  "split_manifest_path": "E:\\SKILLS\\oh_my_reverse_skill\\datasets\\captcha_flywheel\\splits\\run-20260701-phase4a-smoke-dryrun\\split_manifest.json",
+  "model_registry_path": "E:\\SKILLS\\oh_my_reverse_skill\\datasets\\captcha_flywheel\\models\\run-20260701-phase4a-smoke-dryrun\\model_registry.json",
+  "failure_replay_path": "E:\\SKILLS\\oh_my_reverse_skill\\datasets\\captcha_flywheel\\failures\\run-20260701-phase4a-smoke-dryrun\\failure_replay.json",
+  "capability_decision_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\capability-decision.json",
+  "skills_update_queue_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\skills-update-queue.json"
+}

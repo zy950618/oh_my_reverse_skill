@@ -1,0 +1,37 @@
+{
+  "run_id": "run-20260630-061500-scope-contract-positive",
+  "captcha_solver": {
+    "checks": {
+      "public_range_action_replay_pass": true,
+      "covered_slide_click_rotate_drag_drop": true,
+      "all_challenge_actions_accepted": true,
+      "scope_contract_in_scope": true,
+      "external_generalization_disabled": true,
+      "leakage_audit_pass": true,
+      "threshold_report_present": true,
+      "failure_cases_returned": true,
+      "eval_added": true,
+      "skill_updated": true,
+      "model_checkpoint_better_than_baseline": true
+    },
+    "decision": "scope_limited_positive",
+    "capability_status": "positive_allowed",
+    "positive_allowed_public_evidence": true,
+    "scope_limited_positive": "local_open_source_range_positive",
+    "why": "Promotion is limited to configured GoCaptcha-local range and is not generalizable to third-party sites."
+  },
+  "authorized_target": {
+    "decision": "not_promoted",
+    "reason": "No external authorized target with business_data_assertions PASS was run in this phase."
+  },
+  "runtime_parity": {
+    "decision": "not_promoted",
+    "reason": "Phase 3.6 focus is CAPTCHA model/action replay; runtime mutation gate was not expanded in this run."
+  },
+  "fingerprint_diagnostics": {
+    "status": "diagnostics_memory_only",
+    "reason": "Fingerprint diagnostics are observation-only and cannot promote to evasion positive."
+  },
+  "new_positive_allowed_count": 1,
+  "actual_capability_change": true
+}

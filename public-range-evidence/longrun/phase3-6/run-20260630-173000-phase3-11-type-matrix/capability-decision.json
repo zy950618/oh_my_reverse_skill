@@ -1,0 +1,443 @@
+{
+  "run_id": "run-20260630-173000-phase3-11-type-matrix",
+  "local_gocaptcha_compatible_lab": {
+    "checks": {
+      "evidence_present": false,
+      "target_corrected_to_compatible_lab": false,
+      "not_real_gocaptcha_claim": false,
+      "action_replay_records_present": false,
+      "leakage_audit_pass": true,
+      "blackbox_gate_pass": true,
+      "scope_contract_in_scope": false
+    },
+    "verified_checks": {
+      "evidence_present": false,
+      "target_corrected_to_compatible_lab": false,
+      "not_real_gocaptcha_claim": false,
+      "action_replay_records_present": false,
+      "leakage_audit_pass": true,
+      "blackbox_gate_pass": true,
+      "scope_contract_in_scope": false,
+      "multi_difficulty_threshold_pass": false,
+      "all_kind_summaries_present": false
+    },
+    "decision": "not_promoted",
+    "capability_status": "memory_only",
+    "summary": {},
+    "stable_positive": false
+  },
+  "real_public_ranges": {
+    "opencaptchaworld": {
+      "checks": {
+        "evidence_present": false,
+        "official_or_public_repo_confirmed": false,
+        "real_execution_pass": false,
+        "browser_opened": false,
+        "action_replay_success_present": false,
+        "records_present": false,
+        "leakage_audit_pass": true,
+        "blackbox_gate_pass": true,
+        "scope_contract_in_scope": false
+      },
+      "verified_checks": {
+        "evidence_present": false,
+        "official_or_public_repo_confirmed": false,
+        "real_execution_pass": false,
+        "browser_opened": false,
+        "action_replay_success_present": false,
+        "records_present": false,
+        "leakage_audit_pass": true,
+        "blackbox_gate_pass": true,
+        "scope_contract_in_scope": false,
+        "three_families_attempted": false,
+        "threshold_pass": false,
+        "visual_threshold_pass": false,
+        "all_declared_families_min_rate": true,
+        "failure_cases_present": false
+      },
+      "decision": "not_promoted",
+      "capability_status": "memory_only",
+      "metrics": {},
+      "family_level_capabilities": {}
+    },
+    "gocaptcha-official": {
+      "checks": {
+        "evidence_present": false,
+        "official_or_public_repo_confirmed": false,
+        "real_execution_pass": false,
+        "browser_opened": false,
+        "action_replay_success_present": false,
+        "records_present": false,
+        "leakage_audit_pass": true,
+        "blackbox_gate_pass": true,
+        "scope_contract_in_scope": false
+      },
+      "verified_checks": {
+        "evidence_present": false,
+        "official_or_public_repo_confirmed": false,
+        "real_execution_pass": false,
+        "browser_opened": false,
+        "action_replay_success_present": false,
+        "records_present": false,
+        "leakage_audit_pass": true,
+        "blackbox_gate_pass": true,
+        "scope_contract_in_scope": false,
+        "three_families_attempted": false,
+        "threshold_pass": false,
+        "visual_threshold_pass": true,
+        "all_declared_families_min_rate": true,
+        "failure_cases_present": false
+      },
+      "decision": "not_promoted",
+      "capability_status": "memory_only",
+      "metrics": {},
+      "family_level_capabilities": {}
+    },
+    "family_level_capabilities": {
+      "opencaptchaworld": {},
+      "gocaptcha-official": {}
+    }
+  },
+  "vendor_compatible_labs": {
+    "shumei-compatible-lab": {
+      "checks": {
+        "evidence_present": true,
+        "compatible_lab_label": true,
+        "not_official_vendor": true,
+        "not_generalizable_to_vendor_production": true,
+        "real_execution_pass": true,
+        "action_replay_success_present": true,
+        "leakage_audit_pass": true,
+        "blackbox_gate_pass": true,
+        "realism_audit_pass": true,
+        "scope_contract_in_scope": true
+      },
+      "decision": "family_scoped_positive_candidate",
+      "family_level_capabilities": {
+        "slide": {
+          "status": "positive_candidate",
+          "sample_count": 350,
+          "success_rate": 0.9142857142857143,
+          "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix.json"
+        },
+        "select": {
+          "status": "positive_candidate",
+          "sample_count": 350,
+          "success_rate": 0.9028571428571428,
+          "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix.json"
+        },
+        "icon_select": {
+          "status": "positive_candidate",
+          "sample_count": 350,
+          "success_rate": 0.9228571428571428,
+          "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix.json"
+        },
+        "seq_select": {
+          "status": "positive_candidate",
+          "sample_count": 350,
+          "success_rate": 0.9142857142857143,
+          "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix.json"
+        },
+        "spatial_select": {
+          "status": "positive_candidate",
+          "sample_count": 350,
+          "success_rate": 0.9228571428571428,
+          "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix.json"
+        },
+        "no_sense": {
+          "status": "memory_only",
+          "sample_count": 350,
+          "success_rate": 1.0,
+          "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\shumei-compatible-lab\\run-20260630-173000-phase3-11-type-matrix.json"
+        }
+      }
+    },
+    "aliyun-compatible-lab": {
+      "checks": {
+        "evidence_present": true,
+        "compatible_lab_label": true,
+        "not_official_vendor": true,
+        "not_generalizable_to_vendor_production": true,
+        "real_execution_pass": true,
+        "action_replay_success_present": true,
+        "leakage_audit_pass": true,
+        "blackbox_gate_pass": true,
+        "realism_audit_pass": true,
+        "scope_contract_in_scope": true
+      },
+      "decision": "family_scoped_positive_candidate",
+      "family_level_capabilities": {
+        "slider": {
+          "status": "positive_candidate",
+          "sample_count": 350,
+          "success_rate": 0.9228571428571428,
+          "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix.json"
+        },
+        "puzzle": {
+          "status": "positive_candidate",
+          "sample_count": 350,
+          "success_rate": 0.9142857142857143,
+          "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix.json"
+        },
+        "image_restore": {
+          "status": "negative_eval_only",
+          "sample_count": 350,
+          "success_rate": 0.0,
+          "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix.json"
+        },
+        "spatial_reasoning": {
+          "status": "positive_candidate",
+          "sample_count": 350,
+          "success_rate": 0.9142857142857143,
+          "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix.json"
+        },
+        "one_click": {
+          "status": "memory_only",
+          "sample_count": 350,
+          "success_rate": 1.0,
+          "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix.json"
+        },
+        "no_trace": {
+          "status": "memory_only",
+          "sample_count": 350,
+          "success_rate": 1.0,
+          "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\aliyun-compatible-lab\\run-20260630-173000-phase3-11-type-matrix.json"
+        }
+      }
+    }
+  },
+  "five_second_shield_lab": {
+    "checks": {
+      "evidence_present": true,
+      "real_execution_pass": true,
+      "control_flow_pass": true,
+      "business_data_pass": true,
+      "js_runtime_parity_pass": true,
+      "negative_eval_present": true,
+      "concurrency_ladder_present": true,
+      "business_data_assertions_pass": true,
+      "realism_audit_pass": true,
+      "scope_contract_in_scope": true,
+      "not_generalizable": true
+    },
+    "verified_checks": {
+      "evidence_present": true,
+      "real_execution_pass": true,
+      "control_flow_pass": true,
+      "business_data_pass": true,
+      "js_runtime_parity_pass": true,
+      "negative_eval_present": true,
+      "concurrency_ladder_present": true,
+      "business_data_assertions_pass": true,
+      "realism_audit_pass": true,
+      "scope_contract_in_scope": true,
+      "not_generalizable": true,
+      "repeat_or_longrun_regression": false
+    },
+    "decision": "positive_candidate",
+    "capability_status": "positive_candidate",
+    "evidence_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\five-second-shield-lab\\run-20260630-173000-phase3-11-type-matrix.json"
+  },
+  "high_fidelity_risk_lab": {
+    "checks": {
+      "evidence_present": true,
+      "scope_in_scope": true,
+      "real_execution_pass": true,
+      "control_flow_pass": true,
+      "business_data_pass": true,
+      "negative_eval_present": true,
+      "concurrency_ladder_present": true,
+      "direct_repeat_present": true,
+      "not_generalizable": true
+    },
+    "decision": "positive_verified",
+    "capability_status": "positive_verified",
+    "evidence_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\high-fidelity-risk-lab\\run-20260630-022227-high-fidelity-risk-lab.json"
+  },
+  "fingerprint_diagnostics": {
+    "decision": "positive_candidate",
+    "promoted_to_candidate": [
+      "fingerprint-diagnostics:sannysoft",
+      "fingerprint-diagnostics:creepjs",
+      "fingerprint-diagnostics:browserleaks",
+      "fingerprint-diagnostics:incolumitas"
+    ],
+    "not_evasion_positive": true
+  },
+  "capability_delta": {
+    "run_id": "run-20260630-173000-phase3-11-type-matrix",
+    "previous_candidate_count": 16,
+    "previous_verified_positive_count": 1,
+    "previous_stable_positive_count": 0,
+    "new_candidate_count": 23,
+    "new_verified_positive_count": 1,
+    "new_stable_positive_count": 0,
+    "promoted_to_candidate": [
+      "shumei-compatible-lab:slide",
+      "shumei-compatible-lab:select",
+      "shumei-compatible-lab:icon_select",
+      "shumei-compatible-lab:seq_select",
+      "shumei-compatible-lab:spatial_select",
+      "aliyun-compatible-lab:slider",
+      "aliyun-compatible-lab:puzzle",
+      "aliyun-compatible-lab:spatial_reasoning",
+      "five-second-shield-lab",
+      "fingerprint-diagnostics:sannysoft",
+      "fingerprint-diagnostics:creepjs",
+      "fingerprint-diagnostics:browserleaks",
+      "fingerprint-diagnostics:incolumitas"
+    ],
+    "promoted_to_verified": [
+      "high-fidelity-risk-lab"
+    ],
+    "promoted_to_stable": [],
+    "regressed_capabilities": [],
+    "blocked_public_ranges": [
+      "opencaptchaworld",
+      "gocaptcha-official"
+    ],
+    "why_promoted": [
+      {
+        "capability": "shumei-compatible-lab:slide",
+        "reason": "candidate evidence complete but not stable"
+      },
+      {
+        "capability": "shumei-compatible-lab:select",
+        "reason": "candidate evidence complete but not stable"
+      },
+      {
+        "capability": "shumei-compatible-lab:icon_select",
+        "reason": "candidate evidence complete but not stable"
+      },
+      {
+        "capability": "shumei-compatible-lab:seq_select",
+        "reason": "candidate evidence complete but not stable"
+      },
+      {
+        "capability": "shumei-compatible-lab:spatial_select",
+        "reason": "candidate evidence complete but not stable"
+      },
+      {
+        "capability": "aliyun-compatible-lab:slider",
+        "reason": "candidate evidence complete but not stable"
+      },
+      {
+        "capability": "aliyun-compatible-lab:puzzle",
+        "reason": "candidate evidence complete but not stable"
+      },
+      {
+        "capability": "aliyun-compatible-lab:spatial_reasoning",
+        "reason": "candidate evidence complete but not stable"
+      },
+      {
+        "capability": "five-second-shield-lab",
+        "reason": "candidate evidence complete but not stable"
+      },
+      {
+        "capability": "fingerprint-diagnostics:sannysoft",
+        "reason": "candidate evidence complete but not stable"
+      },
+      {
+        "capability": "fingerprint-diagnostics:creepjs",
+        "reason": "candidate evidence complete but not stable"
+      },
+      {
+        "capability": "fingerprint-diagnostics:browserleaks",
+        "reason": "candidate evidence complete but not stable"
+      },
+      {
+        "capability": "fingerprint-diagnostics:incolumitas",
+        "reason": "candidate evidence complete but not stable"
+      },
+      {
+        "capability": "high-fidelity-risk-lab",
+        "reason": "verified local-scope evidence gates passed"
+      }
+    ],
+    "why_not_promoted": [
+      {
+        "capability": "local-gocaptcha-compatible-lab",
+        "missing": [
+          "evidence_present",
+          "target_corrected_to_compatible_lab",
+          "not_real_gocaptcha_claim",
+          "action_replay_records_present",
+          "scope_contract_in_scope"
+        ]
+      },
+      {
+        "capability": "local-gocaptcha-compatible-lab:verified",
+        "missing": [
+          "evidence_present",
+          "target_corrected_to_compatible_lab",
+          "not_real_gocaptcha_claim",
+          "action_replay_records_present",
+          "scope_contract_in_scope",
+          "multi_difficulty_threshold_pass",
+          "all_kind_summaries_present"
+        ]
+      },
+      {
+        "capability": "opencaptchaworld:candidate",
+        "missing": [
+          "evidence_present",
+          "official_or_public_repo_confirmed",
+          "real_execution_pass",
+          "browser_opened",
+          "action_replay_success_present",
+          "records_present",
+          "scope_contract_in_scope"
+        ]
+      },
+      {
+        "capability": "opencaptchaworld:verified",
+        "missing": [
+          "evidence_present",
+          "official_or_public_repo_confirmed",
+          "real_execution_pass",
+          "browser_opened",
+          "action_replay_success_present",
+          "records_present",
+          "scope_contract_in_scope",
+          "three_families_attempted",
+          "threshold_pass",
+          "visual_threshold_pass",
+          "failure_cases_present"
+        ]
+      },
+      {
+        "capability": "gocaptcha-official:candidate",
+        "missing": [
+          "evidence_present",
+          "official_or_public_repo_confirmed",
+          "real_execution_pass",
+          "browser_opened",
+          "action_replay_success_present",
+          "records_present",
+          "scope_contract_in_scope"
+        ]
+      },
+      {
+        "capability": "gocaptcha-official:verified",
+        "missing": [
+          "evidence_present",
+          "official_or_public_repo_confirmed",
+          "real_execution_pass",
+          "browser_opened",
+          "action_replay_success_present",
+          "records_present",
+          "scope_contract_in_scope",
+          "three_families_attempted",
+          "threshold_pass",
+          "failure_cases_present"
+        ]
+      },
+      {
+        "capability": "five-second-shield-lab:verified",
+        "missing": [
+          "repeat_or_longrun_regression"
+        ]
+      }
+    ]
+  }
+}

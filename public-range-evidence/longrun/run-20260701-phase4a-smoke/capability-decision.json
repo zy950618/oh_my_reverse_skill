@@ -1,0 +1,100 @@
+{
+  "run_id": "run-20260701-phase4a-smoke",
+  "created_at": "2026-07-01T01:41:10.715856Z",
+  "rules": {
+    "target_level_positive_forbidden": true,
+    "fingerprint_evasion_forbidden": true,
+    "waf_bypass_claim_forbidden": true,
+    "official_vendor_generalization_forbidden": true
+  },
+  "family_decisions": [
+    {
+      "target_family": "aliyun-compatible-lab:icon_select",
+      "status": "training_needed",
+      "success_rate": 0.0,
+      "failure_count": 30,
+      "why": "family scoped decision; no target-level umbrella positive"
+    },
+    {
+      "target_family": "aliyun-compatible-lab:image_restore",
+      "status": "training_needed",
+      "success_rate": 0.0,
+      "failure_count": 30,
+      "why": "family scoped decision; no target-level umbrella positive"
+    },
+    {
+      "target_family": "aliyun-compatible-lab:select",
+      "status": "training_needed",
+      "success_rate": 0.0,
+      "failure_count": 30,
+      "why": "family scoped decision; no target-level umbrella positive"
+    },
+    {
+      "target_family": "five-second-shield-lab:js_challenge",
+      "status": "positive_candidate",
+      "success_rate": 1.0,
+      "failure_count": null,
+      "why": "family scoped decision; no target-level umbrella positive"
+    },
+    {
+      "target_family": "gocaptcha-official:click-default-en",
+      "status": "training_needed",
+      "success_rate": 0.0,
+      "failure_count": 20,
+      "why": "family scoped decision; no target-level umbrella positive"
+    },
+    {
+      "target_family": "gocaptcha-official:rotate-default",
+      "status": "training_needed",
+      "success_rate": 0.0,
+      "failure_count": 20,
+      "why": "family scoped decision; no target-level umbrella positive"
+    },
+    {
+      "target_family": "opencaptchaworld:Connect_icon",
+      "status": "memory_only",
+      "success_rate": 0.35,
+      "failure_count": 13,
+      "why": "family scoped decision; no target-level umbrella positive"
+    },
+    {
+      "target_family": "opencaptchaworld:Image_Matching",
+      "status": "memory_only",
+      "success_rate": 0.15,
+      "failure_count": 17,
+      "why": "family scoped decision; no target-level umbrella positive"
+    },
+    {
+      "target_family": "shumei-compatible-lab:icon_select",
+      "status": "positive_candidate",
+      "success_rate": 0.9,
+      "failure_count": 3,
+      "why": "family scoped decision; no target-level umbrella positive"
+    },
+    {
+      "target_family": "shumei-compatible-lab:select",
+      "status": "positive_candidate",
+      "success_rate": 0.8333333333333334,
+      "failure_count": 5,
+      "why": "family scoped decision; no target-level umbrella positive"
+    },
+    {
+      "target_family": "shumei-compatible-lab:seq_select",
+      "status": "training_needed",
+      "success_rate": 0.6333333333333333,
+      "failure_count": 11,
+      "why": "family scoped decision; no target-level umbrella positive"
+    }
+  ],
+  "blocked": [
+    {
+      "step": "gocaptcha",
+      "exit_code": 1,
+      "reason": "command failed or blocked"
+    }
+  ],
+  "positive_verified": [
+    "existing high-fidelity-risk-lab only"
+  ],
+  "stable_positive": []
+}

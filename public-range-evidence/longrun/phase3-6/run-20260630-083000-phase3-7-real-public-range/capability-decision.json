@@ -1,0 +1,286 @@
+{
+  "run_id": "run-20260630-083000-phase3-7-real-public-range",
+  "local_gocaptcha_compatible_lab": {
+    "checks": {
+      "evidence_present": false,
+      "target_corrected_to_compatible_lab": false,
+      "not_real_gocaptcha_claim": false,
+      "action_replay_records_present": false,
+      "leakage_audit_pass": true,
+      "blackbox_gate_pass": true,
+      "scope_contract_in_scope": false
+    },
+    "verified_checks": {
+      "evidence_present": false,
+      "target_corrected_to_compatible_lab": false,
+      "not_real_gocaptcha_claim": false,
+      "action_replay_records_present": false,
+      "leakage_audit_pass": true,
+      "blackbox_gate_pass": true,
+      "scope_contract_in_scope": false,
+      "multi_difficulty_threshold_pass": false,
+      "all_kind_summaries_present": false
+    },
+    "decision": "not_promoted",
+    "capability_status": "memory_only",
+    "summary": {},
+    "stable_positive": false
+  },
+  "real_public_ranges": {
+    "opencaptchaworld": {
+      "checks": {
+        "evidence_present": true,
+        "official_or_public_repo_confirmed": true,
+        "real_execution_pass": true,
+        "browser_opened": true,
+        "action_replay_success_present": true,
+        "records_present": true,
+        "leakage_audit_pass": true,
+        "blackbox_gate_pass": true,
+        "scope_contract_in_scope": true
+      },
+      "verified_checks": {
+        "evidence_present": true,
+        "official_or_public_repo_confirmed": true,
+        "real_execution_pass": true,
+        "browser_opened": true,
+        "action_replay_success_present": true,
+        "records_present": true,
+        "leakage_audit_pass": true,
+        "blackbox_gate_pass": true,
+        "scope_contract_in_scope": true,
+        "three_families_attempted": true,
+        "threshold_pass": true,
+        "visual_threshold_pass": false,
+        "all_declared_families_min_rate": true,
+        "failure_cases_present": true
+      },
+      "decision": "positive_candidate",
+      "capability_status": "positive_candidate",
+      "metrics": {
+        "target": "opencaptchaworld",
+        "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\opencaptchaworld\\run-20260630-083000-phase3-7-real-public-range\\opencaptchaworld-action-replay-records.jsonl",
+        "families": {
+          "Connect_icon": {
+            "sample_count": 20,
+            "success_count": 7,
+            "failure_count": 13,
+            "success_rate": 0.35,
+            "answer_leakage_fields_present": [
+              "correct_option_index"
+            ]
+          },
+          "Image_Matching": {
+            "sample_count": 20,
+            "success_count": 3,
+            "failure_count": 17,
+            "success_rate": 0.15,
+            "answer_leakage_fields_present": [
+              "correct_option_index"
+            ]
+          },
+          "Coordinates": {
+            "sample_count": 20,
+            "success_count": 5,
+            "failure_count": 15,
+            "success_rate": 0.25,
+            "answer_leakage_fields_present": [
+              "correct_option_index"
+            ]
+          },
+          "Hold_Button": {
+            "sample_count": 20,
+            "success_count": 20,
+            "failure_count": 0,
+            "success_rate": 1.0,
+            "answer_leakage_fields_present": [
+              "hold_time"
+            ]
+          }
+        },
+        "total_samples": 80,
+        "total_success": 35,
+        "total_failures": 45,
+        "success_rate": 0.4375,
+        "visual_families": [
+          "Connect_icon",
+          "Image_Matching",
+          "Coordinates"
+        ],
+        "visual_success_rate": 0.25,
+        "visual_threshold_pass": false,
+        "sample_count_requirement": "20 per attempted family; unavailable families are recorded as errors, not substituted",
+        "prediction_source": "image_instruction_action_schema_only",
+        "threshold_pass": true
+      }
+    },
+    "gocaptcha-official": {
+      "checks": {
+        "evidence_present": true,
+        "official_or_public_repo_confirmed": true,
+        "real_execution_pass": true,
+        "browser_opened": true,
+        "action_replay_success_present": true,
+        "records_present": true,
+        "leakage_audit_pass": true,
+        "blackbox_gate_pass": true,
+        "scope_contract_in_scope": true
+      },
+      "verified_checks": {
+        "evidence_present": true,
+        "official_or_public_repo_confirmed": true,
+        "real_execution_pass": true,
+        "browser_opened": true,
+        "action_replay_success_present": true,
+        "records_present": true,
+        "leakage_audit_pass": true,
+        "blackbox_gate_pass": true,
+        "scope_contract_in_scope": true,
+        "three_families_attempted": true,
+        "threshold_pass": true,
+        "visual_threshold_pass": true,
+        "all_declared_families_min_rate": false,
+        "failure_cases_present": true
+      },
+      "decision": "positive_candidate",
+      "capability_status": "positive_candidate",
+      "metrics": {
+        "target": "gocaptcha-official",
+        "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\gocaptcha-official\\run-20260630-083000-phase3-7-real-public-range\\gocaptcha-official-action-replay-records.jsonl",
+        "families": {
+          "slide-default": {
+            "sample_count": 50,
+            "success_count": 49,
+            "failure_count": 1,
+            "success_rate": 0.98
+          },
+          "drag-default": {
+            "sample_count": 50,
+            "success_count": 50,
+            "failure_count": 0,
+            "success_rate": 1.0
+          },
+          "rotate-default": {
+            "sample_count": 50,
+            "success_count": 0,
+            "failure_count": 50,
+            "success_rate": 0.0
+          },
+          "click-default-en": {
+            "sample_count": 50,
+            "success_count": 0,
+            "failure_count": 50,
+            "success_rate": 0.0
+          }
+        },
+        "total_samples": 200,
+        "total_success": 99,
+        "success_rate": 0.495,
+        "prediction_source": "master_thumb_images_only",
+        "threshold_pass": true
+      }
+    }
+  },
+  "high_fidelity_risk_lab": {
+    "checks": {
+      "evidence_present": true,
+      "scope_in_scope": true,
+      "real_execution_pass": true,
+      "control_flow_pass": true,
+      "business_data_pass": true,
+      "negative_eval_present": true,
+      "concurrency_ladder_present": true,
+      "direct_repeat_present": true,
+      "not_generalizable": true
+    },
+    "decision": "positive_verified",
+    "capability_status": "positive_verified",
+    "evidence_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\high-fidelity-risk-lab\\run-20260630-022227-high-fidelity-risk-lab.json"
+  },
+  "fingerprint_diagnostics": {
+    "decision": "memory_only",
+    "promoted_to_candidate": [],
+    "not_evasion_positive": true
+  },
+  "capability_delta": {
+    "run_id": "run-20260630-083000-phase3-7-real-public-range",
+    "previous_candidate_count": 3,
+    "previous_verified_positive_count": 1,
+    "previous_stable_positive_count": 0,
+    "new_candidate_count": 5,
+    "new_verified_positive_count": 1,
+    "new_stable_positive_count": 0,
+    "promoted_to_candidate": [
+      "opencaptchaworld",
+      "gocaptcha-official"
+    ],
+    "promoted_to_verified": [
+      "high-fidelity-risk-lab"
+    ],
+    "promoted_to_stable": [],
+    "regressed_capabilities": [],
+    "blocked_public_ranges": [],
+    "why_promoted": [
+      {
+        "capability": "opencaptchaworld",
+        "reason": "candidate evidence complete but not stable"
+      },
+      {
+        "capability": "gocaptcha-official",
+        "reason": "candidate evidence complete but not stable"
+      },
+      {
+        "capability": "high-fidelity-risk-lab",
+        "reason": "verified local-scope evidence gates passed"
+      }
+    ],
+    "why_not_promoted": [
+      {
+        "capability": "local-gocaptcha-compatible-lab",
+        "missing": [
+          "evidence_present",
+          "target_corrected_to_compatible_lab",
+          "not_real_gocaptcha_claim",
+          "action_replay_records_present",
+          "scope_contract_in_scope"
+        ]
+      },
+      {
+        "capability": "local-gocaptcha-compatible-lab:verified",
+        "missing": [
+          "evidence_present",
+          "target_corrected_to_compatible_lab",
+          "not_real_gocaptcha_claim",
+          "action_replay_records_present",
+          "scope_contract_in_scope",
+          "multi_difficulty_threshold_pass",
+          "all_kind_summaries_present"
+        ]
+      },
+      {
+        "capability": "opencaptchaworld:verified",
+        "missing": [
+          "visual_threshold_pass"
+        ]
+      },
+      {
+        "capability": "gocaptcha-official:verified",
+        "missing": [
+          "all_declared_families_min_rate"
+        ]
+      },
+      {
+        "capability": "fingerprint-diagnostics:sannysoft",
+        "missing": [
+          "repeat/profile diagnostics candidate evidence"
+        ]
+      },
+      {
+        "capability": "fingerprint-diagnostics:creepjs",
+        "missing": [
+          "repeat/profile diagnostics candidate evidence"
+        ]
+      }
+    ]
+  }
+}

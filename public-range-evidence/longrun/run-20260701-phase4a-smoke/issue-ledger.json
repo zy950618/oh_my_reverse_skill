@@ -1,0 +1,95 @@
+{
+  "run_id": "run-20260701-phase4a-smoke",
+  "issues": [
+    {
+      "issue_id": "run-20260701-phase4a-smoke-001",
+      "target_family": "aliyun-compatible-lab:icon_select",
+      "severity": "high",
+      "status": "needs_failure_replay",
+      "success_rate": 0.0,
+      "failure_count": 30,
+      "root_cause": "family replay below threshold; requires recognition/action mapping diagnostics",
+      "promotion_blocked": true
+    },
+    {
+      "issue_id": "run-20260701-phase4a-smoke-002",
+      "target_family": "aliyun-compatible-lab:image_restore",
+      "severity": "high",
+      "status": "needs_failure_replay",
+      "success_rate": 0.0,
+      "failure_count": 30,
+      "root_cause": "family replay below threshold; requires recognition/action mapping diagnostics",
+      "promotion_blocked": true
+    },
+    {
+      "issue_id": "run-20260701-phase4a-smoke-003",
+      "target_family": "aliyun-compatible-lab:select",
+      "severity": "high",
+      "status": "needs_failure_replay",
+      "success_rate": 0.0,
+      "failure_count": 30,
+      "root_cause": "family replay below threshold; requires recognition/action mapping diagnostics",
+      "promotion_blocked": true
+    },
+    {
+      "issue_id": "run-20260701-phase4a-smoke-004",
+      "target_family": "gocaptcha-official:click-default-en",
+      "severity": "high",
+      "status": "needs_failure_replay",
+      "success_rate": 0.0,
+      "failure_count": 20,
+      "root_cause": "family replay below threshold; requires recognition/action mapping diagnostics",
+      "promotion_blocked": true
+    },
+    {
+      "issue_id": "run-20260701-phase4a-smoke-005",
+      "target_family": "gocaptcha-official:rotate-default",
+      "severity": "high",
+      "status": "needs_failure_replay",
+      "success_rate": 0.0,
+      "failure_count": 20,
+      "root_cause": "family replay below threshold; requires recognition/action mapping diagnostics",
+      "promotion_blocked": true
+    },
+    {
+      "issue_id": "run-20260701-phase4a-smoke-006",
+      "target_family": "opencaptchaworld:Connect_icon",
+      "severity": "medium",
+      "status": "needs_failure_replay",
+      "success_rate": 0.35,
+      "failure_count": 13,
+      "root_cause": "family replay below threshold; requires recognition/action mapping diagnostics",
+      "promotion_blocked": true
+    },
+    {
+      "issue_id": "run-20260701-phase4a-smoke-007",
+      "target_family": "opencaptchaworld:Image_Matching",
+      "severity": "medium",
+      "status": "needs_failure_replay",
+      "success_rate": 0.15,
+      "failure_count": 17,
+      "root_cause": "family replay below threshold; requires recognition/action mapping diagnostics",
+      "promotion_blocked": true
+    },
+    {
+      "issue_id": "run-20260701-phase4a-smoke-008",
+      "target_family": "shumei-compatible-lab:seq_select",
+      "severity": "medium",
+      "status": "needs_failure_replay",
+      "success_rate": 0.6333333333333333,
+      "failure_count": 11,
+      "root_cause": "family replay below threshold; requires recognition/action mapping diagnostics",
+      "promotion_blocked": true
+    },
+    {
+      "issue_id": "run-20260701-phase4a-smoke-009",
+      "target_family": "gocaptcha",
+      "severity": "high",
+      "status": "blocked",
+      "success_rate": null,
+      "failure_count": null,
+      "root_cause": "subcommand returned non-zero exit code",
+      "promotion_blocked": true
+    }
+  ]
+}

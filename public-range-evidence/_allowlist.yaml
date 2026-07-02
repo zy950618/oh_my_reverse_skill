@@ -1,0 +1,151 @@
+targets:
+  - id: owasp-juice-shop
+    type: public_training_range
+    allowed_hosts:
+      - localhost
+      - 127.0.0.1
+    evidence_dir: public-range-evidence/owasp-juice-shop
+    allowed_modes:
+      - observation
+      - browser_capture
+      - direct_interface_replay
+      - negative_eval
+      - boundary_eval
+      - concurrency_ladder
+
+  - id: scrapethissite
+    type: public_training_range
+    allowed_hosts:
+      - www.scrapethissite.com
+    evidence_dir: public-range-evidence/scrapethissite
+    allowed_modes:
+      - observation
+      - browser_capture
+      - direct_interface_replay
+      - negative_eval
+      - boundary_eval
+
+  - id: cloudflare-turnstile-testing-keys
+    type: official_provider_testing
+    allowed_hosts:
+      - localhost
+      - 127.0.0.1
+      - developers.cloudflare.com
+      - challenges.cloudflare.com
+    evidence_dir: public-range-evidence/cloudflare-turnstile-testing-keys
+    allowed_modes:
+      - state_observer
+      - backend_verify_boundary
+      - token_lifecycle_boundary
+      - negative_eval
+      - boundary_eval
+
+  - id: recaptcha-demo
+    type: official_provider_demo
+    allowed_hosts:
+      - recaptcha-demo.appspot.com
+    evidence_dir: public-range-evidence/recaptcha-demo
+    allowed_modes:
+      - provider_detect
+      - widget_detect
+      - state_observer
+      - human_review_protocol
+      - negative_eval
+      - boundary_eval
+
+  - id: hcaptcha-demo
+    type: official_provider_demo
+    allowed_hosts:
+      - accounts.hcaptcha.com
+    evidence_dir: public-range-evidence/hcaptcha-demo
+    allowed_modes:
+      - provider_detect
+      - widget_detect
+      - state_observer
+      - human_review_protocol
+      - negative_eval
+      - boundary_eval
+
+  - id: gocaptcha-local
+    type: local_open_source_range
+    allowed_hosts:
+      - localhost
+      - 127.0.0.1
+    evidence_dir: public-range-evidence/gocaptcha-local
+    allowed_modes:
+      - visual_interaction_lab
+      - state_observer
+      - negative_eval
+      - boundary_eval
+      - concurrency_ladder
+
+  - id: concurrency-localhost
+    type: local_open_source_range
+    allowed_hosts:
+      - localhost
+      - 127.0.0.1
+    evidence_dir: public-range-evidence/concurrency-localhost
+    allowed_modes:
+      - concurrency_ladder
+      - negative_eval
+      - boundary_eval
+
+  - id: high-fidelity-risk-lab
+    type: local_open_source_range
+    allowed_hosts:
+      - localhost
+      - 127.0.0.1
+    evidence_dir: public-range-evidence/high-fidelity-risk-lab
+    allowed_modes:
+      - browser_capture
+      - direct_interface_replay
+      - token_lifecycle_boundary
+      - negative_eval
+      - boundary_eval
+      - concurrency_ladder
+      - bot_signal_record
+
+  - id: fingerprint-diagnostics
+    type: bot_signal_diagnostics
+    allowed_hosts:
+      - localhost
+      - 127.0.0.1
+      - creepjs.org
+      - browserleaks.com
+      - bot.sannysoft.com
+      - bot.incolumitas.com
+      - demo.fingerprint.com
+    evidence_dir: public-range-evidence/fingerprint-diagnostics
+    allowed_modes:
+      - observation
+      - bot_signal_record
+      - negative_eval
+      - boundary_eval
+
+  - id: captcha-vision-lab
+    type: local_synthetic_training_range
+    allowed_hosts:
+      - localhost
+      - 127.0.0.1
+    evidence_dir: public-range-evidence/captcha-vision-lab
+    allowed_modes:
+      - synthetic_dataset_generation
+      - visual_recognition_benchmark
+      - localhost_action_replay
+      - failure_sample_feedback
+      - boundary_eval
+
+  - id: realistic-captcha-risk-lab
+    type: local_open_source_range
+    allowed_hosts:
+      - localhost
+      - 127.0.0.1
+    evidence_dir: public-range-evidence/realistic-captcha-risk-lab
+    allowed_modes:
+      - browser_capture
+      - js_runtime_parity
+      - fingerprint_surface_observation
+      - captcha_action_replay
+      - concurrency_ladder
+      - negative_eval
+      - boundary_eval

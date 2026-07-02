@@ -1,0 +1,21 @@
+{
+  "completed_steps": [
+    "aliyun-compatible",
+    "anti-solver-audit",
+    "blackbox-gate",
+    "dataset-splitter",
+    "failure-collector",
+    "failure-replay",
+    "fingerprint-creepjs",
+    "fingerprint-sannysoft",
+    "five-second-shield",
+    "gocaptcha",
+    "label-manifest",
+    "leakage-audit",
+    "model-evaluator",
+    "model-train-click_icon_detector",
+    "opencaptchaworld",
+    "shumei-compatible"
+  ],
+  "updated_at": "2026-07-01T01:19:06.833634Z"
+}

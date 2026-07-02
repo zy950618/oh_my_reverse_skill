@@ -1,0 +1,165 @@
+{
+  "run_id": "run-20260701-phase4a-smoke-dryrun",
+  "commands": [
+    {
+      "step": "gocaptcha",
+      "command": "python tools/real_public_range_runner.py --target gocaptcha-official --run-id run-20260701-phase4a-smoke-dryrun --family rotate,click --samples-per-family 20 --model-registry E:\\SKILLS\\oh_my_reverse_skill\\datasets\\captcha_flywheel\\models\\run-20260630-183000-phase3-12-model-flywheel\\model_registry.json",
+      "exit_code": 0,
+      "started_at": "2026-07-01T01:19:06.815685Z",
+      "ended_at": "2026-07-01T01:19:06.815696Z",
+      "stdout_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\gocaptcha.stdout.log",
+      "stderr_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\gocaptcha.stderr.log",
+      "parsed_stdout": {}
+    },
+    {
+      "step": "opencaptchaworld",
+      "command": "python tools/real_public_range_runner.py --target opencaptchaworld --run-id run-20260701-phase4a-smoke-dryrun --families Connect_icon,Image_Matching --samples-per-family 20 --model-registry E:\\SKILLS\\oh_my_reverse_skill\\datasets\\captcha_flywheel\\models\\run-20260630-183000-phase3-12-model-flywheel\\model_registry.json",
+      "exit_code": 0,
+      "started_at": "2026-07-01T01:19:06.817241Z",
+      "ended_at": "2026-07-01T01:19:06.817251Z",
+      "stdout_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\opencaptchaworld.stdout.log",
+      "stderr_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\opencaptchaworld.stderr.log",
+      "parsed_stdout": {}
+    },
+    {
+      "step": "shumei-compatible",
+      "command": "python tools/real_public_range_runner.py --target shumei-compatible-lab --run-id run-20260701-phase4a-smoke-dryrun --families select,icon_select,seq_select --difficulty hard,adversarial --samples-per-family 30 --model-registry E:\\SKILLS\\oh_my_reverse_skill\\datasets\\captcha_flywheel\\models\\run-20260630-183000-phase3-12-model-flywheel\\model_registry.json",
+      "exit_code": 0,
+      "started_at": "2026-07-01T01:19:06.818509Z",
+      "ended_at": "2026-07-01T01:19:06.818518Z",
+      "stdout_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\shumei-compatible.stdout.log",
+      "stderr_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\shumei-compatible.stderr.log",
+      "parsed_stdout": {}
+    },
+    {
+      "step": "aliyun-compatible",
+      "command": "python tools/real_public_range_runner.py --target aliyun-compatible-lab --run-id run-20260701-phase4a-smoke-dryrun --families image_restore,select,icon_select --difficulty easy,medium,hard,adversarial --samples-per-family 30 --model-registry E:\\SKILLS\\oh_my_reverse_skill\\datasets\\captcha_flywheel\\models\\run-20260630-183000-phase3-12-model-flywheel\\model_registry.json",
+      "exit_code": 0,
+      "started_at": "2026-07-01T01:19:06.819788Z",
+      "ended_at": "2026-07-01T01:19:06.819801Z",
+      "stdout_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\aliyun-compatible.stdout.log",
+      "stderr_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\aliyun-compatible.stderr.log",
+      "parsed_stdout": {}
+    },
+    {
+      "step": "five-second-shield",
+      "command": "python tools/real_public_range_runner.py --target five-second-shield-lab --run-id run-20260701-phase4a-smoke-dryrun --samples 12 --profiles simple_delay_gate,js_signature_gate,redirect_chain_gate --concurrency 1,2,5,10 --dynamic-js --model-registry E:\\SKILLS\\oh_my_reverse_skill\\datasets\\captcha_flywheel\\models\\run-20260630-183000-phase3-12-model-flywheel\\model_registry.json",
+      "exit_code": 0,
+      "started_at": "2026-07-01T01:19:06.820677Z",
+      "ended_at": "2026-07-01T01:19:06.820735Z",
+      "stdout_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\five-second-shield.stdout.log",
+      "stderr_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\five-second-shield.stderr.log",
+      "parsed_stdout": {}
+    },
+    {
+      "step": "fingerprint-sannysoft",
+      "command": "python tools/fingerprint_range_runner.py --target sannysoft --run-id run-20260701-phase4a-smoke-dryrun --repeat 1 --profiles 1",
+      "exit_code": 0,
+      "started_at": "2026-07-01T01:19:06.821903Z",
+      "ended_at": "2026-07-01T01:19:06.821914Z",
+      "stdout_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\fingerprint-sannysoft.stdout.log",
+      "stderr_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\fingerprint-sannysoft.stderr.log",
+      "parsed_stdout": {}
+    },
+    {
+      "step": "fingerprint-creepjs",
+      "command": "python tools/fingerprint_range_runner.py --target creepjs --run-id run-20260701-phase4a-smoke-dryrun --repeat 1 --profiles 1",
+      "exit_code": 0,
+      "started_at": "2026-07-01T01:19:06.822870Z",
+      "ended_at": "2026-07-01T01:19:06.822878Z",
+      "stdout_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\fingerprint-creepjs.stdout.log",
+      "stderr_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\fingerprint-creepjs.stderr.log",
+      "parsed_stdout": {}
+    },
+    {
+      "step": "failure-collector",
+      "command": "python tools/captcha_failure_collector.py --run-id run-20260701-phase4a-smoke-dryrun",
+      "exit_code": 0,
+      "started_at": "2026-07-01T01:19:06.823823Z",
+      "ended_at": "2026-07-01T01:19:06.823832Z",
+      "stdout_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\failure-collector.stdout.log",
+      "stderr_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\failure-collector.stderr.log",
+      "parsed_stdout": {}
+    },
+    {
+      "step": "label-manifest",
+      "command": "python tools/captcha_label_manifest_builder.py --run-id run-20260701-phase4a-smoke-dryrun",
+      "exit_code": 0,
+      "started_at": "2026-07-01T01:19:06.825157Z",
+      "ended_at": "2026-07-01T01:19:06.825165Z",
+      "stdout_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\label-manifest.stdout.log",
+      "stderr_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\label-manifest.stderr.log",
+      "parsed_stdout": {}
+    },
+    {
+      "step": "dataset-splitter",
+      "command": "python tools/captcha_dataset_splitter.py --run-id run-20260701-phase4a-smoke-dryrun",
+      "exit_code": 0,
+      "started_at": "2026-07-01T01:19:06.826186Z",
+      "ended_at": "2026-07-01T01:19:06.826195Z",
+      "stdout_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\dataset-splitter.stdout.log",
+      "stderr_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\dataset-splitter.stderr.log",
+      "parsed_stdout": {}
+    },
+    {
+      "step": "model-train-click_icon_detector",
+      "command": "python tools/captcha_model_trainer.py --run-id run-20260701-phase4a-smoke-dryrun --task click_icon_detector",
+      "exit_code": 0,
+      "started_at": "2026-07-01T01:19:06.827691Z",
+      "ended_at": "2026-07-01T01:19:06.827702Z",
+      "stdout_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\model-train-click_icon_detector.stdout.log",
+      "stderr_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\model-train-click_icon_detector.stderr.log",
+      "parsed_stdout": {}
+    },
+    {
+      "step": "model-evaluator",
+      "command": "python tools/captcha_model_evaluator.py --run-id run-20260701-phase4a-smoke-dryrun",
+      "exit_code": 0,
+      "started_at": "2026-07-01T01:19:06.829066Z",
+      "ended_at": "2026-07-01T01:19:06.829074Z",
+      "stdout_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\model-evaluator.stdout.log",
+      "stderr_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\model-evaluator.stderr.log",
+      "parsed_stdout": {}
+    },
+    {
+      "step": "failure-replay",
+      "command": "python tools/captcha_failure_replay.py --run-id run-20260701-phase4a-smoke-dryrun",
+      "exit_code": 0,
+      "started_at": "2026-07-01T01:19:06.829997Z",
+      "ended_at": "2026-07-01T01:19:06.830022Z",
+      "stdout_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\failure-replay.stdout.log",
+      "stderr_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\failure-replay.stderr.log",
+      "parsed_stdout": {}
+    },
+    {
+      "step": "anti-solver-audit",
+      "command": "python tools/anti_solver_platform_audit.py --run-id run-20260701-phase4a-smoke-dryrun",
+      "exit_code": 0,
+      "started_at": "2026-07-01T01:19:06.831204Z",
+      "ended_at": "2026-07-01T01:19:06.831212Z",
+      "stdout_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\anti-solver-audit.stdout.log",
+      "stderr_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\anti-solver-audit.stderr.log",
+      "parsed_stdout": {}
+    },
+    {
+      "step": "blackbox-gate",
+      "command": "python tools/captcha_blackbox_solver_gate.py --run-id run-20260701-phase4a-smoke-dryrun",
+      "exit_code": 0,
+      "started_at": "2026-07-01T01:19:06.832064Z",
+      "ended_at": "2026-07-01T01:19:06.832070Z",
+      "stdout_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\blackbox-gate.stdout.log",
+      "stderr_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\blackbox-gate.stderr.log",
+      "parsed_stdout": {}
+    },
+    {
+      "step": "leakage-audit",
+      "command": "python tools/captcha_leakage_audit.py --run-id run-20260701-phase4a-smoke-dryrun",
+      "exit_code": 0,
+      "started_at": "2026-07-01T01:19:06.833041Z",
+      "ended_at": "2026-07-01T01:19:06.833050Z",
+      "stdout_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\leakage-audit.stdout.log",
+      "stderr_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke-dryrun\\logs\\leakage-audit.stderr.log",
+      "parsed_stdout": {}
+    }
+  ]
+}

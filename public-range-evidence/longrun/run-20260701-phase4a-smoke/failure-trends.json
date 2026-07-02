@@ -1,0 +1,60 @@
+{
+  "run_id": "run-20260701-phase4a-smoke",
+  "failure_trends": {
+    "gocaptcha-official:rotate-default": {
+      "failure_count": 20,
+      "needs_failure_replay": true,
+      "capability_status": "training_needed"
+    },
+    "gocaptcha-official:click-default-en": {
+      "failure_count": 20,
+      "needs_failure_replay": true,
+      "capability_status": "training_needed"
+    },
+    "opencaptchaworld:Connect_icon": {
+      "failure_count": 13,
+      "needs_failure_replay": true,
+      "capability_status": "training_needed"
+    },
+    "opencaptchaworld:Image_Matching": {
+      "failure_count": 17,
+      "needs_failure_replay": true,
+      "capability_status": "training_needed"
+    },
+    "shumei-compatible-lab:select": {
+      "failure_count": 5,
+      "needs_failure_replay": false,
+      "capability_status": "positive_candidate"
+    },
+    "shumei-compatible-lab:icon_select": {
+      "failure_count": 3,
+      "needs_failure_replay": false,
+      "capability_status": "positive_candidate"
+    },
+    "shumei-compatible-lab:seq_select": {
+      "failure_count": 11,
+      "needs_failure_replay": true,
+      "capability_status": "memory_only"
+    },
+    "aliyun-compatible-lab:image_restore": {
+      "failure_count": 30,
+      "needs_failure_replay": true,
+      "capability_status": "negative_eval_only"
+    },
+    "aliyun-compatible-lab:select": {
+      "failure_count": 30,
+      "needs_failure_replay": true,
+      "capability_status": "negative_eval_only"
+    },
+    "aliyun-compatible-lab:icon_select": {
+      "failure_count": 30,
+      "needs_failure_replay": true,
+      "capability_status": "negative_eval_only"
+    },
+    "five-second-shield-lab:js_challenge": {
+      "failure_count": 0,
+      "needs_failure_replay": false,
+      "capability_status": "positive_candidate"
+    }
+  }
+}

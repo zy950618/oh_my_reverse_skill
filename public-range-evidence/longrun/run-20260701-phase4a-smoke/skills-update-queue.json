@@ -1,0 +1,109 @@
+{
+  "run_id": "run-20260701-phase4a-smoke",
+  "skills_update_queue": [
+    {
+      "skill": "6-验证码逆向层/captcha-dataset-flywheel/SKILL.md",
+      "priority": "medium",
+      "source_run_id": "run-20260701-phase4a-smoke",
+      "evidence_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke\\metric-trends.json",
+      "failure_case": "aliyun-compatible-lab:icon_select",
+      "proposed_rule": "keep family in training_needed until repeated action replay reaches threshold",
+      "proposed_eval": "evals/phase4a/aliyun-compatible-lab-icon_select-training-needed.yaml",
+      "proposed_reference": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke\\failure-trends.json",
+      "reason": "success_rate=0.0 below promotion threshold",
+      "risk": "over-promotion if target-level aggregate is used",
+      "apply_now": false
+    },
+    {
+      "skill": "6-验证码逆向层/captcha-dataset-flywheel/SKILL.md",
+      "priority": "medium",
+      "source_run_id": "run-20260701-phase4a-smoke",
+      "evidence_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke\\metric-trends.json",
+      "failure_case": "aliyun-compatible-lab:image_restore",
+      "proposed_rule": "keep family in training_needed until repeated action replay reaches threshold",
+      "proposed_eval": "evals/phase4a/aliyun-compatible-lab-image_restore-training-needed.yaml",
+      "proposed_reference": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke\\failure-trends.json",
+      "reason": "success_rate=0.0 below promotion threshold",
+      "risk": "over-promotion if target-level aggregate is used",
+      "apply_now": false
+    },
+    {
+      "skill": "6-验证码逆向层/captcha-dataset-flywheel/SKILL.md",
+      "priority": "medium",
+      "source_run_id": "run-20260701-phase4a-smoke",
+      "evidence_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke\\metric-trends.json",
+      "failure_case": "aliyun-compatible-lab:select",
+      "proposed_rule": "keep family in training_needed until repeated action replay reaches threshold",
+      "proposed_eval": "evals/phase4a/aliyun-compatible-lab-select-training-needed.yaml",
+      "proposed_reference": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke\\failure-trends.json",
+      "reason": "success_rate=0.0 below promotion threshold",
+      "risk": "over-promotion if target-level aggregate is used",
+      "apply_now": false
+    },
+    {
+      "skill": "6-验证码逆向层/captcha-dataset-flywheel/SKILL.md",
+      "priority": "high",
+      "source_run_id": "run-20260701-phase4a-smoke",
+      "evidence_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke\\metric-trends.json",
+      "failure_case": "gocaptcha-official:click-default-en",
+      "proposed_rule": "keep family in training_needed until repeated action replay reaches threshold",
+      "proposed_eval": "evals/phase4a/gocaptcha-official-click-default-en-training-needed.yaml",
+      "proposed_reference": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke\\failure-trends.json",
+      "reason": "success_rate=0.0 below promotion threshold",
+      "risk": "over-promotion if target-level aggregate is used",
+      "apply_now": false
+    },
+    {
+      "skill": "6-验证码逆向层/captcha-dataset-flywheel/SKILL.md",
+      "priority": "high",
+      "source_run_id": "run-20260701-phase4a-smoke",
+      "evidence_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke\\metric-trends.json",
+      "failure_case": "gocaptcha-official:rotate-default",
+      "proposed_rule": "keep family in training_needed until repeated action replay reaches threshold",
+      "proposed_eval": "evals/phase4a/gocaptcha-official-rotate-default-training-needed.yaml",
+      "proposed_reference": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke\\failure-trends.json",
+      "reason": "success_rate=0.0 below promotion threshold",
+      "risk": "over-promotion if target-level aggregate is used",
+      "apply_now": false
+    },
+    {
+      "skill": "6-验证码逆向层/captcha-dataset-flywheel/SKILL.md",
+      "priority": "medium",
+      "source_run_id": "run-20260701-phase4a-smoke",
+      "evidence_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke\\metric-trends.json",
+      "failure_case": "opencaptchaworld:Connect_icon",
+      "proposed_rule": "keep family in training_needed until repeated action replay reaches threshold",
+      "proposed_eval": "evals/phase4a/opencaptchaworld-Connect_icon-training-needed.yaml",
+      "proposed_reference": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke\\failure-trends.json",
+      "reason": "success_rate=0.35 below promotion threshold",
+      "risk": "over-promotion if target-level aggregate is used",
+      "apply_now": false
+    },
+    {
+      "skill": "6-验证码逆向层/captcha-dataset-flywheel/SKILL.md",
+      "priority": "medium",
+      "source_run_id": "run-20260701-phase4a-smoke",
+      "evidence_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke\\metric-trends.json",
+      "failure_case": "opencaptchaworld:Image_Matching",
+      "proposed_rule": "keep family in training_needed until repeated action replay reaches threshold",
+      "proposed_eval": "evals/phase4a/opencaptchaworld-Image_Matching-training-needed.yaml",
+      "proposed_reference": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke\\failure-trends.json",
+      "reason": "success_rate=0.15 below promotion threshold",
+      "risk": "over-promotion if target-level aggregate is used",
+      "apply_now": false
+    },
+    {
+      "skill": "6-验证码逆向层/captcha-dataset-flywheel/SKILL.md",
+      "priority": "medium",
+      "source_run_id": "run-20260701-phase4a-smoke",
+      "evidence_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke\\metric-trends.json",
+      "failure_case": "shumei-compatible-lab:seq_select",
+      "proposed_rule": "keep family in training_needed until repeated action replay reaches threshold",
+      "proposed_eval": "evals/phase4a/shumei-compatible-lab-seq_select-training-needed.yaml",
+      "proposed_reference": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke\\failure-trends.json",
+      "reason": "success_rate=0.6333333333333333 below promotion threshold",
+      "risk": "over-promotion if target-level aggregate is used",
+      "apply_now": false
+    }
+  ]
+}

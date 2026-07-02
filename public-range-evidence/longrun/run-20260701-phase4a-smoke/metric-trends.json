@@ -1,0 +1,139 @@
+{
+  "run_id": "run-20260701-phase4a-smoke",
+  "created_at": "2026-07-01T01:43:37.651123Z",
+  "target_family_trends": {
+    "gocaptcha-official:rotate-default": {
+      "target": "gocaptcha-official",
+      "family": "rotate-default",
+      "success_rate": 0.0,
+      "p95_error": null,
+      "failure_count": 20,
+      "capability_status": "training_needed"
+    },
+    "gocaptcha-official:click-default-en": {
+      "target": "gocaptcha-official",
+      "family": "click-default-en",
+      "success_rate": 0.0,
+      "p95_error": null,
+      "failure_count": 20,
+      "capability_status": "training_needed"
+    },
+    "opencaptchaworld:Connect_icon": {
+      "target": "opencaptchaworld",
+      "family": "Connect_icon",
+      "success_rate": 0.35,
+      "p95_error": null,
+      "failure_count": 13,
+      "capability_status": "training_needed"
+    },
+    "opencaptchaworld:Image_Matching": {
+      "target": "opencaptchaworld",
+      "family": "Image_Matching",
+      "success_rate": 0.15,
+      "p95_error": null,
+      "failure_count": 17,
+      "capability_status": "training_needed"
+    },
+    "shumei-compatible-lab:select": {
+      "target": "shumei-compatible-lab",
+      "family": "select",
+      "success_rate": 0.8333333333333334,
+      "p95_error": 999.0,
+      "failure_count": 5,
+      "capability_status": "positive_candidate"
+    },
+    "shumei-compatible-lab:icon_select": {
+      "target": "shumei-compatible-lab",
+      "family": "icon_select",
+      "success_rate": 0.9,
+      "p95_error": 999.0,
+      "failure_count": 3,
+      "capability_status": "positive_candidate"
+    },
+    "shumei-compatible-lab:seq_select": {
+      "target": "shumei-compatible-lab",
+      "family": "seq_select",
+      "success_rate": 0.6333333333333333,
+      "p95_error": 999.0,
+      "failure_count": 11,
+      "capability_status": "memory_only"
+    },
+    "aliyun-compatible-lab:image_restore": {
+      "target": "aliyun-compatible-lab",
+      "family": "image_restore",
+      "success_rate": 0.0,
+      "p95_error": 999.0,
+      "failure_count": 30,
+      "capability_status": "negative_eval_only"
+    },
+    "aliyun-compatible-lab:select": {
+      "target": "aliyun-compatible-lab",
+      "family": "select",
+      "success_rate": 0.0,
+      "p95_error": 999.0,
+      "failure_count": 30,
+      "capability_status": "negative_eval_only"
+    },
+    "aliyun-compatible-lab:icon_select": {
+      "target": "aliyun-compatible-lab",
+      "family": "icon_select",
+      "success_rate": 0.0,
+      "p95_error": 999.0,
+      "failure_count": 30,
+      "capability_status": "negative_eval_only"
+    },
+    "five-second-shield-lab:js_challenge": {
+      "target": "five-second-shield-lab",
+      "family": "js_challenge",
+      "success_rate": 1.0,
+      "p95_error": 0,
+      "failure_count": 0,
+      "capability_status": "positive_candidate"
+    }
+  },
+  "ocr_trends": {
+    "char_accuracy": null,
+    "sequence_accuracy": null,
+    "status": "no_ocr_samples"
+  },
+  "action_replay_before_after_trends": [
+    {
+      "family": "Connect_icon,Coordinates,click,icon_select,select,spatial_select",
+      "before_success_rate": 1.0,
+      "after_success_rate": 1.0,
+      "delta": 0.0,
+      "threshold_met": true,
+      "failure_remaining": 0,
+      "promotion_decision": "training_needed"
+    }
+  ],
+  "model_metric_delta": {
+    "models": [
+      {
+        "task": "click_icon_detector",
+        "model_id": "run-20260701-phase4a-smoke-click_icon_detector-local-v1",
+        "baseline_success_rate": 1.0,
+        "trained_success_rate": 1.0,
+        "holdout_success_rate": 1.0,
+        "delta": 0.0,
+        "promotion_decision": "training_needed"
+      }
+    ],
+    "improved_tasks": [],
+    "training_needed_tasks": [
+      "click_icon_detector"
+    ]
+  },
+  "capability_changes": {
+    "improved": [],
+    "regressed": [],
+    "stable_positive": []
+  },
+  "business_data_pass_count": null,
+  "fingerprint_drift_count": 0,
+  "js_parity_flaky_count": 0,
+  "concurrency_failure_rate": null,
+  "leakage_failure_count": 0,
+  "blackbox_gate_failure_count": 0,
+  "anti_solver_violation_count": 0
+}

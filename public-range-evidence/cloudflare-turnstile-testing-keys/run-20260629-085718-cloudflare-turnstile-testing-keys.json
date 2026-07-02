@@ -1,0 +1,167 @@
+{
+  "schema_version": "public-range-evidence/v1",
+  "run_id": "run-20260629-085718-cloudflare-turnstile-testing-keys",
+  "capture_id": "cap-20260629-085718-turnstile-siteverify-testing",
+  "captured_at": "2026-06-29T08:57:20.161243+00:00",
+  "source_freshness": "fresh",
+  "target": {
+    "id": "cloudflare-turnstile-testing-keys",
+    "name": "Cloudflare Turnstile official testing keys",
+    "url": "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+    "host": "challenges.cloudflare.com",
+    "type": "official_provider_testing",
+    "authorization_scope": "Official provider testing keys; standalone siteverify boundary only"
+  },
+  "skills": [
+    "captcha-service-delivery",
+    "web-h5-loop-engineering",
+    "skills-evaluation-governance"
+  ],
+  "scope": {
+    "domain": "cloudflare-turnstile-testing-keys",
+    "stage": "official_provider_testing",
+    "auth_state": "none",
+    "mode": "backend_verify_boundary",
+    "in_scope": [
+      "POST /turnstile/v0/siteverify with documented testing secrets",
+      "provider testing response classification",
+      "negative/boundary eval material"
+    ],
+    "out_of_scope": [
+      "real site widget completion",
+      "production business API acceptance",
+      "CAPTCHA bypass",
+      "browser_automated_verified claim",
+      "positive_allowed skill growth"
+    ]
+  },
+  "provider_flow": {
+    "provider": "turnstile",
+    "widget_detected": false,
+    "script_src": [],
+    "iframe_src": [],
+    "sitekey_or_action_observed": false,
+    "token_field_observed": false,
+    "backend_verify_observed": true,
+    "business_api_observed": false
+  },
+  "state_observer": {
+    "states_seen": [
+      "always_pass_testing_secret",
+      "always_fail_testing_secret",
+      "already_spent_testing_secret"
+    ],
+    "clean_unverified": "not_run",
+    "verified": "not_run",
+    "repeat_verified": "not_run"
+  },
+  "backend_acceptance": {
+    "status": "pass",
+    "final_api_endpoint_confirmed": false,
+    "endpoint": "POST https://challenges.cloudflare.com/turnstile/v0/siteverify",
+    "observed_status": 200,
+    "content_type": "application/json",
+    "json_pointers": [
+      "/success",
+      "/metadata/result_with_testing_key"
+    ],
+    "observed_values": {
+      "always_pass_secret_with_dummy_response": {
+        "/success": true,
+        "/hostname": "example.com",
+        "/metadata/result_with_testing_key": true
+      },
+      "always_fail_secret_with_dummy_response": {
+        "/success": false,
+        "/error-codes/0": "invalid-input-response",
+        "/metadata/result_with_testing_key": true
+      },
+      "already_spent_secret_with_dummy_response": {
+        "/success": false,
+        "/error-codes/0": "timeout-or-duplicate",
+        "/metadata/result_with_testing_key": true
+      }
+    },
+    "direct_interface_call": {
+      "status": "pass",
+      "client": "python-urllib",
+      "method": "POST",
+      "browser_dependency": false,
+      "uses_browser_profile": false,
+      "uses_live_storage": false,
+      "uses_manual_cookie_or_token": false,
+      "observed_status": 200,
+      "content_type": "application/json",
+      "json_type": "dict",
+      "json_pointers": [
+        "/success",
+        "/metadata/result_with_testing_key"
+      ]
+    },
+    "repeat_direct_interface_call": {
+      "status": "not_run",
+      "browser_dependency": false,
+      "uses_browser_profile": false,
+      "uses_live_storage": false,
+      "uses_manual_cookie_or_token": false,
+      "observed_status": 0,
+      "content_type": "",
+      "json_type": "",
+      "json_pointers": []
+    }
+  },
+  "concurrency_ladder": {
+    "worker_1": {
+      "status": "not_run",
+      "session_cache_token_isolated": true,
+      "backend_acceptance": false,
+      "failure_rate": 0,
+      "http_403": 0,
+      "http_429": 0,
+      "http_503": 0,
+      "p95_latency_ms": 0,
+      "stop_condition": "not in scope for provider testing keys"
+    },
+    "worker_2": {},
+    "worker_5": {},
+    "worker_10": {}
+  },
+  "bot_signal_diagnostics": {
+    "browser_profile_id": "",
+    "webdriver_signal": "not_run",
+    "canvas": "not_run",
+    "webgl": "not_run",
+    "webrtc": "not_run",
+    "timezone": "not_run",
+    "language": "not_run",
+    "permissions": "not_run",
+    "notes": []
+  },
+  "fact_labels": {
+    "observed": [
+      "Cloudflare siteverify testing endpoint returned success=true for the always-pass testing secret and metadata.result_with_testing_key=true.",
+      "The always-fail and already-spent testing secrets returned expected negative JSON states."
+    ],
+    "derived": [
+      "Provider testing-key results are useful boundary evidence for evals."
+    ],
+    "assumed": [],
+    "unverified": [
+      "No real site widget token/state was captured.",
+      "No protected business API backend acceptance was tested.",
+      "No repeat direct business interface call was run."
+    ]
+  },
+  "repeat_verified": false,
+  "decision": {
+    "positive_allowed": false,
+    "skills_participation": "negative_eval_only",
+    "blocked_reason": "Official provider testing-key siteverify responses are boundary evidence only; no real site widget, token lifecycle, final business API backend acceptance, or repeat verification was observed.",
+    "why_not_positive": [
+      "final_api_endpoint_confirmed is false",
+      "repeat_direct_interface_call.status is not_run",
+      "business_api_observed is false",
+      "provider testing keys must not become reusable positive CAPTCHA capability"
+    ]
+  }
+}

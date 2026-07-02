@@ -1,0 +1,785 @@
+{
+  "schema_version": "public-range-evidence/v1",
+  "run_id": "run-20260630-013842-high-fidelity-risk-lab",
+  "capture_id": "cap-20260630-013842-high-fidelity-risk-lab",
+  "captured_at": "2026-06-30T01:39:09.625177+00:00",
+  "source_freshness": "fresh",
+  "execution_status": "REAL_EXECUTION_PASS",
+  "control_flow_status": "CONTROL_FLOW_PASS",
+  "business_data_status": "NOT_RUN",
+  "capability_status": "memory_only",
+  "target": {
+    "id": "high-fidelity-risk-lab",
+    "name": "High-Fidelity Local Risk Lab",
+    "url": "http://127.0.0.1:57135/",
+    "host": "127.0.0.1",
+    "type": "local_open_source_range",
+    "authorization_scope": "Self-owned localhost risk lab; no third-party CAPTCHA/WAF/protected production target."
+  },
+  "skills": [
+    "web-h5-loop-engineering",
+    "skills-evaluation-governance",
+    "captcha-service-delivery"
+  ],
+  "skill_invocation": [
+    "web-h5-loop-engineering",
+    "skills-evaluation-governance",
+    "captcha-service-delivery",
+    "99-SKILLS治理/11-AI事实证据规约.md",
+    "99-SKILLS治理/13-并发指纹与会话隔离规约.md",
+    "99-SKILLS治理/16-实战复测与证据新鲜度规约.md",
+    "99-SKILLS治理/18-证据验证拒答人工复核与监控规约.md"
+  ],
+  "scope": {
+    "domain": "high-fidelity-risk-lab",
+    "stage": "phase2_local_risk_state_machine",
+    "auth_state": "self_owned_localhost",
+    "mode": "browser_direct_negative_concurrency",
+    "in_scope": [
+      "server-side session and token lifecycle",
+      "challenge-before business API rejection",
+      "challenge verify then business API acceptance",
+      "direct and repeat direct business API replay with fresh clients",
+      "negative token/session/action/worker evals",
+      "1/2/5/10 worker business API ladder",
+      "fingerprint diagnostics recording"
+    ],
+    "out_of_scope": [
+      "third-party CAPTCHA solving",
+      "production WAF bypass",
+      "stealth or anti-detection generation",
+      "external site concurrency capability"
+    ]
+  },
+  "execution_proof": {
+    "command": "python.exe tools\\run_phase2_high_fidelity_risk_lab.py --stdout-log E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\phase2-high-fidelity-risk-lab\\command-logs\\run-phase2.stdout.log --stderr-log E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\phase2-high-fidelity-risk-lab\\command-logs\\run-phase2.stderr.log",
+    "cwd": "E:\\SKILLS\\oh_my_reverse_skill",
+    "exit_code": 0,
+    "started_at": "2026-06-30T01:38:42.147522+00:00",
+    "ended_at": "2026-06-30T01:39:09.625177+00:00",
+    "stdout_log": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\phase2-high-fidelity-risk-lab\\command-logs\\run-phase2.stdout.log",
+    "stderr_log": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\phase2-high-fidelity-risk-lab\\command-logs\\run-phase2.stderr.log",
+    "screenshot_paths": [
+      "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\phase2-high-fidelity-risk-lab\\run-20260630-013842-high-fidelity-risk-lab\\browser-flow.png"
+    ],
+    "network_summary_paths": [
+      "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\phase2-high-fidelity-risk-lab\\run-20260630-013842-high-fidelity-risk-lab\\browser-network-summary.json",
+      "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\phase2-high-fidelity-risk-lab\\run-20260630-013842-high-fidelity-risk-lab\\direct-and-negative-network-summary.json"
+    ],
+    "browser_trace_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\phase2-high-fidelity-risk-lab\\run-20260630-013842-high-fidelity-risk-lab\\browser-trace.zip",
+    "generated_by": "tools/run_phase2_high_fidelity_risk_lab.py",
+    "synthetic": false
+  },
+  "browser_execution": {
+    "status": "pass",
+    "browser_used": "python-playwright-chromium",
+    "url": "http://127.0.0.1:57135/",
+    "state_reset": "new_browser_context",
+    "submit_before_challenge": {
+      "status": 403,
+      "state": "challenge_required"
+    },
+    "risk_verify": {
+      "status": 200,
+      "state": "backend_accepted"
+    },
+    "submit_after_verify": {
+      "status": 200,
+      "state": "backend_accepted"
+    },
+    "discovered_api_endpoints": [
+      "GET /api/detail",
+      "GET /api/list",
+      "GET /api/session",
+      "POST /api/risk/challenge",
+      "POST /api/risk/verify",
+      "POST /api/submit"
+    ],
+    "fingerprint_diagnostics_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\phase2-high-fidelity-risk-lab\\run-20260630-013842-high-fidelity-risk-lab\\browser-fingerprint-diagnostics.json"
+  },
+  "provider_flow": {
+    "provider": "local-risk-lab",
+    "widget_detected": true,
+    "captcha_type": "local challenge gate",
+    "script_src": [],
+    "iframe_src": [],
+    "sitekey_or_action_observed": true,
+    "token_field_observed": true,
+    "backend_verify_observed": true,
+    "business_api_observed": true
+  },
+  "state_machine_observed": {
+    "status": "pass",
+    "required_states": [
+      "clean",
+      "challenge_required",
+      "challenge_visible",
+      "token_issued",
+      "token_expired",
+      "token_duplicate",
+      "wrong_session",
+      "wrong_action",
+      "backend_accepted",
+      "backend_rejected",
+      "rate_limited",
+      "session_polluted"
+    ],
+    "states_seen": [
+      "backend_accepted",
+      "backend_rejected",
+      "challenge_required",
+      "challenge_visible",
+      "clean",
+      "rate_limited",
+      "session_polluted",
+      "token_duplicate",
+      "token_expired",
+      "token_issued",
+      "wrong_action",
+      "wrong_session"
+    ],
+    "missing_states": [],
+    "server_store_summary_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\phase2-high-fidelity-risk-lab\\run-20260630-013842-high-fidelity-risk-lab\\server-store-summary.json"
+  },
+  "token_rules_observed": {
+    "server_generated": true,
+    "one_time_use": true,
+    "bound_to_session_id": true,
+    "bound_to_action": true,
+    "bound_to_nonce": true,
+    "has_expires_at": true,
+    "duplicate_use_fails": true,
+    "expired_use_fails": true,
+    "cross_session_use_fails": true,
+    "cross_worker_use_fails": true
+  },
+  "backend_acceptance": {
+    "status": "pass",
+    "final_api_endpoint_confirmed": true,
+    "endpoint": "POST /api/submit",
+    "observed_status": 200,
+    "content_type": "application/json",
+    "json_pointers": [
+      "/ok",
+      "/state",
+      "/business_api",
+      "/order_id"
+    ],
+    "challenge_before_business_status": 403,
+    "challenge_before_business_state": "challenge_required",
+    "challenge_after_business_status": 200,
+    "challenge_after_business_state": "backend_accepted",
+    "direct_interface_call": {
+      "status": "pass",
+      "browser_dependency": false,
+      "uses_browser_profile": false,
+      "uses_live_storage": false,
+      "uses_manual_cookie_or_token": false,
+      "observed_status": 200,
+      "content_type": "application/json",
+      "json_type": "dict",
+      "json_pointers": [
+        "/ok",
+        "/state",
+        "/business_api",
+        "/order_id"
+      ]
+    },
+    "repeat_direct_interface_call": {
+      "status": "pass",
+      "browser_dependency": false,
+      "uses_browser_profile": false,
+      "uses_live_storage": false,
+      "uses_manual_cookie_or_token": false,
+      "observed_status": 200,
+      "content_type": "application/json",
+      "json_type": "dict",
+      "json_pointers": [
+        "/ok",
+        "/state",
+        "/business_api",
+        "/order_id"
+      ]
+    }
+  },
+  "direct_interface_repeat": {
+    "status": "pass",
+    "browser_discovered_endpoints": [
+      "GET /api/detail",
+      "GET /api/list",
+      "GET /api/session",
+      "POST /api/risk/challenge",
+      "POST /api/risk/verify",
+      "POST /api/submit"
+    ],
+    "direct_client": "python-urllib with fresh CookieJar",
+    "does_not_depend_on_live_browser_profile": true,
+    "does_not_reuse_manual_cookie_or_token": true,
+    "direct_interface_call": {
+      "label": "direct_interface_call",
+      "status": "pass",
+      "browser_dependency": false,
+      "uses_browser_profile": false,
+      "uses_live_storage": false,
+      "uses_manual_cookie_or_token": false,
+      "observed_status": 200,
+      "content_type": "application/json",
+      "json_type": "dict",
+      "json_pointers": [
+        "/ok",
+        "/state",
+        "/business_api",
+        "/order_id"
+      ],
+      "pre_challenge_status": 403,
+      "pre_challenge_state": "challenge_required",
+      "verify_status": 200,
+      "verify_state": "backend_accepted",
+      "steps": {
+        "session": {
+          "status": 200,
+          "content_type": "application/json",
+          "elapsed_ms": 11.430300073698163,
+          "body": {
+            "ok": true,
+            "state": "clean",
+            "session_id": "sess_3TdWMREAV4TaVWAwTmLGHMWp",
+            "worker_id": "",
+            "states_seen": [
+              "clean"
+            ]
+          }
+        },
+        "list": {
+          "status": 200,
+          "content_type": "application/json",
+          "elapsed_ms": 1.7552000936120749,
+          "body": {
+            "ok": true,
+            "state": "clean",
+            "items": [
+              {
+                "id": "risk-item-1",
+                "name": "Local Risk Item 1"
+              },
+              {
+                "id": "risk-item-2",
+                "name": "Local Risk Item 2"
+              }
+            ]
+          }
+        },
+        "detail": {
+          "status": 200,
+          "content_type": "application/json",
+          "elapsed_ms": 1.3931000139564276,
+          "body": {
+            "ok": true,
+            "state": "clean",
+            "item": {
+              "id": "risk-item-1",
+              "name": "Local Detail risk-item-1",
+              "risk_lab": true
+            }
+          }
+        },
+        "submit_before": {
+          "status": 403,
+          "content_type": "application/json",
+          "elapsed_ms": 12.676900019869208,
+          "body": {
+            "ok": false,
+            "state": "challenge_required",
+            "failure_code": "missing_verify",
+            "reason": "submit requires risk verify first",
+            "business_api": "POST /api/submit"
+          }
+        },
+        "challenge": {
+          "status": 200,
+          "content_type": "application/json",
+          "elapsed_ms": 1.967600081115961,
+          "body": {
+            "ok": true,
+            "state": "token_issued",
+            "challenge_id": "challenge_PGxH7zw7ZV76w_b7AId1M6hI",
+            "token": "tok_zf-YulUFqqf-QHzFetZJkEac",
+            "nonce": "nonce_qmsHGoiCBiurxyLOiOBqKu-C",
+            "action": "submit",
+            "worker_id": "",
+            "expires_at_ms": 1782783606644,
+            "server_generated": true,
+            "one_time": true
+          }
+        },
+        "verify": {
+          "status": 200,
+          "content_type": "application/json",
+          "elapsed_ms": 18.03559996187687,
+          "body": {
+            "ok": true,
+            "state": "backend_accepted",
+            "verified_action": "submit",
+            "session_id": "sess_3TdWMREAV4TaVWAwTmLGHMWp",
+            "worker_id": ""
+          }
+        },
+        "submit_after": {
+          "status": 200,
+          "content_type": "application/json",
+          "elapsed_ms": 15.619699843227863,
+          "body": {
+            "ok": true,
+            "state": "backend_accepted",
+            "business_api": "POST /api/submit",
+            "order_id": "order_CFZmmZeTBY5V7TriFCL4flpJ",
+            "item_id": "risk-item-1",
+            "session_id": "sess_3TdWMREAV4TaVWAwTmLGHMWp"
+          }
+        }
+      }
+    },
+    "repeat_direct_interface_call": {
+      "label": "repeat_direct_interface_call",
+      "status": "pass",
+      "browser_dependency": false,
+      "uses_browser_profile": false,
+      "uses_live_storage": false,
+      "uses_manual_cookie_or_token": false,
+      "observed_status": 200,
+      "content_type": "application/json",
+      "json_type": "dict",
+      "json_pointers": [
+        "/ok",
+        "/state",
+        "/business_api",
+        "/order_id"
+      ],
+      "pre_challenge_status": 403,
+      "pre_challenge_state": "challenge_required",
+      "verify_status": 200,
+      "verify_state": "backend_accepted",
+      "steps": {
+        "session": {
+          "status": 200,
+          "content_type": "application/json",
+          "elapsed_ms": 13.2232999894768,
+          "body": {
+            "ok": true,
+            "state": "clean",
+            "session_id": "sess_WC1AeyaXjw2wEm8tQeD2xmHd",
+            "worker_id": "",
+            "states_seen": [
+              "clean"
+            ]
+          }
+        },
+        "list": {
+          "status": 200,
+          "content_type": "application/json",
+          "elapsed_ms": 1.8056000117212534,
+          "body": {
+            "ok": true,
+            "state": "clean",
+            "items": [
+              {
+                "id": "risk-item-1",
+                "name": "Local Risk Item 1"
+              },
+              {
+                "id": "risk-item-2",
+                "name": "Local Risk Item 2"
+              }
+            ]
+          }
+        },
+        "detail": {
+          "status": 200,
+          "content_type": "application/json",
+          "elapsed_ms": 1.2545001227408648,
+          "body": {
+            "ok": true,
+            "state": "clean",
+            "item": {
+              "id": "risk-item-1",
+              "name": "Local Detail risk-item-1",
+              "risk_lab": true
+            }
+          }
+        },
+        "submit_before": {
+          "status": 403,
+          "content_type": "application/json",
+          "elapsed_ms": 13.07799993082881,
+          "body": {
+            "ok": false,
+            "state": "challenge_required",
+            "failure_code": "missing_verify",
+            "reason": "submit requires risk verify first",
+            "business_api": "POST /api/submit"
+          }
+        },
+        "challenge": {
+          "status": 200,
+          "content_type": "application/json",
+          "elapsed_ms": 1.7380001954734325,
+          "body": {
+            "ok": true,
+            "state": "token_issued",
+            "challenge_id": "challenge_4DHcDMzj3vmWhTeCO3bn48NZ",
+            "token": "tok_ArC0YdEr9bRQneay_M39CNl-",
+            "nonce": "nonce_NtMla7hxmuVekSk0yMrEpt65",
+            "action": "submit",
+            "worker_id": "",
+            "expires_at_ms": 1782783606736,
+            "server_generated": true,
+            "one_time": true
+          }
+        },
+        "verify": {
+          "status": 200,
+          "content_type": "application/json",
+          "elapsed_ms": 24.29100009612739,
+          "body": {
+            "ok": true,
+            "state": "backend_accepted",
+            "verified_action": "submit",
+            "session_id": "sess_WC1AeyaXjw2wEm8tQeD2xmHd",
+            "worker_id": ""
+          }
+        },
+        "submit_after": {
+          "status": 200,
+          "content_type": "application/json",
+          "elapsed_ms": 1.573400106281042,
+          "body": {
+            "ok": true,
+            "state": "backend_accepted",
+            "business_api": "POST /api/submit",
+            "order_id": "order_UfgYcJJuZIyxCqMAvgV5bKrw",
+            "item_id": "risk-item-1",
+            "session_id": "sess_WC1AeyaXjw2wEm8tQeD2xmHd"
+          }
+        }
+      }
+    }
+  },
+  "negative_evals": {
+    "status": "pass",
+    "pass_count": 11,
+    "required_minimum": 8,
+    "items": [
+      {
+        "name": "expired token",
+        "status": "pass",
+        "execution_status": "REAL_EXECUTION_PASS",
+        "capability_status": "negative_eval_only",
+        "observed_status": 410,
+        "observed_state": "token_expired",
+        "expected_statuses": [
+          410
+        ],
+        "expected_state": "token_expired",
+        "body": {
+          "ok": false,
+          "state": "token_expired",
+          "failure_code": "expired_token",
+          "reason": "token expired"
+        }
+      },
+      {
+        "name": "duplicate token",
+        "status": "pass",
+        "execution_status": "REAL_EXECUTION_PASS",
+        "capability_status": "negative_eval_only",
+        "observed_status": 409,
+        "observed_state": "token_duplicate",
+        "expected_statuses": [
+          409
+        ],
+        "expected_state": "token_duplicate",
+        "body": {
+          "ok": false,
+          "state": "token_duplicate",
+          "failure_code": "duplicate_token",
+          "reason": "token was already used"
+        }
+      },
+      {
+        "name": "wrong session",
+        "status": "pass",
+        "execution_status": "REAL_EXECUTION_PASS",
+        "capability_status": "negative_eval_only",
+        "observed_status": 403,
+        "observed_state": "wrong_session",
+        "expected_statuses": [
+          403
+        ],
+        "expected_state": "wrong_session",
+        "body": {
+          "ok": false,
+          "state": "wrong_session",
+          "failure_code": "wrong_session",
+          "reason": "token is bound to another session"
+        }
+      },
+      {
+        "name": "wrong action",
+        "status": "pass",
+        "execution_status": "REAL_EXECUTION_PASS",
+        "capability_status": "negative_eval_only",
+        "observed_status": 403,
+        "observed_state": "wrong_action",
+        "expected_statuses": [
+          403
+        ],
+        "expected_state": "wrong_action",
+        "body": {
+          "ok": false,
+          "state": "wrong_action",
+          "failure_code": "wrong_action",
+          "reason": "token is bound to another action"
+        }
+      },
+      {
+        "name": "stale token",
+        "status": "pass",
+        "execution_status": "REAL_EXECUTION_PASS",
+        "capability_status": "negative_eval_only",
+        "observed_status": 400,
+        "observed_state": "backend_rejected",
+        "expected_statuses": [
+          400
+        ],
+        "expected_state": "backend_rejected",
+        "body": {
+          "ok": false,
+          "state": "backend_rejected",
+          "failure_code": "stale_token",
+          "reason": "unknown token"
+        }
+      },
+      {
+        "name": "wrong nonce stale token",
+        "status": "pass",
+        "execution_status": "REAL_EXECUTION_PASS",
+        "capability_status": "negative_eval_only",
+        "observed_status": 400,
+        "observed_state": "backend_rejected",
+        "expected_statuses": [
+          400
+        ],
+        "expected_state": "backend_rejected",
+        "body": {
+          "ok": false,
+          "state": "backend_rejected",
+          "failure_code": "stale_token",
+          "reason": "nonce mismatch"
+        }
+      },
+      {
+        "name": "missing verify",
+        "status": "pass",
+        "execution_status": "REAL_EXECUTION_PASS",
+        "capability_status": "negative_eval_only",
+        "observed_status": 403,
+        "observed_state": "challenge_required",
+        "expected_statuses": [
+          403
+        ],
+        "expected_state": "challenge_required",
+        "body": {
+          "ok": false,
+          "state": "challenge_required",
+          "failure_code": "missing_verify",
+          "reason": "submit requires risk verify first",
+          "business_api": "POST /api/submit"
+        }
+      },
+      {
+        "name": "challenge endpoint success not business success",
+        "status": "pass",
+        "execution_status": "REAL_EXECUTION_PASS",
+        "capability_status": "negative_eval_only",
+        "observed_status": 403,
+        "observed_state": "challenge_required",
+        "expected_statuses": [
+          403
+        ],
+        "expected_state": "challenge_required",
+        "body": {
+          "ok": false,
+          "state": "challenge_required",
+          "failure_code": "missing_verify",
+          "reason": "submit requires risk verify first",
+          "business_api": "POST /api/submit"
+        }
+      },
+      {
+        "name": "cross-worker token pollution rejected",
+        "status": "pass",
+        "execution_status": "REAL_EXECUTION_PASS",
+        "capability_status": "negative_eval_only",
+        "observed_status": 403,
+        "observed_state": "session_polluted",
+        "expected_statuses": [
+          403
+        ],
+        "expected_state": "session_polluted",
+        "body": {
+          "ok": false,
+          "state": "session_polluted",
+          "failure_code": "cross_worker_token_pollution",
+          "reason": "token is bound to another worker/session"
+        }
+      },
+      {
+        "name": "rate limited",
+        "status": "pass",
+        "execution_status": "REAL_EXECUTION_PASS",
+        "capability_status": "negative_eval_only",
+        "observed_status": 429,
+        "observed_state": "rate_limited",
+        "expected_statuses": [
+          429
+        ],
+        "expected_state": "rate_limited",
+        "body": {
+          "ok": false,
+          "state": "rate_limited",
+          "failure_code": "rate_limited",
+          "reason": "too many business calls in this session"
+        }
+      },
+      {
+        "name": "browser-only success not positive",
+        "status": "pass",
+        "execution_status": "REAL_EXECUTION_PASS",
+        "capability_status": "negative_eval_only",
+        "observed_status": 200,
+        "observed_state": "backend_accepted",
+        "expected_statuses": [
+          200
+        ],
+        "expected_state": "backend_accepted",
+        "reason": "positive capability requires direct and repeat direct business API acceptance, not browser-only success"
+      }
+    ]
+  },
+  "concurrency_ladder": {
+    "worker_1": {
+      "status": "pass",
+      "request_count": 2,
+      "success_count": 2,
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "http_403": 0,
+      "http_429": 0,
+      "http_503": 0,
+      "avg_latency_ms": 53.79754991736263,
+      "p95_latency_ms": 59.86179494066164,
+      "session_cache_token_isolated": true,
+      "backend_acceptance": true,
+      "stop_condition": "stop on any 403/429/503, failure_rate > 0.05, or session/token reuse",
+      "kill_switch": "abort remaining ladder if this stage fails; no stage failed in this run"
+    },
+    "worker_2": {
+      "status": "pass",
+      "request_count": 4,
+      "success_count": 4,
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "http_403": 0,
+      "http_429": 0,
+      "http_503": 0,
+      "avg_latency_ms": 31.85180004220456,
+      "p95_latency_ms": 44.57512509543449,
+      "session_cache_token_isolated": true,
+      "backend_acceptance": true,
+      "stop_condition": "stop on any 403/429/503, failure_rate > 0.05, or session/token reuse",
+      "kill_switch": "abort remaining ladder if this stage fails; no stage failed in this run"
+    },
+    "worker_5": {
+      "status": "pass",
+      "request_count": 10,
+      "success_count": 10,
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "http_403": 0,
+      "http_429": 0,
+      "http_503": 0,
+      "avg_latency_ms": 86.33616999723017,
+      "p95_latency_ms": 169.467874977272,
+      "session_cache_token_isolated": true,
+      "backend_acceptance": true,
+      "stop_condition": "stop on any 403/429/503, failure_rate > 0.05, or session/token reuse",
+      "kill_switch": "abort remaining ladder if this stage fails; no stage failed in this run"
+    },
+    "worker_10": {
+      "status": "pass",
+      "request_count": 20,
+      "success_count": 20,
+      "failure_count": 0,
+      "failure_rate": 0.0,
+      "http_403": 0,
+      "http_429": 0,
+      "http_503": 0,
+      "avg_latency_ms": 262.96415500110015,
+      "p95_latency_ms": 776.0668298811652,
+      "session_cache_token_isolated": true,
+      "backend_acceptance": true,
+      "stop_condition": "stop on any 403/429/503, failure_rate > 0.05, or session/token reuse",
+      "kill_switch": "abort remaining ladder if this stage fails; no stage failed in this run"
+    }
+  },
+  "ui_api_parity": {
+    "status": "pass",
+    "api_pointer": "/state",
+    "normalized_ui_has_api_value": true
+  },
+  "repeat_verified": true,
+  "fact_labels": {
+    "observed": [
+      "A real Chromium context opened the localhost risk lab page.",
+      "POST /api/submit returned 403 challenge_required before risk verify.",
+      "POST /api/risk/verify returned 200 backend_accepted for the issued token.",
+      "POST /api/submit returned 200 backend_accepted after risk verify.",
+      "Direct and repeat direct clients created fresh sessions and reached business API acceptance without using browser profile, live storage, or manual token reuse.",
+      "Expired, duplicate, wrong-session, wrong-action, stale-token, missing-verify, challenge-only, cross-worker pollution, wrong-nonce, rate-limit, and browser-only boundary negatives were recorded.",
+      "1/2/5/10 worker ladder targeted POST /api/concurrency/business with isolated sessions and tokens."
+    ],
+    "derived": [
+      "The local lab is eligible as positive_allowed evidence only for self-owned localhost token lifecycle, direct interface repeat, and concurrency isolation mechanics."
+    ],
+    "assumed": [],
+    "unverified": [
+      "No third-party CAPTCHA, production WAF, external anti-bot system, or real protected third-party business backend was tested.",
+      "Fingerprint diagnostics were recorded for evidence; no stealth, spoofing, or bypass capability is claimed."
+    ]
+  },
+  "decision": {
+    "positive_allowed": false,
+    "skills_participation": "memory_only",
+    "concurrency_positive": false,
+    "blocked_reason": "Phase 2 evidence predated the v2.1 business-data gate and has no server-side business ledger or business_data_assertions.",
+    "why_not_positive": [
+      "business_data_status is NOT_RUN",
+      "business_data_assertions is missing",
+      "negative eval ledger_delta=0 was not proven",
+      "concurrency order/session/worker ownership was not asserted"
+    ],
+    "memory_scope": [
+      "self-owned localhost high-fidelity risk state machine",
+      "server-generated one-time token lifecycle",
+      "direct and repeat direct business API acceptance without browser dependency",
+      "negative token/session/action/worker eval handling",
+      "business API 1/2/5/10 worker ladder on localhost only"
+    ],
+    "not_claimed": [
+      "real third-party CAPTCHA positive capability",
+      "real WAF/risk-control bypass",
+      "production fingerprint handling or stealth",
+      "external high-concurrency acceptance"
+    ]
+  }
+}

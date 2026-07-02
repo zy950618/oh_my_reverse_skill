@@ -1,0 +1,1367 @@
+{
+  "run_id": "run-20260630-041500-phase3-5-longrun",
+  "generated_at": "2026-06-30T04:12:09.211345+00:00",
+  "failure_cases": {
+    "text-captcha": [
+      {
+        "sample_id": "text-easy-0000",
+        "challenge_type": "text-captcha",
+        "difficulty": "easy",
+        "expected": "I36UK",
+        "predicted": "VYYYY",
+        "error": 5.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0000.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0000.json",
+        "root_cause": "easy text segmentation/template matching failed under noise, rotation, or sticky glyphs",
+        "suggested_fix": "add connected-component segmentation and train a glyph classifier on hard samples",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "text-easy-0003",
+        "challenge_type": "text-captcha",
+        "difficulty": "easy",
+        "expected": "S8TKS",
+        "predicted": "YYVYY",
+        "error": 5.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0003.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0003.json",
+        "root_cause": "easy text segmentation/template matching failed under noise, rotation, or sticky glyphs",
+        "suggested_fix": "add connected-component segmentation and train a glyph classifier on hard samples",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "text-easy-0004",
+        "challenge_type": "text-captcha",
+        "difficulty": "easy",
+        "expected": "JVEIZ",
+        "predicted": "TYYYY",
+        "error": 5.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0004.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0004.json",
+        "root_cause": "easy text segmentation/template matching failed under noise, rotation, or sticky glyphs",
+        "suggested_fix": "add connected-component segmentation and train a glyph classifier on hard samples",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "text-easy-0005",
+        "challenge_type": "text-captcha",
+        "difficulty": "easy",
+        "expected": "CDL5N",
+        "predicted": "YYYYT",
+        "error": 5.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0005.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0005.json",
+        "root_cause": "easy text segmentation/template matching failed under noise, rotation, or sticky glyphs",
+        "suggested_fix": "add connected-component segmentation and train a glyph classifier on hard samples",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "text-easy-0007",
+        "challenge_type": "text-captcha",
+        "difficulty": "easy",
+        "expected": "QAUOA",
+        "predicted": "VYYYY",
+        "error": 5.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0007.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0007.json",
+        "root_cause": "easy text segmentation/template matching failed under noise, rotation, or sticky glyphs",
+        "suggested_fix": "add connected-component segmentation and train a glyph classifier on hard samples",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "text-easy-0008",
+        "challenge_type": "text-captcha",
+        "difficulty": "easy",
+        "expected": "EW4A3",
+        "predicted": "LYTYY",
+        "error": 5.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0008.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0008.json",
+        "root_cause": "easy text segmentation/template matching failed under noise, rotation, or sticky glyphs",
+        "suggested_fix": "add connected-component segmentation and train a glyph classifier on hard samples",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "text-easy-0009",
+        "challenge_type": "text-captcha",
+        "difficulty": "easy",
+        "expected": "2I5EE",
+        "predicted": "YYYYY",
+        "error": 5.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0009.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0009.json",
+        "root_cause": "easy text segmentation/template matching failed under noise, rotation, or sticky glyphs",
+        "suggested_fix": "add connected-component segmentation and train a glyph classifier on hard samples",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "text-easy-0010",
+        "challenge_type": "text-captcha",
+        "difficulty": "easy",
+        "expected": "U6FTE",
+        "predicted": "TYYYL",
+        "error": 5.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0010.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0010.json",
+        "root_cause": "easy text segmentation/template matching failed under noise, rotation, or sticky glyphs",
+        "suggested_fix": "add connected-component segmentation and train a glyph classifier on hard samples",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "text-easy-0011",
+        "challenge_type": "text-captcha",
+        "difficulty": "easy",
+        "expected": "Q0R91",
+        "predicted": "VYYY4",
+        "error": 5.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0011.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0011.json",
+        "root_cause": "easy text segmentation/template matching failed under noise, rotation, or sticky glyphs",
+        "suggested_fix": "add connected-component segmentation and train a glyph classifier on hard samples",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "text-easy-0012",
+        "challenge_type": "text-captcha",
+        "difficulty": "easy",
+        "expected": "EL68E",
+        "predicted": "YVYYT",
+        "error": 5.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0012.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0012.json",
+        "root_cause": "easy text segmentation/template matching failed under noise, rotation, or sticky glyphs",
+        "suggested_fix": "add connected-component segmentation and train a glyph classifier on hard samples",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "text-easy-0013",
+        "challenge_type": "text-captcha",
+        "difficulty": "easy",
+        "expected": "YU7CW",
+        "predicted": "TYYYY",
+        "error": 5.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0013.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0013.json",
+        "root_cause": "easy text segmentation/template matching failed under noise, rotation, or sticky glyphs",
+        "suggested_fix": "add connected-component segmentation and train a glyph classifier on hard samples",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "text-easy-0014",
+        "challenge_type": "text-captcha",
+        "difficulty": "easy",
+        "expected": "IMNZ5",
+        "predicted": "YYYYL",
+        "error": 5.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0014.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0014.json",
+        "root_cause": "easy text segmentation/template matching failed under noise, rotation, or sticky glyphs",
+        "suggested_fix": "add connected-component segmentation and train a glyph classifier on hard samples",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "text-easy-0016",
+        "challenge_type": "text-captcha",
+        "difficulty": "easy",
+        "expected": "CX1Z5",
+        "predicted": "VYYYY",
+        "error": 5.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0016.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0016.json",
+        "root_cause": "easy text segmentation/template matching failed under noise, rotation, or sticky glyphs",
+        "suggested_fix": "add connected-component segmentation and train a glyph classifier on hard samples",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "text-easy-0017",
+        "challenge_type": "text-captcha",
+        "difficulty": "easy",
+        "expected": "K5CV4",
+        "predicted": "TYYYY",
+        "error": 5.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0017.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0017.json",
+        "root_cause": "easy text segmentation/template matching failed under noise, rotation, or sticky glyphs",
+        "suggested_fix": "add connected-component segmentation and train a glyph classifier on hard samples",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "text-easy-0018",
+        "challenge_type": "text-captcha",
+        "difficulty": "easy",
+        "expected": "3JBIP",
+        "predicted": "YTYCL",
+        "error": 5.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0018.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0018.json",
+        "root_cause": "easy text segmentation/template matching failed under noise, rotation, or sticky glyphs",
+        "suggested_fix": "add connected-component segmentation and train a glyph classifier on hard samples",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "text-easy-0019",
+        "challenge_type": "text-captcha",
+        "difficulty": "easy",
+        "expected": "ZSB7H",
+        "predicted": "TYYYY",
+        "error": 5.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0019.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0019.json",
+        "root_cause": "easy text segmentation/template matching failed under noise, rotation, or sticky glyphs",
+        "suggested_fix": "add connected-component segmentation and train a glyph classifier on hard samples",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "text-easy-0020",
+        "challenge_type": "text-captcha",
+        "difficulty": "easy",
+        "expected": "8S1Z9",
+        "predicted": "YYYTY",
+        "error": 5.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0020.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0020.json",
+        "root_cause": "easy text segmentation/template matching failed under noise, rotation, or sticky glyphs",
+        "suggested_fix": "add connected-component segmentation and train a glyph classifier on hard samples",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "text-easy-0021",
+        "challenge_type": "text-captcha",
+        "difficulty": "easy",
+        "expected": "1H284",
+        "predicted": "YYYYY",
+        "error": 5.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0021.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0021.json",
+        "root_cause": "easy text segmentation/template matching failed under noise, rotation, or sticky glyphs",
+        "suggested_fix": "add connected-component segmentation and train a glyph classifier on hard samples",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "text-easy-0022",
+        "challenge_type": "text-captcha",
+        "difficulty": "easy",
+        "expected": "ZHADV",
+        "predicted": "YYYYY",
+        "error": 5.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0022.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0022.json",
+        "root_cause": "easy text segmentation/template matching failed under noise, rotation, or sticky glyphs",
+        "suggested_fix": "add connected-component segmentation and train a glyph classifier on hard samples",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "text-easy-0023",
+        "challenge_type": "text-captcha",
+        "difficulty": "easy",
+        "expected": "XXHLO",
+        "predicted": "YTVVY",
+        "error": 5.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0023.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\text-captcha\\easy\\text-easy-0023.json",
+        "root_cause": "easy text segmentation/template matching failed under noise, rotation, or sticky glyphs",
+        "suggested_fix": "add connected-component segmentation and train a glyph classifier on hard samples",
+        "whether_eval_added": true
+      }
+    ],
+    "slider-captcha": [
+      {
+        "sample_id": "slider-adversarial-0009",
+        "challenge_type": "slider-captcha",
+        "difficulty": "adversarial",
+        "expected": {
+          "x": 197,
+          "y": 79
+        },
+        "predicted": {
+          "x": 20,
+          "y": 98
+        },
+        "error": 178.01685313475238,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\adversarial\\slider-adversarial-0009.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\adversarial\\slider-adversarial-0009.json",
+        "root_cause": "adversarial low-contrast or distractor gap confused edge/brightness scan",
+        "suggested_fix": "add template matching with gap-shape priors and reject distractor gaps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "slider-adversarial-0008",
+        "challenge_type": "slider-captcha",
+        "difficulty": "adversarial",
+        "expected": {
+          "x": 249,
+          "y": 60
+        },
+        "predicted": {
+          "x": 110,
+          "y": 103
+        },
+        "error": 145.49914089093448,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\adversarial\\slider-adversarial-0008.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\adversarial\\slider-adversarial-0008.json",
+        "root_cause": "adversarial low-contrast or distractor gap confused edge/brightness scan",
+        "suggested_fix": "add template matching with gap-shape priors and reject distractor gaps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "slider-medium-0020",
+        "challenge_type": "slider-captcha",
+        "difficulty": "medium",
+        "expected": {
+          "x": 250,
+          "y": 96
+        },
+        "predicted": {
+          "x": 111,
+          "y": 135
+        },
+        "error": 144.3675863897433,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\medium\\slider-medium-0020.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\medium\\slider-medium-0020.json",
+        "root_cause": "medium low-contrast or distractor gap confused edge/brightness scan",
+        "suggested_fix": "add template matching with gap-shape priors and reject distractor gaps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "slider-hard-0036",
+        "challenge_type": "slider-captcha",
+        "difficulty": "hard",
+        "expected": {
+          "x": 246,
+          "y": 46
+        },
+        "predicted": {
+          "x": 112,
+          "y": 97
+        },
+        "error": 143.37712509323097,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\hard\\slider-hard-0036.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\hard\\slider-hard-0036.json",
+        "root_cause": "hard low-contrast or distractor gap confused edge/brightness scan",
+        "suggested_fix": "add template matching with gap-shape priors and reject distractor gaps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "slider-medium-0059",
+        "challenge_type": "slider-captcha",
+        "difficulty": "medium",
+        "expected": {
+          "x": 245,
+          "y": 76
+        },
+        "predicted": {
+          "x": 108,
+          "y": 113
+        },
+        "error": 141.90842117365693,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\medium\\slider-medium-0059.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\medium\\slider-medium-0059.json",
+        "root_cause": "medium low-contrast or distractor gap confused edge/brightness scan",
+        "suggested_fix": "add template matching with gap-shape priors and reject distractor gaps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "slider-hard-0051",
+        "challenge_type": "slider-captcha",
+        "difficulty": "hard",
+        "expected": {
+          "x": 245,
+          "y": 58
+        },
+        "predicted": {
+          "x": 109,
+          "y": 97
+        },
+        "error": 141.4814475470194,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\hard\\slider-hard-0051.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\hard\\slider-hard-0051.json",
+        "root_cause": "hard low-contrast or distractor gap confused edge/brightness scan",
+        "suggested_fix": "add template matching with gap-shape priors and reject distractor gaps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "slider-hard-0000",
+        "challenge_type": "slider-captcha",
+        "difficulty": "hard",
+        "expected": {
+          "x": 247,
+          "y": 49
+        },
+        "predicted": {
+          "x": 110,
+          "y": 83
+        },
+        "error": 141.15594213493105,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\hard\\slider-hard-0000.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\hard\\slider-hard-0000.json",
+        "root_cause": "hard low-contrast or distractor gap confused edge/brightness scan",
+        "suggested_fix": "add template matching with gap-shape priors and reject distractor gaps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "slider-adversarial-0054",
+        "challenge_type": "slider-captcha",
+        "difficulty": "adversarial",
+        "expected": {
+          "x": 246,
+          "y": 67
+        },
+        "predicted": {
+          "x": 109,
+          "y": 93
+        },
+        "error": 139.44532978913278,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\adversarial\\slider-adversarial-0054.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\adversarial\\slider-adversarial-0054.json",
+        "root_cause": "adversarial low-contrast or distractor gap confused edge/brightness scan",
+        "suggested_fix": "add template matching with gap-shape priors and reject distractor gaps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "slider-medium-0004",
+        "challenge_type": "slider-captcha",
+        "difficulty": "medium",
+        "expected": {
+          "x": 249,
+          "y": 71
+        },
+        "predicted": {
+          "x": 114,
+          "y": 104
+        },
+        "error": 138.97481786280562,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\medium\\slider-medium-0004.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\medium\\slider-medium-0004.json",
+        "root_cause": "medium low-contrast or distractor gap confused edge/brightness scan",
+        "suggested_fix": "add template matching with gap-shape priors and reject distractor gaps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "slider-medium-0023",
+        "challenge_type": "slider-captcha",
+        "difficulty": "medium",
+        "expected": {
+          "x": 91,
+          "y": 95
+        },
+        "predicted": {
+          "x": 224,
+          "y": 130
+        },
+        "error": 137.5281789307195,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\medium\\slider-medium-0023.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\medium\\slider-medium-0023.json",
+        "root_cause": "medium low-contrast or distractor gap confused edge/brightness scan",
+        "suggested_fix": "add template matching with gap-shape priors and reject distractor gaps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "slider-hard-0013",
+        "challenge_type": "slider-captcha",
+        "difficulty": "hard",
+        "expected": {
+          "x": 240,
+          "y": 86
+        },
+        "predicted": {
+          "x": 110,
+          "y": 127
+        },
+        "error": 136.31214179228496,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\hard\\slider-hard-0013.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\hard\\slider-hard-0013.json",
+        "root_cause": "hard low-contrast or distractor gap confused edge/brightness scan",
+        "suggested_fix": "add template matching with gap-shape priors and reject distractor gaps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "slider-adversarial-0024",
+        "challenge_type": "slider-captcha",
+        "difficulty": "adversarial",
+        "expected": {
+          "x": 240,
+          "y": 52
+        },
+        "predicted": {
+          "x": 111,
+          "y": 96
+        },
+        "error": 136.2974687952788,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\adversarial\\slider-adversarial-0024.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\adversarial\\slider-adversarial-0024.json",
+        "root_cause": "adversarial low-contrast or distractor gap confused edge/brightness scan",
+        "suggested_fix": "add template matching with gap-shape priors and reject distractor gaps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "slider-adversarial-0051",
+        "challenge_type": "slider-captcha",
+        "difficulty": "adversarial",
+        "expected": {
+          "x": 248,
+          "y": 74
+        },
+        "predicted": {
+          "x": 112,
+          "y": 72
+        },
+        "error": 136.01470508735443,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\adversarial\\slider-adversarial-0051.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\adversarial\\slider-adversarial-0051.json",
+        "root_cause": "adversarial low-contrast or distractor gap confused edge/brightness scan",
+        "suggested_fix": "add template matching with gap-shape priors and reject distractor gaps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "slider-medium-0054",
+        "challenge_type": "slider-captcha",
+        "difficulty": "medium",
+        "expected": {
+          "x": 89,
+          "y": 85
+        },
+        "predicted": {
+          "x": 219,
+          "y": 123
+        },
+        "error": 135.4400236266961,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\medium\\slider-medium-0054.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\medium\\slider-medium-0054.json",
+        "root_cause": "medium low-contrast or distractor gap confused edge/brightness scan",
+        "suggested_fix": "add template matching with gap-shape priors and reject distractor gaps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "slider-medium-0015",
+        "challenge_type": "slider-captcha",
+        "difficulty": "medium",
+        "expected": {
+          "x": 90,
+          "y": 84
+        },
+        "predicted": {
+          "x": 223,
+          "y": 101
+        },
+        "error": 134.08206442324789,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\medium\\slider-medium-0015.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\medium\\slider-medium-0015.json",
+        "root_cause": "medium low-contrast or distractor gap confused edge/brightness scan",
+        "suggested_fix": "add template matching with gap-shape priors and reject distractor gaps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "slider-medium-0014",
+        "challenge_type": "slider-captcha",
+        "difficulty": "medium",
+        "expected": {
+          "x": 95,
+          "y": 73
+        },
+        "predicted": {
+          "x": 223,
+          "y": 104
+        },
+        "error": 131.70041761513136,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\medium\\slider-medium-0014.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\medium\\slider-medium-0014.json",
+        "root_cause": "medium low-contrast or distractor gap confused edge/brightness scan",
+        "suggested_fix": "add template matching with gap-shape priors and reject distractor gaps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "slider-medium-0055",
+        "challenge_type": "slider-captcha",
+        "difficulty": "medium",
+        "expected": {
+          "x": 233,
+          "y": 55
+        },
+        "predicted": {
+          "x": 107,
+          "y": 93
+        },
+        "error": 131.60547101089682,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\medium\\slider-medium-0055.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\medium\\slider-medium-0055.json",
+        "root_cause": "medium low-contrast or distractor gap confused edge/brightness scan",
+        "suggested_fix": "add template matching with gap-shape priors and reject distractor gaps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "slider-hard-0003",
+        "challenge_type": "slider-captcha",
+        "difficulty": "hard",
+        "expected": {
+          "x": 88,
+          "y": 80
+        },
+        "predicted": {
+          "x": 216,
+          "y": 109
+        },
+        "error": 131.24404748406687,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\hard\\slider-hard-0003.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\hard\\slider-hard-0003.json",
+        "root_cause": "hard low-contrast or distractor gap confused edge/brightness scan",
+        "suggested_fix": "add template matching with gap-shape priors and reject distractor gaps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "slider-hard-0008",
+        "challenge_type": "slider-captcha",
+        "difficulty": "hard",
+        "expected": {
+          "x": 235,
+          "y": 46
+        },
+        "predicted": {
+          "x": 111,
+          "y": 87
+        },
+        "error": 130.60245020672468,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\hard\\slider-hard-0008.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\hard\\slider-hard-0008.json",
+        "root_cause": "hard low-contrast or distractor gap confused edge/brightness scan",
+        "suggested_fix": "add template matching with gap-shape priors and reject distractor gaps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "slider-medium-0057",
+        "challenge_type": "slider-captcha",
+        "difficulty": "medium",
+        "expected": {
+          "x": 240,
+          "y": 71
+        },
+        "predicted": {
+          "x": 112,
+          "y": 92
+        },
+        "error": 129.71121771072848,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\medium\\slider-medium-0057.png",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\slider-captcha\\medium\\slider-medium-0057.json",
+        "root_cause": "medium low-contrast or distractor gap confused edge/brightness scan",
+        "suggested_fix": "add template matching with gap-shape priors and reject distractor gaps",
+        "whether_eval_added": true
+      }
+    ],
+    "rotate-captcha": [
+      {
+        "sample_id": "rotate-adversarial-0023",
+        "challenge_type": "rotate-captcha",
+        "difficulty": "adversarial",
+        "expected": 131,
+        "predicted": 141,
+        "error": 10.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\adversarial\\rotate-adversarial-0023.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\adversarial\\rotate-adversarial-0023.json",
+        "root_cause": "adversarial red orientation feature degraded by blur, center offset, or symmetric distractor",
+        "suggested_fix": "add center estimation and orientation scan over edge maps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "rotate-hard-0010",
+        "challenge_type": "rotate-captcha",
+        "difficulty": "hard",
+        "expected": 141,
+        "predicted": 132,
+        "error": 9.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\hard\\rotate-hard-0010.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\hard\\rotate-hard-0010.json",
+        "root_cause": "hard red orientation feature degraded by blur, center offset, or symmetric distractor",
+        "suggested_fix": "add center estimation and orientation scan over edge maps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "rotate-hard-0035",
+        "challenge_type": "rotate-captcha",
+        "difficulty": "hard",
+        "expected": 140,
+        "predicted": 131,
+        "error": 9.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\hard\\rotate-hard-0035.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\hard\\rotate-hard-0035.json",
+        "root_cause": "hard red orientation feature degraded by blur, center offset, or symmetric distractor",
+        "suggested_fix": "add center estimation and orientation scan over edge maps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "rotate-adversarial-0006",
+        "challenge_type": "rotate-captcha",
+        "difficulty": "adversarial",
+        "expected": 135,
+        "predicted": 126,
+        "error": 9.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\adversarial\\rotate-adversarial-0006.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\adversarial\\rotate-adversarial-0006.json",
+        "root_cause": "adversarial red orientation feature degraded by blur, center offset, or symmetric distractor",
+        "suggested_fix": "add center estimation and orientation scan over edge maps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "rotate-hard-0004",
+        "challenge_type": "rotate-captcha",
+        "difficulty": "hard",
+        "expected": 185,
+        "predicted": 177,
+        "error": 8.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\hard\\rotate-hard-0004.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\hard\\rotate-hard-0004.json",
+        "root_cause": "hard red orientation feature degraded by blur, center offset, or symmetric distractor",
+        "suggested_fix": "add center estimation and orientation scan over edge maps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "rotate-hard-0047",
+        "challenge_type": "rotate-captcha",
+        "difficulty": "hard",
+        "expected": 141,
+        "predicted": 149,
+        "error": 8.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\hard\\rotate-hard-0047.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\hard\\rotate-hard-0047.json",
+        "root_cause": "hard red orientation feature degraded by blur, center offset, or symmetric distractor",
+        "suggested_fix": "add center estimation and orientation scan over edge maps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "rotate-hard-0059",
+        "challenge_type": "rotate-captcha",
+        "difficulty": "hard",
+        "expected": 274,
+        "predicted": 266,
+        "error": 8.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\hard\\rotate-hard-0059.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\hard\\rotate-hard-0059.json",
+        "root_cause": "hard red orientation feature degraded by blur, center offset, or symmetric distractor",
+        "suggested_fix": "add center estimation and orientation scan over edge maps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "rotate-adversarial-0000",
+        "challenge_type": "rotate-captcha",
+        "difficulty": "adversarial",
+        "expected": 34,
+        "predicted": 42,
+        "error": 8.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\adversarial\\rotate-adversarial-0000.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\adversarial\\rotate-adversarial-0000.json",
+        "root_cause": "adversarial red orientation feature degraded by blur, center offset, or symmetric distractor",
+        "suggested_fix": "add center estimation and orientation scan over edge maps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "rotate-adversarial-0028",
+        "challenge_type": "rotate-captcha",
+        "difficulty": "adversarial",
+        "expected": 327,
+        "predicted": 335,
+        "error": 8.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\adversarial\\rotate-adversarial-0028.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\adversarial\\rotate-adversarial-0028.json",
+        "root_cause": "adversarial red orientation feature degraded by blur, center offset, or symmetric distractor",
+        "suggested_fix": "add center estimation and orientation scan over edge maps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "rotate-hard-0000",
+        "challenge_type": "rotate-captcha",
+        "difficulty": "hard",
+        "expected": 157,
+        "predicted": 150,
+        "error": 7.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\hard\\rotate-hard-0000.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\hard\\rotate-hard-0000.json",
+        "root_cause": "hard red orientation feature degraded by blur, center offset, or symmetric distractor",
+        "suggested_fix": "add center estimation and orientation scan over edge maps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "rotate-hard-0012",
+        "challenge_type": "rotate-captcha",
+        "difficulty": "hard",
+        "expected": 113,
+        "predicted": 106,
+        "error": 7.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\hard\\rotate-hard-0012.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\hard\\rotate-hard-0012.json",
+        "root_cause": "hard red orientation feature degraded by blur, center offset, or symmetric distractor",
+        "suggested_fix": "add center estimation and orientation scan over edge maps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "rotate-hard-0036",
+        "challenge_type": "rotate-captcha",
+        "difficulty": "hard",
+        "expected": 36,
+        "predicted": 43,
+        "error": 7.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\hard\\rotate-hard-0036.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\hard\\rotate-hard-0036.json",
+        "root_cause": "hard red orientation feature degraded by blur, center offset, or symmetric distractor",
+        "suggested_fix": "add center estimation and orientation scan over edge maps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "rotate-adversarial-0022",
+        "challenge_type": "rotate-captcha",
+        "difficulty": "adversarial",
+        "expected": 339,
+        "predicted": 346,
+        "error": 7.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\adversarial\\rotate-adversarial-0022.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\adversarial\\rotate-adversarial-0022.json",
+        "root_cause": "adversarial red orientation feature degraded by blur, center offset, or symmetric distractor",
+        "suggested_fix": "add center estimation and orientation scan over edge maps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "rotate-adversarial-0035",
+        "challenge_type": "rotate-captcha",
+        "difficulty": "adversarial",
+        "expected": 61,
+        "predicted": 68,
+        "error": 7.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\adversarial\\rotate-adversarial-0035.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\adversarial\\rotate-adversarial-0035.json",
+        "root_cause": "adversarial red orientation feature degraded by blur, center offset, or symmetric distractor",
+        "suggested_fix": "add center estimation and orientation scan over edge maps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "rotate-hard-0041",
+        "challenge_type": "rotate-captcha",
+        "difficulty": "hard",
+        "expected": 205,
+        "predicted": 211,
+        "error": 6.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\hard\\rotate-hard-0041.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\hard\\rotate-hard-0041.json",
+        "root_cause": "hard red orientation feature degraded by blur, center offset, or symmetric distractor",
+        "suggested_fix": "add center estimation and orientation scan over edge maps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "rotate-hard-0050",
+        "challenge_type": "rotate-captcha",
+        "difficulty": "hard",
+        "expected": 294,
+        "predicted": 300,
+        "error": 6.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\hard\\rotate-hard-0050.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\hard\\rotate-hard-0050.json",
+        "root_cause": "hard red orientation feature degraded by blur, center offset, or symmetric distractor",
+        "suggested_fix": "add center estimation and orientation scan over edge maps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "rotate-hard-0054",
+        "challenge_type": "rotate-captcha",
+        "difficulty": "hard",
+        "expected": 87,
+        "predicted": 93,
+        "error": 6.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\hard\\rotate-hard-0054.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\hard\\rotate-hard-0054.json",
+        "root_cause": "hard red orientation feature degraded by blur, center offset, or symmetric distractor",
+        "suggested_fix": "add center estimation and orientation scan over edge maps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "rotate-adversarial-0012",
+        "challenge_type": "rotate-captcha",
+        "difficulty": "adversarial",
+        "expected": 246,
+        "predicted": 240,
+        "error": 6.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\adversarial\\rotate-adversarial-0012.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\adversarial\\rotate-adversarial-0012.json",
+        "root_cause": "adversarial red orientation feature degraded by blur, center offset, or symmetric distractor",
+        "suggested_fix": "add center estimation and orientation scan over edge maps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "rotate-adversarial-0016",
+        "challenge_type": "rotate-captcha",
+        "difficulty": "adversarial",
+        "expected": 70,
+        "predicted": 76,
+        "error": 6.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\adversarial\\rotate-adversarial-0016.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\adversarial\\rotate-adversarial-0016.json",
+        "root_cause": "adversarial red orientation feature degraded by blur, center offset, or symmetric distractor",
+        "suggested_fix": "add center estimation and orientation scan over edge maps",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "rotate-adversarial-0021",
+        "challenge_type": "rotate-captcha",
+        "difficulty": "adversarial",
+        "expected": 31,
+        "predicted": 37,
+        "error": 6.0,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\adversarial\\rotate-adversarial-0021.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\rotate-captcha\\adversarial\\rotate-adversarial-0021.json",
+        "root_cause": "adversarial red orientation feature degraded by blur, center offset, or symmetric distractor",
+        "suggested_fix": "add center estimation and orientation scan over edge maps",
+        "whether_eval_added": true
+      }
+    ],
+    "click-captcha": [
+      {
+        "sample_id": "click-adversarial-0030",
+        "challenge_type": "click-captcha",
+        "difficulty": "adversarial",
+        "expected": [
+          {
+            "x": 174,
+            "y": 65,
+            "target_index": 0
+          },
+          {
+            "x": 83,
+            "y": 133,
+            "target_index": 1
+          },
+          {
+            "x": 64,
+            "y": 63,
+            "target_index": 2
+          }
+        ],
+        "predicted": [
+          {
+            "x": 173,
+            "y": 67
+          },
+          {
+            "x": 81,
+            "y": 134
+          }
+        ],
+        "error": 25.826328316258497,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\click-captcha\\adversarial\\click-adversarial-0030.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\click-captcha\\adversarial\\click-adversarial-0030.json",
+        "root_cause": "adversarial target component detection missed or merged target regions",
+        "suggested_fix": "add color normalization and target/non-target classifier",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "click-adversarial-0039",
+        "challenge_type": "click-captcha",
+        "difficulty": "adversarial",
+        "expected": [
+          {
+            "x": 150,
+            "y": 65,
+            "target_index": 0
+          },
+          {
+            "x": 173,
+            "y": 66,
+            "target_index": 1
+          },
+          {
+            "x": 192,
+            "y": 61,
+            "target_index": 2
+          }
+        ],
+        "predicted": [
+          {
+            "x": 171,
+            "y": 61
+          }
+        ],
+        "error": 15.920907711188818,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\click-captcha\\adversarial\\click-adversarial-0039.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\click-captcha\\adversarial\\click-adversarial-0039.json",
+        "root_cause": "adversarial target component detection missed or merged target regions",
+        "suggested_fix": "add color normalization and target/non-target classifier",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "click-adversarial-0046",
+        "challenge_type": "click-captcha",
+        "difficulty": "adversarial",
+        "expected": [
+          {
+            "x": 216,
+            "y": 96,
+            "target_index": 0
+          },
+          {
+            "x": 212,
+            "y": 76,
+            "target_index": 1
+          },
+          {
+            "x": 189,
+            "y": 42,
+            "target_index": 2
+          }
+        ],
+        "predicted": [
+          {
+            "x": 182,
+            "y": 42
+          },
+          {
+            "x": 210,
+            "y": 73
+          }
+        ],
+        "error": 11.458426641157805,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\click-captcha\\adversarial\\click-adversarial-0046.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\click-captcha\\adversarial\\click-adversarial-0046.json",
+        "root_cause": "adversarial target component detection missed or merged target regions",
+        "suggested_fix": "add color normalization and target/non-target classifier",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "click-hard-0045",
+        "challenge_type": "click-captcha",
+        "difficulty": "hard",
+        "expected": [
+          {
+            "x": 159,
+            "y": 57,
+            "target_index": 0
+          },
+          {
+            "x": 173,
+            "y": 68,
+            "target_index": 1
+          },
+          {
+            "x": 203,
+            "y": 99,
+            "target_index": 2
+          }
+        ],
+        "predicted": [
+          {
+            "x": 180,
+            "y": 71
+          },
+          {
+            "x": 203,
+            "y": 99
+          }
+        ],
+        "error": 10.95154401137061,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\click-captcha\\hard\\click-hard-0045.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\click-captcha\\hard\\click-hard-0045.json",
+        "root_cause": "hard target component detection missed or merged target regions",
+        "suggested_fix": "add color normalization and target/non-target classifier",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "click-adversarial-0036",
+        "challenge_type": "click-captcha",
+        "difficulty": "adversarial",
+        "expected": [
+          {
+            "x": 88,
+            "y": 98,
+            "target_index": 0
+          },
+          {
+            "x": 145,
+            "y": 104,
+            "target_index": 1
+          },
+          {
+            "x": 123,
+            "y": 86,
+            "target_index": 2
+          }
+        ],
+        "predicted": [
+          {
+            "x": 136,
+            "y": 97
+          },
+          {
+            "x": 91,
+            "y": 95
+          }
+        ],
+        "error": 10.89126043467902,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\click-captcha\\adversarial\\click-adversarial-0036.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\click-captcha\\adversarial\\click-adversarial-0036.json",
+        "root_cause": "adversarial target component detection missed or merged target regions",
+        "suggested_fix": "add color normalization and target/non-target classifier",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "click-adversarial-0033",
+        "challenge_type": "click-captcha",
+        "difficulty": "adversarial",
+        "expected": [
+          {
+            "x": 86,
+            "y": 56,
+            "target_index": 0
+          },
+          {
+            "x": 37,
+            "y": 65,
+            "target_index": 1
+          },
+          {
+            "x": 50,
+            "y": 67,
+            "target_index": 2
+          }
+        ],
+        "predicted": [
+          {
+            "x": 87,
+            "y": 55
+          },
+          {
+            "x": 53,
+            "y": 77
+          }
+        ],
+        "error": 10.618173357094548,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\click-captcha\\adversarial\\click-adversarial-0033.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\click-captcha\\adversarial\\click-adversarial-0033.json",
+        "root_cause": "adversarial target component detection missed or merged target regions",
+        "suggested_fix": "add color normalization and target/non-target classifier",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "click-adversarial-0027",
+        "challenge_type": "click-captcha",
+        "difficulty": "adversarial",
+        "expected": [
+          {
+            "x": 153,
+            "y": 89,
+            "target_index": 0
+          },
+          {
+            "x": 145,
+            "y": 71,
+            "target_index": 1
+          },
+          {
+            "x": 67,
+            "y": 86,
+            "target_index": 2
+          }
+        ],
+        "predicted": [
+          {
+            "x": 70,
+            "y": 84
+          },
+          {
+            "x": 155,
+            "y": 92
+          }
+        ],
+        "error": 10.156836416717999,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\click-captcha\\adversarial\\click-adversarial-0027.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\click-captcha\\adversarial\\click-adversarial-0027.json",
+        "root_cause": "adversarial target component detection missed or merged target regions",
+        "suggested_fix": "add color normalization and target/non-target classifier",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "click-adversarial-0017",
+        "challenge_type": "click-captcha",
+        "difficulty": "adversarial",
+        "expected": [
+          {
+            "x": 156,
+            "y": 97,
+            "target_index": 0
+          },
+          {
+            "x": 145,
+            "y": 76,
+            "target_index": 1
+          },
+          {
+            "x": 94,
+            "y": 133,
+            "target_index": 2
+          }
+        ],
+        "predicted": [
+          {
+            "x": 150,
+            "y": 85
+          },
+          {
+            "x": 91,
+            "y": 129
+          }
+        ],
+        "error": 9.57067933532858,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\click-captcha\\adversarial\\click-adversarial-0017.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\click-captcha\\adversarial\\click-adversarial-0017.json",
+        "root_cause": "adversarial target component detection missed or merged target regions",
+        "suggested_fix": "add color normalization and target/non-target classifier",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "click-hard-0038",
+        "challenge_type": "click-captcha",
+        "difficulty": "hard",
+        "expected": [
+          {
+            "x": 208,
+            "y": 137,
+            "target_index": 0
+          },
+          {
+            "x": 171,
+            "y": 84,
+            "target_index": 1
+          },
+          {
+            "x": 210,
+            "y": 113,
+            "target_index": 2
+          }
+        ],
+        "predicted": [
+          {
+            "x": 168,
+            "y": 86
+          },
+          {
+            "x": 207,
+            "y": 127
+          }
+        ],
+        "error": 9.32441598662041,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\click-captcha\\hard\\click-hard-0038.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\click-captcha\\hard\\click-hard-0038.json",
+        "root_cause": "hard target component detection missed or merged target regions",
+        "suggested_fix": "add color normalization and target/non-target classifier",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "click-hard-0056",
+        "challenge_type": "click-captcha",
+        "difficulty": "hard",
+        "expected": [
+          {
+            "x": 200,
+            "y": 123,
+            "target_index": 0
+          },
+          {
+            "x": 184,
+            "y": 69,
+            "target_index": 1
+          },
+          {
+            "x": 194,
+            "y": 44,
+            "target_index": 2
+          }
+        ],
+        "predicted": [
+          {
+            "x": 187,
+            "y": 55
+          },
+          {
+            "x": 200,
+            "y": 123
+          }
+        ],
+        "error": 9.118741957893883,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\click-captcha\\hard\\click-hard-0056.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\click-captcha\\hard\\click-hard-0056.json",
+        "root_cause": "hard target component detection missed or merged target regions",
+        "suggested_fix": "add color normalization and target/non-target classifier",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "click-adversarial-0037",
+        "challenge_type": "click-captcha",
+        "difficulty": "adversarial",
+        "expected": [
+          {
+            "x": 167,
+            "y": 59,
+            "target_index": 0
+          },
+          {
+            "x": 65,
+            "y": 50,
+            "target_index": 1
+          },
+          {
+            "x": 89,
+            "y": 59,
+            "target_index": 2
+          }
+        ],
+        "predicted": [
+          {
+            "x": 78,
+            "y": 54
+          },
+          {
+            "x": 166,
+            "y": 59
+          }
+        ],
+        "error": 8.894838827443339,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\click-captcha\\adversarial\\click-adversarial-0037.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\click-captcha\\adversarial\\click-adversarial-0037.json",
+        "root_cause": "adversarial target component detection missed or merged target regions",
+        "suggested_fix": "add color normalization and target/non-target classifier",
+        "whether_eval_added": true
+      },
+      {
+        "sample_id": "click-adversarial-0047",
+        "challenge_type": "click-captcha",
+        "difficulty": "adversarial",
+        "expected": [
+          {
+            "x": 122,
+            "y": 138,
+            "target_index": 0
+          },
+          {
+            "x": 98,
+            "y": 129,
+            "target_index": 1
+          },
+          {
+            "x": 106,
+            "y": 47,
+            "target_index": 2
+          }
+        ],
+        "predicted": [
+          {
+            "x": 106,
+            "y": 47
+          },
+          {
+            "x": 109,
+            "y": 134
+          }
+        ],
+        "error": 8.561505494110007,
+        "image_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\click-captcha\\adversarial\\click-adversarial-0047.jpg",
+        "label_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\dataset\\click-captcha\\adversarial\\click-adversarial-0047.json",
+        "root_cause": "adversarial target component detection missed or merged target regions",
+        "suggested_fix": "add color normalization and target/non-target classifier",
+        "whether_eval_added": true
+      }
+    ],
+    "multi-image-select": []
+  }
+}

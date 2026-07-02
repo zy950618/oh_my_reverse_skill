@@ -1,0 +1,1040 @@
+{
+  "run_id": "run-20260630-041500-phase3-5-longrun",
+  "config_path": "configs\\phase3_longrun.yaml",
+  "rounds": 2,
+  "total_samples": 1200,
+  "captcha_longrun_metrics": {
+    "per_type": {
+      "text-captcha": {
+        "sample_count": 240,
+        "char_accuracy": 0.03166666666666667,
+        "sequence_accuracy": 0.0
+      },
+      "slider-captcha": {
+        "sample_count": 240,
+        "mean_abs_offset_error": 61.35360750333998,
+        "mean_abs_x_error": 53.92916666666667,
+        "mean_abs_y_error": 21.075,
+        "pass_rate_within_3px": 0.25,
+        "pass_rate_within_5px": 0.25416666666666665
+      },
+      "rotate-captcha": {
+        "sample_count": 240,
+        "mean_abs_angle_error": 2.120833333333333,
+        "pass_rate_within_3deg": 0.8,
+        "pass_rate_within_5deg": 0.9083333333333333,
+        "error_distribution": {
+          "0-3": 144,
+          "3-5": 26,
+          "5-10": 22,
+          "10-20": 0,
+          "20-45": 0,
+          ">45": 0
+        }
+      },
+      "click-captcha": {
+        "sample_count": 240,
+        "target_precision": 0.9499036608863198,
+        "target_recall": 0.912962962962963,
+        "click_distance_mean": 1.9565212386344883,
+        "click_success_rate": 0.8541666666666666
+      },
+      "multi-image-select": {
+        "sample_count": 240,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "exact_match": 1.0
+      }
+    },
+    "per_difficulty": {
+      "text-captcha": {
+        "easy": {
+          "sample_count": 60,
+          "char_accuracy": 0.043333333333333335,
+          "sequence_accuracy": 0.0
+        },
+        "medium": {
+          "sample_count": 60,
+          "char_accuracy": 0.02666666666666667,
+          "sequence_accuracy": 0.0
+        },
+        "hard": {
+          "sample_count": 60,
+          "char_accuracy": 0.02666666666666667,
+          "sequence_accuracy": 0.0
+        },
+        "adversarial": {
+          "sample_count": 60,
+          "char_accuracy": 0.03,
+          "sequence_accuracy": 0.0
+        }
+      },
+      "slider-captcha": {
+        "easy": {
+          "sample_count": 60,
+          "mean_abs_offset_error": 2.8284271247461903,
+          "mean_abs_x_error": 2.0,
+          "mean_abs_y_error": 2.0,
+          "pass_rate_within_3px": 1.0,
+          "pass_rate_within_5px": 1.0
+        },
+        "medium": {
+          "sample_count": 60,
+          "mean_abs_offset_error": 77.42565021896938,
+          "mean_abs_x_error": 68.06666666666666,
+          "mean_abs_y_error": 27.666666666666668,
+          "pass_rate_within_3px": 0.0,
+          "pass_rate_within_5px": 0.0
+        },
+        "hard": {
+          "sample_count": 60,
+          "mean_abs_offset_error": 78.03458729255861,
+          "mean_abs_x_error": 67.71666666666667,
+          "mean_abs_y_error": 27.916666666666668,
+          "pass_rate_within_3px": 0.0,
+          "pass_rate_within_5px": 0.0
+        },
+        "adversarial": {
+          "sample_count": 60,
+          "mean_abs_offset_error": 87.12576537708576,
+          "mean_abs_x_error": 77.93333333333334,
+          "mean_abs_y_error": 26.716666666666665,
+          "pass_rate_within_3px": 0.0,
+          "pass_rate_within_5px": 0.016666666666666666
+        }
+      },
+      "rotate-captcha": {
+        "easy": {
+          "sample_count": 60,
+          "mean_abs_angle_error": 0.6833333333333333,
+          "pass_rate_within_3deg": 1.0,
+          "pass_rate_within_5deg": 1.0,
+          "error_distribution": {
+            "0-3": 34,
+            "3-5": 0,
+            "5-10": 0,
+            "10-20": 0,
+            "20-45": 0,
+            ">45": 0
+          }
+        },
+        "medium": {
+          "sample_count": 60,
+          "mean_abs_angle_error": 0.9166666666666666,
+          "pass_rate_within_3deg": 1.0,
+          "pass_rate_within_5deg": 1.0,
+          "error_distribution": {
+            "0-3": 45,
+            "3-5": 0,
+            "5-10": 0,
+            "10-20": 0,
+            "20-45": 0,
+            ">45": 0
+          }
+        },
+        "hard": {
+          "sample_count": 60,
+          "mean_abs_angle_error": 3.433333333333333,
+          "pass_rate_within_3deg": 0.5666666666666667,
+          "pass_rate_within_5deg": 0.8166666666666667,
+          "error_distribution": {
+            "0-3": 30,
+            "3-5": 15,
+            "5-10": 11,
+            "10-20": 0,
+            "20-45": 0,
+            ">45": 0
+          }
+        },
+        "adversarial": {
+          "sample_count": 60,
+          "mean_abs_angle_error": 3.45,
+          "pass_rate_within_3deg": 0.6333333333333333,
+          "pass_rate_within_5deg": 0.8166666666666667,
+          "error_distribution": {
+            "0-3": 35,
+            "3-5": 11,
+            "5-10": 11,
+            "10-20": 0,
+            "20-45": 0,
+            ">45": 0
+          }
+        }
+      },
+      "click-captcha": {
+        "easy": {
+          "sample_count": 60,
+          "target_precision": 1.0,
+          "target_recall": 1.0,
+          "click_distance_mean": 0.117741585037433,
+          "click_success_rate": 1.0
+        },
+        "medium": {
+          "sample_count": 60,
+          "target_precision": 0.9833333333333333,
+          "target_recall": 0.9833333333333333,
+          "click_distance_mean": 1.215740091651708,
+          "click_success_rate": 0.9666666666666667
+        },
+        "hard": {
+          "sample_count": 60,
+          "target_precision": 0.9152542372881356,
+          "target_recall": 0.9,
+          "click_distance_mean": 2.436237662676888,
+          "click_success_rate": 0.7666666666666667
+        },
+        "adversarial": {
+          "sample_count": 60,
+          "target_precision": 0.9444444444444444,
+          "target_recall": 0.85,
+          "click_distance_mean": 2.6621429040557985,
+          "click_success_rate": 0.6833333333333333
+        }
+      },
+      "multi-image-select": {
+        "easy": {
+          "sample_count": 60,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "exact_match": 1.0
+        },
+        "medium": {
+          "sample_count": 60,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "exact_match": 1.0
+        },
+        "hard": {
+          "sample_count": 60,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "exact_match": 1.0
+        },
+        "adversarial": {
+          "sample_count": 60,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "exact_match": 1.0
+        }
+      }
+    },
+    "per_sample_prediction_path": "public-range-evidence\\raw\\captcha-vision-lab\\run-20260630-041500-phase3-5-longrun\\per-sample-predictions.json",
+    "failure_case_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\phase3-5\\run-20260630-041500-phase3-5-longrun\\failure-cases.json",
+    "leakage_check": {
+      "status": "pass",
+      "solver_input_sources": [
+        "challenge_image"
+      ],
+      "answer_source": "challenge_image",
+      "violations": []
+    },
+    "metric_trend": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\phase3-5\\run-20260630-041500-phase3-5-longrun\\metric-trends.json"
+  },
+  "js_parity_longrun": {
+    "total_cases": 3,
+    "pass_cases": 3,
+    "fail_cases": 0,
+    "flaky_cases": 0,
+    "parity_status": "pass",
+    "repeat_parity_status": "pass",
+    "regression_fixture_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\realistic-captcha-risk-lab\\run-20260630-041500-phase3-5-longrun\\runtime-regression-fixture.json",
+    "issue_ledger_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\phase3-5\\run-20260630-041500-phase3-5-longrun\\issue-ledger.json"
+  },
+  "fingerprint_longrun": {
+    "profile_count": 2,
+    "repeat_count": 2,
+    "surface_hashes": [
+      "b740179b870ac60008654d85cb80555048e47a7c87272f8991f4cfb36c485c06"
+    ],
+    "drift_count": 0,
+    "profile_consistency_pass": true,
+    "automation_anomaly_observed": true,
+    "block_reason_distribution": {
+      "not_blocked_localhost_observation": 1
+    },
+    "allowed_action": [
+      "observation_only",
+      "profile_isolation",
+      "authorized_lab_regression",
+      "memory_only"
+    ],
+    "forbidden_action": [
+      "webdriver_hide",
+      "fingerprint_spoof",
+      "proxy_rotation_evasion",
+      "clearance_cookie_reuse",
+      "waf_bypass",
+      "risk_token_reuse",
+      "unauthorized_challenge_processing"
+    ],
+    "issue_ledger_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\phase3-5\\run-20260630-041500-phase3-5-longrun\\issue-ledger.json"
+  },
+  "concurrency_longrun": {
+    "worker_1": {
+      "status": "pass",
+      "worker_count": 1,
+      "expected_ledger_delta": 1,
+      "actual_ledger_delta": 1,
+      "success_count": 1,
+      "duplicate_count": 0,
+      "wrong_owner_count": 0,
+      "cross_worker_pollution_count": 0,
+      "orphan_record_count": 0,
+      "failure_rate": 0.0,
+      "status_counts": {
+        "403": 0,
+        "429": 0,
+        "503": 0
+      },
+      "p95": 1.9638999365270138,
+      "p99": 1.9638999365270138,
+      "stop_condition": "completed requested local worker ladder",
+      "kill_switch": "local process shutdown",
+      "workers": [
+        {
+          "worker_id": "worker-1-0",
+          "session_id": "sess_XZDc8ekV5tg42A",
+          "order_id": "order_C_9Zzxx9FkW2dA",
+          "token_id": "tok_RfXVjpbxhAS9vA",
+          "challenge_instance_id": "challenge_uLKPRnkKrTQLkQ",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 1.9638999365270138
+        }
+      ]
+    },
+    "worker_2": {
+      "status": "pass",
+      "worker_count": 2,
+      "expected_ledger_delta": 2,
+      "actual_ledger_delta": 2,
+      "success_count": 2,
+      "duplicate_count": 0,
+      "wrong_owner_count": 0,
+      "cross_worker_pollution_count": 0,
+      "orphan_record_count": 0,
+      "failure_rate": 0.0,
+      "status_counts": {
+        "403": 0,
+        "429": 0,
+        "503": 0
+      },
+      "p95": 1.7261998727917671,
+      "p99": 1.7261998727917671,
+      "stop_condition": "completed requested local worker ladder",
+      "kill_switch": "local process shutdown",
+      "workers": [
+        {
+          "worker_id": "worker-2-0",
+          "session_id": "sess_RZ3-U55efMRjLw",
+          "order_id": "order_yNTNK3k9W5HBzA",
+          "token_id": "tok_mWouUra7Fl7O3A",
+          "challenge_instance_id": "challenge_zaEYa3JZo_rxTw",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 2.602499909698963
+        },
+        {
+          "worker_id": "worker-2-1",
+          "session_id": "sess_Qeej1ERIgNRObw",
+          "order_id": "order_GDG4X5OR7H1Vcg",
+          "token_id": "tok_nf_4_9R1lPTz1w",
+          "challenge_instance_id": "challenge_HKMwzPuM_HzbdQ",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 1.7261998727917671
+        }
+      ]
+    },
+    "worker_5": {
+      "status": "pass",
+      "worker_count": 5,
+      "expected_ledger_delta": 5,
+      "actual_ledger_delta": 5,
+      "success_count": 5,
+      "duplicate_count": 0,
+      "wrong_owner_count": 0,
+      "cross_worker_pollution_count": 0,
+      "orphan_record_count": 0,
+      "failure_rate": 0.0,
+      "status_counts": {
+        "403": 0,
+        "429": 0,
+        "503": 0
+      },
+      "p95": 4.491099854931235,
+      "p99": 4.491099854931235,
+      "stop_condition": "completed requested local worker ladder",
+      "kill_switch": "local process shutdown",
+      "workers": [
+        {
+          "worker_id": "worker-5-0",
+          "session_id": "sess_Z7ropnw2LzQFcQ",
+          "order_id": "order_QG3QK6WAhSdHfA",
+          "token_id": "tok_L_n4h1MVgNzwng",
+          "challenge_instance_id": "challenge_-mYjgBR370FxlQ",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 4.928800044581294
+        },
+        {
+          "worker_id": "worker-5-1",
+          "session_id": "sess_Nx4YHgp2Cp9Oyg",
+          "order_id": "order_KVDpheWaBqd6WQ",
+          "token_id": "tok_iorZ5S9hDZpGqA",
+          "challenge_instance_id": "challenge_N_zjN8STSfXhBQ",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 4.074699943885207
+        },
+        {
+          "worker_id": "worker-5-2",
+          "session_id": "sess_6IQDIBHBAzYe1Q",
+          "order_id": "order_Cf7NNzcitgVRZw",
+          "token_id": "tok_vbEPxBKv34kxwA",
+          "challenge_instance_id": "challenge_sQCcI0HSNltiMw",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 4.491099854931235
+        },
+        {
+          "worker_id": "worker-5-3",
+          "session_id": "sess_alNhlCkIASp9rw",
+          "order_id": "order_qVZ3hyxojOVAvQ",
+          "token_id": "tok_FfiiketwDB8EHg",
+          "challenge_instance_id": "challenge_yALcwsHWlNuAVg",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 3.3644000068306923
+        },
+        {
+          "worker_id": "worker-5-4",
+          "session_id": "sess_WkokrK68FPJBMg",
+          "order_id": "order_jy7buDNYQcKQJA",
+          "token_id": "tok_4IoJOEAQaU_COA",
+          "challenge_instance_id": "challenge_GzzXgY3gZjuXFw",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 4.403900122269988
+        }
+      ]
+    },
+    "worker_10": {
+      "status": "pass",
+      "worker_count": 10,
+      "expected_ledger_delta": 10,
+      "actual_ledger_delta": 10,
+      "success_count": 10,
+      "duplicate_count": 0,
+      "wrong_owner_count": 0,
+      "cross_worker_pollution_count": 0,
+      "orphan_record_count": 0,
+      "failure_rate": 0.0,
+      "status_counts": {
+        "403": 0,
+        "429": 0,
+        "503": 0
+      },
+      "p95": 7.338100112974644,
+      "p99": 7.338100112974644,
+      "stop_condition": "completed requested local worker ladder",
+      "kill_switch": "local process shutdown",
+      "workers": [
+        {
+          "worker_id": "worker-10-0",
+          "session_id": "sess_a0IjXbHCSLuyGA",
+          "order_id": "order_luX-TK_FI1qb9Q",
+          "token_id": "tok_hu3klJ-TnhNbOA",
+          "challenge_instance_id": "challenge_IVxnqWfyLXifWA",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 7.338100112974644
+        },
+        {
+          "worker_id": "worker-10-1",
+          "session_id": "sess_b8lwOPY3oirD1g",
+          "order_id": "order_Cu9NvPTcHMqsAQ",
+          "token_id": "tok_S9KF1Ep71k31qg",
+          "challenge_instance_id": "challenge_Wkos4ju2Hwe-aQ",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 7.616899907588959
+        },
+        {
+          "worker_id": "worker-10-2",
+          "session_id": "sess_5WtVRiNBoCpt8Q",
+          "order_id": "order_MRGztIJ-UaND1A",
+          "token_id": "tok_GHJstjvgZ7XOQw",
+          "challenge_instance_id": "challenge_Eu_DzXrfhAvMpA",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 7.1761999279260635
+        },
+        {
+          "worker_id": "worker-10-3",
+          "session_id": "sess_gPzCRO5bmYeafg",
+          "order_id": "order_S2mZSKETxPnscA",
+          "token_id": "tok_Mgz8rDwBgeVAZg",
+          "challenge_instance_id": "challenge_n_PKF7k3fNpQMQ",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 4.175700014457107
+        },
+        {
+          "worker_id": "worker-10-4",
+          "session_id": "sess_mEbp1imKyaZ-mg",
+          "order_id": "order_KQDU2fhKeJRINQ",
+          "token_id": "tok_b2737Vf6fnKK2w",
+          "challenge_instance_id": "challenge_OhB7IRmZgPx8dg",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 3.2766000367701054
+        },
+        {
+          "worker_id": "worker-10-5",
+          "session_id": "sess_swwE7n8_Wy7r5w",
+          "order_id": "order_lLWxMqsqC6chgw",
+          "token_id": "tok_U_x__hrWyRpfag",
+          "challenge_instance_id": "challenge_N7TMr8UsAJ_A1Q",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 6.554899970069528
+        },
+        {
+          "worker_id": "worker-10-6",
+          "session_id": "sess_-xDpKdUNsiHfEg",
+          "order_id": "order_XKqs8iSz2NVHmg",
+          "token_id": "tok_BXtu9obZZliBZA",
+          "challenge_instance_id": "challenge_dhyNepDNvQtLeg",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 6.585700204595923
+        },
+        {
+          "worker_id": "worker-10-7",
+          "session_id": "sess_TJe8BPjpUp49sg",
+          "order_id": "order_lOCEfuVmummF9w",
+          "token_id": "tok_YuwPJSSndpufKg",
+          "challenge_instance_id": "challenge_sMItx04tRFnIJw",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 4.513600142672658
+        },
+        {
+          "worker_id": "worker-10-8",
+          "session_id": "sess_nLfHjODe_wRwxg",
+          "order_id": "order_7q_2jXAK61m4FQ",
+          "token_id": "tok_EXvVjVyDwnUIAQ",
+          "challenge_instance_id": "challenge_hhv7QXHcO0GPSQ",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 3.914299886673689
+        },
+        {
+          "worker_id": "worker-10-9",
+          "session_id": "sess_17KNxhhIRbG2Gg",
+          "order_id": "order_4SyGVzKHqEJ0sA",
+          "token_id": "tok_7EuMKLCQOryrYQ",
+          "challenge_instance_id": "challenge_QxYJNcdZnH3f2Q",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 3.5087999422103167
+        }
+      ]
+    },
+    "worker_20": {
+      "status": "pass",
+      "worker_count": 20,
+      "expected_ledger_delta": 20,
+      "actual_ledger_delta": 20,
+      "success_count": 20,
+      "duplicate_count": 0,
+      "wrong_owner_count": 0,
+      "cross_worker_pollution_count": 0,
+      "orphan_record_count": 0,
+      "failure_rate": 0.0,
+      "status_counts": {
+        "403": 0,
+        "429": 0,
+        "503": 0
+      },
+      "p95": 7.135000079870224,
+      "p99": 7.135000079870224,
+      "stop_condition": "completed requested local worker ladder",
+      "kill_switch": "local process shutdown",
+      "workers": [
+        {
+          "worker_id": "worker-20-0",
+          "session_id": "sess_1XAZOfse_ACaJw",
+          "order_id": "order_PlCZ3tROTW9iyQ",
+          "token_id": "tok_xMbeSxFPzGOcrw",
+          "challenge_instance_id": "challenge_FxbVjIWjHgHqlA",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 7.135000079870224
+        },
+        {
+          "worker_id": "worker-20-1",
+          "session_id": "sess_X6-EBbvNNGxhYw",
+          "order_id": "order_k2Nz15926JHkuw",
+          "token_id": "tok_QOdJyhi7E86miQ",
+          "challenge_instance_id": "challenge_vTydKbJNFrHZmg",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 6.934300065040588
+        },
+        {
+          "worker_id": "worker-20-2",
+          "session_id": "sess_u0oJf1aqMdvx0w",
+          "order_id": "order_pNBWwtr5T8H7kA",
+          "token_id": "tok_69Q64qVKxtau8g",
+          "challenge_instance_id": "challenge_HKoRxoBWtZAveg",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 5.821199854835868
+        },
+        {
+          "worker_id": "worker-20-3",
+          "session_id": "sess_Zw0HxHpRIISgnA",
+          "order_id": "order_KjU2ex0gGccnAQ",
+          "token_id": "tok_UqU0vzrbV8gxsw",
+          "challenge_instance_id": "challenge_rVbNuY0SeIwt7g",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 1.9604999106377363
+        },
+        {
+          "worker_id": "worker-20-4",
+          "session_id": "sess_4NaYe6LgNVi1NA",
+          "order_id": "order_AAYHjDOwyYWOmQ",
+          "token_id": "tok_klBvxKb3CrkaGQ",
+          "challenge_instance_id": "challenge_-q1omTDSPc6kyg",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 2.377100056037307
+        },
+        {
+          "worker_id": "worker-20-5",
+          "session_id": "sess_JQj898uPvpVD3w",
+          "order_id": "order_5m_iL0Nq0niNow",
+          "token_id": "tok_qpdunUMrUVw26A",
+          "challenge_instance_id": "challenge_JHRPV84ebWuhXw",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 4.071499919518828
+        },
+        {
+          "worker_id": "worker-20-6",
+          "session_id": "sess_gGyosGtskihpTg",
+          "order_id": "order_EsVUoc2wfjd2Dg",
+          "token_id": "tok_U8zuYj5HkT6DSw",
+          "challenge_instance_id": "challenge_ziUKn6PYgraXfQ",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 1.743899891152978
+        },
+        {
+          "worker_id": "worker-20-7",
+          "session_id": "sess_JTEzk-ZL384XqA",
+          "order_id": "order_F2oBA1P4RhFboQ",
+          "token_id": "tok_qQPph2qduJiiuA",
+          "challenge_instance_id": "challenge_lgBNYbXJj7b1Sg",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 6.211200030520558
+        },
+        {
+          "worker_id": "worker-20-8",
+          "session_id": "sess_oYSBCLe5jiUhZg",
+          "order_id": "order_OipNaAZz05-27A",
+          "token_id": "tok_k4-IGGpxaE26SA",
+          "challenge_instance_id": "challenge_xp5H_hwndZhRsA",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 2.019100124016404
+        },
+        {
+          "worker_id": "worker-20-9",
+          "session_id": "sess_rQvhm5p03xeaSQ",
+          "order_id": "order_OE_1Sv-HElI-3Q",
+          "token_id": "tok_LTiMmSqE1hr8ng",
+          "challenge_instance_id": "challenge_xpGJKalpau1WKQ",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 1.1128999758511782
+        },
+        {
+          "worker_id": "worker-20-10",
+          "session_id": "sess_0Q2Mbc0m2_q0XA",
+          "order_id": "order_eifqrpn_mCNhoQ",
+          "token_id": "tok_8VrZ4ltYrvRVng",
+          "challenge_instance_id": "challenge_slxmmhGcGIblCQ",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 1.8515000119805336
+        },
+        {
+          "worker_id": "worker-20-11",
+          "session_id": "sess_bX70g7UTFCfD8A",
+          "order_id": "order_ppOjv1f2MviYqA",
+          "token_id": "tok_umucopabKVLE2w",
+          "challenge_instance_id": "challenge_soQ3ZfSsGEdIHA",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 4.405499901622534
+        },
+        {
+          "worker_id": "worker-20-12",
+          "session_id": "sess_vNhH4Aq82arWwg",
+          "order_id": "order_TMUB_sjwiwSmzA",
+          "token_id": "tok_4UDiNXf_t6mf2Q",
+          "challenge_instance_id": "challenge_4sOlOlL4Vw9fhQ",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 4.472200060263276
+        },
+        {
+          "worker_id": "worker-20-13",
+          "session_id": "sess_c3v_VfAJQ233eA",
+          "order_id": "order_1EaF9w4-IBgKvQ",
+          "token_id": "tok_1lfagcmFB8ISGA",
+          "challenge_instance_id": "challenge_yb1c4FUiFZrOKg",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 18.215199932456017
+        },
+        {
+          "worker_id": "worker-20-14",
+          "session_id": "sess_USdTpZgmzpMUGA",
+          "order_id": "order_EYwJ4_gcfu53Tg",
+          "token_id": "tok_REGKLAWZWlvR7Q",
+          "challenge_instance_id": "challenge_BH12ItOJ9e082Q",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 3.1421000603586435
+        },
+        {
+          "worker_id": "worker-20-15",
+          "session_id": "sess_FGwSMYQAB4yy5A",
+          "order_id": "order_aTFn9vKqMbIAjQ",
+          "token_id": "tok_9nV-u5Psni9XYg",
+          "challenge_instance_id": "challenge_LkNs9_ykkpfD7w",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 6.567900069057941
+        },
+        {
+          "worker_id": "worker-20-16",
+          "session_id": "sess_Exy-HdfGssGNDg",
+          "order_id": "order_y3AUnvOreP8Zyw",
+          "token_id": "tok_9LjJ_hhoW56ZFA",
+          "challenge_instance_id": "challenge_jMSYimsgESG0TQ",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 4.270199919119477
+        },
+        {
+          "worker_id": "worker-20-17",
+          "session_id": "sess_F0C3UDhf1OvrGA",
+          "order_id": "order_O4LTiyqOz5cc5A",
+          "token_id": "tok_YoSWV7dkr3PG1Q",
+          "challenge_instance_id": "challenge_M2PJn_58SoKSQA",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 2.922200132161379
+        },
+        {
+          "worker_id": "worker-20-18",
+          "session_id": "sess_zxMQfa4yLTUJKQ",
+          "order_id": "order_RDALQUdY41PNtw",
+          "token_id": "tok_vcVLKAVaWpWGRw",
+          "challenge_instance_id": "challenge_kdI0VJPyLNhncg",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 4.187099868431687
+        },
+        {
+          "worker_id": "worker-20-19",
+          "session_id": "sess_LqxEWGKeGb8nLw",
+          "order_id": "order__NrjEvd8mbmfgQ",
+          "token_id": "tok_PhDUeFn1IzJVgA",
+          "challenge_instance_id": "challenge_Hh2T_AIhA7A-Jg",
+          "statuses": [
+            200,
+            200,
+            200
+          ],
+          "elapsed_ms": 3.1573998276144266
+        }
+      ]
+    }
+  },
+  "chaos_failure_injection": {
+    "status": "pass",
+    "cases": [
+      {
+        "case": "duplicate_token",
+        "status": "pass",
+        "statuses": [
+          200,
+          403
+        ],
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0
+      },
+      {
+        "case": "expired_token",
+        "status": "pass",
+        "statuses": [
+          403
+        ],
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0
+      },
+      {
+        "case": "wrong_session",
+        "status": "pass",
+        "statuses": [
+          403
+        ],
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0
+      },
+      {
+        "case": "wrong_action",
+        "status": "pass",
+        "statuses": [
+          403
+        ],
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0
+      },
+      {
+        "case": "cross_worker_token_pollution",
+        "status": "pass",
+        "statuses": [
+          403
+        ],
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0
+      },
+      {
+        "case": "stale_signature",
+        "status": "pass",
+        "statuses": [
+          403
+        ],
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0
+      },
+      {
+        "case": "missing_verify",
+        "status": "pass",
+        "statuses": [
+          403
+        ],
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0
+      },
+      {
+        "case": "challenge_endpoint_not_business_success",
+        "status": "pass",
+        "statuses": [
+          200
+        ],
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0
+      },
+      {
+        "case": "browser_only_success_not_positive",
+        "status": "pass",
+        "statuses": [
+          200
+        ],
+        "expected_ledger_delta": 0,
+        "actual_ledger_delta": 0
+      }
+    ]
+  },
+  "failure_summary": {
+    "text-captcha": 20,
+    "slider-captcha": 20,
+    "rotate-captcha": 20,
+    "click-captcha": 12,
+    "multi-image-select": 0
+  },
+  "issue_ledger_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\phase3-5\\run-20260630-041500-phase3-5-longrun\\issue-ledger.json",
+  "experience_cards": [
+    "E:\\SKILLS\\oh_my_reverse_skill\\skills-experience\\longrun\\phase3-5\\run-20260630-041500-phase3-5-longrun\\run-20260630-041500-phase3-5-longrun-experience-01.yaml",
+    "E:\\SKILLS\\oh_my_reverse_skill\\skills-experience\\longrun\\phase3-5\\run-20260630-041500-phase3-5-longrun\\run-20260630-041500-phase3-5-longrun-experience-02.yaml",
+    "E:\\SKILLS\\oh_my_reverse_skill\\skills-experience\\longrun\\phase3-5\\run-20260630-041500-phase3-5-longrun\\run-20260630-041500-phase3-5-longrun-experience-03.yaml",
+    "E:\\SKILLS\\oh_my_reverse_skill\\skills-experience\\longrun\\phase3-5\\run-20260630-041500-phase3-5-longrun\\run-20260630-041500-phase3-5-longrun-experience-04.yaml",
+    "E:\\SKILLS\\oh_my_reverse_skill\\skills-experience\\longrun\\phase3-5\\run-20260630-041500-phase3-5-longrun\\run-20260630-041500-phase3-5-longrun-experience-05.yaml"
+  ],
+  "capability_decision_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\phase3-5\\run-20260630-041500-phase3-5-longrun\\capability-decision.json",
+  "capability_decision": {
+    "capabilities": {
+      "captcha_text": {
+        "level": "L1_synthetic_easy",
+        "status": "memory_only",
+        "why": "text OCR below longrun thresholds"
+      },
+      "captcha_slider": {
+        "level": "L1_synthetic_easy",
+        "status": "memory_only",
+        "why": "medium/hard slider below threshold"
+      },
+      "captcha_rotate": {
+        "level": "L3_synthetic_hard",
+        "status": "memory_only",
+        "why": "synthetic hard benchmark only"
+      },
+      "captcha_click": {
+        "level": "L3_synthetic_hard",
+        "status": "memory_only",
+        "why": "synthetic hard benchmark only"
+      },
+      "captcha_multi_image": {
+        "level": "L1_synthetic_easy",
+        "status": "memory_only",
+        "why": "newly added baseline needs public range validation"
+      },
+      "js_page_runtime_parity": {
+        "level": "local_runtime_parity_fixture",
+        "status": "memory_only",
+        "why": "localhost fixture parity only"
+      },
+      "fingerprint_diagnostics": {
+        "level": "local_observation_diagnostics",
+        "status": "memory_only",
+        "why": "observation only, no stealth/evasion"
+      },
+      "concurrency_business": {
+        "level": "local_lab_concurrency",
+        "status": "memory_only",
+        "why": "localhost raw ladder only, no DATA_ASSERTION_PASS public evidence"
+      }
+    }
+  },
+  "next_hardening_tasks": [
+    "train text OCR classifier",
+    "improve slider medium/hard distractor rejection",
+    "validate multi-image against public range"
+  ]
+}

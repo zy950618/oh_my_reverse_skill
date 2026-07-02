@@ -1,0 +1,18 @@
+{
+  "run_id": "run-20260701-phase4a-smoke",
+  "models": [
+    {
+      "task": "click_icon_detector",
+      "model_id": "run-20260701-phase4a-smoke-click_icon_detector-local-v1",
+      "baseline_success_rate": 1.0,
+      "trained_success_rate": 1.0,
+      "holdout_success_rate": 1.0,
+      "delta": 0.0,
+      "promotion_decision": "training_needed"
+    }
+  ],
+  "improved_tasks": [],
+  "training_needed_tasks": [
+    "click_icon_detector"
+  ]
+}

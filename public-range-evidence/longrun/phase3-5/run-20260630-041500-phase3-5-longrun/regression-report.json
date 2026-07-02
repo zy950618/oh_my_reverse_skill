@@ -1,0 +1,22 @@
+{
+  "run_id": "run-20260630-041500-phase3-5-longrun",
+  "fixed_issues": [
+    {
+      "issue_id": "run-20260630-041500-phase3-5-longrun-pre-001",
+      "source_run_id": "run-20260630-041500-phase3-5-longrun",
+      "component": "captcha_multi_image",
+      "severity": "high",
+      "status": "fixed",
+      "failure_case_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\phase3-5\\run-20260630-041500-phase3-5-longrun\\failure-cases.json",
+      "root_cause": "Phase 3.4 toolchain did not include multi-image-select generator/solver/benchmark",
+      "fix_plan": "added multi-image-select support before formal longrun",
+      "regression_eval": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\phase3-5\\run-20260630-041500-phase3-5-longrun\\regression-report.json",
+      "retest_status": "retested_by_longrun",
+      "capability_impact": "memory_only regression coverage added"
+    }
+  ],
+  "retest_status": "PASS",
+  "evals": [
+    "evals/longrun/phase3-5/001-longrun-capability-boundary.yaml"
+  ]
+}

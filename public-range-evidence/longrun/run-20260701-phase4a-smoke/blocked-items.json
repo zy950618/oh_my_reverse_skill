@@ -1,0 +1,10 @@
+{
+  "run_id": "run-20260701-phase4a-smoke",
+  "blocked_items": [
+    {
+      "step": "gocaptcha",
+      "exit_code": 1,
+      "reason": "command failed or blocked"
+    }
+  ]
+}

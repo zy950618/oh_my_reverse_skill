@@ -1,0 +1,28 @@
+{
+  "run_id": "run-20260701-phase4a-smoke",
+  "created_at": "2026-07-01T01:23:02.314560Z",
+  "models": [
+    {
+      "model_id": "run-20260701-phase4a-smoke-click_icon_detector-local-v1",
+      "task": "click_icon_detector",
+      "families": [
+        "Connect_icon",
+        "Coordinates",
+        "click",
+        "icon_select",
+        "select",
+        "spatial_select"
+      ],
+      "model_type": "local_color_grid_detector",
+      "checkpoint_path": "E:\\SKILLS\\oh_my_reverse_skill\\datasets\\captcha_flywheel\\models\\run-20260701-phase4a-smoke\\checkpoints\\click_icon_detector.json",
+      "training_result_path": "E:\\SKILLS\\oh_my_reverse_skill\\datasets\\captcha_flywheel\\models\\run-20260701-phase4a-smoke\\click_icon_detector_training_result.json",
+      "prediction_manifest_path": "E:\\SKILLS\\oh_my_reverse_skill\\datasets\\captcha_flywheel\\predictions\\run-20260701-phase4a-smoke\\click_icon_detector_predictions.json",
+      "status": "training_needed",
+      "local_only": true,
+      "external_api_used": false,
+      "third_party_solver_used": false,
+      "label_leakage": false
+    }
+  ],
+  "updated_at": "2026-07-01T01:40:59.817136Z"
+}

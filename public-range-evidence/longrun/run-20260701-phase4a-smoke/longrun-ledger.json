@@ -1,0 +1,140 @@
+{
+  "run_id": "run-20260701-phase4a-smoke",
+  "mode": "smoke",
+  "config_path": "configs\\sustainable_longrun.yaml",
+  "steps": [
+    {
+      "name": "gocaptcha",
+      "kind": "real_public_range",
+      "target": "gocaptcha-official",
+      "family": [
+        "rotate",
+        "click"
+      ],
+      "samples_per_family": 20
+    },
+    {
+      "name": "opencaptchaworld",
+      "kind": "real_public_range",
+      "target": "opencaptchaworld",
+      "families": [
+        "Connect_icon",
+        "Image_Matching"
+      ],
+      "samples_per_family": 20
+    },
+    {
+      "name": "shumei-compatible",
+      "kind": "real_public_range",
+      "target": "shumei-compatible-lab",
+      "families": [
+        "select",
+        "icon_select",
+        "seq_select"
+      ],
+      "difficulty": [
+        "hard",
+        "adversarial"
+      ],
+      "samples_per_family": 30
+    },
+    {
+      "name": "aliyun-compatible",
+      "kind": "real_public_range",
+      "target": "aliyun-compatible-lab",
+      "families": [
+        "image_restore",
+        "select",
+        "icon_select"
+      ],
+      "difficulty": [
+        "easy",
+        "medium",
+        "hard",
+        "adversarial"
+      ],
+      "samples_per_family": 30
+    },
+    {
+      "name": "five-second-shield",
+      "kind": "real_public_range",
+      "target": "five-second-shield-lab",
+      "samples": 12,
+      "profiles": [
+        "simple_delay_gate",
+        "js_signature_gate",
+        "redirect_chain_gate"
+      ],
+      "concurrency": [
+        1,
+        2,
+        5,
+        10
+      ],
+      "dynamic_js": true
+    },
+    {
+      "name": "fingerprint-sannysoft",
+      "kind": "fingerprint",
+      "target": "sannysoft",
+      "repeat": 1,
+      "profiles": 1
+    },
+    {
+      "name": "fingerprint-creepjs",
+      "kind": "fingerprint",
+      "target": "creepjs",
+      "repeat": 1,
+      "profiles": 1
+    },
+    {
+      "name": "failure-collector",
+      "kind": "simple",
+      "tool": "tools/captcha_failure_collector.py"
+    },
+    {
+      "name": "label-manifest",
+      "kind": "simple",
+      "tool": "tools/captcha_label_manifest_builder.py"
+    },
+    {
+      "name": "dataset-splitter",
+      "kind": "simple",
+      "tool": "tools/captcha_dataset_splitter.py"
+    },
+    {
+      "name": "model-train-click_icon_detector",
+      "kind": "simple",
+      "tool": "tools/captcha_model_trainer.py",
+      "args": {
+        "task": "click_icon_detector"
+      }
+    },
+    {
+      "name": "model-evaluator",
+      "kind": "simple",
+      "tool": "tools/captcha_model_evaluator.py"
+    },
+    {
+      "name": "failure-replay",
+      "kind": "simple",
+      "tool": "tools/captcha_failure_replay.py"
+    },
+    {
+      "name": "anti-solver-audit",
+      "kind": "simple",
+      "tool": "tools/anti_solver_platform_audit.py"
+    },
+    {
+      "name": "blackbox-gate",
+      "kind": "simple",
+      "tool": "tools/captcha_blackbox_solver_gate.py"
+    },
+    {
+      "name": "leakage-audit",
+      "kind": "simple",
+      "tool": "tools/captcha_leakage_audit.py"
+    }
+  ],
+  "checkpoint_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke\\checkpoint.json"
+}

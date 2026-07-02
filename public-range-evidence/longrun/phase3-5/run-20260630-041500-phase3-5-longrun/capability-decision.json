@@ -1,0 +1,44 @@
+{
+  "capabilities": {
+    "captcha_text": {
+      "level": "L1_synthetic_easy",
+      "status": "memory_only",
+      "why": "text OCR below longrun thresholds"
+    },
+    "captcha_slider": {
+      "level": "L1_synthetic_easy",
+      "status": "memory_only",
+      "why": "medium/hard slider below threshold"
+    },
+    "captcha_rotate": {
+      "level": "L3_synthetic_hard",
+      "status": "memory_only",
+      "why": "synthetic hard benchmark only"
+    },
+    "captcha_click": {
+      "level": "L3_synthetic_hard",
+      "status": "memory_only",
+      "why": "synthetic hard benchmark only"
+    },
+    "captcha_multi_image": {
+      "level": "L1_synthetic_easy",
+      "status": "memory_only",
+      "why": "newly added baseline needs public range validation"
+    },
+    "js_page_runtime_parity": {
+      "level": "local_runtime_parity_fixture",
+      "status": "memory_only",
+      "why": "localhost fixture parity only"
+    },
+    "fingerprint_diagnostics": {
+      "level": "local_observation_diagnostics",
+      "status": "memory_only",
+      "why": "observation only, no stealth/evasion"
+    },
+    "concurrency_business": {
+      "level": "local_lab_concurrency",
+      "status": "memory_only",
+      "why": "localhost raw ladder only, no DATA_ASSERTION_PASS public evidence"
+    }
+  }
+}

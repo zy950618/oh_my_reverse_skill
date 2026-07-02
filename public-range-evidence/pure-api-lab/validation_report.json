@@ -1,0 +1,13 @@
+{
+  "lab_id": "pure-api-lab",
+  "no_playwright_runtime": true,
+  "no_puppeteer_runtime": true,
+  "no_camoufox_runtime": true,
+  "no_browser_profile_dependency": true,
+  "no_manual_cookie_copy": true,
+  "node_or_v8_or_quickjs_or_python_sign_generation": true,
+  "replay_diff_report_exists": true,
+  "docker_headless_ready": true,
+  "final_business_flow": "pure_api_only",
+  "evidence_level": "local_lab_ready"
+}

@@ -1,0 +1,33 @@
+{
+  "run_id": "run-20260701-phase4a-smoke",
+  "mode": "smoke",
+  "created_at": "2026-07-01T01:41:10.735475Z",
+  "independent_runner": true,
+  "checkpoint_resume_supported": true,
+  "targets_families": [
+    "gocaptcha-official:rotate-default",
+    "gocaptcha-official:click-default-en",
+    "opencaptchaworld:Connect_icon",
+    "opencaptchaworld:Image_Matching",
+    "shumei-compatible-lab:select",
+    "shumei-compatible-lab:icon_select",
+    "shumei-compatible-lab:seq_select",
+    "aliyun-compatible-lab:image_restore",
+    "aliyun-compatible-lab:select",
+    "aliyun-compatible-lab:icon_select",
+    "five-second-shield-lab:js_challenge"
+  ],
+  "command_failures": [
+    {
+      "step": "gocaptcha",
+      "exit_code": 1,
+      "reason": "command failed or blocked"
+    }
+  ],
+  "dataset_manifest_path": "E:\\SKILLS\\oh_my_reverse_skill\\datasets\\captcha_flywheel\\manifests\\run-20260701-phase4a-smoke\\dataset_manifest.json",
+  "split_manifest_path": "E:\\SKILLS\\oh_my_reverse_skill\\datasets\\captcha_flywheel\\splits\\run-20260701-phase4a-smoke\\split_manifest.json",
+  "model_registry_path": "E:\\SKILLS\\oh_my_reverse_skill\\datasets\\captcha_flywheel\\models\\run-20260701-phase4a-smoke\\model_registry.json",
+  "failure_replay_path": "E:\\SKILLS\\oh_my_reverse_skill\\datasets\\captcha_flywheel\\failures\\run-20260701-phase4a-smoke\\failure_replay.json",
+  "capability_decision_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke\\capability-decision.json",
+  "skills_update_queue_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\longrun\\run-20260701-phase4a-smoke\\skills-update-queue.json"
+}

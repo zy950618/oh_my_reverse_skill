@@ -1,0 +1,493 @@
+{
+  "run_id": "run-20260701-phase4a-smoke",
+  "local_gocaptcha_compatible_lab": {
+    "checks": {
+      "evidence_present": false,
+      "target_corrected_to_compatible_lab": false,
+      "not_real_gocaptcha_claim": false,
+      "action_replay_records_present": false,
+      "leakage_audit_pass": true,
+      "blackbox_gate_pass": true,
+      "scope_contract_in_scope": false
+    },
+    "verified_checks": {
+      "evidence_present": false,
+      "target_corrected_to_compatible_lab": false,
+      "not_real_gocaptcha_claim": false,
+      "action_replay_records_present": false,
+      "leakage_audit_pass": true,
+      "blackbox_gate_pass": true,
+      "scope_contract_in_scope": false,
+      "multi_difficulty_threshold_pass": false,
+      "all_kind_summaries_present": false
+    },
+    "decision": "not_promoted",
+    "capability_status": "memory_only",
+    "summary": {},
+    "stable_positive": false
+  },
+  "real_public_ranges": {
+    "opencaptchaworld": {
+      "checks": {
+        "evidence_present": true,
+        "official_or_public_repo_confirmed": true,
+        "real_execution_pass": true,
+        "browser_opened": true,
+        "action_replay_success_present": true,
+        "records_present": true,
+        "leakage_audit_pass": true,
+        "blackbox_gate_pass": true,
+        "scope_contract_in_scope": true
+      },
+      "verified_checks": {
+        "evidence_present": true,
+        "official_or_public_repo_confirmed": true,
+        "real_execution_pass": true,
+        "browser_opened": true,
+        "action_replay_success_present": true,
+        "records_present": true,
+        "leakage_audit_pass": true,
+        "blackbox_gate_pass": true,
+        "scope_contract_in_scope": true,
+        "three_families_attempted": false,
+        "threshold_pass": true,
+        "visual_threshold_pass": false,
+        "all_declared_families_min_rate": true,
+        "failure_cases_present": true
+      },
+      "decision": "not_promoted",
+      "capability_status": "memory_only",
+      "metrics": {
+        "target": "opencaptchaworld",
+        "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\opencaptchaworld\\run-20260701-phase4a-smoke\\opencaptchaworld-action-replay-records.jsonl",
+        "families": {
+          "Connect_icon": {
+            "sample_count": 20,
+            "success_count": 7,
+            "failure_count": 13,
+            "success_rate": 0.35,
+            "answer_leakage_fields_present": [
+              "correct_option_index"
+            ],
+            "capability_status": "training_needed",
+            "capability_level": "training_needed",
+            "why": "per-family scoped decision; leaked answer-shaped fields are redacted before solver input"
+          },
+          "Image_Matching": {
+            "sample_count": 20,
+            "success_count": 3,
+            "failure_count": 17,
+            "success_rate": 0.15,
+            "answer_leakage_fields_present": [
+              "correct_option_index"
+            ],
+            "capability_status": "training_needed",
+            "capability_level": "training_needed",
+            "why": "per-family scoped decision; leaked answer-shaped fields are redacted before solver input"
+          }
+        },
+        "total_samples": 40,
+        "total_success": 10,
+        "total_failures": 30,
+        "success_rate": 0.25,
+        "visual_families": [
+          "Connect_icon",
+          "Image_Matching",
+          "Coordinates"
+        ],
+        "visual_success_rate": 0.25,
+        "visual_threshold_pass": false,
+        "sample_count_requirement": "20 per attempted family; unavailable families are recorded as errors, not substituted",
+        "prediction_source": "image_instruction_action_schema_only",
+        "threshold_pass": true
+      },
+      "family_level_capabilities": {
+        "Connect_icon": {
+          "status": "training_needed",
+          "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\opencaptchaworld\\run-20260701-phase4a-smoke.json",
+          "sample_count": 20,
+          "success_rate": 0.35,
+          "p95_error": null,
+          "capability_level": "training_needed",
+          "why": "per-family scoped decision; leaked answer-shaped fields are redacted before solver input"
+        },
+        "Image_Matching": {
+          "status": "training_needed",
+          "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\opencaptchaworld\\run-20260701-phase4a-smoke.json",
+          "sample_count": 20,
+          "success_rate": 0.15,
+          "p95_error": null,
+          "capability_level": "training_needed",
+          "why": "per-family scoped decision; leaked answer-shaped fields are redacted before solver input"
+        }
+      }
+    },
+    "gocaptcha-official": {
+      "checks": {
+        "evidence_present": true,
+        "official_or_public_repo_confirmed": true,
+        "real_execution_pass": true,
+        "browser_opened": true,
+        "action_replay_success_present": true,
+        "records_present": true,
+        "leakage_audit_pass": true,
+        "blackbox_gate_pass": true,
+        "scope_contract_in_scope": true
+      },
+      "verified_checks": {
+        "evidence_present": true,
+        "official_or_public_repo_confirmed": true,
+        "real_execution_pass": true,
+        "browser_opened": true,
+        "action_replay_success_present": true,
+        "records_present": true,
+        "leakage_audit_pass": true,
+        "blackbox_gate_pass": true,
+        "scope_contract_in_scope": true,
+        "three_families_attempted": false,
+        "threshold_pass": true,
+        "visual_threshold_pass": true,
+        "all_declared_families_min_rate": false,
+        "failure_cases_present": true
+      },
+      "decision": "not_promoted",
+      "capability_status": "memory_only",
+      "metrics": {
+        "target": "gocaptcha-official",
+        "records_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\raw\\gocaptcha-official\\run-20260701-phase4a-smoke\\gocaptcha-official-action-replay-records.jsonl",
+        "families": {
+          "rotate-default": {
+            "sample_count": 20,
+            "success_count": 3,
+            "failure_count": 17,
+            "success_rate": 0.15,
+            "capability_status": "training_needed",
+            "capability_level": "training_needed",
+            "why": "per-family scoped decision; no manage/status answer API used"
+          },
+          "click-default-en": {
+            "sample_count": 20,
+            "success_count": 0,
+            "failure_count": 20,
+            "success_rate": 0.0,
+            "capability_status": "training_needed",
+            "capability_level": "training_needed",
+            "why": "per-family scoped decision; no manage/status answer API used"
+          }
+        },
+        "total_samples": 40,
+        "total_success": 3,
+        "success_rate": 0.075,
+        "prediction_source": "master_thumb_images_only",
+        "threshold_pass": true
+      },
+      "family_level_capabilities": {
+        "rotate-default": {
+          "status": "training_needed",
+          "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\gocaptcha-official\\run-20260701-phase4a-smoke.json",
+          "sample_count": 20,
+          "success_rate": 0.15,
+          "p95_error": null,
+          "capability_level": "training_needed",
+          "why": "per-family scoped decision; no manage/status answer API used"
+        },
+        "click-default-en": {
+          "status": "training_needed",
+          "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\gocaptcha-official\\run-20260701-phase4a-smoke.json",
+          "sample_count": 20,
+          "success_rate": 0.0,
+          "p95_error": null,
+          "capability_level": "training_needed",
+          "why": "per-family scoped decision; no manage/status answer API used"
+        }
+      }
+    },
+    "family_level_capabilities": {
+      "opencaptchaworld": {
+        "Connect_icon": {
+          "status": "training_needed",
+          "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\opencaptchaworld\\run-20260701-phase4a-smoke.json",
+          "sample_count": 20,
+          "success_rate": 0.35,
+          "p95_error": null,
+          "capability_level": "training_needed",
+          "why": "per-family scoped decision; leaked answer-shaped fields are redacted before solver input"
+        },
+        "Image_Matching": {
+          "status": "training_needed",
+          "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\opencaptchaworld\\run-20260701-phase4a-smoke.json",
+          "sample_count": 20,
+          "success_rate": 0.15,
+          "p95_error": null,
+          "capability_level": "training_needed",
+          "why": "per-family scoped decision; leaked answer-shaped fields are redacted before solver input"
+        }
+      },
+      "gocaptcha-official": {
+        "rotate-default": {
+          "status": "training_needed",
+          "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\gocaptcha-official\\run-20260701-phase4a-smoke.json",
+          "sample_count": 20,
+          "success_rate": 0.15,
+          "p95_error": null,
+          "capability_level": "training_needed",
+          "why": "per-family scoped decision; no manage/status answer API used"
+        },
+        "click-default-en": {
+          "status": "training_needed",
+          "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\gocaptcha-official\\run-20260701-phase4a-smoke.json",
+          "sample_count": 20,
+          "success_rate": 0.0,
+          "p95_error": null,
+          "capability_level": "training_needed",
+          "why": "per-family scoped decision; no manage/status answer API used"
+        }
+      }
+    }
+  },
+  "vendor_compatible_labs": {
+    "shumei-compatible-lab": {
+      "checks": {
+        "evidence_present": true,
+        "compatible_lab_label": true,
+        "not_official_vendor": true,
+        "not_generalizable_to_vendor_production": true,
+        "real_execution_pass": true,
+        "action_replay_success_present": true,
+        "leakage_audit_pass": true,
+        "blackbox_gate_pass": true,
+        "realism_audit_pass": false,
+        "scope_contract_in_scope": true
+      },
+      "decision": "not_promoted",
+      "family_level_capabilities": {
+        "select": {
+          "status": "positive_candidate",
+          "sample_count": 30,
+          "success_rate": 0.8,
+          "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\shumei-compatible-lab\\run-20260701-phase4a-smoke.json"
+        },
+        "icon_select": {
+          "status": "memory_only",
+          "sample_count": 30,
+          "success_rate": 0.7666666666666667,
+          "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\shumei-compatible-lab\\run-20260701-phase4a-smoke.json"
+        },
+        "seq_select": {
+          "status": "positive_candidate",
+          "sample_count": 30,
+          "success_rate": 0.9,
+          "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\shumei-compatible-lab\\run-20260701-phase4a-smoke.json"
+        }
+      }
+    },
+    "aliyun-compatible-lab": {
+      "checks": {
+        "evidence_present": true,
+        "compatible_lab_label": true,
+        "not_official_vendor": true,
+        "not_generalizable_to_vendor_production": true,
+        "real_execution_pass": true,
+        "action_replay_success_present": true,
+        "leakage_audit_pass": true,
+        "blackbox_gate_pass": true,
+        "realism_audit_pass": false,
+        "scope_contract_in_scope": true
+      },
+      "decision": "not_promoted",
+      "family_level_capabilities": {
+        "image_restore": {
+          "status": "positive_candidate",
+          "sample_count": 30,
+          "success_rate": 0.9,
+          "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\aliyun-compatible-lab\\run-20260701-phase4a-smoke.json"
+        },
+        "select": {
+          "status": "negative_eval_only",
+          "sample_count": 30,
+          "success_rate": 0.0,
+          "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\aliyun-compatible-lab\\run-20260701-phase4a-smoke.json"
+        },
+        "icon_select": {
+          "status": "negative_eval_only",
+          "sample_count": 30,
+          "success_rate": 0.0,
+          "evidence": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\aliyun-compatible-lab\\run-20260701-phase4a-smoke.json"
+        }
+      }
+    }
+  },
+  "five_second_shield_lab": {
+    "checks": {
+      "evidence_present": true,
+      "real_execution_pass": true,
+      "control_flow_pass": true,
+      "business_data_pass": true,
+      "js_runtime_parity_pass": true,
+      "negative_eval_present": true,
+      "concurrency_ladder_present": true,
+      "business_data_assertions_pass": true,
+      "realism_audit_pass": false,
+      "scope_contract_in_scope": true,
+      "not_generalizable": true
+    },
+    "verified_checks": {
+      "evidence_present": true,
+      "real_execution_pass": true,
+      "control_flow_pass": true,
+      "business_data_pass": true,
+      "js_runtime_parity_pass": true,
+      "negative_eval_present": true,
+      "concurrency_ladder_present": true,
+      "business_data_assertions_pass": true,
+      "realism_audit_pass": false,
+      "scope_contract_in_scope": true,
+      "not_generalizable": true,
+      "repeat_or_longrun_regression": false
+    },
+    "decision": "not_promoted",
+    "capability_status": "memory_only",
+    "evidence_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\five-second-shield-lab\\run-20260701-phase4a-smoke.json"
+  },
+  "high_fidelity_risk_lab": {
+    "checks": {
+      "evidence_present": true,
+      "scope_in_scope": true,
+      "real_execution_pass": true,
+      "control_flow_pass": true,
+      "business_data_pass": true,
+      "negative_eval_present": true,
+      "concurrency_ladder_present": true,
+      "direct_repeat_present": true,
+      "not_generalizable": true
+    },
+    "decision": "positive_verified",
+    "capability_status": "positive_verified",
+    "evidence_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\high-fidelity-risk-lab\\run-20260630-022227-high-fidelity-risk-lab.json"
+  },
+  "fingerprint_diagnostics": {
+    "decision": "memory_only",
+    "promoted_to_candidate": [],
+    "not_evasion_positive": true
+  },
+  "capability_delta": {
+    "run_id": "run-20260701-phase4a-smoke",
+    "previous_candidate_count": 25,
+    "previous_verified_positive_count": 1,
+    "previous_stable_positive_count": 0,
+    "new_candidate_count": 28,
+    "new_verified_positive_count": 1,
+    "new_stable_positive_count": 0,
+    "promoted_to_candidate": [],
+    "promoted_to_verified": [
+      "high-fidelity-risk-lab"
+    ],
+    "promoted_to_stable": [],
+    "regressed_capabilities": [],
+    "blocked_public_ranges": [
+      "opencaptchaworld",
+      "gocaptcha-official"
+    ],
+    "why_promoted": [
+      {
+        "capability": "high-fidelity-risk-lab",
+        "reason": "verified local-scope evidence gates passed"
+      }
+    ],
+    "why_not_promoted": [
+      {
+        "capability": "local-gocaptcha-compatible-lab",
+        "missing": [
+          "evidence_present",
+          "target_corrected_to_compatible_lab",
+          "not_real_gocaptcha_claim",
+          "action_replay_records_present",
+          "scope_contract_in_scope"
+        ]
+      },
+      {
+        "capability": "local-gocaptcha-compatible-lab:verified",
+        "missing": [
+          "evidence_present",
+          "target_corrected_to_compatible_lab",
+          "not_real_gocaptcha_claim",
+          "action_replay_records_present",
+          "scope_contract_in_scope",
+          "multi_difficulty_threshold_pass",
+          "all_kind_summaries_present"
+        ]
+      },
+      {
+        "capability": "opencaptchaworld:candidate",
+        "missing": []
+      },
+      {
+        "capability": "opencaptchaworld:verified",
+        "missing": [
+          "three_families_attempted",
+          "visual_threshold_pass"
+        ]
+      },
+      {
+        "capability": "gocaptcha-official:candidate",
+        "missing": []
+      },
+      {
+        "capability": "gocaptcha-official:verified",
+        "missing": [
+          "three_families_attempted",
+          "all_declared_families_min_rate"
+        ]
+      },
+      {
+        "capability": "shumei-compatible-lab:candidate",
+        "missing": [
+          "realism_audit_pass"
+        ]
+      },
+      {
+        "capability": "aliyun-compatible-lab:candidate",
+        "missing": [
+          "realism_audit_pass"
+        ]
+      },
+      {
+        "capability": "five-second-shield-lab:candidate",
+        "missing": [
+          "realism_audit_pass"
+        ]
+      },
+      {
+        "capability": "five-second-shield-lab:verified",
+        "missing": [
+          "realism_audit_pass",
+          "repeat_or_longrun_regression"
+        ]
+      },
+      {
+        "capability": "fingerprint-diagnostics:sannysoft",
+        "missing": [
+          "repeat/profile diagnostics candidate evidence"
+        ]
+      },
+      {
+        "capability": "fingerprint-diagnostics:creepjs",
+        "missing": [
+          "repeat/profile diagnostics candidate evidence"
+        ]
+      },
+      {
+        "capability": "fingerprint-diagnostics:browserleaks",
+        "missing": [
+          "repeat/profile diagnostics candidate evidence"
+        ]
+      },
+      {
+        "capability": "fingerprint-diagnostics:incolumitas",
+        "missing": [
+          "repeat/profile diagnostics candidate evidence"
+        ]
+      }
+    ]
+  }
+}

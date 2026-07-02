@@ -1,0 +1,8 @@
+{
+  "run_id": "run-20260701-phase4a-smoke-dryrun",
+  "mode": "smoke",
+  "checkpoint_resume_supported": true,
+  "only_failed_supported": true,
+  "completed_step_count": 16,
+  "failed_step_count": 0
+}

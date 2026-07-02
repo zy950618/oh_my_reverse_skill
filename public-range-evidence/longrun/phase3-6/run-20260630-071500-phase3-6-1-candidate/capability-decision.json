@@ -1,0 +1,155 @@
+{
+  "run_id": "run-20260630-071500-phase3-6-1-candidate",
+  "local_gocaptcha_compatible_lab": {
+    "checks": {
+      "evidence_present": true,
+      "target_corrected_to_compatible_lab": true,
+      "not_real_gocaptcha_claim": true,
+      "action_replay_records_present": true,
+      "leakage_audit_pass": true,
+      "blackbox_gate_pass": true,
+      "scope_contract_in_scope": true
+    },
+    "verified_checks": {
+      "evidence_present": true,
+      "target_corrected_to_compatible_lab": true,
+      "not_real_gocaptcha_claim": true,
+      "action_replay_records_present": true,
+      "leakage_audit_pass": true,
+      "blackbox_gate_pass": true,
+      "scope_contract_in_scope": true,
+      "multi_difficulty_threshold_pass": false,
+      "all_kind_summaries_present": true
+    },
+    "decision": "positive_candidate",
+    "capability_status": "positive_candidate",
+    "summary": {
+      "slide": {
+        "total": 150,
+        "success": 56,
+        "fail": 94,
+        "success_rate": 0.37333333333333335,
+        "mean_error": 43.666666666666664,
+        "p95_error": 128.0,
+        "difficulty_distribution": {
+          "easy": 50,
+          "hard": 50,
+          "medium": 50
+        },
+        "threshold_pass": false
+      },
+      "click": {
+        "total": 150,
+        "success": 140,
+        "fail": 10,
+        "success_rate": 0.9333333333333333,
+        "mean_point_error": 2.4741056852826184,
+        "p95_point_error": 9.055385138137417,
+        "difficulty_distribution": {
+          "easy": 50,
+          "hard": 50,
+          "medium": 50
+        },
+        "threshold_pass": false
+      },
+      "rotate": {
+        "total": 150,
+        "success": 142,
+        "fail": 8,
+        "success_rate": 0.9466666666666667,
+        "mean_angle_error": 1.7,
+        "p95_angle_error": 6.0,
+        "difficulty_distribution": {
+          "easy": 50,
+          "hard": 50,
+          "medium": 50
+        },
+        "threshold_pass": false
+      },
+      "drag_drop": {
+        "total": 150,
+        "success": 59,
+        "fail": 91,
+        "success_rate": 0.3933333333333333,
+        "mean_error": 43.666666666666664,
+        "p95_error": 128.0,
+        "difficulty_distribution": {
+          "easy": 50,
+          "hard": 50,
+          "medium": 50
+        },
+        "threshold_pass": false
+      }
+    },
+    "stable_positive": false
+  },
+  "high_fidelity_risk_lab": {
+    "checks": {
+      "evidence_present": true,
+      "scope_in_scope": true,
+      "real_execution_pass": true,
+      "control_flow_pass": true,
+      "business_data_pass": true,
+      "negative_eval_present": true,
+      "concurrency_ladder_present": true,
+      "direct_repeat_present": true,
+      "not_generalizable": true
+    },
+    "decision": "positive_verified",
+    "capability_status": "positive_verified",
+    "evidence_path": "E:\\SKILLS\\oh_my_reverse_skill\\public-range-evidence\\high-fidelity-risk-lab\\run-20260630-022227-high-fidelity-risk-lab.json"
+  },
+  "fingerprint_diagnostics": {
+    "decision": "positive_candidate",
+    "promoted_to_candidate": [
+      "fingerprint-diagnostics:sannysoft",
+      "fingerprint-diagnostics:creepjs"
+    ],
+    "not_evasion_positive": true
+  },
+  "capability_delta": {
+    "run_id": "run-20260630-071500-phase3-6-1-candidate",
+    "previous_candidate_count": 0,
+    "previous_verified_positive_count": 1,
+    "previous_stable_positive_count": 0,
+    "new_candidate_count": 3,
+    "new_verified_positive_count": 1,
+    "new_stable_positive_count": 0,
+    "promoted_to_candidate": [
+      "local-gocaptcha-compatible-lab",
+      "fingerprint-diagnostics:sannysoft",
+      "fingerprint-diagnostics:creepjs"
+    ],
+    "promoted_to_verified": [
+      "high-fidelity-risk-lab"
+    ],
+    "promoted_to_stable": [],
+    "regressed_capabilities": [],
+    "why_promoted": [
+      {
+        "capability": "local-gocaptcha-compatible-lab",
+        "reason": "candidate evidence complete but not stable"
+      },
+      {
+        "capability": "fingerprint-diagnostics:sannysoft",
+        "reason": "candidate evidence complete but not stable"
+      },
+      {
+        "capability": "fingerprint-diagnostics:creepjs",
+        "reason": "candidate evidence complete but not stable"
+      },
+      {
+        "capability": "high-fidelity-risk-lab",
+        "reason": "verified local-scope evidence gates passed"
+      }
+    ],
+    "why_not_promoted": [
+      {
+        "capability": "local-gocaptcha-compatible-lab:verified",
+        "missing": [
+          "multi_difficulty_threshold_pass"
+        ]
+      }
+    ]
+  }
+}
