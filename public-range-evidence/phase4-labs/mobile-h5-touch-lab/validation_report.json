@@ -1,0 +1,29 @@
+{
+  "lab_id": "mobile-h5-touch-lab",
+  "status": "PASS",
+  "coverage_count": 10,
+  "validator": "tools/validate_mobile_h5_touch_lab.py",
+  "no_live_site_data": true,
+  "no_real_cookie": true,
+  "no_real_token": true,
+  "no_real_har": true,
+  "repeat_validation_ready": true,
+  "schema_version": "public-range-evidence/v1",
+  "target": {
+    "id": "mobile-h5-touch-lab",
+    "url": "local://phase4-labs/mobile-h5-touch-lab"
+  },
+  "skills": [
+    "web-h5-loop-engineering",
+    "reverse-js-crawler"
+  ],
+  "decision": {
+    "skills_participation": "unverified",
+    "positive_allowed": false,
+    "blocked_reason": "local synthetic Phase 4 lab; not a live-site capability claim"
+  },
+  "capability_status": "unverified",
+  "control_flow_status": "NOT_RUN",
+  "business_data_status": "NOT_RUN",
+  "repeat_verified": false
+}

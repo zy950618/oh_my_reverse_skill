@@ -1,0 +1,35 @@
+{
+  "lab_id": "jsvmp-obfuscation-lab",
+  "negative_cases": [
+    {
+      "id": "expired-input",
+      "expected": "reject_without_live_request"
+    },
+    {
+      "id": "invalid-token-or-state",
+      "expected": "reject_without_side_effect"
+    },
+    {
+      "id": "replay-mismatch",
+      "expected": "diff_report_required"
+    }
+  ],
+  "schema_version": "public-range-evidence/v1",
+  "target": {
+    "id": "jsvmp-obfuscation-lab",
+    "url": "local://phase4-labs/jsvmp-obfuscation-lab"
+  },
+  "skills": [
+    "web-h5-loop-engineering",
+    "reverse-js-crawler"
+  ],
+  "decision": {
+    "skills_participation": "unverified",
+    "positive_allowed": false,
+    "blocked_reason": "local synthetic Phase 4 lab; not a live-site capability claim"
+  },
+  "capability_status": "unverified",
+  "control_flow_status": "NOT_RUN",
+  "business_data_status": "NOT_RUN",
+  "repeat_verified": false
+}

@@ -1,0 +1,54 @@
+{
+  "lab_id": "js-sign-token-lab",
+  "title": "JS Sign / Token Lab",
+  "status": "PHASE4_LAB_READY",
+  "scope": "local_synthetic_lab_only",
+  "live_site_data_committed": false,
+  "real_credentials_required": false,
+  "coverage": [
+    "timestamp sign",
+    "nonce sign",
+    "HMAC-like sign",
+    "AES-like payload encryption",
+    "RSA-like envelope mock",
+    "token lifecycle",
+    "expired token",
+    "invalid token",
+    "replay mismatch",
+    "browser-vs-node diff",
+    "Node/V8 pure solver",
+    "Python pure solver"
+  ],
+  "required_files": [
+    "README.md",
+    "manifest.json",
+    "negative_cases.json",
+    "validation_report.json",
+    "reports/replay_or_trace_report.md"
+  ],
+  "validator": "tools/validate_js_sign_token_lab.py",
+  "validation": {
+    "structure_validated": true,
+    "negative_cases_present": true,
+    "pure_solver_or_dry_run_present": true,
+    "sensitive_data_absent": true
+  },
+  "schema_version": "public-range-evidence/v1",
+  "target": {
+    "id": "js-sign-token-lab",
+    "url": "local://phase4-labs/js-sign-token-lab"
+  },
+  "skills": [
+    "web-h5-loop-engineering",
+    "reverse-js-crawler"
+  ],
+  "decision": {
+    "skills_participation": "unverified",
+    "positive_allowed": false,
+    "blocked_reason": "local synthetic Phase 4 lab; not a live-site capability claim"
+  },
+  "capability_status": "unverified",
+  "control_flow_status": "NOT_RUN",
+  "business_data_status": "NOT_RUN",
+  "repeat_verified": false
+}
