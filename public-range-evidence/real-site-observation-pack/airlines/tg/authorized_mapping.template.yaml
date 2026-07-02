@@ -1,0 +1,34 @@
+target: tg
+authorization_levels:
+  observation_only:
+    allowed:
+      - open_page
+      - capture_public_script_inventory
+      - capture_network_inventory_metadata
+      - detect_challenge_state
+      - record_fingerprint_status
+  authorized_readonly:
+    allowed:
+      - run_readonly_search
+      - lookup_price_or_availability
+  authorized_sandbox_mutation:
+    requires:
+      - official_sandbox_or_partner_test_environment
+      - explicit_test_account
+      - cancellation_plan
+  authorized_fullflow:
+    requires:
+      - explicit_written_authorization
+      - account_scope
+      - rate_limit
+      - redaction
+      - human_confirmation
+forbidden_committed_evidence:
+  - real_cookie
+  - real_token
+  - real_har
+  - real_account
+  - real_order_id
+  - passenger_info
+  - browser_profile
+  - payment_info
