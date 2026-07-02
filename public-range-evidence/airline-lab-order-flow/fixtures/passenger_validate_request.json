@@ -1,0 +1,8 @@
+{
+  "quote_id": "LAB-QUOTE-001",
+  "passenger": {
+    "first_name": "LOCAL",
+    "last_name": "PASSENGER",
+    "document_number": "LAB000001"
+  }
+}

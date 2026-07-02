@@ -1,0 +1,19 @@
+{
+  "schema_version": "real-site-observation-schema/v1",
+  "required_fields": [
+    "target_profile",
+    "authorization_scope",
+    "network_inventory",
+    "dynamic_param_inventory",
+    "captcha_or_challenge_detection",
+    "fingerprint_surface_observation",
+    "pure_api_feasibility",
+    "no_browser_final_delivery"
+  ],
+  "forbidden_fields": [
+    "cookie_value",
+    "token_value",
+    "pii",
+    "payment_data"
+  ]
+}

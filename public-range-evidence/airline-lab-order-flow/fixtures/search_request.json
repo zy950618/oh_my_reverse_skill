@@ -1,0 +1,8 @@
+{
+  "method": "GET",
+  "path": "/api/search?origin=KUL&destination=SIN&date=2026-08-01",
+  "headers": {
+    "accept": "application/json"
+  }
+}
+

@@ -1,0 +1,9 @@
+{
+  "method": "POST",
+  "path": "/api/detail",
+  "json": {
+    "session_id": "lab-session-001",
+    "flight_id": "LAB-MH-001"
+  }
+}
+

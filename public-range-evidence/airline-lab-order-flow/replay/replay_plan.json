@@ -1,0 +1,82 @@
+{
+  "schema_version": "airline-lab-replay-plan/v1",
+  "status": "structure_only",
+  "steps": [
+    {
+      "name": "search",
+      "request_fixture": "fixtures/search_request.json",
+      "response_fixture": "fixtures/search_response.json",
+      "required_pointers": [
+        "/session_id",
+        "/flights/0/flight_id"
+      ]
+    },
+    {
+      "name": "detail",
+      "request_fixture": "fixtures/detail_request.json",
+      "response_fixture": "fixtures/detail_response.json",
+      "required_pointers": [
+        "/session_id",
+        "/flight/flight_id",
+        "/detail_nonce"
+      ]
+    },
+    {
+      "name": "quote price",
+      "request_fixture": "fixtures/quote_request.json",
+      "response_fixture": "fixtures/quote_response.json",
+      "required_pointers": [
+        "/quote_id",
+        "/total",
+        "/token_state"
+      ]
+    },
+    {
+      "name": "passenger validate",
+      "request_fixture": "fixtures/passenger_validate_request.json",
+      "response_fixture": "fixtures/passenger_validate_response.json",
+      "required_pointers": [
+        "/passenger_validation_id"
+      ]
+    },
+    {
+      "name": "create draft order",
+      "request_fixture": "fixtures/draft_order_request.json",
+      "response_fixture": "fixtures/draft_order_response.json",
+      "required_pointers": [
+        "/order_id",
+        "/order_state",
+        "/ledger_delta"
+      ]
+    },
+    {
+      "name": "confirm test order",
+      "request_fixture": "fixtures/confirm_order_request.json",
+      "response_fixture": "fixtures/confirm_order_response.json",
+      "required_pointers": [
+        "/order_id",
+        "/order_state",
+        "/ledger_delta"
+      ]
+    },
+    {
+      "name": "cancel test order",
+      "request_fixture": "fixtures/cancel_order_request.json",
+      "response_fixture": "fixtures/cancel_order_response.json",
+      "required_pointers": [
+        "/order_id",
+        "/order_state",
+        "/ledger_delta"
+      ]
+    },
+    {
+      "name": "order",
+      "request_fixture": "fixtures/order_request.json",
+      "response_fixture": "fixtures/order_response.json",
+      "required_pointers": [
+        "/order_id",
+        "/ledger_delta"
+      ]
+    }
+  ]
+}

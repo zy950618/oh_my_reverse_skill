@@ -1,0 +1,278 @@
+{
+  "business_data_boundary": {
+    "ledger_delta_cancel": -1,
+    "ledger_delta_positive_confirm": 1,
+    "negative_ledger_delta": 0,
+    "payment_required": false
+  },
+  "capability_boundary": {
+    "browser_profile_dependency": false,
+    "positive_airline_capability_claim": false,
+    "third_party_captcha_or_waf_bypass_claim": false
+  },
+  "cases": [
+    {
+      "failures": [],
+      "name": "valid_search",
+      "request": {
+        "body_present": false,
+        "headers": {},
+        "method": "GET",
+        "path": "/api/search?origin=KUL&destination=SIN&date=2026-08-01"
+      },
+      "response": {
+        "flights": [
+          {
+            "currency": "MYR",
+            "destination": "SIN",
+            "flight_id": "LAB-MH-001",
+            "origin": "KUL",
+            "price": 120.0
+          }
+        ],
+        "session_id": "lab-session-001",
+        "status": "ok"
+      },
+      "response_status": 200,
+      "status": "PASS"
+    },
+    {
+      "failures": [],
+      "name": "invalid_route",
+      "request": {
+        "body_present": false,
+        "headers": {},
+        "method": "GET",
+        "path": "/api/search?origin=KUL&destination=XXX&date=2026-08-01"
+      },
+      "response": {
+        "error": "invalid_route",
+        "ledger_delta": 0,
+        "status": "error"
+      },
+      "response_status": 422,
+      "status": "PASS"
+    },
+    {
+      "failures": [],
+      "name": "quote_success",
+      "request": {
+        "body_present": true,
+        "headers": {},
+        "method": "POST",
+        "path": "/api/quote"
+      },
+      "response": {
+        "captcha_required": false,
+        "currency": "MYR",
+        "fingerprint_challenge": false,
+        "quote_id": "LAB-QUOTE-001",
+        "status": "ok",
+        "token_state": "quote_token_issued",
+        "total": 120.0
+      },
+      "response_status": 200,
+      "status": "PASS"
+    },
+    {
+      "failures": [],
+      "name": "quote_expired_token",
+      "request": {
+        "body_present": true,
+        "headers": {},
+        "method": "POST",
+        "path": "/api/quote"
+      },
+      "response": {
+        "error": "expired_or_invalid_detail_token",
+        "ledger_delta": 0,
+        "status": "error"
+      },
+      "response_status": 409,
+      "status": "PASS"
+    },
+    {
+      "failures": [],
+      "name": "passenger_valid",
+      "request": {
+        "body_present": true,
+        "headers": {},
+        "method": "POST",
+        "path": "/api/passenger/validate"
+      },
+      "response": {
+        "passenger_validation_id": "LAB-PAX-001",
+        "status": "ok"
+      },
+      "response_status": 200,
+      "status": "PASS"
+    },
+    {
+      "failures": [],
+      "name": "passenger_invalid",
+      "request": {
+        "body_present": true,
+        "headers": {},
+        "method": "POST",
+        "path": "/api/passenger/validate"
+      },
+      "response": {
+        "error": "invalid_passenger",
+        "status": "error"
+      },
+      "response_status": 422,
+      "status": "PASS"
+    },
+    {
+      "failures": [],
+      "name": "draft_order_success",
+      "request": {
+        "body_present": true,
+        "headers": {},
+        "method": "POST",
+        "path": "/api/order/draft"
+      },
+      "response": {
+        "idempotency": "duplicate_request_rejected",
+        "ledger_delta": 0,
+        "order_id": "LAB-ORDER-001",
+        "order_state": "draft",
+        "status": "ok"
+      },
+      "response_status": 200,
+      "status": "PASS"
+    },
+    {
+      "failures": [],
+      "name": "duplicate_order_rejected",
+      "request": {
+        "body_present": true,
+        "headers": {},
+        "method": "POST",
+        "path": "/api/order/draft"
+      },
+      "response": {
+        "error": "duplicate_order",
+        "ledger_delta": 0,
+        "order_id": "LAB-ORDER-001",
+        "status": "error"
+      },
+      "response_status": 409,
+      "status": "PASS"
+    },
+    {
+      "failures": [],
+      "name": "confirm_order_success",
+      "request": {
+        "body_present": true,
+        "headers": {},
+        "method": "POST",
+        "path": "/api/order/confirm"
+      },
+      "response": {
+        "ledger_delta": 1,
+        "order_id": "LAB-ORDER-001",
+        "order_state": "confirmed",
+        "payment_required": false,
+        "status": "ok"
+      },
+      "response_status": 200,
+      "status": "PASS"
+    },
+    {
+      "failures": [],
+      "name": "cancel_order_success",
+      "request": {
+        "body_present": true,
+        "headers": {},
+        "method": "POST",
+        "path": "/api/order/cancel"
+      },
+      "response": {
+        "ledger_delta": -1,
+        "order_id": "LAB-ORDER-001",
+        "order_state": "cancelled",
+        "status": "ok"
+      },
+      "response_status": 200,
+      "status": "PASS"
+    },
+    {
+      "failures": [],
+      "name": "invalid_sign_rejected",
+      "request": {
+        "body_present": true,
+        "headers": {
+          "x-lab-sign": "invalid"
+        },
+        "method": "POST",
+        "path": "/api/order/draft"
+      },
+      "response": {
+        "error": "invalid_sign",
+        "ledger_delta": 0,
+        "status": "error"
+      },
+      "response_status": 403,
+      "status": "PASS"
+    },
+    {
+      "failures": [],
+      "name": "captcha_required_state",
+      "request": {
+        "body_present": true,
+        "headers": {},
+        "method": "POST",
+        "path": "/api/quote"
+      },
+      "response": {
+        "captcha_required": true,
+        "error": "captcha_required",
+        "ledger_delta": 0,
+        "status": "error"
+      },
+      "response_status": 403,
+      "status": "PASS"
+    },
+    {
+      "failures": [],
+      "name": "fingerprint_challenge_state",
+      "request": {
+        "body_present": true,
+        "headers": {
+          "x-fingerprint-state": "challenge"
+        },
+        "method": "POST",
+        "path": "/api/quote"
+      },
+      "response": {
+        "error": "fingerprint_challenge",
+        "fingerprint_challenge": true,
+        "ledger_delta": 0,
+        "status": "error"
+      },
+      "response_status": 403,
+      "status": "PASS"
+    }
+  ],
+  "coverage": [
+    "valid_search",
+    "invalid_route",
+    "quote_success",
+    "quote_expired_token",
+    "passenger_valid",
+    "passenger_invalid",
+    "draft_order_success",
+    "duplicate_order_rejected",
+    "confirm_order_success",
+    "cancel_order_success",
+    "invalid_sign_rejected",
+    "captcha_required_state",
+    "fingerprint_challenge_state"
+  ],
+  "live_site_calls_performed": false,
+  "mock_server": "in_process_threading_http_server",
+  "schema_version": "airline-lab-deep-validation/v1",
+  "scope": "self_owned_localhost_lab",
+  "status": "PASS"
+}

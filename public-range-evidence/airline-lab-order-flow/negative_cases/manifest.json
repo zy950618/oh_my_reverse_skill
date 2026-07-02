@@ -1,0 +1,81 @@
+{
+  "schema_version": "airline-lab-negative-cases/v1",
+  "scope": "self_owned_localhost_lab",
+  "live_site_calls_performed": false,
+  "browser_dependency": false,
+  "cases": [
+    {
+      "name": "invalid_route",
+      "detection_mode": "localhost_http",
+      "expected_status": 422,
+      "expected_error": "invalid_route"
+    },
+    {
+      "name": "invalid_date",
+      "detection_mode": "local_preflight_classifier",
+      "expected_status": "rejected_before_http",
+      "expected_error": "invalid_date",
+      "notes": "The current mock server does not model date parsing; Agent 5 classifies this as a local request-shape negative case without changing mock_server ownership."
+    },
+    {
+      "name": "expired_token",
+      "detection_mode": "localhost_http",
+      "expected_status": 409,
+      "expected_error": "expired_or_invalid_detail_token"
+    },
+    {
+      "name": "invalid_sign",
+      "detection_mode": "localhost_http",
+      "expected_status": 403,
+      "expected_error": "invalid_sign"
+    },
+    {
+      "name": "missing_passenger",
+      "detection_mode": "localhost_http",
+      "expected_status": 422,
+      "expected_error": "invalid_passenger"
+    },
+    {
+      "name": "invalid_passenger_doc",
+      "detection_mode": "localhost_http",
+      "expected_status": 422,
+      "expected_error": "invalid_passenger"
+    },
+    {
+      "name": "duplicate_draft",
+      "detection_mode": "localhost_http_sequence",
+      "expected_status": 409,
+      "expected_error": "duplicate_order"
+    },
+    {
+      "name": "confirm_without_draft",
+      "detection_mode": "localhost_http",
+      "expected_status": 409,
+      "expected_error": "invalid_order_state"
+    },
+    {
+      "name": "cancel_nonexistent_order",
+      "detection_mode": "localhost_http",
+      "expected_status": 404,
+      "expected_error": "order_not_found"
+    },
+    {
+      "name": "captcha_required_state",
+      "detection_mode": "localhost_http",
+      "expected_status": 403,
+      "expected_error": "captcha_required"
+    },
+    {
+      "name": "fingerprint_challenge_state",
+      "detection_mode": "localhost_http",
+      "expected_status": 403,
+      "expected_error": "fingerprint_challenge"
+    },
+    {
+      "name": "replay_mismatch",
+      "detection_mode": "fixture_pointer_mismatch",
+      "expected_status": "rejected_by_fixture_check",
+      "expected_error": "replay_mismatch"
+    }
+  ]
+}

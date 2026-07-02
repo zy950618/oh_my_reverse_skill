@@ -1,0 +1,10 @@
+{
+  "method": "POST",
+  "path": "/api/order",
+  "json": {
+    "session_id": "lab-session-001",
+    "flight_id": "LAB-MH-001",
+    "detail_nonce": "detail-nonce-001"
+  }
+}
+

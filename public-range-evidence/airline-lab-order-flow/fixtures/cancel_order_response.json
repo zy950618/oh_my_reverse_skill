@@ -1,0 +1,6 @@
+{
+  "status": "ok",
+  "order_id": "LAB-ORDER-001",
+  "order_state": "cancelled",
+  "ledger_delta": -1
+}

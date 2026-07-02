@@ -1,0 +1,9 @@
+airline_code: MH
+target_url: https://www.malaysiaairlines.com/
+authorized_by: ""
+authorization_scope: "public homepage observation only"
+allow_login: false
+allow_booking: false
+allow_payment: false
+allow_captcha_solving: false
+allow_waf_bypass: false

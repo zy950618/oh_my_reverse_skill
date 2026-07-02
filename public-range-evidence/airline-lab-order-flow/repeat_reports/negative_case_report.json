@@ -1,0 +1,134 @@
+{
+  "browser_dependency": false,
+  "cases": [
+    {
+      "detection_mode": "localhost_http",
+      "expected_error": "invalid_route",
+      "expected_status": 422,
+      "failures": [],
+      "name": "invalid_route",
+      "observed_error": "invalid_route",
+      "observed_status": 422,
+      "status": "PASS"
+    },
+    {
+      "detection_mode": "local_preflight_classifier",
+      "expected_error": "invalid_date",
+      "expected_status": "rejected_before_http",
+      "failures": [],
+      "name": "invalid_date",
+      "observed_error": "invalid_date",
+      "observed_status": "rejected_before_http",
+      "status": "PASS"
+    },
+    {
+      "detection_mode": "localhost_http",
+      "expected_error": "expired_or_invalid_detail_token",
+      "expected_status": 409,
+      "failures": [],
+      "name": "expired_token",
+      "observed_error": "expired_or_invalid_detail_token",
+      "observed_status": 409,
+      "status": "PASS"
+    },
+    {
+      "detection_mode": "localhost_http",
+      "expected_error": "invalid_sign",
+      "expected_status": 403,
+      "failures": [],
+      "name": "invalid_sign",
+      "observed_error": "invalid_sign",
+      "observed_status": 403,
+      "status": "PASS"
+    },
+    {
+      "detection_mode": "localhost_http",
+      "expected_error": "invalid_passenger",
+      "expected_status": 422,
+      "failures": [],
+      "name": "missing_passenger",
+      "observed_error": "invalid_passenger",
+      "observed_status": 422,
+      "status": "PASS"
+    },
+    {
+      "detection_mode": "localhost_http",
+      "expected_error": "invalid_passenger",
+      "expected_status": 422,
+      "failures": [],
+      "name": "invalid_passenger_doc",
+      "observed_error": "invalid_passenger",
+      "observed_status": 422,
+      "status": "PASS"
+    },
+    {
+      "detection_mode": "localhost_http_sequence",
+      "expected_error": "duplicate_order",
+      "expected_status": 409,
+      "failures": [],
+      "name": "duplicate_draft",
+      "observed_error": "duplicate_order",
+      "observed_status": 409,
+      "status": "PASS"
+    },
+    {
+      "detection_mode": "localhost_http",
+      "expected_error": "invalid_order_state",
+      "expected_status": 409,
+      "failures": [],
+      "name": "confirm_without_draft",
+      "observed_error": "invalid_order_state",
+      "observed_status": 409,
+      "status": "PASS"
+    },
+    {
+      "detection_mode": "localhost_http",
+      "expected_error": "order_not_found",
+      "expected_status": 404,
+      "failures": [],
+      "name": "cancel_nonexistent_order",
+      "observed_error": "order_not_found",
+      "observed_status": 404,
+      "status": "PASS"
+    },
+    {
+      "detection_mode": "localhost_http",
+      "expected_error": "captcha_required",
+      "expected_status": 403,
+      "failures": [],
+      "name": "captcha_required_state",
+      "observed_error": "captcha_required",
+      "observed_status": 403,
+      "status": "PASS"
+    },
+    {
+      "detection_mode": "localhost_http",
+      "expected_error": "fingerprint_challenge",
+      "expected_status": 403,
+      "failures": [],
+      "name": "fingerprint_challenge_state",
+      "observed_error": "fingerprint_challenge",
+      "observed_status": 403,
+      "status": "PASS"
+    },
+    {
+      "detection_mode": "fixture_pointer_mismatch",
+      "expected_error": "replay_mismatch",
+      "expected_status": "rejected_by_fixture_check",
+      "failures": [],
+      "name": "replay_mismatch",
+      "observed_error": "replay_mismatch",
+      "observed_status": "rejected_by_fixture_check",
+      "status": "PASS"
+    }
+  ],
+  "failures": [],
+  "generated_at": "2026-07-01T09:42:49.671950+00:00",
+  "live_site_calls_performed": false,
+  "manifest": "E:\\ai_project\\oh_my_reverse_skill\\public-range-evidence\\airline-lab-order-flow\\negative_cases\\manifest.json",
+  "negative_case_count": 12,
+  "negative_cases_rejected_or_classified": 12,
+  "schema_version": "airline-lab-negative-case-report/v1",
+  "scope": "self_owned_localhost_lab",
+  "status": "PASS"
+}

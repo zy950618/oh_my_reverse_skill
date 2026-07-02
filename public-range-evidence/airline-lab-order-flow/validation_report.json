@@ -1,0 +1,76 @@
+{
+  "schema_version": "airline-lab-order-flow/v1",
+  "status": "STRUCTURE_ONLY",
+  "no_playwright_runtime": true,
+  "no_puppeteer_runtime": true,
+  "no_camoufox_runtime": true,
+  "no_browser_profile_dependency": true,
+  "no_manual_cookie_copy": true,
+  "node_or_v8_or_quickjs_or_python_sign_generation": true,
+  "replay_diff_report_exists": true,
+  "docker_headless_ready": true,
+  "final_business_flow": "local_order_flow_lab",
+  "execution_status": "STRUCTURE_ONLY",
+  "control_flow_status": "NOT_RUN",
+  "business_data_status": "NOT_RUN",
+  "capability_status": "memory_only",
+  "live_site_calls_performed": false,
+  "local_server_started": true,
+  "local_smoke_test": {
+    "status": "PASS",
+    "command": "in-process ThreadingHTTPServer smoke via python -B -",
+    "checks": [
+      "health",
+      "search",
+      "detail",
+      "order",
+      "wrong_session"
+    ]
+  },
+  "fixtures_present": true,
+  "replay_present": true,
+  "order_flow_steps": [
+    "search flight",
+    "select flight",
+    "quote price",
+    "passenger validate",
+    "create draft order",
+    "confirm test order",
+    "cancel test order",
+    "replay",
+    "diff",
+    "report"
+  ],
+  "simulated_failures": [
+    "JS sign",
+    "token lifecycle",
+    "captcha_required",
+    "fingerprint_challenge",
+    "expired token",
+    "invalid sign",
+    "replay mismatch",
+    "order created",
+    "order cancelled",
+    "duplicate request",
+    "invalid passenger",
+    "session polluted"
+  ],
+  "positive_allowed": false,
+  "fact_labels": {
+    "observed": [
+      "Scaffold files and sanitized local fixtures are present.",
+      "In-process localhost smoke test passed for health, search, detail, order, and wrong-session rejection."
+    ],
+    "derived": [],
+    "assumed": [],
+    "unverified": [
+      "No real airline site has been observed.",
+      "No concurrency ladder has been run."
+    ]
+  },
+  "required_validation": [
+    "python public-range-evidence/airline-lab-order-flow/replay/replay.py",
+    "python tools/validate_browser_context_isolation.py",
+    "future smoke test against localhost mock server"
+  ]
+}

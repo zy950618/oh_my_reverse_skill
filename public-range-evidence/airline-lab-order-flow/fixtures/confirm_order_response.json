@@ -1,0 +1,7 @@
+{
+  "status": "ok",
+  "order_id": "LAB-ORDER-001",
+  "order_state": "confirmed",
+  "ledger_delta": 1,
+  "payment_required": false
+}

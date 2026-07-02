@@ -1,0 +1,56 @@
+{
+  "schema_version": "real-site-observation-pack/v1",
+  "pack_id": "airline-real-site-observation-vn",
+  "airline_code": "VN",
+  "brand_name": "Vietnam Airlines",
+  "target_url_assumption": "https://www.vietnamairlines.com/",
+  "pack_status": "authorized-live-ready",
+  "execution_status": "LOCAL_FIXTURE_VALIDATED",
+  "control_flow_status": "NOT_RUN",
+  "business_data_status": "NOT_RUN",
+  "capability_status": "memory_only",
+  "positive_allowed": false,
+  "live_capture_performed": false,
+  "live_observation_status": "NOT_RUN_NO_AUTHORIZATION_INPUT",
+  "authorization_scope": "future public homepage observation only; no account, payment, order, or protected flow",
+  "local_validation": {
+    "schema_validated": true,
+    "executable_runbook_validated": true,
+    "local_fixture_validated": true,
+    "authorized_live_ready": true
+  },
+  "planned_observation_surfaces": [
+    "homepage_status",
+    "redirect_chain",
+    "security_headers",
+    "cookie_names_redacted",
+    "client_hints",
+    "fingerprint_surface_report",
+    "captcha_or_waf_marker_presence"
+  ],
+  "fact_labels": {
+    "observed": [
+      "Local schema, runbook, and sample fixture are present."
+    ],
+    "derived": [],
+    "assumed": [
+      "target_url_assumption is a seed URL for future manual verification"
+    ],
+    "unverified": [
+      "No live request was made in this run",
+      "No fingerprint surface was captured from the real site",
+      "No block reason was observed from the real site",
+      "No business endpoint was verified"
+    ]
+  },
+  "forbidden_actions": [
+    "captcha_bypass",
+    "solver_token_reuse",
+    "webdriver_hide",
+    "fingerprint_spoof",
+    "proxy_rotation_evasion",
+    "clearance_cookie_reuse",
+    "risk_token_reuse",
+    "unauthorized_challenge_processing"
+  ]
+}
