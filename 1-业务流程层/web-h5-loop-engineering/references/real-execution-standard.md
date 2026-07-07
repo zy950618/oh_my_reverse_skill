@@ -7,10 +7,10 @@ metrics and fixture freshness as first-class gates. The phrase quantitative metr
 
 ## Required Tools
 
-- Loop Runner: `python tools/web_h5_loop_runner.py init|record-iteration|validate`
-- Acceptance Report: `python tools/web_h5_acceptance_report.py template|validate`
-- Fixture freshness: `python tools/fixture_freshness_report.py 站点经验库`
-- Release gate: `python tools/ci_gate.py .ci-out --release`
+- Loop Runner: `python3 tools/web_h5_loop_runner.py init|record-iteration|validate`
+- Acceptance Report: `python3 tools/web_h5_acceptance_report.py template|validate`
+- Fixture freshness: `python3 tools/fixture_freshness_report.py 站点经验库`
+- Release gate: `python3 tools/ci_gate.py .ci-out --release`
 
 Use `--require-complete`, `--strict-fresh`, or both only when claiming real
 completion, release readiness, concurrency, or long-term stability.
@@ -80,7 +80,7 @@ and cache evidence.
 
 Risk-control handling means classification, isolation, backoff, session
 retirement, kill switch, and human review. It does not mean WAF bypass,
-CAPTCHA bypass, fingerprint spoofing, proxy rotation, or clearance cookie reuse.
+challenge bypass, fingerprint spoofing, proxy rotation, or clearance cookie reuse.
 
 When a protection blocks completion, persist it as blocked evidence, known
 failure, human review, or negative eval. Do not write it as capability.

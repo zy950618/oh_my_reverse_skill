@@ -19,7 +19,7 @@ This reference binds authorized-target adaptation to explicit scope, final busin
 
 ## Boundaries
 
-This skill is not responsible for WAF bypass, fingerprint spoofing, CAPTCHA bypass, proxy evasion, token forgery, or clearance reuse on production-unverified targets.
+This skill is not responsible for WAF bypass, fingerprint spoofing, challenge bypass, proxy evasion, token forgery, or clearance reuse on production-unverified targets.
 
 ## Governance
 

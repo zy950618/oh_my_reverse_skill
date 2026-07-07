@@ -21,7 +21,7 @@
   (异常静默 exit 0, 避免误阻断 CI)
 
 CLI:
-  python tools/replayer/schema_alert.py --input <diff.json> [--output <alert.md>]
+  python3 tools/replayer/schema_alert.py --input <diff.json> [--output <alert.md>]
 """
 from __future__ import annotations
 

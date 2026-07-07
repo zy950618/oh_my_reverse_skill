@@ -22,7 +22,7 @@ Validate an authorized order-flow lab path without crossing into real payment or
 
 ## Command Examples
 ```powershell
-python tools/validate_business_data_assertions.py --evidence <evidence_dir>
+python3 tools/validate_business_data_assertions.py --evidence <evidence_dir>
 ```
 
 ## Failure Modes

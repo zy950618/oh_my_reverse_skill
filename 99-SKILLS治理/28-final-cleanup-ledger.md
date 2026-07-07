@@ -2,14 +2,12 @@
 
 ## Cleanup Run
 
-timestamp: 2026-07-01T09:47:00.469274+00:00
+timestamp: 2026-07-07T08:32:25.396022+00:00
 mode: apply-classified
 
 ## Removed
 
-[
-  "tools/__pycache__"
-]
+[]
 
 ## Archived
 
@@ -22,9 +20,7 @@ mode: apply-classified
 
 ## Cleanup Candidates
 
-[
-  "tools/__pycache__"
-]
+[]
 
 ## Manual Review
 

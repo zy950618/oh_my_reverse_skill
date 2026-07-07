@@ -230,7 +230,7 @@ def main() -> int:
         },
         "skills": ["browser-fingerprint-surface-lab", "fingerprint-block-reason-diagnostics"],
         "execution_proof": {
-            "command": f"python tools\\fingerprint_range_runner.py --target {args.target} --run-id {run_id} --repeat {args.repeat} --profiles {args.profiles}",
+            "command": f"python3 tools\\fingerprint_range_runner.py --target {args.target} --run-id {run_id} --repeat {args.repeat} --profiles {args.profiles}",
             "cwd": str(ROOT),
             "exit_code": 0 if status == "PASS" else 1,
             "started_at": started,

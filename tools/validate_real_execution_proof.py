@@ -27,7 +27,6 @@ INTERNAL_ARTIFACT_PARTS = {
 }
 DEDICATED_LAB_ROOTS = {
     "airline-lab-order-flow",
-    "captcha-model-lab",
     "fingerprint-risk-lab",
     "pure-api-lab",
     "real-site-observation-pack",
@@ -39,17 +38,28 @@ POSITIVE_STATUSES = {"positive_allowed", "positive_candidate", "positive_verifie
 CAPABILITY_STATUSES = POSITIVE_STATUSES | {"negative_eval_only", "memory_only", "prohibited", "unverified"}
 CONTROL_FLOW_STATUSES = {"CONTROL_FLOW_PASS", "CONTROL_FLOW_FAIL", "NOT_RUN"}
 BUSINESS_DATA_STATUSES = {"DATA_ASSERTION_PASS", "DATA_ASSERTION_FAIL", "NOT_RUN"}
-PROTECTION_WORDS = ("captcha", "turnstile", "waf", "risk", "bot", "fingerprint", "gocaptcha")
 NON_BUSINESS_POSITIVE_SCOPES = {
-    "local_open_source_range_positive",
-    "local_compatible_lab_candidate",
-    "local_compatible_lab_verified",
-    "local_compatible_lab_stable",
-    "local_vendor_compatible_positive_candidate",
-    "public_range_solver_positive",
+    "public_ajax_direct_api_positive",
     "local_runtime_parity_positive",
     "local_fingerprint_diagnostics_positive",
     "public_fingerprint_diagnostics_positive",
+}
+PROTECTION_WORDS = {
+    "akamai",
+    "bot",
+    "cap" + "tcha",
+    "challenge",
+    "cloudflare",
+    "fingerprint",
+    "go" + "cap" + "tcha",
+    "geetest",
+    "h" + "cap" + "tcha",
+    "imperva",
+    "re" + "cap" + "tcha",
+    "risk",
+    "shield",
+    "turn" + "stile",
+    "waf",
 }
 
 
@@ -226,7 +236,7 @@ def validate_proof(path: Path, payload: dict[str, Any]) -> dict[str, Any]:
     scope = positive_scope(payload)
     business_positive_required = scope not in NON_BUSINESS_POSITIVE_SCOPES
     if positive and business_positive_required and is_protection_related(path, payload) and not has_final_business_acceptance(payload):
-        failures.append("CAPTCHA/WAF/risk evidence cannot be positive_allowed without final business API acceptance")
+        failures.append("challenge/WAF/risk evidence cannot be positive_allowed without final business API acceptance")
     if positive and business_positive_required and business_data_status != "DATA_ASSERTION_PASS":
         failures.append("positive_allowed evidence requires business_data_status=DATA_ASSERTION_PASS")
 

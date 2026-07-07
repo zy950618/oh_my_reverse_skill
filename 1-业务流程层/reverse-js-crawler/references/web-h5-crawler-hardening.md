@@ -1,6 +1,6 @@
 # Web/H5 Crawler Hardening
 
-This reference is scoped to Web/H5 crawler reverse engineering. It does not add CAPTCHA/WAF bypass tactics. It only defines proof gates for repeatability, capture freshness, session isolation, concurrency, risk-control engineering, UI/API parity, fixture freshness, and anti-overgeneralization.
+This reference is scoped to Web/H5 crawler reverse engineering. It does not add challenge/WAF bypass tactics. It only defines proof gates for repeatability, capture freshness, session isolation, concurrency, risk-control engineering, UI/API parity, fixture freshness, and anti-overgeneralization.
 
 ## External Patterns Reviewed
 
@@ -105,7 +105,7 @@ Record:
 
 Allowed actions are isolation, measured backoff, stopping concurrency, retiring
 bad sessions, re-recording fresh fixtures, and human review. Do not document WAF
-or CAPTCHA bypass, webdriver hiding, fingerprint spoofing, proxy rotation, or
+or challenge bypass, webdriver hiding, fingerprint spoofing, proxy rotation, or
 clearance cookie reuse.
 
 ### 7. Data Acceptance Gate
@@ -175,4 +175,4 @@ worker ladder with session isolation and backend acceptance.
 - Do not reuse old HAR/token/scriptId/profile as current evidence.
 - Do not share cookie/token/cache across workers without current backend acceptance evidence.
 - Do not claim stable data when strict fixture freshness or UI/API parity has not passed.
-- Do not write CAPTCHA/WAF bypass instructions into this Web/H5 crawler hardening reference.
+- Do not write challenge/WAF bypass instructions into this Web/H5 crawler hardening reference.

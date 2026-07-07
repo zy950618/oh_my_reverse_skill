@@ -93,11 +93,11 @@
     },
     {
       "detection_mode": "localhost_http",
-      "expected_error": "captcha_required",
+      "expected_error": "challenge_required",
       "expected_status": 403,
       "failures": [],
-      "name": "captcha_required_state",
-      "observed_error": "captcha_required",
+      "name": "challenge_required_state",
+      "observed_error": "challenge_required",
       "observed_status": 403,
       "status": "PASS"
     },

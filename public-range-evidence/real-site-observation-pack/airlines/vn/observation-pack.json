@@ -26,7 +26,7 @@
     "cookie_names_redacted",
     "client_hints",
     "fingerprint_surface_report",
-    "captcha_or_waf_marker_presence"
+    "managed-check_or_waf_marker_presence"
   ],
   "fact_labels": {
     "observed": [
@@ -44,8 +44,8 @@
     ]
   },
   "forbidden_actions": [
-    "captcha_bypass",
-    "solver_token_reuse",
+    "managed-check_bypass",
+    "third_party_token_reuse",
     "webdriver_hide",
     "fingerprint_spoof",
     "proxy_rotation_evasion",

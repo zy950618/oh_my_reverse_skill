@@ -19,4 +19,4 @@ Each classification requires response class, context state, and fact label: obse
 
 ## Boundary
 
-No webdriver hiding, fingerprint spoofing, proxy evasion, clearance reuse, risk-token reuse, WAF bypass, or CAPTCHA bypass.
+No webdriver hiding, fingerprint spoofing, proxy evasion, clearance reuse, risk-token reuse, WAF bypass, or challenge bypass.

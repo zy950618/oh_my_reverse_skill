@@ -1,6 +1,6 @@
 # oh_my_reverse_skill — AGENTS.md
 
-本仓库是 Web/H5 逆向工程 SKILLS 总库,12 个 skill 分 5 个分层。本文件是 OpenAI Codex CLI 的入口约定。
+本仓库是 Web/H5 逆向工程 SKILLS 总库，active skill 数量以 `python3 tools/score_skills.py --repo .` 和 release score 输出为准。本文件是 OpenAI Codex CLI 的入口约定。
 
 ## 接到逆向任务时
 
@@ -9,8 +9,7 @@
    - 路由优先级: 用户明确要求 Loop Engineering、闭环处理、多 agent 逆向、三角色验证、反复验证或 execution ledger 时,优先选 `1-业务流程层/web-h5-loop-engineering`
    - 用户要求完整新站点纯接口、FastAPI 接口测试交付、服务化、314/本地基础框架接入时,选 `1-业务流程层/website-314-api-delivery`
    - 用户要求聚焦单链路 JS 逆向、接口还原、加密参数、采集脚本或请求复现时,选 `1-业务流程层/reverse-js-crawler`
-   - `4-通用规范层/karpathy-guidelines` 只是基础工程规范,只能作为其他 Skill 执行时的辅助规范,不得作为 Web/H5/CAPTCHA/WAF/业务任务主入口
-   - CAPTCHA 模型栈选择/训练/评测走 `6-验证码逆向层/captcha-open-source-model-stack`; 已有模型预测后的动作回放、失败复测和 promotion gate 走 `6-验证码逆向层/captcha-model-action-e2e`
+   - `4-通用规范层/karpathy-guidelines` 只是基础工程规范,只能作为其他 Skill 执行时的辅助规范,不得作为 Web/H5/challenge/WAF/业务任务主入口
    - fingerprint surface inventory 走 `7-指纹风控层/browser-fingerprint-surface-lab`; block reason 归因走 `7-指纹风控层/fingerprint-block-reason-diagnostics`
 3. 进入实现前 Read `4-通用规范层/karpathy-guidelines/SKILL.md` 确认 4 原则
 4. 输出结论前 Read `99-SKILLS治理/11-AI事实证据规约.md`，区分 observed / derived / assumed / unverified
@@ -18,11 +17,10 @@
 6. 涉及批量/并发/指纹/会话/cache 前 Read `99-SKILLS治理/13-并发指纹与会话隔离规约.md`
 7. 每次更新端点/字段/状态/保护/实现/eval 前后 Read `99-SKILLS治理/14-知识图谱行程与关联规约.md`
 8. 每次改动后 Read `99-SKILLS治理/15-AI变更风险与回归校验规约.md` 写影响面和必跑回归
-9. 涉及基础逆向、浏览器清空、抓包复测、旧/新数据、多轮比对、验证码/token/session freshness 时,先读 `99-SKILLS治理/16-实战复测与证据新鲜度规约.md` 和 `逆向工程经验库/domains/<domain>/reverse-memory.md`
 10. 遇运行时问题(断点/时间/cookie/TLS 指纹/风控/接口变更)Read `99-SKILLS治理/10-逆向运行时常见问题.md`
 11. 完成前 Read `99-SKILLS治理/17-交付收尾清理与加密算法图谱规约.md`,写 cleanup ledger 和加密算法细节图
 12. 涉及证据不足、验证失败、拒答边界、人工复核、监控、错误纠正或历史遗留时 Read `99-SKILLS治理/18-证据验证拒答人工复核与监控规约.md`
-13. 完成前跑 `python tools/verify_delivery.py --domain <domain>` 自验
+13. 完成前跑 `python3 tools/verify_delivery.py --domain <domain>` 自验
 
 ## 强制约束
 
@@ -37,7 +35,7 @@
 - 不声称支持并发,除非有并发阶梯记录和会话隔离证据
 - 不改端点/字段/请求头/指纹/实现/eval 而不更新知识图谱和影响回归记录
 - 不把旧 HAR/旧 token/旧 scriptId/旧浏览器 profile 当成本次 observed 事实
-- 不重新开荒:已有 reverse-memory / site-memory / captcha-memory 时必须先读再抓包
+- 不重新开荒:已有 reverse-memory / site-memory / challenge-memory 时必须先读再抓包
 - 不把已验证完成后的临时测试文件、旧历史数据、废代码、废注释留在交付面;清理前必须先迁移必要证据
 - 涉及 sign/token/加密算法时,必须产出整体加密算法细节图
 - 不在证据不足、验证失败或用户要求越界时硬交付;必须拒答/收缩范围并给安全替代方案
@@ -67,11 +65,11 @@
 
 | 层 | 目录 | 角色 |
 |---|---|---|
-| 1 | `1-业务流程层/` | 顶层入口(5 个 skill) |
-| 2 | `2-JS逆向工具层/` | Web/JS 原子工具(4 个) |
+| 1 | `1-业务流程层/` | 顶层入口,按用户需求调度 2/5/7 层(active skill 数量以评分工具为准) |
+| 2 | `2-JS逆向工具层/` | Web/JS 原子工具(active skill 数量以评分工具为准) |
 | 4 | `4-通用规范层/` | 基础层规范(karpathy-guidelines) |
 | 5 | `5-沉淀工具层/` | 接口稳定后的标准化(site-api-adapter) |
-| 6 | `6-验证码逆向层/` | 验证码/验证服务逆向(captcha-service-delivery) |
+| 7 | `7-指纹风控层/` | 指纹 surface 观察和 block reason 归因,不做 stealth/spoofing |
 | 99 | `99-SKILLS治理/` | 生命周期/分类/评分/漂移/准入/运行时方法论 |
 
 完整规则见 `CLAUDE.md`。
@@ -81,6 +79,5 @@
 - 入口、升级、内部工具、辅助规范和交付类型以 `99-SKILLS治理/20-routing-contract.md` 为准。
 - `karpathy-guidelines` 固定为 `auxiliary_policy`,只作为执行类 Skill 的工程 checklist。
 - 最终业务链路必须纯接口；浏览器只允许用于分析、抓包、runtime trace、parity 和训练样本采集。
-- 验证码交付必须包含 action schema、dataset/training/pass-rate/model packaging 结构和 validator。
 - 第 7 层指纹风控必须先落本地靶场、reference、eval 和 validator；不允许把 observation 写成绕过能力。
 - 完成前必须产出 cleanup ledger、known failures、release gate 和 standard-loop-score。

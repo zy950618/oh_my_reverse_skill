@@ -19,7 +19,7 @@ Boundary:
 
 - no live airline calls
 - no account, payment, or PII
-- no CAPTCHA/WAF bypass
+- no challenge/WAF bypass
 - no fingerprint spoofing
 - no positive capability claim
 

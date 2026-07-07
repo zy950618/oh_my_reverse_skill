@@ -14,7 +14,7 @@
 ## Downgrade Rules
 
 - Browser-only evidence is `structure_only` or `browser_assisted_discovery`, never `positive_allowed`.
-- CAPTCHA provider challenge success is not business API success.
+- challenge provider challenge success is not business API success.
 - Fingerprint diagnostics are observation-only unless a self-owned lab proves business-data closure.
 - Localhost concurrency is not production concurrency.
 - Missing cleanup ledger, missing validators, or failed validator commands block PASS.
@@ -23,7 +23,7 @@
 
 change_id: standard-loop-2026-07-01
 date: 2026-07-01
-changed_node: skill routing, pure API gate, CAPTCHA model delivery, fingerprint lab, cleanup gate
+changed_node: skill routing, pure API gate, challenge model delivery, fingerprint lab, cleanup gate
 changed_edge: entry skill -> tool contract -> validator -> evidence lab
 change_type: add
 evidence: local file creation and validator commands

@@ -4,12 +4,12 @@ sync_site_memory.py — 把项目 memory 中的 project 类条目同步到 站�
 
 用法:
   # dry-run（默认）：只输出建议，不写文件
-  python tools/sync_site_memory.py \\
+  python3 tools/sync_site_memory.py \\
       --project E:/flight-cwl/flight-cwl-vj-baggage \\
       --domain vietjetair.com
 
   # 真正写入
-  python tools/sync_site_memory.py \\
+  python3 tools/sync_site_memory.py \\
       --project E:/flight-cwl/flight-cwl-vj-baggage \\
       --domain vietjetair.com \\
       --apply

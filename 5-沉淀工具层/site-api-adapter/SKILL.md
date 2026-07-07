@@ -2,7 +2,7 @@
 name: site-api-adapter
 standard_type: conditional_escalation
 description: >-
-  Conditional post-verification skill for turning already stable reverse-engineering findings into a reusable site API adapter: adapter.yaml, request/response schema, route classification, prompt-router rules, runbook, smoke tests, and service boundary documentation. Trigger only when the user explicitly asks for adapter标准化, adapter.yaml, schema/runbook/prompt-router, 接口化沉淀, or when website-314-api-delivery calls it after real API reproduction is verified. Do not trigger while endpoints, sign/token, CAPTCHA/WAF, or business acceptance are still being discovered.
+  Conditional post-verification skill for turning already stable reverse-engineering findings into a reusable site API adapter: adapter.yaml, request/response schema, route classification, prompt-router rules, runbook, smoke tests, and service boundary documentation. Trigger only when the user explicitly asks for adapter标准化, adapter.yaml, schema/runbook/prompt-router, 接口化沉淀, or when website-314-api-delivery calls it after real API reproduction is verified. Do not trigger while endpoints, sign/token, challenge/WAF, or business acceptance are still being discovered.
 platforms: [web, h5]
 ---
 
@@ -22,7 +22,7 @@ platforms: [web, h5]
 
 ## Standard LOOP Adapter Boundary
 
-This skill is a `conditional_escalation`: it only runs after endpoint, sign/token, CAPTCHA/WAF, and business acceptance questions are resolved or explicitly scoped as blocked. Adapter output must preserve pure API delivery constraints and must not treat browser-captured replay, copied cookies, or browser profiles as stable adapter inputs.
+This skill is a `conditional_escalation`: it only runs after endpoint, sign/token, challenge/WAF, and business acceptance questions are resolved or explicitly scoped as blocked. Adapter output must preserve pure API delivery constraints and must not treat browser-captured replay, copied cookies, or browser profiles as stable adapter inputs.
 
 ## Workflow
 

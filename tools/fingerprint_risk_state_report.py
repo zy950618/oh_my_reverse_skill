@@ -14,7 +14,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--run-id", required=True)
     args = parser.parse_args()
-    path = ROOT / "public-range-evidence" / "raw" / "realistic-captcha-risk-lab" / args.run_id / "fingerprint-surface-report.json"
+    path = ROOT / "public-range-evidence" / "raw" / "runtime-signature-risk-lab" / args.run_id / "fingerprint-surface-report.json"
     data = json.loads(path.read_text(encoding="utf-8-sig"))
     out = {"status": "PASS", "derived_risk": data.get("derived_risk", []), "block_reason": data.get("block_reason"), "allowed_action": data.get("allowed_action", []), "forbidden_action": data.get("forbidden_action", [])}
     print(json.dumps(out, ensure_ascii=False, indent=2))

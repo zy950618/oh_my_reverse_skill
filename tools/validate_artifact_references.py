@@ -12,7 +12,6 @@ REPORT = ROOT / "99-SKILLS治理" / "43-artifact-reference-integrity-report.md"
 SCOPES = [
     ROOT / "tool-contracts",
     ROOT / "public-range-evidence",
-    ROOT / "6-验证码逆向层",
     ROOT / "7-指纹风控层",
     ROOT / "99-SKILLS治理",
     ROOT / "tools",
@@ -208,7 +207,6 @@ def write_report(payload: dict[str, object]) -> None:
         "## Scope\n\n"
         "- tool-contracts/\n"
         "- public-range-evidence/\n"
-        "- 6-验证码逆向层/\n"
         "- 7-指纹风控层/\n"
         "- 99-SKILLS治理/\n"
         "- tools/\n\n"

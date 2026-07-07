@@ -19,5 +19,5 @@ Scope:
 
 - in_scope: localhost fixture shape, direct interface contract, business ledger
   placeholders, negative wrong-session fixture.
-- out_of_scope: real booking, payment, login, CAPTCHA solving, WAF bypass,
+- out_of_scope: real booking, payment, login, challenge solving, WAF bypass,
   fingerprint spoofing.

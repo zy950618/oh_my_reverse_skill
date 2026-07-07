@@ -72,7 +72,7 @@ def validate(root: Path) -> list[str]:
 
 def main(argv: list[str]) -> int:
     if len(argv) != 2:
-        return fail("usage: python tools/validate_pure_api_delivery.py <lab-root>")
+        return fail("usage: python3 tools/validate_pure_api_delivery.py <lab-root>")
     root = Path(argv[1])
     errors = validate(root)
     if errors:

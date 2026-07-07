@@ -113,7 +113,7 @@ risk_control:
 ```
 
 Risk-control means safe concurrency engineering and evidence. It does not mean
-WAF/CAPTCHA bypass.
+WAF/challenge bypass.
 
 ## Data Acceptance Ledger
 

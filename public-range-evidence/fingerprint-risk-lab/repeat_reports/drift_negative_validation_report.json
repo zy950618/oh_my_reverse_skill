@@ -6,7 +6,6 @@
   "case_count": 10,
   "classified_cases": [
     "browser_vs_pure_api_diff_missing",
-    "captcha_linkage_missing",
     "dirty_storage_leak",
     "inconsistent_user_agent_platform",
     "missing_canvas_surface",
@@ -18,7 +17,6 @@
   ],
   "rejected_cases": [
     "browser_vs_pure_api_diff_missing",
-    "captcha_linkage_missing",
     "dirty_storage_leak",
     "inconsistent_user_agent_platform",
     "missing_canvas_surface",

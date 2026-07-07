@@ -18,9 +18,9 @@ Use this skill when an authorized/local lab task needs browser fingerprint surfa
 
 ## When NOT To Use
 
-- Do not use this skill to hide webdriver, spoof fingerprint values, rotate proxies, reuse clearance cookies, or bypass WAF/CAPTCHA/risk-control systems.
+- Do not use this skill to hide webdriver, spoof fingerprint values, rotate proxies, reuse clearance cookies, or bypass WAF/challenge/risk-control systems.
 - Do not use it to explain a specific block reason after a failed request; route attribution to `fingerprint-block-reason-diagnostics`.
-- Do not claim production WAF or CAPTCHA success from local or public diagnostic pages.
+- Do not claim production WAF or challenge success from local or public diagnostic pages.
 
 ## Boundary
 
@@ -28,7 +28,7 @@ This is observation-only diagnostics for authorized, local, lab, research, and e
 
 ## Boundaries
 
-- Not responsible for WAF bypass, CAPTCHA bypass, stealth patches, proxy rotation, or clearance reuse.
+- Not responsible for WAF bypass, challenge bypass, stealth patches, proxy rotation, or clearance reuse.
 - Use `fingerprint-block-reason-diagnostics` when the task is block reason attribution.
 - Write reusable failures to site memory or eval backlog when a diagnostic pattern repeats.
 
@@ -143,36 +143,5 @@ Version and change logs live in `references/governance.md`. Active-ready status 
 - Evidence: `public-range-evidence/fingerprint-diagnostics/run-20260630-101500-phase3-8-family-hardening-sannysoft.json`, `public-range-evidence/fingerprint-diagnostics/run-20260630-101500-phase3-8-family-hardening-creepjs.json`, and `public-range-evidence/fingerprint-diagnostics/run-20260630-101500-phase3-8-family-hardening-browserleaks.json`.
 - Evals: `evals/phase3-8/007-fingerprint-diagnostics-observation-only.yaml`.
 - Surface labs must report only observed browser signals and profile consistency. A diagnostic candidate can improve block-reason attribution but remains `memory_only` for evasion.
-- Do not generalize public diagnostic surfaces to third-party WAF/CAPTCHA/risk-control bypass capability.
+- Do not generalize public diagnostic surfaces to third-party WAF/challenge/risk-control bypass capability.
 
-## Phase 3.9 WAF Surface Rule
-
-- Source run_id: `run-20260630-113000-phase3-9-vendor-shield-range`.
-- Evidence: `public-range-evidence/five-second-shield-lab/run-20260630-113000-phase3-9-vendor-shield-range.json`.
-- Eval: `evals/phase3-9/five-second-shield-lab.yaml`.
-- Five-second shield labs may observe browser state binding, nonce, cookie gate, redirect chain, and expiry only in localhost/self-owned/authorized scope.
-- Local WAF lab positive is not production WAF bypass and must not add fingerprint spoofing or proxy evasion instructions.
-
-## Phase 3.10 Dynamic Shield Surface Rule
-
-- Source run_id: `run-20260630-163000-phase3-10-realism-hardening`.
-- Evidence: `public-range-evidence/five-second-shield-lab/run-20260630-163000-phase3-10-realism-hardening.json`.
-- Scope: `localhost_waf_lab` observation and runtime binding only.
-- Capability level: local shield surface evidence is `positive_candidate` for diagnostics/ledger readiness, not evasion.
-- Boundary: no webdriver hide, no fingerprint spoofing, no proxy evasion, no real-site clearance reuse.
-- Failure cases: cross-worker clearance pollution and JS runtime mismatch remain diagnostic signals.
-- Eval: `evals/phase3-10/five-second-shield-lab-dynamic.yaml`.
-- Next training goal: profile consistency observation only; do not add spoofing guidance.
-## Phase 3.11 fingerprint surface matrix
-
-- source_run_id: `run-20260630-173000-phase3-11-type-matrix`
-- evidence: `public-range-evidence/fingerprint-diagnostics/run-20260630-173000-phase3-11-type-matrix-sannysoft.json`, `public-range-evidence/fingerprint-diagnostics/run-20260630-173000-phase3-11-type-matrix-creepjs.json`, `public-range-evidence/fingerprint-diagnostics/run-20260630-173000-phase3-11-type-matrix-browserleaks.json`, `public-range-evidence/fingerprint-diagnostics/run-20260630-173000-phase3-11-type-matrix-incolumitas.json`
-- evals: `evals/phase3-11/fingerprint-diagnostics-matrix.yaml`
-- Diagnostics require repeat >= 5 and profiles >= 3, with screenshot, surface hash, drift count, profile consistency, and observed webdriver/canvas/WebGL/WebRTC/timezone/language/permissions/client hints/TLS/HTTP2 availability where observable.
-- Fingerprint diagnostics can be diagnostics candidate only. They must not be described as fingerprint evasion capability.
-## Phase 3.12 model flywheel fingerprint boundary
-
-- source_run_id: `run-20260630-183000-phase3-12-model-flywheel`
-- evidence: `public-range-evidence/raw/anti-solver-platform-audit/run-20260630-183000-phase3-12-model-flywheel/anti-solver-platform-audit.json`
-- evals: `evals/phase3-12/`
-- Fingerprint diagnostics can feed drift/failure categories into the flywheel, but never as fingerprint evasion training.

@@ -57,7 +57,6 @@ Unverified:
    ai-reverse-skill-creator
    karpathy-guidelines
    site-api-adapter
-   captcha-service-delivery
    ```
 
 ## 验收标准

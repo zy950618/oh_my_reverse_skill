@@ -9,7 +9,7 @@ Nodes:
 - stage: order, status: observed, evidence: `fixtures/order_response.json`
 - eval: deep_validation, status: observed, evidence: `tests/run_order_flow_tests.py`
 - protection: none, status: unverified, evidence: structure-only scaffold
-- protection: captcha_required_state, status: observed, evidence:
+- protection: challenge_required_state, status: observed, evidence:
   `reports/deep_validation_report.json`
 - protection: fingerprint_challenge_state, status: observed, evidence:
   `reports/deep_validation_report.json`
@@ -21,4 +21,4 @@ Edges:
 - detail -> order: `detail_nonce` connects fixtures.
 - order -> business-ledger: `ledger_delta` placeholder only; no live ledger run.
 - deep_validation -> search/detail/quote/passenger/order: in-process localhost
-  mock server checks valid, invalid, duplicate, sign, captcha, and fingerprint states.
+  mock server checks valid, invalid, duplicate, sign, challenge, and fingerprint states.

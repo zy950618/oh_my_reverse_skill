@@ -1,18 +1,18 @@
 """重放 fixtures/snapshots/*.req.json 到本方接口 (adapter),落 actual。
 
 用法:
-  python tools/replayer/snapshot_replay.py \\
+  python3 tools/replayer/snapshot_replay.py \\
       --domain thaiairways.com \\
       --target https://my-adapter.local
 
   # 重放某一个 endpoint
-  python tools/replayer/snapshot_replay.py \\
+  python3 tools/replayer/snapshot_replay.py \\
       --domain thaiairways.com \\
       --target https://my-adapter.local \\
       --filter "GET_search-airports"
 
   # 直接重放回原站(诊断用,默认禁用)
-  python tools/replayer/snapshot_replay.py --domain X --target original
+  python3 tools/replayer/snapshot_replay.py --domain X --target original
 
 行为:
   1. 读 snapshots/*.req.json 与对应 meta.yaml

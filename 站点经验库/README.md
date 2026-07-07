@@ -41,7 +41,7 @@ GitHub 只保留本目录的 README、`_templates/` 和通用结构说明。真�
 - locale：例如 `zh-CN`、`ja-JP`、`en-US`
 - currency：例如 `CNY`、`JPY`、`USD`、`THB`
 - stage：search、cart、order、payment
-- protection：none、js-crypto、waf、reese84、captcha
+- protection：none、js-crypto、waf、reese84、challenge
 - framework：standalone、314
 
 ## 固定文件

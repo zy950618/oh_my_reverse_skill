@@ -22,7 +22,7 @@ Replay an observed authorized request to confirm required headers, body, state, 
 
 ## Command Examples
 ```powershell
-python tools/replayer/snapshot_replay.py --fixture <fixture> --out <evidence_dir>
+python3 tools/replayer/snapshot_replay.py --fixture <fixture> --out <evidence_dir>
 ```
 
 ## Failure Modes

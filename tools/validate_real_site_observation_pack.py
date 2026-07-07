@@ -54,7 +54,7 @@ def validate_pack(path: Path) -> dict:
 
 def main(argv: list[str]) -> int:
     if len(argv) != 2:
-        print("usage: python tools/validate_real_site_observation_pack.py <root>")
+        print("usage: python3 tools/validate_real_site_observation_pack.py <root>")
         return 2
     root = Path(argv[1])
     airlines = root / "airlines"

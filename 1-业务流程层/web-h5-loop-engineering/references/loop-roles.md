@@ -14,7 +14,7 @@ Use at least three roles. They may be separate agents, subagents, threads, or ex
 
 | role | when to use | output |
 |---|---|---|
-| Human Reviewer | payment, login, PII, CAPTCHA/WAF, production impact, evidence conflict | human review ledger and allowed next action |
+| Human Reviewer | payment, login, PII, challenge/WAF, production impact, evidence conflict | human review ledger and allowed next action |
 | Memory Curator | repeated same-domain lessons | known-failures, test-log-lessons, eval backlog |
 | Performance Verifier | batch/concurrency claims | 1/2/5/10 worker ladder and stop condition report |
 

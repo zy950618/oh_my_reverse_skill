@@ -117,7 +117,7 @@
   **目标**：用脚本完全复现浏览器请求
 
   **必做操作**：
-  1. **构建请求模板**：python
+  1. **构建请求模板**：python3
 
      # 示例结构
      headers = {
@@ -308,11 +308,9 @@
   - 使用代理池（HTTP / SOCKS5）
   - 降低请求频率
 
-  7. 验证码
 
-  特征：需要人机验证（图片验证码 / 滑块 / reCAPTCHA）
   应对：
-  - 使用打码平台（2captcha / 超级鹰）
+  - 使用打码平台（2challenge / 超级鹰）
   - 或使用 Playwright 手动完成验证后复用 Cookie
 
   8. TLS 指纹
@@ -402,7 +400,7 @@
 
   使用方法
 
-  python main.py --keyword "搜索词" --pages 10
+  python3 main.py --keyword "搜索词" --pages 10
 
   配置说明
 
@@ -484,7 +482,7 @@
   ## 进阶技巧
 
   ### 1. 自动化 Cookie 获取
-  ```python
+  ```python3
   from playwright.sync_api import sync_playwright
 
   def get_cookies(url: str) -> dict:

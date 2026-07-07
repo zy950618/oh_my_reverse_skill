@@ -21,7 +21,7 @@ Build a small FastAPI adapter around verified pure API behavior for local testin
 
 ## Command Examples
 ```powershell
-python -m pytest <tests_path>
+python3 -m pytest <tests_path>
 ```
 
 ## Failure Modes

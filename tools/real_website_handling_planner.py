@@ -28,16 +28,16 @@ def decide(scope: str, target_type: str) -> dict[str, Any]:
     full_workflow = scope in {"localhost", "public_range", "self_owned", "authorized"}
     if scope == "official_demo":
         allowed = ["browser_open", "screenshot", "network_summary", "provider_mode_detection", "readonly_state_observation"]
-        forbidden = ["action_replay_without_permission", "server_verify_claim", "business_api_positive_claim", "bypass_or_evasion"]
+        forbidden = ["server_verify_claim", "business_api_positive_claim", "bypass_or_evasion"]
         auth_required = "action replay requires explicit official demo permission or self-owned trial"
         default_status = "memory_only"
     elif scope == "unknown":
         allowed = ["browser_open", "screenshot", "passive_network_summary", "provider_detection", "risk_signal_observation"]
-        forbidden = ["captcha_solving", "waf_bypass", "fingerprint_spoof", "webdriver_hide", "clearance_reuse", "rate_limit_evasion", "credentialed_actions"]
+        forbidden = ["challenge_solving", "waf_bypass", "fingerprint_spoof", "webdriver_hide", "clearance_reuse", "rate_limit_evasion", "credentialed_actions"]
         auth_required = "authorization required before interaction, replay, or business API validation"
         default_status = "memory_only"
     else:
-        allowed = ["browser_open", "screenshot", "network_summary", "action_replay_if_in_scope", "server_verify", "business_api_assertions", "negative_eval", "concurrency_ladder"]
+        allowed = ["browser_open", "screenshot", "network_summary", "server_verify", "business_api_assertions", "negative_eval", "concurrency_ladder"]
         forbidden = ["out_of_scope_hosts", "credential_reuse", "proxy_evasion", "fingerprint_spoof", "production_load_test_without_written_limit"]
         auth_required = "" if scope in {"localhost", "public_range"} else "written authorization and allowed_hosts required"
         default_status = "positive_candidate" if full_workflow and target_type != "fingerprint" else "memory_only"
@@ -57,7 +57,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Build scope-aware real website handling plan")
     parser.add_argument("--url", required=True)
     parser.add_argument("--declared-scope", "--scope", dest="declared_scope", required=True, choices=["localhost", "public_range", "official_demo", "self_owned", "authorized", "unknown"])
-    parser.add_argument("--target-type", required=True, choices=["captcha", "waf", "fingerprint", "js_runtime", "business_api"])
+    parser.add_argument("--target-type", required=True, choices=["challenge", "waf", "fingerprint", "js_runtime", "business_api"])
     parser.add_argument("--run-id", default="")
     args = parser.parse_args()
 
@@ -66,7 +66,7 @@ def main() -> int:
     decision = decide(args.declared_scope, args.target_type)
     run_id = args.run_id or "manual-" + hashlib.sha256(f"{args.url}|{args.declared_scope}|{args.target_type}".encode()).hexdigest()[:12]
     provider_detection_plan = {
-        "captcha": ["script and endpoint marker inventory", "official provider marker mapping", "no DOM answer read"],
+        "challenge": ["script and endpoint marker inventory", "official provider marker mapping", "no DOM answer read"],
         "waf": ["redirect chain", "cookie clearance names", "retry-after/rate-limit headers", "business endpoint closure"],
         "fingerprint": ["webdriver/canvas/webgl/webrtc/timezone/language/permissions/client-hints", "surface hash repeat", "no spoofing"],
         "js_runtime": ["Browser/Node/PageRuntime parity", "mutation inputs", "missing API contract"],
@@ -86,8 +86,8 @@ def main() -> int:
         "evidence_required": ["screenshot", "network_summary", "trace_or_command_log", "execution_status", "capability_status", "scope_decision"],
         "stop_condition": ["host leaves declared scope", "403/429/503 rate-limit escalation", "auth wall appears without provided authorization", "business ledger mismatch", "human review required"],
         "human_in_loop": args.declared_scope in {"official_demo", "self_owned", "authorized", "unknown"},
-        "official_api_fallback": args.target_type in {"captcha", "waf", "fingerprint"},
-        "business_data_required": args.target_type in {"waf", "business_api", "captcha"},
+        "official_api_fallback": args.target_type in {"challenge", "waf", "fingerprint"},
+        "business_data_required": args.target_type in {"waf", "business_api", "challenge"},
         "blocked_authorization_required": bool(decision["authorization_required"]) and args.declared_scope in {"unknown", "official_demo", "self_owned", "authorized"},
         "bypass_guidance": "prohibited",
     }

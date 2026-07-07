@@ -21,7 +21,7 @@ Locate likely sign, token, encryption, or request-normalization entry points in 
 
 ## Command Examples
 ```powershell
-python tools/js_signature_regression.py --fixtures <fixtures_dir> --out <evidence_dir>
+python3 tools/js_signature_regression.py --fixtures <fixtures_dir> --out <evidence_dir>
 ```
 
 ## Failure Modes

@@ -16,9 +16,9 @@ from typing import Any
 
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-LAB_DIR = REPO_ROOT / "public-range-labs" / "realistic-captcha-risk-lab"
-RAW_ROOT = REPO_ROOT / "public-range-evidence" / "raw" / "realistic-captcha-risk-lab"
-EVIDENCE_DIR = REPO_ROOT / "public-range-evidence" / "realistic-captcha-risk-lab"
+LAB_DIR = REPO_ROOT / "public-range-labs" / "runtime-signature-risk-lab"
+RAW_ROOT = REPO_ROOT / "public-range-evidence" / "raw" / "runtime-signature-risk-lab"
+EVIDENCE_DIR = REPO_ROOT / "public-range-evidence" / "runtime-signature-risk-lab"
 
 
 def utc_now() -> str:
@@ -141,7 +141,7 @@ def main() -> int:
     contract = {
         "run_id": run_id,
         "script_id": "runtime-signature-fnv1a-v1",
-        "authorized_scope": "localhost realistic-captcha-risk-lab",
+        "authorized_scope": "localhost runtime-signature-risk-lab",
         "accessed_globals": ["globalThis", "navigator", "location"],
         "accessed_properties": ["navigator.userAgent", "navigator.platform", "navigator.language", "location.href"],
         "called_functions": ["stableStringify", "fnv1a", "collectEnv", "signPayload"],
@@ -201,16 +201,20 @@ def main() -> int:
         "business_data_status": "NOT_RUN",
         "capability_status": "memory_only",
         "target": {
-            "id": "realistic-captcha-risk-lab",
-            "name": "Realistic Captcha Risk Lab v2",
+            "id": "runtime-signature-risk-lab",
+            "name": "Runtime Signature Risk Lab v2",
             "url": base_url + "/",
             "host": "127.0.0.1",
             "type": "local_open_source_range",
             "authorization_scope": "Self-owned localhost lab only.",
         },
-        "skills": ["js-page-runtime-parity", "browser-fingerprint-surface-lab", "captcha-visual-recognition-lab", "authorized-target-adapter"],
+        "auth_state": "none",
+        "skills": [
+            "reverse-js-crawler",
+            "skills-evaluation-governance",
+        ],
         "execution_proof": {
-            "command": "python tools\\js_page_runtime_parity_runner.py --run-id " + run_id,
+            "command": "python3 tools\\js_page_runtime_parity_runner.py --run-id " + run_id,
             "cwd": str(REPO_ROOT),
             "exit_code": 0,
             "started_at": started,

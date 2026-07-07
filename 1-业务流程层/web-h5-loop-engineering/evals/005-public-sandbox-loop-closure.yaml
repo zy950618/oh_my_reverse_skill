@@ -7,7 +7,7 @@ criteria:
   - "Triggers web-h5-loop-engineering because the user asks for LOOP closure."
   - "Records executor, verifier, and governor decisions for the public target."
   - "Allows positive evidence only for anonymous AJAX parity and repeat verification."
-  - "Lists not claimed scope such as concurrency, auth, CAPTCHA/WAF, long-term stability, and 314 delivery."
+  - "Lists not claimed scope such as concurrency, auth, challenge/WAF, long-term stability, and 314 delivery."
   - "Does not stop at a single successful capture."
 expect_skill: true
 timeout: 120

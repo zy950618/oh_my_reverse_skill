@@ -35,8 +35,8 @@ route B x3: code=403, protection=waf-html each
 涉及实战执行、批量、并发、风控证据或网页一致性时，必须生成并验证 acceptance report：
 
 ```bash
-python tools/web_h5_acceptance_report.py template --out acceptance-report.json --domain <domain> --stage <stage> --target-api <method:url>
-python tools/web_h5_acceptance_report.py validate --report acceptance-report.json
+python3 tools/web_h5_acceptance_report.py template --out acceptance-report.json --domain <domain> --stage <stage> --target-api <method:url>
+python3 tools/web_h5_acceptance_report.py validate --report acceptance-report.json
 ```
 
 声明完成、并发或稳定时加 `--require-complete`。没有通过验收报告，只能说 `unverified`、`flaky`、`blocked`、`human_review` 或 `stale`。

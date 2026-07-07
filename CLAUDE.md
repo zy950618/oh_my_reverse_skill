@@ -41,15 +41,14 @@ WAF 预判:<是否存在 reese84/incapsula/akamai/cloudflare 痕迹>
 
 | 层 | 目录 | 角色 |
 |---|---|---|
-| 1 | `1-业务流程层/` | 顶层入口(5 个 skill),按需求调度 2/5 层 |
-| 2 | `2-JS逆向工具层/` | Web/JS 原子工具(4 个) |
+| 1 | `1-业务流程层/` | 顶层入口,按用户需求调度 2/5/7 层(active skill 数量以评分工具为准) |
+| 2 | `2-JS逆向工具层/` | Web/JS 原子工具(active skill 数量以评分工具为准) |
 | 4 | `4-通用规范层/` | 行为守则(karpathy-guidelines) |
 | 5 | `5-沉淀工具层/` | 接口稳定后的标准化(site-api-adapter) |
-| 6 | `6-验证码逆向层/` | 验证码/验证服务逆向(captcha-service-delivery) |
+| 7 | `7-指纹风控层/` | 指纹 surface 观察和 block reason 归因,不做 stealth/spoofing |
 | 99 | `99-SKILLS治理/` | 生命周期/分类/评分/漂移/准入 |
 | - | `站点经验库/` | 站点案例(按 domain/market/locale 拆分) |
 | - | `逆向工程经验库/` | run/capture/replay、旧新证据、工具失败和复测经验 |
-| - | `验证码经验库/` | 验证码 provider 与站点绑定经验 |
 | - | `tools/` | 仓库辅助脚本(`sync_site_memory.py`、`ci_gate.py`、`web_h5_loop_runner.py`、`web_h5_acceptance_report.py`、`fixture_freshness_report.py`) |
 
 完整入口见 `00-SKILLS索引.md`,标准入口与目录详解见 `README.md`。
@@ -87,7 +86,6 @@ WAF 预判:<是否存在 reese84/incapsula/akamai/cloudflare 痕迹>
 
 每次改动后,必须按 `99-SKILLS治理/15-AI变更风险与回归校验规约.md` 在 `impact-regression.md` 写 Impact Record,列明 direct_impact、downstream_impact、required_regression 和 data_validation。
 
-涉及基础逆向、浏览器抓包、验证码、token、cookie/storage/cache、旧/新 HAR、多轮复测时,必须按 `99-SKILLS治理/16-实战复测与证据新鲜度规约.md` 写 run 账本和 Fresh Evidence Table。没有 run_id / capture_id / captured_at / browser_profile_id / state_reset / network_log_id / source_freshness 的关键结论,不能标成 observed。
 
 验证和沉淀完成后,必须按 `99-SKILLS治理/17-交付收尾清理与加密算法图谱规约.md` 做最终清理:删除已替代的临时测试文件、历史输出、废代码和过期注释;涉及 sign/token/加密时,写 `逆向工程经验库/domains/<domain>/encryption-algorithm-graph.md`。
 
@@ -137,7 +135,7 @@ WAF 预判:<是否存在 reese84/incapsula/akamai/cloudflare 痕迹>
 任务结束需要同步项目 memory 到站点经验库时:
 
 ```bash
-python tools/sync_site_memory.py --project <项目路径> --domain <domain> --apply
+python3 tools/sync_site_memory.py --project <项目路径> --domain <domain> --apply
 ```
 
 dry-run 见 `tools/README.md`。**不要接 Stop hook 自动跑,会污染无关项目**。
@@ -154,7 +152,7 @@ dry-run 见 `tools/README.md`。**不要接 Stop hook 自动跑,会污染无关�
 - 不声称支持并发,除非有并发阶梯记录和会话隔离证据
 - 不改端点/字段/请求头/指纹/实现/eval 而不更新知识图谱和影响回归记录
 - 不把旧 HAR、旧 token、旧 scriptId、旧浏览器 profile 当成本次新证据
-- 不跳过 reverse-memory/site-memory/captcha-memory 直接重新抓包
+- 不跳过 reverse-memory/site-memory/challenge-memory 直接重新抓包
 - 不把已验证完成后的临时测试文件、旧历史数据、废代码、废注释留在交付面
 - 不交付没有整体加密算法细节图的 sign/token 逆向结果
 - 不把证据不足、验证失败或拒答边界包装成已完成
@@ -171,7 +169,7 @@ dry-run 见 `tools/README.md`。**不要接 Stop hook 自动跑,会污染无关�
 声明"完成 / done / 交付 / 收尾"前,必须跑:
 
 ```bash
-python tools/verify_delivery.py --domain <当前任务的 domain,或 none>
+python3 tools/verify_delivery.py --domain <当前任务的 domain,或 none>
 ```
 
 exit_code != 0 时,**不许向用户输出"完成"**。需先补完 blockers 列表中的项,重跑直到 exit 0。
@@ -208,9 +206,9 @@ Stop hook 由**项目级** `.claude/settings.json` 注册,**只在 Claude Code �
 
 hook 每次触发会写一条记录到 `tools/.reminder-stats.jsonl`(在 `.gitignore` 中,不入 git)。累积 2 周后用于校准 `EXCLUDE_DOMAINS` / `REVERSE_MARKERS` / `PERSIST_MARKERS` 词表。
 
-### 跨平台 python 命令
+### 跨平台 python3 命令
 
-hook 命令默认 `python`。Windows 上若 `python` 不在 PATH(只装了 Microsoft Store 版可能叫 `py`),把 `.claude/settings.json` 中的 `"python"` 改为 `"py"`。
+macOS / Linux 示例统一使用 `python3`。跨平台脚本或 hook 如需兼容不同环境,使用 `PYTHON=${PYTHON:-python3}` 后再调用 `$PYTHON ...`；Windows 上若只装了 Microsoft Store 版 Python,可把命令显式改成 `py`。
 
 ---
 
@@ -221,7 +219,7 @@ hook 命令默认 `python`。Windows 上若 `python` 不在 PATH(只装了 Micro
 - 对外入口只由 `external_entry` 承担；工具层和基础规范不得抢业务入口。
 - `karpathy-guidelines` 是 `auxiliary_policy`。
 - 纯接口交付是硬约束；最终业务链路不得依赖浏览器 runtime、浏览器 profile、人工复制 cookie/token 或浏览器缓存。
-- CAPTCHA 能力必须拆成 action schema、dataset schema、training pipeline、pass-rate metrics、model packaging 和 action replay/prediction evidence。
+- challenge 能力必须拆成 action schema、dataset schema、training pipeline、pass-rate metrics、model packaging 和 action replay/prediction evidence。
 - 指纹风控能力必须是 observation/lab/linkage，不得写成 stealth、spoofing 或 bypass。
 - 真实站点 observation pack 与本地 airline lab 必须分开。
 - 本地结构 gate 通过只代表 `STRUCTURE-ONLY` 或 local lab readiness；真实生产能力必须另有授权、direct interface repeat 和 business-data assertion 证据。

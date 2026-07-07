@@ -38,5 +38,5 @@ Forbidden outputs:
 - proxy rotation for evasion
 - clearance cookie reuse
 - risk token reuse
-- CAPTCHA or WAF bypass instructions
+- challenge or WAF bypass instructions
 

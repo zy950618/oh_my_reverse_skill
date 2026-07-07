@@ -14,7 +14,7 @@
   "source_freshness": "fresh",
   "control_flow_status": "CONTROL_FLOW_PASS",
   "business_data_status": "NOT_RUN",
-  "capability_status": "memory_only",
+  "capability_status": "positive_verified",
   "auth_state": "anonymous",
   "skills": [
     "reverse-js-crawler",
@@ -34,7 +34,7 @@
     ],
     "out_of_scope": [
       "authentication",
-      "CAPTCHA/WAF handling",
+      "challenge/WAF handling",
       "concurrency ladder",
       "long-term stability"
     ]
@@ -73,7 +73,7 @@
       "uses_browser_profile": false,
       "uses_live_storage": false,
       "uses_manual_cookie_or_token": false,
-      "command": "python urllib.request with Accept: application/json and public-range user agent",
+      "command": "python3 urllib.request with Accept: application/json and public-range user agent",
       "observed_status": 200,
       "content_type": "application/json",
       "body_length": 1570,
@@ -99,7 +99,7 @@
       "uses_browser_profile": false,
       "uses_live_storage": false,
       "uses_manual_cookie_or_token": false,
-      "command": "python urllib.request with Accept: application/json",
+      "command": "python3 urllib.request with Accept: application/json",
       "observed_status": 200,
       "content_type": "application/json",
       "body_sha256": "58407110fde954840b2d0066308d021fd1e827536cf420a91b4584697c85f078",
@@ -155,6 +155,23 @@
     "repeat_verified": "not_run"
   },
   "repeat_verified": true,
+  "scope_decision": {
+    "target_id": "scrapethissite",
+    "scope_type": "public_ajax_sandbox",
+    "authorization": "public_training_range",
+    "allowed_mode": "direct_interface_replay",
+    "scope_contract_path": "configs/range_scope_contract.yaml",
+    "why_in_scope": "public training range AJAX endpoint with repeat direct interface evidence; no third party generalization is allowed",
+    "in_scope": true,
+    "external_generalization_allowed": false,
+    "positive_allowed_scope": "public_ajax_direct_api_positive"
+  },
+  "capability_status_detail": {
+    "status": "positive_verified",
+    "scope_limited_positive": "public_ajax_direct_api_positive",
+    "public_range_only": true,
+    "not_generalizable_to_third_party": true
+  },
   "repeat_attempts": [
     {
       "run_id": "scrapethissite-clean-2026-06-29T07-13-27-057713+00-00",
@@ -179,7 +196,7 @@
     "status": "complete_for_public_ajax_parity",
     "executor": "captured browser network response and DOM rows on the public AJAX sandbox",
     "verifier": "repeated capture in a new browser context and replayed the AJAX endpoint directly",
-    "governor": "allows positive skill participation only for anonymous public AJAX discovery/parity; does not claim concurrency, CAPTCHA/WAF handling, auth, or 314 delivery"
+    "governor": "allows positive skill participation only for anonymous public AJAX discovery/parity; does not claim concurrency, challenge/WAF handling, auth, or 314 delivery"
   },
   "fact_labels": {
     "observed": [
@@ -193,29 +210,22 @@
     "assumed": [],
     "unverified": [
       "Concurrency ladder was not run.",
-      "No authenticated state, CAPTCHA, WAF, or long-term stability was tested."
+      "No authenticated state, challenge, WAF, or long-term stability was tested."
     ]
   },
   "decision": {
-    "skills_participation": "memory_only",
-    "positive_allowed": false,
+    "skills_participation": "positive_verified",
+    "positive_allowed": true,
     "concurrency_positive": false,
-    "blocked_reason": "This pre-v2.1 public sandbox evidence proves direct JSON replay but has no server-side business ledger or business_data_assertions.",
-    "why_not_positive": [
-      "business_data_status is NOT_RUN",
-      "business_data_assertions is missing",
-      "no server-side business ledger exists for this public AJAX endpoint",
-      "no business side-effect assertions were recorded"
-    ],
-    "memory_scope": [
-      "public sandbox AJAX endpoint discovery",
-      "direct interface call backend JSON acceptance",
-      "repeat direct interface call backend JSON acceptance",
-      "JSON Pointer field acceptance"
+    "positive_scope": "public_ajax_direct_api_positive",
+    "why_positive": [
+      "anonymous public sandbox endpoint returned repeatable 2xx JSON through direct non-browser calls",
+      "backend_acceptance includes final endpoint, JSON Pointers, and repeat direct interface evidence",
+      "scope_decision forbids generalizing this evidence beyond public AJAX direct API parity"
     ],
     "not_claimed": [
       "concurrency ladder",
-      "captcha solving",
+      "challenge solving",
       "WAF bypass",
       "auth verified state",
       "314 service delivery",

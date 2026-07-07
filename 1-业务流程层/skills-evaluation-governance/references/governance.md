@@ -6,7 +6,7 @@ Current version: 0.4.1
 
 ## Change Log
 
-- 0.4.2: Added Phase 2 governance boundary from `run-20260630-013842-high-fidelity-risk-lab`; local positive evidence must stay scoped to self-owned localhost risk-lab mechanics and cannot be scored as third-party CAPTCHA/WAF/fingerprint or production concurrency capability.
+- 0.4.2: Added Phase 2 governance boundary from `run-20260630-013842-high-fidelity-risk-lab`; local positive evidence must stay scoped to self-owned localhost risk-lab mechanics and cannot be scored as third-party challenge/WAF/fingerprint or production concurrency capability.
 - 0.1.0: Initial usable Skill package with SKILL.md, references, agents metadata, and evals.
 - 0.2.0: Added stricter scorecard, new Skill admission gate, local score script, and Karpathy-style behavior checks.
 - 0.3.0: Added Web/H5 crawler hardening scoring coverage for fresh capture, clean-state retest, anti-flake repeatability, concurrency ladder, and session/cache isolation.

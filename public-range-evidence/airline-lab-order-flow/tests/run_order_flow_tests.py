@@ -158,11 +158,11 @@ def case_matrix() -> list[dict[str, Any]]:
             "check": expect(403, status="error", error="invalid_sign", ledger_delta=0),
         },
         {
-            "name": "captcha_required_state",
+            "name": "challenge_required_state",
             "method": "POST",
             "path": "/api/quote",
-            "body": {**quote_body, "captcha_required": True},
-            "check": expect(403, status="error", error="captcha_required", captcha_required=True, ledger_delta=0),
+            "body": {**quote_body, "challenge_required": True},
+            "check": expect(403, status="error", error="challenge_required", challenge_required=True, ledger_delta=0),
         },
         {
             "name": "fingerprint_challenge_state",
@@ -212,7 +212,7 @@ def main() -> int:
         },
         "capability_boundary": {
             "positive_airline_capability_claim": False,
-            "third_party_captcha_or_waf_bypass_claim": False,
+            "third_party_challenge_or_waf_bypass_claim": False,
             "browser_profile_dependency": False,
         },
     }

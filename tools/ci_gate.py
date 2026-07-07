@@ -11,8 +11,8 @@ ci_gate.py — 按"层"设阈值，读取 .ci-out/*.json，任何 skill 低于�
 这是 v1 baseline。后续随 skill 演化可调高阈值。
 
 用法:
-  python tools/ci_gate.py .ci-out
-  python tools/ci_gate.py .ci-out --release
+  python3 tools/ci_gate.py .ci-out
+  python3 tools/ci_gate.py .ci-out --release
 """
 
 import argparse
@@ -184,17 +184,9 @@ def run_second_loop_release_gates(out_dir: Path) -> tuple[bool, str]:
     checks = [
         ("pure_api_lab", ["tools/validate_pure_api_delivery.py", "public-range-evidence/pure-api-lab"]),
         ("airline_pure_api_lab", ["tools/validate_pure_api_delivery.py", "public-range-evidence/airline-lab-order-flow"]),
-        ("captcha_action_schema", ["tools/validate_captcha_action_schema.py"]),
-        ("captcha_dataset", ["tools/validate_captcha_dataset.py"]),
-        ("captcha_training_report", ["tools/validate_captcha_training_report.py"]),
-        ("captcha_model_package", ["tools/validate_captcha_model_package.py"]),
-        ("captcha_pass_rate", ["tools/validate_captcha_pass_rate.py"]),
-        ("captcha_sample_infer", ["public-range-evidence/captcha-model-lab/inference/sample_infer.py"]),
-        ("captcha_evaluate_pass_rate", ["public-range-evidence/captcha-model-lab/eval/evaluate_pass_rate.py"]),
         ("fingerprint_surface_lab", ["tools/validate_fingerprint_surface_lab.py"]),
         ("block_reason_lab", ["tools/validate_block_reason_lab.py"]),
         ("browser_context_isolation", ["tools/validate_browser_context_isolation.py"]),
-        ("captcha_fingerprint_linkage", ["tools/validate_captcha_fingerprint_linkage.py"]),
         ("real_site_observation_pack", ["tools/validate_real_site_observation_pack.py", "public-range-evidence/real-site-observation-pack"]),
         ("airline_replay", ["public-range-evidence/airline-lab-order-flow/replay/replay.py"]),
         ("airline_deep_validation", ["public-range-evidence/airline-lab-order-flow/tests/run_order_flow_tests.py"]),
@@ -428,7 +420,7 @@ def main():
         print("  execution gate: validate_real_execution_proof.py")
         print("  control-flow gate: validate_public_range_evidence.py control_flow_status")
         print("  business-data gate: validate_business_data_assertions.py")
-        print("  capability gate: positive_allowed only after execution/control-flow plus either business-data pass or scope-limited solver/diagnostics gates")
+        print("  capability gate: positive_allowed only after execution/control-flow plus business-data pass, or the remaining non-business diagnostic gates")
         print(
             "  REAL_EXECUTION_PASS files are execution proof only; positive capability is counted only by "
             "capability_status=positive_allowed after public-range, scope-contract, and applicable hard gates."
@@ -469,7 +461,7 @@ def main():
         print(
             f"\nStructure Gate 通过: {len(passed)} 个 active skill 达标；"
             f"{len(advisory)} 个 advisory/experimental/excluded skill 已纳入报告但不计 active gate；"
-            f"release 前必须另跑 `python tools/ci_gate.py {out_dir} --release`"
+            f"release 前必须另跑 `python3 tools/ci_gate.py {out_dir} --release`"
         )
     sys.exit(0)
 

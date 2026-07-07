@@ -16,13 +16,12 @@ Web/H5 逆向工程 SKILL 库,装到 Claude Code 后,**用自然语言**让 Clau
 - 验证 "我做出来的接口" 与 "真实网页" 数据一致(fixtures + replay + diff)
 - 约束 AI 输出:结论分事实等级、防以点概面、并发/session/cache 必须隔离验证
 - 维护站点知识图谱:每次更新端点/字段/状态/保护/实现/eval 时同步节点、边和影响回归
-- 处理验证码/验证服务:reCAPTCHA、hCaptcha、Turnstile、滑块、点选的 provider 流程、站点绑定、token 状态和实战复测
 - 区分旧数据和新数据:清空浏览器状态、抓包、多轮对照,避免旧 HAR/旧 token/旧 scriptId 污染结论
 - 吸收真实逆向经验:每个 domain 维护 reverse-memory,记录 run/capture/replay、旧新 diff、工具失败样本和下次排查顺序
 - 完成后保持干净交付:删除已替代的临时测试文件、历史输出、废代码、废注释,并补整体加密算法细节图
 - 给自己产出的 Skill 打分 / 回测 / 治理
 
-仓库里有 **12 个 Skill** + 一套 fixtures 一致性验证工具链 + CI + 治理评分。
+仓库 active Skill 数量以 `python3 tools/score_skills.py --repo .` 和 release score 输出为准；另有一套 fixtures 一致性验证工具链 + CI + 治理评分。
 
 ## 谁应该用
 
@@ -47,7 +46,6 @@ Web/H5 逆向工程 SKILL 库,装到 Claude Code 后,**用自然语言**让 Clau
 | 逆向一个新网站,做成纯接口 | "逆向 thaiairways.com,先做 FastAPI 接口测试交付" / "纯接口实现查询/加车/生单" / "全部成功后再确认是否接入 314" | `website-314-api-delivery` | 六阶段总控:侦察→入口→还原→FastAPI测试接口→人工确认框架→沉淀 |
 | 爬虫接口还原 / sign 分析 | "JS 逆向 XXX" / "分析 X 网站请求" / "还原签名算法" / "做个采集脚本" | `reverse-js-crawler` | 页面侦察→真实 API 识别→sign/token 还原→Python/Node 复现 |
 | 84 盾 / WAF token 被拒 | "84 盾过不去" / "Reese84 token 失败" / "x-d-token 拒了" / "Imperva 挑战页" | `imperva-waf-reese84` | 指纹模拟 + token 缓存 + 接受度阶段化验证 |
-| 验证码/滑块/点选 | "reCAPTCHA 卡住" / "Turnstile 验证后接口才有数据" / "阿里滑块" / "携程点选" | `captcha-service-delivery` | provider 流程 + 站点绑定 + clean/verified/repeat 三轮抓包 + 图谱回归 |
 | 找请求里某个参数怎么生成的 | "x-sign 在哪生成" / "找加密入口" / "这个 token 哪来的" / "签名怎么算的" | `find-crypto-entry` | 静态搜索 + XHR 断点,只定位函数位置,不还原算法 |
 | JS 看不懂(混淆) | "解混淆" / "_0x 是啥" / "字符串数组解密" / "代码全是乱码" / "deobfuscate" | `ast-deobfuscate` | Babel AST 解混淆:字符串解密 / 控制流还原 / 死代码删除 |
 | 把浏览器 JS 拿到 Node 跑 | "补环境" / "把 JS 搬到 Node" / "webpack 模块提取" / "Node 里跑" | `env-patch` | Node 环境模拟:window/document/navigator/Proxy 引擎 |
@@ -56,7 +54,6 @@ Web/H5 逆向工程 SKILL 库,装到 Claude Code 后,**用自然语言**让 Clau
 | 给 Skill 打分 / 评测 | "Skill 评分" / "Skill Bench" / "回测 Skill" / "新增 Skill 准入" | `skills-evaluation-governance` | 三段分 → 四段分评分,回测,漂移检测 |
 | 多 agent 闭环逆向 | "Loop Engineering" / "闭环处理" / "三个 agent 验证" / "爬虫 LOOP" | `web-h5-loop-engineering` | Executor + Verifier + Governor 闭环推进和停止/人审 |
 | 真实执行标准化 | "真实 Loop Runner" / "执行账本" / "结果量化沉淀" / "并发验收" / "fixtures 新鲜度治理" | `web-h5-loop-engineering` + `reverse-js-crawler` + tools | Loop Runner ledger + acceptance report + fixture freshness + metrics |
-| 公开靶场训练进化 SKILLS | "用公开靶场实战进化 SKILLS" / "跑 public-range-evidence" / "靶场训练进化 SKILLS" | `web-h5-loop-engineering` + `skills-evaluation-governance`，遇验证码证据再加 `captcha-service-delivery` | 先查 allowlist，再跑靶场，产 evidence JSON、ledger、acceptance report、负例/边界 eval 和 positive gate 判断 |
 | 创建 / 优化新 Skill | "新建一个 skill" / "优化 SKILL.md 描述" / "跑 eval 优化触发词" | `ai-reverse-skill-creator` | 起骨架,跑 eval loop,优化 description |
 | 写代码遵守行为守则 | (隐式触发,看 4-通用规范层) | `karpathy-guidelines` | 最小改动 / 不过度抽象 / 显式假设 |
 
@@ -127,7 +124,7 @@ Claude 触发 `skills-evaluation-governance`,跑 `score_skills.py` 四段分(结
 | 跳过六阶段直接写代码 | 长链路任务必须先规划再执行 |
 | 跳过沉淀(阶段 E/F) | 不沉淀就是没做完 |
 | 把"评分高"等同于"真实能用" | 评分是结构指标,真实成功率看 fixtures 一致率 |
-| 把 provider testing key / 官方 demo 成功写成 CAPTCHA 自动通过能力 | 这类结果只能作为边界或负例,没有真实业务 API repeat acceptance 不能 positive_allowed |
+| 把 provider testing key / 官方 demo 成功写成 challenge 自动通过能力 | 这类结果只能作为边界或负例,没有真实业务 API repeat acceptance 不能 positive_allowed |
 | 把所有字段加 `ignore` 容忍度刷一致率 | 评分作弊,review 时盯防 |
 | 把推断/假设写成事实 | 结论必须按 observed / derived / assumed / unverified 分级 |
 | 把一次成功泛化成全链路成功 | market/stage/session 必须单独验证 |
@@ -146,7 +143,7 @@ Claude 触发 `skills-evaluation-governance`,跑 `score_skills.py` 四段分(结
 - **跨项目用 hook**:默认 Stop hook 只在仓库内触发。跨项目工作时手动核对 5 步沉淀,或参考 [CLAUDE.md](./CLAUDE.md) 的「跨项目自动触发」段
 - **加新站点**:从 `站点经验库/_templates/` 复制 7 文件模板 + `fixtures/` 子目录到 `站点经验库/<domain>/`
 - **加新 Skill**:见 [99-SKILLS治理/04-新增SKILL评分回测准入.md](./99-SKILLS治理/04-新增SKILL评分回测准入.md)
-- **看仓库分数**:`python 1-业务流程层/skills-evaluation-governance/scripts/score_skills.py <某一层>`
+- **看仓库分数**:`python3 tools/score_skills.py --repo .`
 
 ---
 
@@ -163,69 +160,22 @@ Claude 触发 `skills-evaluation-governance`,跑 `score_skills.py` 四段分(结
 - 收尾清理与加密算法图 → [99-SKILLS治理/17-交付收尾清理与加密算法图谱规约.md](./99-SKILLS治理/17-交付收尾清理与加密算法图谱规约.md)
 - 评分体系 → [99-SKILLS治理/05-当前评分与回测结果.md](./99-SKILLS治理/05-当前评分与回测结果.md)
 
-## Phase 3 CAPTCHA Local Training
-
-Example request:
-
-```text
-进入 Phase 3, 训练 text/slider/rotate CAPTCHA baseline, 输出 metrics、failure cases、experience cards, 并在 localhost action replay。
-```
-
-Expected workflow:
-
-1. Generate synthetic samples with `tools/captcha_vision_dataset_generator.py`.
-2. Run baseline recognition with `tools/captcha_vision_baseline_solver.py`.
-3. Benchmark metrics and failure cases with `tools/captcha_vision_benchmark.py`.
-4. Replay at least one recognized action on `public-range-labs/captcha-vision-lab/` with `tools/captcha_action_replay_lab.py`.
-5. Store evidence under `public-range-evidence/captcha-vision-lab/` and experience cards under `skills-experience/`.
-
-Capability boundary:
-
-- Algorithm benchmark proves only local algorithm behavior.
-- Localhost action replay proves only local page action/state transition.
-- Real-site positive capability still requires Phase 2.1 final business API, server-side ledger, and `DATA_ASSERTION_PASS`.
-
-## Phase 3.4 Runtime Parity And Fingerprint Surface
+## Local Runtime Parity And Fingerprint Surface
 
 Example:
 
 ```text
-进入 Phase 3.4, 跑 realistic-captcha-risk-lab, 做 Browser/Node/PageRuntime parity、fingerprint surface observation、captcha eval 和 1/2/5/10 business ladder。
+运行本地 runtime parity 和 fingerprint surface 观察,只验证 localhost / fixture 行为,不声明第三方 challenge/WAF 能力。
 ```
 
 Expected commands:
 
-- `python tools/js_page_runtime_parity_runner.py --run-id <run_id>`
-- `python tools/fingerprint_surface_capture.py --run-id <run_id>`
-- `python tools/fingerprint_profile_consistency_check.py --run-id <run_id>`
-- `python tools/realistic_captcha_risk_lab_concurrency.py --run-id <run_id>`
+- `python3 tools/js_page_runtime_parity_runner.py --run-id <run_id>`
+- `python3 tools/fingerprint_surface_capture.py --run-id <run_id>`
+- `python3 tools/fingerprint_profile_consistency_check.py --run-id <run_id>`
 
 Boundary:
 
 - Runtime parity proves local JS fixture consistency only.
 - Fingerprint surface reports observed values only.
-- Local business ladder proves localhost ledger isolation only.
-- None of these imply third-party CAPTCHA/WAF bypass or fingerprint evasion.
-
-## Phase 3.5 Longrun Verification
-
-Example:
-
-```text
-进入 Phase 3.5，运行 longrun，覆盖 CAPTCHA、JS runtime parity、fingerprint diagnostics、business API concurrency、chaos rejection、issue ledger、experience cards 和 regression evals。
-```
-
-Expected commands:
-
-- `python tools/phase3_longrun_runner.py --config configs/phase3_longrun.yaml`
-- `python tools/captcha_model_eval.py --run-id <run_id>`
-- `python tools/captcha_vision_benchmark.py --run-id <run_id> --require-threshold-report`
-- `python tools/js_page_runtime_parity_runner.py --run-id <run_id> --longrun-verify`
-- `python tools/fingerprint_surface_capture.py --run-id <run_id> --longrun-verify`
-- `python tools/fingerprint_profile_consistency_check.py --run-id <run_id> --longrun-verify`
-
-Boundary:
-
-- Longrun evidence must include `failure-cases.json`, `issue-ledger.json`, `regression-report.json`, `capability-decision.json`, and experience cards.
-- Longrun hardening remains `memory_only` unless final business API data assertions pass.
-- Local chaos rejection proves local state-machine behavior only; it is not third-party CAPTCHA/WAF capability.
+- No local result implies third-party challenge/WAF bypass or fingerprint evasion.

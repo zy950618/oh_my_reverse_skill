@@ -14,7 +14,7 @@ They prohibit:
 - proxy rotation for evasion
 - clearance cookie reuse
 - risk token reuse
-- CAPTCHA or WAF bypass
+- challenge or WAF bypass
 - unauthorized challenge processing
 
 Positive capability must not be inferred from these lab contracts. Real-site

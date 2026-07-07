@@ -4,6 +4,6 @@
   "currency": "MYR",
   "total": 120.0,
   "token_state": "quote_token_issued",
-  "captcha_required": false,
+  "challenge_required": false,
   "fingerprint_challenge": false
 }

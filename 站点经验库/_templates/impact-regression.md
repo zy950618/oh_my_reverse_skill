@@ -38,5 +38,5 @@ owner_notes:
 - If a header/cookie/state/protection node changes, rerun the affected endpoint.
 - If a response schema changes, run snapshot_diff and schema_alert.
 - If a market/stage edge changes, rerun that market/stage only before expanding.
-- If WAF/CAPTCHA/risk state changes, verify the final business API backend acceptance; provider/challenge HTTP 200 is not enough.
+- If WAF/challenge/risk state changes, verify the final business API backend acceptance; provider/challenge HTTP 200 is not enough.
 - If `skills_participation` is `positive_allowed`, the record must link to successful endpoint evidence, graph nodes/edges, and regression output.

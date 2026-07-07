@@ -8,18 +8,18 @@
 
 ```bash
 # dry-run（默认，只预览）
-python tools/sync_site_memory.py \
+python3 tools/sync_site_memory.py \
     --project E:/flight-cwl/flight-cwl-vj-baggage \
     --domain vietjetair.com
 
 # 真正写入
-python tools/sync_site_memory.py \
+python3 tools/sync_site_memory.py \
     --project E:/flight-cwl/flight-cwl-vj-baggage \
     --domain vietjetair.com \
     --apply
 
 # 同时同步 feedback 类（默认只同步 project 类）
-python tools/sync_site_memory.py \
+python3 tools/sync_site_memory.py \
     --project E:/flight-cwl/flight-cwl-vj-baggage \
     --domain vietjetair.com \
     --apply --include-feedback
@@ -50,23 +50,23 @@ python tools/sync_site_memory.py \
 
 ```bash
 # dry-run (默认)
-python tools/backfill_from_site_memory.py \
+python3 tools/backfill_from_site_memory.py \
     --domain thaiairways.com \
     --skill-metrics "1-业务流程层/website-314-api-delivery/metrics/real-task-summary.md"
 
 # 真正写入
-python tools/backfill_from_site_memory.py \
+python3 tools/backfill_from_site_memory.py \
     --domain thaiairways.com \
     --skill-metrics "1-业务流程层/website-314-api-delivery/metrics/real-task-summary.md" \
     --apply
 
 # 多 domain 累加
-python tools/backfill_from_site_memory.py \
+python3 tools/backfill_from_site_memory.py \
     --domain thaiairways.com --domain vietjetair.com \
     --skill-metrics "..." --apply
 
 # 覆盖已写入的反推段
-python tools/backfill_from_site_memory.py ... --apply --rewrite
+python3 tools/backfill_from_site_memory.py ... --apply --rewrite
 ```
 
 ### 行为
@@ -89,16 +89,16 @@ python tools/backfill_from_site_memory.py ... --apply --rewrite
 
 ```bash
 # 单个 Skill
-python tools/scaffold_evals.py --skill 2-JS逆向工具层/find-crypto-entry
+python3 tools/scaffold_evals.py --skill 2-JS逆向工具层/find-crypto-entry
 
 # 批量
-python tools/scaffold_evals.py \
+python3 tools/scaffold_evals.py \
     --skill 2-JS逆向工具层/find-crypto-entry \
     --skill 2-JS逆向工具层/ast-deobfuscate \
     --skill 2-JS逆向工具层/env-patch
 
 # 覆盖已有骨架
-python tools/scaffold_evals.py --skill ... --force
+python3 tools/scaffold_evals.py --skill ... --force
 ```
 
 ### 行为
@@ -130,7 +130,7 @@ Stop hook 与 CI 周更 drift snapshot 的脚本。详见 `99-SKILLS治理/05-�
 ### 用法
 
 ```bash
-python tools/validate_skill_frontmatter.py
+python3 tools/validate_skill_frontmatter.py
 ```
 
 ### 何时跑
@@ -148,12 +148,12 @@ python tools/validate_skill_frontmatter.py
 ### 用法
 
 ```bash
-python tools/validate_public_range_evidence.py public-range-evidence
+python3 tools/validate_public_range_evidence.py public-range-evidence
 ```
 
 ### 何时跑
 
-新增或修改公开靶场 evidence、allowlist、positive gate 或 CAPTCHA/WAF
+新增或修改公开靶场 evidence、allowlist、positive gate 或 challenge/WAF
 边界样本后必跑。`positive_allowed` 必须满足 direct interface accepted 和 repeat
 direct interface accepted；provider testing keys、browser-only capture 和 challenge
 endpoint 不能作为正向能力。
@@ -169,7 +169,7 @@ evidence 会降级为 `STRUCTURE_ONLY`，只能作为结构、历史或边界证
 ### 用法
 
 ```bash
-python tools/validate_real_execution_proof.py public-range-evidence
+python3 tools/validate_real_execution_proof.py public-range-evidence
 ```
 
 ### 检查内容
@@ -179,7 +179,7 @@ python tools/validate_real_execution_proof.py public-range-evidence
 - screenshot、network summary、browser trace 路径是否存在
 - `synthetic` 必须是 `false`
 - `positive_allowed` 不允许缺少 screenshot/network proof
-- CAPTCHA/WAF/风控相关 evidence 没有最终业务 API acceptance 时不能 positive
+- challenge/WAF/风控相关 evidence 没有最终业务 API acceptance 时不能 positive
 
 输出分类：
 
@@ -204,10 +204,10 @@ local dummy、provider testing key、siteverify dummy 和 boundary eval 即使�
 
 ```bash
 # 结构/schema 检查: 允许新转换出来的 meta.yaml 保留待 review 占位,但会给 warning
-python tools/replayer/validate_fixtures.py 站点经验库
+python3 tools/replayer/validate_fixtures.py 站点经验库
 
 # 交付/发版检查: TODO、自动抽取占位、待 review 文案都会失败
-python tools/replayer/validate_fixtures.py 站点经验库 --strict-review
+python3 tools/replayer/validate_fixtures.py 站点经验库 --strict-review
 ```
 
 ### 何时跑
@@ -225,7 +225,7 @@ HAR / CloakBrowser 录制刚转 fixtures 后先跑普通检查,确认三件套�
 ### 用法
 
 ```bash
-python tools/validate_web_h5_crawler_gate.py
+python3 tools/validate_web_h5_crawler_gate.py
 ```
 
 ### 何时跑
@@ -241,7 +241,7 @@ python tools/validate_web_h5_crawler_gate.py
 ### 用法
 
 ```bash
-python tools/validate_web_h5_loop_gate.py
+python3 tools/validate_web_h5_loop_gate.py
 ```
 
 ### 何时跑
@@ -257,20 +257,20 @@ python tools/validate_web_h5_loop_gate.py
 ### 用法
 
 ```bash
-python tools/web_h5_loop_runner.py init \
+python3 tools/web_h5_loop_runner.py init \
     --out loop-ledger.json \
     --domain example.com \
     --stage search \
     --target-api POST:/api/search
 
-python tools/web_h5_loop_runner.py record-iteration \
+python3 tools/web_h5_loop_runner.py record-iteration \
     --ledger loop-ledger.json \
     --executor-action "capture search API" \
     --verifier-result blocked \
     --governor-result human_review
 
-python tools/web_h5_loop_runner.py validate --ledger loop-ledger.json
-python tools/web_h5_loop_runner.py validate --ledger loop-ledger.json --require-complete
+python3 tools/web_h5_loop_runner.py validate --ledger loop-ledger.json
+python3 tools/web_h5_loop_runner.py validate --ledger loop-ledger.json --require-complete
 ```
 
 ### 何时跑
@@ -288,14 +288,14 @@ python tools/web_h5_loop_runner.py validate --ledger loop-ledger.json --require-
 ### 用法
 
 ```bash
-python tools/web_h5_acceptance_report.py template \
+python3 tools/web_h5_acceptance_report.py template \
     --out acceptance-report.json \
     --domain example.com \
     --stage search \
     --target-api POST:/api/search
 
-python tools/web_h5_acceptance_report.py validate --report acceptance-report.json
-python tools/web_h5_acceptance_report.py validate --report acceptance-report.json --require-complete
+python3 tools/web_h5_acceptance_report.py validate --report acceptance-report.json
+python3 tools/web_h5_acceptance_report.py validate --report acceptance-report.json --require-complete
 ```
 
 ### 何时跑
@@ -311,14 +311,14 @@ python tools/web_h5_acceptance_report.py validate --report acceptance-report.jso
 ### 用法
 
 ```bash
-python tools/fixture_freshness_report.py 站点经验库
-python tools/fixture_freshness_report.py 站点经验库 --strict-fresh
-python tools/ci_gate.py .ci-out --release
+python3 tools/fixture_freshness_report.py 站点经验库
+python3 tools/fixture_freshness_report.py 站点经验库 --strict-fresh
+python3 tools/ci_gate.py .ci-out --release
 ```
 
 ### 何时跑
 
-每次声称网页一致性、fresh replay 或真实交付前跑。默认是 report-only;发版/交付前使用 `--strict-fresh` 或 `python tools/ci_gate.py .ci-out --release`。普通 `ci_gate.py .ci-out` 只是结构/评分门禁,不能作为 release freshness 证据。
+每次声称网页一致性、fresh replay 或真实交付前跑。默认是 report-only;发版/交付前使用 `--strict-fresh` 或 `python3 tools/ci_gate.py .ci-out --release`。普通 `ci_gate.py .ci-out` 只是结构/评分门禁,不能作为 release freshness 证据。
 
 ---
 
@@ -329,7 +329,7 @@ python tools/ci_gate.py .ci-out --release
 ### 用法
 
 ```bash
-python tools/validate_web_h5_real_execution_gate.py
+python3 tools/validate_web_h5_real_execution_gate.py
 ```
 
 ### 何时跑

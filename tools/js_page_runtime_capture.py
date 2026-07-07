@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-SCRIPT = REPO_ROOT / "public-range-labs" / "realistic-captcha-risk-lab" / "runtime-signature.js"
+SCRIPT = REPO_ROOT / "public-range-labs" / "runtime-signature-risk-lab" / "runtime-signature.js"
 
 
 def main() -> int:
@@ -17,7 +17,7 @@ def main() -> int:
     parser.add_argument("--run-id", required=True)
     args = parser.parse_args()
     raw = SCRIPT.read_bytes()
-    out = REPO_ROOT / "public-range-evidence" / "raw" / "realistic-captcha-risk-lab" / args.run_id / "js-runtime-capture.json"
+    out = REPO_ROOT / "public-range-evidence" / "raw" / "runtime-signature-risk-lab" / args.run_id / "js-runtime-capture.json"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps({"run_id": args.run_id, "script_id": "runtime-signature-fnv1a-v1", "script_path": str(SCRIPT), "sha256": hashlib.sha256(raw).hexdigest()}, indent=2), encoding="utf-8")
     print(json.dumps({"status": "PASS", "capture_path": str(out)}, indent=2))

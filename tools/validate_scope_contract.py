@@ -17,16 +17,11 @@ LOCAL_POSITIVE_SCOPES = {
     "local_runtime_parity_positive",
     "local_fingerprint_diagnostics_positive",
     "local_concurrency_business_positive",
-    "local_open_source_range_positive",
-    "local_compatible_lab_candidate",
-    "local_compatible_lab_verified",
-    "local_compatible_lab_stable",
-    "local_vendor_compatible_positive_candidate",
     "local_waf_lab_positive_candidate",
     "local_waf_lab_positive_verified",
 }
 PUBLIC_POSITIVE_SCOPES = {
-    "public_range_solver_positive",
+    "public_ajax_direct_api_positive",
     "public_fingerprint_diagnostics_positive",
 }
 AUTHORIZED_POSITIVE_SCOPES = {
@@ -50,7 +45,6 @@ INTERNAL_ARTIFACT_PARTS = {
 }
 DEDICATED_LAB_ROOTS = {
     "airline-lab-order-flow",
-    "captcha-model-lab",
     "fingerprint-risk-lab",
     "pure-api-lab",
     "real-site-observation-pack",
@@ -147,11 +141,9 @@ def validate_payload(path: Path, payload: dict[str, Any], targets: dict[str, dic
     allowed_mode = ""
     if scope_decision:
         allowed_mode = str(scope_decision.get("allowed_mode") or "")
-    elif isinstance(payload.get("action_replay"), dict):
-        allowed_mode = "action_replay"
     elif target_id == "fingerprint-diagnostics":
         allowed_mode = "fingerprint_diagnostics"
-    elif target_id == "realistic-captcha-risk-lab":
+    elif target_id == "runtime-signature-risk-lab":
         allowed_mode = "js_runtime_parity"
     allowed_modes = [str(item) for item in target_contract.get("allowed_modes", [])]
     allowed_scopes = [str(item) for item in target_contract.get("positive_allowed_scope", [])]

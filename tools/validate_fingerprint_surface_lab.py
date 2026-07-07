@@ -15,7 +15,7 @@ FORBIDDEN = {
     "clearance_cookie_reuse",
     "risk_token_reuse",
     "waf_bypass",
-    "captcha_bypass",
+    "challenge_bypass",
     "unauthorized_challenge_processing",
 }
 

@@ -9,8 +9,8 @@ domain, market, locale, currency, stage, auth state, and target API.
 Create or validate an acceptance report:
 
 ```bash
-python tools/web_h5_acceptance_report.py template --out acceptance-report.json --domain <domain> --stage <stage> --target-api <method:url>
-python tools/web_h5_acceptance_report.py validate --report acceptance-report.json
+python3 tools/web_h5_acceptance_report.py template --out acceptance-report.json --domain <domain> --stage <stage> --target-api <method:url>
+python3 tools/web_h5_acceptance_report.py validate --report acceptance-report.json
 ```
 
 Use `--require-complete` only when claiming completion, concurrency, or stable
@@ -52,7 +52,7 @@ Allowed engineering actions:
 
 Not allowed:
 
-- WAF or CAPTCHA bypass instructions
+- WAF or challenge bypass instructions
 - webdriver hiding or fingerprint spoofing
 - proxy rotation guidance
 - copying clearance cookies, device IDs, risk tokens, or old profile state as
