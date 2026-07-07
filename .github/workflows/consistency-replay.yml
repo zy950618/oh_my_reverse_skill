@@ -5,7 +5,6 @@ on:
     paths:
       - '站点经验库/*/fixtures/**'
       - '逆向工程经验库/**'
-      - '验证码经验库/**'
       - 'tools/replayer/**'
       - 'tools/recorder/**'
       - '5-沉淀工具层/*/adapter.yaml'
@@ -42,7 +41,7 @@ jobs:
           python-version: '3.11'
 
       - name: Validate fixtures schema
-        run: python tools/replayer/validate_fixtures.py
+        run: python3 tools/replayer/validate_fixtures.py
 
       - name: List domains with fixtures
         id: list
@@ -62,9 +61,9 @@ jobs:
           set -euo pipefail
           SCRIPT="1-业务流程层/skills-evaluation-governance/scripts/score_skills.py"
           mkdir -p .ci-out
-          for layer in "1-业务流程层" "2-JS逆向工具层" "5-沉淀工具层" "6-验证码逆向层"; do
+          for layer in "1-业务流程层" "2-JS逆向工具层" "4-通用规范层" "5-沉淀工具层" "7-指纹风控层"; do
             safe=$(echo "$layer" | tr / _)
-            python "$SCRIPT" "$layer" > ".ci-out/${safe}.json" || true
+            python3 "$SCRIPT" --output ".ci-out/${safe}.json" "$layer"
           done
 
       - name: Upload score artifacts
@@ -121,10 +120,10 @@ jobs:
           IFS=',' read -ra ARR <<< "$DOMAINS"
           for d in "${ARR[@]}"; do
             echo "::group::Replay $d"
-            python tools/replayer/snapshot_replay.py \
+            python3 tools/replayer/snapshot_replay.py \
               --domain "$d" \
               --target "${{ steps.adapter.outputs.url }}" || true
-            python tools/replayer/consistency_report.py \
+            python3 tools/replayer/consistency_report.py \
               --domain "$d" \
               --threshold "${{ steps.adapter.outputs.threshold }}" \
               || FAIL=1

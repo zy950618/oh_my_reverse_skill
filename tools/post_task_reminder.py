@@ -75,10 +75,9 @@ PERSIST_MARKERS = (
     "reverse-memory.md",
     "delivery-cleanup.md",
     "encryption-algorithm-graph.md",
-    "captcha-memory.md",
+    "challenge-memory.md",
     "站点经验库",
     "逆向工程经验库",
-    "验证码经验库",
     "site memory",
 )
 
@@ -87,8 +86,7 @@ REVERSE_MARKERS = (
     "接口还原", "接口实现", "纯接口", "签名", "加密参数",
     "sign", "x-sign", "authkey", "x-d-token", "reese84",
     "waf", "imperva", "84盾", "incapsula", "akamai",
-    "验证码", "captcha", "recaptcha", "hcaptcha", "turnstile",
-    "滑块", "点选", "sitekey", "challenge", "verify endpoint",
+    "交互挑战", "交互挑战", "sitekey", "challenge", "verify endpoint",
     "find-crypto-entry", "ast-deobfuscate", "env-patch",
     "adapter.yaml",
 )
@@ -377,7 +375,7 @@ def main() -> int:
                     rev_lines.append("    2) 写 `站点经验库/<domain>/known-failures.md` 失败模式")
                     rev_lines.append("    3) 写 `站点经验库/<domain>/test-log-lessons.md` 测试教训")
                     rev_lines.append("    4) 写 `站点经验库/<domain>/change-log.md` 变更记录")
-                    rev_lines.append("    5) 跑 `python tools/sync_site_memory.py --project <P> --domain <D> --apply`")
+                    rev_lines.append("    5) 跑 `python3 tools/sync_site_memory.py --project <P> --domain <D> --apply`")
                     rev_lines.append("    6) 调用 `skills-evaluation-governance` 给本次用到的 skill 打分")
                     rev_lines.append("    7) 写 cleanup ledger,清理临时测试文件/历史输出/废代码/废注释")
                     rev_lines.append("    8) 涉及 sign/token/加密时写 `encryption-algorithm-graph.md`")

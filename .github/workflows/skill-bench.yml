@@ -11,10 +11,9 @@ on:
       - '2-JS逆向工具层/**'
       - '4-通用规范层/**'
       - '5-沉淀工具层/**'
-      - '6-验证码逆向层/**'
+      - '7-指纹风控层/**'
       - '99-SKILLS治理/**'
       - '逆向工程经验库/**'
-      - '验证码经验库/**'
       - 'public-range-evidence/**'
       - '.github/workflows/**'
       - 'tools/ci_gate.py'
@@ -46,17 +45,17 @@ jobs:
           set -euo pipefail
           SCRIPT="1-业务流程层/skills-evaluation-governance/scripts/score_skills.py"
           mkdir -p .ci-out
+          for layer in "1-业务流程层" "2-JS逆向工具层" "4-通用规范层" "5-沉淀工具层" "7-指纹风控层"; do
 
-          for layer in "1-业务流程层" "2-JS逆向工具层" "4-通用规范层" "5-沉淀工具层" "6-验证码逆向层"; do
             safe=$(echo "$layer" | tr / _)
             echo "::group::Scoring $layer"
-            python "$SCRIPT" --output ".ci-out/${safe}.json" "$layer"
-            cat ".ci-out/${safe}.json" | python -c "import json,sys; d=json.load(sys.stdin); [print(f\"  {s['skill']:40s} total={s['scores']['total']:3d}  rating={s['rating']}\") for s in d['skills']]"
+            python3 "$SCRIPT" --output ".ci-out/${safe}.json" "$layer"
+            cat ".ci-out/${safe}.json" | python3 -c "import json,sys; d=json.load(sys.stdin); [print(f\"  {s['skill']:40s} total={s['scores']['total']:3d}  rating={s['rating']}\") for s in d['skills']]"
             echo "::endgroup::"
           done
 
       - name: CI gate (layer-aware thresholds)
-        run: python tools/ci_gate.py .ci-out
+        run: python3 tools/ci_gate.py .ci-out
 
       - name: Upload score artifacts
         if: always()
@@ -101,7 +100,7 @@ jobs:
         run: |
           set -euo pipefail
           DATE=$(date -u +%Y-%m-%d)
-          python tools/append_drift_history.py .ci-out metrics/drift-history.md "$DATE"
+          python3 tools/append_drift_history.py .ci-out metrics/drift-history.md "$DATE"
 
       - name: Upload drift snapshot artifact
         if: github.event_name == 'schedule'

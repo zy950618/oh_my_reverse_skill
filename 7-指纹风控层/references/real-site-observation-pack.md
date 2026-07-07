@@ -21,7 +21,7 @@ For a structure-only pack:
 Forbidden:
 
 - marking assumed airline routes, endpoints, protections, or tokens as observed
-- claiming WAF/CAPTCHA/fingerprint bypass
+- claiming WAF/challenge/fingerprint bypass
 - recording live cookies, tokens, account data, PII, payment data, or order data
 - reusing old browser profiles or clearance values
 

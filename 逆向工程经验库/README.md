@@ -11,7 +11,6 @@
 它不是 `站点经验库/` 的替代品:
 
 - `站点经验库/` 记录 domain 的业务链路、路由、market、图谱、adapter 和站点级失败。
-- `验证码经验库/` 记录验证码 provider 和站点绑定。
 - `逆向工程经验库/` 记录逆向过程本身的 run/capture/replay 证据、旧新数据判断、工具失败、复测策略和下次进入任务前必须先看的经验。
 
 ## GitHub 边界
@@ -56,7 +55,6 @@ GitHub 只保留本目录的 README、`_templates/` 和 `_example.com/` 示例�
 
 1. 先读 `逆向工程经验库/domains/<domain>/reverse-memory.md`。
 2. 再读 `站点经验库/<domain>/known-failures.md`、`test-log-lessons.md`、`knowledge-graph.md`、`impact-regression.md`。
-3. 若涉及验证码,再读 `验证码经验库/providers/<provider>.md` 和 `验证码经验库/domains/<domain>/captcha-memory.md`。
 4. 创建新的 `run_id`,不要复用旧 HAR/旧 token/旧 profile 作为当前 observed。
 
 每个真实逆向任务结束前:

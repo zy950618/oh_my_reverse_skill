@@ -19,8 +19,8 @@ failure_evidence:
   - run-20260630-013842-high-fidelity-risk-lab lacked business_data_assertions and was downgraded to memory_only.
   - run-20260629-085616-scrapethissite lacked server-side business ledger and was downgraded to memory_only.
 regression_command:
-  - python tools/validate_business_data_assertions.py public-range-evidence
-  - python tools/validate_public_range_evidence.py public-range-evidence
-  - python tools/web_h5_acceptance_report.py validate --report <report> --require-complete
-  - python tools/ci_gate.py .ci-out
+  - python3 tools/validate_business_data_assertions.py public-range-evidence
+  - python3 tools/validate_public_range_evidence.py public-range-evidence
+  - python3 tools/web_h5_acceptance_report.py validate --report <report> --require-complete
+  - python3 tools/ci_gate.py .ci-out
 timeout: 180

@@ -40,7 +40,7 @@
     "session_storage",
     "clearance_cookie",
     "risk_token",
-    "captcha_token"
+    "challenge_token"
   ],
   "allowed_recovery": [
     "stop_ladder",

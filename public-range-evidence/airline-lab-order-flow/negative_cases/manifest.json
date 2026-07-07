@@ -60,10 +60,10 @@
       "expected_error": "order_not_found"
     },
     {
-      "name": "captcha_required_state",
+      "name": "challenge_required_state",
       "detection_mode": "localhost_http",
       "expected_status": 403,
-      "expected_error": "captcha_required"
+      "expected_error": "challenge_required"
     },
     {
       "name": "fingerprint_challenge_state",

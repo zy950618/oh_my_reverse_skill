@@ -14,7 +14,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--run-id", required=True)
     args = parser.parse_args()
-    path = ROOT / "public-range-evidence" / "raw" / "realistic-captcha-risk-lab" / args.run_id / "runtime-diff-report.json"
+    path = ROOT / "public-range-evidence" / "raw" / "runtime-signature-risk-lab" / args.run_id / "runtime-diff-report.json"
     data = json.loads(path.read_text(encoding="utf-8-sig"))
     print(json.dumps({"status": "PASS", "diff_report_path": str(path), "diff": data}, ensure_ascii=False, indent=2))
     return 0

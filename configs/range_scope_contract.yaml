@@ -30,12 +30,11 @@ targets:
       - concurrency_ladder
       - capability_decision
 
-  - id: realistic-captcha-risk-lab
+  - id: runtime-signature-risk-lab
     scope_type: localhost_lab
     authorization: self_owned
     allowed_hosts: [127.0.0.1, localhost]
     allowed_modes:
-      - captcha_solver_training
       - waf_challenge_simulation
       - risk_state_verification
       - fingerprint_diagnostics
@@ -64,123 +63,28 @@ targets:
       - leakage_audit
       - capability_decision
 
-  - id: opencaptchaworld
-    scope_type: public_range
+  - id: scrapethissite
+    scope_type: public_ajax_sandbox
     authorization: public_training_range
-    allowed_hosts: [localhost, 127.0.0.1]
+    allowed_hosts: [www.scrapethissite.com]
     allowed_modes:
-      - visual_solver_training
-      - action_replay
-      - challenge_state_observer
-      - failure_case_collection
-      - benchmark
+      - direct_interface_replay
+      - ajax_field_parity
       - negative_eval
     positive_allowed_scope:
-      - public_range_solver_positive
+      - public_ajax_direct_api_positive
     forbidden_modes:
       - third_party_site_generalization
-      - token_forgery
+      - auth_bypass
       - production_waf_bypass
       - fingerprint_evasion
+      - automated_bulk_collection
     evidence_required:
-      - execution_proof
-      - screenshot
-      - action_trace
-      - success_or_failure_state
-      - leakage_audit
-      - experience_card
-
-  - id: gocaptcha-local
-    scope_type: local_open_source_range
-    authorization: public_open_source_local
-    allowed_hosts: [127.0.0.1, localhost]
-    allowed_modes:
-      - visual_solver_training
-      - action_replay
-      - slider_solver
-      - click_solver
-      - rotate_solver
-      - drag_drop_solver
-      - benchmark
-      - negative_eval
-    positive_allowed_scope:
-      - local_open_source_range_positive
-    forbidden_modes:
-      - third_party_site_generalization
-      - token_forgery
-      - production_waf_bypass
-      - fingerprint_evasion
-    evidence_required:
-      - execution_proof
-      - screenshot
-      - network_summary
-      - action_trace
-      - leakage_audit
-      - benchmark_metrics
-
-  - id: gocaptcha-official
-    scope_type: local_open_source_range
-    authorization: public_open_source_local
-    allowed_hosts: [127.0.0.1, localhost]
-    allowed_modes:
-      - visual_solver_training
-      - action_replay
-      - slider_solver
-      - click_solver
-      - rotate_solver
-      - drag_drop_solver
-      - benchmark
-      - negative_eval
-      - blackbox_solver_gate
-    positive_allowed_scope:
-      - local_open_source_range_positive
-    forbidden_modes:
-      - third_party_site_generalization
-      - token_forgery
-      - production_waf_bypass
-      - fingerprint_evasion
-      - manage_status_answer_read
-    evidence_required:
-      - execution_proof
-      - screenshot
-      - network_summary
-      - action_trace
-      - leakage_audit
-      - blackbox_gate
-      - benchmark_metrics
-
-  - id: local-gocaptcha-compatible-lab
-    scope_type: localhost_compatible_lab
-    authorization: self_owned
-    allowed_hosts: [127.0.0.1, localhost]
-    allowed_modes:
-      - visual_solver_training
-      - action_replay
-      - slider_solver
-      - click_solver
-      - rotate_solver
-      - drag_drop_solver
-      - benchmark
-      - negative_eval
-      - blackbox_solver_gate
-    positive_allowed_scope:
-      - local_compatible_lab_candidate
-      - local_compatible_lab_verified
-      - local_compatible_lab_stable
-    forbidden_modes:
-      - third_party_site_generalization
-      - token_forgery
-      - production_waf_bypass
-      - fingerprint_evasion
-      - claim_real_gocaptcha_component
-    evidence_required:
-      - execution_proof
-      - screenshot
-      - network_summary
-      - action_trace
-      - leakage_audit
-      - blackbox_gate
-      - benchmark_metrics
+      - backend_acceptance
+      - direct_interface_repeat
+      - json_pointer_assertions
+      - scope_decision
+      - capability_decision
 
   - id: fingerprint-diagnostics
     scope_type: public_diagnostics
@@ -212,7 +116,7 @@ targets:
       - fingerprint_surface_report
       - experience_card
 
-  - id: shumei-captcha-demo
+  - id: shumei-challenge-demo
     scope_type: official_demo_readonly
     authorization: official_public_demo
     allowed_hosts: [castatic.fengkongcloud.cn, help.ishumei.com]
@@ -236,14 +140,14 @@ targets:
       - state_observer
       - capability_decision
 
-  - id: aliyun-captcha-demo
+  - id: aliyun-challenge-demo
     scope_type: official_demo_readonly
     authorization: official_public_docs
     allowed_hosts: [help.aliyun.com, www.aliyun.com]
     allowed_modes:
       - provider_diagnostics
       - official_demo_state_observer
-      - CaptchaVerifyParam_flow_observation
+      - official_demo_state_parameter_observation
     positive_allowed_scope: []
     forbidden_modes:
       - unauthorized_site_processing
@@ -257,60 +161,6 @@ targets:
       - network_summary
       - state_observer
       - capability_decision
-
-  - id: shumei-compatible-lab
-    scope_type: localhost_vendor_compatible_lab
-    authorization: self_owned
-    allowed_hosts: [127.0.0.1, localhost]
-    allowed_modes:
-      - self_owned_simulation
-      - visual_solver_training
-      - action_replay
-      - negative_eval
-      - blackbox_solver_gate
-    positive_allowed_scope:
-      - local_vendor_compatible_positive_candidate
-    forbidden_modes:
-      - claim_official_shumei_capability
-      - third_party_site_generalization
-      - token_forgery
-      - production_bypass
-      - fingerprint_evasion
-    evidence_required:
-      - execution_proof
-      - explicit_compatible_not_official_label
-      - screenshot
-      - network_summary
-      - action_trace
-      - leakage_audit
-      - blackbox_gate
-
-  - id: aliyun-compatible-lab
-    scope_type: localhost_vendor_compatible_lab
-    authorization: self_owned
-    allowed_hosts: [127.0.0.1, localhost]
-    allowed_modes:
-      - self_owned_simulation
-      - visual_solver_training
-      - action_replay
-      - negative_eval
-      - blackbox_solver_gate
-    positive_allowed_scope:
-      - local_vendor_compatible_positive_candidate
-    forbidden_modes:
-      - claim_official_aliyun_capability
-      - third_party_site_generalization
-      - token_forgery
-      - production_bypass
-      - risk_score_manipulation
-    evidence_required:
-      - execution_proof
-      - explicit_compatible_not_official_label
-      - screenshot
-      - network_summary
-      - action_trace
-      - leakage_audit
-      - blackbox_gate
 
   - id: five-second-shield-lab
     scope_type: localhost_waf_lab
@@ -347,7 +197,6 @@ targets:
     allowed_hosts: []
     allowed_modes:
       - provider_diagnostics
-      - visual_solver_training
       - js_runtime_parity
       - business_api_replay
       - fingerprint_diagnostics

@@ -1,7 +1,7 @@
 system_prompt: |
   Use this skill only for full Web/H5 API service delivery and 314 integration.
   Start from scoped reconnaissance, then produce runnable service code, tests, and evidence.
-  Stop or reroute when the task is only page/API discovery, JS deobfuscation, WAF/CAPTCHA observation, or governance scoring.
+  Stop or reroute when the task is only page/API discovery, JS deobfuscation, WAF/challenge observation, or governance scoring.
   Do not claim delivery until direct interface/API acceptance, repeat direct interface/API acceptance, field validation, and required regression commands pass.
 
 interface:

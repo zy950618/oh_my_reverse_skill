@@ -75,8 +75,8 @@ class Handler(BaseHTTPRequestHandler):
             )
             return
         if self.path == "/api/quote":
-            if body.get("captcha_required") is True:
-                self.write_json(403, response("error", error="captcha_required", captcha_required=True, ledger_delta=0))
+            if body.get("challenge_required") is True:
+                self.write_json(403, response("error", error="challenge_required", challenge_required=True, ledger_delta=0))
                 return
             if body.get("detail_nonce") != "detail-nonce-001":
                 self.write_json(409, response("error", error="expired_or_invalid_detail_token", ledger_delta=0))
@@ -89,7 +89,7 @@ class Handler(BaseHTTPRequestHandler):
                     currency="MYR",
                     total=120.0,
                     token_state="quote_token_issued",
-                    captcha_required=False,
+                    challenge_required=False,
                     fingerprint_challenge=False,
                 ),
             )

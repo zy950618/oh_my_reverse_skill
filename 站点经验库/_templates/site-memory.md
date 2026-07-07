@@ -28,7 +28,7 @@
 - WAF:
 - JS crypto:
 - browser environment:
-- captcha:
+- challenge:
 - proxy/IP sensitivity:
 
 ## Current Rules

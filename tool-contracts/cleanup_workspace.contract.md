@@ -21,7 +21,7 @@ Clean temporary task artifacts after required evidence has been preserved and fi
 
 ## Command Examples
 ```powershell
-python tools/post_task_reminder.py
+python3 tools/post_task_reminder.py
 ```
 
 ## Failure Modes

@@ -105,7 +105,7 @@ Minimum required structure:
     }
   },
   "execution_proof": {
-    "command": "python tools/run_phase1_local_targets.py",
+    "command": "python3 tools/run_phase1_local_targets.py",
     "cwd": "E:/SKILLS/oh_my_reverse_skill",
     "exit_code": 0,
     "started_at": "ISO-8601",
@@ -138,7 +138,7 @@ success. It requires all four layers:
 Fresh evidence, final API confirmation, direct non-browser JSON acceptance,
 repeat direct non-browser JSON acceptance, non-empty JSON Pointers, no copied
 browser profile/live storage/manual cookie/manual token, and passing
-`business_data_assertions` are all required. Provider testing keys, CAPTCHA
+`business_data_assertions` are all required. Provider testing keys, challenge
 widgets, challenge/config endpoints, verify endpoints, and browser-only captures
 remain boundary or negative evidence unless a final business API is accepted,
 repeat verified, and server-side business ledger assertions pass.
@@ -147,7 +147,7 @@ repeat verified, and server-side business ledger assertions pass.
 or public-range run. Files without it are `STRUCTURE_ONLY`: they may remain valid
 boundary or historical evidence, but they do not prove that the target was
 started, opened in a browser, network-captured, or replayed in the current run.
-For CAPTCHA/WAF/risk-control evidence, `execution_proof` still cannot make the
+For challenge/WAF/risk-control evidence, `execution_proof` still cannot make the
 result `positive_allowed` unless final protected business API acceptance and
 repeat direct non-browser acceptance are present.
 

@@ -26,7 +26,6 @@ INTERNAL_ARTIFACT_PARTS = {
 }
 DEDICATED_LAB_ROOTS = {
     "airline-lab-order-flow",
-    "captcha-model-lab",
     "fingerprint-risk-lab",
     "pure-api-lab",
     "real-site-observation-pack",
@@ -36,12 +35,7 @@ DEDICATED_LAB_ROOTS = {
 RESULTS = {"BUSINESS_DATA_PASS", "BUSINESS_DATA_FAIL", "NOT_RUN", "INVALID"}
 WORKERS = ("worker_1", "worker_2", "worker_5", "worker_10")
 NON_BUSINESS_POSITIVE_SCOPES = {
-    "local_open_source_range_positive",
-    "local_compatible_lab_candidate",
-    "local_compatible_lab_verified",
-    "local_compatible_lab_stable",
-    "local_vendor_compatible_positive_candidate",
-    "public_range_solver_positive",
+    "public_ajax_direct_api_positive",
     "local_runtime_parity_positive",
     "local_fingerprint_diagnostics_positive",
     "public_fingerprint_diagnostics_positive",

@@ -71,7 +71,7 @@ def template(args: argparse.Namespace) -> dict:
         "human_review_conditions": [
             "payment_or_order",
             "login_or_pii",
-            "captcha_or_waf_manual_challenge",
+            "challenge_or_waf_manual_challenge",
             "evidence_conflict",
             "production_impact",
         ],

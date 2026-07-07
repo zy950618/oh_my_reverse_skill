@@ -20,7 +20,7 @@ Use this skill when an authorized/local lab task asks why a request, browser ses
 
 - Do not use this skill to inventory browser surfaces without a block-reason question; route that to `browser-fingerprint-surface-lab`.
 - Do not use it to hide webdriver, forge fingerprints, rotate proxies, reuse clearance, or bypass rate limits.
-- Do not use it to claim production WAF/CAPTCHA success from local diagnostics.
+- Do not use it to claim production WAF/challenge success from local diagnostics.
 
 ## Boundary
 
@@ -29,7 +29,7 @@ This is an attribution skill. It can classify observed, derived, assumed, and un
 ## Boundaries
 
 - Not responsible for browser surface inventory; use `browser-fingerprint-surface-lab`.
-- Not responsible for WAF bypass, CAPTCHA bypass, webdriver hiding, fingerprint spoofing, proxy evasion, clearance reuse, or risk token reuse.
+- Not responsible for WAF bypass, challenge bypass, webdriver hiding, fingerprint spoofing, proxy evasion, clearance reuse, or risk token reuse.
 - Write reusable failure modes to site memory or eval backlog.
 
 ## Precheck
@@ -93,7 +93,7 @@ Do not generate stealth patches, webdriver hiding, fingerprint forgery, proxy ro
 ## Success Criteria
 
 - Block taxonomy is evidence-backed.
-- CAPTCHA/fingerprint linkage is diagnostic-only.
+- challenge/fingerprint linkage is diagnostic-only.
 - Incomplete evidence remains `unverified`.
 - Fresh validation report exists.
 - No forbidden action appears in the output.
@@ -119,7 +119,7 @@ Use `browser-fingerprint-surface-lab` to capture the surface inventory and drift
 - Failure evidence: `public-range-evidence/longrun/phase3-5/run-20260630-041500-phase3-5-longrun/issue-ledger.json`.
 - Rule added: block-reason diagnostics must classify observed, derived, assumed, and unverified signals separately.
 - Eval added: `evals/longrun/phase3-5/005-phase3-5-longrun-regression.yaml`.
-- Capability impact: a local `not_blocked` observation is not a production WAF or CAPTCHA bypass capability.
+- Capability impact: a local `not_blocked` observation is not a production WAF or challenge bypass capability.
 
 ## Phase 3.6 Public Diagnostics Feedback
 
@@ -137,34 +137,3 @@ Use `browser-fingerprint-surface-lab` to capture the surface inventory and drift
 - Public fingerprint ranges are observation_only. Record observed signals, block reason, risk attribution, repeat/profile variance, screenshots, and surface report.
 - Diagnostics positive is not evasion positive. Do not add webdriver hide, fingerprint spoof, proxy evasion, clearance reuse, or automated bypass guidance.
 
-## Phase 3.9 Shield And Fingerprint Boundary
-
-- Source run_id: `run-20260630-113000-phase3-9-vendor-shield-range`.
-- Evidence: `public-range-evidence/five-second-shield-lab/run-20260630-113000-phase3-9-vendor-shield-range.json`.
-- Eval: `evals/phase3-9/five-second-shield-lab.yaml`.
-- Fingerprint or WAF block reason diagnostics may record observed browser signals, redirects, cookie writes, JS challenge state, and risk attribution.
-- Diagnostics must not become stealth guidance. Production WAF bypass, real-site clearance reuse, proxy rotation evasion, and spoofing remain prohibited.
-
-## Phase 3.10 Dynamic Shield Block-Reason Rule
-
-- Source run_id: `run-20260630-163000-phase3-10-realism-hardening`.
-- Evidence: `public-range-evidence/five-second-shield-lab/run-20260630-163000-phase3-10-realism-hardening.json`.
-- Scope: local shield diagnostics and authorized/self-owned observation.
-- Capability level: diagnostic attribution only; local shield flow may be `positive_candidate` for business-data lab readiness.
-- Boundary: not production WAF bypass and not fingerprint evasion.
-- Failure cases: missing challenge, stale nonce, expired clearance, wrong session, wrong signature, JS runtime mismatch, browser-only success not direct repeat.
-- Eval: `evals/phase3-10/five-second-shield-lab-dynamic.yaml`.
-- Next training goal: map block reason to stop/ask/official API fallback decisions on authorized targets.
-## Phase 3.11 block reason diagnostics boundary
-
-- source_run_id: `run-20260630-173000-phase3-11-type-matrix`
-- evidence: `public-range-evidence/fingerprint-diagnostics/`
-- evals: `evals/phase3-11/fingerprint-diagnostics-matrix.yaml`
-- Public diagnostics targets such as Sannysoft, CreepJS, BrowserLeaks, and Incolumitas are observation-only unless explicitly authorized otherwise.
-- Do not hide webdriver, spoof fingerprint surfaces, rotate proxies for evasion, reuse clearance cookies, or claim evasion positive. Record observed signals and risk attribution only.
-## Phase 3.12 fingerprint failure category boundary
-
-- source_run_id: `run-20260630-183000-phase3-12-model-flywheel`
-- evidence: `public-range-evidence/raw/anti-solver-platform-audit/run-20260630-183000-phase3-12-model-flywheel/anti-solver-platform-audit.json`
-- evals: `evals/phase3-12/`
-- Fingerprint_drift can be a failure_category for diagnostics reports only; it cannot promote spoofing, webdriver hide, proxy evasion, or clearance reuse.

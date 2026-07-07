@@ -54,5 +54,5 @@ Boundary:
 
 ```text
 allowed: observe token creation point, lifetime, refresh timing, and stability across sessions
-stale_or_unverified: copied clearance cookie, copied fingerprint, copied CAPTCHA state, copied proxy/session state, or copied risk token
+stale_or_unverified: copied clearance cookie, copied fingerprint, copied challenge state, copied proxy/session state, or copied risk token
 ```

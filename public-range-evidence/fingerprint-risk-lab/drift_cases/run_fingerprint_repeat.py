@@ -17,7 +17,6 @@ COMMANDS = [
     ["tools\\validate_fingerprint_surface_lab.py"],
     ["tools\\validate_block_reason_lab.py"],
     ["tools\\validate_browser_context_isolation.py"],
-    ["tools\\validate_captcha_fingerprint_linkage.py"],
     ["public-range-evidence\\fingerprint-risk-lab\\drift_cases\\validate_drift_cases.py"],
 ]
 
@@ -38,7 +37,7 @@ def run_command(root: Path, command: list[str]) -> dict[str, Any]:
     )
     duration = round(time.perf_counter() - started, 3)
     return {
-        "command": "python " + " ".join(command),
+        "command": "python3 " + " ".join(command),
         "exit_code": completed.returncode,
         "duration_seconds": duration,
         "status": "PASS" if completed.returncode == 0 else "FAIL",
@@ -76,7 +75,7 @@ def main() -> int:
         "rounds_passed": passed,
         "rounds_failed": args.rounds - passed,
         "pythondontwritebytecode": "1",
-        "commands_per_round": ["python " + " ".join(command) for command in COMMANDS],
+        "commands_per_round": ["python3 " + " ".join(command) for command in COMMANDS],
         "rounds": rounds,
     }
     output_path = root / args.output

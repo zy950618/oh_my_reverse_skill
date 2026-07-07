@@ -22,11 +22,11 @@ Current version: 0.2.0
 Run after changing loop roles, ledgers, evals, or crawler hardening:
 
 ```bash
-python tools/validate_web_h5_loop_gate.py
-python tools/validate_web_h5_crawler_gate.py
-python tools/validate_web_h5_real_execution_gate.py
-python tools/validate_business_data_assertions.py public-range-evidence
-python tools/ci_gate.py .ci-out
+python3 tools/validate_web_h5_loop_gate.py
+python3 tools/validate_web_h5_crawler_gate.py
+python3 tools/validate_web_h5_real_execution_gate.py
+python3 tools/validate_business_data_assertions.py public-range-evidence
+python3 tools/ci_gate.py .ci-out
 ```
 
 ## Drift Tests

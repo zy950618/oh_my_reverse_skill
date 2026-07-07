@@ -5,7 +5,7 @@
     "authorization_scope",
     "network_inventory",
     "dynamic_param_inventory",
-    "captcha_or_challenge_detection",
+    "managed-check_or_challenge_detection",
     "fingerprint_surface_observation",
     "pure_api_feasibility",
     "no_browser_final_delivery"

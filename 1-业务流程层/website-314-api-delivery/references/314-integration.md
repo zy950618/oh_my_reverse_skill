@@ -32,7 +32,7 @@ Responsibilities:
 
 - routes: HTTP endpoint mapping and request/response DTOs
 - services: business flow orchestration
-- anti_bot: WAF, captcha, Reese84, challenge state
+- anti_bot: WAF, challenge, Reese84, challenge state
 - crypto: sign/token/cookie generation that is not WAF-specific
 - reverse: extracted scripts, Node runners, debug artifacts
 - tests: service-level and HTTP API tests

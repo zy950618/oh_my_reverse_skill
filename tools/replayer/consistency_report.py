@@ -3,7 +3,7 @@
 依赖 snapshot_diff.py。
 
 用法:
-  python tools/replayer/consistency_report.py --domain thaiairways.com
+  python3 tools/replayer/consistency_report.py --domain thaiairways.com
 
 输出:
   - 站点经验库/<domain>/fixtures/reports/<YYYY-MM-DD>-replay.md

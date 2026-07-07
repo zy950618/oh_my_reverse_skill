@@ -18,7 +18,7 @@ and drift evidence.
 ## Forbidden Scope
 
 - WAF bypass.
-- CAPTCHA bypass.
+- challenge bypass.
 - Fingerprint spoofing.
 - Webdriver hiding.
 - Detection evasion.

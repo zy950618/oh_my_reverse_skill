@@ -8,7 +8,7 @@
   "capability_boundary": {
     "browser_profile_dependency": false,
     "positive_airline_capability_claim": false,
-    "third_party_captcha_or_waf_bypass_claim": false
+    "third_party_challenge_or_waf_bypass_claim": false
   },
   "cases": [
     {
@@ -63,7 +63,7 @@
         "path": "/api/quote"
       },
       "response": {
-        "captcha_required": false,
+        "challenge_required": false,
         "currency": "MYR",
         "fingerprint_challenge": false,
         "quote_id": "LAB-QUOTE-001",
@@ -218,7 +218,7 @@
     },
     {
       "failures": [],
-      "name": "captcha_required_state",
+      "name": "challenge_required_state",
       "request": {
         "body_present": true,
         "headers": {},
@@ -226,8 +226,8 @@
         "path": "/api/quote"
       },
       "response": {
-        "captcha_required": true,
-        "error": "captcha_required",
+        "challenge_required": true,
+        "error": "challenge_required",
         "ledger_delta": 0,
         "status": "error"
       },
@@ -267,7 +267,7 @@
     "confirm_order_success",
     "cancel_order_success",
     "invalid_sign_rejected",
-    "captcha_required_state",
+    "challenge_required_state",
     "fingerprint_challenge_state"
   ],
   "live_site_calls_performed": false,

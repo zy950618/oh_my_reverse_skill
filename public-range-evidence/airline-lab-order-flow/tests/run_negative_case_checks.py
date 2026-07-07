@@ -135,8 +135,8 @@ def run_negative_cases(root: Path, manifest: dict[str, Any]) -> list[dict[str, A
         results.append(http_result("cancel_nonexistent_order", 404, "order_not_found", status, payload, cases["cancel_nonexistent_order"]["detection_mode"]))
 
         server_module.ORDER_STATE.clear()
-        status, payload = request(port, "POST", "/api/quote", {**quote_body, "captcha_required": True})
-        results.append(http_result("captcha_required_state", 403, "captcha_required", status, payload, cases["captcha_required_state"]["detection_mode"]))
+        status, payload = request(port, "POST", "/api/quote", {**quote_body, "challenge_required": True})
+        results.append(http_result("challenge_required_state", 403, "challenge_required", status, payload, cases["challenge_required_state"]["detection_mode"]))
 
         server_module.ORDER_STATE.clear()
         status, payload = request(port, "POST", "/api/quote", quote_body, {"x-fingerprint-state": "challenge"})

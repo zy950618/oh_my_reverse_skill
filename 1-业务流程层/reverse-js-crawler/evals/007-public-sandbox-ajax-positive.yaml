@@ -10,6 +10,6 @@ criteria:
   - "Maps fields with JSON Pointers such as /0/title, /0/year, and /0/awards."
   - "Treats UI/API parity as test evidence only, not the positive success gate."
   - "Rejects copied browser cookie, storage, profile, or token replay as positive evidence."
-  - "Does not claim 314 service delivery, auth handling, CAPTCHA/WAF handling, or concurrency."
+  - "Does not claim 314 service delivery, auth handling, challenge/WAF handling, or concurrency."
 expect_skill: true
 timeout: 120

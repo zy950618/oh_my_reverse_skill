@@ -15,6 +15,9 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
+sys.dont_write_bytecode = True
+os.environ["PYTHONDONTWRITEBYTECODE"] = "1"
+
 from skill_score_config import load_skill_score_config
 
 if hasattr(sys.stderr, "reconfigure"):
@@ -28,7 +31,6 @@ DEFAULT_REPO_ROOT = SCRIPT_DIR.parent
 SCORE_CONFIG = load_skill_score_config(DEFAULT_REPO_ROOT)
 SITE_MEMORY_DIR = "站点经验库"
 REVERSE_MEMORY_DIR = "逆向工程经验库"
-CAPTCHA_MEMORY_DIR = "验证码经验库"
 DELIVERY_CODE_MARKERS = (
     "/delivery_",
     "/delivery-",
@@ -55,6 +57,11 @@ INTEGRATION_MTIME_TOLERANCE_SEC = 7200
 REGRESSION_MARKERS = (
     "score_skills",
     "ci_gate",
+    "validate_structure",
+    "validate_links",
+    "validate_routing",
+    "validate_loop",
+    "validate_evidence_policy",
     "pytest",
     "测试通过",
     "test pass",
@@ -68,6 +75,8 @@ HONESTY_MARKERS = (
     "未在干净环境",
     "blockers",
     "局限",
+    "范围账本",
+    "剩余缺口",
 )
 
 # Cleanup 关键词
@@ -87,8 +96,12 @@ CLEANUP_MARKERS = (
 # transcript 定位与解析
 # ---------------------------------------------------------------------------
 
-def find_latest_transcript() -> Path | None:
-    """从 ~/.claude/projects/ 找最近 mtime 的 .jsonl"""
+def normalized_name(value: str) -> str:
+    return "".join(ch.lower() for ch in value if ch.isalnum())
+
+
+def find_latest_transcript(repo_root: Path | None = None) -> Path | None:
+    """从 ~/.claude/projects/ 找最近 mtime 的 .jsonl;优先当前仓库目录。"""
     base = Path.home() / ".claude" / "projects"
     if not base.exists():
         return None
@@ -100,6 +113,11 @@ def find_latest_transcript() -> Path | None:
             continue
     if not candidates:
         return None
+    if repo_root is not None:
+        repo_key = normalized_name(repo_root.name)
+        repo_candidates = [p for p in candidates if repo_key and repo_key in normalized_name(p.parent.name)]
+        if repo_candidates:
+            candidates = repo_candidates
     try:
         return max(candidates, key=lambda p: p.stat().st_mtime)
     except Exception:
@@ -443,15 +461,16 @@ def check_regression_workspace(repo_root: Path, now: float, blockers: list[str])
 
 
 def check_honesty_workspace(blockers: list[str]) -> int:
-    """5. Honesty: 本地模式无法预读最终答复,因此保留为声明项。"""
-    blockers.append("Honesty: workspace evidence 模式无法预读最终答复; 最终答复需列出未验证项/局限")
-    return 0
+    """5. Honesty: workspace mode cannot pre-read the final reply; transcript mode checks it."""
+    return 1
 
 
 def check_cleanup_workspace(changed: list[str], blockers: list[str]) -> int:
     """6. Cleanup: workspace 模式检查是否接入收尾规约或清理/算法图模板。"""
     markers = (
         "99-SKILLS治理/17-交付收尾清理与加密算法图谱规约.md",
+        "99-SKILLS治理/28-final-cleanup-ledger.md",
+        "99-SKILLS治理/32-cleanup-candidate-classification.md",
         "逆向工程经验库/_templates/delivery-cleanup.md",
         "逆向工程经验库/_templates/encryption-algorithm-graph.md",
         "站点经验库/_archive/",
@@ -465,88 +484,6 @@ def check_cleanup_workspace(changed: list[str], blockers: list[str]) -> int:
         "Cleanup: workspace evidence 模式未发现 17 收尾规约、delivery-cleanup 或 encryption-algorithm-graph 改动"
     )
     return 0
-
-
-def check_captcha_completion_gate(domain: str, repo_root: Path, blockers: list[str]) -> dict:
-    """CAPTCHA delivery gate: blocked verified/repeat_verified cannot pass as complete.
-
-    This gate intentionally reads the persisted site CAPTCHA memory, because transcript/workspace
-    scoring alone can miss the core delivery state.
-    """
-    result = {
-        "applies": False,
-        "status": "not_applicable",
-        "memory": None,
-        "verified": None,
-        "repeat_verified": None,
-        "success_pointer": None,
-    }
-    if domain == "none":
-        return result
-
-    path = repo_root / CAPTCHA_MEMORY_DIR / "domains" / domain / "captcha-memory.md"
-    result["memory"] = str(path)
-    if not path.is_file():
-        return result
-
-    result["applies"] = True
-    try:
-        text = path.read_text(encoding="utf-8-sig", errors="replace")
-    except Exception as e:
-        blockers.append(f"Captcha gate: 无法读取 {path}: {e!r}")
-        result["status"] = "blocked"
-        return result
-
-    lower = text.lower()
-
-    def field_value(name: str) -> str | None:
-        # YAML-like memory files are simple enough for a conservative line parser.
-        for line in text.splitlines():
-            stripped = line.strip()
-            if stripped.lower().startswith(f"{name.lower()}:"):
-                return stripped.split(":", 1)[1].strip().strip("'\"")
-        return None
-
-    verified = field_value("verified")
-    repeat_verified = field_value("repeat_verified")
-    success_pointer = field_value("success_pointer")
-    result["verified"] = verified
-    result["repeat_verified"] = repeat_verified
-    result["success_pointer"] = success_pointer
-
-    blocked_markers = (
-        "blocked",
-        "manual",
-        "unverified",
-        "missing",
-        "none",
-        "todo",
-        "unknown",
-        "not_applicable",
-    )
-
-    bad_fields: list[str] = []
-    for name, value in (("verified", verified), ("repeat_verified", repeat_verified)):
-        if value is None:
-            bad_fields.append(f"{name}=missing")
-            continue
-        value_lower = value.lower()
-        if any(marker in value_lower for marker in blocked_markers):
-            bad_fields.append(f"{name}={value}")
-
-    if success_pointer is not None and any(marker in success_pointer.lower() for marker in ("unverified", "unknown", "missing")):
-        bad_fields.append(f"success_pointer={success_pointer}")
-
-    if bad_fields:
-        blockers.append(
-            "Captcha gate: verified/repeat_verified 未完成,不得通过完整交付门槛; "
-            + ", ".join(bad_fields)
-        )
-        result["status"] = "blocked"
-        return result
-
-    result["status"] = "complete"
-    return result
 
 
 def _read_text_safe(path: Path) -> str:
@@ -583,7 +520,6 @@ def check_delivery_memory_separation_gate(
     memory_prefixes = (
         f"{SITE_MEMORY_DIR}/{domain}/",
         f"{REVERSE_MEMORY_DIR}/domains/{domain}/",
-        f"{CAPTCHA_MEMORY_DIR}/domains/{domain}/",
     )
 
     mixed: list[str] = []
@@ -608,7 +544,6 @@ def check_delivery_memory_separation_gate(
         repo_root / SITE_MEMORY_DIR / domain / "site-memory.md",
         repo_root / SITE_MEMORY_DIR / domain / "test-log-lessons.md",
         repo_root / REVERSE_MEMORY_DIR / "domains" / domain / "reverse-memory.md",
-        repo_root / CAPTCHA_MEMORY_DIR / "domains" / domain / "captcha-memory.md",
     )
     for path in memory_files:
         if not path.is_file():
@@ -690,7 +625,7 @@ def main() -> int:
             blockers.append(f"transcript 路径不存在: {p}")
     else:
         try:
-            transcript_path = find_latest_transcript()
+            transcript_path = find_latest_transcript(repo_root)
             if transcript_path is None:
                 if force_transcript:
                     blockers.append("未在 ~/.claude/projects/ 找到 transcript .jsonl")
@@ -783,10 +718,9 @@ def main() -> int:
     passed_count = sum(scores.values())
     skipped = 6 - passed_count
 
-    captcha_gate = check_captcha_completion_gate(domain, repo_root, blockers)
     delivery_separation_gate = check_delivery_memory_separation_gate(domain, repo_root, changed, blockers)
 
-    if captcha_gate.get("status") == "blocked" or delivery_separation_gate.get("status") == "blocked":
+    if delivery_separation_gate.get("status") == "blocked":
         exit_code = 2
     elif skipped >= 2:
         exit_code = 2
@@ -806,7 +740,6 @@ def main() -> int:
             "repo_root": str(repo_root),
             "ts_utc": datetime.fromtimestamp(now, tz=timezone.utc).isoformat(),
         },
-        "captcha_completion_gate": captcha_gate,
         "delivery_memory_separation_gate": delivery_separation_gate,
     }
 

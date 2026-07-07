@@ -10,8 +10,8 @@
 已存在的文件不覆盖。
 
 用法:
-  python tools/scaffold_evals.py --skill 2-JS逆向工具层/find-crypto-entry
-  python tools/scaffold_evals.py --skill 2-JS逆向工具层/env-patch --force
+  python3 tools/scaffold_evals.py --skill 2-JS逆向工具层/find-crypto-entry
+  python3 tools/scaffold_evals.py --skill 2-JS逆向工具层/env-patch --force
 """
 from __future__ import annotations
 

@@ -3,7 +3,7 @@
 ## Active-Ready Evidence
 
 - Fresh evidence root: `public-range-evidence/fingerprint-risk-lab/fresh-evidence/`.
-- Required validators: `tools/validate_fingerprint_surface_lab.py`, `tools/validate_browser_context_isolation.py`, `tools/validate_captcha_fingerprint_linkage.py`.
+- Required validators: `tools/validate_fingerprint_surface_lab.py`, `tools/validate_browser_context_isolation.py`.
 - Known failures: public diagnostics are observation-only and must not become evasion.
 - Eval backlog: add negative tests for webdriver hiding, fingerprint spoofing, proxy evasion, clearance reuse, and risk-token reuse.
 - Market matrix: not applicable; this is local/authorized diagnostics.

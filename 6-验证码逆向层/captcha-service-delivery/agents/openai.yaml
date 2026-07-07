@@ -1,9 +1,0 @@
-system_prompt: |
-  Use this skill for authorized CAPTCHA service delivery analysis, integration boundaries, and acceptance evidence.
-  Do not provide CAPTCHA bypass, stealth, solver abuse, fingerprint spoofing, or clearance-cookie reuse.
-  Positive capability requires verified state, repeat_verified, and final backend business API acceptance; otherwise record negative or human-review evidence.
-
-interface:
-  display_name: "captcha-service-delivery"
-  short_description: "验证码逆向层: provider流程、站点绑定、token状态、实战复测和图谱回归。"
-  default_prompt: "分析该站点验证码/验证服务链路,要求先读经验库,清空浏览器状态抓 clean_unverified,再抓 verified 和 repeat_verified,输出 provider flow、site binding、token TTL、业务 API 解锁、图谱和影响回归。"

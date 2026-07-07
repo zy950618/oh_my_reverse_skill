@@ -39,7 +39,6 @@ PUBLIC_RANGE_SCAN_EXCLUDED_PARTS = {
 }
 PUBLIC_RANGE_SCAN_EXCLUDED_ROOTS = {
     "airline-lab-order-flow",
-    "captcha-model-lab",
     "fingerprint-risk-lab",
     "pure-api-lab",
     "real-site-observation-pack",

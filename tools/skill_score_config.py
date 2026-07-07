@@ -16,7 +16,6 @@ DEFAULT_LAYER_THRESHOLDS = {
     "2-JS逆向工具层": 15,
     "4-通用规范层": 15,
     "5-沉淀工具层": 70,
-    "6-验证码逆向层": 70,
     "7-指纹风控层": 70,
 }
 
@@ -25,7 +24,6 @@ DEFAULT_LAYER_GATE_MODES = {
     "2-JS逆向工具层": "active",
     "4-通用规范层": "active",
     "5-沉淀工具层": "active",
-    "6-验证码逆向层": "active",
     "7-指纹风控层": "advisory",
 }
 

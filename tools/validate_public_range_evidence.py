@@ -21,12 +21,7 @@ CAPABILITY_STATUS = PARTICIPATION | {"unverified"}
 CONTROL_FLOW_STATUSES = {"CONTROL_FLOW_PASS", "CONTROL_FLOW_FAIL", "NOT_RUN"}
 BUSINESS_DATA_STATUSES = {"DATA_ASSERTION_PASS", "DATA_ASSERTION_FAIL", "NOT_RUN"}
 NON_BUSINESS_POSITIVE_SCOPES = {
-    "local_open_source_range_positive",
-    "local_compatible_lab_candidate",
-    "local_compatible_lab_verified",
-    "local_compatible_lab_stable",
-    "local_vendor_compatible_positive_candidate",
-    "public_range_solver_positive",
+    "public_ajax_direct_api_positive",
     "local_runtime_parity_positive",
     "local_fingerprint_diagnostics_positive",
     "public_fingerprint_diagnostics_positive",
@@ -48,7 +43,6 @@ INTERNAL_ARTIFACT_PARTS = {
 }
 DEDICATED_LAB_ROOTS = {
     "airline-lab-order-flow",
-    "captcha-model-lab",
     "fingerprint-risk-lab",
     "pure-api-lab",
     "real-site-observation-pack",
@@ -247,16 +241,15 @@ def non_business_positive_errors(payload: dict[str, Any]) -> list[str]:
         if not isinstance(consistency, dict) or int(consistency.get("repeat_count") or 0) < 3 or int(consistency.get("profile_count") or 0) < 2:
             errors.append("fingerprint diagnostics positive requires repeat>=3 and profiles>=2")
         return errors
-    action = payload.get("action_replay")
-    leakage = payload.get("leakage_audit")
-    blackbox = payload.get("blackbox_gate")
-    ui = payload.get("ui_api_parity")
-    if not is_pass(action):
-        errors.append("scope-limited solver positive requires action_replay.status=pass")
-    if not is_pass(leakage):
-        errors.append("scope-limited solver positive requires leakage_audit.status=pass")
-    if scope in {"local_compatible_lab_candidate", "local_compatible_lab_verified", "local_compatible_lab_stable", "local_open_source_range_positive", "public_range_solver_positive"} and not is_pass(blackbox):
-        errors.append("scope-limited solver positive requires blackbox_gate.status=pass")
+    if scope == "public_ajax_direct_api_positive":
+        if payload.get("repeat_verified") is not True:
+            errors.append("public AJAX direct API positive requires repeat_verified=true")
+        backend = payload.get("backend_acceptance")
+        if not isinstance(backend, dict) or backend.get("status") != "pass":
+            errors.append("public AJAX direct API positive requires backend_acceptance.status=pass")
+        elif backend.get("final_api_endpoint_confirmed") is not True:
+            errors.append("public AJAX direct API positive requires final_api_endpoint_confirmed=true")
+        return errors
     if ui is not None and not is_pass(ui):
         errors.append("ui_api_parity.status must be pass when UI parity is claimed")
     return errors
@@ -403,7 +396,7 @@ def main() -> int:
     if not files:
         global_failures.append(f"no public range evidence files under {root}")
     if positive_count == 0:
-        global_failures.append("no candidate/verified/stable public range evidence passed hard gates")
+        global_failures.append("at least one positive public range evidence item is required")
 
     payload = {
         "tool": "validate_public_range_evidence",

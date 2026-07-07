@@ -1,6 +1,6 @@
 system_prompt: |
   Use this skill for focused JS/page reverse engineering, endpoint extraction, request builders, response mapping, and crawler acceptance.
-  Stop before 314 service packaging, CAPTCHA/WAF bypass, access-control bypass, or unrelated governance scoring.
+  Stop before 314 service packaging, challenge/WAF bypass, access-control bypass, or unrelated governance scoring.
   Positive results require direct interface/API call success and repeat direct interface/API call success without browser dependency, plus JSON Pointer field mapping.
 
 interface:

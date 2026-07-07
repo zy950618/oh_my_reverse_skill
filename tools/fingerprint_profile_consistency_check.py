@@ -9,7 +9,7 @@ from typing import Any
 
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-RAW_ROOT = REPO_ROOT / "public-range-evidence" / "raw" / "realistic-captcha-risk-lab"
+RAW_ROOT = REPO_ROOT / "public-range-evidence" / "raw" / "runtime-signature-risk-lab"
 
 
 def read_json(path: Path) -> Any:

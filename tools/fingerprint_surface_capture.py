@@ -13,8 +13,8 @@ from typing import Any
 
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-LAB_DIR = REPO_ROOT / "public-range-labs" / "realistic-captcha-risk-lab"
-RAW_ROOT = REPO_ROOT / "public-range-evidence" / "raw" / "realistic-captcha-risk-lab"
+LAB_DIR = REPO_ROOT / "public-range-labs" / "runtime-signature-risk-lab"
+RAW_ROOT = REPO_ROOT / "public-range-evidence" / "raw" / "runtime-signature-risk-lab"
 
 
 def utc_now() -> str:

@@ -37,7 +37,7 @@ next_skip_paths:
 | real business endpoint found | `stage`, `endpoint` | `stage -> endpoint` |
 | request depends on headers/cookies/body/query/storage | `request-field`, optional `state` | `endpoint -> request-field`, `request-field -> state` |
 | deliverable response field exists | `response-field` | `endpoint -> response-field` |
-| WAF/CAPTCHA/risk observed | `protection` | `endpoint -> protection` |
+| WAF/challenge/risk observed | `protection` | `endpoint -> protection` |
 | implementation or adapter exists | `implementation` | `implementation -> endpoint` |
 | eval or negative case added | `eval` | `eval -> node/edge` |
 

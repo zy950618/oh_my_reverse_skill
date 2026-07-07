@@ -28,7 +28,7 @@
       "boundary evidence when repeat capture fails"
     ],
     "out_of_scope": [
-      "CAPTCHA bypass",
+      "challenge bypass",
       "Broken Anti Automation bypass",
       "login or account state",
       "concurrency ladder",
@@ -104,7 +104,7 @@
     ],
     "assumed": [],
     "unverified": [
-      "No CAPTCHA or Broken Anti Automation flow was completed.",
+      "No challenge or Broken Anti Automation flow was completed.",
       "No direct repeat business acceptance was proven.",
       "No concurrency ladder was run.",
       "This public demo host is not in the current OWASP automated allowlist; next run should use localhost or an explicitly authorized Juice Shop instance."

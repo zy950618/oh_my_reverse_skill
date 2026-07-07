@@ -6,7 +6,7 @@
   "authorization_required_before_capture": true,
   "allowed_scope": "public homepage observation only",
   "stop_conditions": [
-    "captcha_present",
+    "managed-check_present",
     "waf_or_block_page_present",
     "login_required",
     "booking_or_payment_flow_entered",
@@ -20,7 +20,7 @@
     "timestamp_utc"
   ],
   "forbidden_fields": [
-    "captcha_solution",
+    "managed-check_solution",
     "clearance_cookie_value",
     "risk_token_value",
     "raw_cookie",

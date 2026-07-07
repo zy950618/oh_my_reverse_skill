@@ -18,7 +18,6 @@ REQUIRED_CASES = {
     "missing_canvas_surface",
     "missing_webgl_surface",
     "unknown_block_reason",
-    "captcha_linkage_missing",
     "browser_vs_pure_api_diff_missing",
 }
 

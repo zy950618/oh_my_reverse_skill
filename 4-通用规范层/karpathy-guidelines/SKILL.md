@@ -2,7 +2,7 @@
 name: karpathy-guidelines
 standard_type: auxiliary_policy
 description: >-
-  Auxiliary foundation guideline for engineering discipline. Use only as a supporting quality checklist when another Skill or coding task is already selected and the work involves implementation, review, refactoring, or verification. It is not a business-task entry point and must not independently handle Web/H5 reverse engineering, CAPTCHA, WAF, model training, API delivery, or site-specific workflows.
+  Auxiliary foundation guideline for engineering discipline. Use only as a supporting quality checklist when another Skill or coding task is already selected and the work involves implementation, review, refactoring, or verification. It is not a business-task entry point and must not independently handle Web/H5 reverse engineering, challenge, WAF, model training, API delivery, or site-specific workflows.
 license: MIT
 platforms: [cross-platform]
 category: foundation
@@ -16,7 +16,7 @@ Behavioral guidelines to reduce common LLM coding mistakes, derived from [Andrej
 
 ## Role
 
-This is a foundation guideline, not a business Skill. It should be loaded by another Skill or by the agent when coding/review/refactor work begins. It does not decide product routing, reverse-engineering scope, CAPTCHA handling, WAF diagnostics, model training, or delivery ownership.
+This is a foundation guideline, not a business Skill. It should be loaded by another Skill or by the agent when coding/review/refactor work begins. It does not decide product routing, reverse-engineering scope, challenge handling, WAF diagnostics, model training, or delivery ownership.
 
 ## When To Use
 
@@ -26,7 +26,7 @@ This is a foundation guideline, not a business Skill. It should be loaded by ano
 
 ## Do NOT Trigger When
 
-- The user asks for Web/H5 reverse engineering, API delivery, CAPTCHA, WAF, fingerprint diagnostics, or Skill scoring as the main task.
+- The user asks for Web/H5 reverse engineering, API delivery, challenge, WAF, fingerprint diagnostics, or Skill scoring as the main task.
 - The user asks for a domain workflow that has a dedicated Skill.
 - The request is a simple factual answer with no implementation or review work.
 

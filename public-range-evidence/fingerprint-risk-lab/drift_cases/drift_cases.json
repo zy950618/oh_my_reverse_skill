@@ -17,7 +17,6 @@
     "missing_canvas_surface",
     "missing_webgl_surface",
     "unknown_block_reason",
-    "captcha_linkage_missing",
     "browser_vs_pure_api_diff_missing"
   ],
   "cases": [
@@ -94,11 +93,7 @@
       "safe_next_action": "stop_positive_claim_and_request_manual_review"
     },
     {
-      "id": "captcha_linkage_missing",
       "category": "linkage_missing",
-      "input_surface": "captcha_linkage_report",
-      "observed_signal": "captcha_event_without_fingerprint_context_ref",
-      "expected_classification": "captcha_fingerprint_linkage_incomplete",
       "expected_result": "REJECTED",
       "safe_next_action": "rerun_local_fixture_with_linkage_evidence"
     },

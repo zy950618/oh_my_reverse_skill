@@ -18,7 +18,7 @@
   "local_server_started": true,
   "local_smoke_test": {
     "status": "PASS",
-    "command": "in-process ThreadingHTTPServer smoke via python -B -",
+    "command": "in-process ThreadingHTTPServer smoke via python3 -B -",
     "checks": [
       "health",
       "search",
@@ -44,7 +44,7 @@
   "simulated_failures": [
     "JS sign",
     "token lifecycle",
-    "captcha_required",
+    "challenge_required",
     "fingerprint_challenge",
     "expired token",
     "invalid sign",
@@ -69,8 +69,8 @@
     ]
   },
   "required_validation": [
-    "python public-range-evidence/airline-lab-order-flow/replay/replay.py",
-    "python tools/validate_browser_context_isolation.py",
+    "python3 public-range-evidence/airline-lab-order-flow/replay/replay.py",
+    "python3 tools/validate_browser_context_isolation.py",
     "future smoke test against localhost mock server"
   ]
 }

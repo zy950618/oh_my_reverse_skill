@@ -28,7 +28,7 @@ SUFFIXES = {".tmp", ".bak", ".old", ".orig", ".log"}
 
 
 def is_candidate(path: Path) -> bool:
-    if ".git" in path.parts:
+    if any(part in {".git", ".agent-control", ".claude", ".ci-out", ".ci-out-review", ".venv", "venv", "env", "node_modules"} for part in path.parts):
         return False
     if "_archive" in {part.lower() for part in path.parts}:
         return False
