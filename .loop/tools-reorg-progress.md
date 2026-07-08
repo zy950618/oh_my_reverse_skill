@@ -3,13 +3,13 @@
 ## Current state
 - task: tools-reorg-low-loop
 - base_branch: test
-- current_loop: loop-00-ledger-inventory
-- current_branch: loop/tools-00-ledger-inventory
+- current_loop: loop-01-governance-validators
+- current_branch: loop/tools-01-governance-validators
 - status: in_progress
-- next_action: validate Loop 00 ledger files, commit, merge back to test, then start Loop 01.
+- next_action: run Loop 01 validation, review diff, commit, merge back to test, then start Loop 02.
 
 ## Completed loops
-- none
+- loop-00-ledger-inventory
 
 ## Tool classification
 

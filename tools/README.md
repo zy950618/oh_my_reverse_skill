@@ -1,5 +1,16 @@
 # tools/ — 仓库辅助脚本
 
+## Layout
+
+`tools/` 顶层保留常用命令的稳定 wrapper，真实实现逐步按职责分到子目录：
+
+- `tools/governance/`：评分、CI gate、drift history、eval scaffold。
+- `tools/validators/`：仓库结构、链接、routing、loop、frontmatter 验证。
+- `tools/recorder/`：录制和 HAR 转 fixtures。
+- `tools/replayer/`：fixtures schema、replay、diff、consistency report。
+
+下面示例优先使用顶层 wrapper，兼容旧文档、CI 和 hook；需要查看实现时进入对应子目录。
+
 ## sync_site_memory.py
 
 把项目 memory 中的 `type: project` / `type: feedback` 条目同步到 `站点经验库/<domain>/` 的 7 个标准文件。
