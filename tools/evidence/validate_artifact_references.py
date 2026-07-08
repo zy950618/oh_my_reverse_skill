@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from __future__ import annotations
 
 import json
@@ -124,7 +125,7 @@ def is_classified_by_location(path: Path) -> tuple[bool, str]:
             return True, "classified_by_observation_pack_template"
     if "docker" in parts and path.name == "headless-readiness.md":
         return True, "classified_by_docker_readiness_note"
-    if path.suffix.lower() == ".py" and path.parent.name in {"tools", "tests", "inference", "eval"}:
+    if path.suffix.lower() == ".py" and ("tools" in parts or path.parent.name in {"tests", "inference", "eval"}):
         return True, "executable_validation_command"
     return False, ""
 

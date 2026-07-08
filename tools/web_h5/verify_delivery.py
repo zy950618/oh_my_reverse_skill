@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """verify_delivery.py: 完成度 6 维自验工具
 
 声明"完成"前 Claude 主动跑。规则源 99-SKILLS治理/08-完成度自评.md。
@@ -20,8 +21,9 @@ os.environ["PYTHONDONTWRITEBYTECODE"] = "1"
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 TOOLS_DIR = SCRIPT_DIR.parent
-if str(TOOLS_DIR) not in sys.path:
-    sys.path.insert(0, str(TOOLS_DIR))
+GOVERNANCE_TOOLS_DIR = TOOLS_DIR / "governance"
+if str(GOVERNANCE_TOOLS_DIR) not in sys.path:
+    sys.path.insert(0, str(GOVERNANCE_TOOLS_DIR))
 
 from skill_score_config import load_skill_score_config
 

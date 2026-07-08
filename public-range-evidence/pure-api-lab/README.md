@@ -5,5 +5,5 @@ This lab is a self-owned structural acceptance range for browserless API deliver
 ## Required Gate
 
 ```bash
-python3 tools/validate_pure_api_delivery.py public-range-evidence/pure-api-lab
+python3 tools/evidence/validate_pure_api_delivery.py public-range-evidence/pure-api-lab
 ```

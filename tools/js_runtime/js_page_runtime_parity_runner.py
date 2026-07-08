@@ -224,7 +224,7 @@ def main() -> int:
             "screenshot_paths": [str(screenshot)],
             "network_summary_paths": [str(network_path)],
             "browser_trace_path": str(trace_path),
-            "generated_by": "tools/js_page_runtime_parity_runner.py",
+            "generated_by": "tools/js_runtime/js_page_runtime_parity_runner.py",
             "synthetic": False,
         },
         "js_runtime_parity": report,

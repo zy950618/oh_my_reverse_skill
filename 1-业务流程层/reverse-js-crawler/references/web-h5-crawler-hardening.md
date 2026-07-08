@@ -125,7 +125,7 @@ If webpage UI, API response, replay, or schema diff disagree, the result is
 
 ### 8. Fixture Freshness Governance Gate
 
-Use `tools/fixture_freshness_report.py` and strict fixture review before using
+Use `tools/web_h5/fixture_freshness_report.py` and strict fixture review before using
 fixtures as current evidence.
 
 Freshness requires:
@@ -164,9 +164,9 @@ worker ladder with session isolation and backend acceptance.
 - Use `tools/recorder/*` to turn fresh captures into fixtures.
 - Use `tools/replayer/validate_fixtures.py` before treating fixtures as evidence.
 - Use `tools/replayer/snapshot_replay.py`, `snapshot_diff.py`, `schema_alert.py`, and `consistency_report.py` for replay and drift.
-- Use `tools/web_h5_acceptance_report.py` to generate and validate the crawler acceptance report.
-- Use `tools/fixture_freshness_report.py` to expose expired/review-needed fixtures.
-- Use `tools/validate_web_h5_crawler_gate.py` to check that the skill package still contains this hardening structure.
+- Use `tools/web_h5/web_h5_acceptance_report.py` to generate and validate the crawler acceptance report.
+- Use `tools/web_h5/fixture_freshness_report.py` to expose expired/review-needed fixtures.
+- Use `tools/web_h5/validate_web_h5_crawler_gate.py` to check that the skill package still contains this hardening structure.
 
 ## Not Allowed
 

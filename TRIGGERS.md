@@ -43,7 +43,7 @@
 | HAR 导入 / 抓包导入 fixtures | HAR import / DevTools to fixtures | `tools/recorder/har_to_fixtures.py` | Chrome DevTools 导出的 HAR → snapshots 三件套 |
 | CloakBrowser 录制 / 反指纹浏览器录制 | CloakBrowser record / cloak record | `tools/recorder/cloak_recorder.py` | 启动带反指纹的 Chromium 录请求 |
 | 验证 fixtures 合规 / fixtures schema 检查 | validate fixtures schema | `tools/replayer/validate_fixtures.py` | 检查三件套齐 / category 合法 / expiry 未过 |
-| 真实 Loop / 并发验收 / 风控证据 / fixtures 新鲜度 / 结果量化 | loop runner / acceptance report / fixture freshness / real execution gate | `tools/web_h5/web_h5_loop_runner.py` + `tools/web_h5/web_h5_acceptance_report.py` + `tools/web_h5/fixture_freshness_report.py` + `tools/web_h5/validate_web_h5_real_execution_gate.py`（顶层 `tools/*.py` wrapper 兼容旧入口） | 建立执行账本、并发/风控/UI一致性验收、暴露 expired/review-needed 并沉淀 metrics |
+| 真实 Loop / 并发验收 / 风控证据 / fixtures 新鲜度 / 结果量化 | loop runner / acceptance report / fixture freshness / real execution gate | `tools/web_h5/web_h5_loop_runner.py` + `tools/web_h5/web_h5_acceptance_report.py` + `tools/web_h5/fixture_freshness_report.py` + `tools/web_h5/validate_web_h5_real_execution_gate.py` | 建立执行账本、并发/风控/UI一致性验收、暴露 expired/review-needed 并沉淀 metrics |
 
 ---
 

@@ -70,7 +70,7 @@
   },
   "required_validation": [
     "python3 public-range-evidence/airline-lab-order-flow/replay/replay.py",
-    "python3 tools/validate_browser_context_isolation.py",
+    "python3 tools/fingerprint/validate_browser_context_isolation.py",
     "future smoke test against localhost mock server"
   ]
 }

@@ -52,7 +52,7 @@ This skill is an `external_entry` for bounded route or stage work. It may use br
    - 每轮复测必须清空 cookie/storage/cache/service worker 或创建新的 browser context，并记录 `state_reset`。
    - 涉及批量或并发时必须先跑 1 worker 基线，再跑 2/5/10 worker 并发阶梯；每阶记录 session/cache 隔离、失败率、403/429/503、P95 和停止条件。
    - 不允许共享 cookie jar、localStorage/sessionStorage、token cache 或账号态，除非有当前 run 的后端接受证据证明可复用。
-   - 用 `tools/web_h5_acceptance_report.py` 生成并验证 acceptance report；没有 report 不声明批量、并发或稳定。
+   - 用 `tools/web_h5/web_h5_acceptance_report.py` 生成并验证 acceptance report；没有 report 不声明批量、并发或稳定。
    - 风控处理只允许授权范围内的隔离、退避、jitter、session retirement、kill switch、fresh replay 和人工复核；不写突破、指纹伪造或 clearance-cookie 复用。
    - 数据验收必须做 UI/API parity：网页可见字段对 API JSON Pointer，fixtures freshness 通过后才能声明当前网页一致。
 
@@ -84,7 +84,7 @@ This skill is an `external_entry` for bounded route or stage work. It may use br
 - **输出结论、扩范围或做并发前 Read `~/.claude/skills/oh_my_reverse_skill/99-SKILLS治理/11-AI事实证据规约.md` / `12-反泛化与任务收敛规约.md` / `13-并发指纹与会话隔离规约.md`**。
 - **改端点/字段/状态/保护/实现/eval 前后 Read `14-知识图谱行程与关联规约.md` / `15-AI变更风险与回归校验规约.md`,并更新 knowledge-graph.md / impact-regression.md**。
 - **涉及抓包、清空 cookies、多轮复测、旧/新 HAR、scriptId、browser profile、并发或 session/cache 时 Read `16-实战复测与证据新鲜度规约.md` 和 `references/web-h5-crawler-hardening.md`**。
-- **涉及并发验收、风控证据、网页一致性、acceptance report 或 metrics 时 Read `references/crawler-acceptance-pack.md`,并跑 `tools/web_h5_acceptance_report.py`**。
+- **涉及并发验收、风控证据、网页一致性、acceptance report 或 metrics 时 Read `references/crawler-acceptance-pack.md`,并跑 `tools/web_h5/web_h5_acceptance_report.py`**。
 - 使用 `js_reverse` MCP 做页面打开、网络拦截、Hook、运行时变量、调用栈、Cookie/storage 观察。
 - 使用仓库搜索和静态分析定位脚本入口。
 - **进入加密还原阶段前，按需主动 Read 子 skill 的 SKILL.md 把上下文装进来再做**：

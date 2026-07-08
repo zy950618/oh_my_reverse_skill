@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """重放 fixtures/snapshots/*.req.json 到本方接口 (adapter),落 actual。
 
 用法:

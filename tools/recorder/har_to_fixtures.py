@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """HAR → fixtures/snapshots/
 
 读 Chrome/Edge/Firefox DevTools 导出的 HAR 文件,按 URL/method 拆成

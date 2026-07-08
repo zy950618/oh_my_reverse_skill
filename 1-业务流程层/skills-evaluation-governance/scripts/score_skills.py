@@ -11,8 +11,9 @@ if hasattr(sys.stdout, "reconfigure"):
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent.parent
 TOOLS_ROOT = REPO_ROOT / "tools"
-if str(TOOLS_ROOT) not in sys.path:
-    sys.path.insert(0, str(TOOLS_ROOT))
+GOVERNANCE_TOOLS_ROOT = TOOLS_ROOT / "governance"
+if str(GOVERNANCE_TOOLS_ROOT) not in sys.path:
+    sys.path.insert(0, str(GOVERNANCE_TOOLS_ROOT))
 from skill_score_config import load_skill_score_config
 
 SCORE_CONFIG = load_skill_score_config(REPO_ROOT)

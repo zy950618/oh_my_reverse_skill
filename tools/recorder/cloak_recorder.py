@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """CloakBrowser 启动 + record_har_path 自动录 HAR(含完整 body)→ HAR 文件。
 
 修复了 v0.3.6 的 bug: page.on('response') 同步回调拿不到 body。

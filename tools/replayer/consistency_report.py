@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """聚合一个 domain 下所有 snapshot 的 diff 结果,出 markdown 报告 + 更新 trend.json。
 
 依赖 snapshot_diff.py。

@@ -7,8 +7,8 @@ decides routing semantics; low-scoring active skills must be improved or removed
 from active scoring rather than hidden behind weaker per-layer thresholds.
 
 用法:
-  python3 tools/ci_gate.py .ci-out
-  python3 tools/ci_gate.py .ci-out --release
+  python3 tools/governance/ci_gate.py .ci-out
+  python3 tools/governance/ci_gate.py .ci-out --release
 """
 
 import argparse
@@ -21,9 +21,9 @@ from pathlib import Path
 sys.dont_write_bytecode = True
 os.environ["PYTHONDONTWRITEBYTECODE"] = "1"
 
-TOOLS_DIR = Path(__file__).resolve().parent.parent
-if str(TOOLS_DIR) not in sys.path:
-    sys.path.insert(0, str(TOOLS_DIR))
+GOVERNANCE_TOOLS_DIR = Path(__file__).resolve().parent
+if str(GOVERNANCE_TOOLS_DIR) not in sys.path:
+    sys.path.insert(0, str(GOVERNANCE_TOOLS_DIR))
 
 from skill_score_config import load_skill_score_config
 
@@ -52,7 +52,7 @@ def structure_total(skill: dict, data: dict, threshold: int, release: bool) -> t
 
 def run_web_h5_crawler_gate(out_dir: Path) -> tuple[bool, str]:
     repo_root = out_dir.resolve().parent
-    script = repo_root / "tools" / "validate_web_h5_crawler_gate.py"
+    script = repo_root / "tools" / "web_h5" / "validate_web_h5_crawler_gate.py"
     if not script.is_file():
         return False, f"ERROR: 缺少 Web/H5 crawler gate 脚本: {script}"
 
@@ -68,7 +68,7 @@ def run_web_h5_crawler_gate(out_dir: Path) -> tuple[bool, str]:
 
 def run_web_h5_loop_gate(out_dir: Path) -> tuple[bool, str]:
     repo_root = out_dir.resolve().parent
-    script = repo_root / "tools" / "validate_web_h5_loop_gate.py"
+    script = repo_root / "tools" / "web_h5" / "validate_web_h5_loop_gate.py"
     if not script.is_file():
         return False, f"ERROR: 缺少 Web/H5 loop gate 脚本: {script}"
 
@@ -84,7 +84,7 @@ def run_web_h5_loop_gate(out_dir: Path) -> tuple[bool, str]:
 
 def run_web_h5_real_execution_gate(out_dir: Path) -> tuple[bool, str]:
     repo_root = out_dir.resolve().parent
-    script = repo_root / "tools" / "validate_web_h5_real_execution_gate.py"
+    script = repo_root / "tools" / "web_h5" / "validate_web_h5_real_execution_gate.py"
     if not script.is_file():
         return False, f"ERROR: 缺少 Web/H5 real execution gate 脚本: {script}"
 
@@ -100,7 +100,7 @@ def run_web_h5_real_execution_gate(out_dir: Path) -> tuple[bool, str]:
 
 def run_public_range_evidence_gate(out_dir: Path) -> tuple[bool, str]:
     repo_root = out_dir.resolve().parent
-    script = repo_root / "tools" / "validate_public_range_evidence.py"
+    script = repo_root / "tools" / "evidence" / "validate_public_range_evidence.py"
     if not script.is_file():
         return False, f"ERROR: missing public range evidence gate script: {script}"
 
@@ -116,7 +116,7 @@ def run_public_range_evidence_gate(out_dir: Path) -> tuple[bool, str]:
 
 def run_real_execution_proof_gate(out_dir: Path) -> tuple[bool, str]:
     repo_root = out_dir.resolve().parent
-    script = repo_root / "tools" / "validate_real_execution_proof.py"
+    script = repo_root / "tools" / "evidence" / "validate_real_execution_proof.py"
     if not script.is_file():
         return False, f"ERROR: missing real execution proof gate script: {script}"
 
@@ -132,7 +132,7 @@ def run_real_execution_proof_gate(out_dir: Path) -> tuple[bool, str]:
 
 def run_business_data_gate(out_dir: Path) -> tuple[bool, str]:
     repo_root = out_dir.resolve().parent
-    script = repo_root / "tools" / "validate_business_data_assertions.py"
+    script = repo_root / "tools" / "evidence" / "validate_business_data_assertions.py"
     if not script.is_file():
         return False, f"ERROR: missing business data assertion gate script: {script}"
 
@@ -148,7 +148,7 @@ def run_business_data_gate(out_dir: Path) -> tuple[bool, str]:
 
 def run_scope_contract_gate(out_dir: Path) -> tuple[bool, str]:
     repo_root = out_dir.resolve().parent
-    script = repo_root / "tools" / "validate_scope_contract.py"
+    script = repo_root / "tools" / "evidence" / "validate_scope_contract.py"
     config = repo_root / "configs" / "range_scope_contract.yaml"
     if not script.is_file():
         return False, f"ERROR: missing scope contract gate script: {script}"
@@ -182,15 +182,15 @@ def run_repo_command(out_dir: Path, command: list[str]) -> tuple[bool, str]:
 
 def run_second_loop_release_gates(out_dir: Path) -> tuple[bool, str]:
     checks = [
-        ("pure_api_lab", ["tools/validate_pure_api_delivery.py", "public-range-evidence/pure-api-lab"]),
-        ("airline_pure_api_lab", ["tools/validate_pure_api_delivery.py", "public-range-evidence/airline-lab-order-flow"]),
-        ("fingerprint_surface_lab", ["tools/validate_fingerprint_surface_lab.py"]),
-        ("block_reason_lab", ["tools/validate_block_reason_lab.py"]),
-        ("browser_context_isolation", ["tools/validate_browser_context_isolation.py"]),
-        ("real_site_observation_pack", ["tools/validate_real_site_observation_pack.py", "public-range-evidence/real-site-observation-pack"]),
+        ("pure_api_lab", ["tools/evidence/validate_pure_api_delivery.py", "public-range-evidence/pure-api-lab"]),
+        ("airline_pure_api_lab", ["tools/evidence/validate_pure_api_delivery.py", "public-range-evidence/airline-lab-order-flow"]),
+        ("fingerprint_surface_lab", ["tools/fingerprint/validate_fingerprint_surface_lab.py"]),
+        ("block_reason_lab", ["tools/fingerprint/validate_block_reason_lab.py"]),
+        ("browser_context_isolation", ["tools/fingerprint/validate_browser_context_isolation.py"]),
+        ("real_site_observation_pack", ["tools/evidence/validate_real_site_observation_pack.py", "public-range-evidence/real-site-observation-pack"]),
         ("airline_replay", ["public-range-evidence/airline-lab-order-flow/replay/replay.py"]),
         ("airline_deep_validation", ["public-range-evidence/airline-lab-order-flow/tests/run_order_flow_tests.py"]),
-        ("cleanup_check", ["tools/cleanup_workspace.py", "--check"]),
+        ("cleanup_check", ["tools/lifecycle/cleanup_workspace.py", "--check"]),
     ]
     failures: list[str] = []
     lines: list[str] = []
@@ -221,7 +221,7 @@ def parse_gate_json(output: str) -> dict:
 
 def run_fixture_freshness_report(out_dir: Path, strict_fresh: bool = False) -> tuple[bool, str]:
     repo_root = out_dir.resolve().parent
-    script = repo_root / "tools" / "fixture_freshness_report.py"
+    script = repo_root / "tools" / "web_h5" / "fixture_freshness_report.py"
     if not script.is_file():
         return False, f"ERROR: 缺少 fixture freshness report 脚本: {script}"
 
@@ -461,7 +461,7 @@ def main():
         print(
             f"\nStructure Gate 通过: {len(passed)} 个 active skill 达标；"
             f"{len(advisory)} 个 advisory/experimental/excluded skill 已纳入报告但不计 active gate；"
-            f"release 前必须另跑 `python3 tools/ci_gate.py {out_dir} --release`"
+            f"release 前必须另跑 `python3 tools/governance/ci_gate.py {out_dir} --release`"
         )
     sys.exit(0)
 

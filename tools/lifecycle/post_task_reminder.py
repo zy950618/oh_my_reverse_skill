@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Stop hook: 任务结束时检测是否需要沉淀提醒。
 
 读 stdin 的 hook payload,扫 transcript 提取 domain。
@@ -375,7 +376,7 @@ def main() -> int:
                     rev_lines.append("    2) 写 `站点经验库/<domain>/known-failures.md` 失败模式")
                     rev_lines.append("    3) 写 `站点经验库/<domain>/test-log-lessons.md` 测试教训")
                     rev_lines.append("    4) 写 `站点经验库/<domain>/change-log.md` 变更记录")
-                    rev_lines.append("    5) 跑 `python3 tools/sync_site_memory.py --project <P> --domain <D> --apply`")
+                    rev_lines.append("    5) 跑 `python3 tools/site_memory/sync_site_memory.py --project <P> --domain <D> --apply`")
                     rev_lines.append("    6) 调用 `skills-evaluation-governance` 给本次用到的 skill 打分")
                     rev_lines.append("    7) 写 cleanup ledger,清理临时测试文件/历史输出/废代码/废注释")
                     rev_lines.append("    8) 涉及 sign/token/加密时写 `encryption-algorithm-graph.md`")

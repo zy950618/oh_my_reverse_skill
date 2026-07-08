@@ -82,10 +82,10 @@ def text_files(root: Path):
 def has_forbidden_residue(repo: Path) -> bool:
     for path in text_files(repo):
         if path.relative_to(repo).as_posix() in {
-            "tools/score_skills.py",
-            "tools/validate_structure.py",
-            "tools/validate_routing.py",
-            "tools/validate_real_execution_proof.py",
+            "tools/governance/score_skills.py",
+            "tools/validators/validate_structure.py",
+            "tools/validators/validate_routing.py",
+            "tools/evidence/validate_real_execution_proof.py",
         }:
             continue
         try:
@@ -99,10 +99,10 @@ def has_forbidden_residue(repo: Path) -> bool:
             continue
         rel = path.relative_to(repo).as_posix()
         if rel in {
-            "tools/score_skills.py",
-            "tools/validate_structure.py",
-            "tools/validate_routing.py",
-            "tools/validate_real_execution_proof.py",
+            "tools/governance/score_skills.py",
+            "tools/validators/validate_structure.py",
+            "tools/validators/validate_routing.py",
+            "tools/evidence/validate_real_execution_proof.py",
         }:
             continue
         if FORBIDDEN_RE.search(rel):
@@ -118,11 +118,11 @@ def command_ok(repo: Path, command: list[str]) -> bool:
 def strict_score(repo: Path, skill_count: int, release_ok: bool) -> tuple[int, dict[str, int], list[str]]:
     notes: list[str] = []
     no_residue = not has_forbidden_residue(repo)
-    structure_ok = command_ok(repo, ["tools/validate_structure.py"])
-    links_ok = command_ok(repo, ["tools/validate_links.py"])
-    routing_ok = command_ok(repo, ["tools/validate_routing.py"])
-    loop_ok = command_ok(repo, ["tools/validate_loop.py"])
-    evidence_ok = command_ok(repo, ["tools/validate_evidence_policy.py"])
+    structure_ok = command_ok(repo, ["tools/validators/validate_structure.py"])
+    links_ok = command_ok(repo, ["tools/validators/validate_links.py"])
+    routing_ok = command_ok(repo, ["tools/validators/validate_routing.py"])
+    loop_ok = command_ok(repo, ["tools/validators/validate_loop.py"])
+    evidence_ok = command_ok(repo, ["tools/evidence/validate_evidence_policy.py"])
 
     components = {
         "structure": 15 if structure_ok and links_ok and routing_ok and skill_count == 15 else 11,
@@ -179,7 +179,7 @@ def main() -> int:
     aggregate = round(sum(totals) / len(totals), 2) if totals else 0.0
     minimum = min(totals) if totals else 0
 
-    gate_cmd = [sys.executable, str(repo / "tools" / "ci_gate.py"), str(out_dir)]
+    gate_cmd = [sys.executable, str(repo / "tools" / "governance" / "ci_gate.py"), str(out_dir)]
     if args.release:
         gate_cmd.append("--release")
     gate = run(gate_cmd, repo)

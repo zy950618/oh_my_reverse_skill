@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """验证 fixtures schema / review 合规。
 
 检查项:

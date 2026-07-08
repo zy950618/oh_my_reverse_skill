@@ -22,7 +22,7 @@ Deliver a pure API workflow for an authorized site path after endpoints, state, 
 
 ## Command Examples
 ```powershell
-python3 tools/web_h5_acceptance_report.py --evidence <evidence_dir> --out <report>
+python3 tools/web_h5/web_h5_acceptance_report.py --evidence <evidence_dir> --out <report>
 ```
 
 ## Failure Modes

@@ -21,7 +21,7 @@ Collect page scripts and script metadata for an authorized Web/H5 target so late
 
 ## Command Examples
 ```powershell
-python3 tools/js_page_runtime_capture.py --url <url> --out <evidence_dir>
+python3 tools/js_runtime/js_page_runtime_capture.py --url <url> --out <evidence_dir>
 ```
 
 ## Failure Modes

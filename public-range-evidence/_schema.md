@@ -1,7 +1,7 @@
 # public-range-evidence schema
 
 Evidence files live at `public-range-evidence/<target_id>/<run_id>.json` and
-are validated by `tools/validate_public_range_evidence.py`.
+are validated by `tools/evidence/validate_public_range_evidence.py`.
 
 Minimum required structure:
 
@@ -105,7 +105,7 @@ Minimum required structure:
     }
   },
   "execution_proof": {
-    "command": "python3 tools/run_phase1_local_targets.py",
+    "command": "python3 tools/web_h5/real_website_handling_planner.py --url <target-url>",
     "cwd": "E:/SKILLS/oh_my_reverse_skill",
     "exit_code": 0,
     "started_at": "ISO-8601",

@@ -92,6 +92,6 @@ oh_my_reverse_skill/
 - 触发词和路由矩阵: [TRIGGERS.md](./TRIGGERS.md)
 - Skill 列表与职责: [00-SKILLS索引.md](./00-SKILLS索引.md)
 - Claude Code 执行流程和边界: [CLAUDE.md](./CLAUDE.md)
-- active Skill 数量来源: `python3 tools/score_skills.py --repo .`
+- active Skill 数量来源: `python3 tools/governance/score_skills.py --repo .`
 
 长链路逆向任务先按 `99-SKILLS治理/06-网页逆向标准规划.md` 输出规划；真实交付结论必须有证据、范围账本、回归记录和收尾清理。

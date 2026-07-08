@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """CloakBrowser 录制 jsonl → fixtures/snapshots/
 
 读 cloak_recorder.py 产出的 jsonl,按 url/method 配对 request+response,

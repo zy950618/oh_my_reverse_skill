@@ -1,6 +1,6 @@
 # oh_my_reverse_skill — AGENTS.md
 
-本仓库是 Web/H5 逆向工程 SKILLS 总库，active skill 数量以 `python3 tools/score_skills.py --repo .` 和 release score 输出为准。本文件是 OpenAI Codex CLI 的入口约定。
+本仓库是 Web/H5 逆向工程 SKILLS 总库，active skill 数量以 `python3 tools/governance/score_skills.py --repo .` 和 release score 输出为准。本文件是 OpenAI Codex CLI 的入口约定。
 
 ## 接到逆向任务时
 
@@ -20,7 +20,7 @@
 10. 遇运行时问题(断点/时间/cookie/TLS 指纹/风控/接口变更)Read `99-SKILLS治理/10-逆向运行时常见问题.md`
 11. 完成前 Read `99-SKILLS治理/17-交付收尾清理与加密算法图谱规约.md`,写 cleanup ledger 和加密算法细节图
 12. 涉及证据不足、验证失败、拒答边界、人工复核、监控、错误纠正或历史遗留时 Read `99-SKILLS治理/18-证据验证拒答人工复核与监控规约.md`
-13. 完成前跑 `python3 tools/verify_delivery.py --domain <domain>` 自验
+13. 完成前跑 `python3 tools/web_h5/verify_delivery.py --domain <domain>` 自验
 
 ## 强制约束
 

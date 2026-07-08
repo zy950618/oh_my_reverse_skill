@@ -240,7 +240,7 @@ def main() -> int:
             "screenshot_paths": [item["screenshot_path"] for item in captures if Path(item["screenshot_path"]).is_file()] or ([str(screenshot)] if screenshot.is_file() else []),
             "network_summary_paths": [str(network_path)],
             "browser_trace_path": str(trace_path) if trace_path.is_file() else "",
-            "generated_by": "tools/fingerprint_range_runner.py",
+            "generated_by": "tools/fingerprint/fingerprint_range_runner.py",
             "synthetic": False,
         },
         "scope_decision": {

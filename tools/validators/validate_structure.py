@@ -70,7 +70,7 @@ STALE_COUNT_PATTERNS = (
     "全部 " + "12",
     "23" + " 个 " + "active",
 )
-COUNT_AUTHORITY = "python3 tools/score_skills.py --repo ."
+COUNT_AUTHORITY = "python3 tools/governance/score_skills.py --repo ."
 # Intentional public-doc denylist for phase/report process terms.
 PUBLIC_DOC_PHASE_RE = re.compile(r"\bphase\s*\d|\bphase\d", re.IGNORECASE)
 # Intentional active skill-doc denylist for process-history blocks.

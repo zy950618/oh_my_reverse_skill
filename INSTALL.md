@@ -46,7 +46,7 @@ cd E:\SKILLS\oh_my_reverse_skill
 
 ### Step 2: 软链 active Skill 到 ~/.claude/skills/
 
-Claude Code 默认从 `~/.claude/skills/` 加载 Skill,本仓库分层放在子目录里,需要软链回去。active Skill 数量以 `python3 tools/score_skills.py --repo .` 和 release score 输出为准。
+Claude Code 默认从 `~/.claude/skills/` 加载 Skill,本仓库分层放在子目录里,需要软链回去。active Skill 数量以 `python3 tools/governance/score_skills.py --repo .` 和 release score 输出为准。
 
 #### Windows (PowerShell)
 
@@ -123,7 +123,7 @@ pip install pyyaml
         "hooks": [
           {
             "type": "command",
-            "command": "python3 \"E:/SKILLS/oh_my_reverse_skill/tools/post_task_reminder.py\""
+            "command": "python3 \"E:/SKILLS/oh_my_reverse_skill/tools/lifecycle/post_task_reminder.py\""
           }
         ]
       }
@@ -147,7 +147,7 @@ ls ~/.claude/skills/ | grep -E '(website-|reverse-js|imperva|authorized-target|w
 
 # 2. 跑评分(应该不报错)
 cd ~/SKILLS/oh_my_reverse_skill   # 或 E:\SKILLS\oh_my_reverse_skill
-python3 tools/score_skills.py --repo .
+python3 tools/governance/score_skills.py --repo .
 # 应该输出 JSON；active Skill 数量以评分工具输出为准
 
 # 3. 跑 fixtures 验证(空仓库,应该 PASS)
@@ -167,7 +167,7 @@ python3 tools/replayer/validate_fixtures.py
 
 # 2. 跑评分
 cd E:\SKILLS\oh_my_reverse_skill
-python3 tools/score_skills.py --repo .
+python3 tools/governance/score_skills.py --repo .
 
 # 3. 跑 fixtures 验证
 python3 tools\replayer\validate_fixtures.py
@@ -183,7 +183,7 @@ dir "%USERPROFILE%\.claude\skills" /B | find /C /V ""
 
 :: 2. 跑评分
 cd /d E:\SKILLS\oh_my_reverse_skill
-python3 tools/score_skills.py --repo .
+python3 tools/governance/score_skills.py --repo .
 
 :: 3. 跑 fixtures 验证
 python3 tools\replayer\validate_fixtures.py
@@ -291,9 +291,9 @@ A: `.github/workflows/skill-bench.yml` 和 `consistency-replay.yml` 默认配置
 
 装完跑一遍:
 
-- [ ] `ls ~/.claude/skills/` 能看到本仓库 active Skill 软链（数量以 `python3 tools/score_skills.py --repo .` / release score 输出为准）
+- [ ] `ls ~/.claude/skills/` 能看到本仓库 active Skill 软链（数量以 `python3 tools/governance/score_skills.py --repo .` / release score 输出为准）
 - [ ] `python3 --version` ≥ 3.11
-- [ ] `python3 tools/score_skills.py --repo .` 输出 JSON 不报错
+- [ ] `python3 tools/governance/score_skills.py --repo .` 输出 JSON 不报错
 - [ ] `python3 tools/replayer/validate_fixtures.py` 输出 `all good`
 - [ ] `cat .claude/settings.json` 有 Stop hook 配置
 - [ ] Claude Code 启动,仓库目录内输入 `/逆向` 能匹配到 Skill

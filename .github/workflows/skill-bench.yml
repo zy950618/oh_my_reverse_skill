@@ -16,8 +16,8 @@ on:
       - '逆向工程经验库/**'
       - 'public-range-evidence/**'
       - '.github/workflows/**'
-      - 'tools/ci_gate.py'
-      - 'tools/score_skills.py'
+      - 'tools/governance/ci_gate.py'
+      - 'tools/governance/score_skills.py'
       - 'tools/governance/**'
       - 'tools/validators/**'
       - 'tools/evidence/**'
@@ -59,7 +59,7 @@ jobs:
           done
 
       - name: CI gate (layer-aware thresholds)
-        run: python3 tools/ci_gate.py .ci-out
+        run: python3 tools/governance/ci_gate.py .ci-out
 
       - name: Upload score artifacts
         if: always()
@@ -104,7 +104,7 @@ jobs:
         run: |
           set -euo pipefail
           DATE=$(date -u +%Y-%m-%d)
-          python3 tools/append_drift_history.py .ci-out metrics/drift-history.md "$DATE"
+          python3 tools/governance/append_drift_history.py .ci-out metrics/drift-history.md "$DATE"
 
       - name: Upload drift snapshot artifact
         if: github.event_name == 'schedule'
