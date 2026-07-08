@@ -3,16 +3,17 @@
 ## Current state
 - task: tools-reorg-low-loop
 - base_branch: test
-- current_loop: loop-04-js-fingerprint
-- current_branch: loop/tools-04-js-fingerprint
+- current_loop: loop-05-memory-lifecycle
+- current_branch: loop/tools-05-memory-lifecycle
 - status: in_progress
-- next_action: run Loop 04 JS/fingerprint validation, commit, merge back to test, then start Loop 05.
+- next_action: run Loop 05 memory/lifecycle validation, commit, merge back to test, then start Loop 06.
 
 ## Completed loops
 - loop-00-ledger-inventory
 - loop-01-governance-validators
 - loop-02-evidence
 - loop-03-web-h5
+- loop-04-js-fingerprint
 
 ## Tool classification
 

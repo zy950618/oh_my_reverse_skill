@@ -6,7 +6,8 @@
 
 - `tools/governance/`：评分、CI gate、drift history、eval scaffold。
 - `tools/js_runtime/`：JS 页面 runtime、环境契约、diff、signature regression。
-- `tools/fingerprint/`：指纹 surface/risk lab、block reason、browser context isolation 验证。
+- `tools/site_memory/`：project memory 与站点经验库同步/回填。
+- `tools/lifecycle/`：Stop hook reminder、workspace cleanup。
 - `tools/recorder/`：录制和 HAR 转 fixtures。
 - `tools/replayer/`：fixtures schema、replay、diff、consistency report。
 
