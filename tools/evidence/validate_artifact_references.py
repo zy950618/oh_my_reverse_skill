@@ -9,6 +9,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 REPORT = ROOT / "99-SKILLS治理" / "43-artifact-reference-integrity-report.md"
+GENERATED_REPORTS = {
+    REPORT,
+    ROOT / "99-SKILLS治理" / "47-secret-and-live-evidence-scan.md",
+}
 SCOPES = [
     ROOT / "tool-contracts",
     ROOT / "public-range-evidence",
@@ -28,6 +32,8 @@ CLASSIFIED_ROOT_PARTS = {
     "sample_labels",
     "samples",
     "fixtures",
+    "metrics",
+    "replay",
     "reports",
 }
 SKIPPED_HEAVY_PARTS = {"raw", "_archive", "longrun"}
@@ -52,6 +58,8 @@ def iter_scope_files() -> list[Path]:
             if parts & IGNORED_PARTS:
                 continue
             if parts & SKIPPED_HEAVY_PARTS:
+                continue
+            if path.resolve() in {item.resolve() for item in GENERATED_REPORTS}:
                 continue
             if path.suffix.lower() in ARTIFACT_SUFFIXES:
                 files.append(path)
@@ -106,6 +114,16 @@ def is_classified_by_location(path: Path) -> tuple[bool, str]:
     parts = {part.lower() for part in path.relative_to(ROOT).parts}
     if parts & CLASSIFIED_ROOT_PARTS:
         return True, "classified_by_artifact_location"
+    if "airlines" in parts:
+        if path.name in {
+            "challenge_detection_template.json",
+            "fingerprint_observation_template.json",
+            "pure_api_feasibility_checklist.md",
+            "cleanup_policy.md",
+        }:
+            return True, "classified_by_observation_pack_template"
+    if "docker" in parts and path.name == "headless-readiness.md":
+        return True, "classified_by_docker_readiness_note"
     if path.suffix.lower() == ".py" and path.parent.name in {"tools", "tests", "inference", "eval"}:
         return True, "executable_validation_command"
     return False, ""
