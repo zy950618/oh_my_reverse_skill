@@ -3,10 +3,10 @@
 ## Current state
 - task: tools-reorg-low-loop
 - base_branch: test
-- current_loop: loop-06-reference-sweep
-- current_branch: loop/tools-06-reference-sweep
+- current_loop: loop-07-delete-obsolete
+- current_branch: loop/tools-07-delete-obsolete
 - status: in_progress
-- next_action: run Loop 06 reference validation, commit, merge back to test, then start Loop 07.
+- next_action: run Loop 07 cleanup validation, commit, merge back to test, then start Loop 08.
 
 ## Completed loops
 - loop-00-ledger-inventory
@@ -15,6 +15,7 @@
 - loop-03-web-h5
 - loop-04-js-fingerprint
 - loop-05-memory-lifecycle
+- loop-06-reference-sweep
 
 ## Tool classification
 
