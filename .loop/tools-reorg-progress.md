@@ -3,13 +3,14 @@
 ## Current state
 - task: tools-reorg-low-loop
 - base_branch: test
-- current_loop: loop-01-governance-validators
-- current_branch: loop/tools-01-governance-validators
+- current_loop: loop-02-evidence
+- current_branch: loop/tools-02-evidence
 - status: in_progress
-- next_action: run Loop 01 validation, review diff, commit, merge back to test, then start Loop 02.
+- next_action: run Loop 02 evidence validation, commit, merge back to test, then start Loop 03.
 
 ## Completed loops
 - loop-00-ledger-inventory
+- loop-01-governance-validators
 
 ## Tool classification
 
