@@ -52,6 +52,9 @@ profiles/
 
 # Stop hook 校准数据(本地分析用,不入 git)
 tools/.reminder-stats.jsonl
+99-SKILLS治理/43-artifact-reference-integrity-report.md
+99-SKILLS治理/47-secret-and-live-evidence-scan.md
+99-SKILLS治理/49-large-artifact-scan.md
 
 # Claude Code 本地权限缓存
 .claude/settings.local.json
