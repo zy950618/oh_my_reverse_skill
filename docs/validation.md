@@ -1,6 +1,6 @@
 # Validation
 
-Current local gate set:
+Current local gate set uses stable top-level wrappers under `tools/`; implementations are grouped under `tools/governance/`, `tools/validators/`, and related subdirectories.
 
 ```bash
 python3 tools/validate_structure.py
