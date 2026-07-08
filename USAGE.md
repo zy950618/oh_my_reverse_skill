@@ -170,9 +170,9 @@ Example:
 
 Expected commands:
 
-- `python3 tools/js_page_runtime_parity_runner.py --run-id <run_id>`
-- `python3 tools/fingerprint_surface_capture.py --run-id <run_id>`
-- `python3 tools/fingerprint_profile_consistency_check.py --run-id <run_id>`
+- `python3 tools/js_runtime/js_page_runtime_parity_runner.py --run-id <run_id>`（兼容入口：`tools/js_page_runtime_parity_runner.py`）
+- `python3 tools/fingerprint/fingerprint_surface_capture.py --run-id <run_id>`（兼容入口：`tools/fingerprint_surface_capture.py`）
+- `python3 tools/fingerprint/fingerprint_profile_consistency_check.py --run-id <run_id>`（兼容入口：`tools/fingerprint_profile_consistency_check.py`）
 
 Boundary:
 
