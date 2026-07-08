@@ -5,7 +5,7 @@
 `tools/` 顶层保留常用命令的稳定 wrapper，真实实现逐步按职责分到子目录：
 
 - `tools/governance/`：评分、CI gate、drift history、eval scaffold。
-- `tools/evidence/`：证据、scope、public-range、business-data、large artifact、sensitive evidence 验证。
+- `tools/web_h5/`：Web/H5 loop runner、acceptance report、freshness、delivery gate。
 - `tools/recorder/`：录制和 HAR 转 fixtures。
 - `tools/replayer/`：fixtures schema、replay、diff、consistency report。
 
