@@ -114,6 +114,9 @@ local-runs/
 # 本地运行/评分/抓包产物(每轮可再生成,不上传 GitHub)
 metrics/
 
+# Local loop ledgers/task state; final repository state should not keep loop files.
+.loop/
+
 # Agent/control packages and local orchestration state; never commit.
 .agent-control/
 
