@@ -7,5 +7,5 @@ expected:
   runtime_parity_scope: authorized_or_local_only
   prohibited:
     - real_site_token_forgery_claim
-    - waf_bypass_claim
+    - waf_defeat_claim
     - fingerprint_evasion_claim

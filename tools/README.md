@@ -118,7 +118,7 @@ python3 tools/scaffold_evals.py --skill ... --force
 
 ## post_task_reminder.py / append_drift_history.py
 
-Stop hook 与 CI 周更 drift snapshot 的脚本。详见 `99-SKILLS治理/05-当前评分与回测结果.md` 的 v0.3.4 章节。
+Stop hook 与 CI 周更 drift snapshot 的脚本。当前评分口径见 `docs/scoring.md`。
 
 ---
 
@@ -306,7 +306,7 @@ python3 tools/web_h5_acceptance_report.py validate --report acceptance-report.js
 
 ## fixture_freshness_report.py
 
-输出 fixtures 的新鲜度和 review 状态,包括 expired_count、review_pending_count、recent_report 和 source_freshness。
+输出 fixtures 的新鲜度和 review 状态,包括 expired_count、review_needed_count、recent_report 和 source_freshness。
 
 ### 用法
 

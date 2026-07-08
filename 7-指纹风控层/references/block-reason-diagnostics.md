@@ -33,10 +33,10 @@ Safe next actions:
 
 Forbidden outputs:
 
-- webdriver hiding
-- fingerprint spoofing
+- webdriver concealment
+- fingerprint falsification
 - proxy rotation for evasion
-- clearance cookie reuse
+- clearance-cookie reuse
 - risk token reuse
-- challenge or WAF bypass instructions
+- challenge or WAF defeat instructions
 

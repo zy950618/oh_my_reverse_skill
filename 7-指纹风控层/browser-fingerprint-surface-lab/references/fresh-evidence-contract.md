@@ -24,4 +24,4 @@ Define the minimum evidence for active-ready fingerprint surface diagnostics.
 
 ## Boundary
 
-This contract supports diagnostics only. It does not support stealth, spoofing, proxy evasion, WAF bypass, challenge bypass, or clearance reuse.
+This contract supports diagnostics only. It does not support concealment, falsification, proxy avoidance, WAF defeat, challenge defeat, or clearance-cookie recycling.

@@ -1,0 +1,5 @@
+prompt: A code change ships without a runnable check.
+expected:
+  - require smallest verification
+  - avoid broad test scaffolding
+  - record assumptions

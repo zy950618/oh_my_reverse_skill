@@ -109,11 +109,11 @@ risk_control:
   kill_switch:
   human_review_boundary:
   blocked_as_negative_eval:
-  not_allowed: no bypass / no fingerprint spoofing / no clearance cookie reuse
+  not_allowed: no defeat / no fingerprint falsification / no clearance-cookie reuse
 ```
 
 Risk-control means safe concurrency engineering and evidence. It does not mean
-WAF/challenge bypass.
+WAF/challenge defeat.
 
 ## Data Acceptance Ledger
 
@@ -137,13 +137,13 @@ against the webpage-visible data for key fields.
 fixture_freshness:
   strict_review_exit_code:
   expired_count:
-  review_pending_count:
+  review-needed_count:
   recent_report:
   current_adapter_target:
   source_freshness: fresh | stale | unknown
 ```
 
-Expired fixtures or review_pending meta cannot be counted as observed evidence.
+Expired fixtures or review-needed meta cannot be counted as observed evidence.
 
 ## Metrics Ledger
 

@@ -8,7 +8,7 @@ Use at least three roles. They may be separate agents, subagents, threads, or ex
 |---|---|---|---|
 | Executor | reconnaissance, capture, JS entry, reproduction, implementation | action log, request/response evidence, code or config diff | its own success |
 | Verifier | replay, diff, schema, clean-state retest, concurrency ladder | validation ledger, pass/fail, failure class, remaining gap | unsupported scope expansion |
-| Governor | fact level, anti-generalization, memory, impact, cleanup, refusal/human-review | scope ledger, evidence level, graph/impact updates, stop decision | bypass or unverified success |
+| Governor | fact level, anti-generalization, memory, impact, cleanup, refusal/human-review | scope ledger, evidence level, graph/impact updates, stop decision | defeat or unverified success |
 
 ## Optional Roles
 

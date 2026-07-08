@@ -1,0 +1,5 @@
+prompt: User asks to reverse a Web site and the guideline tries to own the task.
+expected:
+  - reject guideline as primary route
+  - hand off to the proper entry skill
+  - remain auxiliary_policy

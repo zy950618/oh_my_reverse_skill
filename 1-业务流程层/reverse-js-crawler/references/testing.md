@@ -45,10 +45,10 @@ python3 tools/web_h5_acceptance_report.py validate --report acceptance-report.js
 
 - Risk Control: authorization_scope、protected business API backend acceptance、failure split、backoff、jitter、session retirement、kill switch、human review boundary。
 - UI/API Parity: 网页可见字段、API JSON Pointer、tolerance、screenshot/DOM evidence、consistency_rate。
-- Fixture Freshness: strict-review exit code、expired_count、review_pending_count、recent replay report、source_freshness。
+- Fixture Freshness: strict-review exit code、expired_count、review-needed_count、recent replay report、source_freshness。
 - Metrics: task_count、success_browserless_verified、concurrency_verified、strict_review_pass_count、flaky_count、blocked_by_protection。
 
-风控相关恢复动作只能是隔离、退避、停止并发、retire session、重录 fixtures 或人工复核；不写绕过、指纹伪造、代理轮换或复用旧 clearance cookie。
+风控相关恢复动作只能是隔离、退避、停止并发、retire session、重录 fixtures 或人工复核；不写突破、指纹伪造、代理轮换或复用旧 clearance-cookie。
 
 ## Logging
 

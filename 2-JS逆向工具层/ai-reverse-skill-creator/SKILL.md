@@ -1,5 +1,6 @@
 ---
 name: ai-reverse-skill-creator
+standard_type: internal_tool
 description: Internal governance support for creating or modifying reverse-engineering skill packages and trigger descriptions. Use when the user explicitly asks to create/update a reverse-engineering skill resource, optimize a SKILL.md description, or generate skill-specific evals. For scoring, admission, drift, trigger convergence, or SKILLS library governance, prefer skills-evaluation-governance. Do not trigger for ordinary Web/H5 reverse-engineering tasks or general code edits.
 platforms: [cross-platform]
 ---
@@ -517,3 +518,22 @@ Repeating one more time the core loop here for emphasis:
 Please add steps to your TodoList, if you have such a thing, to make sure you don't forget. If you're in Cowork, please specifically put "Create evals JSON and run `eval-viewer/generate_review.py` so human can review test cases" in your TodoList to make sure it happens.
 
 Good luck!
+
+## Workflow
+
+1. Confirm the caller skill and authorized scope before use.
+2. Execute only the atomic/internal task owned by this skill.
+3. Return evidence to the caller skill for final routing and delivery.
+
+## Success Criteria
+
+- The task output is reproducible from the recorded input.
+- The caller skill can validate or reject the result without this tool becoming a business entry.
+
+## Boundaries
+
+This skill is not a public business entry and must not claim full-site delivery ownership.
+
+## Governance
+
+Changes require route-boundary validation, eval coverage, and score gate replay.

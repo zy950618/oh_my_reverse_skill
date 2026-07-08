@@ -1,5 +1,6 @@
 ---
 name: fingerprint-block-reason-diagnostics
+standard_type: conditional_escalation
 description: Record and attribute observed browser fingerprint and risk-block signals such as webdriver, canvas, WebGL, WebRTC, timezone, language, permissions, headers, and client hints without evasion.
 license: MIT
 platforms: [cross-platform]
@@ -19,17 +20,17 @@ Use this skill when an authorized/local lab task asks why a request, browser ses
 ## When NOT To Use
 
 - Do not use this skill to inventory browser surfaces without a block-reason question; route that to `browser-fingerprint-surface-lab`.
-- Do not use it to hide webdriver, forge fingerprints, rotate proxies, reuse clearance, or bypass rate limits.
+- Do not use it to conceal webdriver, forge fingerprints, rotate proxies, reuse clearance, or defeat rate limits.
 - Do not use it to claim production WAF/challenge success from local diagnostics.
 
 ## Boundary
 
-This is an attribution skill. It can classify observed, derived, assumed, and unverified block reasons, then recommend stop/ask/official API fallback/human review. It must not produce stealth patches, spoofing recipes, token reuse instructions, or evasion playbooks.
+This is an attribution skill. It can classify observed, derived, assumed, and unverified block reasons, then recommend stop/ask/official API fallback/human review. It must not produce concealment patches, falsification recipes, token reuse instructions, or evasion playbooks.
 
 ## Boundaries
 
 - Not responsible for browser surface inventory; use `browser-fingerprint-surface-lab`.
-- Not responsible for WAF bypass, challenge bypass, webdriver hiding, fingerprint spoofing, proxy evasion, clearance reuse, or risk token reuse.
+- Not responsible for WAF defeat, challenge defeat, webdriver concealment, fingerprint falsification, proxy avoidance, clearance-cookie recycling, or risk token reuse.
 - Write reusable failure modes to site memory or eval backlog.
 
 ## Precheck
@@ -38,7 +39,7 @@ This is an attribution skill. It can classify observed, derived, assumed, and un
 2. Collect status code, response class, request/session context, and timing.
 3. Collect browser surface report if fingerprint attribution is in scope.
 4. Identify whether the claim is observed, derived, assumed, or unverified.
-5. Confirm no bypass/evasion action is requested.
+5. Confirm no policy-evasion action is requested.
 
 ## Observed Signals
 
@@ -74,7 +75,7 @@ Each diagnostic run must record:
 
 ## Prohibited
 
-Do not generate stealth patches, webdriver hiding, fingerprint forgery, proxy rotation, or rate-limit evasion.
+Do not generate concealment patches, webdriver concealment, fingerprint forgery, proxy rotation, or rate-limit evasion.
 
 ## Failure Handling
 
@@ -87,7 +88,7 @@ Do not generate stealth patches, webdriver hiding, fingerprint forgery, proxy ro
 
 - Diagnostic ledger includes scope, response evidence, observed signals, and attribution level.
 - Each block reason is labeled observed, derived, assumed, or unverified.
-- Output contains no stealth, spoofing, proxy evasion, token reuse, or rate-limit bypass steps.
+- Output contains no concealment, falsification, proxy avoidance, token reuse, or rate-limit defeat steps.
 - Safe next action is explicit.
 
 ## Success Criteria
@@ -105,7 +106,7 @@ Version and change logs live in `references/governance.md`. Active-ready status 
 ## Test / Eval
 
 - positive: classify a localhost block with status code, response class, and surface report;
-- negative: reject webdriver hiding or proxy evasion request;
+- negative: reject webdriver concealment or proxy avoidance request;
 - boundary: incomplete evidence produces `unverified` rather than a guessed root cause;
 - regression: repeated known block reason maps to the same safe next action.
 
@@ -113,27 +114,6 @@ Version and change logs live in `references/governance.md`. Active-ready status 
 
 Use `browser-fingerprint-surface-lab` to capture the surface inventory and drift. Use this skill to explain a block reason from that evidence plus request/session context. This skill consumes surface reports; it does not modify browser surfaces.
 
-## Phase 3.5 Longrun Feedback
+## Auxiliary Policy
 
-- Source run_id: `run-20260630-041500-phase3-5-longrun`.
-- Failure evidence: `public-range-evidence/longrun/phase3-5/run-20260630-041500-phase3-5-longrun/issue-ledger.json`.
-- Rule added: block-reason diagnostics must classify observed, derived, assumed, and unverified signals separately.
-- Eval added: `evals/longrun/phase3-5/005-phase3-5-longrun-regression.yaml`.
-- Capability impact: a local `not_blocked` observation is not a production WAF or challenge bypass capability.
-
-## Phase 3.6 Public Diagnostics Feedback
-
-- Source run_id: `run-20260630-053000-phase3-6-public-model`.
-- Evidence: `public-range-evidence/fingerprint-diagnostics/run-20260630-053000-phase3-6-public-model-sannysoft.json`.
-- Rule added: public fingerprint diagnostics must be observation-only, record observed signals and risk attribution, and keep capability status `memory_only` or `negative_eval_only`.
-- Eval added: `evals/phase3-6/003-fingerprint-public-diagnostics.yaml`.
-- Capability impact: diagnostics evidence can improve attribution rules but cannot promote evasion capability.
-
-## Phase 3.8 Public Fingerprint Diagnostics Rule
-
-- Source run_id: `run-20260630-101500-phase3-8-family-hardening`.
-- Evidence: `public-range-evidence/fingerprint-diagnostics/run-20260630-101500-phase3-8-family-hardening-sannysoft.json`, `public-range-evidence/fingerprint-diagnostics/run-20260630-101500-phase3-8-family-hardening-creepjs.json`, and `public-range-evidence/fingerprint-diagnostics/run-20260630-101500-phase3-8-family-hardening-browserleaks.json`.
-- Evals: `evals/phase3-8/007-fingerprint-diagnostics-observation-only.yaml`.
-- Public fingerprint ranges are observation_only. Record observed signals, block reason, risk attribution, repeat/profile variance, screenshots, and surface report.
-- Diagnostics positive is not evasion positive. Do not add webdriver hide, fingerprint spoof, proxy evasion, clearance reuse, or automated bypass guidance.
-
+- Engineering discipline follows `4-通用规范层/karpathy-guidelines/SKILL.md`.

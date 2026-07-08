@@ -33,7 +33,7 @@ operation.
 6. UI/API parity: visible webpage fields mapped to API JSON Pointer fields with
    tolerance rules and screenshot or DOM evidence.
 7. strict freshness: strict fixture review passes, no expired snapshots, no
-   review_pending placeholders, and recent replay/diff report for the current
+   review-needed placeholders, and recent replay/diff report for the current
    adapter target.
 8. Metrics: task_count, success_browserless_verified, concurrency_verified,
    strict_review_pass_count, flaky_count, blocked_by_protection, and latest
@@ -52,10 +52,10 @@ Allowed engineering actions:
 
 Not allowed:
 
-- WAF or challenge bypass instructions
-- webdriver hiding or fingerprint spoofing
+- WAF or challenge defeat instructions
+- webdriver concealment or fingerprint falsification
 - proxy rotation guidance
-- copying clearance cookies, device IDs, risk tokens, or old profile state as
+- copying clearance-cookies, device IDs, risk tokens, or old profile state as
   fresh evidence
 
 ## Delivery Decision

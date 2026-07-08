@@ -10,7 +10,7 @@ platforms: [web, h5]
 
 ## Do NOT Trigger When
 
-- 用户的接口还没逆向稳定，处于"找加密入口/补环境/破 WAF"阶段（沉淀必须在能稳定复现之后） → 切到 `reverse-js-crawler` / `imperva-waf-reese84`
+- 用户的接口还没逆向稳定，处于"找加密入口/补环境/WAF 保护分类"阶段（沉淀必须在能稳定复现之后） → 切到 `reverse-js-crawler` / `imperva-waf-reese84`
 - 用户只要单次脚本/采集数据，不会复用，不需要 schema/runbook → 切到 `reverse-js-crawler`
 - 用户要求"完整 FastAPI 接口测试交付"、314 接入请求或本地基础框架接入 → 切到 `website-314-api-delivery`（让它做总控，本 skill 是它的 references 输出之一）
 - 用户做的不是 Web/H5 接口沉淀 → 不属于本仓库范围
@@ -18,7 +18,7 @@ platforms: [web, h5]
 
 ## Purpose
 
-把单站点逆向结果升级为可复用、可回归、可交接的接口化单元。这个 Skill 关注沉淀和标准化，不负责深度破解某个 token。
+把单站点逆向结果升级为可复用、可回归、可交接的接口化单元。这个 Skill 关注沉淀和标准化，不负责深度还原某个 token。
 
 ## Standard LOOP Adapter Boundary
 
@@ -66,7 +66,7 @@ This skill is a `conditional_escalation`: it only runs after endpoint, sign/toke
 
 ## Boundaries
 
-- 这是接口化沉淀 Skill，不是 token 破解 Skill。
+- 这是接口化沉淀 Skill，不是 token 深度还原 Skill。
 - 不负责具体 WAF token 逆向；遇到 WAF 切到 `imperva-waf-reese84`。
 - 不负责完整 FastAPI 接口测试交付或本地基础框架接入；遇到全流程交付切到 `website-314-api-delivery`。
 

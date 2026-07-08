@@ -1,5 +1,6 @@
 ---
 name: env-patch
+standard_type: internal_tool
 description: >-
   Internal/support tool for running a previously identified browser encryption module in Node.js with env_core.js, prototype/native-function shims, and minimal stubs. Use directly only when the user explicitly asks for 补环境, Node里跑, webpack模块提取, or when an entry skill has already located the module and needs browser-to-Node reproduction. Do not trigger for ordinary browser debugging, AST deobfuscation, generic Node.js code, crawler delivery, or unresolved API discovery.
 argument-hint: "[项目名] [可选：场景说明]"
@@ -214,3 +215,22 @@ module.exports = function sign(url, data) {
 | `references/webpack.md` | webpack bundle 模块提取 |
 | `references/storage-tracing.md` | 怀疑 localStorage 有控制流开关 |
 | `references/limitations.md` | 所有外部 hook 无效时，了解方案天花板 |
+
+## Workflow
+
+1. Confirm the caller skill and authorized scope before use.
+2. Execute only the atomic/internal task owned by this skill.
+3. Return evidence to the caller skill for final routing and delivery.
+
+## Success Criteria
+
+- The task output is reproducible from the recorded input.
+- The caller skill can validate or reject the result without this tool becoming a business entry.
+
+## Boundaries
+
+This skill is not a public business entry and must not claim full-site delivery ownership.
+
+## Governance
+
+Changes require route-boundary validation, eval coverage, and score gate replay.

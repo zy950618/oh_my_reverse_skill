@@ -1,5 +1,6 @@
 ---
 name: imperva-waf-reese84
+standard_type: conditional_escalation
 description: >-
   Conditional escalation skill for confirmed Imperva/Incapsula/Reese84 work. Use only when the user explicitly names 84盾, Reese84, Incapsula, Imperva, x-d-token, reese84 cookie, or when current evidence shows Reese84/Incapsula markers such as SWJIYLWA/CWUDNSAI/SWUDNSAI challenge HTML or protected business API rejection tied to those markers. It records token identity, WAF acceptance evidence, and backend acceptance boundaries. Do not trigger for generic anti-bot, generic fingerprint, ordinary sign/token, Cloudflare/Akamai/DataDome, or crawler delivery without Imperva/Reese84 evidence.
 platforms: [web, h5]

@@ -4,7 +4,11 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 from pathlib import Path
+
+sys.dont_write_bytecode = True
+from validate_structure import PUBLIC_DOCS as ROUTING_FILES, STALE_COUNT_PATTERNS as STALE_COUNT
 
 ROOT = Path(__file__).resolve().parents[1]
 # Intentional denylist for migrated verification/challenge residue. Tokens are
@@ -30,14 +34,16 @@ FORBIDDEN = (
     "人工挑战" + "经验库",
     "removed" + "challenge",
 )
-STALE_COUNT = (
-    "12" + " 个 " + "skill",
-    "12" + " 个 " + "Skill",
-    "12" + " 个 " + "SKILL",
-    "全部 " + "12",
-    "23" + " 个 " + "active",
-)
-ROUTING_FILES = ["README.md", "AGENTS.md", "TRIGGERS.md", "INSTALL.md", "USAGE.md", "00-SKILLS索引.md", "CLAUDE.md"]
+ROUTING_FILES = list(ROUTING_FILES)
+PRIMARY_ENTRY_ROUTE = {
+    "loop": "web-h5-loop-engineering",
+    "pure_api": "website-314-api-delivery",
+    "single_chain": "reverse-js-crawler",
+}
+FINGERPRINT_ROUTES = {
+    "browser-fingerprint-surface-lab",
+    "fingerprint-block-reason-diagnostics",
+}
 EXPECTED_EXTERNAL = {
     "website-314-api-delivery",
     "reverse-js-crawler",
@@ -48,6 +54,8 @@ EXPECTED_CONDITIONAL = {
     "imperva-waf-reese84",
     "authorized-target-adapter",
     "site-api-adapter",
+    "browser-fingerprint-surface-lab",
+    "fingerprint-block-reason-diagnostics",
 }
 EXPECTED_INTERNAL_OR_AUX = {
     "find-crypto-entry",
@@ -56,8 +64,6 @@ EXPECTED_INTERNAL_OR_AUX = {
     "js-page-runtime-parity",
     "ai-reverse-skill-creator",
     "karpathy-guidelines",
-    "browser-fingerprint-surface-lab",
-    "fingerprint-block-reason-diagnostics",
 }
 
 
@@ -84,10 +90,12 @@ def check_tokens(rel: str, text: str, failures: list[str]) -> None:
 def check_route_contract(failures: list[str]) -> None:
     index = ROOT / "00-SKILLS索引.md"
     triggers = ROOT / "TRIGGERS.md"
+    usage = ROOT / "USAGE.md"
     if not index.is_file() or not triggers.is_file():
         return
     index_text = read_text(index)
     triggers_text = read_text(triggers)
+    usage_text = read_text(usage) if usage.is_file() else ""
     for name in sorted(EXPECTED_EXTERNAL | EXPECTED_CONDITIONAL | EXPECTED_INTERNAL_OR_AUX):
         if name not in index_text:
             failures.append(f"00-SKILLS索引.md: missing active skill route for {name}")
@@ -104,6 +112,26 @@ def check_route_contract(failures: list[str]) -> None:
         pattern = rf"内部工具[^\n]*`?{re.escape(tool)}`?"
         if not re.search(pattern, index_text):
             failures.append(f"00-SKILLS索引.md: {tool} must remain internal-tool routed")
+
+    route_sources = "\n".join([triggers_text, usage_text, index_text])
+    for route in PRIMARY_ENTRY_ROUTE.values():
+        if route not in route_sources:
+            failures.append(f"public routing docs missing primary entry route {route}")
+    if "入口优先级" in triggers_text:
+        priority_line = next((line for line in triggers_text.splitlines() if "入口优先级" in line), "")
+        for route in PRIMARY_ENTRY_ROUTE.values():
+            if route not in priority_line:
+                failures.append(f"TRIGGERS.md: entry priority line missing {route}")
+
+    # Intentional denylist for unsafe fingerprint routing wording: public docs may
+    # describe observation/refusal only, never ownership by WAF handlers or evasion.
+    for line_no, line in enumerate(triggers_text.splitlines(), 1):
+        line_lower = line.lower()
+        if "fingerprint" in line_lower or "浏览器指纹" in line or "anti-bot" in line_lower:
+            if "imperva-waf-reese84" in line and not any(route in line for route in FINGERPRINT_ROUTES):
+                failures.append(f"TRIGGERS.md:{line_no}: fingerprint/anti-bot route must not be owned only by imperva-waf-reese84")
+        if "指纹模拟" in line or "fingerprint spoof" in line_lower or "stealth" in line_lower:
+            failures.append(f"TRIGGERS.md:{line_no}: public routing must describe fingerprint observation, not spoofing/stealth")
 
 
 def main() -> int:

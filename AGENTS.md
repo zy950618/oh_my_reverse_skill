@@ -43,41 +43,11 @@
 - 不把辱骂性前缀、人格化称谓或情绪化口头禅写入强制输出规范
 - 任务结束按 `CLAUDE.md` 阶段 E 沉淀、阶段 F 一致性验证和阶段 G 清理/算法图收尾
 
-## 关键工具
+## Source of truth
 
-- `tools/replayer/snapshot_replay.py`: replay 验证
-- `tools/replayer/snapshot_diff.py`: 字段 diff
-- `tools/replayer/schema_alert.py`: 接口版本变更告警
-- `tools/replayer/consistency_report.py`: 一致性报告
-- `tools/verify_delivery.py`: 完成度 6 维自验
-- `tools/post_task_reminder.py`: Stop hook 沉淀提醒
-- `tools/sync_site_memory.py`: 跨项目同步 site memory
-- `tools/ci_gate.py`: CI 评分阈值
-- `tools/validate_web_h5_loop_gate.py`: Web/H5 Loop Engineering 三角色闭环结构检查
-- `tools/validate_web_h5_crawler_gate.py`: Web/H5 爬虫反偶发/清状态/并发隔离结构检查
-- `tools/validate_web_h5_real_execution_gate.py`: Web/H5 真实执行标准化结构检查
-- `tools/web_h5_loop_runner.py`: Loop Runner execution ledger 创建/追加/验证
-- `tools/web_h5_acceptance_report.py`: 并发/风控/UI一致性/freshness/metrics 验收报告
-- `tools/fixture_freshness_report.py`: fixtures expired/review_pending/recent replay 新鲜度报告
-- `1-业务流程层/skills-evaluation-governance/scripts/score_skills.py`: skill 评分
+- 触发词与路由矩阵: `TRIGGERS.md`
+- Skill 列表与职责: `00-SKILLS索引.md`
+- 安装与软链: `INSTALL.md`
+- Claude Code 执行流程和边界: `CLAUDE.md`
 
-## 仓库分层
-
-| 层 | 目录 | 角色 |
-|---|---|---|
-| 1 | `1-业务流程层/` | 顶层入口,按用户需求调度 2/5/7 层(active skill 数量以评分工具为准) |
-| 2 | `2-JS逆向工具层/` | Web/JS 原子工具(active skill 数量以评分工具为准) |
-| 4 | `4-通用规范层/` | 基础层规范(karpathy-guidelines) |
-| 5 | `5-沉淀工具层/` | 接口稳定后的标准化(site-api-adapter) |
-| 7 | `7-指纹风控层/` | 指纹 surface 观察和 block reason 归因,不做 stealth/spoofing |
-| 99 | `99-SKILLS治理/` | 生命周期/分类/评分/漂移/准入/运行时方法论 |
-
-完整规则见 `CLAUDE.md`。
-
-## Standard LOOP 本地交付补充
-
-- 入口、升级、内部工具、辅助规范和交付类型以 `99-SKILLS治理/20-routing-contract.md` 为准。
-- `karpathy-guidelines` 固定为 `auxiliary_policy`,只作为执行类 Skill 的工程 checklist。
-- 最终业务链路必须纯接口；浏览器只允许用于分析、抓包、runtime trace、parity 和训练样本采集。
-- 第 7 层指纹风控必须先落本地靶场、reference、eval 和 validator；不允许把 observation 写成绕过能力。
-- 完成前必须产出 cleanup ledger、known failures、release gate 和 standard-loop-score。
+Codex review 只报告 blocking / non-blocking findings；不得把评分通过、结构通过或本地 lab 通过包装成真实站点成功。

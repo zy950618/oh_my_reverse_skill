@@ -6,4 +6,4 @@ required_examples:
   - self_owned_trial
   - five_second_shield_lab
   - authorized_business_api
-negative_boundary: unknown_scope_observation_only_no_bypass_guidance
+negative_boundary: unknown_scope_observation_only_no_defeat_guidance

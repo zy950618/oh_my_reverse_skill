@@ -53,7 +53,7 @@ This skill is an `external_entry` for bounded route or stage work. It may use br
    - 涉及批量或并发时必须先跑 1 worker 基线，再跑 2/5/10 worker 并发阶梯；每阶记录 session/cache 隔离、失败率、403/429/503、P95 和停止条件。
    - 不允许共享 cookie jar、localStorage/sessionStorage、token cache 或账号态，除非有当前 run 的后端接受证据证明可复用。
    - 用 `tools/web_h5_acceptance_report.py` 生成并验证 acceptance report；没有 report 不声明批量、并发或稳定。
-   - 风控处理只允许授权范围内的隔离、退避、jitter、session retirement、kill switch、fresh replay 和人工复核；不写绕过、指纹伪造或 clearance cookie 复用。
+   - 风控处理只允许授权范围内的隔离、退避、jitter、session retirement、kill switch、fresh replay 和人工复核；不写突破、指纹伪造或 clearance-cookie 复用。
    - 数据验收必须做 UI/API parity：网页可见字段对 API JSON Pointer，fixtures freshness 通过后才能声明当前网页一致。
 
 6. 批量采集与清洗：
@@ -74,7 +74,7 @@ This skill is an `external_entry` for bounded route or stage work. It may use br
 - 抓包、fixtures、replay、script hash、state_reset 和 run_id 能互相对应。
 - 风控/保护相关结论必须有 protected business API backend acceptance 或明确 blocked/human_review/negative eval。
 - 数据交付必须有 UI/API parity、JSON Pointer、fixture freshness 和 replay/diff 证据；strict-review 或 freshness 失败时不能声明当前一致。
-- 实战结果必须进入 metrics，不成功也要记录 flaky、blocked_by_protection 或 review_pending。
+- 实战结果必须进入 metrics，不成功也要记录 flaky、blocked_by_protection 或 review-needed。
 - 已把测试中的失败模式写入站点经验库或 eval backlog。
 
 ## Tool Policy

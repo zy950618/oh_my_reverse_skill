@@ -9,6 +9,6 @@ criteria:
   - "Requires repeated clean-state validation such as clean_unverified, verified, and repeat_verified before stability claims."
   - "Requires anti-flake criteria that reject one-time 200 responses and mixed success/failure observations."
   - "Requires concurrency ladder evidence and session/cache isolation before batch or high-concurrency claims."
-  - "Keeps the scope to Web/H5 crawler governance and does not import non-Web/H5 or bypass-specific skills."
+  - "Keeps the scope to Web/H5 crawler governance and does not import non-Web/H5 or defeat-specific skills."
 expect_skill: true
 timeout: 120

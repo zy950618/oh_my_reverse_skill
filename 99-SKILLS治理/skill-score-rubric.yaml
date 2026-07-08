@@ -1,9 +1,18 @@
 schema_version: 1
 status: temporary_single_source
-source_of_truth: "score_skills.py / ci_gate.py 100-point structure, documented here"
+source_of_truth: "tools/score_skills.py strict 7-component repository score plus per-skill 100-point gate, documented here"
 effective_date: "2026-07-01"
 
-scoring_dimensions:
+strict_repository_score_components:
+  structure: 15
+  reverse_capability: 20
+  evidence_acceptance: 20
+  loop_engineering: 15
+  test_validation: 15
+  cleanup_hygiene: 10
+  safety_boundary: 5
+
+per_skill_scoring_dimensions:
   structure:
     points: 25
     subitems:
@@ -40,17 +49,17 @@ scoring_dimensions:
       historical_metrics: 4
 
 score_bands:
-  high_available: 90
+  high_available: 93
   available: 80
   structure_ready: 70
   note_like: 50
 
 layer_thresholds:
-  "1-业务流程层": 70
-  "2-JS逆向工具层": 15
-  "4-通用规范层": 15
-  "5-沉淀工具层": 70
-  "7-指纹风控层": 70
+  "1-业务流程层": 93
+  "2-JS逆向工具层": 93
+  "4-通用规范层": 93
+  "5-沉淀工具层": 93
+  "7-指纹风控层": 93
 
 layer_gate_modes:
   "1-业务流程层": active
@@ -74,10 +83,10 @@ layer7_boundary:
     - runtime parity observation
     - regression evidence
   forbidden:
-    - WAF bypass
-    - fingerprint spoofing
-    - webdriver hiding
+    - WAF defeat
+    - fingerprint falsification
+    - webdriver concealment
     - detection evasion
     - risk token forgery
-    - clearance cookie reuse
+    - clearance-cookie recycling
     - unauthorized third-party breakthrough

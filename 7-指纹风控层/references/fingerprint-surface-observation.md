@@ -26,5 +26,5 @@ Boundary:
 
 - A surface hash is diagnostic evidence only.
 - Public diagnostic pages do not prove third-party risk-control acceptance.
-- Do not add stealth patches, spoofed values, proxy rotation, or clearance reuse.
+- Do not add concealment patches, spoofed values, proxy rotation, or clearance-cookie recycling.
 

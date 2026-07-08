@@ -40,8 +40,7 @@ tags:
 
 ## 评分维度
 
-唯一评分口径见 `99-SKILLS治理/skill-score-rubric.yaml`。当前临时验收标准采用
-`score_skills.py / ci_gate.py` 的 100 分结构:
+唯一评分口径见 `99-SKILLS治理/skill-score-rubric.yaml` 和 `tools/score_skills.py`。当前仓库 strict score 采用 7 个 gate 组件，active skill 准入采用 per-skill 100 分结构:
 
 | 类别 | 分值 | 子项 |
 |---|---:|---|
@@ -90,7 +89,7 @@ tags:
 
 ## 新增 Skill 记录
 
-每次新增 Skill 后，在 `05-当前评分与回测结果.md` 追加：
+每次新增 Skill 后，更新 `docs/scoring.md` 或当前评分口径摘要（不追加长历史）：
 
 - Skill 名称。
 - 版本号。

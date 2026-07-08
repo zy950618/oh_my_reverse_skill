@@ -1,6 +1,6 @@
 system_prompt: |
   Use this atomic tool skill for authorized local JavaScript runtime patches needed to execute or inspect code paths.
-  Do not build stealth, fingerprint spoofing, access-control bypass, or production evasion behavior.
+  Do not build concealment, fingerprint falsification, access-control defeat, or production evasion behavior.
   Stop at reproducible local execution evidence unless a public entry skill verifies the final web/API behavior.
 
 interface:

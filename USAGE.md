@@ -45,7 +45,7 @@ Web/H5 逆向工程 SKILL 库,装到 Claude Code 后,**用自然语言**让 Clau
 |---|---|---|---|
 | 逆向一个新网站,做成纯接口 | "逆向 thaiairways.com,先做 FastAPI 接口测试交付" / "纯接口实现查询/加车/生单" / "全部成功后再确认是否接入 314" | `website-314-api-delivery` | 六阶段总控:侦察→入口→还原→FastAPI测试接口→人工确认框架→沉淀 |
 | 爬虫接口还原 / sign 分析 | "JS 逆向 XXX" / "分析 X 网站请求" / "还原签名算法" / "做个采集脚本" | `reverse-js-crawler` | 页面侦察→真实 API 识别→sign/token 还原→Python/Node 复现 |
-| 84 盾 / WAF token 被拒 | "84 盾过不去" / "Reese84 token 失败" / "x-d-token 拒了" / "Imperva 挑战页" | `imperva-waf-reese84` | 指纹模拟 + token 缓存 + 接受度阶段化验证 |
+| 84 盾 / WAF token 被拒 | "84 盾过不去" / "Reese84 token 失败" / "x-d-token 拒了" / "Imperva 挑战页" | `imperva-waf-reese84` | Reese84/Incapsula 证据识别 + token 生成/业务接受度分层验证 |
 | 找请求里某个参数怎么生成的 | "x-sign 在哪生成" / "找加密入口" / "这个 token 哪来的" / "签名怎么算的" | `find-crypto-entry` | 静态搜索 + XHR 断点,只定位函数位置,不还原算法 |
 | JS 看不懂(混淆) | "解混淆" / "_0x 是啥" / "字符串数组解密" / "代码全是乱码" / "deobfuscate" | `ast-deobfuscate` | Babel AST 解混淆:字符串解密 / 控制流还原 / 死代码删除 |
 | 把浏览器 JS 拿到 Node 跑 | "补环境" / "把 JS 搬到 Node" / "webpack 模块提取" / "Node 里跑" | `env-patch` | Node 环境模拟:window/document/navigator/Proxy 引擎 |
@@ -91,7 +91,7 @@ Claude 按 [07 一致性验证规约](./99-SKILLS治理/07-一致性验证规约
 
 > 你: 给本仓库的所有 Skill 跑一次评分,我想看 v0.3.6 的真实分数。
 
-Claude 触发 `skills-evaluation-governance`,跑 `score_skills.py` 四段分(结构 25/实战 25/一致性 30/漂移 20),输出每个 Skill 的总分 + 短板。
+Claude 触发 `skills-evaluation-governance`,跑 `score_skills.py`:仓库 strict score 使用 7 个 gate 组件，active skill 准入看 per-skill 100 分结构，输出每个 Skill 的总分 + 短板。
 
 ---
 
@@ -158,7 +158,7 @@ Claude 触发 `skills-evaluation-governance`,跑 `score_skills.py` 四段分(结
 - 知识图谱关联 → [99-SKILLS治理/14-知识图谱行程与关联规约.md](./99-SKILLS治理/14-知识图谱行程与关联规约.md)
 - 影响回归校验 → [99-SKILLS治理/15-AI变更风险与回归校验规约.md](./99-SKILLS治理/15-AI变更风险与回归校验规约.md)
 - 收尾清理与加密算法图 → [99-SKILLS治理/17-交付收尾清理与加密算法图谱规约.md](./99-SKILLS治理/17-交付收尾清理与加密算法图谱规约.md)
-- 评分体系 → [99-SKILLS治理/05-当前评分与回测结果.md](./99-SKILLS治理/05-当前评分与回测结果.md)
+- 评分体系 → [docs/scoring.md](./docs/scoring.md)
 
 ## Local Runtime Parity And Fingerprint Surface
 
@@ -178,4 +178,4 @@ Boundary:
 
 - Runtime parity proves local JS fixture consistency only.
 - Fingerprint surface reports observed values only.
-- No local result implies third-party challenge/WAF bypass or fingerprint evasion.
+- No local result implies third-party challenge/WAF defeat or fingerprint evasion.

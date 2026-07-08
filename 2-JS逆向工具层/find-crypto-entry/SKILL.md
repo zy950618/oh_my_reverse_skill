@@ -1,5 +1,6 @@
 ---
 name: find-crypto-entry
+standard_type: internal_tool
 description: Internal/support tool for locating the JS source of one concrete encrypted request field, sign, x-sign, authKey, or token. Use directly only when the user explicitly asks for an atomic entry-location task such as "找加密入口", "签名怎么算", or "这个请求头字段哪里生成"; otherwise let reverse-js-crawler or website-314-api-delivery choose it. Do not trigger for generic crawler delivery, ordinary request inspection, challenge/WAF backend acceptance, or non-encrypted parameters.
 argument-hint: [参数名]
 platforms: [web, h5]

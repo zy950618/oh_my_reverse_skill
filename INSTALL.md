@@ -147,8 +147,8 @@ ls ~/.claude/skills/ | grep -E '(website-|reverse-js|imperva|authorized-target|w
 
 # 2. 跑评分(应该不报错)
 cd ~/SKILLS/oh_my_reverse_skill   # 或 E:\SKILLS\oh_my_reverse_skill
-python3 "1-业务流程层/skills-evaluation-governance/scripts/score_skills.py" "1-业务流程层"
-# 应该输出 JSON；当前 release gate 统计为 15 个 active skill，具体数量以评分工具输出为准
+python3 tools/score_skills.py --repo .
+# 应该输出 JSON；active Skill 数量以评分工具输出为准
 
 # 3. 跑 fixtures 验证(空仓库,应该 PASS)
 python3 tools/replayer/validate_fixtures.py
@@ -167,7 +167,7 @@ python3 tools/replayer/validate_fixtures.py
 
 # 2. 跑评分
 cd E:\SKILLS\oh_my_reverse_skill
-python3 "1-业务流程层/skills-evaluation-governance/scripts/score_skills.py" "1-业务流程层"
+python3 tools/score_skills.py --repo .
 
 # 3. 跑 fixtures 验证
 python3 tools\replayer\validate_fixtures.py
@@ -183,7 +183,7 @@ dir "%USERPROFILE%\.claude\skills" /B | find /C /V ""
 
 :: 2. 跑评分
 cd /d E:\SKILLS\oh_my_reverse_skill
-python3 "1-业务流程层\skills-evaluation-governance\scripts\score_skills.py" "1-业务流程层"
+python3 tools/score_skills.py --repo .
 
 :: 3. 跑 fixtures 验证
 python3 tools\replayer\validate_fixtures.py
@@ -293,7 +293,7 @@ A: `.github/workflows/skill-bench.yml` 和 `consistency-replay.yml` 默认配置
 
 - [ ] `ls ~/.claude/skills/` 能看到本仓库 active Skill 软链（数量以 `python3 tools/score_skills.py --repo .` / release score 输出为准）
 - [ ] `python3 --version` ≥ 3.11
-- [ ] `python3 "1-业务流程层/skills-evaluation-governance/scripts/score_skills.py" "1-业务流程层"` 输出 JSON 不报错
+- [ ] `python3 tools/score_skills.py --repo .` 输出 JSON 不报错
 - [ ] `python3 tools/replayer/validate_fixtures.py` 输出 `all good`
 - [ ] `cat .claude/settings.json` 有 Stop hook 配置
 - [ ] Claude Code 启动,仓库目录内输入 `/逆向` 能匹配到 Skill

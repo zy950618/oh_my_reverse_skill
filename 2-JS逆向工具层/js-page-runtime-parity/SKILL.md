@@ -1,10 +1,12 @@
 ---
 name: js-page-runtime-parity
-description: Extract page-level JavaScript runtime dependencies and verify Browser, Node, V8, and PageRuntime output parity for authorized targets or localhost labs without generating risk tokens or bypass behavior.
+standard_type: internal_tool
+description: Extract page-level JavaScript runtime dependencies and verify Browser, Node, V8, and PageRuntime output parity for authorized targets or localhost labs without generating risk tokens or defeat behavior.
 license: MIT
 platforms: [cross-platform]
 category: js-reverse
-version: 0.1.0
+version: 0.1.1
+trigger: runtime parity, PageRuntime, Browser Node V8 parity, environment contract
 ---
 
 # JS Page Runtime Parity
@@ -21,11 +23,11 @@ It is for:
 
 It is not:
 
-- an unauthorized bypass tool
+- an unauthorized defeat tool
 - a token forgery tool
-- a WAF bypass tool
-- a webdriver hiding tool
-- a fingerprint spoofing tool
+- a WAF defeat tool
+- a webdriver concealment tool
+- a fingerprint falsification tool
 
 ## Required Outputs
 
@@ -35,21 +37,35 @@ It is not:
 - `runtime_diff_report`
 - `regression_fixture`
 
-Canvas, WebGL, AudioContext, WebRTC, Permissions, and client hints are observation-only. Do not add spoofing rules.
+Canvas, WebGL, AudioContext, WebRTC, Permissions, and client hints are observation-only. Do not add fingerprint-alteration rules.
 
-## Phase 3.5 Longrun Feedback
+## Auxiliary Policy
 
-- Source run_id: `run-20260630-041500-phase3-5-longrun`.
-- Failure evidence: `public-range-evidence/longrun/phase3-5/run-20260630-041500-phase3-5-longrun/issue-ledger.json`.
-- Rule added: longrun parity must compare Browser, Node, and PageRuntime outputs repeatedly and write an environment contract plus regression fixture.
-- Eval added: `evals/longrun/phase3-5/004-phase3-5-longrun-regression.yaml`.
-- Capability impact: localhost JS parity is reproducibility evidence, not token forgery, WAF bypass, or third-party risk-control success.
+- Engineering discipline follows `4-通用规范层/karpathy-guidelines/SKILL.md`.
 
-## Phase 3.8 Runtime Parity Boundary
+## Workflow
 
-- Source run_id: `run-20260630-101500-phase3-8-family-hardening`.
-- Evidence: `public-range-evidence/raw/capability-promotion-gate/run-20260630-101500-phase3-8-family-hardening/capability-promotion-decision.json`.
-- Evals: `evals/phase3-8/008-js-runtime-parity-boundary.yaml`.
-- Browser/Node/PageRuntime parity can support authorized replay only when mutation inputs, missing API contracts, and regression fixtures pass.
-- JS runtime parity is not real-site token forgery, risk-token capability, fingerprint evasion, or production WAF bypass. Unknown third-party and production_unverified scopes remain observation_only.
+1. Confirm the caller skill and authorized scope before use.
+2. Execute only the atomic/internal task owned by this skill.
+3. Return evidence to the caller skill for final routing and delivery.
 
+## Success Criteria
+
+- The task output is reproducible from the recorded input.
+- The caller skill can validate or reject the result without this tool becoming a business entry.
+
+## Boundaries
+
+This skill is not a public business entry and must not claim full-site delivery ownership.
+
+## Governance
+
+Changes require route-boundary validation, eval coverage, and score gate replay.
+
+## Routing Handoff
+
+Use `reverse-js-crawler` or `website-314-api-delivery` as the orchestrator when final business delivery is needed. This tool is not responsible for public entry routing, WAF handling, fingerprint mutation, or full delivery claims.
+
+## Drift And Evidence Writeback
+
+Drift checks cover runtime API changes, environment contract changes, and signature fixture changes. Site memory handoff and known failures must record missing APIs, mismatched outputs, and unsupported scopes.

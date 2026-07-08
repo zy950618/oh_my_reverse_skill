@@ -11,7 +11,7 @@ criteria:
   - "Requires direct_interface_call and repeat_direct_interface_call to pass without browser profile, live storage, or manual cookie/token reuse."
   - "Requires at least eight negative token/session/action/worker evals."
   - "Requires 1/2/5/10 worker ladder to target a business API with isolated session/cache/token state."
-  - "Does not claim third-party challenge/WAF/risk-control bypass, production fingerprint handling, or external high-concurrency acceptance."
+  - "Does not claim third-party challenge/WAF/risk-control defeat, production fingerprint handling, or external high-concurrency acceptance."
 expect_skill: true
 evidence_run_id:
   - run-20260630-013842-high-fidelity-risk-lab

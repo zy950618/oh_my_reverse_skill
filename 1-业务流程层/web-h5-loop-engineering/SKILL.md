@@ -57,7 +57,7 @@ This skill owns the standard LOOP supervisor role. A run must maintain `LOOP_STA
    - `Executor` 自评不能替代独立验证。
    - 本地 score 或 gate 通过不能写成真实站点成功。
 - 用 `tools/web_h5_acceptance_report.py validate` 验证 acceptance report；默认 `STRUCTURE_PASS` 只代表结构可读。声明并发、稳定或完成前必须用 `--require-complete` 并取得 `SUCCESS_PASS`。
-- 用 `tools/fixture_freshness_report.py` 暴露 expired/review_pending/recent replay 状态；freshness 不通过时不得声明网页一致性当前有效。
+- 用 `tools/fixture_freshness_report.py` 暴露 expired/review-needed/recent replay 状态；freshness 不通过时不得声明网页一致性当前有效。
 
 ## Success Criteria
 
@@ -85,10 +85,10 @@ This skill owns the standard LOOP supervisor role. A run must maintain `LOOP_STA
 ## Boundaries
 
 - 本 skill 只适用于 Web/H5 逆向、采集、接口复现和能力治理。
-- 不负责生成 WAF/challenge 绕过方案；遇到保护只做证据、分类、授权范围和人工复核。
+- 不负责生成 WAF/challenge 突破方案；遇到保护只做证据、分类、授权范围和人工复核。
 - 不把多 agent loop 写成无限自动化；必须有 token/成本、迭代次数和人工接管边界。
 - 不把一次本地 loop gate 通过泛化成真实站点稳定。
-- 不把风险控制写成绕过能力；并发实现只允许隔离、退避、停止、session retirement、fresh replay 和人工复核。
+- 不把风险控制写成突破能力；并发实现只允许隔离、退避、停止、session retirement、fresh replay 和人工复核。
 
 ## Governance
 
@@ -96,45 +96,6 @@ This skill owns the standard LOOP supervisor role. A run must maintain `LOOP_STA
 - Status: business-data-assertion gate baseline
 - Change log: record role/gate/eval changes in `references/governance.md`.
 - Drift tests: rerun loop evals when role boundaries, stop conditions, evidence gates, or crawler hardening rules change.
-
-## Evidence-Backed Phase 1 Update
-
-- Triggered failure: previous public-range evidence could pass structure gates without proving a localhost service, browser screenshot, network summary, or 1/2/5/10 worker ladder.
-- Skill change: require `execution_proof` and the real-execution proof validator before a public-range loop run counts as real execution; require separate `capability_status` before any positive capability claim.
-- Added eval: `evals/010-real-execution-proof-required.yaml`.
-- Regression commands: `python3 tools/validate_real_execution_proof.py public-range-evidence`; `python3 tools/validate_web_h5_loop_gate.py`.
-
-Phase 1 classification: the local dummy challenge, local managed challenge dummy, and localhost concurrency runs prove the real execution framework and local dummy ranges run. They do not prove real challenge/WAF/risk-control positive capability, real third-party managed challenge/managed challenge/managed challenge/GeeTest capability, fingerprint handling, production high concurrency, or universal challenge solving.
-
-## Evidence-Backed Phase 2 Update
-
-- Evidence run_id: `run-20260630-013842-high-fidelity-risk-lab`.
-- Triggered failure evidence: Phase 1 had no server-side risk state machine, no one-time token lifecycle, no challenge-before business API failure vs challenge-after business API success, no direct interface repeat against the final business API, no cross-worker token pollution rejection, and no business API 1/2/5/10 worker ladder.
-- Skill change: a local risk lab can be `positive_allowed` only for self-owned localhost risk-state engineering when evidence proves final business API acceptance, direct and repeat direct interface acceptance without browser profile/storage/manual token reuse, negative token/session/action/worker evals, and a business API concurrency ladder.
-- Added eval: `evals/011-high-fidelity-risk-lab-positive-boundary.yaml`.
-- Regression commands: `python3 tools/validate_public_range_evidence.py public-range-evidence`; `python3 tools/validate_real_execution_proof.py public-range-evidence`; `python3 tools/validate_web_h5_loop_gate.py`.
-
-Phase 2 classification: this is a positive local-lab capability for self-owned server-side token lifecycle, direct interface repeat, negative eval coverage, fingerprint diagnostics recording, and localhost business API concurrency isolation. It is still not real third-party challenge/WAF/risk-control bypass, production fingerprint handling, or external high-concurrency acceptance.
-
-## Evidence-Backed Phase 2.1 Update
-
-- Evidence run_id: `run-20260630-022227-high-fidelity-risk-lab`.
-- Triggered failure evidence: `run-20260630-013842-high-fidelity-risk-lab` and `run-20260629-085616-scrapethissite` had interface/control-flow success but no `business_data_assertions`; under v2.1 they were downgraded to `memory_only`.
-- Skill change: LOOP positive delivery now requires four layers: `execution_status=REAL_EXECUTION_PASS`, `control_flow_status=CONTROL_FLOW_PASS`, `business_data_status=DATA_ASSERTION_PASS`, and `capability_status=positive_allowed`.
-- Added eval: `evals/012-business-data-assertion-required.yaml`.
-- Regression commands: `python3 tools/validate_business_data_assertions.py public-range-evidence`; `python3 tools/validate_public_range_evidence.py public-range-evidence`; `python3 tools/web_h5_acceptance_report.py validate --report <report> --require-complete`; `python3 tools/ci_gate.py .ci-out`.
-
-Phase 2.1 classification: link pass, HTTP 200, JSON Pointer presence, challenge verify success, direct repeat, and worker PASS are not sufficient. Positive LOOP acceptance must prove final business API data consistency with a server-side business ledger, negative eval `ledger_delta=0`, unique orders, and order/session/worker ownership.
-
-## Evidence-Backed Phase 3.5 Update
-
-- Evidence run_id: `run-20260630-041500-phase3-5-longrun`.
-- Failure evidence: `public-range-evidence/longrun/phase3-5/run-20260630-041500-phase3-5-longrun/failure-cases.json` and `public-range-evidence/longrun/phase3-5/run-20260630-041500-phase3-5-longrun/issue-ledger.json`.
-- Skill change: longrun LOOP work must include challenge metrics, JS runtime parity repeat, fingerprint diagnostics, business API concurrency ladder, chaos rejection cases, issue ledger, experience cards, regression evals, and capability decision.
-- Added eval: `evals/longrun/phase3-5/001-phase3-5-longrun-regression.yaml`.
-- Regression commands: `python3 tools/phase3_longrun_runner.py --config configs/phase3_longrun.yaml`; `python3 tools/validate_public_range_evidence.py public-range-evidence`; `python3 tools/validate_real_execution_proof.py public-range-evidence`; `python3 tools/validate_business_data_assertions.py public-range-evidence`; `python3 tools/ci_gate.py .ci-out`.
-
-Phase 3.5 classification: longrun can fix local framework gaps and produce failure-driven rules. It remains `memory_only` unless the final business API has `DATA_ASSERTION_PASS`; it is not proof of third-party challenge/WAF/risk-control capability.
 
 ## References
 

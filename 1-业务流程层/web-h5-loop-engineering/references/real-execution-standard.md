@@ -79,8 +79,8 @@ and cache evidence.
 ## Risk Boundary
 
 Risk-control handling means classification, isolation, backoff, session
-retirement, kill switch, and human review. It does not mean WAF bypass,
-challenge bypass, fingerprint spoofing, proxy rotation, or clearance cookie reuse.
+retirement, kill switch, and human review. It does not mean WAF defeat,
+challenge defeat, fingerprint falsification, proxy rotation, or clearance-cookie reuse.
 
 When a protection blocks completion, persist it as blocked evidence, known
 failure, human review, or negative eval. Do not write it as capability.
@@ -91,7 +91,7 @@ Historical replay rate is not fresh evidence. A fresh claim requires:
 
 - strict fixture review passes
 - no expired snapshots
-- no review_pending placeholders
+- no review-needed placeholders
 - recent replay/diff report for the current adapter target
 - source_freshness recorded as `fresh`
 

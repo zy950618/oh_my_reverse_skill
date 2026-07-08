@@ -40,4 +40,4 @@ For high-risk crawler/reverse/risk diagnostics Skills:
 - protected-response versus business-error distinction.
 - site memory or failure-memory write-back.
 - version/change-log update.
-- explicit refusal of unauthorized bypass, stealth, fingerprint spoofing, token forgery, and clearance reuse.
+- explicit refusal of unauthorized defeat, concealment, fingerprint falsification, token forgery, and clearance-cookie recycling.

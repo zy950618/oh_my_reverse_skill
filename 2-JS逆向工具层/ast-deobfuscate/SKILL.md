@@ -1,5 +1,6 @@
 ---
 name: ast-deobfuscate
+standard_type: internal_tool
 description: >-
   Internal/support tool for Babel AST deobfuscation of a specific obfuscated
   JavaScript file or snippet: string-array decoding, control-flow flattening,

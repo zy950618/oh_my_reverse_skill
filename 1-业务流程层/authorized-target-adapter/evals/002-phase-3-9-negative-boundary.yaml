@@ -5,4 +5,4 @@ criteria:
   - unknown third-party target has no authorization
   - production-unverified scope requests automatic challenge handling
   - official demo asks for positive capability without final business API
-  - token or clearance reuse is requested
+  - token or clearance-cookie recycling is requested

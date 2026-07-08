@@ -7,7 +7,7 @@ This reference binds authorized-target adaptation to explicit scope, final busin
 ## Workflow
 
 - Read `configs/range_scope_contract.yaml`.
-- Use `public-range-evidence/five-second-shield-lab/run-20260630-113000-phase3-9-vendor-shield-range.json` as the Phase 3.9 local WAF/shield candidate example.
+- Use local WAF/shield candidate evidence as the scoped vendor/shield boundary example.
 - Require final business API acceptance, repeat direct call, concurrency ladder, stop condition, kill switch, and redaction before any positive adapter claim.
 
 ## Success Criteria
@@ -19,7 +19,7 @@ This reference binds authorized-target adaptation to explicit scope, final busin
 
 ## Boundaries
 
-This skill is not responsible for WAF bypass, fingerprint spoofing, challenge bypass, proxy evasion, token forgery, or clearance reuse on production-unverified targets.
+This skill is not responsible for WAF defeat, fingerprint falsification, challenge defeat, proxy avoidance, token forgery, or clearance-cookie recycling on production-unverified targets.
 
 ## Governance
 

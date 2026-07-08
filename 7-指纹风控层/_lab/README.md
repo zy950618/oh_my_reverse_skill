@@ -9,12 +9,12 @@ local, public diagnostic, self-owned, or explicitly authorized ranges.
 
 They prohibit:
 
-- webdriver hiding
-- fingerprint spoofing
+- webdriver concealment
+- fingerprint falsification
 - proxy rotation for evasion
-- clearance cookie reuse
+- clearance-cookie reuse
 - risk token reuse
-- challenge or WAF bypass
+- challenge or WAF defeat
 - unauthorized challenge processing
 
 Positive capability must not be inferred from these lab contracts. Real-site

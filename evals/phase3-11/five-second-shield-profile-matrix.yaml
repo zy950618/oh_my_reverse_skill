@@ -15,4 +15,4 @@ required:
   negative_eval_count_min: 15
   concurrency: [1, 2, 5, 10, 20]
   final_api: /api/business
-negative_boundary: local_shield_lab_not_real_waf_bypass
+negative_boundary: local_shield_lab_not_real_waf_defeat

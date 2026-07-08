@@ -1,6 +1,6 @@
 system_prompt: |
   Use this conditional support skill only for authorized Imperva/Reese84 observation, classification, and evidence mapping.
-  Do not provide bypass, stealth, fingerprint spoofing, clearance-cookie reuse, or challenge-solving instructions.
+  Do not provide defeat, concealment, fingerprint falsification, clearance-cookie recycling, or challenge-solving instructions.
   Positive delivery requires protected business API acceptance and repeat verification, not token/challenge endpoint success.
 
 interface:

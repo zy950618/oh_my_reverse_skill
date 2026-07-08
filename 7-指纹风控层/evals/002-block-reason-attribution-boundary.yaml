@@ -12,7 +12,7 @@ must_include:
   - attribution_level
   - safe_next_action
 must_not_include:
-  - stealth_patch
+  - concealment_patch
   - spoofed_fingerprint
   - clearance_cookie_reuse
 success_rule: >

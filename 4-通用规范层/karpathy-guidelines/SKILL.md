@@ -5,7 +5,9 @@ description: >-
   Auxiliary foundation guideline for engineering discipline. Use only as a supporting quality checklist when another Skill or coding task is already selected and the work involves implementation, review, refactoring, or verification. It is not a business-task entry point and must not independently handle Web/H5 reverse engineering, challenge, WAF, model training, API delivery, or site-specific workflows.
 license: MIT
 platforms: [cross-platform]
-category: foundation
+category: guideline
+version: 0.1.1
+trigger: engineering discipline, surgical changes, verification checklist, code review
 ---
 
 # Karpathy Guidelines
@@ -113,4 +115,35 @@ After applying this guideline to a change, verify with the smallest relevant che
 
 ## Safety Boundary
 
-This guideline does not authorize destructive commands, credential changes, production configuration changes, bypass/evasion work, or irreversible actions. Follow the repository and task-specific safety rules first, then use this document for engineering discipline.
+This guideline does not authorize destructive commands, credential changes, production configuration changes, policy-evasion work, or irreversible actions. Follow the repository and task-specific safety rules first, then use this document for engineering discipline.
+
+## Change Log
+
+- 2026-07-08: Kept as auxiliary_policy during skill entry dedupe; added references and eval coverage.
+
+## Workflow
+
+1. Confirm the caller skill and authorized scope before use.
+2. Execute only the atomic/internal task owned by this skill.
+3. Return evidence to the caller skill for final routing and delivery.
+
+## Success Criteria
+
+- The task output is reproducible from the recorded input.
+- The caller skill can validate or reject the result without this tool becoming a business entry.
+
+## Boundaries
+
+This guideline remains auxiliary_policy and never owns Web/H5, WAF, delivery, scoring, or site routing.
+
+## Governance
+
+Changes require route-boundary validation, eval coverage, and score gate replay.
+
+## Routing Handoff
+
+Use `website-314-api-delivery`, `reverse-js-crawler`, `web-h5-loop-engineering`, or the selected owner skill as the orchestrator. This guideline is not responsible for public entry routing, WAF diagnostics, scoring ownership, or delivery claims.
+
+## Drift And Evidence Writeback
+
+Drift checks cover engineering-rule changes, review rubric changes, and verification expectations. Site memory handoff is not owned here; known failures are guideline misuse, broad refactors, and missing checks.

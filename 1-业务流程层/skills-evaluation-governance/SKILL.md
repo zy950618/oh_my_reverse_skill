@@ -1,5 +1,6 @@
 ---
 name: skills-evaluation-governance
+standard_type: external_entry
 description: >-
   Use this skill to score, refine, backtest, and govern Codex/Claude skills: assess whether notes are installable skills, create evals, prepare Skill Bench structure, compare SKILL.md quality, define trigger/negative-trigger tests, track drift, maintain versions, record changes, and enforce admission gates for new Skills. Trigger when the user asks to rate skills, use Skill Bench, convert notes into usable skills, evaluate trigger accuracy, maintain a skills library, score a new Skill before accepting it, run backtests, or Chinese requests such as SKILLS评分, 技能评分, 可用SKILLS, 新增Skill准入, Skill Bench跑分, 回测, 漂移测试, 长期治理, 版本号, 变更记录, 触发词优化, 负例测试, or 技能库治理.
 platforms: [cross-platform]
@@ -62,7 +63,7 @@ Score separately:
    - 检查 `99-SKILLS治理/04-新增SKILL评分回测准入.md`。
    - 跑 quick_validate 和 `scripts/score_skills.py`。
    - 回测至少一个正例、一个负例、一个历史回归例。
-   - 更新 `99-SKILLS治理/05-当前评分与回测结果.md`。
+   - 更新当前评分口径摘要（`docs/scoring.md` / `99-SKILLS治理/05-当前评分与回测结果.md`）。
 
 6. 防虚幻治理：
    - 检查是否要求证据、验证、拒答、人工复核和监控。
@@ -81,7 +82,7 @@ Score separately:
 
 ## Success Criteria
 
-- 新 Skill 没有绕过准入评分。
+- 新 Skill 没有突破准入评分。
 - 评分结果区分结构校验、本地回测和官方 Skill Bench 跑分。
 - 每个 Skill 至少有正例、负例和回归/边界 eval。
 - 测试日志中的重复失败能进入站点经验库或 eval backlog。
@@ -118,33 +119,6 @@ When a new real website task reveals a repeated gap, update the relevant Skill, 
 - Drift tests: rerun evals after changing descriptions, adding new cases, or after important real-world failures.
 - Review cadence: update examples and negative triggers when repeated user corrections show a gap.
 
-## Evidence-Backed Phase 1 Update
-
-- Triggered failure: local structure and public-range validators alone did not separate real execution proof from structure-only evidence.
-- Skill change: governance review must require `tools/validate_real_execution_proof.py` output and must not count `STRUCTURE_ONLY` files as real-run evidence.
-- Added eval: `evals/023-real-execution-proof-required.yaml`.
-- Regression commands: `python3 tools/validate_real_execution_proof.py public-range-evidence`; `python3 tools/ci_gate.py .ci-out`.
-
-## Evidence-Backed Phase 2 Update
-
-- Evidence run_id: `run-20260630-013842-high-fidelity-risk-lab`.
-- Triggered failure evidence: Phase 1.1 governance separated `execution_status` from `capability_status`, but still lacked a high-fidelity local target with server-side token state, final business API direct repeat, negative token lifecycle evals, and a business API concurrency ladder.
-- Skill change: governance admission may count this run as `positive_allowed` only within the self-owned localhost risk-lab scope after `validate_public_range_evidence` and `validate_real_execution_proof` pass; it must keep third-party challenge/WAF/fingerprint/production concurrency claims unverified.
-- Added eval: `evals/024-high-fidelity-risk-lab-governance-boundary.yaml`.
-- Regression commands: `python3 tools/validate_public_range_evidence.py public-range-evidence`; `python3 tools/validate_real_execution_proof.py public-range-evidence`; `python3 tools/ci_gate.py .ci-out`.
-
-Phase 2 classification: governance now has one positive local-lab evidence item for final business API acceptance, direct interface repeat, negative eval coverage, and worker isolation. It remains a local-range result, not official Skill Bench scoring and not real third-party risk-control capability.
-
-## Evidence-Backed Phase 2.1 Update
-
-- Evidence run_id: `run-20260630-022227-high-fidelity-risk-lab`.
-- Triggered failure evidence: historical `positive_allowed` evidence without server-side business ledger or `business_data_assertions` could overclaim interface/control-flow success as business success.
-- Skill change: governance admission now requires four distinct statuses and downgrades any positive evidence missing `business_data_status=DATA_ASSERTION_PASS`.
-- Added eval: `evals/025-business-data-assertion-governance.yaml`.
-- Regression commands: `python3 tools/validate_business_data_assertions.py public-range-evidence`; `python3 tools/validate_public_range_evidence.py public-range-evidence`; `python3 tools/validate_real_execution_proof.py public-range-evidence`; `python3 tools/ci_gate.py .ci-out`.
-
-Phase 2.1 classification: `positive_allowed_count` is counted only after execution, control-flow, and business-data gates pass. Evidence that only proves direct replay or control-flow remains `memory_only`, `negative_eval_only`, or `unverified`.
-
 ## References
 
 - `references/scorecard-rubric.md`: stricter scorecard and backtest rubric based on Skill Creator plus Karpathy-style behavior checks.
@@ -152,20 +126,4 @@ Phase 2.1 classification: `positive_allowed_count` is counted only after executi
 - `references/governance.md`: versioning, change log, and drift-test policy.
 - `references/scoring-rubric.md`: scoring details.
 - `references/skill-bench.md`: Skill Bench setup requirements.
-
-## Evidence-Backed Phase 3.5 Update
-
-- Evidence run_id: `run-20260630-041500-phase3-5-longrun`.
-- Failure evidence: `public-range-evidence/longrun/phase3-5/run-20260630-041500-phase3-5-longrun/failure-cases.json` and `public-range-evidence/longrun/phase3-5/run-20260630-041500-phase3-5-longrun/issue-ledger.json`.
-- Skill change: governance admission now requires longrun issue ledger, experience cards, regression evals, and capability-decision output before any Phase 3 challenge/runtime/fingerprint hardening can be discussed.
-- Added eval: `evals/longrun/phase3-5/001-phase3-5-longrun-regression.yaml`.
-- Regression commands: `python3 tools/phase3_longrun_runner.py --config configs/phase3_longrun.yaml`; `python3 tools/validate_public_range_evidence.py public-range-evidence`; `python3 tools/validate_real_execution_proof.py public-range-evidence`; `python3 tools/validate_business_data_assertions.py public-range-evidence`; `python3 tools/ci_gate.py .ci-out`.
-
-Phase 3.5 classification: longrun evidence can harden local baselines and governance gates. It remains `memory_only` unless final business API data assertions pass; it is not real third-party challenge/WAF capability.
-
-## Evidence-Backed Phase 3.6 Update
-
-- Evidence run_id: `run-20260630-053000-phase3-6-public-model`.
-- Public fingerprint diagnostics evidence: `public-range-evidence/fingerprint-diagnostics/run-20260630-053000-phase3-6-public-model-sannysoft.json`.
-- Skill change: governance now distinguishes JS/runtime parity, observation-only fingerprint diagnostics, pure API replay, and public evidence `positive_allowed`.
 

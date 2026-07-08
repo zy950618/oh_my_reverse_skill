@@ -1,14 +1,10 @@
 #!/usr/bin/env python3
 """
-ci_gate.py — 按"层"设阈值，读取 .ci-out/*.json，任何 skill 低于其层阈值则 exit 1。
+ci_gate.py — 按"层"设阈值，读取 .ci-out/*.json，任何 active skill 低于其层阈值则 exit 1。
 
-为什么按层不按统一阈值？
-- 业务流程层 (1-) / 沉淀工具层 (5-) 是 package skill，含 SKILL.md + evals + references + agents
-  → 高阈值 (70)
-- 原子工具层 (2- / 4-) 是 atom/foundation skill，只有 SKILL.md 也可以有效
-  → 低阈值 (15)，主要确保 SKILL.md 还在 + frontmatter 完整
-
-这是 v1 baseline。后续随 skill 演化可调高阈值。
+Phase 2 strict baseline: active layers use a 93-point floor. Layer/type metadata
+decides routing semantics; low-scoring active skills must be improved or removed
+from active scoring rather than hidden behind weaker per-layer thresholds.
 
 用法:
   python3 tools/ci_gate.py .ci-out

@@ -17,10 +17,10 @@ and drift evidence.
 
 ## Forbidden Scope
 
-- WAF bypass.
-- challenge bypass.
-- Fingerprint spoofing.
-- Webdriver hiding.
+- WAF defeat.
+- challenge defeat.
+- Fingerprint falsification.
+- Webdriver concealment.
 - Detection evasion.
 - Risk token forgery.
 - Clearance cookie reuse.
