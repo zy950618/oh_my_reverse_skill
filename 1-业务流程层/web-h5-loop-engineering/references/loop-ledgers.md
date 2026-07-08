@@ -68,7 +68,7 @@ session_cache_isolation:
 
 ## Runner Execution Ledger
 
-Use `tools/web_h5_loop_runner.py` to create and validate the machine-readable
+Use `tools/web_h5/web_h5_loop_runner.py` to create and validate the machine-readable
 ledger:
 
 ```yaml

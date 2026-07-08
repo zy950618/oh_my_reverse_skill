@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """给指定 Skill 生成 evals/ 与 agents/openai.yaml 的骨架。
 
 读 SKILL.md frontmatter 提取 description,生成:
@@ -10,8 +11,8 @@
 已存在的文件不覆盖。
 
 用法:
-  python3 tools/scaffold_evals.py --skill 2-JS逆向工具层/find-crypto-entry
-  python3 tools/scaffold_evals.py --skill 2-JS逆向工具层/env-patch --force
+  python3 tools/governance/scaffold_evals.py --skill 2-JS逆向工具层/find-crypto-entry
+  python3 tools/governance/scaffold_evals.py --skill 2-JS逆向工具层/env-patch --force
 """
 from __future__ import annotations
 

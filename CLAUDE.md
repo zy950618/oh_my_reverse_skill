@@ -135,7 +135,7 @@ WAF 预判:<是否存在 reese84/incapsula/akamai/cloudflare 痕迹>
 任务结束需要同步项目 memory 到站点经验库时:
 
 ```bash
-python3 tools/sync_site_memory.py --project <项目路径> --domain <domain> --apply
+python3 tools/site_memory/sync_site_memory.py --project <项目路径> --domain <domain> --apply
 ```
 
 dry-run 见 `tools/README.md`。**不要接 Stop hook 自动跑,会污染无关项目**。
@@ -169,7 +169,7 @@ dry-run 见 `tools/README.md`。**不要接 Stop hook 自动跑,会污染无关�
 声明"完成 / done / 交付 / 收尾"前,必须跑:
 
 ```bash
-python3 tools/verify_delivery.py --domain <当前任务的 domain,或 none>
+python3 tools/web_h5/verify_delivery.py --domain <当前任务的 domain,或 none>
 ```
 
 exit_code != 0 时,**不许向用户输出"完成"**。需先补完 blockers 列表中的项,重跑直到 exit 0。
@@ -182,7 +182,7 @@ verify_delivery.py 是二级 quality gate;Stop hook 的 `post_task_reminder.py` 
 
 ## 自动提醒机制
 
-`.claude/settings.json` 注册了 Stop hook(`tools/post_task_reminder.py`)。
+`.claude/settings.json` 注册了 Stop hook(`tools/lifecycle/post_task_reminder.py`)。
 Claude 完成响应时,脚本会扫 transcript:
 
 - 若检测到本次涉及业务 domain

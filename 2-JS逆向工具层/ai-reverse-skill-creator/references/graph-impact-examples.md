@@ -30,7 +30,7 @@ impacted:
   - downstream site memory update requirements
 must_run:
   - score_skills.py for the layer
-  - tools/ci_gate.py
+  - tools/governance/ci_gate.py
   - scan for stale boundary-style wording if risk handling changed
 risk:
   - placeholder evals counted as coverage

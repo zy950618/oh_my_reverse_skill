@@ -17,8 +17,8 @@ evidence_run_id:
 failure_evidence:
   - historical positive evidence without business_data_assertions was rejected by the new business data validator.
 regression_command:
-  - python3 tools/validate_business_data_assertions.py public-range-evidence
-  - python3 tools/validate_public_range_evidence.py public-range-evidence
-  - python3 tools/validate_real_execution_proof.py public-range-evidence
-  - python3 tools/ci_gate.py .ci-out
+  - python3 tools/evidence/validate_business_data_assertions.py public-range-evidence
+  - python3 tools/evidence/validate_public_range_evidence.py public-range-evidence
+  - python3 tools/evidence/validate_real_execution_proof.py public-range-evidence
+  - python3 tools/governance/ci_gate.py .ci-out
 timeout: 180

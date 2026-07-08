@@ -40,7 +40,7 @@ tags:
 
 ## 评分维度
 
-唯一评分口径见 `99-SKILLS治理/skill-score-rubric.yaml` 和 `tools/score_skills.py`。当前仓库 strict score 采用 7 个 gate 组件，active skill 准入采用 per-skill 100 分结构:
+唯一评分口径见 `99-SKILLS治理/skill-score-rubric.yaml` 和 `tools/governance/score_skills.py`。当前仓库 strict score 采用 7 个 gate 组件，active skill 准入采用 per-skill 100 分结构:
 
 | 类别 | 分值 | 子项 |
 |---|---:|---|

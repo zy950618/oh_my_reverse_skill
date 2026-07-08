@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """从站点经验库和逆向工程经验库反推真实任务下限,写入对应 Skill 的 metrics/real-task-summary.md。
 
 逻辑:
@@ -115,7 +116,7 @@ def render_block(stats: list[dict]) -> str:
         f"## 真实任务下限(从站点经验库 + 逆向工程经验库反推 / {ts})",
         "",
         "> 数据来自 `站点经验库/<domain>/` 和 `逆向工程经验库/domains/<domain>/reverse-memory.md`,每个失败模式 / 测试教训 / change-log 版本 / reverse run 视为至少一次真实任务接触。",
-        "> 这不是严格命中率,只是「已发生过的真实任务下限」。脚本: `tools/backfill_from_site_memory.py`。",
+        "> 这不是严格命中率,只是「已发生过的真实任务下限」。脚本: `tools/site_memory/backfill_from_site_memory.py`。",
         "",
         "| domain | 已知失败 | 测试教训 | 变更版本 | 逆向 run | 任务下限 |",
         "|---|---:|---:|---:|---:|---:|",

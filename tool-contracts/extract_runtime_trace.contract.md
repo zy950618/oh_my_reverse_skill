@@ -22,7 +22,7 @@ Extract browser runtime traces that connect user actions, network requests, scri
 
 ## Command Examples
 ```powershell
-python3 tools/js_page_runtime_capture.py --url <url> --out <evidence_dir>
+python3 tools/js_runtime/js_page_runtime_capture.py --url <url> --out <evidence_dir>
 ```
 
 ## Failure Modes

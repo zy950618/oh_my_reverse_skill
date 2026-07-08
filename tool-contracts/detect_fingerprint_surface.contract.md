@@ -22,7 +22,7 @@ Inventory observable browser fingerprint surfaces and risk-state signals for dia
 
 ## Command Examples
 ```powershell
-python3 tools/fingerprint_surface_capture.py --url <url> --out <evidence_dir>
+python3 tools/fingerprint/fingerprint_surface_capture.py --url <url> --out <evidence_dir>
 ```
 
 ## Failure Modes

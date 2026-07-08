@@ -9,8 +9,8 @@ domain, market, locale, currency, stage, auth state, and target API.
 Create or validate an acceptance report:
 
 ```bash
-python3 tools/web_h5_acceptance_report.py template --out acceptance-report.json --domain <domain> --stage <stage> --target-api <method:url>
-python3 tools/web_h5_acceptance_report.py validate --report acceptance-report.json
+python3 tools/web_h5/web_h5_acceptance_report.py template --out acceptance-report.json --domain <domain> --stage <stage> --target-api <method:url>
+python3 tools/web_h5/web_h5_acceptance_report.py validate --report acceptance-report.json
 ```
 
 Use `--require-complete` only when claiming completion, concurrency, or stable

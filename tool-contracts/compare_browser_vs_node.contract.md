@@ -22,7 +22,7 @@ Compare browser-generated values with Node.js execution to verify runtime parity
 
 ## Command Examples
 ```powershell
-python3 tools/js_page_runtime_parity_runner.py --fixture <fixture> --out <evidence_dir>
+python3 tools/js_runtime/js_page_runtime_parity_runner.py --fixture <fixture> --out <evidence_dir>
 ```
 
 ## Failure Modes

@@ -19,7 +19,7 @@ failure_evidence:
   - "Phase 1 lacked server-side risk state machine and final business API direct repeat."
   - "Phase 1 lacked cross-worker token pollution rejection and business API worker ladder."
 regression_command:
-  - python3 tools/validate_public_range_evidence.py public-range-evidence
-  - python3 tools/validate_real_execution_proof.py public-range-evidence
-  - python3 tools/validate_web_h5_loop_gate.py
+  - python3 tools/evidence/validate_public_range_evidence.py public-range-evidence
+  - python3 tools/evidence/validate_real_execution_proof.py public-range-evidence
+  - python3 tools/web_h5/validate_web_h5_loop_gate.py
 timeout: 180

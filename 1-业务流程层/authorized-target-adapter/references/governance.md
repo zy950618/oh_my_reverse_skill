@@ -15,7 +15,7 @@ This reference binds authorized-target adaptation to explicit scope, final busin
 - `business_data_status=DATA_ASSERTION_PASS`.
 - 1/2/5/10 worker business API ladder passes with isolated session/cookie/token/cache.
 - Negative cases have zero ledger delta.
-- Capability status stays candidate/verified according to `tools/capability_promotion_gate.py`.
+- Capability status stays candidate/verified according to the scope, business-data, real-execution, and public-range evidence gates: `tools/evidence/validate_scope_contract.py`, `tools/evidence/validate_business_data_assertions.py`, `tools/evidence/validate_real_execution_proof.py`, and `tools/evidence/validate_public_range_evidence.py`.
 
 ## Boundaries
 

@@ -13,5 +13,5 @@ Delete or rewrite:
 Check before handoff:
 
 ```bash
-python3 tools/cleanup_workspace.py --check
+python3 tools/lifecycle/cleanup_workspace.py --check
 ```

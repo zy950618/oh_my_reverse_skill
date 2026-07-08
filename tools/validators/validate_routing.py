@@ -83,7 +83,7 @@ def check_tokens(rel: str, text: str, failures: list[str]) -> None:
             if token.lower() in line_lower:
                 failures.append(f"{rel}:{line_no}: stale skill-count routing token {token!r}")
                 break
-    if "current active count is 15" in lowered and "python3 tools/score_skills.py --repo ." not in text:
+    if "current active count is 15" in lowered and "python3 tools/governance/score_skills.py --repo ." not in text:
         failures.append(f"{rel}: hard-coded active count lacks score_skills authority")
 
 

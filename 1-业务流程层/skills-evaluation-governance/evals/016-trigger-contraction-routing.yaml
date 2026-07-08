@@ -1,6 +1,6 @@
 name: Trigger convergence keeps entry skills and support tools separated
 prompt: >
-  Review a Web/H5 reverse-engineering skills library whose active SKILL.md count is determined by `python3 tools/score_skills.py --repo .` and release score output.
+  Review a Web/H5 reverse-engineering skills library whose active SKILL.md count is determined by `python3 tools/governance/score_skills.py --repo .` and release score output.
   The user says the skills feel too many and messy. Decide how the library
   should route future tasks without deleting existing specialized skills.
 criteria:

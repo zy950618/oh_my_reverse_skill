@@ -23,7 +23,7 @@ platforms: [web, h5]
 
 ## Standard LOOP Pure API Gate
 
-This skill is an `external_entry` and `pure_api_delivery` owner. Final business delivery must be browserless: browser tooling is permitted for reconnaissance, script location, runtime trace, sample collection, and parity checks, but final business flow must pass `tools/validate_pure_api_delivery.py` against a delivery lab or package that has no Playwright/Puppeteer/Camoufox/profile/manual-cookie dependency.
+This skill is an `external_entry` and `pure_api_delivery` owner. Final business delivery must be browserless: browser tooling is permitted for reconnaissance, script location, runtime trace, sample collection, and parity checks, but final business flow must pass `tools/evidence/validate_pure_api_delivery.py` against a delivery lab or package that has no Playwright/Puppeteer/Camoufox/profile/manual-cookie dependency.
 
 ## When To Use
 

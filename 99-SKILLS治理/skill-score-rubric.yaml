@@ -1,6 +1,6 @@
 schema_version: 1
 status: temporary_single_source
-source_of_truth: "tools/score_skills.py strict 7-component repository score plus per-skill 100-point gate, documented here"
+source_of_truth: "tools/governance/score_skills.py strict 7-component repository score plus per-skill 100-point gate, documented here"
 effective_date: "2026-07-01"
 
 strict_repository_score_components:

@@ -14,7 +14,7 @@ tags:
 
 ## 有效加载策略
 
-active `SKILL.md` 数量以 `python3 tools/score_skills.py --repo .` 和 release score 输出为准；不等于所有 Skill 都应直接响应用户自然语言。默认按三层加载：
+active `SKILL.md` 数量以 `python3 tools/governance/score_skills.py --repo .` 和 release score 输出为准；不等于所有 Skill 都应直接响应用户自然语言。默认按三层加载：
 
 | 层级 | Skill | 触发规则 |
 |---|---|---|
@@ -56,7 +56,7 @@ active `SKILL.md` 数量以 `python3 tools/score_skills.py --repo .` 和 release
 
 ## 全部 active skill（数量以评分工具为准）
 
-active skill 数量以 `python3 tools/score_skills.py --repo .` 和 release score 输出为准。
+active skill 数量以 `python3 tools/governance/score_skills.py --repo .` 和 release score 输出为准。
 
 ### 1-业务流程层
 

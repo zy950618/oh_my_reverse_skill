@@ -21,18 +21,18 @@
 
 ```bash
 # dry-run（默认，只预览）
-python3 tools/sync_site_memory.py \
+python3 tools/site_memory/sync_site_memory.py \
     --project E:/flight-cwl/flight-cwl-vj-baggage \
     --domain vietjetair.com
 
 # 真正写入
-python3 tools/sync_site_memory.py \
+python3 tools/site_memory/sync_site_memory.py \
     --project E:/flight-cwl/flight-cwl-vj-baggage \
     --domain vietjetair.com \
     --apply
 
 # 同时同步 feedback 类（默认只同步 project 类）
-python3 tools/sync_site_memory.py \
+python3 tools/site_memory/sync_site_memory.py \
     --project E:/flight-cwl/flight-cwl-vj-baggage \
     --domain vietjetair.com \
     --apply --include-feedback
@@ -63,23 +63,23 @@ python3 tools/sync_site_memory.py \
 
 ```bash
 # dry-run (默认)
-python3 tools/backfill_from_site_memory.py \
+python3 tools/site_memory/backfill_from_site_memory.py \
     --domain thaiairways.com \
     --skill-metrics "1-业务流程层/website-314-api-delivery/metrics/real-task-summary.md"
 
 # 真正写入
-python3 tools/backfill_from_site_memory.py \
+python3 tools/site_memory/backfill_from_site_memory.py \
     --domain thaiairways.com \
     --skill-metrics "1-业务流程层/website-314-api-delivery/metrics/real-task-summary.md" \
     --apply
 
 # 多 domain 累加
-python3 tools/backfill_from_site_memory.py \
+python3 tools/site_memory/backfill_from_site_memory.py \
     --domain thaiairways.com --domain vietjetair.com \
     --skill-metrics "..." --apply
 
 # 覆盖已写入的反推段
-python3 tools/backfill_from_site_memory.py ... --apply --rewrite
+python3 tools/site_memory/backfill_from_site_memory.py ... --apply --rewrite
 ```
 
 ### 行为
@@ -102,16 +102,16 @@ python3 tools/backfill_from_site_memory.py ... --apply --rewrite
 
 ```bash
 # 单个 Skill
-python3 tools/scaffold_evals.py --skill 2-JS逆向工具层/find-crypto-entry
+python3 tools/governance/scaffold_evals.py --skill 2-JS逆向工具层/find-crypto-entry
 
 # 批量
-python3 tools/scaffold_evals.py \
+python3 tools/governance/scaffold_evals.py \
     --skill 2-JS逆向工具层/find-crypto-entry \
     --skill 2-JS逆向工具层/ast-deobfuscate \
     --skill 2-JS逆向工具层/env-patch
 
 # 覆盖已有骨架
-python3 tools/scaffold_evals.py --skill ... --force
+python3 tools/governance/scaffold_evals.py --skill ... --force
 ```
 
 ### 行为
@@ -143,7 +143,7 @@ Stop hook 与 CI 周更 drift snapshot 的脚本。当前评分口径见 `docs/s
 ### 用法
 
 ```bash
-python3 tools/validate_skill_frontmatter.py
+python3 tools/validators/validate_skill_frontmatter.py
 ```
 
 ### 何时跑
@@ -161,7 +161,7 @@ python3 tools/validate_skill_frontmatter.py
 ### 用法
 
 ```bash
-python3 tools/validate_public_range_evidence.py public-range-evidence
+python3 tools/evidence/validate_public_range_evidence.py public-range-evidence
 ```
 
 ### 何时跑
@@ -182,7 +182,7 @@ evidence 会降级为 `STRUCTURE_ONLY`，只能作为结构、历史或边界证
 ### 用法
 
 ```bash
-python3 tools/validate_real_execution_proof.py public-range-evidence
+python3 tools/evidence/validate_real_execution_proof.py public-range-evidence
 ```
 
 ### 检查内容
@@ -238,7 +238,7 @@ HAR / CloakBrowser 录制刚转 fixtures 后先跑普通检查,确认三件套�
 ### 用法
 
 ```bash
-python3 tools/validate_web_h5_crawler_gate.py
+python3 tools/web_h5/validate_web_h5_crawler_gate.py
 ```
 
 ### 何时跑
@@ -254,7 +254,7 @@ python3 tools/validate_web_h5_crawler_gate.py
 ### 用法
 
 ```bash
-python3 tools/validate_web_h5_loop_gate.py
+python3 tools/web_h5/validate_web_h5_loop_gate.py
 ```
 
 ### 何时跑
@@ -270,20 +270,20 @@ python3 tools/validate_web_h5_loop_gate.py
 ### 用法
 
 ```bash
-python3 tools/web_h5_loop_runner.py init \
+python3 tools/web_h5/web_h5_loop_runner.py init \
     --out loop-ledger.json \
     --domain example.com \
     --stage search \
     --target-api POST:/api/search
 
-python3 tools/web_h5_loop_runner.py record-iteration \
+python3 tools/web_h5/web_h5_loop_runner.py record-iteration \
     --ledger loop-ledger.json \
     --executor-action "capture search API" \
     --verifier-result blocked \
     --governor-result human_review
 
-python3 tools/web_h5_loop_runner.py validate --ledger loop-ledger.json
-python3 tools/web_h5_loop_runner.py validate --ledger loop-ledger.json --require-complete
+python3 tools/web_h5/web_h5_loop_runner.py validate --ledger loop-ledger.json
+python3 tools/web_h5/web_h5_loop_runner.py validate --ledger loop-ledger.json --require-complete
 ```
 
 ### 何时跑
@@ -301,14 +301,14 @@ python3 tools/web_h5_loop_runner.py validate --ledger loop-ledger.json --require
 ### 用法
 
 ```bash
-python3 tools/web_h5_acceptance_report.py template \
+python3 tools/web_h5/web_h5_acceptance_report.py template \
     --out acceptance-report.json \
     --domain example.com \
     --stage search \
     --target-api POST:/api/search
 
-python3 tools/web_h5_acceptance_report.py validate --report acceptance-report.json
-python3 tools/web_h5_acceptance_report.py validate --report acceptance-report.json --require-complete
+python3 tools/web_h5/web_h5_acceptance_report.py validate --report acceptance-report.json
+python3 tools/web_h5/web_h5_acceptance_report.py validate --report acceptance-report.json --require-complete
 ```
 
 ### 何时跑
@@ -324,14 +324,14 @@ python3 tools/web_h5_acceptance_report.py validate --report acceptance-report.js
 ### 用法
 
 ```bash
-python3 tools/fixture_freshness_report.py 站点经验库
-python3 tools/fixture_freshness_report.py 站点经验库 --strict-fresh
-python3 tools/ci_gate.py .ci-out --release
+python3 tools/web_h5/fixture_freshness_report.py 站点经验库
+python3 tools/web_h5/fixture_freshness_report.py 站点经验库 --strict-fresh
+python3 tools/governance/ci_gate.py .ci-out --release
 ```
 
 ### 何时跑
 
-每次声称网页一致性、fresh replay 或真实交付前跑。默认是 report-only;发版/交付前使用 `--strict-fresh` 或 `python3 tools/ci_gate.py .ci-out --release`。普通 `ci_gate.py .ci-out` 只是结构/评分门禁,不能作为 release freshness 证据。
+每次声称网页一致性、fresh replay 或真实交付前跑。默认是 report-only;发版/交付前使用 `--strict-fresh` 或 `python3 tools/governance/ci_gate.py .ci-out --release`。普通 `ci_gate.py .ci-out` 只是结构/评分门禁,不能作为 release freshness 证据。
 
 ---
 
@@ -342,7 +342,7 @@ python3 tools/ci_gate.py .ci-out --release
 ### 用法
 
 ```bash
-python3 tools/validate_web_h5_real_execution_gate.py
+python3 tools/web_h5/validate_web_h5_real_execution_gate.py
 ```
 
 ### 何时跑

@@ -21,7 +21,7 @@ Check whether fixtures, HAR files, tokens, scripts, and replay evidence are fres
 
 ## Command Examples
 ```powershell
-python3 tools/fixture_freshness_report.py --evidence <evidence_dir> --out <report>
+python3 tools/web_h5/fixture_freshness_report.py --evidence <evidence_dir> --out <report>
 ```
 
 ## Failure Modes

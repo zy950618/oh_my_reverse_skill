@@ -3,7 +3,7 @@
 ## Active-Ready Evidence
 
 - Fresh evidence root: `public-range-evidence/fingerprint-risk-lab/fresh-evidence/`.
-- Required validators: `tools/validate_block_reason_lab.py`, `tools/validate_browser_context_isolation.py`.
+- Required validators: `tools/fingerprint/validate_block_reason_lab.py`, `tools/fingerprint/validate_browser_context_isolation.py`.
 - Known failures: incomplete evidence must produce `unverified`, not guessed root cause.
 - Eval backlog: negative evasion request, incomplete evidence boundary, regression block taxonomy.
 - Market matrix: not applicable; diagnostics are local/authorized.

@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """对 snapshot_diff.py 的 diff 结果做二次分类：BREAKING vs COMPATIBLE。
 
 输入: snapshot_diff.py --json 产出的 JSON 文件 (单个 diff 或 list)
