@@ -1,0 +1,20 @@
+{
+  "task": "tools-reorg-low-loop",
+  "base_branch": "test",
+  "current_loop": "loop-00-ledger-inventory",
+  "current_branch": "loop/tools-00-ledger-inventory",
+  "status": "in_progress",
+  "completed_loops": [],
+  "next_action": "validate Loop 00 ledger files, commit, merge back to test, then start Loop 01",
+  "verification": [],
+  "pending_cleanup": [
+    ".DS_Store",
+    ".ci-out/*.json",
+    ".loop/*.md from prior loops",
+    ".agent-control/backups/phase2-dirty-test-*",
+    ".agent-control/codex-results/phase2-*.md",
+    ".agent-control/baseline/BASLINE_FINDINGS_LOCAL_ONLY.md",
+    ".agent-control/ohmrs-evolution-pack/**"
+  ],
+  "blocked": []
+}
