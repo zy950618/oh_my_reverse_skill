@@ -17,7 +17,11 @@ on:
       - 'public-range-evidence/**'
       - '.github/workflows/**'
       - 'tools/ci_gate.py'
-      - 'tools/validate_public_range_evidence.py'
+      - 'tools/score_skills.py'
+      - 'tools/governance/**'
+      - 'tools/validators/**'
+      - 'tools/evidence/**'
+      - 'tools/web_h5/**'
   push:
     branches: [main, test]
   schedule:
