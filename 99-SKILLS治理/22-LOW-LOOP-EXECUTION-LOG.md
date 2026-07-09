@@ -3,12 +3,58 @@
 ## Latest active execution
 
 ```yaml
-objective: LCL-20260708-05
-branch: loop/20260708-05-score-json-output
+objective: LCL-20260708-06
+branch: loop/20260708-06-js-runtime-evidence
 base_branch: test
 profile: low_cost_structure
 capability_claim: STRUCTURE_ONLY
-status: VALIDATED_STRUCTURE_PASS
+status: STRUCTURE_CONTRACT_RECORDED
+```
+
+## LCL-06 scope ledger
+
+```yaml
+in_scope:
+  - define scripts manifest required fields for JS runtime/script evidence
+  - define redaction_status and source_freshness enums
+  - require raw_secret_persisted false before long-term evidence retention
+  - state runtime parity/env-patch boundary as named fixture/input/run_id only
+  - update low-loop execution, verification, changelog, ledger, and acceptance records
+out_of_scope:
+  - real-site collection or script snapshot generation
+  - raw cookie/token/profile/storage persistence
+  - business API, risk-token, WAF/challenge, clearance-cookie, or production success claims
+  - skills-manifest changes or active skill creation
+```
+
+## LCL-06 execution observations
+
+```yaml
+observed:
+  - branch: loop/20260708-06-js-runtime-evidence
+  - changed_file: tool-contracts/collect_scripts.contract.md
+  - changed_file: 2-JS逆向工具层/js-page-runtime-parity/references/runtime-parity-contract.md
+  - changed_file: 2-JS逆向工具层/env-patch/references/governance.md
+  - manifest_required_fields:
+      - url_or_inline_id
+      - sha256
+      - captured_at
+      - source_freshness
+      - redaction_status
+      - raw_secret_persisted
+      - storage_policy
+      - authorization_scope
+      - script_kind
+      - size_bytes
+      - initiator_or_initiator_status
+  - redaction_status_enum: [clean, redacted, blocked, manual_review_required]
+  - source_freshness_enum: [fresh, stale, unknown]
+derived:
+  - stale_or_unknown_sources_are_not_positive_capability_evidence
+  - raw_secret_persisted_true_requires_blocked_or_manual_review
+unverified:
+  - no real-domain capability is claimed
+  - no script snapshot, sign/token, concurrency, WAF/challenge, or production success is claimed
 ```
 
 ## LCL-05 scope ledger

@@ -25,6 +25,16 @@ Every final output must include:
 - Validation Commands: `node env/run.js`, format comparison, request replay, snapshot diff, schema alert, or a clear reason a check could not run.
 - Fact Labels: observed, derived, assumed, unverified.
 - Scope Ledger: runtime globals touched, source for every stub value, browser profile, capture freshness, and unresolved blockers.
+- Runtime Parity Boundary: any parity claim is limited to the named fixture, input, and `run_id`; it does not prove business API acceptance, risk-token validity, WAF/challenge success, clearance-cookie reuse, or production readiness.
+- Script Evidence Manifest: linked script evidence must record `sha256`, `captured_at`, `source_freshness`, `redaction_status`, `raw_secret_persisted`, storage policy, authorization scope, script kind, size, and initiator metadata/status.
+
+## Script evidence retention
+
+- `raw_secret_persisted` must be `false` before evidence can be retained long term.
+- Entries with raw cookies, tokens, credentials, browser profile state, localStorage, sessionStorage, or other raw secrets must be blocked or sent to manual review.
+- `source_freshness` must be one of `fresh`, `stale`, or `unknown`.
+- `redaction_status` must be one of `clean`, `redacted`, `blocked`, or `manual_review_required`.
+- `stale` and `unknown` sources can document structure, drift, or negative context, but cannot be used as positive capability proof.
 
 ## Known failures
 

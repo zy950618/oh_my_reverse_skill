@@ -1,0 +1,199 @@
+{
+  "loop_id": "LCL-20260708-06",
+  "created_at": "2026-07-09T07:02:18+00:00",
+  "domain": "none",
+  "scope": {
+    "market": "none",
+    "locale": "none",
+    "currency": "none",
+    "stage": "low_cost_structure",
+    "auth_state": "none",
+    "target_api": "js-runtime-evidence-manifest"
+  },
+  "max_iterations": 1,
+  "capability_claim": "STRUCTURE_ONLY",
+  "stop_conditions": [
+    "verifier_passed_and_governor_passed",
+    "max_iterations",
+    "repeated_blocker",
+    "human_review_required",
+    "validation_failed",
+    "risk_or_scope_boundary"
+  ],
+  "human_review_conditions": [
+    "payment_or_order",
+    "login_or_pii",
+    "challenge_or_waf_manual_challenge",
+    "raw_secret_detected",
+    "evidence_conflict",
+    "production_impact"
+  ],
+  "roles": {
+    "executor": {
+      "owner": "Codex",
+      "responsibility": "record scoped JS runtime evidence manifest structure and validation artifacts"
+    },
+    "verifier": {
+      "owner": "Claude",
+      "responsibility": "rerun link, score, release, loop, acceptance, and delivery gates"
+    },
+    "governor": {
+      "owner": "Claude",
+      "responsibility": "enforce structure-only claim, raw-secret boundary, scope boundaries, safety, cleanup, and merge gate"
+    }
+  },
+  "iterations": [
+    {
+      "iteration": 1,
+      "started_at": "2026-07-09T07:02:18+00:00",
+      "executor_action": "recorded scripts manifest required fields and runtime parity/env-patch evidence boundaries",
+      "executor_evidence": "tool-contracts/collect_scripts.contract.md; 2-JS逆向工具层/js-page-runtime-parity/references/runtime-parity-contract.md; 2-JS逆向工具层/env-patch/references/governance.md; low-loop records",
+      "business_object_source": "not_applicable_structure_only",
+      "list_detail_submit_chain": "not_applicable_structure_only",
+      "server_ledger_delta": "not_applicable_structure_only",
+      "negative_eval_no_side_effect": "not_applicable_structure_only",
+      "concurrency_order_session_worker_ownership": "not_applicable_structure_only",
+      "verifier_checks": "validate_links PASS; score_skills PASS; ci_gate --release BLOCKED by airline_deep_validation localhost bind PermissionError Errno 1; loop ledger STRUCTURE_PASS; acceptance report STRUCTURE_PASS; verify_delivery exit_code=0 with transcript honesty blocker note",
+      "verifier_result": "fail",
+      "governor_checks": "STRUCTURE_ONLY capability claim preserved; no raw cookie/token/profile/storage persisted; no WAF/challenge/fingerprint bypass added; no real-domain capability claimed",
+      "governor_result": "pass",
+      "learning": "script evidence must carry source identity, hash, capture time, freshness, redaction, retention, authorization, kind, size, and initiator status before it can be evaluated",
+      "memory_updates": "execution log, verification report, changelog, loop ledger, and acceptance report updated",
+      "next_action": "rerun release gate in an environment that permits localhost bind, then Claude audit and merge decision"
+    }
+  ],
+  "verification": {
+    "fresh_evidence": {
+      "run_id": "",
+      "capture_id": "",
+      "captured_at": "",
+      "network_log_id": "",
+      "script_hash": "",
+      "browser_profile_id": "",
+      "state_reset": "",
+      "source_freshness": "unknown"
+    },
+    "clean_state_retest": {
+      "clean_unverified": {
+        "status": "unverified",
+        "evidence": ""
+      },
+      "verified": {
+        "status": "unverified",
+        "evidence": ""
+      },
+      "repeat_verified": {
+        "status": "unverified",
+        "evidence": ""
+      }
+    },
+    "anti_flake": {
+      "observations": [],
+      "decision": "unverified"
+    },
+    "concurrency_ladder": {
+      "worker_1": {
+        "status": "unverified"
+      },
+      "worker_2": {
+        "status": "unverified"
+      },
+      "worker_5": {
+        "status": "unverified"
+      },
+      "worker_10": {
+        "status": "unverified"
+      }
+    },
+    "session_cache_isolation": {
+      "cookie_jar": "isolated_by_default",
+      "storage": "isolated_by_default",
+      "token_cache": "isolated_by_default",
+      "account_state": "isolated_by_default"
+    },
+    "risk_control": {
+      "authorization_scope": "not_applicable_structure_only",
+      "protected_business_api_acceptance": "not_applicable_structure_only",
+      "failure_split": [],
+      "backoff": "",
+      "kill_switch": "",
+      "human_review_boundary": "raw_secret_detected_or_manual_review_required",
+      "blocked_as_negative_eval": ""
+    },
+    "data_acceptance": {
+      "ui_api_parity": "not_applicable_structure_only",
+      "json_pointers": [
+        "/scripts/0/url",
+        "/scripts/0/inline_id",
+        "/scripts/0/sha256",
+        "/scripts/0/captured_at",
+        "/scripts/0/source_freshness",
+        "/scripts/0/redaction_status",
+        "/scripts/0/raw_secret_persisted",
+        "/scripts/0/storage_policy",
+        "/scripts/0/authorization_scope",
+        "/scripts/0/script_kind",
+        "/scripts/0/size_bytes",
+        "/scripts/0/initiator",
+        "/scripts/0/initiator_status"
+      ],
+      "consistency_rate": null,
+      "adapter_target": ""
+    },
+    "business_data_assertions": {
+      "business_data_status": "NOT_RUN",
+      "server_ledger_path": "",
+      "business_object_source": "not_applicable_structure_only",
+      "list_detail_submit_chain": "not_applicable_structure_only",
+      "server_ledger_delta": "not_applicable_structure_only",
+      "negative_eval_side_effects": "not_applicable_structure_only",
+      "concurrency_order_session_worker_ownership": "not_applicable_structure_only",
+      "positive_assertions": [],
+      "negative_assertions": [],
+      "concurrency_assertions": {}
+    },
+    "fixture_freshness": {
+      "strict_review_exit_code": null,
+      "expired_count": null,
+      "review_pending_count": null,
+      "recent_report": false,
+      "source_freshness": "unknown"
+    }
+  },
+  "metrics": {
+    "task_count": 1,
+    "iterations_total": 1,
+    "success_browserless_verified": 0,
+    "concurrency_verified": 0,
+    "flaky_count": 0,
+    "blocked_by_protection": 0,
+    "strict_review_pass_count": 1,
+    "latest_replay_rate": null
+  },
+  "stop_ledger": {
+    "stop_reason": "validation_blocked_by_release_gate_environment",
+    "evidence": "scripts manifest fields and runtime parity/env-patch boundary recorded; validate_links, score_skills, loop ledger, acceptance report, and verify_delivery ran; ci_gate --release exited 1 because airline_deep_validation could not bind localhost in the current sandbox",
+    "remaining_gap": "release gate not passed in this environment; not a real-domain/script-capture/sign/token/concurrency/WAF production capability claim",
+    "safe_next_step": "rerun ci_gate --release in an environment that permits localhost bind, then Claude audit and merge decision"
+  },
+  "cleanup_ledger": {
+    "removed": [],
+    "kept_as_evidence": [
+      "tool-contracts/collect_scripts.contract.md",
+      "2-JS逆向工具层/js-page-runtime-parity/references/runtime-parity-contract.md",
+      "2-JS逆向工具层/env-patch/references/governance.md",
+      "低LOOP-Codex执行工程包.md",
+      "99-SKILLS治理/05-SKILLS-CHANGELOG.md",
+      "99-SKILLS治理/22-LOW-LOOP-EXECUTION-LOG.md",
+      "99-SKILLS治理/23-LOW-LOOP-VERIFICATION-REPORT.md",
+      "tools/reports/LCL-20260708-06-acceptance.md"
+    ],
+    "migrated_to_memory": [
+      "LCL-06 scripts manifest requires sha256/captured_at/source_freshness/redaction_status/raw_secret_persisted and retention scope fields",
+      "runtime parity claims are limited to named fixture/input/run_id"
+    ],
+    "still_unverified": [
+      "no production/real-domain capability; structure-only scope by design"
+    ]
+  }
+}
