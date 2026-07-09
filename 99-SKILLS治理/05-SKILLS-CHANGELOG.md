@@ -1,5 +1,30 @@
 # SKILLS Changelog
 
+## 2026-07-09 — LCL-20260709-10 external capability absorption base
+
+```yaml
+change_id: LCL-20260709-10
+branch: loop/20260709-10-external-absorption-base
+profile: low_cost_structure
+capability_claim: STRUCTURE_ONLY
+status: structure_absorption_recorded
+```
+
+### Changed
+
+- Added `tool-contracts/external_capability_absorption.contract.md` to map external observed capability categories into existing internal base assets only.
+- Added `1-业务流程层/skills-evaluation-governance/evals/027-external-capability-absorption-base.yaml` to fail external raw file read/import, active skill creation, manifest edits, and risk marker operational upgrades.
+- Added absorption matrix for the three LCL-08 source fact packs using only already-recorded repository facts.
+- Added foundation/base handling: every absorbed pattern must attach to an existing skill, tool contract, eval, or governance ledger with evidence level, prohibited conversion, validation requirement, and remaining gap.
+- Added LCL-10 execution, verification, ledger, and acceptance records.
+
+### Evidence level
+
+- `observed`: only repository-local LCL-08 fact packs and LCL-09 clean-room rules were used.
+- `observed`: no external raw repository file was fetched, cloned, read, copied, or imported in this loop.
+- `derived`: capability patterns can be absorbed only as internal base mappings, evidence contracts, or negative eval seeds.
+- `unverified`: no real-domain capability, sign/token success, challenge defeat, concurrency, or production success is claimed.
+
 ## 2026-07-09 — LCL-20260709-09 external clean-room fusion contract
 
 ```yaml

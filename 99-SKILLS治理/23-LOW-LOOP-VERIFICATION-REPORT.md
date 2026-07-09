@@ -3,11 +3,77 @@
 ## Objective
 
 ```yaml
-objective: LCL-20260709-09
-branch: loop/20260709-09-external-fusion-contract
+objective: LCL-20260709-10
+branch: loop/20260709-10-external-absorption-base
 profile: low_cost_structure
 capability_claim: STRUCTURE_ONLY
-report_status: structure_contract_and_eval_seed_recorded
+report_status: structure_absorption_recorded
+```
+
+## LCL-10 Validator results
+
+| Validator | Expected | Status | Key output |
+|---|---|---|---|
+| `python3 -m json.tool tools/reports/LCL-20260709-10-loop-ledger.json` | exit 0 | PASS | JSON parsed |
+| `python3 -m json.tool tools/reports/LCL-20260709-10-acceptance.md` | exit 0 | PASS | JSON parsed |
+| `python3 - <<'PY' ... yaml.safe_load(...)` | exit 0 | PASS | `YAML_OK` |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/validators/validate_links.py` | exit 0 | PASS | `status: PASS`, `failure_count: 0`, `checked_markdown: 227` |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/score_skills.py --repo . --manifest skills-manifest.json` | exit 0 | PASS | `status: PASS`, `strict_score: 100`, `skill_count: 15` |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/ci_gate.py .ci-out --manifest skills-manifest.json --release` | exit 0 | PASS | Release Gate 通过; airline_deep_validation PASS; cleanup_check PASS |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_loop_runner.py validate --ledger tools/reports/LCL-20260709-10-loop-ledger.json` | `STRUCTURE_PASS` | PASS | `STRUCTURE_PASS`, failures `[]`, blockers `[]` |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_acceptance_report.py validate --report tools/reports/LCL-20260709-10-acceptance.md` | `STRUCTURE_PASS` | PASS | `STRUCTURE_PASS`, failures `[]`, blockers `[]` |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/verify_delivery.py --domain none` | exit 0 | PASS | exit_code 0; blockers `[]`; total `10/10` |
+
+## LCL-10 Validation Ledger
+
+```yaml
+validation_target: LCL-20260709-10 external capability absorption base and governance eval seed
+expected: structure validators exit 0; external material is not imported; active skills are not created; skills-manifest.json remains unchanged
+actual: full structure and release validation passed
+capability_claim: STRUCTURE_ONLY
+observed:
+  - branch: loop/20260709-10-external-absorption-base
+  - LCL-20260709-08 fact packs already present in repo
+  - LCL-20260709-09 clean-room fusion contract already present in repo
+  - no external raw repository file fetched, cloned, read, copied, or imported in this loop
+  - no active skill created
+  - skills-manifest.json not edited
+commands_run:
+  - command: python3 -m json.tool tools/reports/LCL-20260709-10-loop-ledger.json
+    exit_code: 0
+    key_output: JSON parsed
+  - command: python3 -m json.tool tools/reports/LCL-20260709-10-acceptance.md
+    exit_code: 0
+    key_output: JSON parsed
+  - command: python3 yaml.safe_load check for eval 027
+    exit_code: 0
+    key_output: YAML_OK
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/validators/validate_links.py
+    exit_code: 0
+    key_output: status PASS, failure_count 0
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/score_skills.py --repo . --manifest skills-manifest.json
+    exit_code: 0
+    key_output: status PASS, strict_score 100
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/ci_gate.py .ci-out --manifest skills-manifest.json --release
+    exit_code: 0
+    key_output: Release Gate 通过; airline_deep_validation PASS; cleanup_check PASS
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_loop_runner.py validate --ledger tools/reports/LCL-20260709-10-loop-ledger.json
+    exit_code: 0
+    key_output: STRUCTURE_PASS
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_acceptance_report.py validate --report tools/reports/LCL-20260709-10-acceptance.md
+    exit_code: 0
+    key_output: STRUCTURE_PASS
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/verify_delivery.py --domain none
+    exit_code: 0
+    key_output: blockers [], total 10/10
+derived:
+  - every absorbed external capability pattern must attach to an existing internal base asset
+  - risk-sensitive markers remain observation/lab/evidence-contract only
+  - foundation/base handling prevents unattached production capability claims
+remaining_gap:
+  - hello_js_reverse_skill visible license remains unknown from LCL-08
+  - no raw external files were read; source content remains page-level fact-pack only
+  - no real-domain capability, sign/token success, challenge defeat, concurrency, or production success is claimed
 ```
 
 ## LCL-09 Validator results
