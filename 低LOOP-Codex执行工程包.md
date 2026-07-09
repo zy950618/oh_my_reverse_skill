@@ -1,7 +1,7 @@
 # 低 LOOP Codex 执行工程包
 
 > 生成日期: 2026-07-08  
-> 最近更新: 2026-07-09 / `LCL-20260708-06` JS runtime evidence manifest
+> 最近更新: 2026-07-09 / `LCL-20260708-07` external fusion unknown-source ledger
 > 角色定位: Claude 负责计划设计、分支状态监督、Codex 任务下发、独立审查、验证判定和下一轮决策；Codex 只负责在指定分支和指定范围内执行补丁。  
 > 适用范围: `oh_my_reverse_skill` 仓库的轻量结构闭环 / Low-Cost Structure Loop，包括文档、manifest、安装/卸载、GUI、score 输出、JS runtime 证据治理、外部能力融合拆解。  
 > 安全边界: 本工程包不授权 WAF 绕过、指纹伪造、clearance-cookie 复用、验证码绕过、真实扣款、未授权目标、raw cookie/token/profile 落盘。
@@ -12,9 +12,9 @@
 latest_execution_state:
   observed_at: 2026-07-09
   integration_branch: test
-  active_objective: LCL-20260708-06
-  active_branch: loop/20260708-06-js-runtime-evidence
-  active_topic: js_runtime_evidence_manifest
+  active_objective: LCL-20260708-07
+  active_branch: loop/20260708-07-external-fusion
+  active_topic: external_fusion_unknown_source_ledger
   execution_source: 低LOOP-Codex执行工程包.md
   capability_claim: STRUCTURE_ONLY
   prior_objectives:
@@ -52,17 +52,27 @@ latest_execution_state:
             - 99-SKILLS治理/23-LOW-LOOP-VERIFICATION-REPORT.md
             - tools/reports/LCL-20260708-05-loop-ledger.json
             - tools/reports/LCL-20260708-05-acceptance.md
+    - task_id: LCL-20260708-06
+      topic: js_runtime_evidence_manifest
+      status: OBSERVED_STRUCTURE_PASS
+      evidence:
+        - branch_observed: loop/20260708-06-js-runtime-evidence
+        - files_observed:
+            - tool-contracts/collect_scripts.contract.md
+            - 2-JS逆向工具层/js-page-runtime-parity/references/runtime-parity-contract.md
+            - 2-JS逆向工具层/env-patch/references/governance.md
+            - tools/reports/LCL-20260708-06-loop-ledger.json
+            - tools/reports/LCL-20260708-06-acceptance.md
   active_objective_scope:
     in_scope:
-      - define JS runtime scripts manifest required fields
-      - require sha256/captured_at/source_freshness/redaction_status/raw_secret_persisted
-      - require storage_policy/authorization_scope/script_kind/size_bytes/source identity/initiator metadata
-      - record runtime parity and env-patch evidence boundaries
-      - record LCL-06 execution, verification, changelog, ledger, and acceptance
+      - record ai-reverse-toolkit/jshook-skill/hello_js_reverse_skill as unverified source names
+      - define required evidence before source inventory can become observed
+      - define license gate, allowed use, forbidden use, target layer, validation required
+      - record blocker: user must provide source URL/path or explicit search authorization
     out_of_scope:
-      - real-domain replay or production capability claims
-      - WAF/challenge/fingerprint defeat
-      - raw cookie/token/profile/storage persistence
+      - guessing GitHub URLs or assuming same-name repos are intended
+      - cloning/copying/importing external code
+      - claiming observed source facts or license pass without URL/path evidence
       - active skill creation or skills-manifest changes
   scattered_supplement_policy:
     低LOOP-Codex执行工程包.md: authoritative_execution_source
@@ -71,7 +81,7 @@ latest_execution_state:
   completion_claim_allowed_only_when:
     - branch_state_recorded
     - LCL-03 prior evidence recorded
-    - LCL-06 validation commands passed or blocker recorded
+    - LCL-07 unknown-source blocker recorded
     - cleanup_ledger_written
     - verify_delivery_domain_none_passed
 ```

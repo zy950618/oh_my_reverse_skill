@@ -3,12 +3,79 @@
 ## Latest active execution
 
 ```yaml
-objective: LCL-20260708-06
-branch: loop/20260708-06-js-runtime-evidence
+objective: LCL-20260708-07
+branch: loop/20260708-07-external-fusion
 base_branch: test
 profile: low_cost_structure
 capability_claim: STRUCTURE_ONLY
-status: STRUCTURE_CONTRACT_RECORDED
+status: BLOCKED_WAITING_SOURCE_URL_OR_PATH
+```
+
+## LCL-07 unknown-source ledger
+
+```yaml
+external_sources:
+  - source_name: ai-reverse-toolkit
+    source_found: false
+    source_path_or_url: ""
+    source_type: unknown
+    fact_level: unverified
+    license_status: unknown
+    allowed_use: reference_only_or_clean_room_summary_after_source_evidence
+    forbidden_use:
+      - guess_github_url
+      - claim_observed_without_url_or_path
+      - copy_code
+      - create_active_skill
+      - claim_production_capability
+    fusion_target: 1-layer references or 99 governance planning only after evidence
+    validation_required:
+      - user_provided_url_or_path
+      - repo_or_path_exists
+      - license_review
+      - README_or_SKILL_inventory
+      - duplicate_capability_check
+  - source_name: jshook-skill
+    source_found: false
+    source_path_or_url: ""
+    source_type: unknown
+    fact_level: unverified
+    license_status: unknown
+    allowed_use: reference_only_or_clean_room_summary_after_source_evidence
+    forbidden_use:
+      - stealth_tool
+      - waf_defeat
+      - fingerprint_falsification
+      - clearance_cookie_reuse
+      - copy_code
+      - create_active_skill
+    fusion_target: 2-layer references or tool-contract candidate only after evidence
+    validation_required:
+      - user_provided_url_or_path
+      - repo_or_path_exists
+      - license_review
+      - README_or_SKILL_inventory
+      - no_raw_secret_or_defeat_content
+  - source_name: hello_js_reverse_skill
+    source_found: false
+    source_path_or_url: ""
+    source_type: unknown
+    fact_level: unverified
+    license_status: unknown
+    allowed_use: demo_only_eval_seed_or_onboarding_reference_after_source_evidence
+    forbidden_use:
+      - production_skill
+      - real_site_success_case
+      - copy_code
+      - create_active_skill
+    fusion_target: eval/onboarding reference only after evidence
+    validation_required:
+      - user_provided_url_or_path
+      - repo_or_path_exists
+      - license_review
+      - demo_or_eval_inventory
+      - no_trigger_pollution
+blocker: user must provide source URL/path or explicit search authorization before observed inventory or license gate can pass
 ```
 
 ## LCL-06 scope ledger
