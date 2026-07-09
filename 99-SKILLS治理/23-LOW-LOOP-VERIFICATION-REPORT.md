@@ -3,11 +3,63 @@
 ## Objective
 
 ```yaml
-objective: LCL-20260709-08
-branch: loop/20260709-08-external-source-facts
+objective: LCL-20260709-09
+branch: loop/20260709-09-external-fusion-contract
 profile: low_cost_structure
 capability_claim: STRUCTURE_ONLY
-report_status: observed_source_facts_recorded
+report_status: structure_contract_and_eval_seed_recorded
+```
+
+## LCL-09 Validator results
+
+| Validator | Expected | Status | Key output |
+|---|---|---|---|
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/validators/validate_links.py` | exit 0 | PASS | `status: PASS`, `failure_count: 0`, `checked_markdown: 225` |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/score_skills.py --repo . --manifest skills-manifest.json` | exit 0 | PASS | `status: PASS`, `strict_score: 100`, `skill_count: 15` |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/ci_gate.py .ci-out --manifest skills-manifest.json --release` | exit 0 | PASS | Release Gate 通过; airline_deep_validation PASS; cleanup_check PASS |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_loop_runner.py validate --ledger tools/reports/LCL-20260709-09-loop-ledger.json` | `STRUCTURE_PASS` | PASS | `STRUCTURE_PASS`, failures `[]`, blockers `[]` |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_acceptance_report.py validate --report tools/reports/LCL-20260709-09-acceptance.md` | `STRUCTURE_PASS` | PASS | `STRUCTURE_PASS`, failures `[]`, blockers `[]` |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/verify_delivery.py --domain none` | exit 0 | PASS | exit_code 0; blockers `[]`; total `10/10` |
+
+## LCL-09 Validation Ledger
+
+```yaml
+validation_target: LCL-20260709-09 external clean-room fusion contract and governance eval seed
+expected: structure validators exit 0; external code/templates/prompts are not imported; active skills are not created; skills-manifest.json remains unchanged
+actual: structure validators pass for external clean-room fusion contract and governance eval seed
+capability_claim: STRUCTURE_ONLY
+observed:
+  - branch: loop/20260709-09-external-fusion-contract
+  - LCL-20260709-08 fact packs already present in repo
+  - no external raw repository file fetched, cloned, or read in this loop
+  - no active skill created
+  - skills-manifest.json not edited
+commands_run:
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/validators/validate_links.py
+    exit_code: 0
+    key_output: status PASS, failure_count 0
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/score_skills.py --repo . --manifest skills-manifest.json
+    exit_code: 0
+    key_output: status PASS, strict_score 100
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/ci_gate.py .ci-out --manifest skills-manifest.json --release
+    exit_code: 0
+    key_output: Release Gate 通过; airline_deep_validation PASS; cleanup_check PASS
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_loop_runner.py validate --ledger tools/reports/LCL-20260709-09-loop-ledger.json
+    exit_code: 0
+    key_output: STRUCTURE_PASS
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_acceptance_report.py validate --report tools/reports/LCL-20260709-09-acceptance.md
+    exit_code: 0
+    key_output: STRUCTURE_PASS
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/verify_delivery.py --domain none
+    exit_code: 0
+    key_output: blockers [], total 10/10
+derived:
+  - external fusion must require fact pack, license decision, prohibited-use scan, allowed fusion mode, attribution plan, and validation ledger
+  - GPL and unknown-license sources cannot be imported as implementation, templates, prompts, tests, examples, or active skills
+  - risk-sensitive markers remain observation/lab/evidence-contract only
+remaining_gap:
+  - hello_js_reverse_skill visible license remains unknown from LCL-08
+  - no real-domain capability, sign/token success, WAF/challenge defeat, concurrency, or production success is claimed
 ```
 
 ## LCL-08 Validator results

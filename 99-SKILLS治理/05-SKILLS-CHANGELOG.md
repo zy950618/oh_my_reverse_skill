@@ -1,5 +1,30 @@
 # SKILLS Changelog
 
+## 2026-07-09 — LCL-20260709-09 external clean-room fusion contract
+
+```yaml
+change_id: LCL-20260709-09
+branch: loop/20260709-09-external-fusion-contract
+profile: low_cost_structure
+capability_claim: STRUCTURE_ONLY
+status: structure_contract_and_eval_seed_recorded
+```
+
+### Changed
+
+- Added `tool-contracts/external_clean_room_fusion.contract.md` to define inputs, outputs, evidence, failure modes, retry rules, and acceptance checks for internal clean-room external-source fusion.
+- Added `1-业务流程层/skills-evaluation-governance/evals/026-external-source-fusion-gate.yaml` to fail external code/template/prompt import, GPL or unknown-license import, active skill creation, and manifest edits.
+- Required fact pack, license decision, prohibited-use scan, allowed fusion mode, attribution plan, and validation ledger before any fusion step.
+- Preserved STRUCTURE_ONLY: outputs are abstract contracts, eval seeds, or reference notes only.
+- Added LCL-09 execution, verification, ledger, and acceptance records.
+
+### Evidence level
+
+- `observed`: LCL-08 fact packs already exist in this repository and were used as the only source base.
+- `observed`: no external raw repository file was fetched, cloned, or read in this loop.
+- `derived`: risk-sensitive markers remain observation/lab/evidence-contract only and cannot become concealment, falsification, WAF defeat, fingerprint falsification, or production workflow instructions.
+- `unverified`: Claude validation suite is recommended for rerun; `hello_js_reverse_skill` license remains unknown.
+
 ## 2026-07-09 — LCL-20260709-08 external-source fact packs
 
 ```yaml
@@ -15,7 +40,7 @@ status: observed_source_facts_recorded
 - Recorded page-level fact packs for `jshook-skill`, `hello_js_reverse_skill`, and `ai-reverse-toolkit` using public GitHub observations only.
 - Preserved clean-room boundaries: no external code/template import and no active skill creation.
 - Added license gates: GPL-3.0 source is no-code-import reference/clean-room/eval-seed only; MIT source may be clean-room summarized but not imported in this loop; unknown license remains reference-only.
-- Recorded risk-sensitive markers such as stealth, fingerprint spoofing, hook injection, dynamic cookie/token/sign workflows, and protocol/WAF-adjacent claims as observation/lab/evidence-contract only.
+- Recorded risk-sensitive markers such as concealment, fingerprint falsification, hook injection, dynamic cookie/token/sign workflows, and protocol/WAF-adjacent claims as observation/lab/evidence-contract only.
 - Added LCL-08 execution, verification, ledger, and acceptance records.
 
 ### Evidence level

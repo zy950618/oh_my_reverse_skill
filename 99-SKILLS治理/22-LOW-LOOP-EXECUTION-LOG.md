@@ -3,12 +3,63 @@
 ## Latest active execution
 
 ```yaml
-objective: LCL-20260709-08
-branch: loop/20260709-08-external-source-facts
+objective: LCL-20260709-09
+branch: loop/20260709-09-external-fusion-contract
 base_branch: test
 profile: low_cost_structure
 capability_claim: STRUCTURE_ONLY
-status: observed_source_facts_recorded
+status: structure_contract_and_eval_seed_recorded
+```
+
+## LCL-09 external clean-room fusion contract
+
+```yaml
+contract_scope:
+  loop_id: LCL-20260709-09
+  mode: STRUCTURE_ONLY
+  source_base:
+    - LCL-20260709-08 fact packs already present in repo
+  raw_external_files_fetched: false
+  external_code_imported: false
+  external_templates_imported: false
+  external_prompts_imported: false
+  active_skill_created: false
+  skills_manifest_edited: false
+required_inputs:
+  - external_source_fact_pack
+  - license_decision
+  - prohibited_use_scan
+  - allowed_fusion_mode
+  - attribution_plan
+  - validation_ledger
+allowed_outputs:
+  - abstract_contract
+  - eval_seed_without_verbatim_copy
+  - reference_notes_with_attribution
+prohibited_outputs:
+  - imported_external_code
+  - imported_external_templates
+  - imported_external_prompts
+  - active_skill_creation
+  - skills_manifest_edit
+  - real_site_or_production_capability_claim
+risk_policy: anti-detection, concealment, fingerprint falsification, defeat, hook injection, cookie/token/sign, and WAF/challenge-adjacent markers are observation/lab/evidence-contract only
+artifacts:
+  - tool-contracts/external_clean_room_fusion.contract.md
+  - 1-业务流程层/skills-evaluation-governance/evals/026-external-source-fusion-gate.yaml
+  - tools/reports/LCL-20260709-09-loop-ledger.json
+  - tools/reports/LCL-20260709-09-acceptance.md
+validator_recommendations:
+  - PYTHONDONTWRITEBYTECODE=1 python3 tools/validators/validate_links.py
+  - PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/score_skills.py --repo . --manifest skills-manifest.json
+  - PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/ci_gate.py .ci-out --manifest skills-manifest.json --release
+  - PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_loop_runner.py validate --ledger tools/reports/LCL-20260709-09-loop-ledger.json
+  - PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_acceptance_report.py validate --report tools/reports/LCL-20260709-09-acceptance.md
+  - PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/verify_delivery.py --domain none
+remaining_gaps:
+  - Claude validation suite not run by this executor
+  - hello_js_reverse_skill license remains unknown
+  - no external raw file contents read by design
 ```
 
 ## LCL-08 external-source fact packs
@@ -40,11 +91,11 @@ external_sources:
     content_inventory_summary:
       - TypeScript/Node skill layout with src modules, SKILL.md, skill.json, package files, README
       - README describes code collection, deobfuscation, crypto detection, CDP debugging, hook injection, browser/page control
-      - README lists stealth and fingerprint spoofing capabilities
+      - README lists concealment and fingerprint falsification capabilities
     risk_sensitive_markers:
       - hook injection
-      - anti-detection / stealth
-      - fingerprint spoofing
+      - anti-detection / concealment
+      - fingerprint falsification
       - cookie hook
       - debug eval document.cookie
       - XHR/sign/token search workflows
@@ -81,7 +132,7 @@ external_sources:
       - scripts and templates are visible as inventory only, not fetched or copied
     risk_sensitive_markers:
       - anti-detection browser
-      - Cloudflare/RS/JY bypass wording
+      - Cloudflare/RS/JY defeat wording
       - dynamic cookie reverse
       - hook/debug workflows
       - protocol-layer anti-crawler handling
@@ -136,7 +187,7 @@ external_sources:
       - production_success_claim
     decision: MIT_repo_clean_room_summary_allowed_but_no_code_import_in_LCL_08
 risk_policy:
-  anti_detection_stealth_fingerprint_bypass_cookie_token_hook_capabilities: observation_lab_evidence_contract_only
+  anti_detection_concealment_fingerprint_defeat_cookie_token_hook_capabilities: observation_lab_evidence_contract_only
   forbidden: concealment_falsification_WAF_defeat_or_production_claims
 validation_ledger_placeholders:
   claude_should_run_after_changes:
@@ -180,7 +231,7 @@ external_sources:
     license_status: unknown
     allowed_use: reference_only_or_clean_room_summary_after_source_evidence
     forbidden_use:
-      - stealth_tool
+      - concealment_tool
       - waf_defeat
       - fingerprint_falsification
       - clearance_cookie_reuse
