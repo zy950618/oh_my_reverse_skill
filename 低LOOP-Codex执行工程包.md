@@ -1,7 +1,7 @@
 # 低 LOOP Codex 执行工程包
 
 > 生成日期: 2026-07-08  
-> 最近更新: 2026-07-09 / `LCL-20260709-10` external capability absorption base
+> 最近更新: 2026-07-09 / `LCL-20260709-11` internal base hardening
 > 角色定位: Claude 负责计划设计、分支状态监督、Codex 任务下发、独立审查、验证判定和下一轮决策；Codex 只负责在指定分支和指定范围内执行补丁。  
 > 适用范围: `oh_my_reverse_skill` 仓库的轻量结构闭环 / Low-Cost Structure Loop，包括文档、manifest、安装/卸载、GUI、score 输出、JS runtime 证据治理、外部能力融合拆解。  
 > 安全边界: 本工程包不授权 WAF 绕过、指纹伪造、clearance-cookie 复用、验证码绕过、真实扣款、未授权目标、raw cookie/token/profile 落盘。
@@ -12,9 +12,9 @@
 latest_execution_state:
   observed_at: 2026-07-09
   integration_branch: test
-  active_objective: LCL-20260709-10
-  active_branch: loop/20260709-10-external-absorption-base
-  active_topic: external_capability_absorption_base
+  active_objective: LCL-20260709-11
+  active_branch: loop/20260709-11-internal-base-hardening
+  active_topic: internal_base_hardening_from_lcl10
   execution_source: 低LOOP-Codex执行工程包.md
   capability_claim: STRUCTURE_ONLY
   prior_objectives:
@@ -65,15 +65,15 @@ latest_execution_state:
             - tools/reports/LCL-20260708-06-acceptance.md
   active_objective_scope:
     in_scope:
-      - record user-provided GitHub URLs for ai-reverse-toolkit/jshook-skill/hello_js_reverse_skill
-      - record git ls-remote HEAD refs, visible license status, page-level inventory, risk markers, allowed/prohibited use
-      - preserve clean-room boundary with no external code/template import and no active skill creation
-      - keep all risk-sensitive anti-detection/fingerprint/hook/cookie/token/sign markers as observation/lab/evidence-contract only
+      - harden existing collect_scripts, extract_runtime_trace, search_crypto_entry, compare_browser_vs_node contracts from LCL-10 absorption matrix
+      - harden env-patch governance with foundation/base attachment requirements
+      - add negative eval seeds for crypto entry, env patch, and runtime parity boundaries
+      - preserve clean-room boundary with no external raw file read, no code/template/prompt/test/example import, no active skill creation, and no manifest edit
     out_of_scope:
-      - cloning or copying external code/templates
-      - importing GPL/unknown-license source content
+      - cloning, fetching, reading, or copying external raw repository files
+      - creating active skills or editing skills-manifest.json
       - claiming real-site production success from external README/examples
-      - WAF defeat, fingerprint falsification, concealment, clearance-cookie reuse, or active skill creation
+      - claiming sign/token success, concurrency, protected-control success, or production readiness
   scattered_supplement_policy:
     低LOOP-Codex执行工程包.md: authoritative_execution_source
     低LOOP执行-拉取卸载与再生成方案.md: historical_design_only_after_migration
@@ -81,7 +81,7 @@ latest_execution_state:
   completion_claim_allowed_only_when:
     - branch_state_recorded
     - LCL-03 prior evidence recorded
-    - LCL-10 external capability absorption base recorded
+    - LCL-11 internal base hardening recorded
     - cleanup_ledger_written
     - verify_delivery_domain_none_passed
 ```

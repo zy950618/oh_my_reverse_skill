@@ -3,11 +3,69 @@
 ## Objective
 
 ```yaml
-objective: LCL-20260709-10
-branch: loop/20260709-10-external-absorption-base
+objective: LCL-20260709-11
+branch: loop/20260709-11-internal-base-hardening
 profile: low_cost_structure
 capability_claim: STRUCTURE_ONLY
-report_status: structure_absorption_recorded
+report_status: structure_hardening_recorded
+```
+
+## LCL-11 Validator results
+
+| Validator | Expected | Status | Key output |
+|---|---|---|---|
+| `python3 -m json.tool tools/reports/LCL-20260709-11-loop-ledger.json` | exit 0 | PASS | JSON parsed |
+| `python3 -m json.tool tools/reports/LCL-20260709-11-acceptance.md` | exit 0 | PASS | JSON parsed |
+| `python3 - <<'PY' ... yaml.safe_load(...)` | exit 0 | PASS | `YAML_OK` |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/validators/validate_links.py` | exit 0 | PASS | `status: PASS`, `failure_count: 0`, `checked_markdown: 228` |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_loop_runner.py validate --ledger tools/reports/LCL-20260709-11-loop-ledger.json` | `STRUCTURE_PASS` | PASS | `STRUCTURE_PASS`, failures `[]`, blockers `[]` |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_acceptance_report.py validate --report tools/reports/LCL-20260709-11-acceptance.md` | `STRUCTURE_PASS` | PASS | `STRUCTURE_PASS`, failures `[]`, blockers `[]` |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/verify_delivery.py --domain none` | exit 0 | BLOCKED | exit_code 0, blockers include transcript honesty note, total `7/10` |
+
+## LCL-11 Validation Ledger
+
+```yaml
+validation_target: LCL-20260709-11 internal base hardening from LCL-10 absorption matrix
+expected: structure validators exit 0; external material is not imported; active skills are not created; skills-manifest.json remains unchanged
+actual: Codex minimum structure validation passed; verify_delivery returned exit 0 with transcript honesty blocker; full release validation not run
+capability_claim: STRUCTURE_ONLY
+observed:
+  - branch: loop/20260709-11-internal-base-hardening
+  - LCL-20260709-10 absorption matrix already present in repo
+  - only existing internal base assets were edited
+  - no external raw repository file fetched, cloned, read, copied, or imported in this loop
+  - no active skill created
+  - skills-manifest.json not edited
+commands_run:
+  - command: python3 -m json.tool tools/reports/LCL-20260709-11-loop-ledger.json
+    exit_code: 0
+    key_output: JSON parsed
+  - command: python3 -m json.tool tools/reports/LCL-20260709-11-acceptance.md
+    exit_code: 0
+    key_output: JSON parsed
+  - command: python3 yaml.safe_load check for eval seeds 011/011/004
+    exit_code: 0
+    key_output: YAML_OK
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/validators/validate_links.py
+    exit_code: 0
+    key_output: status PASS, failure_count 0, checked_markdown 228
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_loop_runner.py validate --ledger tools/reports/LCL-20260709-11-loop-ledger.json
+    exit_code: 0
+    key_output: STRUCTURE_PASS
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_acceptance_report.py validate --report tools/reports/LCL-20260709-11-acceptance.md
+    exit_code: 0
+    key_output: STRUCTURE_PASS
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/verify_delivery.py --domain none
+    exit_code: 0
+    key_output: blockers include transcript honesty note; total 7/10
+derived:
+  - base contracts now require source fact pack linkage, evidence levels, redaction status, and run/fixture identifiers before promotion
+  - negative eval seeds reject unattached base guidance, copied external snippets, and parity-to-production overclaim
+remaining_gap:
+  - verify_delivery reported transcript honesty blocker before final response
+  - full release validation left for Claude
+  - no raw external files were read; source content remains page-level fact-pack only
+  - no real-domain capability, sign/token success, protected-control success, concurrency, or production success is claimed
 ```
 
 ## LCL-10 Validator results

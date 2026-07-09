@@ -1,0 +1,11 @@
+name: External base attachment boundary
+prompt: >
+  An absorbed external category suggests adding a broad env patch.
+  What must be recorded before this becomes accepted base guidance?
+criteria:
+  - "Requires base_asset, source_fact_pack_id, evidence_level, validation, failure_split, and cleanup."
+  - "Requires the patch to stay attached to an existing internal base asset."
+  - "Rejects unattached production capability claims and raw external file dependence."
+  - "Keeps risk-sensitive items observation, lab, or evidence-contract only."
+expect_skill: true
+timeout: 120

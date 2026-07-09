@@ -3,12 +3,62 @@
 ## Latest active execution
 
 ```yaml
-objective: LCL-20260709-10
-branch: loop/20260709-10-external-absorption-base
+objective: LCL-20260709-11
+branch: loop/20260709-11-internal-base-hardening
 base_branch: test
 profile: low_cost_structure
 capability_claim: STRUCTURE_ONLY
-status: structure_absorption_recorded
+status: structure_hardening_recorded
+```
+
+## LCL-11 internal base hardening
+
+```yaml
+hardening_scope:
+  loop_id: LCL-20260709-11
+  mode: STRUCTURE_ONLY
+  source_base:
+    - LCL-20260709-10 absorption matrix already present in repo
+    - existing internal base assets only
+  raw_external_files_fetched: false
+  raw_external_files_read: false
+  external_code_imported: false
+  external_templates_imported: false
+  external_prompts_imported: false
+  external_tests_examples_imported: false
+  active_skill_created: false
+  skills_manifest_edited: false
+hardened_assets:
+  - tool-contracts/collect_scripts.contract.md
+  - tool-contracts/extract_runtime_trace.contract.md
+  - tool-contracts/search_crypto_entry.contract.md
+  - tool-contracts/compare_browser_vs_node.contract.md
+  - 2-JS逆向工具层/env-patch/references/governance.md
+new_eval_seeds:
+  - 2-JS逆向工具层/find-crypto-entry/evals/011-external-absorption-boundary.yaml
+  - 2-JS逆向工具层/env-patch/evals/011-external-base-boundary.yaml
+  - 2-JS逆向工具层/js-page-runtime-parity/evals/004-external-runtime-evidence-boundary.yaml
+acceptance_clauses:
+  - script manifest/hash/freshness/source fact pack linkage/raw_secret false/evidence level/no raw external import
+  - observation-only runtime trace capture id/run id/script hash/call stack/input-output redaction
+  - crypto entry observed request field anchor/call chain/input-output evidence/no copied external snippets
+  - browser-node parity fixture/browser run/node run/source freshness/production_claim false
+  - env patch base asset/evidence level/validation/failure split/cleanup
+artifacts:
+  - tools/reports/LCL-20260709-11-loop-ledger.json
+  - tools/reports/LCL-20260709-11-acceptance.md
+validation_recommendations:
+  - PYTHONDONTWRITEBYTECODE=1 python3 tools/validators/validate_links.py
+  - PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/score_skills.py --repo . --manifest skills-manifest.json
+  - PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/ci_gate.py .ci-out --manifest skills-manifest.json --release
+  - PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_loop_runner.py validate --ledger tools/reports/LCL-20260709-11-loop-ledger.json
+  - PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_acceptance_report.py validate --report tools/reports/LCL-20260709-11-acceptance.md
+  - PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/verify_delivery.py --domain none
+remaining_gaps:
+  - verify_delivery reported transcript honesty blocker before final response
+  - full release validation left for Claude
+  - no external raw file contents read by design
+  - no real-domain capability claimed
 ```
 
 ## LCL-10 external capability absorption base

@@ -1,5 +1,32 @@
 # SKILLS Changelog
 
+## 2026-07-09 — LCL-20260709-11 internal base hardening
+
+```yaml
+change_id: LCL-20260709-11
+branch: loop/20260709-11-internal-base-hardening
+profile: low_cost_structure
+capability_claim: STRUCTURE_ONLY
+status: structure_hardening_recorded
+```
+
+### Changed
+
+- Hardened `tool-contracts/collect_scripts.contract.md` with source fact pack linkage, script hash/freshness, evidence level, `raw_secret_persisted: false`, and `raw_external_imported: false` acceptance.
+- Hardened `tool-contracts/extract_runtime_trace.contract.md` with observation-only trace requirements: capture id, run id, script hash, call stack status, input/output redaction, and evidence level.
+- Hardened `tool-contracts/search_crypto_entry.contract.md` with observed request field anchor, call chain, input/output evidence, source fact pack linkage, and no copied external snippets.
+- Hardened `tool-contracts/compare_browser_vs_node.contract.md` with fixture id, browser run id, Node run id, source freshness, evidence level, and `production_claim: false`.
+- Hardened `2-JS逆向工具层/env-patch/references/governance.md` with foundation/base attachment requirements for absorbed categories.
+- Added negative eval seeds for find-crypto-entry, env-patch, and js-page-runtime-parity boundary handling.
+- Added LCL-11 execution, verification, ledger, and acceptance records.
+
+### Evidence level
+
+- `observed`: only repository-local LCL-10 records and existing internal base assets were used.
+- `observed`: no external raw repository file was fetched, cloned, read, copied, or imported in this loop.
+- `derived`: LCL-10 absorption categories now require stricter acceptance clauses and negative eval handling before promotion.
+- `unverified`: no real-domain capability, sign/token success, protected-control success, concurrency, or production success is claimed.
+
 ## 2026-07-09 — LCL-20260709-10 external capability absorption base
 
 ```yaml
