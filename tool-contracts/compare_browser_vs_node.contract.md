@@ -13,6 +13,24 @@ Compare browser-generated values with Node.js execution to verify runtime parity
 ## Outputs
 - Parity report with matched, mismatched, and unsupported fields.
 - Environment gap list.
+- Named-fixture boundary for any parity statement.
+
+## Parity Boundary Contract
+
+`runtime-parity-report.json` MUST include:
+
+| Field | Required value |
+|---|---|
+| `fixture_id` | Named browser fixture used for the comparison. |
+| `browser_run_id` | Browser run that produced the fixture, or `not_applicable_structure_only`. |
+| `node_run_id` | Node run that produced comparison output. |
+| `script_sha256` | Script hash from the linked manifest, or `unknown` with reason. |
+| `source_freshness` | One of `fresh`, `stale`, `unknown`, or `structure_only_internal_record`. |
+| `comparison_rules` | Deterministic fields, dynamic fields, tolerance, and excluded fields. |
+| `evidence_level` | One of `observed`, `derived`, `assumed`, `unverified`. |
+| `production_claim` | Boolean. MUST be `false` for parity-only and structure-only runs. |
+
+Browser-vs-Node parity is limited to the named fixture, inputs, script hash, and run ids. It does not prove live service acceptance, risk-token validity, challenge handling, concurrency, or production readiness.
 
 ## Evidence Files
 - `browser-fixture.json`
@@ -41,6 +59,8 @@ python3 tools/js_runtime/js_page_runtime_parity_runner.py --fixture <fixture> --
 ## Acceptance Checks
 - Report separates deterministic mismatches from expected dynamic fields.
 - Unsupported fields have explicit evidence and next action.
+- Every parity claim names fixture id, browser run id, Node run id, source freshness, evidence level, and `production_claim: false`.
+- Freshness gaps are reported as drift or negative context, not as positive capability proof.
 
 ## Related Skills
 - `js-page-runtime-parity`

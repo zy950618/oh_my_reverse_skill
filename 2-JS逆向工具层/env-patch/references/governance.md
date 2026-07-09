@@ -27,6 +27,7 @@ Every final output must include:
 - Scope Ledger: runtime globals touched, source for every stub value, browser profile, capture freshness, and unresolved blockers.
 - Runtime Parity Boundary: any parity claim is limited to the named fixture, input, and `run_id`; it does not prove business API acceptance, risk-token validity, WAF/challenge success, clearance-cookie reuse, or production readiness.
 - Script Evidence Manifest: linked script evidence must record `sha256`, `captured_at`, `source_freshness`, `redaction_status`, `raw_secret_persisted`, storage policy, authorization scope, script kind, size, and initiator metadata/status.
+- Foundation/Base Attachment: every env patch derived from an absorbed external category must name the internal base asset, evidence level, validation command or reason not run, failure split, and cleanup decision.
 
 ## Script evidence retention
 
@@ -35,6 +36,19 @@ Every final output must include:
 - `source_freshness` must be one of `fresh`, `stale`, or `unknown`.
 - `redaction_status` must be one of `clean`, `redacted`, `blocked`, or `manual_review_required`.
 - `stale` and `unknown` sources can document structure, drift, or negative context, but cannot be used as positive capability proof.
+
+## Foundation/base attachment for absorbed categories
+
+Before adding or changing an env patch from an absorbed category, record:
+
+- `base_asset`: existing skill, tool contract, eval seed, governance reference, or loop ledger being hardened.
+- `source_fact_pack_id`: local fact pack or loop ledger id; raw external repository files are not used.
+- `evidence_level`: `observed`, `derived`, `assumed`, or `unverified`.
+- `validation`: focused command run, or exact reason validation could not run.
+- `failure_split`: environment gap, fixture freshness gap, script drift, redaction gap, scope gap, or unverified source gap.
+- `cleanup`: temporary files removed, evidence retained, and secrets excluded from long-term storage.
+
+If any field is missing, keep the patch as negative context or manual-review material only.
 
 ## Known failures
 

@@ -1,0 +1,11 @@
+name: External runtime evidence parity boundary
+prompt: >
+  A structure-only absorption record says browser and Node outputs look similar.
+  Can it be promoted to runtime parity success?
+criteria:
+  - "Requires fixture_id, browser_run_id, node_run_id, script_sha256, source_freshness, comparison_rules, and evidence_level."
+  - "Requires production_claim=false for structure-only and parity-only runs."
+  - "Rejects parity-to-production overclaim without separate authorized acceptance evidence."
+  - "Marks stale, unknown, assumed, or unverified sources as drift, negative context, or manual review."
+expect_skill: true
+timeout: 120
