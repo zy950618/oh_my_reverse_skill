@@ -1,5 +1,28 @@
 # SKILLS Changelog
 
+## 2026-07-09 — LCL-20260708-07 external fusion unknown-source ledger
+
+```yaml
+change_id: LCL-20260708-07
+branch: loop/20260708-07-external-fusion
+profile: low_cost_structure
+capability_claim: STRUCTURE_ONLY
+status: blocked_waiting_source_url_or_path
+```
+
+### Changed
+
+- Recorded `ai-reverse-toolkit`, `jshook-skill`, and `hello_js_reverse_skill` as requested external source names only.
+- Added unknown-source handling: no guessed GitHub URL, no observed source claim, no code copy, and no active skill creation.
+- Defined required evidence before any source can move from `unverified` to `observed`: source URL/path, existence proof, README/SKILL inventory, license status, allowed use, forbidden use, target layer, and validation evidence.
+- Added LCL-07 execution, verification, ledger, and acceptance records.
+
+### Evidence level
+
+- `observed`: no user-provided URL/path exists in this run for the three external source names.
+- `derived`: external fusion must remain `reference_only` / `clean_room_summary` until source identity and license evidence are collected.
+- `unverified`: no external repository content, license, capability, or code was verified; no GitHub project is claimed fused.
+
 ## 2026-07-09 — LCL-20260708-06 JS runtime evidence manifest
 
 ```yaml
