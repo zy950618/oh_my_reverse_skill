@@ -3,11 +3,53 @@
 ## Objective
 
 ```yaml
-objective: LCL-20260708-05
-branch: loop/20260708-05-score-json-output
+objective: LCL-20260708-06
+branch: loop/20260708-06-js-runtime-evidence
 profile: low_cost_structure
 capability_claim: STRUCTURE_ONLY
-report_status: VALIDATED_STRUCTURE_PASS
+report_status: VALIDATION_BLOCKED_BY_RELEASE_GATE_ENV
+```
+
+## LCL-06 Validator results
+
+| Validator | Expected | Status | Key output |
+|---|---|---|---|
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/validators/validate_links.py` | exit 0 | PASS | `status: PASS`, `failure_count: 0`, `checked_markdown: 221` |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/score_skills.py --repo . --manifest skills-manifest.json` | exit 0 | PASS | `status: PASS`, `strict_score: 100`, `skill_count: 15` |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/ci_gate.py .ci-out --manifest skills-manifest.json --release` | exit 0 | BLOCKED | `airline_deep_validation: FAIL`; localhost bind raised `PermissionError: [Errno 1] Operation not permitted` |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_loop_runner.py validate --ledger tools/reports/LCL-20260708-06-loop-ledger.json` | `STRUCTURE_PASS` | PASS | `STRUCTURE_PASS`, failures `[]`, blockers `[]` |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_acceptance_report.py validate --report tools/reports/LCL-20260708-06-acceptance.md` | `STRUCTURE_PASS` | PASS | `STRUCTURE_PASS`, failures `[]`, blockers `[]` |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/verify_delivery.py --domain none` | exit 0 | PASS_WITH_BLOCKER_NOTE | exit 0; blockers listed transcript honesty limitation |
+
+## LCL-06 Validation Ledger
+
+```yaml
+validation_target: LCL-20260708-06 JS runtime evidence manifest
+commands_run:
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/validators/validate_links.py
+    exit_code: 0
+    key_output: status PASS, failure_count 0
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/score_skills.py --repo . --manifest skills-manifest.json
+    exit_code: 0
+    key_output: status PASS, strict_score 100
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/ci_gate.py .ci-out --manifest skills-manifest.json --release
+    exit_code: 1
+    key_output: airline_deep_validation failed because localhost bind was denied with PermissionError Errno 1
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_loop_runner.py validate --ledger tools/reports/LCL-20260708-06-loop-ledger.json
+    exit_code: 0
+    key_output: STRUCTURE_PASS
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_acceptance_report.py validate --report tools/reports/LCL-20260708-06-acceptance.md
+    exit_code: 0
+    key_output: STRUCTURE_PASS
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/verify_delivery.py --domain none
+    exit_code: 0
+    key_output: blockers included transcript honesty limitation
+expected: all required validators exit 0
+actual: BLOCKED because ci_gate --release exited 1 in current sandbox
+capability_claim: STRUCTURE_ONLY
+remaining_gap:
+  - release gate must be rerun in an environment that permits localhost bind for airline_deep_validation
+  - no real-domain capture, script snapshot, sign/token, concurrency, WAF/challenge, or production success is claimed
 ```
 
 ## LCL-05 Validator results

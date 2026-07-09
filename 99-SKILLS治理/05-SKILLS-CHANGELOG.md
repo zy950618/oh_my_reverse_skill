@@ -1,5 +1,30 @@
 # SKILLS Changelog
 
+## 2026-07-09 — LCL-20260708-06 JS runtime evidence manifest
+
+```yaml
+change_id: LCL-20260708-06
+branch: loop/20260708-06-js-runtime-evidence
+profile: low_cost_structure
+capability_claim: STRUCTURE_ONLY
+status: structure_contract_recorded
+```
+
+### Changed
+
+- Added the required scripts manifest fields to `tool-contracts/collect_scripts.contract.md`.
+- Required `raw_secret_persisted: false` for long-term script evidence.
+- Added `redaction_status` enum: `clean`, `redacted`, `blocked`, `manual_review_required`.
+- Added `source_freshness` enum: `fresh`, `stale`, `unknown`; `stale` and `unknown` cannot be positive capability proof.
+- Clarified runtime parity and env-patch boundaries: named fixture/input/run_id only, not business API, risk-token, WAF/challenge, clearance-cookie, or production success.
+- Added LCL-06 execution, verification, ledger, and acceptance records.
+
+### Evidence level
+
+- `observed`: structure contracts and low-loop records were updated in the allowed files only.
+- `derived`: long-term evidence is safer when raw secret persistence is blocked or forced to manual review.
+- `unverified`: no real-domain capture, script snapshot, sign/token, WAF/challenge, concurrency, or production success is claimed for LCL-06.
+
 ## 2026-07-09 — LCL-20260708-05 score JSON output stabilization
 
 ```yaml

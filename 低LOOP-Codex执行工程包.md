@@ -1,7 +1,7 @@
 # 低 LOOP Codex 执行工程包
 
 > 生成日期: 2026-07-08  
-> 最近更新: 2026-07-09 / `LCL-20260708-05` score JSON output stabilization
+> 最近更新: 2026-07-09 / `LCL-20260708-06` JS runtime evidence manifest
 > 角色定位: Claude 负责计划设计、分支状态监督、Codex 任务下发、独立审查、验证判定和下一轮决策；Codex 只负责在指定分支和指定范围内执行补丁。  
 > 适用范围: `oh_my_reverse_skill` 仓库的轻量结构闭环 / Low-Cost Structure Loop，包括文档、manifest、安装/卸载、GUI、score 输出、JS runtime 证据治理、外部能力融合拆解。  
 > 安全边界: 本工程包不授权 WAF 绕过、指纹伪造、clearance-cookie 复用、验证码绕过、真实扣款、未授权目标、raw cookie/token/profile 落盘。
@@ -12,9 +12,9 @@
 latest_execution_state:
   observed_at: 2026-07-09
   integration_branch: test
-  active_objective: LCL-20260708-05
-  active_branch: loop/20260708-05-score-json-output
-  active_topic: score_json_output_stabilization
+  active_objective: LCL-20260708-06
+  active_branch: loop/20260708-06-js-runtime-evidence
+  active_topic: js_runtime_evidence_manifest
   execution_source: 低LOOP-Codex执行工程包.md
   capability_claim: STRUCTURE_ONLY
   prior_objectives:
@@ -40,16 +40,30 @@ latest_execution_state:
             - 99-SKILLS治理/23-LOW-LOOP-VERIFICATION-REPORT.md
             - tools/reports/LCL-20260708-04-loop-ledger.json
             - tools/reports/LCL-20260708-04-acceptance.md
+    - task_id: LCL-20260708-05
+      topic: score_json_output_stabilization
+      status: OBSERVED_STRUCTURE_PASS
+      evidence:
+        - branch_observed: loop/20260708-05-score-json-output
+        - files_observed:
+            - tools/governance/score_skills.py
+            - 低LOOP-Codex执行工程包.md
+            - 99-SKILLS治理/22-LOW-LOOP-EXECUTION-LOG.md
+            - 99-SKILLS治理/23-LOW-LOOP-VERIFICATION-REPORT.md
+            - tools/reports/LCL-20260708-05-loop-ledger.json
+            - tools/reports/LCL-20260708-05-acceptance.md
   active_objective_scope:
     in_scope:
-      - add --json-out to tools/governance/score_skills.py
-      - write a single json.load compatible score summary object
-      - preserve default stdout and ci_gate behavior
-      - record LCL-05 execution, verification, changelog, ledger, and acceptance
+      - define JS runtime scripts manifest required fields
+      - require sha256/captured_at/source_freshness/redaction_status/raw_secret_persisted
+      - require storage_policy/authorization_scope/script_kind/size_bytes/source identity/initiator metadata
+      - record runtime parity and env-patch evidence boundaries
+      - record LCL-06 execution, verification, changelog, ledger, and acceptance
     out_of_scope:
-      - JS runtime evidence manifest
       - real-domain replay or production capability claims
       - WAF/challenge/fingerprint defeat
+      - raw cookie/token/profile/storage persistence
+      - active skill creation or skills-manifest changes
   scattered_supplement_policy:
     低LOOP-Codex执行工程包.md: authoritative_execution_source
     低LOOP执行-拉取卸载与再生成方案.md: historical_design_only_after_migration
@@ -57,7 +71,7 @@ latest_execution_state:
   completion_claim_allowed_only_when:
     - branch_state_recorded
     - LCL-03 prior evidence recorded
-    - LCL-05 validation commands passed or blocker recorded
+    - LCL-06 validation commands passed or blocker recorded
     - cleanup_ledger_written
     - verify_delivery_domain_none_passed
 ```
@@ -407,8 +421,16 @@ score_validators:
 ```yaml
 js_runtime_validators:
   - manual_check: 无 raw Cookie/token/profile/storage 示例
-  - manual_check: scripts manifest 包含 sha256/captured_at/source_freshness/redaction_status/raw_secret_persisted
+  - manual_check: scripts manifest 包含 url 或 inline_id、sha256、captured_at、source_freshness、redaction_status、raw_secret_persisted、storage_policy、authorization_scope、script_kind、size_bytes、initiator 或 initiator_status
+  - manual_check: raw_secret_persisted 必须为 false 才能进入长期证据；否则只能 blocked/manual review
+  - manual_check: source_freshness stale/unknown 不得作为正向能力证明
   - manual_check: runtime parity 不声明业务成功
+  - command: python3 tools/validators/validate_links.py
+    required_for_merge: true
+  - command: python3 tools/governance/score_skills.py --repo . --manifest skills-manifest.json
+    required_for_merge: true
+  - command: python3 tools/governance/ci_gate.py .ci-out --manifest skills-manifest.json --release
+    required_for_merge: true
   - command: python3 tools/web_h5/verify_delivery.py --domain none
     required_for_merge: true
 ```
@@ -669,7 +691,7 @@ external_fusion_merge_gate:
 | 3 | `LCL-20260708-03` | `loop/20260708-03-manifest-design` | manifest 单一来源 | `skills-manifest.json`、`tools/skills_manifest.py`、索引/安装/CI 相关文档 | `tools/skills_manifest.py validate` + score / CI gates | `OBSERVED_MERGED_TO_TEST`，merge commit: `f68998f` |
 | 4 | `LCL-20260708-04` | `loop/20260708-04-install-safe-uninstall-consolidation` | INSTALL 安全卸载 + LCL 状态收敛 | `INSTALL.md`、本工程包、LOW-LOOP 执行/验证/验收记录 | manifest validate + release gate + loop/report checks + `verify_delivery --domain none` | 不删除非本仓库 skill + 单一最新执行面 + cleanup ledger |
 | 5 | `LCL-20260708-05` | `loop/20260708-05-score-json-output` | score JSON 输出稳定 | 需另行授权 | json.load pass | ci_gate 不污染 stdout |
-| 6 | `LCL-20260708-06` | `loop/20260708-06-js-runtime-evidence` | JS manifest/hash/freshness/redaction | 需另行授权 | no raw secret + manifest fields | 不声明真实站点能力 |
+| 6 | `LCL-20260708-06` | `loop/20260708-06-js-runtime-evidence` | JS manifest/hash/freshness/redaction | tool contract + JS runtime references + low-loop records | no raw secret + manifest fields + structure validators | 不声明真实站点能力 |
 | 7 | `LCL-20260708-07` | `loop/20260708-07-external-fusion` | 外部三项能力融合拆解 | 需另行授权 | source inventory + fusion matrix | 不直接 active skill |
 
 > 编号冲突处理：旧设计稿曾把 `LCL-20260708-04` 记为 score JSON 输出稳定化。当前权威口径以本工程包为准：`LCL-20260708-04` 是 INSTALL 安全卸载 + 收敛；score JSON 顺延为 `LCL-20260708-05`，不得混入本轮。
@@ -978,13 +1000,29 @@ branch_task_backlog:
       title: JS runtime evidence manifest
       branch: loop/20260708-06-js-runtime-evidence
       topic_type: js_runtime
-      status: PLANNED_REQUIRES_USER_APPROVAL
-      allowed_files: []
+      status: IN_PROGRESS_STRUCTURE_ONLY
+      allowed_files:
+        - tool-contracts/collect_scripts.contract.md
+        - 2-JS逆向工具层/js-page-runtime-parity/references/runtime-parity-contract.md
+        - 2-JS逆向工具层/env-patch/references/governance.md
+        - 低LOOP-Codex执行工程包.md
+        - 99-SKILLS治理/05-SKILLS-CHANGELOG.md
+        - 99-SKILLS治理/22-LOW-LOOP-EXECUTION-LOG.md
+        - 99-SKILLS治理/23-LOW-LOOP-VERIFICATION-REPORT.md
+        - tools/reports/LCL-20260708-06-loop-ledger.json
+        - tools/reports/LCL-20260708-06-acceptance.md
       validators:
         - no raw secret example
         - manifest fields complete
+        - validate_links pass
+        - score_skills pass
+        - ci_gate release pass
+        - loop ledger validate pass
+        - acceptance report validate pass
+        - verify_delivery domain none pass
       merge_gate:
         no_real_site_claim: true
+        capability_claim: STRUCTURE_ONLY
       next_on_success: LCL-20260708-07
 
     - task_id: LCL-20260708-07
