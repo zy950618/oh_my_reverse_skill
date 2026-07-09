@@ -3,12 +3,59 @@
 ## Latest active execution
 
 ```yaml
-objective: LCL-20260709-09
-branch: loop/20260709-09-external-fusion-contract
+objective: LCL-20260709-10
+branch: loop/20260709-10-external-absorption-base
 base_branch: test
 profile: low_cost_structure
 capability_claim: STRUCTURE_ONLY
-status: structure_contract_and_eval_seed_recorded
+status: structure_absorption_recorded
+```
+
+## LCL-10 external capability absorption base
+
+```yaml
+absorption_scope:
+  loop_id: LCL-20260709-10
+  mode: STRUCTURE_ONLY
+  source_base:
+    - LCL-20260709-08 fact packs already present in repo
+    - LCL-20260709-09 clean-room fusion contract
+  raw_external_files_fetched: false
+  raw_external_files_read: false
+  external_code_imported: false
+  external_templates_imported: false
+  external_prompts_imported: false
+  external_tests_examples_imported: false
+  active_skill_created: false
+  skills_manifest_edited: false
+absorbed_internal_categories:
+  - intake/routing/evidence/scope governance
+  - JS runtime trace / script manifest / hash / freshness
+  - crypto entry / call chain / input-output evidence
+  - env patch / browser-node parity boundary
+  - hook tracing as observation evidence only
+  - eval/onboarding/negative boundary seeds
+  - foundation/base handling
+foundation_base_rule:
+  required: every absorbed pattern attaches to existing internal skill/tool-contract/eval/governance ledger
+  evidence_required: observed/derived/assumed/unverified
+  prohibited: no external import, no active skill, no manifest edit, no production claim
+artifacts:
+  - tool-contracts/external_capability_absorption.contract.md
+  - 1-业务流程层/skills-evaluation-governance/evals/027-external-capability-absorption-base.yaml
+  - tools/reports/LCL-20260709-10-loop-ledger.json
+  - tools/reports/LCL-20260709-10-acceptance.md
+validation_recommendations:
+  - PYTHONDONTWRITEBYTECODE=1 python3 tools/validators/validate_links.py
+  - PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/score_skills.py --repo . --manifest skills-manifest.json
+  - PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/ci_gate.py .ci-out --manifest skills-manifest.json --release
+  - PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_loop_runner.py validate --ledger tools/reports/LCL-20260709-10-loop-ledger.json
+  - PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_acceptance_report.py validate --report tools/reports/LCL-20260709-10-acceptance.md
+  - PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/verify_delivery.py --domain none
+remaining_gaps:
+  - hello_js_reverse_skill license remains unknown
+  - no external raw file contents read by design
+  - no real-domain capability claimed
 ```
 
 ## LCL-09 external clean-room fusion contract
