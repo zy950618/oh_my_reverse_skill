@@ -9,6 +9,7 @@ from pathlib import Path
 
 sys.dont_write_bytecode = True
 from validate_structure import PUBLIC_DOCS as ROUTING_FILES, STALE_COUNT_PATTERNS as STALE_COUNT
+from skills_manifest import load_manifest, validate_manifest, skill_entries
 
 ROOT = Path(__file__).resolve().parents[2]
 # Intentional denylist for migrated verification/challenge residue. Tokens are
@@ -44,27 +45,21 @@ FINGERPRINT_ROUTES = {
     "browser-fingerprint-surface-lab",
     "fingerprint-block-reason-diagnostics",
 }
-EXPECTED_EXTERNAL = {
-    "website-314-api-delivery",
-    "reverse-js-crawler",
-    "web-h5-loop-engineering",
-    "skills-evaluation-governance",
-}
-EXPECTED_CONDITIONAL = {
-    "imperva-waf-reese84",
-    "authorized-target-adapter",
-    "site-api-adapter",
-    "browser-fingerprint-surface-lab",
-    "fingerprint-block-reason-diagnostics",
-}
-EXPECTED_INTERNAL_OR_AUX = {
-    "find-crypto-entry",
-    "ast-deobfuscate",
-    "env-patch",
-    "js-page-runtime-parity",
-    "ai-reverse-skill-creator",
-    "karpathy-guidelines",
-}
+USER_FACING_TYPES = {"external_entry", "conditional_escalation", "internal_tool", "auxiliary_policy"}
+
+
+def manifest_skill_names(failures: list[str]) -> set[str]:
+    try:
+        manifest = load_manifest(ROOT / "skills-manifest.json")
+    except Exception as exc:
+        failures.append(f"manifest read failed: {exc}")
+        return set()
+    errors = validate_manifest(manifest)
+    if errors:
+        failures.extend(f"manifest {error}" for error in errors)
+        return set()
+    return {str(item["name"]) for item in skill_entries(manifest) if isinstance(item.get("name"), str)}
+
 
 
 def read_text(path: Path) -> str:
@@ -83,8 +78,8 @@ def check_tokens(rel: str, text: str, failures: list[str]) -> None:
             if token.lower() in line_lower:
                 failures.append(f"{rel}:{line_no}: stale skill-count routing token {token!r}")
                 break
-    if "current active count is 15" in lowered and "python3 tools/governance/score_skills.py --repo ." not in text:
-        failures.append(f"{rel}: hard-coded active count lacks score_skills authority")
+    if "current active count is 15" in lowered:
+        failures.append(f"{rel}: hard-coded active count must delegate to skills-manifest.json")
 
 
 def check_route_contract(failures: list[str]) -> None:
@@ -96,7 +91,7 @@ def check_route_contract(failures: list[str]) -> None:
     index_text = read_text(index)
     triggers_text = read_text(triggers)
     usage_text = read_text(usage) if usage.is_file() else ""
-    for name in sorted(EXPECTED_EXTERNAL | EXPECTED_CONDITIONAL | EXPECTED_INTERNAL_OR_AUX):
+    for name in sorted(manifest_skill_names(failures)):
         if name not in index_text:
             failures.append(f"00-SKILLS索引.md: missing active skill route for {name}")
         if name not in triggers_text:
@@ -105,7 +100,7 @@ def check_route_contract(failures: list[str]) -> None:
     # Public routing docs must preserve the standard entry distinction: external
     # entries are user-facing; internal/auxiliary tools do not steal the business
     # entry route.
-    for name in EXPECTED_EXTERNAL:
+    for name in ["website-314-api-delivery", "reverse-js-crawler", "web-h5-loop-engineering", "skills-evaluation-governance"]:
         if not re.search(rf"`{re.escape(name)}`", index_text):
             failures.append(f"00-SKILLS索引.md: external entry not listed with code span: {name}")
     for tool in ["find-crypto-entry", "ast-deobfuscate", "env-patch", "js-page-runtime-parity"]:

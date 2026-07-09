@@ -9,7 +9,7 @@ Web/H5 逆向工程 SKILLS 总库。覆盖 Web/JS 逆向、爬虫接口化、WAF
 
 1. **[USAGE.md](./USAGE.md)** — 我想做 X,应该说什么(场景速查 + 典型对话)
 2. **[INSTALL.md](./INSTALL.md)** — 一站式安装(Skills 软链 + CloakBrowser + hooks + 验证)
-3. **[TRIGGERS.md](./TRIGGERS.md)** — 触发词速查表(中英双列,active Skill 范围以评分工具校验结果为准)
+3. **[TRIGGERS.md](./TRIGGERS.md)** — 触发词速查表(中英双列,active Skill 范围以 manifest 校验结果为准)
 4. **[CHERRY_STUDIO.md](./CHERRY_STUDIO.md)** — Cherry Studio / GUI 适配说明
 
 进阶:
@@ -92,6 +92,6 @@ oh_my_reverse_skill/
 - 触发词和路由矩阵: [TRIGGERS.md](./TRIGGERS.md)
 - Skill 列表与职责: [00-SKILLS索引.md](./00-SKILLS索引.md)
 - Claude Code 执行流程和边界: [CLAUDE.md](./CLAUDE.md)
-- active Skill 数量来源: `python3 tools/governance/score_skills.py --repo .`
+- active Skill inventory 来源: `skills-manifest.json`；校验用 `python3 tools/skills_manifest.py validate`
 
 长链路逆向任务先按 `99-SKILLS治理/06-网页逆向标准规划.md` 输出规划；真实交付结论必须有证据、范围账本、回归记录和收尾清理。

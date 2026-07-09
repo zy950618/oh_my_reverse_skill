@@ -22,10 +22,14 @@ sys.dont_write_bytecode = True
 os.environ["PYTHONDONTWRITEBYTECODE"] = "1"
 
 GOVERNANCE_TOOLS_DIR = Path(__file__).resolve().parent
+TOOLS_DIR = GOVERNANCE_TOOLS_DIR.parent
+if str(TOOLS_DIR) not in sys.path:
+    sys.path.insert(0, str(TOOLS_DIR))
 if str(GOVERNANCE_TOOLS_DIR) not in sys.path:
     sys.path.insert(0, str(GOVERNANCE_TOOLS_DIR))
 
 from skill_score_config import load_skill_score_config
+from skills_manifest import ManifestError, layer_gate_modes, layer_thresholds, load_manifest, validate_manifest
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -252,12 +256,40 @@ def main():
         action="store_true",
         help="enforce release gates, including fixture_freshness_report.py --strict-fresh",
     )
+    parser.add_argument(
+        "--manifest",
+        type=Path,
+        help="read layer thresholds and gate modes from skills-manifest.json",
+    )
     args = parser.parse_args()
 
     out_dir = Path(args.out_dir)
     if not out_dir.is_dir():
         print(f"ERROR: 目录不存在 {out_dir}", file=sys.stderr)
         sys.exit(2)
+
+    layer_min = LAYER_MIN
+    layer_gate_modes_config = LAYER_GATE_MODES
+    if args.manifest:
+        try:
+            manifest = load_manifest(args.manifest)
+        except ManifestError as exc:
+            print(f"ERROR: manifest 读取失败: {exc}", file=sys.stderr)
+            sys.exit(2)
+        manifest_errors = validate_manifest(manifest)
+        if manifest_errors:
+            for error in manifest_errors:
+                print(f"ERROR: manifest {error}", file=sys.stderr)
+            sys.exit(1)
+        layer_min = layer_thresholds(manifest)
+        layer_gate_modes_config = layer_gate_modes(manifest)
+        manifest_skill_layers = {
+            str(item.get("name")): str(item.get("layer"))
+            for item in manifest.get("skills", [])
+            if isinstance(item, dict) and isinstance(item.get("name"), str) and isinstance(item.get("layer"), str)
+        }
+    else:
+        manifest_skill_layers = {}
 
     failures = []
     passed = []
@@ -266,27 +298,45 @@ def main():
 
     for json_path in sorted(out_dir.glob("*.json")):
         layer = layer_from_filename(json_path.name)
-        threshold = LAYER_MIN.get(layer)
-        if threshold is None:
-            if json_path.name == "scores-current.json":
-                continue
-            print(f"WARN: 未知层 {layer}, 跳过")
-            continue
-        gate_mode = LAYER_GATE_MODES.get(layer, "active")
         with open(json_path, encoding="utf-8") as f:
             data = json.load(f)
         consistency_by_domain = data.get("consistency_by_domain", {})
-        for skill in data.get("skills", []):
+        scored_skills = data.get("skills", [])
+        manifest_info = data.get("manifest") if isinstance(data.get("manifest"), dict) else {}
+        is_manifest_payload = manifest_info.get("mode") == "exact"
+        if layer_min.get(layer) is None:
+            if json_path.name == "scores-current.json":
+                continue
+            if args.manifest and is_manifest_payload:
+                layer_skill_pairs = [
+                    (skill.get("layer") or manifest_skill_layers.get(skill.get("skill")), skill)
+                    for skill in scored_skills
+                ]
+            else:
+                print(f"WARN: 未知层 {layer}, 跳过")
+                continue
+        else:
+            layer_skill_pairs = [(layer, skill) for skill in scored_skills]
+
+        for skill_layer, skill in layer_skill_pairs:
+            if not isinstance(skill_layer, str):
+                print(f"WARN: {json_path.name} 中 skill {skill.get('skill')} 缺少 manifest layer, 跳过")
+                continue
+            threshold = layer_min.get(skill_layer)
+            if threshold is None:
+                print(f"WARN: 未知层 {skill_layer}, 跳过")
+                continue
+            gate_mode = layer_gate_modes_config.get(skill_layer, "active")
             total, total_notes = structure_total(skill, data, threshold, args.release)
             raw_total = skill["scores"]["total"]
             name = skill["skill"]
             if gate_mode in {"advisory", "experimental", "excluded"}:
-                advisory.append((layer, name, raw_total, total, threshold, gate_mode, total_notes))
+                advisory.append((skill_layer, name, raw_total, total, threshold, gate_mode, total_notes))
                 continue
             if total < threshold:
-                failures.append((layer, name, raw_total, total, threshold, skill.get("gaps", []), total_notes))
+                failures.append((skill_layer, name, raw_total, total, threshold, skill.get("gaps", []), total_notes))
             else:
-                passed.append((layer, name, raw_total, total, threshold, total_notes))
+                passed.append((skill_layer, name, raw_total, total, threshold, total_notes))
 
             # replay rate 检查
             for domain in skill.get("applicable_domains") or []:
@@ -297,7 +347,7 @@ def main():
                 if rate is None:
                     continue
                 if rate < MIN_REPLAY_RATE:
-                    replay_failures.append((layer, name, domain, rate, MIN_REPLAY_RATE))
+                    replay_failures.append((skill_layer, name, domain, rate, MIN_REPLAY_RATE))
 
     print("=" * 70)
     gate_name = "Skill Bench Release Gate" if args.release else "Skill Bench Structure Gate"

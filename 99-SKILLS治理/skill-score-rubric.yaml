@@ -1,6 +1,6 @@
 schema_version: 1
 status: temporary_single_source
-source_of_truth: "tools/governance/score_skills.py strict 7-component repository score plus per-skill 100-point gate, documented here"
+source_of_truth: "skills-manifest.json declares active inventory/topology/install/CI; tools/governance/score_skills.py applies strict 7-component repository score plus per-skill 100-point gate"
 effective_date: "2026-07-01"
 
 strict_repository_score_components:

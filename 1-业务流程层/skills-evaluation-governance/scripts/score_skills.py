@@ -4,6 +4,7 @@ import datetime
 import json
 import re
 import sys
+import argparse
 from pathlib import Path
 
 if hasattr(sys.stdout, "reconfigure"):
@@ -12,9 +13,12 @@ if hasattr(sys.stdout, "reconfigure"):
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent.parent
 TOOLS_ROOT = REPO_ROOT / "tools"
 GOVERNANCE_TOOLS_ROOT = TOOLS_ROOT / "governance"
+if str(TOOLS_ROOT) not in sys.path:
+    sys.path.insert(0, str(TOOLS_ROOT))
 if str(GOVERNANCE_TOOLS_ROOT) not in sys.path:
     sys.path.insert(0, str(GOVERNANCE_TOOLS_ROOT))
 from skill_score_config import load_skill_score_config
+from skills_manifest import load_manifest, skill_paths, validate_manifest
 
 SCORE_CONFIG = load_skill_score_config(REPO_ROOT)
 PUBLIC_RANGE_EVIDENCE_ROOT = REPO_ROOT / "public-range-evidence"
@@ -782,32 +786,51 @@ def _find_skill_dirs(root: Path) -> list[Path]:
 
 
 def main() -> int:
-    args = sys.argv[1:]
-    output_path: Path | None = None
-    if "--output" in args:
-        idx = args.index("--output")
-        if idx + 1 >= len(args):
-            print("--output requires a path", file=sys.stderr)
-            return 2
-        output_path = Path(args[idx + 1])
-        args = args[:idx] + args[idx + 2:]
+    parser = argparse.ArgumentParser(description="Score SKILL.md directories")
+    parser.add_argument("roots", nargs="*", help="skills roots for legacy scan mode")
+    parser.add_argument("--output", type=Path, help="write JSON to file")
+    parser.add_argument("--manifest", type=Path, help="score exactly the skills listed in skills-manifest.json")
+    args = parser.parse_args()
 
-    if not args:
-        print("usage: score_skills.py [--output FILE] <skills-root> [more-roots...]", file=sys.stderr)
+    if args.manifest and args.roots:
+        print("--manifest cannot be combined with roots", file=sys.stderr)
+        return 2
+    if not args.manifest and not args.roots:
+        parser.print_usage(sys.stderr)
         return 2
 
-    roots = [Path(arg) for arg in args]
     consistency_by_domain = collect_consistency_evidence_by_domain()
 
     skills: list[Path] = []
     seen: set[str] = set()
-    for r in roots:
-        for s in _find_skill_dirs(r):
-            key = str(s.resolve())
-            if key in seen:
+    manifest_skill_layers: dict[str, str] = {}
+    if args.manifest:
+        manifest = load_manifest(args.manifest)
+        manifest_errors = validate_manifest(manifest)
+        if manifest_errors:
+            for error in manifest_errors:
+                print(f"manifest error: {error}", file=sys.stderr)
+            return 1
+        candidate_dirs = skill_paths(manifest)
+        for item in manifest.get("skills", []):
+            if isinstance(item, dict) and isinstance(item.get("path"), str) and isinstance(item.get("layer"), str):
+                manifest_skill_layers[str((Path(manifest["_repo_root"]) / item["path"]).resolve())] = item["layer"]
+    else:
+        candidate_dirs = []
+        for r in [Path(arg) for arg in args.roots]:
+            candidate_dirs.extend(_find_skill_dirs(r))
+
+    for s in candidate_dirs:
+        if args.manifest:
+            if not (s / "SKILL.md").exists():
                 continue
-            seen.add(key)
-            skills.append(s)
+            key = str(s.resolve())
+        else:
+            key = str(s.resolve())
+        if key in seen:
+            continue
+        seen.add(key)
+        skills.append(s)
 
     sorted_skills = sorted(skills, key=lambda p: p.name)
 
@@ -827,7 +850,12 @@ def main() -> int:
     else:
         dep_completeness = 0.0
 
-    results = [score_skill(s, consistency_by_domain, dep_completeness) for s in sorted_skills]
+    results = []
+    for s in sorted_skills:
+        result = score_skill(s, consistency_by_domain, dep_completeness)
+        if args.manifest:
+            result["layer"] = manifest_skill_layers.get(str(s.resolve()))
+        results.append(result)
 
     execution_results = [r for r in results if r.get("category") == "execution"]
     foundation_results = [r for r in results if r.get("category") == "foundation"]
@@ -854,6 +882,10 @@ def main() -> int:
             "path": SCORE_CONFIG["path"],
             "scoring_dimensions": SCORE_CONFIG["scoring_dimensions"],
         },
+        "manifest": {
+            "path": str(args.manifest) if args.manifest else None,
+            "mode": "exact" if args.manifest else "legacy-root-scan",
+        },
         "overall": overall,
         "dependency_completeness": dep_completeness,
         "consistency_evidence": collect_consistency_evidence(),
@@ -862,10 +894,10 @@ def main() -> int:
         "guideline_skills": guideline_results,
         "skills": results,
     }, ensure_ascii=False, indent=2)
-    if output_path is not None:
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-        output_path.write_text(payload + "\n", encoding="utf-8")
-        print(f"wrote {output_path}", file=sys.stderr)
+    if args.output is not None:
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(payload + "\n", encoding="utf-8")
+        print(f"wrote {args.output}", file=sys.stderr)
     else:
         # stdout 重定向时 Windows 仍会用 cp936 包装,buffer 是兜底
         try:

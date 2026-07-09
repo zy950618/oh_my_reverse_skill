@@ -4,19 +4,19 @@ on:
   pull_request:
     paths:
       - '**/SKILL.md'
+      - 'skills-manifest.json'
       - '**/evals/**'
       - '**/references/**'
       - '**/agents/**'
-      - '1-业务流程层/**'
-      - '2-JS逆向工具层/**'
-      - '4-通用规范层/**'
-      - '5-沉淀工具层/**'
-      - '7-指纹风控层/**'
+      - '*-*/**'
       - '99-SKILLS治理/**'
       - '逆向工程经验库/**'
       - 'public-range-evidence/**'
+      - 'INSTALL.md'
+      - 'CHERRY_STUDIO.md'
       - '.github/workflows/**'
       - 'tools/governance/ci_gate.py'
+      - 'tools/skills_manifest.py'
       - 'tools/governance/score_skills.py'
       - 'tools/governance/**'
       - 'tools/validators/**'
@@ -49,8 +49,7 @@ jobs:
           set -euo pipefail
           SCRIPT="1-业务流程层/skills-evaluation-governance/scripts/score_skills.py"
           mkdir -p .ci-out
-          for layer in "1-业务流程层" "2-JS逆向工具层" "4-通用规范层" "5-沉淀工具层" "7-指纹风控层"; do
-
+          python3 tools/skills_manifest.py list-layers --skill-bench | while IFS= read -r layer; do
             safe=$(echo "$layer" | tr / _)
             echo "::group::Scoring $layer"
             python3 "$SCRIPT" --output ".ci-out/${safe}.json" "$layer"
@@ -59,7 +58,7 @@ jobs:
           done
 
       - name: CI gate (layer-aware thresholds)
-        run: python3 tools/governance/ci_gate.py .ci-out
+        run: python3 tools/governance/ci_gate.py .ci-out --manifest skills-manifest.json
 
       - name: Upload score artifacts
         if: always()

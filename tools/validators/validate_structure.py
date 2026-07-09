@@ -9,16 +9,16 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 from pathlib import Path
 
+TOOLS_ROOT = Path(__file__).resolve().parents[1]
+if str(TOOLS_ROOT) not in sys.path:
+    sys.path.insert(0, str(TOOLS_ROOT))
+from skills_manifest import load_manifest, validate_manifest, skill_paths, layer_map
+
 ROOT = Path(__file__).resolve().parents[2]
-EXPECTED_LAYERS = {
-    "1-业务流程层",
-    "2-JS逆向工具层",
-    "4-通用规范层",
-    "5-沉淀工具层",
-    "7-指纹风控层",
-}
+DEFAULT_MANIFEST = ROOT / "skills-manifest.json"
 FORBIDDEN_DIRS = {
     "6-" + "验" + "证" + "码" + "逆向层",
     "验" + "证" + "码" + "经验库",
@@ -70,7 +70,7 @@ STALE_COUNT_PATTERNS = (
     "全部 " + "12",
     "23" + " 个 " + "active",
 )
-COUNT_AUTHORITY = "python3 tools/governance/score_skills.py --repo ."
+COUNT_AUTHORITY = "skills-manifest.json"
 # Intentional public-doc denylist for phase/report process terms.
 PUBLIC_DOC_PHASE_RE = re.compile(r"\bphase\s*\d|\bphase\d", re.IGNORECASE)
 # Intentional active skill-doc denylist for process-history blocks.
@@ -127,23 +127,7 @@ FORBIDDEN_CAPABILITY_TERMS = (
     "破 waf",
     "深度破解",
 )
-EXPECTED_STANDARD_TYPES = {
-    "website-314-api-delivery": "external_entry",
-    "reverse-js-crawler": "external_entry",
-    "web-h5-loop-engineering": "external_entry",
-    "skills-evaluation-governance": "external_entry",
-    "imperva-waf-reese84": "conditional_escalation",
-    "authorized-target-adapter": "conditional_escalation",
-    "site-api-adapter": "conditional_escalation",
-    "browser-fingerprint-surface-lab": "conditional_escalation",
-    "fingerprint-block-reason-diagnostics": "conditional_escalation",
-    "find-crypto-entry": "internal_tool",
-    "ast-deobfuscate": "internal_tool",
-    "env-patch": "internal_tool",
-    "js-page-runtime-parity": "internal_tool",
-    "ai-reverse-skill-creator": "internal_tool",
-    "karpathy-guidelines": "auxiliary_policy",
-}
+VALID_STANDARD_TYPES = {"external_entry", "conditional_escalation", "internal_tool", "auxiliary_policy"}
 HARD_ACTIVE_COUNT_RE = re.compile(r"\b\d+\s*个\s*active\s+skill", re.IGNORECASE)
 BARE_PYTHON_TOOLS_RE = re.compile(r"(?<!python3\s)(?<!python3\s\")\bpython\s+[\"']?tools[/\\]", re.IGNORECASE)
 LEGACY_SCORER_RE = re.compile(r"skills-evaluation-governance[/\\]scripts[/\\]score_skills\.py")
@@ -182,12 +166,33 @@ def public_docs_must_delegate_count(failures: list[str]) -> None:
     for rel in ("README.md", "USAGE.md", "INSTALL.md", "AGENTS.md", "00-SKILLS索引.md"):
         path = ROOT / rel
         if path.is_file() and COUNT_AUTHORITY not in read_text(path):
-            failures.append(f"{rel}: active skill count must point to {COUNT_AUTHORITY!r}")
+            failures.append(f"{rel}: active skill inventory must point to {COUNT_AUTHORITY!r}")
 
 
-def skill_files() -> list[Path]:
-    skip = {".git", ".agent-control", ".claude", ".ci-out", ".venv", "node_modules", "__pycache__"}
-    return sorted(p for p in ROOT.rglob("SKILL.md") if not any(part in skip for part in p.parts))
+def manifest_skill_files(failures: list[str]) -> list[Path]:
+    try:
+        manifest = load_manifest(DEFAULT_MANIFEST)
+    except Exception as exc:
+        failures.append(f"manifest read failed: {exc}")
+        return []
+    errors = validate_manifest(manifest)
+    if errors:
+        failures.extend(f"manifest {error}" for error in errors)
+        return []
+    return sorted(path / "SKILL.md" for path in skill_paths(manifest))
+
+
+def manifest_layers(failures: list[str]) -> set[str]:
+    try:
+        manifest = load_manifest(DEFAULT_MANIFEST)
+    except Exception as exc:
+        failures.append(f"manifest read failed: {exc}")
+        return set()
+    errors = validate_manifest(manifest)
+    if errors:
+        failures.extend(f"manifest {error}" for error in errors)
+        return set()
+    return {str(item["path"]) for item in layer_map(manifest).values() if isinstance(item.get("path"), str)}
 
 
 def validate_skill_route_coverage(skill_names: list[str], failures: list[str]) -> None:
@@ -201,13 +206,11 @@ def validate_skill_route_coverage(skill_names: list[str], failures: list[str]) -
         if missing:
             failures.append(f"{route_doc.relative_to(ROOT).as_posix()}: missing active skill route entries: {missing}")
 
-    for install_doc in (ROOT / "README.md", ROOT / "INSTALL.md"):
-        if not install_doc.is_file():
-            continue
+    install_doc = ROOT / "INSTALL.md"
+    if install_doc.is_file():
         text = read_text(install_doc)
-        missing = [name for name in skill_names if name not in text]
-        if missing:
-            failures.append(f"{install_doc.relative_to(ROOT).as_posix()}: install docs missing active skill links: {missing}")
+        if "skills-manifest.json" not in text or "tools/skills_manifest.py" not in text:
+            failures.append("INSTALL.md: install docs must delegate active inventory to skills-manifest.json and tools/skills_manifest.py")
 
 
 def validate_no_layer_count_claims(failures: list[str]) -> None:
@@ -234,8 +237,8 @@ def validate_public_doc_convergence(failures: list[str]) -> None:
                 failures.append(f"{rel}:{line_no}: hard-coded active skill count must delegate to score output")
             if BARE_PYTHON_TOOLS_RE.search(line):
                 failures.append(f"{rel}:{line_no}: use python3 for tools commands")
-            if LEGACY_SCORER_RE.search(line):
-                failures.append(f"{rel}:{line_no}: public docs must use {COUNT_AUTHORITY!r} for scoring")
+            if LEGACY_SCORER_RE.search(line) and "--manifest" not in line:
+                failures.append(f"{rel}:{line_no}: public docs must use manifest scoring")
             for token in PUBLIC_DOC_FORBIDDEN_RESIDUE:
                 if token in line_lower:
                     failures.append(f"{rel}:{line_no}: active public doc contains migrated residue token {token!r}")
@@ -327,13 +330,9 @@ def validate_skill_types(skills: list[Path], failures: list[str]) -> None:
     for path in skills:
         data = frontmatter(path)
         name = data.get("name", path.parent.name)
-        expected = EXPECTED_STANDARD_TYPES.get(name)
         actual = data.get("standard_type")
-        if expected is None:
-            failures.append(f"unexpected active skill in score set: {name}")
-            continue
-        if actual != expected:
-            failures.append(f"{path.relative_to(ROOT).as_posix()}: standard_type must be {expected!r}, got {actual!r}")
+        if actual not in VALID_STANDARD_TYPES:
+            failures.append(f"{path.relative_to(ROOT).as_posix()}: standard_type must be one of {sorted(VALID_STANDARD_TYPES)}, got {actual!r}")
         for line_no, line in enumerate(read_text(path).splitlines(), 1):
             if ACTIVE_SKILL_HISTORY_RE.search(line):
                 failures.append(f"{path.relative_to(ROOT).as_posix()}:{line_no}: active skill doc contains process-history phase marker")
@@ -363,18 +362,17 @@ def validate_active_package_terms(skills: list[Path], failures: list[str]) -> No
 
 
 def main() -> int:
-    skills = skill_files()
-    layers = {p.relative_to(ROOT).parts[0] for p in skills}
-    skill_names = [p.parent.name for p in skills]
     failures: list[str] = []
+    skills = manifest_skill_files(failures)
+    layers = {p.relative_to(ROOT).parts[0] for p in skills}
+    expected_layers = manifest_layers(failures)
+    skill_names = [p.parent.name for p in skills]
 
     for name in sorted(FORBIDDEN_DIRS):
         if (ROOT / name).exists():
             failures.append(f"forbidden migrated directory remains: {name}")
-    if not layers <= EXPECTED_LAYERS:
-        failures.append(f"unexpected skill layers: {sorted(layers - EXPECTED_LAYERS)}")
-    if len(skills) != 15:
-        failures.append(f"expected current release gate skill count 15, found {len(skills)}")
+    if expected_layers and not layers <= expected_layers:
+        failures.append(f"unexpected skill layers: {sorted(layers - expected_layers)}")
 
     public_docs_must_delegate_count(failures)
     validate_source_of_truth_docs(failures)

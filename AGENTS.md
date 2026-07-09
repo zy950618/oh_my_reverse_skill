@@ -1,6 +1,6 @@
 # oh_my_reverse_skill — AGENTS.md
 
-本仓库是 Web/H5 逆向工程 SKILLS 总库，active skill 数量以 `python3 tools/governance/score_skills.py --repo .` 和 release score 输出为准。本文件是 OpenAI Codex CLI 的入口约定。
+本仓库是 Web/H5 逆向工程 SKILLS 总库，active skill inventory 以根目录 `skills-manifest.json` 为单一来源；数量用 `python3 tools/skills_manifest.py summary` 校验。本文件是 OpenAI Codex CLI 的入口约定。
 
 ## 接到逆向任务时
 
@@ -46,6 +46,7 @@
 ## Source of truth
 
 - 触发词与路由矩阵: `TRIGGERS.md`
+- Active inventory / topology / install / CI: `skills-manifest.json`
 - Skill 列表与职责: `00-SKILLS索引.md`
 - 安装与软链: `INSTALL.md`
 - Claude Code 执行流程和边界: `CLAUDE.md`

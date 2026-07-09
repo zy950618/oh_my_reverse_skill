@@ -46,28 +46,15 @@ cd E:\SKILLS\oh_my_reverse_skill
 
 ### Step 2: 软链 active Skill 到 ~/.claude/skills/
 
-Claude Code 默认从 `~/.claude/skills/` 加载 Skill,本仓库分层放在子目录里,需要软链回去。active Skill 数量以 `python3 tools/governance/score_skills.py --repo .` 和 release score 输出为准。
+Claude Code 默认从 `~/.claude/skills/` 加载 Skill,本仓库分层放在子目录里,需要软链回去。active Skill inventory 以根目录 `skills-manifest.json` 为单一来源；先跑 `python3 tools/skills_manifest.py validate` 确认当前工作树一致。
 
 #### Windows (PowerShell)
 
 > 必须用管理员权限运行 PowerShell,否则 New-Item Junction 会失败。
 
 ```powershell
-# 业务流程层
-foreach ($n in @('website-314-api-delivery','reverse-js-crawler','imperva-waf-reese84','skills-evaluation-governance','web-h5-loop-engineering','authorized-target-adapter')) {
-  New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\$n" -Target "E:\SKILLS\oh_my_reverse_skill\1-业务流程层\$n" -Force
-}
-# JS 工具层
-foreach ($n in @('find-crypto-entry','ast-deobfuscate','env-patch','ai-reverse-skill-creator','js-page-runtime-parity')) {
-  New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\$n" -Target "E:\SKILLS\oh_my_reverse_skill\2-JS逆向工具层\$n" -Force
-}
-# 通用规范 + 沉淀工具
-New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\karpathy-guidelines" -Target "E:\SKILLS\oh_my_reverse_skill\4-通用规范层\karpathy-guidelines" -Force
-New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\site-api-adapter" -Target "E:\SKILLS\oh_my_reverse_skill\5-沉淀工具层\site-api-adapter" -Force
-# 指纹风控层
-foreach ($n in @('browser-fingerprint-surface-lab','fingerprint-block-reason-diagnostics')) {
-  New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\$n" -Target "E:\SKILLS\oh_my_reverse_skill\7-指纹风控层\$n" -Force
-}
+python3 tools/skills_manifest.py emit-install --shell powershell --repo "E:\SKILLS\oh_my_reverse_skill" --dst "$env:USERPROFILE\.claude\skills"
+# 检查输出无误后,复制执行输出的 New-Item 命令。
 ```
 
 #### macOS / Linux
@@ -75,19 +62,8 @@ foreach ($n in @('browser-fingerprint-surface-lab','fingerprint-block-reason-dia
 ```bash
 REPO="$HOME/SKILLS/oh_my_reverse_skill"   # 改成你本地实际路径
 DST="$HOME/.claude/skills"
-mkdir -p "$DST"
-
-for n in website-314-api-delivery reverse-js-crawler imperva-waf-reese84 skills-evaluation-governance web-h5-loop-engineering authorized-target-adapter; do
-  ln -snf "$REPO/1-业务流程层/$n" "$DST/$n"
-done
-for n in find-crypto-entry ast-deobfuscate env-patch ai-reverse-skill-creator js-page-runtime-parity; do
-  ln -snf "$REPO/2-JS逆向工具层/$n" "$DST/$n"
-done
-ln -snf "$REPO/4-通用规范层/karpathy-guidelines" "$DST/karpathy-guidelines"
-ln -snf "$REPO/5-沉淀工具层/site-api-adapter" "$DST/site-api-adapter"
-for n in browser-fingerprint-surface-lab fingerprint-block-reason-diagnostics; do
-  ln -snf "$REPO/7-指纹风控层/$n" "$DST/$n"
-done
+python3 tools/skills_manifest.py emit-install --shell bash --repo "$REPO" --dst "$DST"
+# 检查输出无误后,复制执行输出的 ln -snf 命令。
 ```
 
 ### Step 3: (可选) 装 CloakBrowser 录 fixtures
@@ -143,12 +119,12 @@ pip install pyyaml
 ```bash
 # 1. 检查 Skills 软链
 ls ~/.claude/skills/ | grep -E '(website-|reverse-js|imperva|authorized-target|web-h5-loop|find-crypto|ast-|env-patch|js-page-runtime|karpathy|site-api|ai-reverse|skills-evaluation|browser-fingerprint|fingerprint-block)'
-# active Skill 数量以 score_skills release 输出为准
+python3 tools/skills_manifest.py summary
 
 # 2. 跑评分(应该不报错)
 cd ~/SKILLS/oh_my_reverse_skill   # 或 E:\SKILLS\oh_my_reverse_skill
-python3 tools/governance/score_skills.py --repo .
-# 应该输出 JSON；active Skill 数量以评分工具输出为准
+python3 1-业务流程层/skills-evaluation-governance/scripts/score_skills.py --manifest skills-manifest.json --output .ci-out/manifest.json
+# 应该输出 JSON；active Skill 数量以 manifest summary 输出为准
 
 # 3. 跑 fixtures 验证(空仓库,应该 PASS)
 python3 tools/replayer/validate_fixtures.py
@@ -162,12 +138,13 @@ python3 tools/replayer/validate_fixtures.py
 #### Windows PowerShell
 
 ```powershell
-# 1. 检查 Skills 软链 (数量以 score_skills release 输出为准)
+# 1. 检查 Skills 软链 (数量以 manifest summary 输出为准)
 (Get-ChildItem "$env:USERPROFILE\.claude\skills" -Directory).Count
+python3 tools/skills_manifest.py summary
 
 # 2. 跑评分
 cd E:\SKILLS\oh_my_reverse_skill
-python3 tools/governance/score_skills.py --repo .
+python3 1-业务流程层/skills-evaluation-governance/scripts/score_skills.py --manifest skills-manifest.json --output .ci-out/manifest.json
 
 # 3. 跑 fixtures 验证
 python3 tools\replayer\validate_fixtures.py
@@ -183,7 +160,7 @@ dir "%USERPROFILE%\.claude\skills" /B | find /C /V ""
 
 :: 2. 跑评分
 cd /d E:\SKILLS\oh_my_reverse_skill
-python3 tools/governance/score_skills.py --repo .
+python3 1-业务流程层/skills-evaluation-governance/scripts/score_skills.py --manifest skills-manifest.json --output .ci-out/manifest.json
 
 :: 3. 跑 fixtures 验证
 python3 tools\replayer\validate_fixtures.py
@@ -203,15 +180,18 @@ git pull
 
 ## 卸载
 
-```bash
-# Windows (PowerShell)
-foreach ($n in @('website-314-api-delivery','reverse-js-crawler','imperva-waf-reese84','skills-evaluation-governance','web-h5-loop-engineering','authorized-target-adapter','find-crypto-entry','ast-deobfuscate','env-patch','ai-reverse-skill-creator','js-page-runtime-parity','karpathy-guidelines','site-api-adapter','browser-fingerprint-surface-lab','fingerprint-block-reason-diagnostics')) {
-  Remove-Item "$env:USERPROFILE\.claude\skills\$n" -Force -ErrorAction SilentlyContinue
+```powershell
+# Windows (PowerShell): 只删除 manifest 中本仓库 installable skills 对应的 junction。
+python3 tools/skills_manifest.py list-skills --names --installable | ForEach-Object {
+  Remove-Item (Join-Path "$env:USERPROFILE\.claude\skills" $_) -Force -ErrorAction SilentlyContinue
 }
+```
 
-# macOS / Linux
-for n in $(ls ~/.claude/skills/); do
-  [ -L "$HOME/.claude/skills/$n" ] && rm "$HOME/.claude/skills/$n"
+```bash
+# macOS / Linux: 只删除 manifest 中本仓库 installable skills 对应的 symlink。
+python3 tools/skills_manifest.py list-skills --names --installable | while IFS= read -r n; do
+  target="$HOME/.claude/skills/$n"
+  [ -L "$target" ] && rm "$target"
 done
 ```
 
@@ -291,9 +271,10 @@ A: `.github/workflows/skill-bench.yml` 和 `consistency-replay.yml` 默认配置
 
 装完跑一遍:
 
-- [ ] `ls ~/.claude/skills/` 能看到本仓库 active Skill 软链（数量以 `python3 tools/governance/score_skills.py --repo .` / release score 输出为准）
+- [ ] `ls ~/.claude/skills/` 能看到本仓库 active Skill 软链（数量以 `python3 tools/skills_manifest.py summary` 输出为准）
 - [ ] `python3 --version` ≥ 3.11
-- [ ] `python3 tools/governance/score_skills.py --repo .` 输出 JSON 不报错
+- [ ] `python3 tools/skills_manifest.py validate` 通过
+- [ ] `python3 1-业务流程层/skills-evaluation-governance/scripts/score_skills.py --manifest skills-manifest.json --output .ci-out/manifest.json` 不报错
 - [ ] `python3 tools/replayer/validate_fixtures.py` 输出 `all good`
 - [ ] `cat .claude/settings.json` 有 Stop hook 配置
 - [ ] Claude Code 启动,仓库目录内输入 `/逆向` 能匹配到 Skill
