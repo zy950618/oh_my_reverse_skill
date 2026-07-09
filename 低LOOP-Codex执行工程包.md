@@ -1,7 +1,7 @@
 # 低 LOOP Codex 执行工程包
 
 > 生成日期: 2026-07-08  
-> 最近更新: 2026-07-09 / `LCL-20260708-07` external fusion unknown-source ledger
+> 最近更新: 2026-07-09 / `LCL-20260709-08` external-source fact packs
 > 角色定位: Claude 负责计划设计、分支状态监督、Codex 任务下发、独立审查、验证判定和下一轮决策；Codex 只负责在指定分支和指定范围内执行补丁。  
 > 适用范围: `oh_my_reverse_skill` 仓库的轻量结构闭环 / Low-Cost Structure Loop，包括文档、manifest、安装/卸载、GUI、score 输出、JS runtime 证据治理、外部能力融合拆解。  
 > 安全边界: 本工程包不授权 WAF 绕过、指纹伪造、clearance-cookie 复用、验证码绕过、真实扣款、未授权目标、raw cookie/token/profile 落盘。
@@ -12,9 +12,9 @@
 latest_execution_state:
   observed_at: 2026-07-09
   integration_branch: test
-  active_objective: LCL-20260708-07
-  active_branch: loop/20260708-07-external-fusion
-  active_topic: external_fusion_unknown_source_ledger
+  active_objective: LCL-20260709-08
+  active_branch: loop/20260709-08-external-source-facts
+  active_topic: external_source_fact_packs
   execution_source: 低LOOP-Codex执行工程包.md
   capability_claim: STRUCTURE_ONLY
   prior_objectives:
@@ -65,15 +65,15 @@ latest_execution_state:
             - tools/reports/LCL-20260708-06-acceptance.md
   active_objective_scope:
     in_scope:
-      - record ai-reverse-toolkit/jshook-skill/hello_js_reverse_skill as unverified source names
-      - define required evidence before source inventory can become observed
-      - define license gate, allowed use, forbidden use, target layer, validation required
-      - record blocker: user must provide source URL/path or explicit search authorization
+      - record user-provided GitHub URLs for ai-reverse-toolkit/jshook-skill/hello_js_reverse_skill
+      - record git ls-remote HEAD refs, visible license status, page-level inventory, risk markers, allowed/prohibited use
+      - preserve clean-room boundary with no external code/template import and no active skill creation
+      - keep all risk-sensitive anti-detection/fingerprint/hook/cookie/token/sign markers as observation/lab/evidence-contract only
     out_of_scope:
-      - guessing GitHub URLs or assuming same-name repos are intended
-      - cloning/copying/importing external code
-      - claiming observed source facts or license pass without URL/path evidence
-      - active skill creation or skills-manifest changes
+      - cloning or copying external code/templates
+      - importing GPL/unknown-license source content
+      - claiming real-site production success from external README/examples
+      - WAF defeat, fingerprint falsification, concealment, clearance-cookie reuse, or active skill creation
   scattered_supplement_policy:
     低LOOP-Codex执行工程包.md: authoritative_execution_source
     低LOOP执行-拉取卸载与再生成方案.md: historical_design_only_after_migration
@@ -81,7 +81,7 @@ latest_execution_state:
   completion_claim_allowed_only_when:
     - branch_state_recorded
     - LCL-03 prior evidence recorded
-    - LCL-07 unknown-source blocker recorded
+    - LCL-08 external-source fact packs recorded
     - cleanup_ledger_written
     - verify_delivery_domain_none_passed
 ```
@@ -1039,14 +1039,48 @@ branch_task_backlog:
       title: 外部能力融合拆解落库
       branch: loop/20260708-07-external-fusion
       topic_type: external_fusion
-      status: PLANNED_REQUIRES_USER_APPROVAL
-      allowed_files: []
+      status: OBSERVED_BLOCKED_WAITING_SOURCE_URL_OR_PATH
+      allowed_files:
+        - 低LOOP-Codex执行工程包.md
+        - 99-SKILLS治理/05-SKILLS-CHANGELOG.md
+        - 99-SKILLS治理/22-LOW-LOOP-EXECUTION-LOG.md
+        - 99-SKILLS治理/23-LOW-LOOP-VERIFICATION-REPORT.md
+        - tools/reports/LCL-20260708-07-loop-ledger.json
+        - tools/reports/LCL-20260708-07-acceptance.md
       validators:
         - source inventory complete
         - license gate complete
         - no active skill direct import
       merge_gate:
-        external_fusion_gate: PASS
+        external_fusion_gate: BLOCKED_UNKNOWN_SOURCE
+      next_on_success: LCL-20260709-08
+
+    - task_id: LCL-20260709-08
+      title: 外部来源事实包与 clean-room fusion ledger
+      branch: loop/20260709-08-external-source-facts
+      topic_type: external_source_facts
+      status: observed_source_facts_recorded
+      allowed_files:
+        - 低LOOP-Codex执行工程包.md
+        - 99-SKILLS治理/05-SKILLS-CHANGELOG.md
+        - 99-SKILLS治理/22-LOW-LOOP-EXECUTION-LOG.md
+        - 99-SKILLS治理/23-LOW-LOOP-VERIFICATION-REPORT.md
+        - tools/reports/LCL-20260709-08-loop-ledger.json
+        - tools/reports/LCL-20260709-08-acceptance.md
+      validators:
+        - git ls-remote HEAD evidence recorded or explicitly unverified with command failure
+        - source URL, default branch, visible license, page inventory, risk markers, allowed/prohibited use recorded
+        - no raw external files fetched
+        - no code/template import
+        - no active skill creation
+        - loop ledger validate pass
+        - acceptance report validate pass
+        - verify_delivery domain none pass
+      merge_gate:
+        external_source_fact_pack: observed_source_facts_recorded
+        capability_claim: STRUCTURE_ONLY
+        clean_room_boundary: no_external_code_or_template_import
+        risk_sensitive_handling: observation_lab_evidence_contract_only
       next_on_success: STOP_OR_NEW_BACKLOG
 ```
 

@@ -3,12 +3,149 @@
 ## Latest active execution
 
 ```yaml
-objective: LCL-20260708-07
-branch: loop/20260708-07-external-fusion
+objective: LCL-20260709-08
+branch: loop/20260709-08-external-source-facts
 base_branch: test
 profile: low_cost_structure
 capability_claim: STRUCTURE_ONLY
-status: BLOCKED_WAITING_SOURCE_URL_OR_PATH
+status: observed_source_facts_recorded
+```
+
+## LCL-08 external-source fact packs
+
+```yaml
+fact_pack_scope:
+  loop_id: LCL-20260709-08
+  mode: STRUCTURE_ONLY
+  source_method:
+    - public GitHub repository page observation
+    - local git ls-remote HEAD attempts only
+  raw_external_files_fetched: false
+  external_code_imported: false
+  active_skill_created: false
+  git_ls_remote_note: local git ls-remote succeeded for all three authorized source URLs; HEAD hashes recorded
+external_sources:
+  - source_name: jshook-skill
+    source_url: https://github.com/wuji66dde/jshook-skill
+    source_found: true
+    source_type: public_github_repo
+    default_branch: main
+    existence_evidence:
+      git_ls_remote_head_hash: ffbd3e87c4e3f4631a51b45393a919216f38a2ba
+      git_ls_remote_command: git ls-remote --symref https://github.com/wuji66dde/jshook-skill HEAD
+      git_ls_remote_exit_code: 0
+      page_observed: true
+      page_evidence: repo public page observed; default branch main
+    visible_license_status: GPL-3.0
+    content_inventory_summary:
+      - TypeScript/Node skill layout with src modules, SKILL.md, skill.json, package files, README
+      - README describes code collection, deobfuscation, crypto detection, CDP debugging, hook injection, browser/page control
+      - README lists stealth and fingerprint spoofing capabilities
+    risk_sensitive_markers:
+      - hook injection
+      - anti-detection / stealth
+      - fingerprint spoofing
+      - cookie hook
+      - debug eval document.cookie
+      - XHR/sign/token search workflows
+    allowed_fusion_mode:
+      - reference_only
+      - clean_room_summary
+      - eval_seed_without_verbatim_copy
+      - lab_or_evidence_contract_observation_only
+    prohibited_use:
+      - code_import
+      - template_import
+      - active_skill_creation
+      - concealment_or_falsification
+      - WAF_defeat
+      - fingerprint_falsification
+      - clearance_cookie_reuse
+      - production_success_claim
+    decision: GPL_3_repo_reference_only_no_code_import; risk markers recorded as observation/lab/evidence-contract only
+  - source_name: hello_js_reverse_skill
+    source_url: https://github.com/WhiteNightShadow/hello_js_reverse_skill
+    source_found: true
+    source_type: public_github_repo
+    default_branch: main
+    existence_evidence:
+      git_ls_remote_head_hash: e5c3c109ed3a9d4b96d8b1ef4061a618c12a5a38
+      git_ls_remote_command: git ls-remote --symref https://github.com/WhiteNightShadow/hello_js_reverse_skill HEAD
+      git_ls_remote_exit_code: 0
+      page_observed: true
+      page_evidence: repo public page observed; default branch main
+    visible_license_status: unknown_no_license_badge_or_license_file_visible_on_observed_page
+    content_inventory_summary:
+      - JS reverse skill with SKILL.md, references, cases, scripts, templates, examples
+      - README describes encryption restoration, JS obfuscation, JSVMP tracing, dynamic cookie analysis, WASM, protocol-layer analysis, Camoufox workflow
+      - scripts and templates are visible as inventory only, not fetched or copied
+    risk_sensitive_markers:
+      - anti-detection browser
+      - Cloudflare/RS/JY bypass wording
+      - dynamic cookie reverse
+      - hook/debug workflows
+      - protocol-layer anti-crawler handling
+      - token/sign/cookie analysis
+    allowed_fusion_mode:
+      - reference_only
+      - lab_or_evidence_contract_observation_only
+    prohibited_use:
+      - code_import
+      - template_import
+      - active_skill_creation
+      - clean_room_summary_until_license_verified
+      - concealment_or_falsification
+      - WAF_defeat
+      - fingerprint_falsification
+      - production_success_claim
+    decision: unknown_license_reference_only; risk markers recorded as observation/lab/evidence-contract only
+  - source_name: ai-reverse-toolkit
+    source_url: https://github.com/zhizhuodemao/ai-reverse-toolkit
+    source_found: true
+    source_type: public_github_repo
+    default_branch: main
+    existence_evidence:
+      git_ls_remote_head_hash: 02799de7420ea78c57bf7af8cc0f2d38fef017bd
+      git_ls_remote_command: git ls-remote --symref https://github.com/zhizhuodemao/ai-reverse-toolkit HEAD
+      git_ls_remote_exit_code: 0
+      page_observed: true
+      page_evidence: repo public page observed; default branch main
+    visible_license_status: MIT
+    content_inventory_summary:
+      - skills, rules, CLAUDE.md, LICENSE, README
+      - visible skill inventory includes find-crypto-entry, env-patch, ast-deobfuscate, skill-creator
+      - README describes JS reverse rules, crypto entry location, environment patching, AST deobfuscation, and demo/eval material
+    risk_sensitive_markers:
+      - x-sign / x-zse-96 signature entry location
+      - XHR breakpoint validation
+      - environment patching for sign.js
+      - JSVMP and SM4 protection notes
+      - real-site demo claim visible on README page
+    allowed_fusion_mode:
+      - reference_only
+      - clean_room_summary
+      - eval_seed_without_verbatim_copy
+      - lab_or_evidence_contract_observation_only
+    prohibited_use:
+      - code_import
+      - template_import
+      - active_skill_creation
+      - real_site_success_claim
+      - concealment_or_falsification
+      - WAF_defeat
+      - production_success_claim
+    decision: MIT_repo_clean_room_summary_allowed_but_no_code_import_in_LCL_08
+risk_policy:
+  anti_detection_stealth_fingerprint_bypass_cookie_token_hook_capabilities: observation_lab_evidence_contract_only
+  forbidden: concealment_falsification_WAF_defeat_or_production_claims
+validation_ledger_placeholders:
+  claude_should_run_after_changes:
+    - PYTHONDONTWRITEBYTECODE=1 python3 tools/validators/validate_links.py
+    - PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/score_skills.py --repo . --manifest skills-manifest.json
+    - PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/ci_gate.py .ci-out --manifest skills-manifest.json --release
+    - PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_loop_runner.py validate --ledger tools/reports/LCL-20260709-08-loop-ledger.json
+    - PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_acceptance_report.py validate --report tools/reports/LCL-20260709-08-acceptance.md
+    - PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/verify_delivery.py --domain none
 ```
 
 ## LCL-07 unknown-source ledger
