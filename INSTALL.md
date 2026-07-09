@@ -180,22 +180,41 @@ git pull
 
 ## 卸载
 
+卸载只删除 `skills-manifest.json` 中本仓库 installable skills 对应、且 target 指向本仓库的链接 / junction；不删除仓库本体，也不清空 `~/.claude/skills/` 中其他来源的 skill。
+
 ```powershell
-# Windows (PowerShell): 只删除 manifest 中本仓库 installable skills 对应的 junction。
+# Windows (PowerShell): 只删除 manifest 中本仓库 installable skills 对应、且 Target 指向本仓库的 junction。
+$Repo = (Resolve-Path "E:\SKILLS\oh_my_reverse_skill").Path   # 改成你本地实际路径
+$Dst = Join-Path $env:USERPROFILE ".claude\skills"
 python3 tools/skills_manifest.py list-skills --names --installable | ForEach-Object {
-  Remove-Item (Join-Path "$env:USERPROFILE\.claude\skills" $_) -Force -ErrorAction SilentlyContinue
+  $Path = Join-Path $Dst $_
+  if (Test-Path $Path) {
+    $Item = Get-Item $Path -Force
+    $Targets = @($Item.Target)
+    if ($Item.LinkType -eq "Junction" -and ($Targets | Where-Object { $_ -like "$Repo*" })) {
+      Remove-Item $Path -Force
+    }
+  }
 }
 ```
 
 ```bash
-# macOS / Linux: 只删除 manifest 中本仓库 installable skills 对应的 symlink。
+# macOS / Linux: 只删除 manifest 中本仓库 installable skills 对应、且 target 指向本仓库的 symlink。
+REPO="$(cd "$HOME/SKILLS/oh_my_reverse_skill" && pwd -P)"   # 改成你本地实际路径
+DST="$HOME/.claude/skills"
 python3 tools/skills_manifest.py list-skills --names --installable | while IFS= read -r n; do
-  target="$HOME/.claude/skills/$n"
-  [ -L "$target" ] && rm "$target"
+  target="$DST/$n"
+  if [ -L "$target" ]; then
+    link_target="$(readlink "$target")"
+    case "$link_target" in
+      "$REPO"/*) rm "$target" ;;
+      *) printf 'skip non-repo skill link: %s -> %s\n' "$target" "$link_target" ;;
+    esac
+  fi
 done
 ```
 
-仓库目录本身可以 `rm -rf ~/SKILLS/oh_my_reverse_skill` 删除。
+仓库目录本身只有在确认没有唯一证据、经验库、本地抓包和未迁移 ledger 后，才可以手动删除，例如 `rm -rf ~/SKILLS/oh_my_reverse_skill`。
 
 ---
 
