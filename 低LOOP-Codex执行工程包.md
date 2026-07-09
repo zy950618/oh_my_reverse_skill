@@ -1,7 +1,7 @@
 # 低 LOOP Codex 执行工程包
 
 > 生成日期: 2026-07-08  
-> 最近更新: 2026-07-09 / `LCL-20260709-08` external-source fact packs
+> 最近更新: 2026-07-09 / `LCL-20260709-09` external clean-room fusion contract
 > 角色定位: Claude 负责计划设计、分支状态监督、Codex 任务下发、独立审查、验证判定和下一轮决策；Codex 只负责在指定分支和指定范围内执行补丁。  
 > 适用范围: `oh_my_reverse_skill` 仓库的轻量结构闭环 / Low-Cost Structure Loop，包括文档、manifest、安装/卸载、GUI、score 输出、JS runtime 证据治理、外部能力融合拆解。  
 > 安全边界: 本工程包不授权 WAF 绕过、指纹伪造、clearance-cookie 复用、验证码绕过、真实扣款、未授权目标、raw cookie/token/profile 落盘。
@@ -12,9 +12,9 @@
 latest_execution_state:
   observed_at: 2026-07-09
   integration_branch: test
-  active_objective: LCL-20260709-08
-  active_branch: loop/20260709-08-external-source-facts
-  active_topic: external_source_fact_packs
+  active_objective: LCL-20260709-09
+  active_branch: loop/20260709-09-external-fusion-contract
+  active_topic: external_clean_room_fusion_contract
   execution_source: 低LOOP-Codex执行工程包.md
   capability_claim: STRUCTURE_ONLY
   prior_objectives:
@@ -81,7 +81,7 @@ latest_execution_state:
   completion_claim_allowed_only_when:
     - branch_state_recorded
     - LCL-03 prior evidence recorded
-    - LCL-08 external-source fact packs recorded
+    - LCL-09 external clean-room fusion contract recorded
     - cleanup_ledger_written
     - verify_delivery_domain_none_passed
 ```
@@ -1081,6 +1081,37 @@ branch_task_backlog:
         capability_claim: STRUCTURE_ONLY
         clean_room_boundary: no_external_code_or_template_import
         risk_sensitive_handling: observation_lab_evidence_contract_only
+      next_on_success: LCL-20260709-09
+
+    - task_id: LCL-20260709-09
+      title: 内部 clean-room external-source fusion contract 与 eval seed
+      branch: loop/20260709-09-external-fusion-contract
+      topic_type: external_fusion
+      status: structure_contract_and_eval_seed_recorded
+      allowed_files:
+        - 低LOOP-Codex执行工程包.md
+        - 99-SKILLS治理/05-SKILLS-CHANGELOG.md
+        - 99-SKILLS治理/22-LOW-LOOP-EXECUTION-LOG.md
+        - 99-SKILLS治理/23-LOW-LOOP-VERIFICATION-REPORT.md
+        - tool-contracts/external_clean_room_fusion.contract.md
+        - 1-业务流程层/skills-evaluation-governance/evals/026-external-source-fusion-gate.yaml
+        - tools/reports/LCL-20260709-09-loop-ledger.json
+        - tools/reports/LCL-20260709-09-acceptance.md
+      validators:
+        - contract requires external_source_fact_pack, license_decision, prohibited_use_scan, allowed_fusion_mode, attribution_plan, and validation_ledger
+        - eval fails unknown/GPL/risk-sensitive external source import
+        - eval fails active skill creation and skills-manifest edits
+        - allowed outputs limited to abstract contract, eval seed, and reference notes
+        - risk-sensitive markers remain observation/lab/evidence-contract only
+        - loop ledger validate recommended
+        - acceptance report validate recommended
+        - verify_delivery domain none recommended
+      merge_gate:
+        external_clean_room_contract: structure_contract_recorded
+        governance_eval_seed: recorded
+        capability_claim: STRUCTURE_ONLY
+        active_skill_created: false
+        skills_manifest_edited: false
       next_on_success: STOP_OR_NEW_BACKLOG
 ```
 
