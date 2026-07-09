@@ -1,5 +1,30 @@
 # SKILLS Changelog
 
+## 2026-07-09 — LCL-20260709-08 external-source fact packs
+
+```yaml
+change_id: LCL-20260709-08
+branch: loop/20260709-08-external-source-facts
+profile: low_cost_structure
+capability_claim: STRUCTURE_ONLY
+status: observed_source_facts_recorded
+```
+
+### Changed
+
+- Recorded page-level fact packs for `jshook-skill`, `hello_js_reverse_skill`, and `ai-reverse-toolkit` using public GitHub observations only.
+- Preserved clean-room boundaries: no external code/template import and no active skill creation.
+- Added license gates: GPL-3.0 source is no-code-import reference/clean-room/eval-seed only; MIT source may be clean-room summarized but not imported in this loop; unknown license remains reference-only.
+- Recorded risk-sensitive markers such as stealth, fingerprint spoofing, hook injection, dynamic cookie/token/sign workflows, and protocol/WAF-adjacent claims as observation/lab/evidence-contract only.
+- Added LCL-08 execution, verification, ledger, and acceptance records.
+
+### Evidence level
+
+- `observed`: GitHub public pages were visible for all three authorized source URLs.
+- `observed`: local `git ls-remote --symref ... HEAD` succeeded for all three authorized source URLs and recorded HEAD hashes.
+- `derived`: risk-sensitive capabilities cannot be fused as concealment, falsification, WAF defeat, or production success.
+- `unverified`: no raw external files, full repository contents, or real-site success evidence were fetched or imported.
+
 ## 2026-07-09 — LCL-20260708-07 external fusion unknown-source ledger
 
 ```yaml

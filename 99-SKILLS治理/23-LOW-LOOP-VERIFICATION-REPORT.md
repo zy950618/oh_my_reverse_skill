@@ -3,11 +3,76 @@
 ## Objective
 
 ```yaml
-objective: LCL-20260708-07
-branch: loop/20260708-07-external-fusion
+objective: LCL-20260709-08
+branch: loop/20260709-08-external-source-facts
 profile: low_cost_structure
 capability_claim: STRUCTURE_ONLY
-report_status: BLOCKED_WAITING_SOURCE_URL_OR_PATH
+report_status: observed_source_facts_recorded
+```
+
+## LCL-08 Validator results
+
+| Validator | Expected | Status | Key output |
+|---|---|---|---|
+| `git ls-remote --symref https://github.com/wuji66dde/jshook-skill HEAD` | exit 0 with HEAD hash | PASS | `ffbd3e87c4e3f4631a51b45393a919216f38a2ba` |
+| `git ls-remote --symref https://github.com/WhiteNightShadow/hello_js_reverse_skill HEAD` | exit 0 with HEAD hash | PASS | `e5c3c109ed3a9d4b96d8b1ef4061a618c12a5a38` |
+| `git ls-remote --symref https://github.com/zhizhuodemao/ai-reverse-toolkit HEAD` | exit 0 with HEAD hash | PASS | `02799de7420ea78c57bf7af8cc0f2d38fef017bd` |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/validators/validate_links.py` | exit 0 | PASS | `status: PASS`, `failure_count: 0`, `checked_markdown: 223` |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/score_skills.py --repo . --manifest skills-manifest.json` | exit 0 | PASS | `status: PASS`, `strict_score: 100`, `skill_count: 15` |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/ci_gate.py .ci-out --manifest skills-manifest.json --release` | exit 0 | PASS | Release Gate 通过; airline deep validation PASS; cleanup_check PASS |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_loop_runner.py validate --ledger tools/reports/LCL-20260709-08-loop-ledger.json` | `STRUCTURE_PASS` | PASS | `STRUCTURE_PASS`, failures `[]`, blockers `[]` |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_acceptance_report.py validate --report tools/reports/LCL-20260709-08-acceptance.md` | `STRUCTURE_PASS` | PASS | `STRUCTURE_PASS`, failures `[]`, blockers `[]` |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/verify_delivery.py --domain none` | exit 0 | PASS | exit_code 0; blockers `[]`; total `10/10` |
+
+## LCL-08 Validation Ledger
+
+```yaml
+validation_target: LCL-20260709-08 external-source fact packs and clean-room fusion ledger
+expected: structure validators exit 0; external code/templates are not imported; active skills are not created
+actual: PASS for structure-only external-source fact packs and clean-room fusion ledger
+capability_claim: STRUCTURE_ONLY
+observed:
+  - branch: loop/20260709-08-external-source-facts
+  - public page observed for https://github.com/wuji66dde/jshook-skill
+  - public page observed for https://github.com/WhiteNightShadow/hello_js_reverse_skill
+  - public page observed for https://github.com/zhizhuodemao/ai-reverse-toolkit
+  - local git ls-remote attempts succeeded with HEAD refs and hashes
+commands_run:
+  - command: git ls-remote --symref https://github.com/wuji66dde/jshook-skill HEAD
+    exit_code: 0
+    key_output: ffbd3e87c4e3f4631a51b45393a919216f38a2ba HEAD
+  - command: git ls-remote --symref https://github.com/WhiteNightShadow/hello_js_reverse_skill HEAD
+    exit_code: 0
+    key_output: e5c3c109ed3a9d4b96d8b1ef4061a618c12a5a38 HEAD
+  - command: git ls-remote --symref https://github.com/zhizhuodemao/ai-reverse-toolkit HEAD
+    exit_code: 0
+    key_output: 02799de7420ea78c57bf7af8cc0f2d38fef017bd HEAD
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/validators/validate_links.py
+    exit_code: 0
+    key_output: status PASS, failure_count 0
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/score_skills.py --repo . --manifest skills-manifest.json
+    exit_code: 0
+    key_output: status PASS, strict_score 100
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_loop_runner.py validate --ledger tools/reports/LCL-20260709-08-loop-ledger.json
+    exit_code: 0
+    key_output: STRUCTURE_PASS
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_acceptance_report.py validate --report tools/reports/LCL-20260709-08-acceptance.md
+    exit_code: 0
+    key_output: STRUCTURE_PASS
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/verify_delivery.py --domain none
+    exit_code: 0
+    key_output: blockers [], total 10/10
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/ci_gate.py .ci-out --manifest skills-manifest.json --release
+    exit_code: 0
+    key_output: Release Gate 通过; airline_deep_validation PASS; cleanup_check PASS
+derived:
+  - GPL-3.0 source remains reference_only / clean_room_summary / eval_seed only, with no code import
+  - MIT source may be clean-room summarized, but LCL-08 still prohibits code/template import
+  - unknown-license source remains reference_only only
+remaining_gap:
+  - hello_js_reverse_skill visible license status is unknown from the observed page
+  - no raw external files were fetched; inventory is page-level only
+  - no real-domain capability, sign/token success, WAF/challenge defeat, or production success is claimed
 ```
 
 ## LCL-07 Validator results
