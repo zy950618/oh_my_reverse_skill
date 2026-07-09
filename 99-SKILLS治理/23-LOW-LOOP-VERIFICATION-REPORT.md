@@ -3,11 +3,56 @@
 ## Objective
 
 ```yaml
-objective: LCL-20260708-04
-branch: loop/20260708-04-install-safe-uninstall-consolidation
+objective: LCL-20260708-05
+branch: loop/20260708-05-score-json-output
 profile: low_cost_structure
 capability_claim: STRUCTURE_ONLY
 report_status: VALIDATED_STRUCTURE_PASS
+```
+
+## LCL-05 Validator results
+
+| Validator | Expected | Status | Key output |
+|---|---|---|---|
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/score_skills.py --repo . --manifest skills-manifest.json --json-out .ci-out/score-summary.json` | exit 0 and JSON file written | PASS | `status: PASS`, `strict_score: 100`, `skill_count: 15` |
+| `PYTHONDONTWRITEBYTECODE=1 python3 -m json.tool .ci-out/score-summary.json` | exit 0 | PASS | parsed a single JSON object containing summary fields |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/score_skills.py --repo . --manifest skills-manifest.json` | exit 0 | PASS | default stdout remains human-readable JSON summary followed by `ci_gate` report |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/ci_gate.py .ci-out --manifest skills-manifest.json --release` | exit 0 | PASS | Release Gate passed on Claude rerun |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_loop_runner.py validate --ledger tools/reports/LCL-20260708-05-loop-ledger.json` | `STRUCTURE_PASS` | PASS | schema corrected; failures `[]` |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_acceptance_report.py validate --report tools/reports/LCL-20260708-05-acceptance.md` | `STRUCTURE_PASS` | PASS | schema corrected; failures `[]` |
+| `PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/verify_delivery.py --domain none` | exit 0 | PASS | rerun after limitations listed; blockers `[]` |
+
+## LCL-05 Validation Ledger
+
+```yaml
+validation_target: LCL-20260708-05 score JSON output stabilization
+commands_run:
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/score_skills.py --repo . --manifest skills-manifest.json --json-out .ci-out/score-summary.json
+    exit_code: 0
+    key_output: status PASS, strict_score 100, wrote .ci-out/score-summary.json
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 -m json.tool .ci-out/score-summary.json
+    exit_code: 0
+    key_output: json.tool parsed the generated summary object
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/score_skills.py --repo . --manifest skills-manifest.json
+    exit_code: 0
+    key_output: default stdout compatibility observed
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/governance/ci_gate.py .ci-out --manifest skills-manifest.json --release
+    exit_code: 0
+    key_output: Release Gate passed
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_loop_runner.py validate --ledger tools/reports/LCL-20260708-05-loop-ledger.json
+    exit_code: 0
+    key_output: STRUCTURE_PASS
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/web_h5_acceptance_report.py validate --report tools/reports/LCL-20260708-05-acceptance.md
+    exit_code: 0
+    key_output: STRUCTURE_PASS
+  - command: PYTHONDONTWRITEBYTECODE=1 python3 tools/web_h5/verify_delivery.py --domain none
+    exit_code: 0
+    key_output: blockers []
+expected: all required validators exit 0
+actual: PASS for structure-only score JSON output stabilization
+capability_claim: STRUCTURE_ONLY
+remaining_gap:
+  - no real-domain capability, sign/token, concurrency, WAF/challenge, or production success is claimed
 ```
 
 ## Validator results
