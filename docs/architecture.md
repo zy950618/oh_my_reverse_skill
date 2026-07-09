@@ -8,4 +8,4 @@ Source of truth for repository shape.
 - Evidence and local labs: `public-range-evidence/`.
 - Utility scripts: `tools/` stable wrappers plus grouped implementations under `tools/governance/`, `tools/validators/`, `tools/evidence/`, `tools/web_h5/`, `tools/js_runtime/`, `tools/fingerprint/`, `tools/site_memory/`, and `tools/lifecycle/`.
 
-Active skill count and score are generated, not handwritten. Use `python3 tools/governance/score_skills.py --repo .`.
+Active skill inventory is declared in `skills-manifest.json` and validated with `python3 tools/skills_manifest.py validate`; repository score generation uses `python3 tools/governance/score_skills.py --repo . --manifest skills-manifest.json`.

@@ -4,9 +4,11 @@ on:
   pull_request:
     paths:
       - '站点经验库/*/fixtures/**'
+      - 'skills-manifest.json'
       - '逆向工程经验库/**'
       - 'tools/replayer/**'
       - 'tools/recorder/**'
+      - 'tools/skills_manifest.py'
       - '5-沉淀工具层/*/adapter.yaml'
       - '.github/workflows/consistency-replay.yml'
   schedule:
@@ -61,7 +63,7 @@ jobs:
           set -euo pipefail
           SCRIPT="1-业务流程层/skills-evaluation-governance/scripts/score_skills.py"
           mkdir -p .ci-out
-          for layer in "1-业务流程层" "2-JS逆向工具层" "4-通用规范层" "5-沉淀工具层" "7-指纹风控层"; do
+          python3 tools/skills_manifest.py list-layers --consistency-score | while IFS= read -r layer; do
             safe=$(echo "$layer" | tr / _)
             python3 "$SCRIPT" --output ".ci-out/${safe}.json" "$layer"
           done

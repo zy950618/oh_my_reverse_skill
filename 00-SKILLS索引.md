@@ -10,11 +10,11 @@ tags:
 
 # oh_my_reverse_skill 索引
 
-本仓库是 Web/H5 逆向工程 SKILLS 总库，分层组织，仓库为唯一来源，通过 Windows junction 安装到 `~/.claude/skills/`。
+本仓库是 Web/H5 逆向工程 SKILLS 总库，分层组织；active inventory、拓扑、安装和 CI 层列表以根目录 `skills-manifest.json` 为单一来源，通过 Windows junction 安装到 `~/.claude/skills/`。
 
 ## 有效加载策略
 
-active `SKILL.md` 数量以 `python3 tools/governance/score_skills.py --repo .` 和 release score 输出为准；不等于所有 Skill 都应直接响应用户自然语言。默认按三层加载：
+active `SKILL.md` 数量以 `python3 tools/skills_manifest.py summary` 和 manifest 精确评分输出为准；不等于所有 Skill 都应直接响应用户自然语言。默认按三层加载：
 
 | 层级 | Skill | 触发规则 |
 |---|---|---|
@@ -54,9 +54,9 @@ active `SKILL.md` 数量以 `python3 tools/governance/score_skills.py --repo .` 
 | - | `逆向工程经验库/` | run/capture/replay、旧新证据、工具失败和复测经验 |
 | - | `tools/` | 仓库辅助脚本（sync_site_memory.py 等） |
 
-## 全部 active skill（数量以评分工具为准）
+## 全部 active skill（数量以 manifest 为准）
 
-active skill 数量以 `python3 tools/governance/score_skills.py --repo .` 和 release score 输出为准。
+active skill inventory 以 `skills-manifest.json` 为准；用 `python3 tools/skills_manifest.py validate` 校验它是否与当前工作树 observed `SKILL.md` 目录一致。
 
 ### 1-业务流程层
 
@@ -100,6 +100,7 @@ active skill 数量以 `python3 tools/governance/score_skills.py --repo .` 和 r
 ## Source of truth
 
 - 触发词和路由矩阵: [TRIGGERS.md](./TRIGGERS.md)
+- Active inventory / topology / install / CI: [skills-manifest.json](./skills-manifest.json)
 - 用户调用方式: [USAGE.md](./USAGE.md)
 - 安装与软链: [INSTALL.md](./INSTALL.md)
 - Claude Code 执行流程和边界: [CLAUDE.md](./CLAUDE.md)

@@ -21,7 +21,7 @@ Web/H5 逆向工程 SKILL 库,装到 Claude Code 后,**用自然语言**让 Clau
 - 完成后保持干净交付:删除已替代的临时测试文件、历史输出、废代码、废注释,并补整体加密算法细节图
 - 给自己产出的 Skill 打分 / 回测 / 治理
 
-仓库 active Skill 数量以 `python3 tools/governance/score_skills.py --repo .` 和 release score 输出为准；另有一套 fixtures 一致性验证工具链 + CI + 治理评分。
+仓库 active Skill inventory 以根目录 `skills-manifest.json` 为单一来源；另有一套 fixtures 一致性验证工具链 + CI + 治理评分。
 
 ## 谁应该用
 
@@ -143,7 +143,7 @@ Claude 触发 `skills-evaluation-governance`,跑 `score_skills.py`:仓库 strict
 - **跨项目用 hook**:默认 Stop hook 只在仓库内触发。跨项目工作时手动核对 5 步沉淀,或参考 [CLAUDE.md](./CLAUDE.md) 的「跨项目自动触发」段
 - **加新站点**:从 `站点经验库/_templates/` 复制 7 文件模板 + `fixtures/` 子目录到 `站点经验库/<domain>/`
 - **加新 Skill**:见 [99-SKILLS治理/04-新增SKILL评分回测准入.md](./99-SKILLS治理/04-新增SKILL评分回测准入.md)
-- **看仓库分数**:`python3 tools/governance/score_skills.py --repo .`
+- **看仓库分数**:`python3 tools/governance/score_skills.py --repo . --manifest skills-manifest.json`
 
 ---
 

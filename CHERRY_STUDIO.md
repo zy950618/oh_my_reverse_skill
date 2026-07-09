@@ -2,16 +2,16 @@
 
 本仓库支持两种安装路径:
 
-- CLI: 继续按 `INSTALL.md` 创建 11 个 skill 的软链 / junction。
+- CLI: 继续按 `INSTALL.md` 和 `skills-manifest.json` 创建 active skill 的软链 / junction。
 - GUI: 通过仓库级 plugin manifest 安装，让 Cherry Studio / Claude-compatible GUI 扫描本仓库内的 `SKILL.md`。
 
 ## 当前落地边界
 
 Observed:
 
-- 仓库内已有 11 个 `SKILL.md`。
+- 当前 active inventory 以 `skills-manifest.json` 为单一来源，并可用 `python3 tools/skills_manifest.py validate` 校验。
 - 本次新增 `.claude-plugin/plugin.json` 和 `.claude-plugin/marketplace.json`。
-- 现有 CLI 安装方式不变。
+- 现有 CLI 安装方式通过 `INSTALL.md` 调用 manifest 工具生成安装命令。
 
 Derived:
 
@@ -44,25 +44,20 @@ Unverified:
    E:\SKILLS\oh_my_reverse_skill
    ```
 
-4. 导入后确认 GUI 能识别以下 11 个 skill:
+4. 导入后确认 GUI 能识别 `skills-manifest.json` 中的 installable skills：
 
-   ```text
-   website-314-api-delivery
-   reverse-js-crawler
-   imperva-waf-reese84
-   skills-evaluation-governance
-   find-crypto-entry
-   ast-deobfuscate
-   env-patch
-   ai-reverse-skill-creator
-   karpathy-guidelines
-   site-api-adapter
+   ```bash
+   python3 tools/skills_manifest.py validate
+   python3 tools/skills_manifest.py summary
+   python3 tools/skills_manifest.py list-skills --names --installable
    ```
+
+   GUI 显示的 skill 名称应与 `list-skills --names --installable` 输出一致；不要把历史硬编码数量当作当前 inventory。
 
 ## 验收标准
 
-- CLI 下原有 11 个 skill 仍能通过 `~/.claude/skills/` 软链加载。
-- GUI 下能识别同一组 11 个 skill。
+- CLI 下 active skill 软链数量以 `python3 tools/skills_manifest.py summary` 为准。
+- GUI 下能识别 `skills-manifest.json` 枚举的同一组 installable skills。
 - 不提交 Cherry Studio 本机生成的 `plugins.json`、缓存目录、`contentHash` 或绝对用户路径。
 - 不把单个 GUI 的成功泛化成所有 GUI 均支持；每个 GUI 需要独立验证。
 
@@ -72,7 +67,7 @@ Unverified:
 
 1. 确认导入的是仓库根目录，不是某个分层子目录。
 2. 确认 `.claude-plugin/plugin.json` 存在。
-3. 确认 11 个 `SKILL.md` 仍在原分层目录内。
+3. 确认 `python3 tools/skills_manifest.py validate` 通过，且 GUI 显示项与 `python3 tools/skills_manifest.py list-skills --names --installable` 一致。
 4. 重启 GUI 后再检查 skill 列表。
 
 如果 GUI 需要手工维护 `plugins.json`:
