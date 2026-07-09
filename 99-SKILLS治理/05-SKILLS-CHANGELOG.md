@@ -1,5 +1,29 @@
 # SKILLS Changelog
 
+## 2026-07-09 — LCL-20260708-05 score JSON output stabilization
+
+```yaml
+change_id: LCL-20260708-05
+branch: loop/20260708-05-score-json-output
+profile: low_cost_structure
+capability_claim: STRUCTURE_ONLY
+status: validated_structure_pass
+```
+
+### Changed
+
+- Added `--json-out <path>` to `tools/governance/score_skills.py`.
+- Reused the existing aggregate summary object for both stdout and optional JSON file output.
+- Kept default stdout behavior compatible: stdout still prints the human-readable summary and then `ci_gate` output.
+- Added LCL-05 execution, verification, ledger, and acceptance records.
+
+### Evidence level
+
+- `observed`: `python3 -m json.tool .ci-out/score-summary.json` parsed the generated file successfully.
+- `observed`: default `score_skills.py --repo . --manifest skills-manifest.json` exited 0 after the change.
+- `observed`: release `ci_gate --release` passed on Claude rerun after the Codex sandbox run reported a transient localhost bind permission failure.
+- `unverified`: no real-domain capability, sign/token, concurrency, WAF/challenge, or production success is claimed for LCL-05.
+
 ## 2026-07-09 — LCL-20260708-04 install-safe-uninstall consolidation
 
 ```yaml

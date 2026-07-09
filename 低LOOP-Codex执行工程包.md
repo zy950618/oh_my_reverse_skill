@@ -1,7 +1,7 @@
 # 低 LOOP Codex 执行工程包
 
 > 生成日期: 2026-07-08  
-> 最近更新: 2026-07-09 / `LCL-20260708-04` install-safe-uninstall consolidation  
+> 最近更新: 2026-07-09 / `LCL-20260708-05` score JSON output stabilization
 > 角色定位: Claude 负责计划设计、分支状态监督、Codex 任务下发、独立审查、验证判定和下一轮决策；Codex 只负责在指定分支和指定范围内执行补丁。  
 > 适用范围: `oh_my_reverse_skill` 仓库的轻量结构闭环 / Low-Cost Structure Loop，包括文档、manifest、安装/卸载、GUI、score 输出、JS runtime 证据治理、外部能力融合拆解。  
 > 安全边界: 本工程包不授权 WAF 绕过、指纹伪造、clearance-cookie 复用、验证码绕过、真实扣款、未授权目标、raw cookie/token/profile 落盘。
@@ -12,9 +12,9 @@
 latest_execution_state:
   observed_at: 2026-07-09
   integration_branch: test
-  active_objective: LCL-20260708-04
-  active_branch: loop/20260708-04-install-safe-uninstall-consolidation
-  active_topic: install_safe_uninstall_consolidation
+  active_objective: LCL-20260708-05
+  active_branch: loop/20260708-05-score-json-output
+  active_topic: score_json_output_stabilization
   execution_source: 低LOOP-Codex执行工程包.md
   capability_claim: STRUCTURE_ONLY
   prior_objectives:
@@ -29,14 +29,24 @@ latest_execution_state:
             - tools/skills_manifest.py
             - 00-SKILLS索引.md
             - INSTALL.md
+    - task_id: LCL-20260708-04
+      topic: install_safe_uninstall_consolidation
+      status: OBSERVED_STRUCTURE_PASS
+      evidence:
+        - branch_observed: loop/20260708-04-install-safe-uninstall-consolidation
+        - files_observed:
+            - 低LOOP-Codex执行工程包.md
+            - 99-SKILLS治理/22-LOW-LOOP-EXECUTION-LOG.md
+            - 99-SKILLS治理/23-LOW-LOOP-VERIFICATION-REPORT.md
+            - tools/reports/LCL-20260708-04-loop-ledger.json
+            - tools/reports/LCL-20260708-04-acceptance.md
   active_objective_scope:
     in_scope:
-      - update this engineering pack as the single execution authority
-      - record LCL-03 as inherited prerequisite evidence
-      - land manifest-driven safe uninstall checks for INSTALL.md
-      - create one execution log, verification report, acceptance report, and cleanup ledger
+      - add --json-out to tools/governance/score_skills.py
+      - write a single json.load compatible score summary object
+      - preserve default stdout and ci_gate behavior
+      - record LCL-05 execution, verification, changelog, ledger, and acceptance
     out_of_scope:
-      - score JSON output stabilization
       - JS runtime evidence manifest
       - real-domain replay or production capability claims
       - WAF/challenge/fingerprint defeat
@@ -47,7 +57,7 @@ latest_execution_state:
   completion_claim_allowed_only_when:
     - branch_state_recorded
     - LCL-03 prior evidence recorded
-    - LCL-04 validation commands passed
+    - LCL-05 validation commands passed or blocker recorded
     - cleanup_ledger_written
     - verify_delivery_domain_none_passed
 ```

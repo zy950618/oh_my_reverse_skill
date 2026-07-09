@@ -3,13 +3,48 @@
 ## Latest active execution
 
 ```yaml
-objective: LCL-20260708-04
-branch: loop/20260708-04-install-safe-uninstall-consolidation
+objective: LCL-20260708-05
+branch: loop/20260708-05-score-json-output
 base_branch: test
-base_commit: f68998f
 profile: low_cost_structure
 capability_claim: STRUCTURE_ONLY
 status: VALIDATED_STRUCTURE_PASS
+```
+
+## LCL-05 scope ledger
+
+```yaml
+in_scope:
+  - add --json-out to tools/governance/score_skills.py
+  - keep default stdout behavior compatible
+  - ensure .ci-out/score-summary.json is a single JSON object
+  - update low-loop execution, verification, changelog, ledger, and acceptance records
+out_of_scope:
+  - changing skills-manifest.json
+  - changing skill layer content
+  - real-domain replay or production capability claims
+  - WAF, challenge, fingerprint defeat, or detection evasion
+```
+
+## LCL-05 execution observations
+
+```yaml
+observed:
+  - branch: loop/20260708-05-score-json-output
+  - changed_file: tools/governance/score_skills.py
+  - added_argument: --json-out
+  - json_out_file: .ci-out/score-summary.json
+  - json_out_parse: PASS
+  - default_stdout_compatibility: PASS
+  - ci_gate_release: PASS
+  - loop_ledger_validate: PASS
+  - acceptance_report_validate: PASS
+  - verify_delivery_domain_none_exit_code: 0
+derived:
+  - json_out is not mixed with ci_gate human-readable stdout because it is written from the aggregate summary object before stdout printing
+unverified:
+  - no real-domain capability is claimed
+  - no sign/token, concurrency, WAF/challenge, or production success is claimed
 ```
 
 ## Prior objective handling

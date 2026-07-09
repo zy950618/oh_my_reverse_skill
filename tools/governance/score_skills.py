@@ -148,6 +148,7 @@ def main() -> int:
     parser.add_argument("--out-dir", default=".ci-out", help="score output directory")
     parser.add_argument("--release", action="store_true", help="also run ci_gate.py --release")
     parser.add_argument("--manifest", default=DEFAULT_MANIFEST_NAME, help="manifest path for active inventory")
+    parser.add_argument("--json-out", help="write the aggregate summary as a single JSON object")
     args = parser.parse_args()
 
     repo = Path(args.repo).resolve()
@@ -197,7 +198,7 @@ def main() -> int:
     release_ok = args.release and gate.returncode == 0
     score, components, notes = strict_score(repo, len(totals), expected_skill_count, release_ok or not args.release)
 
-    print(json.dumps({
+    summary = {
         "tool": "score_skills",
         "status": "PASS" if score >= 93 and gate.returncode == 0 and not notes else "FAIL",
         "strict_score": score,
@@ -210,7 +211,12 @@ def main() -> int:
         "skill_count": len(totals),
         "manifest_skill_count": expected_skill_count,
         "out_dir": str(out_dir),
-    }, ensure_ascii=False, indent=2))
+    }
+    if args.json_out:
+        json_out = (repo / args.json_out).resolve() if not Path(args.json_out).is_absolute() else Path(args.json_out).resolve()
+        json_out.parent.mkdir(parents=True, exist_ok=True)
+        json_out.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
     print(gate.stdout, end="")
     print(gate.stderr, end="", file=sys.stderr)
     if gate.returncode != 0:
