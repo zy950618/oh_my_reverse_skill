@@ -48,8 +48,9 @@ SOURCE_OF_TRUTH_DOCS = [
     "docs/scoring.md",
     "docs/cleanup-policy.md",
     "docs/evidence-policy.md",
-    "docs/loop-engineering.md",
 ]
+# Only public/release docs belong in this convergence scan. Process ledgers and
+# local loop notes are intentionally excluded from the GitHub-facing surface.
 ACTIVE_PUBLIC_DOCS = PUBLIC_DOCS + [
     "docs/architecture.md",
     "docs/routing.md",
@@ -57,7 +58,6 @@ ACTIVE_PUBLIC_DOCS = PUBLIC_DOCS + [
     "docs/scoring.md",
     "docs/cleanup-policy.md",
     "docs/evidence-policy.md",
-    "docs/loop-engineering.md",
 ]
 # Intentional denylist for stale public skill-count claims. Build the phrases from
 # fragments so the repository-wide residue grep does not flag this validator.

@@ -119,6 +119,8 @@ metrics/
 
 # Local loop ledgers/task state; final repository state should not keep loop files.
 .loop/
+低LOOP-cleanup-ledger-*.md
+docs/loop-engineering.md
 
 # Agent/control packages and local orchestration state; never commit.
 .agent-control/
