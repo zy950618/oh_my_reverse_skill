@@ -42,8 +42,6 @@ SOURCE_OF_TRUTH_DOCS = [
     "USAGE.md",
     "INSTALL.md",
     "00-SKILLS索引.md",
-    "STATE.md",
-    "LOOP.md",
     "docs/architecture.md",
     "docs/routing.md",
     "docs/validation.md",
@@ -274,27 +272,11 @@ def validate_loop_docs(failures: list[str]) -> None:
         if summary_count > 5:
             failures.append(f".loop/run-log.md: keep at most five recent summaries, found {summary_count}")
 
-    state = ROOT / "STATE.md"
-    if state.is_file():
-        lines = [line for line in read_text(state).splitlines() if line.strip()]
-        allowed_prefixes = (
-            "current_branch:",
-            "current_phase:",
-            "current_goal:",
-            "validation_status:",
-            "score:",
-            "minimum_active_skill_score:",
-            "strict_score:",
-            "codex_blocking:",
-            "merge_allowed:",
-            "next_action:",
-        )
-        for line_no, line in enumerate(lines, 1):
-            if not line.startswith(allowed_prefixes):
-                failures.append(f"STATE.md:{line_no}: current state only; remove long-history or changed-file detail")
-                break
-        if len(lines) > len(allowed_prefixes):
-            failures.append(f"STATE.md: current state only; found {len(lines)} non-empty lines")
+    retired_state = ROOT / "STATE.md"
+    retired_loop = ROOT / "LOOP.md"
+    for retired in (retired_state, retired_loop):
+        if retired.is_file():
+            failures.append(f"{retired.name}: retired loop state file must not be used as an active state source")
 
 
 def validate_score_docs(failures: list[str]) -> None:
