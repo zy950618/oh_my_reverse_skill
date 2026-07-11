@@ -4,6 +4,16 @@ Web/H5 逆向工程 SKILLS 总库。进入本仓库工作时,请先按下面规�
 
 ---
 
+## Low-LOOP V3 仓库入口
+
+- 用户明确说“执行 LCL”时，表示执行完整人工生命周期；唯一直接 operator 入口是根目录 `Claude codex 指挥codex 二次优化loop执行文件.md`，随后按其权威链读取 `99-SKILLS治理/24-low-loop-execution-standard.md`、`99-SKILLS治理/25-low-loop-adoption-record.md`、`1-业务流程层/web-h5-loop-engineering/schemas/index.schema.json`、`1-业务流程层/web-h5-loop-engineering/references/low-loop-semantic-validation-contract.md` 和 `1-业务流程层/web-h5-loop-engineering/references/low-loop-roadmap.md`。不要把本文件或 Skill 复制成第二个任务包。
+- 用户说“核验 LCL”时只做只读核验，不执行、修改或恢复。Codex 仅按 TaskSpec 精确 allowlist 修改 Critical files 并返回 testimony；Claude 负责计划、监督、真实 diff 审计、manual role-separated re-execution、人工治理判定，以及在分别授权后执行 commit、merge、post-merge 验证和收尾。
+- 当前实现保持 `MANUAL_ORCHESTRATED_LEDGER_ONLY` / `structure_only`：runner 仅支持 ledger init、record、validate，不是完整 state store 或 executor；不存在可运行的未来 CLI，也不在此列出未来命令名。
+- `.loop/` 是被忽略的本地控制与证据状态；恢复以 `.loop/current.json`、append-only events 和 V3 引用为准，不得创建或恢复 `LOOP_STATE.md`。
+- commit、merge、push、worktree/branch delete 均须分别明确授权，互不蕴含；push 默认拒绝，除非另行授权。
+
+---
+
 ## 首要入口(强制)
 
 收到"网页逆向 XXX 网站"、"实现 XXX 站点纯接口"、"FastAPI 接口测试交付"、"把 XXX 接入 314"、"破解 XXX 的 sign/token"、"做一下 XXX 的爬虫"类请求时:
