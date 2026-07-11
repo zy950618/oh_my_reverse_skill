@@ -6,6 +6,7 @@ import json
 import re
 import sys
 from pathlib import Path
+from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[2]
 LINK_RE = re.compile(r"(?<!!)\[[^\]\n]+\]\(([^)]+)\)")
@@ -29,12 +30,15 @@ def main() -> int:
             visible_lines.append("" if in_fence else line)
         text = "\n".join(visible_lines)
         for match in LINK_RE.finditer(text):
-            target = match.group(1).split("#", 1)[0].strip()
+            target = match.group(1).strip()
             if not target or target.startswith(("http://", "https://", "mailto:")):
                 continue
             if target.startswith("<") and target.endswith(">"):
                 target = target[1:-1]
-            candidate = (path.parent / target).resolve()
+            local_path = unquote(urlsplit(target).path)
+            if not local_path:
+                continue
+            candidate = (path.parent / local_path).resolve()
             try:
                 candidate.relative_to(ROOT.resolve())
             except ValueError:
