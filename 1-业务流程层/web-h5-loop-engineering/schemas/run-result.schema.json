@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.oh-my-reverse-skill.local/low-loop/v3/run-result.schema.json",
+  "title": "Low-LOOP V3 RunResult",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "invocation_id", "attempt_id", "run_id", "task_id", "actor_id", "principal_id", "command_id", "status", "started_at", "finished_at", "duration_ms", "program", "argv", "cwd", "exit_code", "signal", "timed_out", "stdout_artifact_id", "stderr_artifact_id", "environment_summary", "tool_summary", "sandbox_summary", "network_summary", "executor_testimony", "workflow_closure_proven"],
+  "properties": {
+    "schema_version": {"const": "3.0.0"},
+    "invocation_id": {"type": "string", "minLength": 1}, "attempt_id": {"type": "string", "minLength": 1}, "run_id": {"type": "string", "minLength": 1}, "task_id": {"type": "string", "minLength": 1},
+    "actor_id": {"type": "string", "minLength": 1}, "principal_id": {"type": "string", "minLength": 1}, "command_id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["PENDING", "RUNNING", "SUCCEEDED", "FAILED", "TIMED_OUT", "CANCELLED", "BLOCKED", "INTERRUPTED", "INVALID"]},
+    "started_at": {"type": ["string", "null"], "format": "date-time"}, "finished_at": {"type": ["string", "null"], "format": "date-time"}, "duration_ms": {"type": ["integer", "null"], "minimum": 0},
+    "program": {"type": "string", "minLength": 1}, "argv": {"type": "array", "items": {"type": "string"}}, "cwd": {"type": "string", "minLength": 1},
+    "exit_code": {"type": ["integer", "null"]}, "signal": {"type": ["string", "null"]}, "timed_out": {"type": "boolean"},
+    "stdout_artifact_id": {"type": ["string", "null"]}, "stderr_artifact_id": {"type": ["string", "null"]},
+    "environment_summary": {"$ref": "#/$defs/summary"}, "tool_summary": {"$ref": "#/$defs/summary"}, "sandbox_summary": {"$ref": "#/$defs/summary"}, "network_summary": {"$ref": "#/$defs/summary"},
+    "executor_testimony": {"type": "object", "additionalProperties": false, "required": ["statement", "trust_class", "trusted_as_evidence"], "properties": {"statement": {"type": "string"}, "trust_class": {"const": "MODEL_DATA"}, "trusted_as_evidence": {"const": false}}},
+    "workflow_closure_proven": {"const": false}
+  },
+  "$defs": {
+    "summary": {"type": "object", "additionalProperties": false, "required": ["observed", "details", "artifact_ids"], "properties": {"observed": {"type": "boolean"}, "details": {"type": "object", "additionalProperties": {"type": ["string", "number", "boolean", "null"]}}, "artifact_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}}}
+  }
+}
