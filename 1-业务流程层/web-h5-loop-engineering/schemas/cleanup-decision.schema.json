@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.oh-my-reverse-skill.local/low-loop/v3/cleanup-decision.schema.json",
+  "title": "Low-LOOP V3 CleanupDecision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "cleanup_decision_id", "candidate_artifact_id", "candidate_path", "owner_status", "owner_id", "producer_run_id", "producer_command_id", "is_unique", "is_reproducible", "is_referenced", "reference_count", "is_migrated", "provenance_status", "retention_class", "retain_until", "hold_flags", "grant_id", "decision", "reason", "before_sha256", "after_sha256", "recovery", "decided_at"],
+  "properties": {
+    "schema_version": {"const": "3.0.0"}, "cleanup_decision_id": {"type": "string", "minLength": 1}, "candidate_artifact_id": {"type": "string", "minLength": 1}, "candidate_path": {"type": "string", "minLength": 1},
+    "owner_status": {"enum": ["KNOWN", "UNKNOWN"]}, "owner_id": {"type": ["string", "null"]}, "producer_run_id": {"type": "string", "minLength": 1}, "producer_command_id": {"type": "string", "minLength": 1},
+    "is_unique": {"type": "boolean"}, "is_reproducible": {"type": "boolean"}, "is_referenced": {"type": "boolean"}, "reference_count": {"type": "integer", "minimum": 0}, "is_migrated": {"type": "boolean"},
+    "provenance_status": {"enum": ["RESOLVED", "PARTIAL", "UNRESOLVED"]}, "retention_class": {"enum": ["TEMPORARY", "EVIDENCE", "FAILURE_EVIDENCE", "CLOSURE_EVIDENCE", "GOVERNANCE", "SECRET_QUARANTINE"]},
+    "retain_until": {"type": ["string", "null"], "format": "date-time"}, "hold_flags": {"type": "array", "items": {"enum": ["LEGAL", "SECURITY", "HUMAN_REVIEW", "PROVENANCE", "CLOSURE", "OWNER"]}, "uniqueItems": true},
+    "grant_id": {"type": ["string", "null"]}, "decision": {"enum": ["KEEP", "ARCHIVE", "DELETE", "HUMAN_REVIEW"]}, "reason": {"type": "string", "minLength": 1},
+    "before_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "after_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+    "recovery": {"type": "object", "additionalProperties": false, "required": ["possible", "procedure", "recovery_artifact_ids"], "properties": {"possible": {"type": "boolean"}, "procedure": {"type": "string"}, "recovery_artifact_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}}},
+    "decided_at": {"type": "string", "format": "date-time"}
+  }
+}

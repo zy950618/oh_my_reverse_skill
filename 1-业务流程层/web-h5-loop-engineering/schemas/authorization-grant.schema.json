@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.oh-my-reverse-skill.local/low-loop/v3/authorization-grant.schema.json",
+  "title": "Low-LOOP V3 AuthorizationGrant",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "grant_id", "issuer_actor_id", "issuer_principal_id", "issuer_authority_artifact_id", "issued_at", "expires_at", "revocation", "repository_id", "base_sha", "task_id", "operations"],
+  "properties": {
+    "schema_version": {"const": "3.0.0"}, "grant_id": {"type": "string", "minLength": 1}, "issuer_actor_id": {"type": "string", "minLength": 1}, "issuer_principal_id": {"type": "string", "minLength": 1}, "issuer_authority_artifact_id": {"type": "string", "minLength": 1},
+    "issued_at": {"type": "string", "format": "date-time"}, "expires_at": {"type": "string", "format": "date-time"},
+    "revocation": {"type": "object", "additionalProperties": false, "required": ["status", "revoked_at", "revoked_by", "reason"], "properties": {"status": {"enum": ["ACTIVE", "REVOKED"]}, "revoked_at": {"type": ["string", "null"], "format": "date-time"}, "revoked_by": {"type": ["string", "null"]}, "reason": {"type": ["string", "null"]}}},
+    "repository_id": {"type": "string", "minLength": 1}, "base_sha": {"type": "string", "pattern": "^[a-f0-9]{40,64}$"}, "task_id": {"type": "string", "minLength": 1},
+    "operations": {
+      "type": "object", "additionalProperties": false,
+      "required": ["read", "write", "execute", "topic_commit", "merge_local", "rollback_commit", "cleanup_delete", "worktree_remove", "branch_delete", "fetch_remote", "push_remote", "remote_mutation"],
+      "properties": {
+        "read": {"$ref": "#/$defs/operation_grant"}, "write": {"$ref": "#/$defs/operation_grant"}, "execute": {"$ref": "#/$defs/operation_grant"}, "topic_commit": {"$ref": "#/$defs/operation_grant"}, "merge_local": {"$ref": "#/$defs/operation_grant"}, "rollback_commit": {"$ref": "#/$defs/operation_grant"}, "cleanup_delete": {"$ref": "#/$defs/operation_grant"}, "worktree_remove": {"$ref": "#/$defs/operation_grant"}, "branch_delete": {"$ref": "#/$defs/operation_grant"}, "fetch_remote": {"$ref": "#/$defs/operation_grant"}, "push_remote": {"$ref": "#/$defs/operation_grant"}, "remote_mutation": {"$ref": "#/$defs/operation_grant"}
+      }
+    }
+  },
+  "$defs": {
+    "operation_grant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decision", "targets", "constraints"],
+      "properties": {
+        "decision": {"enum": ["ALLOW", "DENY", "CONDITIONAL"]},
+        "targets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind", "value"],
+            "properties": {
+              "kind": {"enum": ["PATH", "PROGRAM", "BRANCH", "WORKTREE", "REMOTE", "HOST", "ARTIFACT", "REPOSITORY"]},
+              "value": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["constraint_id", "description"],
+            "properties": {
+              "constraint_id": {"type": "string", "minLength": 1},
+              "description": {"type": "string", "minLength": 1}
+            }
+          }
+        }
+      }
+    }
+  }
+}
