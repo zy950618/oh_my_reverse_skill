@@ -1,5 +1,28 @@
 # SKILLS Changelog
 
+## 2026-07-11 — Low-LOOP V3 candidate convergence (V3-LCL-01..06)
+
+```yaml
+change_id: V3-LCL-06
+standard_version: 3.0.0-candidate
+adoption_status: CANDIDATE
+implementation_status: MANUAL_ORCHESTRATED_LEDGER_ONLY
+capability_level: structure_only
+```
+
+### Changed
+
+- Reconciled supporting governance references with the merged V3 candidate standard, schemas, semantic contract, root operator entry, repository entries, and routing structures.
+- For candidate evaluation, the former Low-LOOP authority is superseded by `99-SKILLS治理/24-low-loop-execution-standard.md` and the root operator entry `Claude codex 指挥codex 二次优化loop执行文件.md`.
+- Kept `99-SKILLS治理/22-LOW-LOOP-EXECUTION-LOG.md` and `99-SKILLS治理/23-LOW-LOOP-VERIFICATION-REPORT.md` as unmodified historical records; they are not the V3 operator or current candidate authority.
+- Preserved the current ceiling: manual orchestration and `structure_only`. V3 is not executable or adopted; source deletion and final adoption reconciliation remain pending.
+
+### Evidence level
+
+- `observed`: the current repository contains the candidate standard, schemas, semantic contract, root operator, entries, and routing structures; the associations to `b06beaa`, `639a3c3`, `6fc53bd`, `f035908`, and `4ed97fa` are frozen TaskSpec facts.
+- `derived`: supporting references can now point to the V3 candidate authority chain without treating legacy business-ledger success as repository lifecycle proof.
+- `unverified`: secure execution, persistent V3 state, actor-separated verification, automated Git lifecycle, source migration completion, and final adoption are not implemented or approved.
+
 ## 2026-07-09 — LCL-20260709-11 internal base hardening
 
 ```yaml

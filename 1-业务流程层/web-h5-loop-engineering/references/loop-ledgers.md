@@ -1,5 +1,13 @@
 # Loop Ledgers
 
+## V3 Candidate Contract Boundary
+
+The YAML and Markdown templates in this reference are explanatory business-ledger views. They remain useful for Web/H5 scope, iteration, evidence, acceptance, risk-control, metrics, stop, and cleanup recording, but they are not the canonical Low-LOOP V3 machine contract.
+
+The canonical candidate machine contracts are [`../schemas/index.schema.json`](../schemas/index.schema.json) and [`low-loop-semantic-validation-contract.md`](low-loop-semantic-validation-contract.md), under candidate standard version `3.0.0-candidate`. Shape-only schema success does not satisfy the semantic contract or prove adoption.
+
+The current `tools/web_h5/web_h5_loop_runner.py` remains the legacy business-ledger init/record/validate tool described below. It does not emit the future V3 state package, implement a persistent V3 state store, execute the Codex/Git lifecycle, or provide an actor-separated verifier. Current Low-LOOP capability remains `MANUAL_ORCHESTRATED_LEDGER_ONLY` / `structure_only`.
+
 ## Loop Ledger
 
 ```yaml
@@ -68,8 +76,7 @@ session_cache_isolation:
 
 ## Runner Execution Ledger
 
-Use `tools/web_h5/web_h5_loop_runner.py` to create and validate the machine-readable
-ledger:
+Use `tools/web_h5/web_h5_loop_runner.py` to create and validate the existing machine-readable business ledger:
 
 ```yaml
 loop_id:
