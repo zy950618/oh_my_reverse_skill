@@ -18,11 +18,15 @@ This contract fixes the entry order for Web/H5 reverse-engineering skills so bus
 
 ## Priority
 
-1. Explicit LOOP, closed-loop, multi-agent, repeated validation, execution ledger: `web-h5-loop-engineering`.
+1. Explicit Web/H5 business LOOP, closed-loop, multi-agent reverse engineering, repeated business validation, or business execution ledger: `web-h5-loop-engineering`.
 2. Complete pure-interface/FastAPI/service/314 delivery: `website-314-api-delivery`.
 3. Focused single route/stage JS reverse, sign/token, request replay: `reverse-js-crawler`.
 4. Skill scoring/governance/eval/drift: `skills-evaluation-governance`.
 5. challenge/WAF/fingerprint/site-adapter only escalate after evidence or explicit user request.
+
+## Repository Low-LOOP Boundary
+
+Explicit LCL or Claude/Codex repository-engineering work routes to the unique root operator `Claude codex 指挥codex 二次优化loop执行文件.md` and the normative standard `99-SKILLS治理/24-low-loop-execution-standard.md`. This contract is routing-only and is not an `operator_entry`. Web/H5 business LOOP work remains routed to `web-h5-loop-engineering`.
 
 ## Hard Delivery Rule
 
