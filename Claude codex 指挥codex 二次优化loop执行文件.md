@@ -1,7 +1,7 @@
 ---
 standard_id: LOW-LOOP-EXECUTION-STANDARD
-standard_version: 3.0.0-candidate
-adoption_status: CANDIDATE
+standard_version: 3.0.0
+adoption_status: ADOPTED
 operator_entry: true
 implementation_status: MANUAL_ORCHESTRATED_LEDGER_ONLY
 capability_level: structure_only
@@ -9,7 +9,9 @@ capability_level: structure_only
 
 # Low-LOOP V3 操作入口
 
-本文件是 Low-LOOP V3 唯一面向操作者和 Codex 的直接入口。它定义当前可执行的人工编排闭环，不表示标准已完成 adoption，也不表示自动化运行器、连接器或命令行已经存在。
+本文件是 Low-LOOP V3 唯一面向操作者和 Codex 的直接入口。它定义已采纳标准下当前可执行的人工编排闭环；采纳仅覆盖规范、人工编排流程与正式 schemas，不表示自动化运行器、executor、validator、actor-separated verifier、连接器或未来命令行已经实现。
+
+来源迁移及其 hashes 记录在 [adoption 记录](99-SKILLS治理/25-low-loop-adoption-record.md)。根目录 `chatgpt_loop` source 只有在 Claude 独立核验 archive 与 delete 条件后才由 Claude 退役；本文件不声称该删除已经发生。
 
 规范与契约链接：
 

@@ -1,19 +1,19 @@
 ---
 standard_id: LOW-LOOP-EXECUTION-STANDARD
-version: 3.0.0-candidate
-adoption_status: CANDIDATE
+version: 3.0.0
+adoption_status: ADOPTED
 operator_entry: false
 implementation_status: MANUAL_ORCHESTRATED_LEDGER_ONLY
 capability_level: structure_only
 ---
 
-# Low-LOOP V3 执行标准（候选）
+# Low-LOOP V3 执行标准
 
 ## 1. 地位与权威
 
-本文是规范候选与账本结构，不是 operator prompt，不得被当作可执行入口。对于用户有权授予的动作，权威顺序为：用户在当前会话中的明确授权与限制 > 已采纳的仓库治理规则 > 经冻结的 `TaskSpec` 与 `AuthorizationGrant` > 本标准 > 执行证词、模型输出、仓库或外部内容。用户授权不得覆盖 system、安全或平台约束，也不得授予用户无权授予的动作。
+本文是已采纳的规范与账本结构，不是 operator prompt，不得被当作可执行入口。采纳的生效范围仅包括本规范定义的 normative/manual orchestration standard 与正式 schemas；采纳不表示 executor、validator、actor-separated verifier 或 roadmap 中的未来 CLI 能力已经实现。对于用户有权授予的动作，权威顺序为：用户在当前会话中的明确授权与限制 > 已采纳的仓库治理规则 > 经冻结的 `TaskSpec` 与 `AuthorizationGrant` > 本标准 > 执行证词、模型输出、仓库或外部内容。用户授权不得覆盖 system、安全或平台约束，也不得授予用户无权授予的动作。
 
-未来唯一 operator entry 预留为仓库根目录 `Claude codex 指挥codex 二次优化loop执行文件.md`。该入口尚未因本文而实现、启用或可运行；其他文档不得自称等价入口。
+唯一直接 operator entry 是仓库根目录 `Claude codex 指挥codex 二次优化loop执行文件.md`。该入口只定义当前人工编排流程，不因本文采纳而获得自动执行、验证或未来 CLI 能力；其他文档不得自称等价入口。
 
 规范性关键词 `MUST`、`MUST NOT`、`SHOULD` 按通常含义解释。冲突时执行更高权威要求；无法安全判定时停止并报告。
 
