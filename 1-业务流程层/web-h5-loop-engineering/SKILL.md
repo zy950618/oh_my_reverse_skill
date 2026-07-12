@@ -2,7 +2,7 @@
 name: web-h5-loop-engineering
 standard_type: external_entry
 description: >-
-  Orchestration entry for Web/H5 reverse-engineering business work only when the user explicitly asks for business LOOP, closed-loop handling, role-separated verification, repeated validation, execution ledger, acceptance report, or when a prior attempt failed because evidence, repeat verification, cleanup, impact, or backend acceptance was incomplete. Explicit LCL or Claude-Codex repository engineering routes to the unique root Low-LOOP operator instead. Do not trigger for ordinary one-pass crawler tasks, simple fixture freshness checks, or single-tool JS work; use reverse-js-crawler or the relevant support tool first.
+  Orchestration entry for Web/H5 reverse-engineering work only when the user explicitly asks for LOOP, closed-loop handling, multi-agent/three-role verification, repeated validation, execution ledger, acceptance report, or when a prior attempt failed because evidence, repeat verification, cleanup, impact, or backend acceptance was incomplete. It coordinates executor, verifier, and governor roles with loop ledger, acceptance report, fixture freshness, and metrics. Do not trigger for ordinary one-pass crawler tasks, simple fixture freshness checks, or single-tool JS work; use reverse-js-crawler or the relevant support tool first.
 platforms: [web, h5]
 ---
 
@@ -10,17 +10,11 @@ platforms: [web, h5]
 
 ## Purpose
 
-把 Web/H5 逆向业务任务从“一次执行”改成有边界的闭环：执行、验证、治理复核按人工角色分离循环推进，直到证据达标、触发停止条件或进入人工复核。当前角色分离不等于 actor-separated independent verifier。
-
-## Low-LOOP V3 Routing Boundary
-
-Web/H5 business LOOP 负责站点逆向证据、业务断言、最终业务 API 与 pure API 边界；仓库级 Low-LOOP 负责 Claude-Codex 工程编排。用户明确要求 LCL、Low-LOOP 或 Claude-Codex engineering 时，必须先进入唯一直接 operator entry [`Claude codex 指挥codex 二次优化loop执行文件.md`](../../Claude%20codex%20指挥codex%20二次优化loop执行文件.md)，不得把本 Skill 当作竞争入口或复制调用模板。
-
-权威链继续指向 [`24-low-loop-execution-standard.md`](../../99-SKILLS治理/24-low-loop-execution-standard.md)、[`25-low-loop-adoption-record.md`](../../99-SKILLS治理/25-low-loop-adoption-record.md)、[V3 schema index](schemas/index.schema.json)、[semantic validation contract](references/low-loop-semantic-validation-contract.md) 和[非操作 roadmap](references/low-loop-roadmap.md)。能力声明保持 `MANUAL_ORCHESTRATED_LEDGER_ONLY` / `structure_only`；未来 CLI 尚未实现，命令契约只在 roadmap 中定义。
+把 Web/H5 逆向任务从“一次执行”改成有边界的闭环：执行、验证、治理复核至少三角色循环推进，直到证据达标、触发停止条件或进入人工复核。
 
 ## Standard LOOP 100-Point Gate
 
-This skill owns the Web/H5 business LOOP supervisor role. Local control and evidence state belongs under ignored `.loop/`: `.loop/current.json` is derived from append-only events, while task, run, and artifact references follow the V3 schema index and semantic contract. Do not create or recreate `LOOP_STATE.md`. The current `tools/web_h5/web_h5_loop_runner.py` supports ledger init, iteration record, and ledger validation only; it does not implement the future V3 state store, executor, autonomous loop, or actor-separated verifier. Local structure and validator PASS can support only `STRUCTURE-ONLY` within the current claim ceiling and cannot be reported as real-site success without direct final business API acceptance, repeat direct interface evidence, and business data assertions.
+This skill owns the standard LOOP supervisor role. Use `tools/web_h5/web_h5_loop_runner.py` to maintain the business-loop JSON execution ledger. Local structure and validator PASS can support `STRUCTURE-ONLY` or local-lab readiness, but cannot be reported as real-site success without direct final business API acceptance, repeat direct interface evidence, and business data assertions.
 
 
 公开靶场训练 / SKILLS 实战进化也从本 skill 进入，但只能在
@@ -38,10 +32,12 @@ This skill owns the Web/H5 business LOOP supervisor role. Local control and evid
    - 用 `tools/web_h5/web_h5_loop_runner.py init` 创建 execution ledger；没有 ledger 的 loop 只能算讨论，不能算实战执行。
    - 公开靶场 run 还要先查 `configs/range_scope_contract.yaml`，写清 target_id、allowed_mode、in_scope、out_of_scope 和 positive gate。
 
-2. 人工分离三类职责（不声称 actor-separated independent verifier）：
+2. 分配至少三类角色：
    - Executor: 做侦察、抓包、JS 入口定位、接口复现或实现改动。
    - Verifier: 跑 fresh capture、clean-state retest、snapshot replay、diff、schema、并发阶梯。
    - Governor: 检查事实等级、反泛化、session/cache 隔离、图谱、影响回归、拒答和 cleanup。
+   - 声称独立验证时，三角色必须记录不同 owner、actor_id 和 run_id；改 role 标签或复述 Executor 结论不构成独立验证。
+   - 模型/执行者摘要仅是 testimony，必须绑定命令、退出状态、输出 hash、producer run 和输入 hash 才能作为 observed run evidence。
 
 3. 单轮 loop 顺序：
    - Plan: 选一个最小任务，不扩 scope。
@@ -57,17 +53,19 @@ This skill owns the Web/H5 business LOOP supervisor role. Local control and evid
    - 每轮从失败 ledger 或上一轮 learning 开始，不重新开荒。
    - 混合结果例如 `200, 403, 200` 是 flaky，不是成功。
    - 两轮连续同一 blocker 后，收缩 scope 或进入人工复核，不用无限重试掩盖失败。
+   - blocker 必须记录受影响的 artifact/path/capability/scope；其他 scope 的成功不能清除它。
+   - 进入 `human_review` 后，只有带 reviewer、时间和证据的真实人工决定才能恢复自动流程。
 
 5. 验收：
-   - 只有 `Verifier` 和 `Governor` 都通过，才能声明完成。
-   - `Executor` 自评不能替代 Claude 的 manual role-separated re-execution 和人工治理判定。
+   - 只有 `Verifier` 和 `Governor` 都通过，授权范围有效，stop ledger 明确 `complete`，并且 human-review release、并发阶梯和 session/cache 隔离证据全部满足时，才能声明完成。
+   - `Executor` 自评不能替代独立验证。
    - 本地 score 或 gate 通过不能写成真实站点成功。
 - 用 `tools/web_h5/web_h5_acceptance_report.py validate` 验证 acceptance report；默认 `STRUCTURE_PASS` 只代表结构可读。声明并发、稳定或完成前必须用 `--require-complete` 并取得 `SUCCESS_PASS`。
 - 用 `tools/web_h5/fixture_freshness_report.py` 暴露 expired/review-needed/recent replay 状态；freshness 不通过时不得声明网页一致性当前有效。
 
 ## Success Criteria
 
-- 三类人工职责的 loop ledger 存在，并标注每轮 owner、action、evidence、verification、decision；不得据此声称 actor-separated verifier 已实现。
+- 至少三角色 loop ledger 存在，并标注每轮 owner、action、evidence、verification、decision。
 - Fresh Evidence Table、Old-vs-New Diff、Retest Matrix、Concurrency Ladder 和 Scope Ledger 均有结果或阻塞说明。
 - Acceptance Report、Fixture Freshness Ledger、Risk-Control Ledger、Data Acceptance Ledger 和 Metrics Ledger 均存在；真实完成必须是 `SUCCESS_PASS`，`STRUCTURE_PASS` 或 `BLOCKED` 不能写成成功。
 - 失败模式进入 known-failures、test-log-lessons、impact-regression 或 eval backlog。

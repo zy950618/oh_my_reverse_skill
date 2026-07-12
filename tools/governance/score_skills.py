@@ -50,8 +50,6 @@ FORBIDDEN_TERMS = (
 )
 FORBIDDEN_RE = re.compile("|".join(re.escape(term) for term in FORBIDDEN_TERMS))
 RESIDUE_ALLOWLIST = {
-    "低LOOP执行-拉取卸载与再生成方案.md",
-    "低LOOP-Codex执行工程包.md",
     "tools/governance/score_skills.py",
     "tools/validators/validate_structure.py",
     "tools/validators/validate_routing.py",

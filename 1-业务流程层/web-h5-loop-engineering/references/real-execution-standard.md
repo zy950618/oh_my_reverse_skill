@@ -1,11 +1,5 @@
 # Real Execution Standard
 
-## Scope Separation From Low-LOOP V3
-
-This document defines evidence status for Web/H5 business execution. It does not define or prove repository Low-LOOP orchestration implementation. The canonical Low-LOOP V3 candidate machine contracts are [`../schemas/index.schema.json`](../schemas/index.schema.json) plus [`low-loop-semantic-validation-contract.md`](low-loop-semantic-validation-contract.md); current orchestration remains `MANUAL_ORCHESTRATED_LEDGER_ONLY` / `structure_only`.
-
-An existing business ledger or acceptance report with `SUCCESS_PASS` shows only that the business fields required by the corresponding legacy tool were present for its stated Web/H5 scope. It does not prove a Codex/Git lifecycle, a V3 state package, a secure argv executor, grant-separated commit/merge/cleanup, fresh post-merge verification, or an actor-separated verifier. Those repository-orchestration claims require their own candidate contracts and evidence and are not implemented by `web_h5_loop_runner.py`.
-
 This reference turns Loop Engineering from a concept into a repeatable Web/H5
 execution package. It standardizes the artifacts; it does not claim a site is
 stable until the artifacts contain current evidence. It covers quantitative
@@ -28,7 +22,10 @@ completion, release readiness, concurrency, or long-term stability.
 - `SUCCESS_PASS`: all real-completion evidence required by the tool is present.
 - `FAIL`: the artifact is malformed or internally inconsistent.
 
-Only `SUCCESS_PASS` can support a real Web/H5 completion claim within the business scope and completion boundaries below. `STRUCTURE_PASS` and `BLOCKED` must be reported as structure-ready or blocked, not successful. No one of these business statuses can mark Low-LOOP V3 adopted or prove its repository orchestration lifecycle.
+Only `SUCCESS_PASS` can support a real completion claim within the ledger's exact
+domain, market, locale, currency, stage, auth state, session, and target API.
+`STRUCTURE_PASS` and `BLOCKED` must be reported as structure-ready or blocked,
+not successful.
 
 ## Execution Package
 
@@ -44,7 +41,10 @@ site memory update or explicit blocked reason
 
 The ledger is the source of truth for role handoff. The acceptance report is
 the source of truth for crawler readiness. The freshness report prevents stale
-fixtures from being counted as observed facts.
+fixtures from being counted as observed facts. Every artifact must identify its
+producer run and immutable input hashes; artifacts from different runs cannot be
+combined into one completion package without an explicit, verified lineage.
+Executor or model summaries are testimony, not observed execution evidence.
 
 ## Completion Rule
 

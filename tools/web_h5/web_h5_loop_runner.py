@@ -37,6 +37,13 @@ COMPLETE_FRESH_FIELDS = [
     "script_hash",
     "browser_profile_id",
     "state_reset",
+    "command",
+    "working_directory",
+    "exit_code",
+    "stdout_sha256",
+    "stderr_sha256",
+    "producer_run_id",
+    "input_hashes",
 ]
 RETEST_GROUPS = ["clean_unverified", "verified", "repeat_verified"]
 BAD_EVIDENCE_VALUES = {None, "", "unknown", "unverified", "missing", "stale", "blocked"}
@@ -76,9 +83,9 @@ def template(args: argparse.Namespace) -> dict:
             "production_impact",
         ],
         "roles": {
-            "executor": {"owner": "", "responsibility": "capture/reproduce/implement"},
-            "verifier": {"owner": "", "responsibility": "fresh capture/replay/diff/schema/concurrency"},
-            "governor": {"owner": "", "responsibility": "fact level/scope/isolation/risk/cleanup"},
+            "executor": {"owner": "", "actor_id": "", "run_id": "", "responsibility": "capture/reproduce/implement"},
+            "verifier": {"owner": "", "actor_id": "", "run_id": "", "responsibility": "fresh capture/replay/diff/schema/concurrency"},
+            "governor": {"owner": "", "actor_id": "", "run_id": "", "responsibility": "fact level/scope/isolation/risk/cleanup"},
         },
         "iterations": [],
         "verification": {
@@ -90,6 +97,13 @@ def template(args: argparse.Namespace) -> dict:
                 "script_hash": "",
                 "browser_profile_id": "",
                 "state_reset": "",
+                "command": [],
+                "working_directory": "",
+                "exit_code": None,
+                "stdout_sha256": "",
+                "stderr_sha256": "",
+                "producer_run_id": "",
+                "input_hashes": {},
                 "source_freshness": "unknown",
             },
             "clean_state_retest": {
@@ -105,13 +119,16 @@ def template(args: argparse.Namespace) -> dict:
                 "worker_10": {"status": "unverified"},
             },
             "session_cache_isolation": {
-                "cookie_jar": "isolated_by_default",
-                "storage": "isolated_by_default",
-                "token_cache": "isolated_by_default",
-                "account_state": "isolated_by_default",
+                "cookie_jar": {"status": "unverified", "evidence": ""},
+                "storage": {"status": "unverified", "evidence": ""},
+                "token_cache": {"status": "unverified", "evidence": ""},
+                "account_state": {"status": "unverified", "evidence": ""},
             },
             "risk_control": {
                 "authorization_scope": "",
+                "authorization_evidence": "",
+                "authorization_actor": "",
+                "authorization_expires_at": "",
                 "protected_business_api_acceptance": "",
                 "failure_split": [],
                 "backoff": "",
@@ -159,13 +176,20 @@ def template(args: argparse.Namespace) -> dict:
             "stop_reason": "unverified",
             "evidence": "",
             "remaining_gap": "",
+            "affected_scope": [],
             "safe_next_step": "",
+            "human_review_release": {
+                "reviewer": "",
+                "decided_at": "",
+                "evidence": "",
+            },
         },
         "cleanup_ledger": {
             "removed": [],
             "kept_as_evidence": [],
             "migrated_to_memory": [],
             "still_unverified": [],
+            "decisions": [],
         },
     }
 
@@ -237,6 +261,23 @@ def validate_ledger(payload: dict, require_complete: bool = False) -> dict:
         failures.append("human_review_conditions must not be empty")
 
     if require_complete:
+        roles = payload.get("roles", {})
+        owners = [str(roles.get(role, {}).get("owner", "")).strip() for role in REQUIRED_ROLES]
+        actor_ids = [str(roles.get(role, {}).get("actor_id", "")).strip() for role in REQUIRED_ROLES]
+        run_ids = [str(roles.get(role, {}).get("run_id", "")).strip() for role in REQUIRED_ROLES]
+        if any(blankish(owner) for owner in owners):
+            blockers.append("require_complete: every role owner must be recorded")
+        elif len(set(owners)) != len(owners):
+            blockers.append("require_complete: executor, verifier, and governor owners must be distinct")
+        if any(blankish(actor_id) for actor_id in actor_ids):
+            blockers.append("require_complete: every role actor_id must be recorded")
+        elif len(set(actor_ids)) != len(actor_ids):
+            blockers.append("require_complete: executor, verifier, and governor actor_ids must be distinct")
+        if any(blankish(run_id) for run_id in run_ids):
+            blockers.append("require_complete: every role run_id must be recorded")
+        elif len(set(run_ids)) != len(run_ids):
+            blockers.append("require_complete: executor, verifier, and governor run_ids must be distinct")
+
         verifier_pass = False
         governor_pass = False
         for item in payload.get("iterations") or []:
@@ -246,6 +287,30 @@ def validate_ledger(payload: dict, require_complete: bool = False) -> dict:
             blockers.append("require_complete: no verifier pass iteration")
         if not governor_pass:
             blockers.append("require_complete: no governor pass/stop_complete iteration")
+
+        for index, item in enumerate(payload.get("iterations") or [], start=1):
+            if item.get("verifier_result") == "pass" and blankish(item.get("verifier_checks")):
+                blockers.append(f"require_complete: iteration {index} verifier pass lacks observed checks")
+            if item.get("governor_result") in {"pass", "stop_complete"} and blankish(item.get("governor_checks")):
+                blockers.append(f"require_complete: iteration {index} governor pass lacks checks")
+            if item.get("verifier_result") == "pass" and blankish(item.get("executor_evidence")):
+                blockers.append(f"require_complete: iteration {index} has no executor evidence artifact reference")
+
+        stop_ledger = payload.get("stop_ledger", {})
+        if stop_ledger.get("stop_reason") != "complete":
+            blockers.append("require_complete: stop_ledger.stop_reason must be complete")
+        if blankish(stop_ledger.get("evidence")):
+            blockers.append("require_complete: stop_ledger.evidence is missing")
+
+        human_review_seen = any(
+            item.get("governor_result") == "human_review"
+            for item in payload.get("iterations") or []
+        ) or stop_ledger.get("stop_reason") == "human_review"
+        if human_review_seen:
+            release = stop_ledger.get("human_review_release", {})
+            for key in ("reviewer", "decided_at", "evidence"):
+                if blankish(release.get(key)):
+                    blockers.append(f"require_complete: human_review_release.{key} is missing")
 
         fresh = payload.get("verification", {}).get("fresh_evidence", {})
         for key in COMPLETE_FRESH_FIELDS:
@@ -262,7 +327,26 @@ def validate_ledger(payload: dict, require_complete: bool = False) -> dict:
         if payload.get("verification", {}).get("anti_flake", {}).get("decision") != "stable":
             blockers.append("require_complete: anti_flake.decision must be stable")
 
+        concurrency = payload.get("verification", {}).get("concurrency_ladder", {})
+        for worker in REQUIRED_WORKERS:
+            stage = concurrency.get(worker, {})
+            if stage.get("status") != "pass":
+                blockers.append(f"require_complete: concurrency_ladder.{worker}.status must be pass")
+            if blankish(stage.get("evidence")):
+                blockers.append(f"require_complete: concurrency_ladder.{worker}.evidence is missing")
+
+        isolation = payload.get("verification", {}).get("session_cache_isolation", {})
+        for key in ("cookie_jar", "storage", "token_cache", "account_state"):
+            item = isolation.get(key, {})
+            if not isinstance(item, dict) or item.get("status") != "pass":
+                blockers.append(f"require_complete: session_cache_isolation.{key}.status must be pass")
+            if not isinstance(item, dict) or blankish(item.get("evidence")):
+                blockers.append(f"require_complete: session_cache_isolation.{key}.evidence is missing")
+
         risk = payload.get("verification", {}).get("risk_control", {})
+        for key in ("authorization_scope", "authorization_evidence", "authorization_actor", "authorization_expires_at"):
+            if blankish(risk.get(key)):
+                blockers.append(f"require_complete: risk_control.{key} is missing")
         if blankish(risk.get("protected_business_api_acceptance")):
             blockers.append("require_complete: risk_control.protected_business_api_acceptance is missing")
 
@@ -296,6 +380,18 @@ def validate_ledger(payload: dict, require_complete: bool = False) -> dict:
             blockers.append("require_complete: fixture_freshness.review_pending_count must be 0")
         if freshness.get("recent_report") is not True:
             blockers.append("require_complete: fixture_freshness.recent_report must be true")
+
+        cleanup = payload.get("cleanup_ledger", {})
+        for index, decision in enumerate(cleanup.get("decisions") or [], start=1):
+            for key in ("path", "owner", "references_checked", "retention_status", "provenance", "recoverable", "authorization", "action"):
+                if blankish(decision.get(key)):
+                    blockers.append(f"require_complete: cleanup decision {index}.{key} is missing")
+            if decision.get("action") == "remove" and decision.get("references_checked") is not True:
+                blockers.append(f"require_complete: cleanup decision {index} cannot remove an unchecked path")
+            if decision.get("action") == "remove" and decision.get("retention_status") != "clear":
+                blockers.append(f"require_complete: cleanup decision {index} retention_status must be clear")
+            if decision.get("action") == "remove" and decision.get("recoverable") is not True:
+                blockers.append(f"require_complete: cleanup decision {index} removed path must be recoverable")
 
     freshness = payload.get("verification", {}).get("fixture_freshness", {})
     if freshness.get("source_freshness") in {None, "", "unknown"}:
