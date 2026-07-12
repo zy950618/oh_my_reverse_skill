@@ -465,12 +465,16 @@ def check_honesty_workspace(blockers: list[str]) -> int:
     return 1
 
 
-def check_cleanup_workspace(changed: list[str], blockers: list[str]) -> int:
-    """6. Cleanup: workspace 模式检查是否接入收尾规约或清理/算法图模板。"""
+def check_cleanup_workspace(repo_root: Path, changed: list[str], blockers: list[str]) -> int:
+    """6. Cleanup: require a recent local cleanup report or durable cleanup artifact."""
+    local_reports = (
+        repo_root / ".ci-out" / "cleanup" / "cleanup-candidate-classification.md",
+        repo_root / ".ci-out" / "cleanup" / "final-cleanup-ledger.md",
+    )
+    if any(path.is_file() for path in local_reports):
+        return 1
     markers = (
         "99-SKILLS治理/17-交付收尾清理与加密算法图谱规约.md",
-        "docs/cleanup-policy.md",
-        "tool-contracts/cleanup_workspace.contract.md",
         "逆向工程经验库/_templates/delivery-cleanup.md",
         "逆向工程经验库/_templates/encryption-algorithm-graph.md",
         "站点经验库/_archive/",
@@ -481,7 +485,7 @@ def check_cleanup_workspace(changed: list[str], blockers: list[str]) -> int:
     if any(any(marker in path for marker in markers) for path in changed):
         return 1
     blockers.append(
-        "Cleanup: workspace evidence 模式未发现 17 收尾规约、delivery-cleanup 或 encryption-algorithm-graph 改动"
+        "Cleanup: workspace evidence 模式未发现本轮 `.ci-out/cleanup/` 报告、17 收尾规约、delivery-cleanup 或 encryption-algorithm-graph 改动"
     )
     return 0
 
@@ -686,7 +690,7 @@ def main() -> int:
         except Exception as e:
             blockers.append(f"Honesty 维度检查异常: {e!r}")
         try:
-            scores["cleanup"] = check_cleanup_workspace(changed, blockers)
+            scores["cleanup"] = check_cleanup_workspace(repo_root, changed, blockers)
         except Exception as e:
             blockers.append(f"Cleanup 维度检查异常: {e!r}")
     else:

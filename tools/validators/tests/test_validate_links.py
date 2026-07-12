@@ -67,6 +67,31 @@ class ValidateLinksTest(unittest.TestCase):
             failures = payload["failures"]
             self.assertTrue(any("links outside repo" in failure for failure in failures))
             self.assertTrue(any("broken link" in failure for failure in failures))
+    def test_uses_tracked_markdown_when_git_inventory_is_available(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            (root / "tracked.md").write_text("[target](target.md)", encoding="utf-8")
+            (root / "target.md").write_text("target", encoding="utf-8")
+            (root / "local.md").write_text("[missing](missing.md)", encoding="utf-8")
+            tracked = mock.Mock(returncode=0, stdout=b"tracked.md\0target.md\0")
+
+            with mock.patch.object(validate_links.subprocess, "run", return_value=tracked):
+                exit_code, payload = self.run_validator(root)
+
+            self.assertEqual(0, exit_code)
+            self.assertEqual(2, payload["checked_markdown"])
+
+    def test_falls_back_to_directory_scan_outside_git(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            (root / "source.md").write_text("[missing](missing.md)", encoding="utf-8")
+            unavailable = mock.Mock(returncode=128, stdout=b"")
+
+            with mock.patch.object(validate_links.subprocess, "run", return_value=unavailable):
+                exit_code, payload = self.run_validator(root)
+
+            self.assertEqual(1, exit_code)
+            self.assertEqual(1, payload["failure_count"])
 
 
 if __name__ == "__main__":

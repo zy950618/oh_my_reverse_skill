@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
@@ -12,10 +13,21 @@ ROOT = Path(__file__).resolve().parents[2]
 LINK_RE = re.compile(r"(?<!!)\[[^\]\n]+\]\(([^)]+)\)")
 
 
+def markdown_paths() -> list[Path]:
+    tracked = subprocess.run(
+        ["git", "-C", str(ROOT), "ls-files", "-z", "--", "*.md"],
+        check=False,
+        capture_output=True,
+    )
+    if tracked.returncode == 0:
+        return [ROOT / raw.decode("utf-8") for raw in tracked.stdout.split(b"\0") if raw]
+    return list(ROOT.rglob("*.md"))
+
+
 def main() -> int:
     failures: list[str] = []
     checked = 0
-    for path in ROOT.rglob("*.md"):
+    for path in markdown_paths():
         if any(part in {".git", ".agent-control", ".claude", ".ci-out", "node_modules"} for part in path.parts):
             continue
         raw_text = path.read_text(encoding="utf-8-sig", errors="replace")

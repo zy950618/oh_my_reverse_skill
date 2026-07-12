@@ -30,7 +30,7 @@ SUFFIXES = {".tmp", ".bak", ".old", ".orig", ".log"}
 
 
 def is_candidate(path: Path) -> bool:
-    if any(part in {".git", ".agent-control", ".claude", ".ci-out", ".ci-out-review", ".venv", "venv", "env", "node_modules"} for part in path.parts):
+    if any(part in {".git", ".agent-control", ".claude", ".ci-out", ".ci-out-review", ".loop", ".venv", "venv", "env", "node_modules"} for part in path.parts):
         return False
     if "_archive" in {part.lower() for part in path.parts}:
         return False
@@ -100,6 +100,14 @@ def apply_actions(candidates: list[Path]) -> tuple[list[Path], list[Path], list[
                 path.unlink()
             deleted.append(path)
             manifest.append({"source": path.relative_to(ROOT).as_posix(), "classification": action, "action": "deleted"})
+            continue
+        if action == "UNKNOWN_REVIEW_REQUIRED":
+            manual_review.append(path)
+            manifest.append({
+                "source": path.relative_to(ROOT).as_posix(),
+                "classification": action,
+                "action": "skipped",
+            })
             continue
         destination = archive_path(path, run_dir)
         destination.parent.mkdir(parents=True, exist_ok=True)
