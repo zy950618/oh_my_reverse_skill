@@ -9,8 +9,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
-LEDGER = ROOT / "99-SKILLS治理" / "28-final-cleanup-ledger.md"
-CLASSIFICATION = ROOT / "99-SKILLS治理" / "32-cleanup-candidate-classification.md"
+REPORT_ROOT = ROOT / ".ci-out" / "cleanup"
+LEDGER = REPORT_ROOT / "final-cleanup-ledger.md"
+CLASSIFICATION = REPORT_ROOT / "cleanup-candidate-classification.md"
 ARCHIVE_ROOT = ROOT / "public-range-evidence" / "_archive" / "manual-review"
 PATTERNS = {
     "__pycache__",

@@ -469,8 +469,8 @@ def check_cleanup_workspace(changed: list[str], blockers: list[str]) -> int:
     """6. Cleanup: workspace 模式检查是否接入收尾规约或清理/算法图模板。"""
     markers = (
         "99-SKILLS治理/17-交付收尾清理与加密算法图谱规约.md",
-        "99-SKILLS治理/28-final-cleanup-ledger.md",
-        "99-SKILLS治理/32-cleanup-candidate-classification.md",
+        "docs/cleanup-policy.md",
+        "tool-contracts/cleanup_workspace.contract.md",
         "逆向工程经验库/_templates/delivery-cleanup.md",
         "逆向工程经验库/_templates/encryption-algorithm-graph.md",
         "站点经验库/_archive/",

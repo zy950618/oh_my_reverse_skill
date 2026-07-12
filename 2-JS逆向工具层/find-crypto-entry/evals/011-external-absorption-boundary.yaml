@@ -1,7 +1,8 @@
 name: External crypto entry absorption boundary
 prompt: >
-  LCL-10 absorption matrix mentions a sign field category from an external source fact pack.
-  Please turn it into a find-crypto-entry acceptance item.
+  A page-level external source observation mentions a sign-field category.
+  Turn that category into a find-crypto-entry acceptance item without importing
+  external implementation material or claiming production success.
 criteria:
   - "Requires observed request field anchor, script hash, call chain, and redacted input/output evidence."
   - "Requires source fact pack linkage and raw_external_snippet_copied=false."

@@ -15,9 +15,9 @@ Clean temporary task artifacts after required evidence has been preserved and fi
 - Remaining risk notes for files intentionally left in place.
 
 ## Evidence Files
-- `cleanup-ledger.md`
-- `kept-evidence.md`
-- `removed-paths.md`
+- Stable cleanup policy and templates remain tracked.
+- Per-run classification and cleanup reports are written under ignored `.ci-out/cleanup/`.
+- Unique business or failure evidence must be migrated before deletion.
 
 ## Command Examples
 ```powershell
@@ -30,7 +30,7 @@ python3 tools/lifecycle/post_task_reminder.py
 - Generated caches are mixed with delivery artifacts.
 
 ## Retry Strategy
-- Rebuild the cleanup ledger from git status and task notes.
+- Rebuild the local cleanup report from git status and task notes.
 - Skip ambiguous paths and report them instead of deleting.
 
 ## Cleanup Rules

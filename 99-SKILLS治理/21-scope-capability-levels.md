@@ -11,12 +11,6 @@
 | `authorized_target_candidate` | real target may be tested after authorization | allowed hosts, stop conditions, redaction, and human review gate |
 | `positive_allowed` | skill evidence can support positive capability | final business API backend acceptance, repeat direct interface, business data assertions, and no browser dependency |
 
-These are the sole canonical capability-level enum values.
-
-## Implementation Status
-
-Implementation status（`implementation_status`）与 capability level 正交（orthogonal）。The current status is `MANUAL_ORCHESTRATED_LEDGER_ONLY`: orchestration is manual and ledger-backed, with no executable or autonomous executor claim. `MANUAL_ORCHESTRATED_LEDGER_ONLY` never promotes any capability level. Current V3 adoption remains `structure_only`.
-
 ## Downgrade Rules
 
 - Browser-only evidence is `structure_only` or `browser_assisted_discovery`, never `positive_allowed`.

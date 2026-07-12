@@ -1,13 +1,5 @@
 # Loop Ledgers
 
-## V3 Candidate Contract Boundary
-
-The YAML and Markdown templates in this reference are explanatory business-ledger views. They remain useful for Web/H5 scope, iteration, evidence, acceptance, risk-control, metrics, stop, and cleanup recording, but they are not the canonical Low-LOOP V3 machine contract.
-
-The canonical candidate machine contracts are [`../schemas/index.schema.json`](../schemas/index.schema.json) and [`low-loop-semantic-validation-contract.md`](low-loop-semantic-validation-contract.md), under candidate standard version `3.0.0-candidate`. Shape-only schema success does not satisfy the semantic contract or prove adoption.
-
-The current `tools/web_h5/web_h5_loop_runner.py` remains the legacy business-ledger init/record/validate tool described below. It does not emit the future V3 state package, implement a persistent V3 state store, execute the Codex/Git lifecycle, or provide an actor-separated verifier. Current Low-LOOP capability remains `MANUAL_ORCHESTRATED_LEDGER_ONLY` / `structure_only`.
-
 ## Loop Ledger
 
 ```yaml
@@ -25,8 +17,18 @@ stop_conditions:
 human_review_conditions:
 roles:
   executor:
+    owner:
+    actor_id:
+    run_id:
   verifier:
+    owner:
+    actor_id:
+    run_id:
   governor:
+    owner:
+    actor_id:
+    run_id:
+role_rule: distinct owner, actor_id, and run_id required when claiming independent verification
 ```
 
 ## Iteration Record
@@ -55,6 +57,13 @@ fresh_evidence:
   script_hash:
   browser_profile_id:
   state_reset:
+  command:
+  working_directory:
+  exit_code:
+  stdout_sha256:
+  stderr_sha256:
+  producer_run_id:
+  input_hashes:
 clean_state_retest:
   clean_unverified:
   verified:
@@ -69,14 +78,23 @@ concurrency_ladder:
   worker_10:
 session_cache_isolation:
   cookie_jar:
+    status: pass | fail | blocked | unverified
+    evidence:
   storage:
+    status: pass | fail | blocked | unverified
+    evidence:
   token_cache:
+    status: pass | fail | blocked | unverified
+    evidence:
   account_state:
+    status: pass | fail | blocked | unverified
+    evidence:
 ```
 
 ## Runner Execution Ledger
 
-Use `tools/web_h5/web_h5_loop_runner.py` to create and validate the existing machine-readable business ledger:
+Use `tools/web_h5/web_h5_loop_runner.py` to create and validate the machine-readable
+ledger:
 
 ```yaml
 loop_id:
@@ -102,6 +120,9 @@ Executor output is evidence input, not approval.
 ```yaml
 risk_control:
   authorization_scope:
+  authorization_evidence:
+  authorization_actor:
+  authorization_expires_at:
   protected_business_api_acceptance:
   failure_split:
     - business_error
@@ -177,8 +198,19 @@ Do not invent positive counts to improve scoring.
 stop_reason: complete | max_iterations | repeated_blocker | human_review | scope_risk | cost_limit
 evidence:
 remaining_gap:
+affected_scope:
+  artifacts:
+  paths:
+  capabilities:
+  markets_locales_stages:
 safe_next_step:
+human_review_release:
+  reviewer:
+  decided_at:
+  evidence:
 ```
+
+`human_review` is sticky: an automated iteration cannot clear it. Resume only after a real reviewer records the decision and evidence.
 
 ## Cleanup Ledger
 
@@ -187,5 +219,16 @@ removed:
 kept_as_evidence:
 migrated_to_memory:
 still_unverified:
+decisions:
+  - path:
+    owner:
+    references_checked:
+    retention_status: clear | hold | unknown
+    provenance:
+    recoverable:
+    authorization:
+    action: remove | keep | archive | review
 encryption_algorithm_graph_changed: true | false
 ```
+
+Unknown ownership, references, retention, provenance, recoverability, or authorization fails closed. A backup alone does not make a referenced or held artifact safe to remove.

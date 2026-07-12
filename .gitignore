@@ -117,9 +117,10 @@ local-runs/
 # 本地运行/评分/抓包产物(每轮可再生成,不上传 GitHub)
 metrics/
 
-# Local loop runtime state, source snapshots, and evidence are excluded; tracked normative standards and contracts are allowed.
+# Local loop ledgers/task state; final repository state should not keep loop files.
 .loop/
 低LOOP-cleanup-ledger-*.md
+docs/loop-engineering.md
 
 # Agent/control packages and local orchestration state; never commit.
 .agent-control/
