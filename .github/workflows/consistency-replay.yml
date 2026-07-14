@@ -42,6 +42,9 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Test replayer tools
+        run: python3 -m unittest discover -s tools/replayer/tests -p 'test_*.py' -v
+
       - name: Validate fixtures schema
         run: python3 tools/replayer/validate_fixtures.py
 
@@ -49,12 +52,25 @@ jobs:
         id: list
         run: |
           set -euo pipefail
-          DOMAINS=$(find 站点经验库 -mindepth 3 -maxdepth 3 -type d -name snapshots 2>/dev/null \
-                    | xargs -I{} dirname {} 2>/dev/null \
-                    | xargs -I{} dirname {} 2>/dev/null \
-                    | xargs -n1 basename 2>/dev/null \
-                    | grep -v "^_" \
-                    | paste -sd ',' - || echo "")
+          DOMAINS=$(python3 - <<'PY'
+          import sys
+          from pathlib import Path
+
+          sys.path.insert(0, str(Path('tools/replayer').resolve()))
+          from fixture_layout import select_fixture_layout
+
+          root = Path('站点经验库')
+          domains = []
+          if root.is_dir():
+              for domain in sorted(root.iterdir()):
+                  if not domain.is_dir() or domain.name.startswith('_'):
+                      continue
+                  _, snapshots = select_fixture_layout(domain / 'fixtures')
+                  if snapshots.is_dir():
+                      domains.append(domain.name)
+          print(','.join(domains))
+          PY
+          )
           echo "domains=$DOMAINS" >> "$GITHUB_OUTPUT"
           echo "domains with fixtures: $DOMAINS"
 
@@ -136,12 +152,39 @@ jobs:
             exit 3
           fi
 
+      - name: Collect selected replay reports
+        if: always() && steps.adapter.outputs.skip != 'true'
+        run: |
+          python3 - <<'PY'
+          import shutil
+          import sys
+          from pathlib import Path
+
+          sys.path.insert(0, str(Path('tools/replayer').resolve()))
+          from fixture_layout import select_fixture_layout
+
+          site_root = Path('站点经验库')
+          output_root = Path('.ci-out/consistency-reports')
+          if site_root.is_dir():
+              for domain in sorted(site_root.iterdir()):
+                  if not domain.is_dir() or domain.name.startswith('_'):
+                      continue
+                  selected_root, _ = select_fixture_layout(domain / 'fixtures')
+                  reports = selected_root / 'reports'
+                  if reports.is_dir():
+                      shutil.copytree(
+                          reports,
+                          output_root / domain.name / 'reports',
+                          dirs_exist_ok=True,
+                      )
+          PY
+
       - name: Upload replay reports
         if: always() && steps.adapter.outputs.skip != 'true'
         uses: actions/upload-artifact@v4
         with:
           name: consistency-reports
-          path: 站点经验库/*/fixtures/reports/
+          path: .ci-out/consistency-reports/
 
       - name: Comment on PR
         if: github.event_name == 'pull_request' && steps.adapter.outputs.skip != 'true'
@@ -150,11 +193,11 @@ jobs:
           script: |
             const fs = require('fs');
             const path = require('path');
-            const root = '站点经验库';
+            const root = '.ci-out/consistency-reports';
             const lines = ['### Consistency Replay', ''];
             try {
               for (const d of fs.readdirSync(root)) {
-                const rd = path.join(root, d, 'fixtures', 'reports');
+                const rd = path.join(root, d, 'reports');
                 if (!fs.existsSync(rd)) continue;
                 const trend = path.join(rd, 'trend.json');
                 if (!fs.existsSync(trend)) continue;

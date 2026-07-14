@@ -32,6 +32,7 @@ sys.path.insert(0, str(REPO_ROOT / "tools" / "replayer"))
 
 from snapshot_diff import diff_snapshot
 from field_rules import load_meta
+from fixture_layout import select_fixture_layout
 
 
 def render_report(domain: str, results: list[dict], overall: dict) -> str:
@@ -139,10 +140,10 @@ def main() -> int:
                         help="一致率阈值, 低于此值退出码 3 (CI 用)")
     args = parser.parse_args()
 
-    fix_dir = SITE_ROOT / args.domain / "fixtures"
-    snap_dir = fix_dir / "snapshots"
-    actual_dir = fix_dir / "actual"
-    reports_dir = fix_dir / "reports"
+    fixtures_dir = SITE_ROOT / args.domain / "fixtures"
+    selected_root, snap_dir = select_fixture_layout(fixtures_dir)
+    actual_dir = selected_root / "actual"
+    reports_dir = selected_root / "reports"
     reports_dir.mkdir(parents=True, exist_ok=True)
 
     if not snap_dir.is_dir():

@@ -45,6 +45,7 @@ SITE_ROOT = REPO_ROOT / "站点经验库"
 sys.path.insert(0, str(REPO_ROOT / "tools" / "replayer"))
 
 from field_rules import load_meta
+from fixture_layout import select_fixture_layout
 
 
 def parse_target(target: str) -> str | None:
@@ -178,12 +179,12 @@ def main() -> int:
         return 2
 
     fixtures_dir = SITE_ROOT / args.domain / "fixtures"
-    snap_dir = fixtures_dir / "snapshots"
+    selected_root, snap_dir = select_fixture_layout(fixtures_dir)
     if not snap_dir.is_dir():
         print(f"ERROR: {snap_dir} not found", file=sys.stderr)
         return 1
 
-    actual_dir = fixtures_dir / "actual"
+    actual_dir = selected_root / "actual"
     actual_dir.mkdir(parents=True, exist_ok=True)
 
     req_files = sorted(snap_dir.glob("*.req.json"))

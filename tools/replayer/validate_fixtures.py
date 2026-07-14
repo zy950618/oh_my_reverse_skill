@@ -31,6 +31,9 @@ if hasattr(sys.stdout, "reconfigure"):
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 SITE_ROOT = REPO_ROOT / "站点经验库"
+sys.path.insert(0, str(REPO_ROOT / "tools" / "replayer"))
+
+from fixture_layout import select_fixture_layout
 
 FORBIDDEN_CATEGORIES = {"payment", "order-create", "pay-confirm", "checkout-pay"}
 ALLOWED_CATEGORIES = {"public-read", "search", "detail", "list", "session", "config"}
@@ -98,7 +101,7 @@ def main() -> int:
     for domain_dir in site_root.iterdir():
         if not domain_dir.is_dir() or domain_dir.name.startswith("_"):
             continue
-        snap_dir = domain_dir / "fixtures" / "snapshots"
+        _, snap_dir = select_fixture_layout(domain_dir / "fixtures")
         if not snap_dir.is_dir():
             continue
         total["domains"] += 1
