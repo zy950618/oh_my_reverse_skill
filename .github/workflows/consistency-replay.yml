@@ -33,7 +33,7 @@ jobs:
   validate-schema:
     runs-on: ubuntu-latest
     outputs:
-      domains: ${{ steps.list.outputs.domains }}
+      domains: ${{ steps.list.outputs.domains_json }}
     steps:
       - uses: actions/checkout@v4
 
@@ -52,14 +52,17 @@ jobs:
         id: list
         run: |
           set -euo pipefail
-          DOMAINS=$(python3 - <<'PY'
+          DOMAINS_JSON=$(python3 - . 站点经验库 <<'PY'
+          # REPLAY_DOMAIN_DISCOVERY_START
+          import json
           import sys
           from pathlib import Path
 
-          sys.path.insert(0, str(Path('tools/replayer').resolve()))
+          repo_root = Path(sys.argv[1]).resolve()
+          root = Path(sys.argv[2])
+          sys.path.insert(0, str(repo_root / 'tools/replayer'))
           from fixture_layout import select_fixture_layout
 
-          root = Path('站点经验库')
           domains = []
           if root.is_dir():
               for domain in sorted(root.iterdir()):
@@ -68,11 +71,12 @@ jobs:
                   _, snapshots = select_fixture_layout(domain / 'fixtures')
                   if snapshots.is_dir():
                       domains.append(domain.name)
-          print(','.join(domains))
+          print(json.dumps(domains, ensure_ascii=True, separators=(',', ':')))
+          # REPLAY_DOMAIN_DISCOVERY_END
           PY
           )
-          echo "domains=$DOMAINS" >> "$GITHUB_OUTPUT"
-          echo "domains with fixtures: $DOMAINS"
+          printf 'domains_json=%s\n' "$DOMAINS_JSON" >> "$GITHUB_OUTPUT"
+          printf 'domains with fixtures: %s\n' "$DOMAINS_JSON"
 
       - name: Score skills with new consistency dimension
         run: |
@@ -126,31 +130,322 @@ jobs:
 
       - name: Replay all domains
         if: steps.adapter.outputs.skip != 'true'
+        env:
+          DOMAINS_JSON: ${{ needs.validate-schema.outputs.domains }}
+          ADAPTER_URL: ${{ steps.adapter.outputs.url }}
+          THRESHOLD: ${{ steps.adapter.outputs.threshold }}
         run: |
+          # REPLAY_DOMAIN_DRIVER_START
           set -euo pipefail
           mkdir -p .ci-out/replay
-          DOMAINS="${{ needs.validate-schema.outputs.domains }}"
-          if [ -z "$DOMAINS" ]; then
+          domain_file=$(mktemp)
+          mapping_file=".ci-out/replay/domain-map.json"
+          if ! python3 - "$DOMAINS_JSON" "$mapping_file" <<'PY'; then
+          # REPLAY_DOMAIN_HANDOFF_START
+          import hashlib
+          import json
+          import os
+          import re
+          import sys
+          import tempfile
+          import unicodedata
+          from pathlib import Path
+
+          SLUG_MAX_BYTES = 48
+          RESULT_COMPONENT_MAX_BYTES = 128
+
+          def fail(message):
+              print(f"invalid domain handoff: {message}", file=sys.stderr)
+              raise SystemExit(1)
+
+          def artifact_key(domain):
+              readable = unicodedata.normalize("NFKD", domain)
+              readable = readable.encode("ascii", "ignore").decode("ascii").lower()
+              slug = re.sub(r"[^a-z0-9._-]+", "-", readable).strip("._-")
+              slug = (slug or "domain")[:SLUG_MAX_BYTES].rstrip("._-") or "domain"
+              digest = hashlib.sha256(domain.encode("utf-8")).hexdigest()
+              return f"{slug}--{digest}"
+
+          try:
+              domains = json.loads(sys.argv[1])
+          except json.JSONDecodeError as exc:
+              fail(str(exc))
+          if not isinstance(domains, list):
+              fail("root must be an array")
+          if any(type(domain) is not str or not domain for domain in domains):
+              fail("every domain must be a non-empty string")
+          if len(domains) != len(set(domains)):
+              fail("domains must be unique")
+          if domains != sorted(domains):
+              fail("domains must be deterministically sorted")
+          for domain in domains:
+              if (
+                  domain in {".", ".."}
+                  or "/" in domain
+                  or "\\" in domain
+                  or any(
+                      char.isspace() or unicodedata.category(char).startswith("C")
+                      for char in domain
+                  )
+              ):
+                  fail(f"unsafe domain component: {domain!r}")
+          entries = [
+              {"key": artifact_key(domain), "domain": domain}
+              for domain in domains
+          ]
+          keys = [entry["key"] for entry in entries]
+          if len(keys) != len(set(keys)):
+              fail("artifact key collision")
+          for key in keys:
+              if (
+                  not re.fullmatch(r"[a-z0-9][a-z0-9._-]*--[0-9a-f]{64}", key)
+                  or len((key + ".json").encode("utf-8")) > RESULT_COMPONENT_MAX_BYTES
+              ):
+                  fail(f"invalid artifact key: {key!r}")
+          mapping = {"schema_version": 1, "entries": entries}
+          mapping_path = Path(sys.argv[2])
+          temp_name = None
+          try:
+              with tempfile.NamedTemporaryFile(
+                  mode="w",
+                  encoding="utf-8",
+                  dir=mapping_path.parent,
+                  prefix=".domain-map.",
+                  suffix=".tmp",
+                  delete=False,
+              ) as handle:
+                  temp_name = handle.name
+                  json.dump(
+                      mapping,
+                      handle,
+                      ensure_ascii=True,
+                      sort_keys=True,
+                      separators=(",", ":"),
+                  )
+                  handle.write("\n")
+                  handle.flush()
+                  os.fsync(handle.fileno())
+              os.replace(temp_name, mapping_path)
+          except Exception as exc:
+              if temp_name is not None:
+                  Path(temp_name).unlink(missing_ok=True)
+              fail(f"mapping write failed: {exc}")
+          # REPLAY_DOMAIN_HANDOFF_END
+          PY
+            rm -f "$domain_file"
+            echo "::error::Malformed domain handoff"
+            exit 3
+          fi
+          if ! python3 - "$DOMAINS_JSON" "$mapping_file" > "$domain_file" <<'PY'; then
+          # REPLAY_DOMAIN_MAPPING_VALIDATOR_START
+          import hashlib
+          import json
+          import re
+          import sys
+          import unicodedata
+          from pathlib import Path
+
+          SLUG_MAX_BYTES = 48
+          RESULT_COMPONENT_MAX_BYTES = 128
+
+          def fail(message):
+              print(f"invalid domain mapping: {message}", file=sys.stderr)
+              raise SystemExit(1)
+
+          def unique_object(pairs):
+              result = {}
+              for key, value in pairs:
+                  if key in result:
+                      fail(f"duplicate JSON key: {key}")
+                  result[key] = value
+              return result
+
+          def artifact_key(domain):
+              readable = unicodedata.normalize("NFKD", domain)
+              readable = readable.encode("ascii", "ignore").decode("ascii").lower()
+              slug = re.sub(r"[^a-z0-9._-]+", "-", readable).strip("._-")
+              slug = (slug or "domain")[:SLUG_MAX_BYTES].rstrip("._-") or "domain"
+              digest = hashlib.sha256(domain.encode("utf-8")).hexdigest()
+              return f"{slug}--{digest}"
+
+          try:
+              domains = json.loads(sys.argv[1])
+              mapping = json.loads(
+                  Path(sys.argv[2]).read_text(encoding="utf-8"),
+                  object_pairs_hook=unique_object,
+              )
+          except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+              fail(str(exc))
+          if not isinstance(domains, list) or any(type(d) is not str for d in domains):
+              fail("domain source must be a string array")
+          expected_entries = [
+              {"key": artifact_key(domain), "domain": domain}
+              for domain in domains
+          ]
+          expected = {"schema_version": 1, "entries": expected_entries}
+          if mapping != expected:
+              fail("mapping does not exactly cover the domain source")
+          keys = [entry["key"] for entry in expected_entries]
+          mapped_domains = [entry["domain"] for entry in expected_entries]
+          if len(keys) != len(set(keys)) or len(mapped_domains) != len(set(mapped_domains)):
+              fail("mapping is not bijective")
+          for key in keys:
+              if (
+                  not re.fullmatch(r"[a-z0-9][a-z0-9._-]*--[0-9a-f]{64}", key)
+                  or len((key + ".json").encode("utf-8")) > RESULT_COMPONENT_MAX_BYTES
+              ):
+                  fail(f"invalid artifact key: {key!r}")
+          for entry in expected_entries:
+              sys.stdout.write(f"{entry['key']}\t{entry['domain']}\n")
+          # REPLAY_DOMAIN_MAPPING_VALIDATOR_END
+          PY
+            rm -f "$domain_file"
+            echo "::error::Invalid domain mapping"
+            exit 3
+          fi
+          if [ ! -s "$domain_file" ]; then
+            rm -f "$domain_file"
             echo "No domains with fixtures, nothing to replay"
             exit 0
           fi
           FAIL=0
-          IFS=',' read -ra ARR <<< "$DOMAINS"
-          for d in "${ARR[@]}"; do
-            echo "::group::Replay $d"
+          while IFS=$'\t' read -r artifact_key d; do
+            echo "::group::Replay $artifact_key"
+            result_file=".ci-out/replay/${artifact_key}.json"
+            set +e
             python3 tools/replayer/snapshot_replay.py \
               --domain "$d" \
-              --target "${{ steps.adapter.outputs.url }}" || true
-            python3 tools/replayer/consistency_report.py \
-              --domain "$d" \
-              --threshold "${{ steps.adapter.outputs.threshold }}" \
-              || FAIL=1
+              --target "$ADAPTER_URL" \
+              > "$result_file"
+            replay_exit=$?
+            python3 - "$result_file" "$replay_exit" <<'PY'
+          # REPLAY_RESULT_VALIDATOR_START
+          import json
+          import sys
+          from pathlib import PurePosixPath
+
+          result_path, process_exit_text = sys.argv[1:]
+
+          def fail(message):
+              print(f"invalid ReplayResult: {message}", file=sys.stderr)
+              raise SystemExit(1)
+
+          def reject_constant(value):
+              fail(f"non-finite JSON constant: {value}")
+
+          def unique_object(pairs):
+              result = {}
+              for key, value in pairs:
+                  if key in result:
+                      fail(f"duplicate JSON object key: {key}")
+                  result[key] = value
+              return result
+
+          try:
+              raw = open(result_path, encoding="utf-8").read()
+              result = json.loads(
+                  raw,
+                  parse_constant=reject_constant,
+                  object_pairs_hook=unique_object,
+              )
+          except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+              fail(str(exc))
+          if not isinstance(result, dict):
+              fail("root must be an object")
+
+          required = {
+              "status", "exit_code", "total", "selected", "replayed",
+              "failed", "expired", "no_data", "actual_artifacts",
+          }
+          missing = sorted(required - result.keys())
+          if missing:
+              fail(f"missing fields: {missing}")
+
+          for name in ("exit_code", "total", "selected", "replayed", "failed", "expired"):
+              if type(result[name]) is not int or result[name] < 0:
+                  fail(f"{name} must be a non-negative integer")
+          if type(result["no_data"]) is not bool:
+              fail("no_data must be boolean")
+          if result["total"] < result["selected"]:
+              fail("total must be >= selected")
+          if result["expired"] > result["selected"]:
+              fail("expired must be <= selected")
+
+          artifacts = result["actual_artifacts"]
+          if not isinstance(artifacts, list) or any(type(path) is not str for path in artifacts):
+              fail("actual_artifacts must be a string array")
+          if artifacts != sorted(set(artifacts)):
+              fail("actual_artifacts must be unique and stably sorted")
+          for path in artifacts:
+              parsed = PurePosixPath(path)
+              if parsed.is_absolute() or ".." in parsed.parts or not path.startswith("actual/"):
+                  fail(f"invalid artifact path: {path}")
+          if len(artifacts) != result["replayed"]:
+              fail("artifact count must equal replayed")
+
+          if "filtered" in result:
+              if type(result["filtered"]) is not int or result["filtered"] < 0:
+                  fail("filtered must be a non-negative integer")
+              if result["filtered"] != result["total"] - result["selected"]:
+                  fail("filtered must equal total-selected")
+
+          status = result["status"]
+          exit_code = result["exit_code"]
+          total = result["total"]
+          selected = result["selected"]
+          replayed = result["replayed"]
+          failed = result["failed"]
+          no_data = result["no_data"]
+          if status == "PASS":
+              valid = exit_code == 0 and selected > 0 and failed == 0 and replayed == selected and not no_data
+          elif status == "PARTIAL_FAILURE":
+              valid = exit_code == 3 and selected == replayed + failed and replayed > 0 and failed > 0 and not no_data
+          elif status == "FAILURE":
+              valid = exit_code == 3 and selected > 0 and replayed == 0 and failed == selected and not no_data
+          elif status == "NO_DATA":
+              valid = exit_code == 4 and selected == replayed == failed == 0 and no_data and not artifacts
+          elif status == "REFUSED":
+              valid = exit_code == 2 and total == selected == replayed == failed == 0 and not no_data and not artifacts
+          else:
+              fail(f"unknown status: {status!r}")
+          if not valid:
+              fail(f"invalid {status} invariant combination")
+
+          try:
+              process_exit = int(process_exit_text)
+          except ValueError:
+              fail("process exit is not an integer")
+          if process_exit != exit_code:
+              fail(f"process exit {process_exit} != JSON exit_code {exit_code}")
+          if status != "PASS" or process_exit != 0:
+              fail(f"replay did not pass: status={status}, exit_code={exit_code}")
+          # REPLAY_RESULT_VALIDATOR_END
+          PY
+            validation_exit=$?
+            set -e
+            if [ "$validation_exit" -eq 0 ]; then
+              set +e
+              python3 tools/replayer/consistency_report.py \
+                --domain "$d" \
+                --threshold "$THRESHOLD"
+              consistency_exit=$?
+              set -e
+              if [ "$consistency_exit" -ne 0 ]; then
+                echo "::error::Consistency failed for $artifact_key (exit $consistency_exit)"
+                FAIL=1
+              fi
+            else
+              echo "::error::ReplayResult validation failed for $artifact_key (replay exit $replay_exit)"
+              FAIL=1
+            fi
             echo "::endgroup::"
-          done
+          done < "$domain_file"
+          rm -f "$domain_file"
           if [ "$FAIL" = "1" ]; then
-            echo "::warning::One or more domains fell below consistency threshold"
+            echo "::warning::One or more domains failed replay or consistency"
             exit 3
           fi
+          # REPLAY_DOMAIN_DRIVER_END
 
       - name: Collect selected replay reports
         if: always() && steps.adapter.outputs.skip != 'true'
@@ -185,6 +480,13 @@ jobs:
         with:
           name: consistency-reports
           path: .ci-out/consistency-reports/
+
+      - name: Upload ReplayResult artifacts
+        if: always() && steps.adapter.outputs.skip != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: replay-results
+          path: .ci-out/replay/
 
       - name: Comment on PR
         if: github.event_name == 'pull_request' && steps.adapter.outputs.skip != 'true'

@@ -244,7 +244,7 @@ class ReplayerConsumerTests(unittest.TestCase):
             selector.assert_called_once_with(fixtures)
             self.assertIn("domains: 1  snapshots: 1  valid: 1", output.getvalue())
 
-    def test_damaged_active_snapshots_preserve_cli_exit_behavior(self) -> None:
+    def test_damaged_active_snapshots_return_structured_no_data(self) -> None:
         for damage in ("missing", "non-directory"):
             with self.subTest(damage=damage), tempfile.TemporaryDirectory() as tmp:
                 site_root = Path(tmp) / "sites"
@@ -256,6 +256,7 @@ class ReplayerConsumerTests(unittest.TestCase):
                     )
                 write_snapshot(fixtures / "snapshots", "GET-legacy-poison")
                 write_actual(fixtures / "actual", "GET-legacy-poison")
+                replay_output = io.StringIO()
 
                 with (
                     mock.patch.object(snapshot_replay, "SITE_ROOT", site_root),
@@ -271,10 +272,23 @@ class ReplayerConsumerTests(unittest.TestCase):
                             "adapter.test",
                         ],
                     ),
+                    contextlib.redirect_stdout(replay_output),
                     contextlib.redirect_stderr(io.StringIO()),
                 ):
-                    self.assertEqual(snapshot_replay.main(), 1)
+                    self.assertEqual(snapshot_replay.main(), 4)
                 send.assert_not_called()
+                replay_result = json.loads(replay_output.getvalue())
+                self.assertEqual(replay_result["status"], "NO_DATA")
+                self.assertEqual(replay_result["exit_code"], 4)
+                self.assertTrue(replay_result["no_data"])
+                self.assertEqual(replay_result["selected"], 0)
+                self.assertEqual(replay_result["replayed"], 0)
+                self.assertEqual(replay_result["failed"], 0)
+                self.assertEqual(replay_result["actual_artifacts"], [])
+                self.assertFalse((fixtures / "active" / "actual").exists())
+                self.assertTrue(
+                    (fixtures / "actual" / "GET-legacy-poison.actual.json").is_file()
+                )
 
                 with (
                     mock.patch.object(consistency_report, "SITE_ROOT", site_root),
