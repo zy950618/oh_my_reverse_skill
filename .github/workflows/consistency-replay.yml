@@ -46,13 +46,63 @@ jobs:
         run: python3 -m unittest discover -s tools/replayer/tests -p 'test_*.py' -v
 
       - name: Validate fixtures schema
-        run: python3 tools/replayer/validate_fixtures.py
+        run: |
+          # FIXTURE_GATE_SHELL_START
+          mkdir -p .ci-out
+          set +e
+          python3 tools/replayer/validate_fixtures.py \
+            --mode strict --require-data > .ci-out/fixture-gate.json
+          fixture_gate_exit=$?
+          set -e
+          printf '%s\n' "$fixture_gate_exit" > .ci-out/fixture-gate.exit
+          # FIXTURE_GATE_SHELL_END
+
+          # FIXTURE_GATE_RESULT_VALIDATOR_SHELL_START
+          python3 - . .ci-out/fixture-gate.json .ci-out/fixture-gate.exit <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+
+          repo_root = Path(sys.argv[1]).resolve()
+          result_path = Path(sys.argv[2])
+          process_exit = int(Path(sys.argv[3]).read_text(encoding='utf-8').strip())
+          sys.path.insert(0, str(repo_root / 'tools/replayer'))
+          from fixture_gate import parse_result_json, validate_result_document
+
+          try:
+              result = parse_result_json(result_path.read_text(encoding='utf-8'))
+          except (OSError, UnicodeError, json.JSONDecodeError, ValueError) as exc:
+              raise SystemExit(f'fixture gate output is not one JSON document: {exc}')
+          errors = validate_result_document(
+              result,
+              expected_tool='validate_fixtures',
+              expected_site_root=repo_root / '站点经验库',
+          )
+          if errors:
+              raise SystemExit('fixture gate schema invalid: ' + ', '.join(errors))
+          if process_exit != result['exit_code']:
+              raise SystemExit('fixture gate process/result exit mismatch')
+          if (
+              result['tool'] != 'validate_fixtures'
+              or result['mode'] != 'strict'
+              or result['status'] != 'PASS'
+              or result['exit_code'] != 0
+              or result['capability'] != 'FRESH_FIXTURE_GATE'
+              or result['no_data']
+              or result['totals']['domains_selected'] <= 0
+              or result['totals']['complete_triplets'] <= 0
+          ):
+              raise SystemExit('fixture gate did not produce strict positive data capability')
+          # FIXTURE_GATE_RESULT_VALIDATOR_END
+          PY
+          # FIXTURE_GATE_RESULT_VALIDATOR_SHELL_END
 
       - name: List domains with fixtures
         id: list
         run: |
+          # REPLAY_DOMAIN_DISCOVERY_SHELL_START
           set -euo pipefail
-          DOMAINS_JSON=$(python3 - . 站点经验库 <<'PY'
+          DOMAINS_JSON=$(python3 - . 站点经验库 .ci-out/fixture-gate.json <<'PY'
           # REPLAY_DOMAIN_DISCOVERY_START
           import json
           import sys
@@ -61,22 +111,55 @@ jobs:
           repo_root = Path(sys.argv[1]).resolve()
           root = Path(sys.argv[2])
           sys.path.insert(0, str(repo_root / 'tools/replayer'))
+          from fixture_gate import _is_safe_domain, parse_result_json, validate_result_document
           from fixture_layout import select_fixture_layout
 
           domains = []
-          if root.is_dir():
+          if len(sys.argv) == 4:
+              gate = parse_result_json(Path(sys.argv[3]).read_text(encoding='utf-8'))
+              errors = validate_result_document(
+                  gate, expected_tool='validate_fixtures', expected_site_root=root
+              )
+              if errors:
+                  raise SystemExit('domain discovery fixture gate invalid: ' + ', '.join(errors))
+              if (
+                  gate.get('mode') != 'strict'
+                  or gate.get('status') != 'PASS'
+                  or gate.get('exit_code') != 0
+                  or gate.get('capability') != 'FRESH_FIXTURE_GATE'
+              ):
+                  raise SystemExit('domain discovery requires a passing strict fixture gate')
+              for item in gate['domains']:
+                  if not _is_safe_domain(item['domain']):
+                      raise SystemExit('domain discovery received an unsafe domain')
+                  domain = root / item['domain']
+                  selected_root, snapshots = select_fixture_layout(domain / 'fixtures')
+                  expected_root = selected_root.resolve().relative_to(repo_root).as_posix()
+                  expected_layout = 'active' if selected_root == domain / 'fixtures' / 'active' else 'legacy'
+                  if (
+                      item['selected_root'] != expected_root
+                      or item['selected_layout'] != expected_layout
+                  ):
+                      raise SystemExit('domain discovery selected-root binding mismatch')
+                  if snapshots.is_dir() and item['complete_triplets'] > 0:
+                      domains.append(item['domain'])
+          else:
+              # Preserve the LL-0002 two-argument discovery handoff contract.
               for domain in sorted(root.iterdir()):
                   if not domain.is_dir() or domain.name.startswith('_'):
                       continue
                   _, snapshots = select_fixture_layout(domain / 'fixtures')
                   if snapshots.is_dir():
                       domains.append(domain.name)
+          if len(sys.argv) == 4 and not domains:
+              raise SystemExit('strict fixture gate yielded no replay domains')
           print(json.dumps(domains, ensure_ascii=True, separators=(',', ':')))
           # REPLAY_DOMAIN_DISCOVERY_END
           PY
           )
           printf 'domains_json=%s\n' "$DOMAINS_JSON" >> "$GITHUB_OUTPUT"
           printf 'domains with fixtures: %s\n' "$DOMAINS_JSON"
+          # REPLAY_DOMAIN_DISCOVERY_SHELL_END
 
       - name: Score skills with new consistency dimension
         run: |
