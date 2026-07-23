@@ -1172,7 +1172,7 @@ def run_gate(
         else:
             candidates = []
             for child in sorted(site_root.iterdir(), key=lambda item: os.fsencode(item.name)):
-                if _is_symlink(child) or not child.is_dir():
+                if child.name.startswith("_") or _is_symlink(child) or not child.is_dir():
                     continue
                 fixtures_entry = child / "fixtures"
                 if not _lexists(fixtures_entry):

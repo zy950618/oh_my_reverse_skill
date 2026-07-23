@@ -306,7 +306,22 @@ class CapabilityMatrixTests(unittest.TestCase):
         self.assertNotIn("exposed", serialized)
         self.assertIn("<redacted>", serialized)
 
-    def test_strict_byte_stability(self) -> None:
+    def test_discovery_ignores_environment_directories(self) -> None:
+        ignored = self.root / ".venv/lib/site-packages"
+        ignored.mkdir(parents=True)
+        (ignored / "README.md").write_text(
+            "```bash\npython3 ignored/tool.py\n```\n", encoding="utf-8"
+        )
+        ignored_script = self.root / "node_modules/pkg/tool.py"
+        ignored_script.parent.mkdir(parents=True)
+        ignored_script.write_text("def main():\n    return 0\n", encoding="utf-8")
+
+        documents = matrix.discover_documents(self.root)
+        self.assertEqual([self.doc], documents)
+        self.assertNotIn(".venv", matrix._script_roots(self.root))
+        self.assertNotIn("node_modules", matrix._script_roots(self.root))
+        self.assertEqual([], matrix.discover_wrappers(self.root))
+
         evidence = [self.evidence("producer", "tools/run.py", "main"), self.evidence("test", "tools/tests/test_run.py", "test_main")]
         model_a = matrix.build_model(self.schema(evidence), self.root, [self.doc])
         model_b = matrix.build_model(self.schema(evidence), self.root, [self.doc])

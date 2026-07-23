@@ -58,8 +58,8 @@
       {"kind":"documentation","path":"tool-contracts/search_crypto_entry.contract.md","sha256":"551193dbaa4d45a212910ca6096e87d4f23e9cdf72be08d8957856b2694f1907","symbol_or_command":"search_crypto_entry contract","claim":"Crypto-entry documentation context only; no graph producer or test is claimed."}
     ]},
     {"id":"capability_matrix_generator","title":"Capability Matrix generator","evidence":[
-      {"kind":"producer","path":"tools/capabilities/capability_matrix.py","sha256":"e1f54b47932f4555ac05342ba0ca53c96ef61545348981315abcd662c1eeb47a","symbol_or_command":"main","claim":"Sole canonical normalized model and dual-report generator."},
-      {"kind":"test","path":"tools/capabilities/tests/test_capability_matrix.py","sha256":"85891bbc0ddac48be6775c305fe796e54b532cdd60ef4d52b6fa52adeefd7e06","symbol_or_command":"CapabilityMatrixTests","claim":"Automated schema, grading, scanner, failure, and byte-stability coverage."},
+      {"kind":"producer","path":"tools/capabilities/capability_matrix.py","sha256":"b7d4b2dc931998850211847a2acc8010b2ec904f3fdcb1e79829c39ce67979f9","symbol_or_command":"main","claim":"Sole canonical normalized model and dual-report generator."},
+      {"kind":"test","path":"tools/capabilities/tests/test_capability_matrix.py","sha256":"8c3c6f0b2cbddcc432799a83781d12e603eb749b41a3e2e591e7fdfcc5e1a443","symbol_or_command":"CapabilityMatrixTests","claim":"Automated schema, grading, scanner, failure, and byte-stability coverage."},
       {"kind":"documentation","path":"tools/capabilities/README.md","sha256":"23f4d61e3506d167ef26b0727ef3587276541f24bfcafb2e2e8002abf376c872","symbol_or_command":"Generate and validate","claim":"Documents canonical usage and the shared-infrastructure boundary."}
     ]}
   ],

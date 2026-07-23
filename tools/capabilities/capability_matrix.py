@@ -28,6 +28,19 @@ HARD_CODES = {
 }
 COMMAND_FILES = ("README.md", "INSTALL.md", "USAGE.md", "SKILL.md")
 SCRIPT_SUFFIXES = (".py", ".js", ".mjs", ".cjs", ".sh")
+DISCOVERY_IGNORED_DIRS = {
+    ".git",
+    ".venv",
+    "venv",
+    "env",
+    "node_modules",
+    "__pycache__",
+    ".pytest_cache",
+    ".mypy_cache",
+    ".ruff_cache",
+    "build",
+    "dist",
+}
 SECRET_RE = re.compile(r"(?i)(?:token|password|secret|api[_-]?key)=([^\s]+)")
 SECRET_OPTION_RE = re.compile(r"(?i)^--?(?:token|password|secret|api[_-]?key)$")
 
@@ -110,11 +123,17 @@ def _python_symbols(path: Path) -> set[str]:
     }
 
 
+def _ignored_discovery_path(path: Path, root: Path) -> bool:
+    return any(part in DISCOVERY_IGNORED_DIRS for part in path.relative_to(root).parts)
+
+
 def _script_roots(root: Path) -> set[str]:
     """Return stable top-level directories containing repository scripts."""
     roots: set[str] = set()
     for path in root.rglob("*"):
-        if path.is_file() and ".git" not in path.parts and path.suffix in SCRIPT_SUFFIXES:
+        if _ignored_discovery_path(path, root):
+            continue
+        if path.is_file() and path.suffix in SCRIPT_SUFFIXES:
             relative = path.relative_to(root).parts
             if len(relative) > 1:
                 roots.add(relative[0])
@@ -170,7 +189,7 @@ def discover_wrappers(root: Path) -> list[dict[str, Any]]:
     """Mechanically discover conservative Python runpy forwarding wrappers."""
     discovered: list[dict[str, Any]] = []
     for path in root.rglob("*.py"):
-        if not path.is_file() or ".git" in path.parts:
+        if _ignored_discovery_path(path, root):
             continue
         target = _python_wrapper_target(root, path)
         if target is not None:
@@ -329,7 +348,9 @@ def grade_capability(record: dict[str, Any]) -> dict[str, Any]:
 def discover_documents(root: Path) -> list[Path]:
     result: list[Path] = []
     for path in root.rglob("*"):
-        if not path.is_file() or ".git" in path.parts:
+        if _ignored_discovery_path(path, root):
+            continue
+        if not path.is_file():
             continue
         relative = path.relative_to(root).as_posix()
         if path.name in COMMAND_FILES or relative.endswith(".contract.md") or (relative.startswith(".github/workflows/") and path.suffix in {".yml", ".yaml"}):
