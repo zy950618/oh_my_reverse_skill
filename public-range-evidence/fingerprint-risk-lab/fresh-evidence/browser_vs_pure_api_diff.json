@@ -1,0 +1,13 @@
+{
+  "schema_version": "browser-vs-pure-api-diff/v1",
+  "run_id": "second-loop-2026-07-01-fingerprint-risk-lab",
+  "browser_vs_pure_api_diff_exists": true,
+  "diffs": [
+    {
+      "field": "runtime",
+      "browser": "analysis_only",
+      "pure_api": "final_delivery"
+    }
+  ],
+  "final_business_flow_browser_dependency": false
+}

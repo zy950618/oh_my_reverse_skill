@@ -1,0 +1,12 @@
+name: Agent prompt dedup keeps only skill-specific boundaries
+prompt: >
+  Multiple agents/openai.yaml files copy the same long governance and coding
+  discipline text. The user asks to reduce context and avoid future drift.
+criteria:
+  - "Moves common discipline back to AGENTS.md or governance docs instead of duplicating it in every agent prompt."
+  - "Keeps each openai.yaml system_prompt focused on that skill's trigger boundary and stop conditions."
+  - "Preserves interface display_name, short_description, and default_prompt."
+  - "Does not delete skill directories to reduce prompt size."
+  - "Validates YAML after rewriting prompts."
+expect_skill: true
+timeout: 120

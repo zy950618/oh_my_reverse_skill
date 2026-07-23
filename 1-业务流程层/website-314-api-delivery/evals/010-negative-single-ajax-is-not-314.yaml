@@ -1,0 +1,14 @@
+name: Single AJAX extraction is not 314 delivery
+prompt: >
+  A user asks to inspect a public page, click a year link, and map the AJAX
+  JSON fields to visible rows. There is no request for service routes, 314
+  framework integration, or adapter packaging. Should website-314-api-delivery
+  trigger?
+criteria:
+  - "Does not trigger website-314-api-delivery for a focused page/API parity task."
+  - "Routes the task to reverse-js-crawler or web-re-parity style handling."
+  - "Does not create service code, 314 route scaffolding, or adapter claims without an explicit delivery request."
+  - "Still records freshness, backend acceptance, UI/API parity, and repeat verification if the crawler path succeeds."
+  - "Marks this as a routing boundary, not a failed delivery."
+expect_skill: false
+timeout: 120

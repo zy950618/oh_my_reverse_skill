@@ -1,0 +1,13 @@
+name: One-shot capture is not loop engineering
+prompt: >
+  A user only asks to inspect one public page and report the AJAX endpoint once.
+  There is no request for multi-role closure, iteration ledger, verifier, or
+  governor decision. Should web-h5-loop-engineering trigger?
+criteria:
+  - "Does not trigger loop engineering for a one-shot crawler observation."
+  - "Routes to reverse-js-crawler for focused endpoint and UI/API parity work."
+  - "Does not invent loop artifacts after the fact."
+  - "Keeps repeat verification as a crawler acceptance step if needed."
+  - "Avoids adding unnecessary process overhead to a small task."
+expect_skill: false
+timeout: 120

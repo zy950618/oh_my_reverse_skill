@@ -64,6 +64,6 @@ slug 规则: `<METHOD>_<path-segments-kebab-case>`。
 
 ## 重放与漂移
 
-- 本地重放:`python tools/replayer/snapshot_replay.py --domain X --target <adapter-base-url>`
+- 本地重放:`python3 tools/replayer/snapshot_replay.py --domain X --target <adapter-base-url>`
 - CI 重放:每周二 + PR 触发,见 `.github/workflows/consistency-replay.yml`
 - 漂移阈值:一致率 < 90% 自动开 issue

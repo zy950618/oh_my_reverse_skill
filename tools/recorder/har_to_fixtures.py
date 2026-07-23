@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """HAR → fixtures/snapshots/
 
 读 Chrome/Edge/Firefox DevTools 导出的 HAR 文件,按 URL/method 拆成
@@ -7,7 +8,7 @@ fixtures/snapshots/ 下的标准三件套(req.json / resp.json / meta.yaml)。
 适合首次录制 / 公开页面 / 不带反爬的接口。
 
 用法:
-  python tools/recorder/har_to_fixtures.py \\
+  python3 tools/recorder/har_to_fixtures.py \\
       --har recordings/2026-05-23-session.har \\
       --domain thaiairways.com \\
       --include-host "*.thaiairways.com" \\

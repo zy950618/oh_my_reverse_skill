@@ -1,0 +1,15 @@
+{
+  "schema_version": "block-reason-report/v1",
+  "run_id": "second-loop-2026-07-01-fingerprint-risk-lab",
+  "block_reason_classified": true,
+  "classes": [
+    "no_block",
+    "fingerprint_challenge_detected",
+    "waf_challenge_detected",
+    "pure_api_replay_blocked",
+    "pure_api_replay_ready",
+    "unknown"
+  ],
+  "evidence_level": "local_lab",
+  "forbidden_actions_absent": true
+}

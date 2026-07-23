@@ -1,0 +1,18 @@
+{
+  "name": "wrong_session_rejected",
+  "request": {
+    "method": "POST",
+    "path": "/api/order",
+    "json": {
+      "session_id": "other-session",
+      "flight_id": "LAB-MH-001",
+      "detail_nonce": "detail-nonce-001"
+    }
+  },
+  "expected": {
+    "status_code": 403,
+    "ledger_delta": 0,
+    "error": "wrong_session"
+  }
+}
+

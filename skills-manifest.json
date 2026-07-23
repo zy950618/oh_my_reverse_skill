@@ -1,0 +1,165 @@
+{
+  "manifest_version": 1,
+  "source_of_truth": {
+    "inventory": "observed_worktree_skill_dirs",
+    "scope": [
+      "inventory",
+      "topology",
+      "install",
+      "ci"
+    ],
+    "excludes": [
+      "SKILL.md frontmatter",
+      "trigger",
+      "description"
+    ],
+    "notes": [
+      "Only directories with an observed SKILL.md in the current worktree are listed.",
+      "Historical planning drift is tracked outside the active manifest inventory."
+    ]
+  },
+  "layers": [
+    {
+      "id": "1-业务流程层",
+      "path": "1-业务流程层",
+      "threshold": 70,
+      "gate_mode": "active",
+      "ci": {
+        "skill_bench": true,
+        "consistency_score": true
+      }
+    },
+    {
+      "id": "2-JS逆向工具层",
+      "path": "2-JS逆向工具层",
+      "threshold": 15,
+      "gate_mode": "active",
+      "ci": {
+        "skill_bench": true,
+        "consistency_score": true
+      }
+    },
+    {
+      "id": "4-通用规范层",
+      "path": "4-通用规范层",
+      "threshold": 15,
+      "gate_mode": "active",
+      "ci": {
+        "skill_bench": true,
+        "consistency_score": true
+      }
+    },
+    {
+      "id": "5-沉淀工具层",
+      "path": "5-沉淀工具层",
+      "threshold": 70,
+      "gate_mode": "active",
+      "ci": {
+        "skill_bench": true,
+        "consistency_score": true
+      }
+    },
+    {
+      "id": "7-指纹风控层",
+      "path": "7-指纹风控层",
+      "threshold": 70,
+      "gate_mode": "advisory",
+      "ci": {
+        "skill_bench": true,
+        "consistency_score": true
+      }
+    }
+  ],
+  "skills": [
+    {
+      "name": "authorized-target-adapter",
+      "path": "1-业务流程层/authorized-target-adapter",
+      "layer": "1-业务流程层",
+      "installable": true
+    },
+    {
+      "name": "imperva-waf-reese84",
+      "path": "1-业务流程层/imperva-waf-reese84",
+      "layer": "1-业务流程层",
+      "installable": true
+    },
+    {
+      "name": "reverse-js-crawler",
+      "path": "1-业务流程层/reverse-js-crawler",
+      "layer": "1-业务流程层",
+      "installable": true
+    },
+    {
+      "name": "skills-evaluation-governance",
+      "path": "1-业务流程层/skills-evaluation-governance",
+      "layer": "1-业务流程层",
+      "installable": true
+    },
+    {
+      "name": "web-h5-loop-engineering",
+      "path": "1-业务流程层/web-h5-loop-engineering",
+      "layer": "1-业务流程层",
+      "installable": true
+    },
+    {
+      "name": "website-314-api-delivery",
+      "path": "1-业务流程层/website-314-api-delivery",
+      "layer": "1-业务流程层",
+      "installable": true
+    },
+    {
+      "name": "ai-reverse-skill-creator",
+      "path": "2-JS逆向工具层/ai-reverse-skill-creator",
+      "layer": "2-JS逆向工具层",
+      "installable": true
+    },
+    {
+      "name": "ast-deobfuscate",
+      "path": "2-JS逆向工具层/ast-deobfuscate",
+      "layer": "2-JS逆向工具层",
+      "installable": true
+    },
+    {
+      "name": "env-patch",
+      "path": "2-JS逆向工具层/env-patch",
+      "layer": "2-JS逆向工具层",
+      "installable": true
+    },
+    {
+      "name": "find-crypto-entry",
+      "path": "2-JS逆向工具层/find-crypto-entry",
+      "layer": "2-JS逆向工具层",
+      "installable": true
+    },
+    {
+      "name": "js-page-runtime-parity",
+      "path": "2-JS逆向工具层/js-page-runtime-parity",
+      "layer": "2-JS逆向工具层",
+      "installable": true
+    },
+    {
+      "name": "karpathy-guidelines",
+      "path": "4-通用规范层/karpathy-guidelines",
+      "layer": "4-通用规范层",
+      "installable": true
+    },
+    {
+      "name": "site-api-adapter",
+      "path": "5-沉淀工具层/site-api-adapter",
+      "layer": "5-沉淀工具层",
+      "installable": true
+    },
+    {
+      "name": "browser-fingerprint-surface-lab",
+      "path": "7-指纹风控层/browser-fingerprint-surface-lab",
+      "layer": "7-指纹风控层",
+      "installable": true
+    },
+    {
+      "name": "fingerprint-block-reason-diagnostics",
+      "path": "7-指纹风控层/fingerprint-block-reason-diagnostics",
+      "layer": "7-指纹风控层",
+      "installable": true
+    }
+  ]
+}

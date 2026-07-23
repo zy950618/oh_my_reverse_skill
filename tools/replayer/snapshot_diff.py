@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """比较单个 snapshot 的预期响应与实际响应,产 diff 报告与一致率。
 
 输入:

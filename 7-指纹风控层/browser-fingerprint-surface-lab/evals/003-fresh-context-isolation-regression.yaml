@@ -1,0 +1,8 @@
+name: fresh-context-isolation-regression
+prompt: Validate clean, polluted, and reused context fingerprint reports in the local lab.
+expect_skill: true
+criteria:
+  - Require clean_context_observed.
+  - Require polluted_context_observed.
+  - Require reused_context_observed.
+  - Require drift policy and freshness manifest.

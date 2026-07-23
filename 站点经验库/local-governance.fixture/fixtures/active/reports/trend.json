@@ -1,0 +1,12 @@
+{
+  "entries": [
+    {
+      "date": "2026-07-01",
+      "consistency_rate": 1.0,
+      "total": 3,
+      "replayed": 3,
+      "structure_ok": 3,
+      "status": "PASS"
+    }
+  ]
+}

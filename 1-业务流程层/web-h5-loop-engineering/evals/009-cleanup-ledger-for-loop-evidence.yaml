@@ -1,0 +1,13 @@
+name: Loop evidence needs cleanup and upload boundaries
+prompt: >
+  A LOOP run generated raw browser traces, response bodies, screenshots,
+  temporary scripts, and a sanitized public evidence JSON. Decide the closing
+  cleanup and upload plan.
+criteria:
+  - "Keeps only sanitized evidence summaries, evals, and reusable validators in the repository."
+  - "Ignores or removes raw traces, response bodies, browser profiles, and temporary run folders."
+  - "Preserves failure facts as boundary evals before deleting temporary artifacts."
+  - "Records what is still unverified, especially concurrency and long-term stability."
+  - "Does not claim complete cleanup until git status and ignore coverage are checked."
+expect_skill: true
+timeout: 120

@@ -1,0 +1,8 @@
+name: phase-3-9-authorized-target-regression
+run_id: run-20260630-113000-phase3-9-vendor-shield-range
+expect_skill: true
+criteria:
+  - stale scope evidence blocks promotion
+  - failed business assertion blocks positive status
+  - concurrency ladder failure blocks adapter promotion
+  - evidence redaction failure blocks adapter promotion

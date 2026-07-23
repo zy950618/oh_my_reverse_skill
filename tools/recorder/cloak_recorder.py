@@ -1,16 +1,17 @@
+#!/usr/bin/env python3
 """CloakBrowser 启动 + record_har_path 自动录 HAR(含完整 body)→ HAR 文件。
 
 修复了 v0.3.6 的 bug: page.on('response') 同步回调拿不到 body。
 改用 browser.new_context(record_har_path=...) 让 cloakbrowser 自己录,body 100% 完整。
 
 用法:
-  python tools/recorder/cloak_recorder.py \\
+  python3 tools/recorder/cloak_recorder.py \\
       --domain thaiairways.com \\
       --start-url https://www.thaiairways.com/ \\
       --duration 120
 
   # 录完用 har_to_fixtures.py 转(har 是 Playwright 录的标准格式)
-  python tools/recorder/har_to_fixtures.py \\
+  python3 tools/recorder/har_to_fixtures.py \\
       --har 站点经验库/thaiairways.com/fixtures/recordings/<date>-session.har \\
       --domain thaiairways.com --apply
 
@@ -20,7 +21,7 @@
   - 仍保留 page.on listener 只做实时计数日志
   - --duration 秒后或 Ctrl+C 时 context.close() 触发 HAR 写盘
 
-CloakBrowser API 与 Playwright 兼容,需 pip install cloakbrowser + python -m cloakbrowser install
+CloakBrowser API 与 Playwright 兼容,需 pip install cloakbrowser + python3 -m cloakbrowser install
 """
 from __future__ import annotations
 
@@ -48,7 +49,7 @@ def try_import_cloak():
     except ImportError:
         print("ERROR: cloakbrowser 未安装。装一下:", file=sys.stderr)
         print("  pip install cloakbrowser", file=sys.stderr)
-        print("  python -m cloakbrowser install", file=sys.stderr)
+        print("  python3 -m cloakbrowser install", file=sys.stderr)
         return None
 
 
@@ -145,7 +146,7 @@ def main() -> int:
     har_size = har_file.stat().st_size
     print(f"\n[recorder] done. req={counter['req']} resp={counter['resp']}")
     print(f"[recorder] HAR: {har_file} ({har_size:,} bytes)")
-    print(f"[recorder] next: python tools/recorder/har_to_fixtures.py "
+    print(f"[recorder] next: python3 tools/recorder/har_to_fixtures.py "
           f"--har \"{har_file}\" --domain {args.domain} --apply")
     return 0
 

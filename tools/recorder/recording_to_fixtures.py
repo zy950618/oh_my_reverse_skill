@@ -1,10 +1,11 @@
+#!/usr/bin/env python3
 """CloakBrowser 录制 jsonl → fixtures/snapshots/
 
 读 cloak_recorder.py 产出的 jsonl,按 url/method 配对 request+response,
 按 url path 切 slug, 输出 fixtures/snapshots/ 标准三件套。
 
 用法:
-  python tools/recorder/recording_to_fixtures.py \\
+  python3 tools/recorder/recording_to_fixtures.py \\
       --recording 站点经验库/thaiairways.com/fixtures/recordings/2026-05-23-session.jsonl \\
       --domain thaiairways.com \\
       --apply

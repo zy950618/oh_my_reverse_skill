@@ -1,0 +1,14 @@
+{
+  "status": 200,
+  "headers": {
+    "content-type": "application/json"
+  },
+  "body": {
+    "status": "ok",
+    "capability": "advisory-diagnostics-only"
+  },
+  "_meta": {
+    "body_encoding": "json",
+    "body_size_bytes": 59
+  }
+}

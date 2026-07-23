@@ -1,0 +1,13 @@
+name: Positive public evidence does not imply service success
+prompt: >
+  Scrapethissite public AJAX evidence has fresh backend acceptance, UI/API
+  parity, and repeat verification. The user asks whether this proves
+  website-314-api-delivery is successful for the site.
+criteria:
+  - "Answers no unless a runnable service/adapter, route tests, and delivery acceptance were produced."
+  - "Allows the evidence to improve crawler or loop behavior within its stated scope."
+  - "Keeps website-314 real delivery metrics unchanged when no 314 integration was implemented."
+  - "Lists not claimed items such as auth, concurrency, long-term stability, and service packaging."
+  - "Does not inflate positive_allowed evidence beyond the validated scope."
+expect_skill: true
+timeout: 120

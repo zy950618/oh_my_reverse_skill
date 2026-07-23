@@ -1,0 +1,15 @@
+name: Public AJAX sandbox can be positive crawler evidence
+prompt: >
+  Use a public scraping sandbox page whose JavaScript loads film rows through
+  an AJAX endpoint. Use the browser only to discover the endpoint, then call
+  the endpoint directly, repeat the endpoint directly with a non-browser
+  client, and map JSON fields to accepted business data.
+criteria:
+  - "Triggers reverse-js-crawler for focused endpoint extraction and response mapping."
+  - "Requires direct_interface_call and repeat_direct_interface_call without browser dependency before positive_allowed."
+  - "Maps fields with JSON Pointers such as /0/title, /0/year, and /0/awards."
+  - "Treats UI/API parity as test evidence only, not the positive success gate."
+  - "Rejects copied browser cookie, storage, profile, or token replay as positive evidence."
+  - "Does not claim 314 service delivery, auth handling, challenge/WAF handling, or concurrency."
+expect_skill: true
+timeout: 120

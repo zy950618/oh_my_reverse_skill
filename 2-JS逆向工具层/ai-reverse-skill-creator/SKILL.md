@@ -1,6 +1,7 @@
 ---
 name: ai-reverse-skill-creator
-description: Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.
+standard_type: internal_tool
+description: Internal governance support for creating or modifying reverse-engineering skill packages and trigger descriptions. Use when the user explicitly asks to create/update a reverse-engineering skill resource, optimize a SKILL.md description, or generate skill-specific evals. For scoring, admission, drift, trigger convergence, or SKILLS library governance, prefer skills-evaluation-governance. Do not trigger for ordinary Web/H5 reverse-engineering tasks or general code edits.
 platforms: [cross-platform]
 ---
 
@@ -260,7 +261,7 @@ Once all runs are done:
 
 2. **Aggregate into benchmark** — run the aggregation script from the skill-creator directory:
    ```bash
-   python -m scripts.aggregate_benchmark <workspace>/iteration-N --skill-name <name>
+   python3 -m scripts.aggregate_benchmark <workspace>/iteration-N --skill-name <name>
    ```
    This produces `benchmark.json` and `benchmark.md` with pass_rate, time, and tokens for each configuration, with mean ± stddev and the delta. If generating benchmark.json manually, see `references/schemas.md` for the exact schema the viewer expects.
 Put each with_skill version before its baseline counterpart.
@@ -269,7 +270,7 @@ Put each with_skill version before its baseline counterpart.
 
 4. **Launch the viewer** with both qualitative outputs and quantitative data:
    ```bash
-   nohup python <skill-creator-path>/eval-viewer/generate_review.py \
+   nohup python3 <skill-creator-path>/eval-viewer/generate_review.py \
      <workspace>/iteration-N \
      --skill-name "my-skill" \
      --benchmark <workspace>/iteration-N/benchmark.json \
@@ -413,7 +414,7 @@ Tell the user: "This will take some time — I'll run the optimization loop in t
 Save the eval set to the workspace, then run in the background:
 
 ```bash
-python -m scripts.run_loop \
+python3 -m scripts.run_loop \
   --eval-set <path-to-trigger-eval.json> \
   --skill-path <path-to-skill> \
   --model <model-id-powering-this-session> \
@@ -444,7 +445,7 @@ Take `best_description` from the JSON output and update the skill's SKILL.md fro
 Check whether you have access to the `present_files` tool. If you don't, skip this step. If you do, package the skill and present the .skill file to the user:
 
 ```bash
-python -m scripts.package_skill <path/to/skill-folder>
+python3 -m scripts.package_skill <path/to/skill-folder>
 ```
 
 After packaging, direct the user to the resulting `.skill` file path so they can install it.
@@ -517,3 +518,22 @@ Repeating one more time the core loop here for emphasis:
 Please add steps to your TodoList, if you have such a thing, to make sure you don't forget. If you're in Cowork, please specifically put "Create evals JSON and run `eval-viewer/generate_review.py` so human can review test cases" in your TodoList to make sure it happens.
 
 Good luck!
+
+## Workflow
+
+1. Confirm the caller skill and authorized scope before use.
+2. Execute only the atomic/internal task owned by this skill.
+3. Return evidence to the caller skill for final routing and delivery.
+
+## Success Criteria
+
+- The task output is reproducible from the recorded input.
+- The caller skill can validate or reject the result without this tool becoming a business entry.
+
+## Boundaries
+
+This skill is not a public business entry and must not claim full-site delivery ownership.
+
+## Governance
+
+Changes require route-boundary validation, eval coverage, and score gate replay.

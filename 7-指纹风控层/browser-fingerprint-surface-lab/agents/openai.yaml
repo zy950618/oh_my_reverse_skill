@@ -1,0 +1,7 @@
+roles:
+  executor:
+    responsibility: capture local or authorized fingerprint surface evidence
+  verifier:
+    responsibility: run fingerprint validators and freshness checks
+  governor:
+    responsibility: enforce observation-only boundaries and drift policy

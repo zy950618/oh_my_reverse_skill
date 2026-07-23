@@ -1,0 +1,5 @@
+prompt: Review a small bugfix that also rewrites adjacent files.
+expected:
+  - flag unrelated churn
+  - require minimal diff
+  - preserve user scope

@@ -1,5 +1,18 @@
 # tools/ — 仓库辅助脚本
 
+## Layout
+
+`tools/` 顶层保留常用命令的稳定 wrapper，真实实现逐步按职责分到子目录：
+
+- `tools/governance/`：评分、CI gate、drift history、eval scaffold。
+- `tools/js_runtime/`：JS 页面 runtime、环境契约、diff、signature regression。
+- `tools/site_memory/`：project memory 与站点经验库同步/回填。
+- `tools/lifecycle/`：Stop hook reminder、workspace cleanup。
+- `tools/recorder/`：录制和 HAR 转 fixtures。
+- `tools/replayer/`：fixtures schema、replay、diff、consistency report。
+
+下面示例优先使用顶层 wrapper，兼容旧文档、CI 和 hook；需要查看实现时进入对应子目录。
+
 ## sync_site_memory.py
 
 把项目 memory 中的 `type: project` / `type: feedback` 条目同步到 `站点经验库/<domain>/` 的 7 个标准文件。
@@ -8,18 +21,18 @@
 
 ```bash
 # dry-run（默认，只预览）
-python tools/sync_site_memory.py \
+python3 tools/site_memory/sync_site_memory.py \
     --project E:/flight-cwl/flight-cwl-vj-baggage \
     --domain vietjetair.com
 
 # 真正写入
-python tools/sync_site_memory.py \
+python3 tools/site_memory/sync_site_memory.py \
     --project E:/flight-cwl/flight-cwl-vj-baggage \
     --domain vietjetair.com \
     --apply
 
 # 同时同步 feedback 类（默认只同步 project 类）
-python tools/sync_site_memory.py \
+python3 tools/site_memory/sync_site_memory.py \
     --project E:/flight-cwl/flight-cwl-vj-baggage \
     --domain vietjetair.com \
     --apply --include-feedback
@@ -50,23 +63,23 @@ python tools/sync_site_memory.py \
 
 ```bash
 # dry-run (默认)
-python tools/backfill_from_site_memory.py \
+python3 tools/site_memory/backfill_from_site_memory.py \
     --domain thaiairways.com \
     --skill-metrics "1-业务流程层/website-314-api-delivery/metrics/real-task-summary.md"
 
 # 真正写入
-python tools/backfill_from_site_memory.py \
+python3 tools/site_memory/backfill_from_site_memory.py \
     --domain thaiairways.com \
     --skill-metrics "1-业务流程层/website-314-api-delivery/metrics/real-task-summary.md" \
     --apply
 
 # 多 domain 累加
-python tools/backfill_from_site_memory.py \
+python3 tools/site_memory/backfill_from_site_memory.py \
     --domain thaiairways.com --domain vietjetair.com \
     --skill-metrics "..." --apply
 
 # 覆盖已写入的反推段
-python tools/backfill_from_site_memory.py ... --apply --rewrite
+python3 tools/site_memory/backfill_from_site_memory.py ... --apply --rewrite
 ```
 
 ### 行为
@@ -89,16 +102,16 @@ python tools/backfill_from_site_memory.py ... --apply --rewrite
 
 ```bash
 # 单个 Skill
-python tools/scaffold_evals.py --skill 2-JS逆向工具层/find-crypto-entry
+python3 tools/governance/scaffold_evals.py --skill 2-JS逆向工具层/find-crypto-entry
 
 # 批量
-python tools/scaffold_evals.py \
+python3 tools/governance/scaffold_evals.py \
     --skill 2-JS逆向工具层/find-crypto-entry \
     --skill 2-JS逆向工具层/ast-deobfuscate \
     --skill 2-JS逆向工具层/env-patch
 
 # 覆盖已有骨架
-python tools/scaffold_evals.py --skill ... --force
+python3 tools/governance/scaffold_evals.py --skill ... --force
 ```
 
 ### 行为
@@ -118,7 +131,81 @@ python tools/scaffold_evals.py --skill ... --force
 
 ## post_task_reminder.py / append_drift_history.py
 
-Stop hook 与 CI 周更 drift snapshot 的脚本。详见 `99-SKILLS治理/05-当前评分与回测结果.md` 的 v0.3.4 章节。
+Stop hook 与 CI 周更 drift snapshot 的脚本。当前评分口径见 `docs/scoring.md`。
+
+---
+
+## validate_skill_frontmatter.py
+
+验证仓库内所有 `SKILL.md` 是否有可解析 frontmatter，且至少包含 `name` 和
+`description`。
+
+### 用法
+
+```bash
+python3 tools/validators/validate_skill_frontmatter.py
+```
+
+### 何时跑
+
+修改任何 `SKILL.md` frontmatter 后必跑。它只证明本地可加载性，不证明 Skill
+行为正确。
+
+---
+
+## validate_public_range_evidence.py
+
+验证 `public-range-evidence/` 下的公开靶场 evidence。默认会跳过 `raw/`
+目录中的 ledger/report 原始辅助文件。
+
+### 用法
+
+```bash
+python3 tools/evidence/validate_public_range_evidence.py public-range-evidence
+```
+
+### 何时跑
+
+新增或修改公开靶场 evidence、allowlist、positive gate 或 challenge/WAF
+边界样本后必跑。`positive_allowed` 必须满足 direct interface accepted 和 repeat
+direct interface accepted；provider testing keys、browser-only capture 和 challenge
+endpoint 不能作为正向能力。
+
+---
+
+## validate_real_execution_proof.py
+
+检查 `public-range-evidence/**/*.json` 中的 `execution_proof`。没有该字段的
+evidence 会降级为 `STRUCTURE_ONLY`，只能作为结构、历史或边界证据，不能算本轮
+真实执行。
+
+### 用法
+
+```bash
+python3 tools/evidence/validate_real_execution_proof.py public-range-evidence
+```
+
+### 检查内容
+
+- `command` / `cwd` / `exit_code` / `started_at` / `ended_at`
+- stdout/stderr log 路径是否存在
+- screenshot、network summary、browser trace 路径是否存在
+- `synthetic` 必须是 `false`
+- `positive_allowed` 不允许缺少 screenshot/network proof
+- challenge/WAF/风控相关 evidence 没有最终业务 API acceptance 时不能 positive
+
+输出分类：
+
+- `REAL_EXECUTION_PASS`: 有真实命令、日志和 artifact，可计入本轮真实执行。
+- `STRUCTURE_ONLY`: JSON 结构可读但没有 `execution_proof`。
+- `BLOCKED`: 有执行证明但命令失败或被阻塞。
+- `INVALID`: 字段、路径或正向能力门槛冲突。
+
+注意：`REAL_EXECUTION_PASS` 只代表 `execution_status`，不代表能力正向成立。
+能力结论必须看 `capability_status`：只有 `positive_allowed` 且
+`validate_public_range_evidence.py` 的正向 gate 通过，才能算 positive。
+local dummy、provider testing key、siteverify dummy 和 boundary eval 即使真实运行，
+也只能是 `negative_eval_only` 或 `memory_only`。
 
 ---
 
@@ -130,10 +217,10 @@ Stop hook 与 CI 周更 drift snapshot 的脚本。详见 `99-SKILLS治理/05-�
 
 ```bash
 # 结构/schema 检查: 允许新转换出来的 meta.yaml 保留待 review 占位,但会给 warning
-python tools/replayer/validate_fixtures.py 站点经验库
+python3 tools/replayer/validate_fixtures.py 站点经验库
 
 # 交付/发版检查: TODO、自动抽取占位、待 review 文案都会失败
-python tools/replayer/validate_fixtures.py 站点经验库 --strict-review
+python3 tools/replayer/validate_fixtures.py 站点经验库 --strict-review
 ```
 
 ### 何时跑
@@ -141,3 +228,123 @@ python tools/replayer/validate_fixtures.py 站点经验库 --strict-review
 HAR / CloakBrowser 录制刚转 fixtures 后先跑普通检查,确认三件套齐全。
 人工确认 `endpoint` / `category` / `sensitive` / `requires_auth` / `tolerance` 后跑
 `--strict-review`,只有严格检查通过的 meta 才能作为语义证据。
+
+---
+
+## validate_web_h5_crawler_gate.py
+
+验证 Web/H5 爬虫 Skill 是否仍包含强制硬化结构：fresh packet evidence、清空 cookies/storage/cache 的多轮复测、反偶发成功、并发阶梯和 session/cache 隔离。
+
+### 用法
+
+```bash
+python3 tools/web_h5/validate_web_h5_crawler_gate.py
+```
+
+### 何时跑
+
+修改 `reverse-js-crawler`、Web/H5 爬虫治理规约、评分 eval、并发/复测/抓包要求后必跑。它只验证能力层结构，不证明某个真实站点当天可用。
+
+---
+
+## validate_web_h5_loop_gate.py
+
+验证 Web/H5 Loop Engineering 是否仍包含至少三角色闭环结构：Executor、Verifier、Governor、最大迭代次数、停止条件、人工复核、fresh evidence、clean-state retest、anti-flake、并发阶梯和 session/cache 隔离。
+
+### 用法
+
+```bash
+python3 tools/web_h5/validate_web_h5_loop_gate.py
+```
+
+### 何时跑
+
+修改 `web-h5-loop-engineering`、Loop Engineering eval、三角色 agent 编排、停止条件、ledger 模板或 CI gate 后必跑。它只验证闭环结构，不实际启动多个 agent，也不证明真实站点当天可用。
+
+---
+
+## web_h5_loop_runner.py
+
+创建、追加和验证 Web/H5 Loop Runner execution ledger。它管理证据账本,不打开网页,不绕过保护。
+
+### 用法
+
+```bash
+python3 tools/web_h5/web_h5_loop_runner.py init \
+    --out loop-ledger.json \
+    --domain example.com \
+    --stage search \
+    --target-api POST:/api/search
+
+python3 tools/web_h5/web_h5_loop_runner.py record-iteration \
+    --ledger loop-ledger.json \
+    --executor-action "capture search API" \
+    --verifier-result blocked \
+    --governor-result human_review
+
+python3 tools/web_h5/web_h5_loop_runner.py validate --ledger loop-ledger.json
+python3 tools/web_h5/web_h5_loop_runner.py validate --ledger loop-ledger.json --require-complete
+```
+
+### 何时跑
+
+真实 Loop Engineering 任务开始时先 `init`;每轮执行后 `record-iteration`;声明完成前 `validate --require-complete`。
+
+`validate` 默认只验证结构,成功状态是 `STRUCTURE_PASS`。`--require-complete` 只有在 fresh evidence、三组 clean-state retest、后端接受、数据验收、fixture freshness 和 stable decision 都齐全时才返回 `SUCCESS_PASS`。证据不齐返回 `BLOCKED`,不能声明完成。
+
+---
+
+## web_h5_acceptance_report.py
+
+生成和验证 Web/H5 crawler acceptance report,覆盖 clean-state retest、anti-flake、1/2/5/10 worker 并发阶梯、risk-control concurrency、UI/API parity、fixture freshness 和 metrics。
+
+### 用法
+
+```bash
+python3 tools/web_h5/web_h5_acceptance_report.py template \
+    --out acceptance-report.json \
+    --domain example.com \
+    --stage search \
+    --target-api POST:/api/search
+
+python3 tools/web_h5/web_h5_acceptance_report.py validate --report acceptance-report.json
+python3 tools/web_h5/web_h5_acceptance_report.py validate --report acceptance-report.json --require-complete
+```
+
+### 何时跑
+
+涉及实战执行、并发、风控证据、网页一致性或稳定性声明时必跑。默认 `validate` 只返回 `STRUCTURE_PASS`。没有通过 `--require-complete` 并拿到 `SUCCESS_PASS`,不能声明并发、稳定或真实完成。`BLOCKED` 是有效阻塞结论,不是成功。
+
+---
+
+## fixture_freshness_report.py
+
+输出 fixtures 的新鲜度和 review 状态,包括 expired_count、review_needed_count、recent_report 和 source_freshness。
+
+### 用法
+
+```bash
+python3 tools/web_h5/fixture_freshness_report.py 站点经验库
+python3 tools/web_h5/fixture_freshness_report.py 站点经验库 --strict-fresh
+python3 tools/governance/ci_gate.py .ci-out --release
+```
+
+### 何时跑
+
+每次声称网页一致性、fresh replay 或真实交付前跑。默认是 report-only;发版/交付前使用 `--strict-fresh` 或 `python3 tools/governance/ci_gate.py .ci-out --release`。普通 `ci_gate.py .ci-out` 只是结构/评分门禁,不能作为 release freshness 证据。
+
+---
+
+## validate_web_h5_real_execution_gate.py
+
+验证真实实战执行标准化资产是否存在: Loop Runner、acceptance report、fixture freshness report、metrics、references 和 evals。
+
+### 用法
+
+```bash
+python3 tools/web_h5/validate_web_h5_real_execution_gate.py
+```
+
+### 何时跑
+
+修改 runner、acceptance、freshness、metrics、真实执行 references/evals 或 `ci_gate.py` 后必跑。它只验证结构,不证明某个真实站点当天可用。

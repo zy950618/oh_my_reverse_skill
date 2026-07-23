@@ -1,0 +1,118 @@
+{
+  "schema_version": "public-range-evidence/v1",
+  "run_id": "run-20260629-071034-owasp-juice-shop",
+  "capture_id": "cap-20260629-071034-owasp-juice-shop-boundary",
+  "target": {
+    "id": "owasp-juice-shop",
+    "name": "OWASP Juice Shop public demo",
+    "url": "http://demo.owasp-juice.shop",
+    "host": "demo.owasp-juice.shop",
+    "type": "public_training_range",
+    "authorization_scope": "Public intentionally vulnerable training/demo instance; anonymous product search observation only"
+  },
+  "captured_at": "2026-06-29T07:10:34.723843+00:00",
+  "source_freshness": "fresh",
+  "auth_state": "anonymous",
+  "skills": [
+    "reverse-js-crawler",
+    "web-h5-loop-engineering",
+    "skills-evaluation-governance"
+  ],
+  "scope": {
+    "domain": "owasp-juice-shop",
+    "stage": "public_demo_observation",
+    "auth_state": "guest",
+    "mode": "boundary_eval",
+    "in_scope": [
+      "anonymous product search observation",
+      "boundary evidence when repeat capture fails"
+    ],
+    "out_of_scope": [
+      "challenge bypass",
+      "Broken Anti Automation bypass",
+      "login or account state",
+      "concurrency ladder",
+      "positive_allowed skill growth"
+    ]
+  },
+  "backend_acceptance": {
+    "status": "partial",
+    "endpoint": "GET http://demo.owasp-juice.shop/rest/products/search?q=",
+    "observed_status": 200,
+    "content_type": "application/json; charset=utf-8",
+    "body_sha256": "12a8a6f6d6d7b9157bb94d9c3b9326a98c804a54533df248b242f33668892601",
+    "body_length": 17387,
+    "json_pointers": [
+      "/status",
+      "/data",
+      "/data/0/name"
+    ],
+    "observed_values": {
+      "/status": "success",
+      "/data/0/name": "Apple Juice (1000ml)"
+    },
+    "product_count": 46
+  },
+  "ui_api_parity": {
+    "status": "pass",
+    "api_pointer": "/data/0/name",
+    "normalized_ui_has_api_value": true
+  },
+  "repeat_verified": false,
+  "provider_flow": {
+    "provider": "none",
+    "widget_detected": false,
+    "script_src": [],
+    "iframe_src": [],
+    "sitekey_or_action_observed": false,
+    "token_field_observed": false,
+    "backend_verify_observed": false,
+    "business_api_observed": false
+  },
+  "state_observer": {
+    "states_seen": [
+      "initial_api_ui_parity",
+      "repeat_capture_application_error"
+    ],
+    "clean_unverified": "not_run",
+    "verified": "not_run",
+    "repeat_verified": "fail"
+  },
+  "repeat_attempts": [
+    {
+      "run_id": "juice-shop-repeat-2026-06-29T07-09-42-298097+00-00",
+      "captured_at": "2026-06-29T07:09:54.831841+00:00",
+      "title": "Application Error",
+      "api_observed": false,
+      "ui_api_parity": false
+    },
+    {
+      "run_id": "juice-shop-repeat2-2026-06-29T07-10-19-964228+00-00",
+      "captured_at": "2026-06-29T07:10:34.723843+00:00",
+      "title": "Application Error",
+      "api_observed": false,
+      "ui_api_parity": false
+    }
+  ],
+  "fact_labels": {
+    "observed": [
+      "Initial product search observation returned JSON fields /status, /data, and /data/0/name.",
+      "Repeat captures returned Application Error and did not observe the product API."
+    ],
+    "derived": [
+      "This run is useful as boundary/negative evidence because repeat verification failed."
+    ],
+    "assumed": [],
+    "unverified": [
+      "No challenge or Broken Anti Automation flow was completed.",
+      "No direct repeat business acceptance was proven.",
+      "No concurrency ladder was run.",
+      "This public demo host is not in the current OWASP automated allowlist; next run should use localhost or an explicitly authorized Juice Shop instance."
+    ]
+  },
+  "decision": {
+    "skills_participation": "negative_eval_only",
+    "positive_allowed": false,
+    "blocked_reason": "Initial browser capture reached API/UI parity, but repeat captures returned Application Error and did not observe the product API. Current allowlist restricts OWASP automated runs to localhost/127.0.0.1, so this public demo sample remains boundary evidence and must not become positive skill capability."
+  }
+}

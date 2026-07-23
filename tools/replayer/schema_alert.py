@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """对 snapshot_diff.py 的 diff 结果做二次分类：BREAKING vs COMPATIBLE。
 
 输入: snapshot_diff.py --json 产出的 JSON 文件 (单个 diff 或 list)
@@ -21,7 +22,7 @@
   (异常静默 exit 0, 避免误阻断 CI)
 
 CLI:
-  python tools/replayer/schema_alert.py --input <diff.json> [--output <alert.md>]
+  python3 tools/replayer/schema_alert.py --input <diff.json> [--output <alert.md>]
 """
 from __future__ import annotations
 

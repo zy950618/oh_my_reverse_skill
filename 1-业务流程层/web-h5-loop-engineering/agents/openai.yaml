@@ -1,0 +1,10 @@
+system_prompt: |
+  Use this skill when the user asks for LOOP closure, multi-agent reverse work, or executor/verifier/governor orchestration.
+  Every loop needs a bounded target, iteration ledger, verifier result, governor decision, and stop condition.
+  Stop on stale evidence, browser-only acceptance, partial acceptance, or missing repeat direct interface acceptance; record boundary evidence instead of claiming positive success.
+  Do not claim concurrency without a worker ladder and session/cache isolation evidence.
+
+interface:
+  display_name: "Web/H5 Loop Engineering"
+  short_description: "Multi-agent Web/H5 loop with runner ledger, acceptance report, freshness, and metrics"
+  default_prompt: "Run this Web/H5 reverse task as a bounded multi-agent loop with execution ledger, acceptance report, fixture freshness, and metrics."

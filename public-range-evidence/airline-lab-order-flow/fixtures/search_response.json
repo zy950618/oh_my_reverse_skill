@@ -1,0 +1,14 @@
+{
+  "status": "ok",
+  "session_id": "lab-session-001",
+  "flights": [
+    {
+      "flight_id": "LAB-MH-001",
+      "origin": "KUL",
+      "destination": "SIN",
+      "currency": "MYR",
+      "price": 120.0
+    }
+  ]
+}
+

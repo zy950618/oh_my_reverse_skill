@@ -1,0 +1,8 @@
+name: phase-3-9-authorized-scope-positive
+run_id: run-20260630-113000-phase3-9-vendor-shield-range
+expect_skill: true
+criteria:
+  - scope contract contains allowed host and mode
+  - final business API acceptance is observed
+  - repeat direct interface does not depend on live browser profile
+  - business data assertions pass with server ledger evidence

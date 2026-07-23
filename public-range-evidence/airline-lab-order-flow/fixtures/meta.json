@@ -1,0 +1,16 @@
+{
+  "schema_version": "airline-lab-fixtures/v1",
+  "target": "localhost",
+  "status": "structure_only",
+  "contains_pii": false,
+  "contains_payment": false,
+  "contains_live_tokens": false,
+  "business_data_pointers": [
+    "/flights/0/flight_id",
+    "/session_id",
+    "/detail_nonce",
+    "/order_id",
+    "/ledger_delta"
+  ]
+}
+

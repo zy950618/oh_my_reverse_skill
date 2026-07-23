@@ -1,0 +1,7 @@
+{
+  "status": "ok",
+  "order_id": "LAB-ORDER-001",
+  "order_state": "draft",
+  "ledger_delta": 0,
+  "idempotency": "duplicate_request_rejected"
+}

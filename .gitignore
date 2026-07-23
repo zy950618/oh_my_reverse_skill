@@ -6,6 +6,10 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 .pytest_cache/
+.cache/
+.venv/
+venv/
+env/
 
 # IDE
 .vscode/
@@ -15,18 +19,130 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
+# Node/frontend 本地依赖和构建产物
+node_modules/
+dist/
+build/
+coverage/
+htmlcov/
+
+# Playwright/浏览器自动化本地产物
+playwright-report/
+test-results/
+blob-report/
+.playwright/
+.auth/
+storage-state*.json
+*.storage-state.json
+trace.zip
+*.trace.zip
+*.webm
+*.mp4
+
+# 浏览器 profile / user-data-dir / 本地会话状态
+browser-profiles/
+.browser-profiles/
+browser-profile/
+user-data-dir/
+userDataDir/
+**/user-data-dir/
+**/userDataDir/
+profiles/
+.profiles/
+
 # Stop hook 校准数据(本地分析用,不入 git)
 tools/.reminder-stats.jsonl
+99-SKILLS治理/43-artifact-reference-integrity-report.md
+99-SKILLS治理/47-secret-and-live-evidence-scan.md
+99-SKILLS治理/49-large-artifact-scan.md
 
 # Claude Code 本地权限缓存
 .claude/settings.local.json
+.codex/
 
 # Replay 临时产物(每次本地跑都会重新生成,不入 git)
 站点经验库/*/fixtures/actual/
 
-# Recording 原始抓包(30 天后删除,体积大,不入 git 默认值,需要时按 domain 取消注释)
-# 站点经验库/*/fixtures/recordings/
+# Recording 原始抓包(30 天后删除,体积大,不入 git)
+站点经验库/*/fixtures/recordings/
 
-# 不入 git 的 recording 二进制(HAR/jsonl 单文件常 30MB+)
+# 不入 git 的抓包/事件/响应体 dump
+*.har
+*.body
+*.dump
+*.tmp
+*.bak
+*.old
+*.orig
+*.log
+*.cookies
+*.cookie
+*.tokens
+*.token
 站点经验库/*/fixtures/recordings/*.har
 站点经验库/*/fixtures/recordings/*.jsonl
+
+# 本地 run/capture 输出目录；正式经验只写脱敏摘要和 fixtures meta
+runs/
+captures/
+.captures/
+recordings/
+local-runs/
+
+# 本地项目交付物(只在本机/交付包保留,不上传 GitHub)
+交付项目/
+
+# 本地实战项目库: GitHub 只保留 README、模板和通用规范
+站点经验库/*/
+!站点经验库/_templates/
+!站点经验库/_templates/**
+!站点经验库/_archive/
+!站点经验库/_archive/stale-20260701/
+!站点经验库/_archive/stale-20260701/**/
+!站点经验库/_archive/stale-20260701/**/manifest.json
+!站点经验库/local-governance.fixture/
+!站点经验库/local-governance.fixture/**
+!站点经验库/README.md
+
+# 归档 stale fixture 只上传 manifest/hash，不上传过期三件套。
+站点经验库/_archive/stale-20260701/**/*.req.json
+站点经验库/_archive/stale-20260701/**/*.resp.json
+站点经验库/_archive/stale-20260701/**/*.meta.yaml
+
+逆向工程经验库/domains/*/
+!逆向工程经验库/domains/_example.com/
+!逆向工程经验库/domains/_example.com/**
+
+
+# 本地运行/评分/抓包产物(每轮可再生成,不上传 GitHub)
+metrics/
+
+# Local loop ledgers/task state; final repository state should not keep loop files.
+.loop/
+低LOOP-cleanup-ledger-*.md
+docs/loop-engineering.md
+
+# Agent/control packages and local orchestration state; never commit.
+.agent-control/
+
+# Public range evidence: commit sanitized summaries only.
+public-range-evidence/raw/
+public-range-evidence/**/raw/
+public-range-evidence/**/*.har
+public-range-evidence/**/*.body
+public-range-evidence/**/*.dump
+public-range-evidence/_archive/manual-review/
+public-range-evidence/_archive/manual-review-private/
+datasets/**/raw/
+datasets/**/models/
+datasets/**/checkpoints/
+**/checkpoints/
+*.pt
+*.pth
+*.onnx
+*.safetensors
+*.pkl
+*.joblib
+*.zip
+*.tar
+*.gz

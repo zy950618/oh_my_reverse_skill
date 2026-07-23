@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "allowed_capability_ids": [
+    "manifest_inventory",
+    "replay_fixture_selection",
+    "replay_execution",
+    "consistency_aggregation",
+    "fixture_validation",
+    "web_h5_loop_ledger",
+    "web_h5_real_execution_gate",
+    "cleanup_workspace",
+    "runtime_recording",
+    "runtime_adapter",
+    "crypto_graph",
+    "capability_matrix_generator"
+  ],
+  "catalog": [
+    {"id":"manifest_inventory","title":"Skills manifest inventory","evidence":[
+      {"kind":"producer","path":"tools/skills_manifest.py","sha256":"f28047a9f68d8fe1e9dcbc701ace1f0123b7a0d29246b23122fe3127ffc5d10b","symbol_or_command":"main","claim":"Implements manifest validation, summary, and inventory commands."},
+      {"kind":"documentation","path":"tools/README.md","sha256":"cd5e05b3c27e54567a4927a2ff89105c2ae175be703402e37225dab58143e56a","symbol_or_command":"python3 tools/skills_manifest.py summary","claim":"Documents the manifest inventory command."}
+    ]},
+    {"id":"replay_fixture_selection","title":"Replay fixture selection","evidence":[
+      {"kind":"producer","path":"tools/replayer/fixture_layout.py","sha256":"f0b58c4ff37e821f83d42df504c1da1070fb3a462744c94a4a4087f20ba4297e","symbol_or_command":"select_fixture_layout","claim":"Selects active or legacy fixture layouts."},
+      {"kind":"test","path":"tools/replayer/tests/test_replayer_tools.py","sha256":"d8e1c4e0d68d1533770c5597303b3b7c56aff07a032d3d8a0a0e026cee70e80f","symbol_or_command":"FixtureLayoutTests","claim":"Automated fixture layout selection coverage."}
+    ]},
+    {"id":"replay_execution","title":"Replay execution","evidence":[
+      {"kind":"producer","path":"tools/replayer/snapshot_replay.py","sha256":"d178fe6cd37ca20f5e794f6d9d4fd8bc41833aa5dd28fec7625d687e3b11325e","symbol_or_command":"main","claim":"Executes snapshot replay and emits results."},
+      {"kind":"consumer","path":".github/workflows/consistency-replay.yml","sha256":"a9fad31f04dde6b165fc6f718a193dcfccc6d9fb02927138ccb31ed794097e5c","symbol_or_command":"python3 tools/replayer/snapshot_replay.py","claim":"CI invokes the replay producer."},
+      {"kind":"test","path":"tools/replayer/tests/test_snapshot_replay_result.py","sha256":"45b4fea57114a594a1c4ef79da7e051e5f50bf4db221e2f5e0b607840411e45f","symbol_or_command":"SnapshotReplayResultTests","claim":"Automated replay result coverage."}
+    ]},
+    {"id":"consistency_aggregation","title":"Consistency aggregation","evidence":[
+      {"kind":"producer","path":"tools/replayer/consistency_report.py","sha256":"11ec9afa97363795c0e79df8cdbc8b312621b113fb9a4279b38866d7b58a5796","symbol_or_command":"main","claim":"Aggregates replay consistency results."},
+      {"kind":"test","path":"tools/replayer/tests/test_consistency_report.py","sha256":"34336b3f650422b19a69e72f5e3377aaef5bed00019a5d3d3b382eb0b7f10def","symbol_or_command":"ConsistencyReportTests","claim":"Automated consistency aggregation coverage."}
+    ]},
+    {"id":"fixture_validation","title":"Fixture validation","evidence":[
+      {"kind":"producer","path":"tools/replayer/validate_fixtures.py","sha256":"de463a148ef41ad68178a6a25fbf338cde7d590e1e6066534bab09cbc49c48cc","symbol_or_command":"main","claim":"Validates fixture structure and strict data requirements."},
+      {"kind":"consumer","path":".github/workflows/consistency-replay.yml","sha256":"a9fad31f04dde6b165fc6f718a193dcfccc6d9fb02927138ccb31ed794097e5c","symbol_or_command":"python3 tools/replayer/validate_fixtures.py --mode strict --require-data","claim":"CI invokes strict fixture validation."},
+      {"kind":"test","path":"tools/replayer/tests/test_replayer_tools.py","sha256":"d8e1c4e0d68d1533770c5597303b3b7c56aff07a032d3d8a0a0e026cee70e80f","symbol_or_command":"test_validate_fixtures_uses_active_layout","claim":"Automated fixture validation coverage."}
+    ]},
+    {"id":"web_h5_loop_ledger","title":"Web/H5 loop ledger","evidence":[
+      {"kind":"producer","path":"tools/web_h5/web_h5_loop_runner.py","sha256":"38fb6e802d76662d77b3ad05d83df228c16976fdb3103922f972373d845516d6","symbol_or_command":"main","claim":"Creates, updates, and validates loop ledgers."},
+      {"kind":"documentation","path":"tools/README.md","sha256":"cd5e05b3c27e54567a4927a2ff89105c2ae175be703402e37225dab58143e56a","symbol_or_command":"python3 tools/web_h5/web_h5_loop_runner.py validate","claim":"Documents loop ledger validation."}
+    ]},
+    {"id":"web_h5_real_execution_gate","title":"Web/H5 real execution gate","evidence":[
+      {"kind":"producer","path":"tools/web_h5/validate_web_h5_real_execution_gate.py","sha256":"65e3c6a8ef047dd76b23e2f7ef4ef45b061ce06eb246965a91df40101e37f12c","symbol_or_command":"main","claim":"Validates real-execution gate structure."},
+      {"kind":"documentation","path":"tools/README.md","sha256":"cd5e05b3c27e54567a4927a2ff89105c2ae175be703402e37225dab58143e56a","symbol_or_command":"python3 tools/web_h5/validate_web_h5_real_execution_gate.py","claim":"Documents the real-execution gate command."}
+    ]},
+    {"id":"cleanup_workspace","title":"Workspace cleanup","evidence":[
+      {"kind":"producer","path":"tools/lifecycle/cleanup_workspace.py","sha256":"9c81ec204f294002a57e270b1f2c43a3e10ce830361f04ad617dfd61066b0675","symbol_or_command":"main","claim":"Implements workspace cleanup inspection and apply modes."}
+    ]},
+    {"id":"runtime_recording","title":"Runtime recording","evidence":[
+      {"kind":"producer","path":"tools/recorder/cloak_recorder.py","sha256":"ac1faada76a69783a3fb29af545d11c88f6f30ca08441723f3477eddd92c531d","symbol_or_command":"main","claim":"Implements local runtime recording."}
+    ]},
+    {"id":"runtime_adapter","title":"Runtime adapter","evidence":[
+      {"kind":"documentation","path":"tool-contracts/build_fastapi_adapter.contract.md","sha256":"99578aebfffc0426cfe40c27b72d2234ac701ed3af45ccd18e5d60a1096674ac","symbol_or_command":"build_fastapi_adapter contract","claim":"Contract context only; no native producer or test is claimed."}
+    ]},
+    {"id":"crypto_graph","title":"Crypto graph","evidence":[
+      {"kind":"documentation","path":"tool-contracts/search_crypto_entry.contract.md","sha256":"551193dbaa4d45a212910ca6096e87d4f23e9cdf72be08d8957856b2694f1907","symbol_or_command":"search_crypto_entry contract","claim":"Crypto-entry documentation context only; no graph producer or test is claimed."}
+    ]},
+    {"id":"capability_matrix_generator","title":"Capability Matrix generator","evidence":[
+      {"kind":"producer","path":"tools/capabilities/capability_matrix.py","sha256":"e1f54b47932f4555ac05342ba0ca53c96ef61545348981315abcd662c1eeb47a","symbol_or_command":"main","claim":"Sole canonical normalized model and dual-report generator."},
+      {"kind":"test","path":"tools/capabilities/tests/test_capability_matrix.py","sha256":"85891bbc0ddac48be6775c305fe796e54b532cdd60ef4d52b6fa52adeefd7e06","symbol_or_command":"CapabilityMatrixTests","claim":"Automated schema, grading, scanner, failure, and byte-stability coverage."},
+      {"kind":"documentation","path":"tools/capabilities/README.md","sha256":"23f4d61e3506d167ef26b0727ef3587276541f24bfcafb2e2e8002abf376c872","symbol_or_command":"Generate and validate","claim":"Documents canonical usage and the shared-infrastructure boundary."}
+    ]}
+  ],
+  "legacy_entries": []
+}

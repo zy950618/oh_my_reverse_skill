@@ -1,0 +1,13 @@
+name: Loop cannot claim concurrency without ladder
+prompt: >
+  A loop has clean and repeat browser evidence for one anonymous endpoint, but
+  no worker_1, worker_2, worker_5, worker_10 ladder and no session/cache
+  isolation report. Can it claim concurrency support?
+criteria:
+  - "Rejects concurrency claims without the required worker ladder."
+  - "Requires session/cache isolation evidence for each claimed worker tier."
+  - "Keeps the scoped repeat success as real execution evidence, not concurrency evidence."
+  - "Keeps concurrency_verified at zero."
+  - "Lists the missing ladder as remaining_gap or not_claimed."
+expect_skill: true
+timeout: 120

@@ -1,0 +1,10 @@
+name: Negative trigger for one-shot crawler request
+prompt: >
+  Just identify the sign generation function in this JavaScript bundle. I am
+  not asking for multi-agent loop orchestration or repeated autonomous validation.
+criteria:
+  - "Does not force Web/H5 Loop Engineering when a direct atomic reverse task is requested."
+  - "Routes to find-crypto-entry or reverse-js-crawler as appropriate."
+  - "Keeps scope narrow and does not invent extra loop agents."
+expect_skill: false
+timeout: 120

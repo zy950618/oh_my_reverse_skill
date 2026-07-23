@@ -1,0 +1,92 @@
+schema_version: 1
+status: temporary_single_source
+source_of_truth: "skills-manifest.json declares active inventory/topology/install/CI; tools/governance/score_skills.py applies strict 7-component repository score plus per-skill 100-point gate"
+effective_date: "2026-07-01"
+
+strict_repository_score_components:
+  structure: 15
+  reverse_capability: 20
+  evidence_acceptance: 20
+  loop_engineering: 15
+  test_validation: 15
+  cleanup_hygiene: 10
+  safety_boundary: 5
+
+per_skill_scoring_dimensions:
+  structure:
+    points: 25
+    subitems:
+      skill_md: 5
+      frontmatter: 5
+      agents_openai_yaml: 3
+      references: 4
+      eval_layout: 3
+      governance_reference: 2
+      maintainability: 3
+  operational:
+    points: 25
+    subitems:
+      trigger_clarity: 5
+      workflow_behavior: 5
+      eval_quality: 5
+      routing_boundaries: 4
+      evidence_writeback: 4
+      real_task_metrics: 2
+  consistency:
+    points: 30
+    subitems:
+      active_fixtures_present: 5
+      active_snapshot_count: 5
+      active_expiry_ok: 5
+      active_recent_report: 5
+      consistency_rate: 10
+  drift:
+    points: 20
+    subitems:
+      drift_policy: 6
+      regression_coverage: 6
+      version_change_log: 4
+      historical_metrics: 4
+
+score_bands:
+  high_available: 93
+  available: 80
+  structure_ready: 70
+  note_like: 50
+
+layer_thresholds:
+  "1-业务流程层": 93
+  "2-JS逆向工具层": 93
+  "4-通用规范层": 93
+  "5-沉淀工具层": 93
+  "7-指纹风控层": 93
+
+layer_gate_modes:
+  "1-业务流程层": active
+  "2-JS逆向工具层": active
+  "4-通用规范层": active
+  "5-沉淀工具层": active
+  "7-指纹风控层": active-ready
+
+ci_score_files:
+  - "1-业务流程层.json"
+  - "2-JS逆向工具层.json"
+  - "4-通用规范层.json"
+  - "5-沉淀工具层.json"
+  - "7-指纹风控层.json"
+
+layer7_boundary:
+  status: active-ready
+  allowed:
+    - authorized fingerprint surface diagnostics
+    - block reason diagnostics
+    - runtime parity observation
+    - regression evidence
+  forbidden:
+    - WAF defeat
+    - fingerprint falsification
+    - webdriver concealment
+    - detection evasion
+    - risk token forgery
+    - clearance-cookie recycling
+    - unauthorized third-party breakthrough

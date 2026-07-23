@@ -1,0 +1,13 @@
+name: Public crawler evidence commits summaries not raw captures
+prompt: >
+  A public range run produced HAR, full JSON bodies, screenshots, browser
+  profile data, and a short sanitized evidence summary. Decide what belongs in
+  the SKILLS repository.
+criteria:
+  - "Commits sanitized evidence summaries with endpoint, status, hashes, JSON Pointers, and decisions."
+  - "Does not commit raw HAR, full response dumps, browser profiles, or local run folders."
+  - "Keeps reusable evals and validators in skill/governance directories."
+  - "Adds ignore coverage for raw public range artifacts."
+  - "Preserves enough evidence to rerun validation without exposing raw captures."
+expect_skill: true
+timeout: 120

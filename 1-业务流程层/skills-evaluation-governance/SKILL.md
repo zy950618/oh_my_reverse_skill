@@ -1,5 +1,6 @@
 ---
 name: skills-evaluation-governance
+standard_type: external_entry
 description: >-
   Use this skill to score, refine, backtest, and govern Codex/Claude skills: assess whether notes are installable skills, create evals, prepare Skill Bench structure, compare SKILL.md quality, define trigger/negative-trigger tests, track drift, maintain versions, record changes, and enforce admission gates for new Skills. Trigger when the user asks to rate skills, use Skill Bench, convert notes into usable skills, evaluate trigger accuracy, maintain a skills library, score a new Skill before accepting it, run backtests, or Chinese requests such as SKILLS评分, 技能评分, 可用SKILLS, 新增Skill准入, Skill Bench跑分, 回测, 漂移测试, 长期治理, 版本号, 变更记录, 触发词优化, 负例测试, or 技能库治理.
 platforms: [cross-platform]
@@ -62,7 +63,7 @@ Score separately:
    - 检查 `99-SKILLS治理/04-新增SKILL评分回测准入.md`。
    - 跑 quick_validate 和 `scripts/score_skills.py`。
    - 回测至少一个正例、一个负例、一个历史回归例。
-   - 更新 `99-SKILLS治理/05-当前评分与回测结果.md`。
+   - 更新当前评分口径摘要（`docs/scoring.md` / `99-SKILLS治理/05-当前评分与回测结果.md`）。
 
 6. 防虚幻治理：
    - 检查是否要求证据、验证、拒答、人工复核和监控。
@@ -81,10 +82,13 @@ Score separately:
 
 ## Success Criteria
 
-- 新 Skill 没有绕过准入评分。
+- 新 Skill 没有突破准入评分。
 - 评分结果区分结构校验、本地回测和官方 Skill Bench 跑分。
 - 每个 Skill 至少有正例、负例和回归/边界 eval。
 - 测试日志中的重复失败能进入站点经验库或 eval backlog。
+- Web/H5 爬虫类 Skill 必须检查 fresh capture、clean-state retest、anti-flake repeatability、concurrency ladder 和 session/cache isolation。
+- Web/H5 实战执行类 Skill 必须检查 Loop Runner ledger、Acceptance Report、risk-control concurrency、UI/API parity、fixture freshness 和 quantitative metrics。
+- public-range evidence 必须区分 `REAL_EXECUTION_PASS`、`STRUCTURE_ONLY`、`BLOCKED` 和 `INVALID`；没有 `execution_proof` 的 JSON 不能作为真实实战进化证据。
 - 改动后版本、变更记录和漂移测试要求同步更新。
 - 证据、验证、拒答、人工复核、监控和错误纠正都有明确门槛。
 
@@ -109,8 +113,8 @@ When scoring crawler/reverse Skills, include site memory quality: test logs shou
 
 When a new real website task reveals a repeated gap, update the relevant Skill, add or revise evals, record the version change, and schedule drift testing. Do not let the skills library become static notes.
 
-- Version: 0.2.0
-- Status: admission-and-backtest baseline
+- Version: 0.4.3
+- Status: business-data-assertion governance baseline
 - Change log: record material trigger, workflow, reference, score, and eval changes in `references/governance.md`.
 - Drift tests: rerun evals after changing descriptions, adding new cases, or after important real-world failures.
 - Review cadence: update examples and negative triggers when repeated user corrections show a gap.
@@ -122,3 +126,4 @@ When a new real website task reveals a repeated gap, update the relevant Skill, 
 - `references/governance.md`: versioning, change log, and drift-test policy.
 - `references/scoring-rubric.md`: scoring details.
 - `references/skill-bench.md`: Skill Bench setup requirements.
+

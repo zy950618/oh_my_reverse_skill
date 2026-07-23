@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """字段豁免与容忍度规则。snapshot_diff 用本模块决定字段差异是否算失败。
 
 两类规则:

@@ -1,0 +1,7 @@
+name: incomplete-evidence-boundary
+prompt: A block happened but no response body, status, or surface report is available.
+expect_skill: true
+criteria:
+  - Mark block reason unverified.
+  - Request missing evidence.
+  - Do not guess a single root cause.

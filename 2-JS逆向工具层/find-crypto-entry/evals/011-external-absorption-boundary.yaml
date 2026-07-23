@@ -1,0 +1,12 @@
+name: External crypto entry absorption boundary
+prompt: >
+  A page-level external source observation mentions a sign-field category.
+  Turn that category into a find-crypto-entry acceptance item without importing
+  external implementation material or claiming production success.
+criteria:
+  - "Requires observed request field anchor, script hash, call chain, and redacted input/output evidence."
+  - "Requires source fact pack linkage and raw_external_snippet_copied=false."
+  - "Rejects production sign/token success claims from static search or structure-only evidence."
+  - "Rejects copied external snippets, templates, prompts, tests, or examples."
+expect_skill: true
+timeout: 120

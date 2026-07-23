@@ -92,4 +92,4 @@ Object.defineProperty(window, Symbol.toStringTag, { value: 'Window', configurabl
 Object.defineProperty(document, Symbol.toStringTag, { value: 'HTMLDocument', configurable: true });
 ```
 
-注意：这些对策**不保证**能绕过所有检测。VMP 的核心检测可能在 opcode 层面完成。参考 `limitations.md`。
+注意：这些对策**不保证**能突破所有检测。VMP 的核心检测可能在 opcode 层面完成。参考 `limitations.md`。

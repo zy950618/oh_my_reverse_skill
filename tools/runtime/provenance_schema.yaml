@@ -1,0 +1,51 @@
+schema_version: 1
+format: canonical-json-v1
+encoding: utf-8
+serialization:
+  ensure_ascii: false
+  allow_nan: false
+  separators: [",", ":"]
+  trailing_newline: false
+trust:
+  manifest_digest:
+    algorithm: sha256
+    source: caller_supplied_external
+    required: true
+  self_authentication: forbidden
+timestamp:
+  format: RFC3339
+  timezone: explicit_utc_offset
+command:
+  required:
+    - run_id
+    - producer
+    - target
+    - input_hashes
+    - argv
+    - cwd
+    - start_time
+    - end_time
+    - exit_code
+    - stdout_sha256
+    - stderr_sha256
+artifact:
+  required:
+    - path
+    - sha256
+    - producer_run_id
+    - producer
+    - target
+    - input_hashes
+    - created_at
+  path: repository_relative_contained_regular_file
+  hash: raw_file_bytes_sha256
+secrets:
+  policy: reject_or_fixed_redaction
+  denied_names:
+    - authorization
+    - cookie
+    - set-cookie
+    - secret
+    - token
+    - api_key
+    - password

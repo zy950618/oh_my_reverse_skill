@@ -1,0 +1,13 @@
+name: Full service delivery should not stay in crawler
+prompt: >
+  The user asks for a new website to be turned into 314 API routes with tests,
+  deployment notes, and service acceptance. Should reverse-js-crawler be the
+  only selected skill?
+criteria:
+  - "Does not keep ownership in reverse-js-crawler once full service delivery is requested."
+  - "Routes to website-314-api-delivery, using crawler output only as upstream evidence."
+  - "Does not treat endpoint discovery as adapter completion."
+  - "Preserves crawler evidence as field mapping and replay input."
+  - "Requires service-level regression before delivery success is claimed."
+expect_skill: false
+timeout: 120

@@ -1,0 +1,13 @@
+name: Loop orchestrates executor verifier governor
+prompt: >
+  Run a Web/H5 crawler reverse task as Loop Engineering. I want at least three
+  agents or roles so one performs the reverse work, one verifies it, and one
+  checks evidence, scope, memory, and cleanup before the loop can finish.
+criteria:
+  - "Creates or requires Executor, Verifier, and Governor roles with separate outputs."
+  - "Defines loop goal, scope ledger, max iterations, stop conditions, and human review conditions."
+  - "Requires each iteration to perform action, observation, verification, revision, and persistence."
+  - "Requires Verifier and Governor approval before declaring completion."
+  - "Uses Web/H5 reverse skills such as reverse-js-crawler only as execution components, not as the whole loop."
+expect_skill: true
+timeout: 120

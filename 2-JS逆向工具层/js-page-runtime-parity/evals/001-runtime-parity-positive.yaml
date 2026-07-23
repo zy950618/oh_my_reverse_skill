@@ -1,0 +1,6 @@
+prompt: Verify an authorized localhost signature fixture across Browser, Node, V8, and PageRuntime.
+expected:
+  - compare all runtimes
+  - emit dependency map
+  - emit environment contract
+  - write regression fixture

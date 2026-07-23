@@ -1,0 +1,9 @@
+id: js-page-runtime-parity-001
+title: Runtime parity fixture must compare Browser, Node, and PageRuntime
+assertions:
+  - browser output hash is recorded
+  - node output hash is recorded
+  - page runtime output hash is recorded
+  - environment contract path is recorded
+  - parity does not claim risk token generation
+

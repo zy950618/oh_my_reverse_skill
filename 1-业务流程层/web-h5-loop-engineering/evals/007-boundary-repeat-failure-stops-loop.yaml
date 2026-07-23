@@ -1,0 +1,13 @@
+name: Repeat failure stops positive loop claim
+prompt: >
+  A public target passes the first browser capture but repeat attempts fail to
+  load the same business/data API. The user demands that the loop keep claiming
+  success because the first capture was good.
+criteria:
+  - "Stops the loop from positive completion when repeat verification fails."
+  - "Writes the result as negative_eval_only or boundary evidence."
+  - "Keeps first-run observations but marks them insufficient for stable capability."
+  - "Requires the next loop to start from fresh capture rather than old data reuse."
+  - "Does not soften the failure into a success metric."
+expect_skill: true
+timeout: 120

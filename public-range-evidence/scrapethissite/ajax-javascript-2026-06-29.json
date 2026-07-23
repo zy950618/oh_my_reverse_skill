@@ -1,0 +1,235 @@
+{
+  "schema_version": "public-range-evidence/v1",
+  "run_id": "run-20260629-085616-scrapethissite",
+  "capture_id": "cap-20260629-085616-scrapethissite-direct",
+  "target": {
+    "id": "scrapethissite",
+    "name": "Scrape This Site AJAX sandbox",
+    "url": "https://www.scrapethissite.com/pages/ajax-javascript/",
+    "host": "www.scrapethissite.com",
+    "type": "public_training_range",
+    "authorization_scope": "Public sandbox for learning web scraping; anonymous, non-destructive AJAX field parity only"
+  },
+  "captured_at": "2026-06-29T08:56:16.111640+00:00",
+  "source_freshness": "fresh",
+  "control_flow_status": "CONTROL_FLOW_PASS",
+  "business_data_status": "NOT_RUN",
+  "capability_status": "positive_verified",
+  "auth_state": "anonymous",
+  "skills": [
+    "reverse-js-crawler",
+    "web-h5-loop-engineering",
+    "skills-evaluation-governance"
+  ],
+  "scope": {
+    "domain": "scrapethissite",
+    "stage": "public_ajax_replay",
+    "auth_state": "none",
+    "mode": "direct_interface_replay",
+    "in_scope": [
+      "anonymous AJAX endpoint discovery",
+      "direct non-browser JSON replay",
+      "repeat direct JSON replay",
+      "JSON Pointer field acceptance"
+    ],
+    "out_of_scope": [
+      "authentication",
+      "challenge/WAF handling",
+      "concurrency ladder",
+      "long-term stability"
+    ]
+  },
+  "browser_execution": {
+    "engine": "python-playwright-chromium",
+    "state_reset": "new_browser_context_each_run",
+    "action": "open page, click year 2015, capture response events"
+  },
+  "backend_acceptance": {
+    "status": "pass",
+    "final_api_endpoint_confirmed": true,
+    "endpoint": "GET https://www.scrapethissite.com/pages/ajax-javascript/?ajax=true&year=2015",
+    "observed_status": 200,
+    "content_type": "application/json",
+    "body_sha256": "58407110fde954840b2d0066308d021fd1e827536cf420a91b4584697c85f078",
+    "body_length": 1570,
+    "json_type": "list",
+    "json_count": 16,
+    "json_pointers": [
+      "/0/title",
+      "/0/year",
+      "/0/awards"
+    ],
+    "observed_values": {
+      "/0/title": "Spotlight",
+      "/0/year": 2015,
+      "/0/awards": 2
+    },
+    "direct_interface_call": {
+      "status": "pass",
+      "captured_at": "2026-06-29T08:56:16.111640+00:00",
+      "client": "python-urllib",
+      "method": "GET",
+      "browser_dependency": false,
+      "uses_browser_profile": false,
+      "uses_live_storage": false,
+      "uses_manual_cookie_or_token": false,
+      "command": "python3 urllib.request with Accept: application/json and public-range user agent",
+      "observed_status": 200,
+      "content_type": "application/json",
+      "body_length": 1570,
+      "json_type": "list",
+      "json_count": 16,
+      "json_pointers": [
+        "/0/title",
+        "/0/year",
+        "/0/awards"
+      ],
+      "observed_values": {
+        "/0/title": "Spotlight  ",
+        "/0/year": 2015,
+        "/0/awards": 2
+      }
+    },
+    "repeat_direct_interface_call": {
+      "status": "pass",
+      "captured_at": "2026-06-29T07:46:56.420363+00:00",
+      "client": "python-urllib",
+      "method": "GET",
+      "browser_dependency": false,
+      "uses_browser_profile": false,
+      "uses_live_storage": false,
+      "uses_manual_cookie_or_token": false,
+      "command": "python3 urllib.request with Accept: application/json",
+      "observed_status": 200,
+      "content_type": "application/json",
+      "body_sha256": "58407110fde954840b2d0066308d021fd1e827536cf420a91b4584697c85f078",
+      "body_length": 1570,
+      "json_type": "list",
+      "json_count": 16,
+      "json_pointers": [
+        "/0/title",
+        "/0/year",
+        "/0/awards"
+      ],
+      "observed_values": {
+        "/0/title": "Spotlight",
+        "/0/year": 2015,
+        "/0/awards": 2
+      }
+    }
+  },
+  "ui_api_parity": {
+    "status": "pass",
+    "ui_selector": ".film-title",
+    "ui_rows": 16,
+    "ui_visible_titles_sample": [
+      "Spotlight",
+      "Mad Max: Fury Road",
+      "The Revenant",
+      "Bridge of Spies",
+      "The Big Short"
+    ],
+    "api_pointer": "/0/title",
+    "normalized_ui_has_api_value": true
+  },
+  "sign_or_token": {
+    "required": false
+  },
+  "provider_flow": {
+    "provider": "none",
+    "widget_detected": false,
+    "script_src": [],
+    "iframe_src": [],
+    "sitekey_or_action_observed": false,
+    "token_field_observed": false,
+    "backend_verify_observed": false,
+    "business_api_observed": true
+  },
+  "state_observer": {
+    "states_seen": [
+      "anonymous_direct_json_accepted",
+      "repeat_direct_json_accepted"
+    ],
+    "clean_unverified": "not_run",
+    "verified": "not_run",
+    "repeat_verified": "not_run"
+  },
+  "repeat_verified": true,
+  "scope_decision": {
+    "target_id": "scrapethissite",
+    "scope_type": "public_ajax_sandbox",
+    "authorization": "public_training_range",
+    "allowed_mode": "direct_interface_replay",
+    "scope_contract_path": "configs/range_scope_contract.yaml",
+    "why_in_scope": "public training range AJAX endpoint with repeat direct interface evidence; no third party generalization is allowed",
+    "in_scope": true,
+    "external_generalization_allowed": false,
+    "positive_allowed_scope": "public_ajax_direct_api_positive"
+  },
+  "capability_status_detail": {
+    "status": "positive_verified",
+    "scope_limited_positive": "public_ajax_direct_api_positive",
+    "public_range_only": true,
+    "not_generalizable_to_third_party": true
+  },
+  "repeat_attempts": [
+    {
+      "run_id": "scrapethissite-clean-2026-06-29T07-13-27-057713+00-00",
+      "captured_at": "2026-06-29T07:13:34.644702+00:00",
+      "state_reset": "new_browser_context",
+      "backend_status": 200,
+      "body_sha256": "58407110fde954840b2d0066308d021fd1e827536cf420a91b4584697c85f078",
+      "ui_rows": 16,
+      "ui_api_parity": true
+    },
+    {
+      "run_id": "scrapethissite-repeat-2026-06-29T07-13-34-644814+00-00",
+      "captured_at": "2026-06-29T07:13:42.764937+00:00",
+      "state_reset": "new_browser_context",
+      "backend_status": 200,
+      "body_sha256": "58407110fde954840b2d0066308d021fd1e827536cf420a91b4584697c85f078",
+      "ui_rows": 16,
+      "ui_api_parity": true
+    }
+  ],
+  "loop_ledger": {
+    "status": "complete_for_public_ajax_parity",
+    "executor": "captured browser network response and DOM rows on the public AJAX sandbox",
+    "verifier": "repeated capture in a new browser context and replayed the AJAX endpoint directly",
+    "governor": "allows positive skill participation only for anonymous public AJAX discovery/parity; does not claim concurrency, challenge/WAF handling, auth, or 314 delivery"
+  },
+  "fact_labels": {
+    "observed": [
+      "Direct non-browser request returned HTTP 200 application/json with 16 list items.",
+      "JSON Pointer /0/title, /0/year, and /0/awards were present in the direct response.",
+      "Repeat direct call evidence exists for the same endpoint and JSON Pointers."
+    ],
+    "derived": [
+      "This public sandbox AJAX endpoint can be used as positive evidence for direct interface replay only."
+    ],
+    "assumed": [],
+    "unverified": [
+      "Concurrency ladder was not run.",
+      "No authenticated state, challenge, WAF, or long-term stability was tested."
+    ]
+  },
+  "decision": {
+    "skills_participation": "positive_verified",
+    "positive_allowed": true,
+    "concurrency_positive": false,
+    "positive_scope": "public_ajax_direct_api_positive",
+    "why_positive": [
+      "anonymous public sandbox endpoint returned repeatable 2xx JSON through direct non-browser calls",
+      "backend_acceptance includes final endpoint, JSON Pointers, and repeat direct interface evidence",
+      "scope_decision forbids generalizing this evidence beyond public AJAX direct API parity"
+    ],
+    "not_claimed": [
+      "concurrency ladder",
+      "challenge solving",
+      "WAF bypass",
+      "auth verified state",
+      "314 service delivery",
+      "long-term stability"
+    ]
+  }
+}

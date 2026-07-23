@@ -4,17 +4,197 @@ import datetime
 import json
 import re
 import sys
+import argparse
 from pathlib import Path
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent.parent
+TOOLS_ROOT = REPO_ROOT / "tools"
+GOVERNANCE_TOOLS_ROOT = TOOLS_ROOT / "governance"
+if str(TOOLS_ROOT) not in sys.path:
+    sys.path.insert(0, str(TOOLS_ROOT))
+if str(GOVERNANCE_TOOLS_ROOT) not in sys.path:
+    sys.path.insert(0, str(GOVERNANCE_TOOLS_ROOT))
+from skill_score_config import load_skill_score_config
+from skills_manifest import load_manifest, skill_paths, validate_manifest
+
+SCORE_CONFIG = load_skill_score_config(REPO_ROOT)
+PUBLIC_RANGE_EVIDENCE_ROOT = REPO_ROOT / "public-range-evidence"
+PUBLIC_RANGE_MAX_AGE_DAYS = 30
+PUBLIC_RANGE_SCAN_EXCLUDED_PARTS = {
+    "raw",
+    "_archive",
+    "fixtures",
+    "replay",
+    "reports",
+    "manifests",
+    "samples",
+    "model",
+    "inference",
+    "eval",
+    "mock_server",
+    "fastapi_adapter",
+    "sdk_examples",
+    "tests",
+    "negative_cases",
+    "repeat_reports",
+    "drift_cases",
+}
+PUBLIC_RANGE_SCAN_EXCLUDED_ROOTS = {
+    "airline-lab-order-flow",
+    "fingerprint-risk-lab",
+    "pure-api-lab",
+    "real-site-observation-pack",
+}
 SITE_MEMORY_ROOT = REPO_ROOT / "站点经验库"
 
 
 def read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8-sig", errors="replace")
+
+
+def _parse_public_evidence_datetime(raw: object) -> datetime.datetime | None:
+    if not isinstance(raw, str) or not raw.strip():
+        return None
+    value = raw.strip()
+    if value.endswith("Z"):
+        value = value[:-1] + "+00:00"
+    try:
+        dt = datetime.datetime.fromisoformat(value)
+    except ValueError:
+        return None
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=datetime.timezone.utc)
+    return dt.astimezone(datetime.timezone.utc)
+
+
+def _public_section_pass(section: object) -> bool:
+    return isinstance(section, dict) and str(section.get("status", "")).lower() == "pass"
+
+
+def _public_pointers_ok(value: object) -> bool:
+    return isinstance(value, list) and bool(value) and all(
+        isinstance(item, str) and item.startswith("/") for item in value
+    )
+
+
+def _public_interface_call_ok(call: object) -> bool:
+    if not isinstance(call, dict):
+        return False
+    if str(call.get("status", "")).lower() != "pass":
+        return False
+    if call.get("browser_dependency") is not False:
+        return False
+    for key in ("uses_browser_profile", "uses_live_storage", "uses_manual_cookie_or_token"):
+        if call.get(key) is not False:
+            return False
+    if not isinstance(call.get("observed_status"), int):
+        return False
+    if not 200 <= call["observed_status"] < 300:
+        return False
+    content_type = str(call.get("content_type", "")).lower()
+    json_type = str(call.get("json_type", "")).lower()
+    if "json" not in content_type and json_type not in {"dict", "list"}:
+        return False
+    return _public_pointers_ok(call.get("json_pointers"))
+
+
+def _public_sign_token_ok(payload: dict) -> bool:
+    sign = payload.get("sign_or_token")
+    if not isinstance(sign, dict) or sign.get("required") is not True:
+        return True
+    if sign.get("generation_mode") not in {"v8_env", "js_runtime", "node_vm", "wasm_crypto", "native_crypto", "adapter"}:
+        return False
+    if sign.get("browser_captured_replay") is not False:
+        return False
+    validation = sign.get("validation")
+    return isinstance(validation, dict) and str(validation.get("status", "")).lower() == "pass"
+
+
+def _public_concurrency_ok(payload: dict) -> bool:
+    decision = payload.get("decision")
+    if not isinstance(decision, dict) or decision.get("concurrency_positive") is not True:
+        return True
+    ladder = payload.get("concurrency_ladder")
+    if not isinstance(ladder, dict):
+        return False
+    for worker in ("worker_1", "worker_2", "worker_5", "worker_10"):
+        item = ladder.get(worker)
+        if not isinstance(item, dict) or item.get("status") != "pass":
+            return False
+        if item.get("session_cache_token_isolated") is not True:
+            return False
+        if item.get("backend_acceptance") is not True:
+            return False
+        if "failure_rate" not in item or not item.get("stop_condition"):
+            return False
+    return True
+
+
+def _public_evidence_passes_hard_gates(payload: dict) -> bool:
+    decision = payload.get("decision")
+    if not isinstance(decision, dict):
+        return False
+    if decision.get("skills_participation") != "positive_allowed":
+        return False
+    if decision.get("positive_allowed") is not True:
+        return False
+    if payload.get("source_freshness") != "fresh":
+        return False
+    captured_at = _parse_public_evidence_datetime(payload.get("captured_at"))
+    if captured_at is None:
+        return False
+    if captured_at < datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=PUBLIC_RANGE_MAX_AGE_DAYS):
+        return False
+    backend = payload.get("backend_acceptance")
+    if not _public_section_pass(backend):
+        return False
+    if not isinstance(backend, dict) or backend.get("final_api_endpoint_confirmed") is not True:
+        return False
+    if not isinstance(backend.get("observed_status"), int):
+        return False
+    if not 200 <= backend["observed_status"] < 300:
+        return False
+    if not _public_pointers_ok(backend.get("json_pointers")):
+        return False
+    if not _public_interface_call_ok(backend.get("direct_interface_call")):
+        return False
+    if not _public_interface_call_ok(backend.get("repeat_direct_interface_call")):
+        return False
+    ui = payload.get("ui_api_parity")
+    if ui is not None and not _public_section_pass(ui):
+        return False
+    if not _public_sign_token_ok(payload):
+        return False
+    if not _public_concurrency_ok(payload):
+        return False
+    return True
+
+
+def has_positive_public_range_evidence(skill_name: str) -> bool:
+    if not PUBLIC_RANGE_EVIDENCE_ROOT.is_dir():
+        return False
+    for path in PUBLIC_RANGE_EVIDENCE_ROOT.rglob("*.json"):
+        relative_parts = [part.lower() for part in path.relative_to(PUBLIC_RANGE_EVIDENCE_ROOT).parts]
+        if not relative_parts:
+            continue
+        if relative_parts[0] in PUBLIC_RANGE_SCAN_EXCLUDED_ROOTS:
+            continue
+        if PUBLIC_RANGE_SCAN_EXCLUDED_PARTS & set(relative_parts[:-1]):
+            continue
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8-sig"))
+        except Exception:
+            continue
+        if not isinstance(payload, dict):
+            continue
+        if skill_name not in (payload.get("skills") or []):
+            continue
+        if _public_evidence_passes_hard_gates(payload):
+            return True
+    return False
 
 
 def is_todo_placeholder(path: Path) -> bool:
@@ -97,6 +277,8 @@ ARTIFACT_DIR_NAMES = {
 def has_real_metrics_artifact(skill: Path) -> bool:
     if not skill.is_dir():
         return False
+    if has_positive_public_range_evidence(skill.name):
+        return True
     for child in skill.iterdir():
         if not child.is_dir() or child.name.lower() not in ARTIFACT_DIR_NAMES:
             continue
@@ -205,7 +387,7 @@ def _empty_consistency() -> dict:
 
 
 def collect_consistency_evidence_by_domain() -> dict[str, dict]:
-    """扫 站点经验库/*/fixtures/, 按 domain 分组返回证据。
+    """扫 站点经验库/*/fixtures/active/, 按 domain 分组返回证据。
 
     返回:
       { domain: {
@@ -226,6 +408,9 @@ def collect_consistency_evidence_by_domain() -> dict[str, dict]:
         fix_dir = domain_dir / "fixtures"
         if not fix_dir.is_dir():
             continue
+        active_dir = fix_dir / "active"
+        if active_dir.is_dir():
+            fix_dir = active_dir
 
         entry = {
             "fixtures_present": True,
@@ -316,7 +501,8 @@ def collect_consistency_evidence() -> dict:
     return aggregate_consistency_for_skill(["cross-platform"], by_domain)
 
 
-def build_evidence(text: str, ref_text: str, evals: list[Path], refs: list[Path], agents_exists: bool) -> list[str]:
+def build_evidence(text: str, ref_text: str, evals: list[Path], refs: list[Path], agents_exists: bool,
+                   skill: Path | None = None) -> list[str]:
     evidence: list[str] = []
     real_e = real_evals(evals)
     if text:
@@ -335,6 +521,8 @@ def build_evidence(text: str, ref_text: str, evals: list[Path], refs: list[Path]
         evidence.append("包含回归/边界 eval")
     if "站点经验库" in text or "site memory" in text.lower() or "site memory" in ref_text.lower():
         evidence.append("包含经验沉淀要求")
+    if skill is not None and has_positive_public_range_evidence(skill.name):
+        evidence.append("public range positive evidence passed direct-interface/repeat-direct hard gates")
     return evidence
 
 
@@ -535,7 +723,7 @@ def score_skill(skill: Path, consistency_by_domain: dict[str, dict],
             "has_negative_eval": has_negative_eval(evals),
             "has_regression_eval": has_regression_eval(evals),
             "criteria_count": criteria_count(evals),
-            "evidence": build_evidence(text, ref_text, evals, refs, agents.exists()),
+            "evidence": build_evidence(text, ref_text, evals, refs, agents.exists(), skill),
             "gaps": build_gaps(skill, text, ref_text, evals, refs, consistency),
             "checks": {
                 "structure": s_checks,
@@ -568,7 +756,7 @@ def score_skill(skill: Path, consistency_by_domain: dict[str, dict],
         "has_negative_eval": has_negative_eval(evals),
         "has_regression_eval": has_regression_eval(evals),
         "criteria_count": criteria_count(evals),
-        "evidence": build_evidence(text, ref_text, evals, refs, agents.exists()),
+        "evidence": build_evidence(text, ref_text, evals, refs, agents.exists(), skill),
         "gaps": build_gaps(skill, text, ref_text, evals, refs, consistency),
         "checks": {
             "structure": s_checks,
@@ -598,32 +786,51 @@ def _find_skill_dirs(root: Path) -> list[Path]:
 
 
 def main() -> int:
-    args = sys.argv[1:]
-    output_path: Path | None = None
-    if "--output" in args:
-        idx = args.index("--output")
-        if idx + 1 >= len(args):
-            print("--output requires a path", file=sys.stderr)
-            return 2
-        output_path = Path(args[idx + 1])
-        args = args[:idx] + args[idx + 2:]
+    parser = argparse.ArgumentParser(description="Score SKILL.md directories")
+    parser.add_argument("roots", nargs="*", help="skills roots for legacy scan mode")
+    parser.add_argument("--output", type=Path, help="write JSON to file")
+    parser.add_argument("--manifest", type=Path, help="score exactly the skills listed in skills-manifest.json")
+    args = parser.parse_args()
 
-    if not args:
-        print("usage: score_skills.py [--output FILE] <skills-root> [more-roots...]", file=sys.stderr)
+    if args.manifest and args.roots:
+        print("--manifest cannot be combined with roots", file=sys.stderr)
+        return 2
+    if not args.manifest and not args.roots:
+        parser.print_usage(sys.stderr)
         return 2
 
-    roots = [Path(arg) for arg in args]
     consistency_by_domain = collect_consistency_evidence_by_domain()
 
     skills: list[Path] = []
     seen: set[str] = set()
-    for r in roots:
-        for s in _find_skill_dirs(r):
-            key = str(s.resolve())
-            if key in seen:
+    manifest_skill_layers: dict[str, str] = {}
+    if args.manifest:
+        manifest = load_manifest(args.manifest)
+        manifest_errors = validate_manifest(manifest)
+        if manifest_errors:
+            for error in manifest_errors:
+                print(f"manifest error: {error}", file=sys.stderr)
+            return 1
+        candidate_dirs = skill_paths(manifest)
+        for item in manifest.get("skills", []):
+            if isinstance(item, dict) and isinstance(item.get("path"), str) and isinstance(item.get("layer"), str):
+                manifest_skill_layers[str((Path(manifest["_repo_root"]) / item["path"]).resolve())] = item["layer"]
+    else:
+        candidate_dirs = []
+        for r in [Path(arg) for arg in args.roots]:
+            candidate_dirs.extend(_find_skill_dirs(r))
+
+    for s in candidate_dirs:
+        if args.manifest:
+            if not (s / "SKILL.md").exists():
                 continue
-            seen.add(key)
-            skills.append(s)
+            key = str(s.resolve())
+        else:
+            key = str(s.resolve())
+        if key in seen:
+            continue
+        seen.add(key)
+        skills.append(s)
 
     sorted_skills = sorted(skills, key=lambda p: p.name)
 
@@ -643,7 +850,12 @@ def main() -> int:
     else:
         dep_completeness = 0.0
 
-    results = [score_skill(s, consistency_by_domain, dep_completeness) for s in sorted_skills]
+    results = []
+    for s in sorted_skills:
+        result = score_skill(s, consistency_by_domain, dep_completeness)
+        if args.manifest:
+            result["layer"] = manifest_skill_layers.get(str(s.resolve()))
+        results.append(result)
 
     execution_results = [r for r in results if r.get("category") == "execution"]
     foundation_results = [r for r in results if r.get("category") == "foundation"]
@@ -666,6 +878,14 @@ def main() -> int:
                    "execution_count": 0}
 
     payload = json.dumps({
+        "rubric": {
+            "path": SCORE_CONFIG["path"],
+            "scoring_dimensions": SCORE_CONFIG["scoring_dimensions"],
+        },
+        "manifest": {
+            "path": str(args.manifest) if args.manifest else None,
+            "mode": "exact" if args.manifest else "legacy-root-scan",
+        },
         "overall": overall,
         "dependency_completeness": dep_completeness,
         "consistency_evidence": collect_consistency_evidence(),
@@ -674,10 +894,10 @@ def main() -> int:
         "guideline_skills": guideline_results,
         "skills": results,
     }, ensure_ascii=False, indent=2)
-    if output_path is not None:
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-        output_path.write_text(payload + "\n", encoding="utf-8")
-        print(f"wrote {output_path}", file=sys.stderr)
+    if args.output is not None:
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(payload + "\n", encoding="utf-8")
+        print(f"wrote {args.output}", file=sys.stderr)
     else:
         # stdout 重定向时 Windows 仍会用 cp936 包装,buffer 是兜底
         try:

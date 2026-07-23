@@ -1,0 +1,609 @@
+{
+  "browser_dependency": false,
+  "commands_per_round": [
+    "public-range-evidence\\airline-lab-order-flow\\replay\\replay.py",
+    "public-range-evidence\\airline-lab-order-flow\\tests\\run_order_flow_tests.py",
+    "tools\\validate_pure_api_delivery.py public-range-evidence/airline-lab-order-flow",
+    "public-range-evidence\\airline-lab-order-flow\\tests\\run_negative_case_checks.py"
+  ],
+  "generated_at": "2026-07-01T09:42:49.684183+00:00",
+  "live_site_calls_performed": false,
+  "pythondontwritebytecode": "1",
+  "rounds": [
+    {
+      "commands": [
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\replay\\replay.py",
+          "duration_seconds": 0.081,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"tool\": \"airline_lab_fixture_replay\",",
+            "  \"status\": \"PASS\",",
+            "  \"plan\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\replay\\\\replay_plan.json\",",
+            "  \"failures\": []",
+            "}"
+          ]
+        },
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\tests\\run_order_flow_tests.py",
+          "duration_seconds": 0.664,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"status\": \"PASS\",",
+            "  \"report\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\reports\\\\deep_validation_report.json\",",
+            "  \"cases\": 13",
+            "}"
+          ]
+        },
+        {
+          "command": "tools\\validate_pure_api_delivery.py public-range-evidence/airline-lab-order-flow",
+          "duration_seconds": 0.052,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "PASS: pure API delivery gate passed for public-range-evidence\\airline-lab-order-flow"
+          ]
+        },
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\tests\\run_negative_case_checks.py",
+          "duration_seconds": 0.679,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"status\": \"PASS\",",
+            "  \"report\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\repeat_reports\\\\negative_case_report.json\",",
+            "  \"cases\": 12",
+            "}"
+          ]
+        }
+      ],
+      "round": 1,
+      "status": "PASS"
+    },
+    {
+      "commands": [
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\replay\\replay.py",
+          "duration_seconds": 0.085,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"tool\": \"airline_lab_fixture_replay\",",
+            "  \"status\": \"PASS\",",
+            "  \"plan\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\replay\\\\replay_plan.json\",",
+            "  \"failures\": []",
+            "}"
+          ]
+        },
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\tests\\run_order_flow_tests.py",
+          "duration_seconds": 0.656,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"status\": \"PASS\",",
+            "  \"report\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\reports\\\\deep_validation_report.json\",",
+            "  \"cases\": 13",
+            "}"
+          ]
+        },
+        {
+          "command": "tools\\validate_pure_api_delivery.py public-range-evidence/airline-lab-order-flow",
+          "duration_seconds": 0.042,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "PASS: pure API delivery gate passed for public-range-evidence\\airline-lab-order-flow"
+          ]
+        },
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\tests\\run_negative_case_checks.py",
+          "duration_seconds": 0.643,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"status\": \"PASS\",",
+            "  \"report\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\repeat_reports\\\\negative_case_report.json\",",
+            "  \"cases\": 12",
+            "}"
+          ]
+        }
+      ],
+      "round": 2,
+      "status": "PASS"
+    },
+    {
+      "commands": [
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\replay\\replay.py",
+          "duration_seconds": 0.083,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"tool\": \"airline_lab_fixture_replay\",",
+            "  \"status\": \"PASS\",",
+            "  \"plan\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\replay\\\\replay_plan.json\",",
+            "  \"failures\": []",
+            "}"
+          ]
+        },
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\tests\\run_order_flow_tests.py",
+          "duration_seconds": 0.664,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"status\": \"PASS\",",
+            "  \"report\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\reports\\\\deep_validation_report.json\",",
+            "  \"cases\": 13",
+            "}"
+          ]
+        },
+        {
+          "command": "tools\\validate_pure_api_delivery.py public-range-evidence/airline-lab-order-flow",
+          "duration_seconds": 0.047,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "PASS: pure API delivery gate passed for public-range-evidence\\airline-lab-order-flow"
+          ]
+        },
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\tests\\run_negative_case_checks.py",
+          "duration_seconds": 0.676,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"status\": \"PASS\",",
+            "  \"report\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\repeat_reports\\\\negative_case_report.json\",",
+            "  \"cases\": 12",
+            "}"
+          ]
+        }
+      ],
+      "round": 3,
+      "status": "PASS"
+    },
+    {
+      "commands": [
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\replay\\replay.py",
+          "duration_seconds": 0.071,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"tool\": \"airline_lab_fixture_replay\",",
+            "  \"status\": \"PASS\",",
+            "  \"plan\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\replay\\\\replay_plan.json\",",
+            "  \"failures\": []",
+            "}"
+          ]
+        },
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\tests\\run_order_flow_tests.py",
+          "duration_seconds": 0.733,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"status\": \"PASS\",",
+            "  \"report\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\reports\\\\deep_validation_report.json\",",
+            "  \"cases\": 13",
+            "}"
+          ]
+        },
+        {
+          "command": "tools\\validate_pure_api_delivery.py public-range-evidence/airline-lab-order-flow",
+          "duration_seconds": 0.05,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "PASS: pure API delivery gate passed for public-range-evidence\\airline-lab-order-flow"
+          ]
+        },
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\tests\\run_negative_case_checks.py",
+          "duration_seconds": 0.715,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"status\": \"PASS\",",
+            "  \"report\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\repeat_reports\\\\negative_case_report.json\",",
+            "  \"cases\": 12",
+            "}"
+          ]
+        }
+      ],
+      "round": 4,
+      "status": "PASS"
+    },
+    {
+      "commands": [
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\replay\\replay.py",
+          "duration_seconds": 0.089,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"tool\": \"airline_lab_fixture_replay\",",
+            "  \"status\": \"PASS\",",
+            "  \"plan\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\replay\\\\replay_plan.json\",",
+            "  \"failures\": []",
+            "}"
+          ]
+        },
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\tests\\run_order_flow_tests.py",
+          "duration_seconds": 0.687,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"status\": \"PASS\",",
+            "  \"report\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\reports\\\\deep_validation_report.json\",",
+            "  \"cases\": 13",
+            "}"
+          ]
+        },
+        {
+          "command": "tools\\validate_pure_api_delivery.py public-range-evidence/airline-lab-order-flow",
+          "duration_seconds": 0.049,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "PASS: pure API delivery gate passed for public-range-evidence\\airline-lab-order-flow"
+          ]
+        },
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\tests\\run_negative_case_checks.py",
+          "duration_seconds": 0.645,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"status\": \"PASS\",",
+            "  \"report\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\repeat_reports\\\\negative_case_report.json\",",
+            "  \"cases\": 12",
+            "}"
+          ]
+        }
+      ],
+      "round": 5,
+      "status": "PASS"
+    },
+    {
+      "commands": [
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\replay\\replay.py",
+          "duration_seconds": 0.089,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"tool\": \"airline_lab_fixture_replay\",",
+            "  \"status\": \"PASS\",",
+            "  \"plan\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\replay\\\\replay_plan.json\",",
+            "  \"failures\": []",
+            "}"
+          ]
+        },
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\tests\\run_order_flow_tests.py",
+          "duration_seconds": 0.655,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"status\": \"PASS\",",
+            "  \"report\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\reports\\\\deep_validation_report.json\",",
+            "  \"cases\": 13",
+            "}"
+          ]
+        },
+        {
+          "command": "tools\\validate_pure_api_delivery.py public-range-evidence/airline-lab-order-flow",
+          "duration_seconds": 0.045,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "PASS: pure API delivery gate passed for public-range-evidence\\airline-lab-order-flow"
+          ]
+        },
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\tests\\run_negative_case_checks.py",
+          "duration_seconds": 0.64,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"status\": \"PASS\",",
+            "  \"report\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\repeat_reports\\\\negative_case_report.json\",",
+            "  \"cases\": 12",
+            "}"
+          ]
+        }
+      ],
+      "round": 6,
+      "status": "PASS"
+    },
+    {
+      "commands": [
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\replay\\replay.py",
+          "duration_seconds": 0.083,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"tool\": \"airline_lab_fixture_replay\",",
+            "  \"status\": \"PASS\",",
+            "  \"plan\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\replay\\\\replay_plan.json\",",
+            "  \"failures\": []",
+            "}"
+          ]
+        },
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\tests\\run_order_flow_tests.py",
+          "duration_seconds": 0.674,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"status\": \"PASS\",",
+            "  \"report\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\reports\\\\deep_validation_report.json\",",
+            "  \"cases\": 13",
+            "}"
+          ]
+        },
+        {
+          "command": "tools\\validate_pure_api_delivery.py public-range-evidence/airline-lab-order-flow",
+          "duration_seconds": 0.044,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "PASS: pure API delivery gate passed for public-range-evidence\\airline-lab-order-flow"
+          ]
+        },
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\tests\\run_negative_case_checks.py",
+          "duration_seconds": 0.667,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"status\": \"PASS\",",
+            "  \"report\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\repeat_reports\\\\negative_case_report.json\",",
+            "  \"cases\": 12",
+            "}"
+          ]
+        }
+      ],
+      "round": 7,
+      "status": "PASS"
+    },
+    {
+      "commands": [
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\replay\\replay.py",
+          "duration_seconds": 0.079,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"tool\": \"airline_lab_fixture_replay\",",
+            "  \"status\": \"PASS\",",
+            "  \"plan\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\replay\\\\replay_plan.json\",",
+            "  \"failures\": []",
+            "}"
+          ]
+        },
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\tests\\run_order_flow_tests.py",
+          "duration_seconds": 0.635,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"status\": \"PASS\",",
+            "  \"report\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\reports\\\\deep_validation_report.json\",",
+            "  \"cases\": 13",
+            "}"
+          ]
+        },
+        {
+          "command": "tools\\validate_pure_api_delivery.py public-range-evidence/airline-lab-order-flow",
+          "duration_seconds": 0.051,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "PASS: pure API delivery gate passed for public-range-evidence\\airline-lab-order-flow"
+          ]
+        },
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\tests\\run_negative_case_checks.py",
+          "duration_seconds": 0.644,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"status\": \"PASS\",",
+            "  \"report\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\repeat_reports\\\\negative_case_report.json\",",
+            "  \"cases\": 12",
+            "}"
+          ]
+        }
+      ],
+      "round": 8,
+      "status": "PASS"
+    },
+    {
+      "commands": [
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\replay\\replay.py",
+          "duration_seconds": 0.081,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"tool\": \"airline_lab_fixture_replay\",",
+            "  \"status\": \"PASS\",",
+            "  \"plan\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\replay\\\\replay_plan.json\",",
+            "  \"failures\": []",
+            "}"
+          ]
+        },
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\tests\\run_order_flow_tests.py",
+          "duration_seconds": 0.665,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"status\": \"PASS\",",
+            "  \"report\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\reports\\\\deep_validation_report.json\",",
+            "  \"cases\": 13",
+            "}"
+          ]
+        },
+        {
+          "command": "tools\\validate_pure_api_delivery.py public-range-evidence/airline-lab-order-flow",
+          "duration_seconds": 0.052,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "PASS: pure API delivery gate passed for public-range-evidence\\airline-lab-order-flow"
+          ]
+        },
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\tests\\run_negative_case_checks.py",
+          "duration_seconds": 0.673,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"status\": \"PASS\",",
+            "  \"report\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\repeat_reports\\\\negative_case_report.json\",",
+            "  \"cases\": 12",
+            "}"
+          ]
+        }
+      ],
+      "round": 9,
+      "status": "PASS"
+    },
+    {
+      "commands": [
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\replay\\replay.py",
+          "duration_seconds": 0.077,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"tool\": \"airline_lab_fixture_replay\",",
+            "  \"status\": \"PASS\",",
+            "  \"plan\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\replay\\\\replay_plan.json\",",
+            "  \"failures\": []",
+            "}"
+          ]
+        },
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\tests\\run_order_flow_tests.py",
+          "duration_seconds": 0.7,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"status\": \"PASS\",",
+            "  \"report\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\reports\\\\deep_validation_report.json\",",
+            "  \"cases\": 13",
+            "}"
+          ]
+        },
+        {
+          "command": "tools\\validate_pure_api_delivery.py public-range-evidence/airline-lab-order-flow",
+          "duration_seconds": 0.05,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "PASS: pure API delivery gate passed for public-range-evidence\\airline-lab-order-flow"
+          ]
+        },
+        {
+          "command": "public-range-evidence\\airline-lab-order-flow\\tests\\run_negative_case_checks.py",
+          "duration_seconds": 0.661,
+          "exit_code": 0,
+          "status": "PASS",
+          "stderr_tail": [],
+          "stdout_tail": [
+            "{",
+            "  \"status\": \"PASS\",",
+            "  \"report\": \"E:\\\\ai_project\\\\oh_my_reverse_skill\\\\public-range-evidence\\\\airline-lab-order-flow\\\\repeat_reports\\\\negative_case_report.json\",",
+            "  \"cases\": 12",
+            "}"
+          ]
+        }
+      ],
+      "round": 10,
+      "status": "PASS"
+    }
+  ],
+  "rounds_failed": 0,
+  "rounds_passed": 10,
+  "rounds_requested": 10,
+  "schema_version": "airline-lab-repeat-stress/v1",
+  "status": "PASS"
+}

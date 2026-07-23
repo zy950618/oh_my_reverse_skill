@@ -1,0 +1,6 @@
+prompt: A PageRuntime fixture changed because Permissions API output drifted.
+expected:
+  - mark drift
+  - update environment contract
+  - rerun regression fixture
+  - do not claim production success

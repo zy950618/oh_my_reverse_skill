@@ -1,23 +1,18 @@
-"""聚合一个 domain 下所有 snapshot 的 diff 结果,出 markdown 报告 + 更新 trend.json。
-
-依赖 snapshot_diff.py。
-
-用法:
-  python tools/replayer/consistency_report.py --domain thaiairways.com
-
-输出:
-  - 站点经验库/<domain>/fixtures/reports/<YYYY-MM-DD>-replay.md
-  - 站点经验库/<domain>/fixtures/reports/trend.json
-  - stdout: 摘要 (供 CI 决定是否开 issue)
-  - 退出码: 一致率 >= --threshold 返回 0,否则返回 3
-"""
+#!/usr/bin/env python3
+"""Aggregate replay diffs into one fail-closed consistency result."""
 from __future__ import annotations
 
 import argparse
 import datetime
 import json
+import math
+import os
 import sys
+import tempfile
+from collections.abc import Mapping
+from dataclasses import asdict, dataclass, replace
 from pathlib import Path
+from typing import Any
 
 if hasattr(sys.stdout, "reconfigure"):
     try:
@@ -29,208 +24,455 @@ REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 SITE_ROOT = REPO_ROOT / "站点经验库"
 sys.path.insert(0, str(REPO_ROOT / "tools" / "replayer"))
 
-from snapshot_diff import diff_snapshot
 from field_rules import load_meta
+from fixture_layout import select_fixture_layout
+from snapshot_diff import diff_snapshot
 
 
-def render_report(domain: str, results: list[dict], overall: dict) -> str:
+@dataclass(frozen=True)
+class ConsistencyResult:
+    status: str
+    exit_code: int
+    total: int
+    selected: int
+    replayed: int
+    compared: int
+    fatal_error_count: int
+    status_mismatch_count: int
+    no_data: bool
+    consistency_rate: float
+    threshold: float | None
+    failure_kind: str | None
+    report_artifact: str | None
+    trend_artifact: str | None
+    comparable_fields: int = 0
+    matched_fields: int = 0
+    structure_ok: int = 0
+    empty_snapshot_count: int = 0
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+class TrendInvalidError(ValueError):
+    pass
+
+
+class InvalidArgumentsError(ValueError):
+    pass
+
+
+class CanonicalArgumentParser(argparse.ArgumentParser):
+    def error(self, message: str) -> None:
+        raise InvalidArgumentsError(message)
+
+
+def serialize_json(value: object, *, indent: int | None = None) -> str:
+    return json.dumps(
+        value,
+        ensure_ascii=False,
+        allow_nan=False,
+        indent=indent,
+        separators=None if indent is not None else (",", ":"),
+    )
+
+
+def _reject_json_constant(value: str) -> None:
+    raise ValueError(f"non-finite JSON constant is not allowed: {value}")
+
+
+def _strict_json_loads(document: str) -> Any:
+    return json.loads(document, parse_constant=_reject_json_constant)
+
+
+def _result(
+    status: str,
+    exit_code: int,
+    failure_kind: str | None,
+    *,
+    threshold: float | None,
+    no_data: bool = False,
+    total: int = 0,
+    selected: int = 0,
+    replayed: int = 0,
+    compared: int = 0,
+    fatal_error_count: int = 0,
+    status_mismatch_count: int = 0,
+    consistency_rate: float = 0.0,
+    comparable_fields: int = 0,
+    matched_fields: int = 0,
+    structure_ok: int = 0,
+    empty_snapshot_count: int = 0,
+) -> ConsistencyResult:
+    return ConsistencyResult(
+        status=status,
+        exit_code=exit_code,
+        total=total,
+        selected=selected,
+        replayed=replayed,
+        compared=compared,
+        fatal_error_count=fatal_error_count,
+        status_mismatch_count=status_mismatch_count,
+        no_data=no_data,
+        consistency_rate=consistency_rate,
+        threshold=threshold,
+        failure_kind=failure_kind,
+        report_artifact=None,
+        trend_artifact=None,
+        comparable_fields=comparable_fields,
+        matched_fields=matched_fields,
+        structure_ok=structure_ok,
+        empty_snapshot_count=empty_snapshot_count,
+    )
+
+
+def _emit(result: ConsistencyResult) -> int:
+    print(serialize_json(result.to_dict()))
+    return result.exit_code
+
+
+def _read_object(path: Path, label: str) -> tuple[dict[str, Any] | None, str | None]:
+    try:
+        value = _strict_json_loads(path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        return None, f"{label}: {type(exc).__name__}: {exc}"
+    if not isinstance(value, dict):
+        return None, f"{label}: root is not an object"
+    return value, None
+
+
+def _read_trend(path: Path) -> dict[str, Any]:
+    if not path.exists():
+        return {"entries": []}
+    try:
+        value = _strict_json_loads(path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        raise TrendInvalidError(f"trend unreadable or malformed: {exc}") from exc
+    if not isinstance(value, dict):
+        raise TrendInvalidError("trend root is not an object")
+    if "entries" not in value or not isinstance(value["entries"], list):
+        raise TrendInvalidError("trend entries is missing or not a list")
+    return value
+
+
+def _canonical_result(
+    *,
+    threshold: float,
+    total: int,
+    replayed: int,
+    compared: int,
+    fatal_error_count: int,
+    status_mismatch_count: int,
+    comparable_fields: int,
+    matched_fields: int,
+    structure_ok: int,
+    empty_snapshot_count: int,
+) -> ConsistencyResult:
+    rate = round(matched_fields / comparable_fields, 4) if comparable_fields else 0.0
+    common = dict(
+        threshold=threshold,
+        total=total,
+        selected=total,
+        replayed=replayed,
+        compared=compared,
+        fatal_error_count=fatal_error_count,
+        status_mismatch_count=status_mismatch_count,
+        consistency_rate=rate,
+        comparable_fields=comparable_fields,
+        matched_fields=matched_fields,
+        structure_ok=structure_ok,
+        empty_snapshot_count=empty_snapshot_count,
+    )
+    if fatal_error_count or replayed != total:
+        return _result("FAIL", 3, "FATAL_ENDPOINT", **common)
+    if total == 0 or comparable_fields == 0:
+        return _result("NO_DATA", 4, "NO_DATA", no_data=True, **common)
+    if rate >= threshold:
+        return _result("PASS", 0, None, **common)
+    if rate >= 0.80:
+        return _result("WARN", 3, "THRESHOLD", **common)
+    return _result("FAIL", 3, "THRESHOLD", **common)
+
+
+def render_report(domain: str, results: list[dict[str, Any]], overall: dict[str, Any]) -> str:
     date = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     lines = [
         f"# 一致性重放报告 — {domain}",
         "",
         f"- 生成时间: {date}",
-        f"- snapshots 总数: {overall['total']}",
-        f"- 重放成功: {overall['replayed']}",
-        f"- 结构通过: {overall['structure_ok']} / {overall['replayed']}",
-        f"- empty snapshot (不进分母): {overall.get('empty_snapshot_count', 0)}",
-        f"- **整体一致率: {overall['consistency_rate']:.2%}**" +
-            (" (NO_DATA: 所有 snapshot 都是空,无法计算)" if overall['status'] == 'NO_DATA' else ""),
-        f"- 状态: {overall['status']}",
+        f"- selected: {overall['selected']}",
+        f"- replayed: {overall['replayed']}",
+        f"- compared: {overall['compared']}",
+        f"- fatal errors: {overall['fatal_error_count']}",
+        f"- HTTP status mismatches: {overall['status_mismatch_count']}",
+        f"- consistency rate: {overall['consistency_rate']:.2%}",
+        f"- status: {overall['status']} (exit {overall['exit_code']})",
         "",
-        "## 单 endpoint 明细",
+        "## Canonical Result",
         "",
-        "| Endpoint | Status | Fields | Matched | Mismatch | Missing | Extra | Rate |",
-        "|---|---|---:|---:|---:|---:|---:|---:|",
+        "```json",
+        serialize_json(overall),
+        "```",
+        "",
+        "## Endpoint Records",
+        "",
+        "| Endpoint | Result | Fields | Matched | Rate |",
+        "|---|---|---:|---:|---:|",
     ]
-    for r in results:
-        if r.get("empty_snapshot"):
-            status = "SKIP"
-        elif r["structure_ok"] and r["consistency_rate"] >= 0.95:
-            status = "PASS"
-        elif r["consistency_rate"] >= 0.80:
-            status = "WARN"
-        else:
-            status = "FAIL"
-        status_str = f"{r.get('snapshot_status', '-')}→{r.get('actual_status', '-')}"
-        rate_str = "EMPTY" if r.get("empty_snapshot") else f"{r['consistency_rate']:.1%}"
+    for item in results:
+        if "errors" in item:
+            detail = "; ".join(item["errors"]).replace("|", "\\|")
+            lines.append(f"| `{item['endpoint']}` | ERROR: {detail} | 0 | 0 | 0.0% |")
+            continue
+        status = "STATUS_MISMATCH" if not item.get("status_match", False) else "COMPARED"
         lines.append(
-            f"| `{r['endpoint']}` | {status_str} | {r['total_fields']} | {r['matched']} "
-            f"| {len(r['mismatched'])} | {len(r['missing'])} | {len(r['extra'])} "
-            f"| {rate_str} [{status}] |"
+            f"| `{item['endpoint']}` | {status} | {item['total_fields']} | "
+            f"{item['matched']} | {item['consistency_rate']:.1%} |"
         )
-
-    fails = [r for r in results if not r.get("empty_snapshot") and (not r["structure_ok"] or r["consistency_rate"] < 0.95)]
-    if fails:
-        lines.append("")
-        lines.append("## 失败 / 警告详情")
-        for r in fails:
-            lines.append("")
-            lines.append(f"### `{r['endpoint']}` — 一致率 {r['consistency_rate']:.1%}")
-            if not r["status_match"]:
-                lines.append(
-                    f"- **HTTP status 不匹配**: snapshot={r['snapshot_status']} actual={r['actual_status']}"
-                )
-            if r["missing"]:
-                lines.append(f"- 缺失字段 ({len(r['missing'])}): `{', '.join(r['missing'][:5])}`"
-                             f"{'...' if len(r['missing']) > 5 else ''}")
-            if r["extra"]:
-                lines.append(f"- 多余字段 ({len(r['extra'])}): `{', '.join(r['extra'][:5])}`"
-                             f"{'...' if len(r['extra']) > 5 else ''}")
-            if r["mismatched"]:
-                lines.append(f"- 字段值不一致 ({len(r['mismatched'])}):")
-                for m in r["mismatched"][:5]:
-                    lines.append(f"  - `{m['path']}`: {m['reason']}")
-                    lines.append(f"    - expected: `{m['expected']}`")
-                    lines.append(f"    - actual:   `{m['actual']}`")
-
-    empties = [r for r in results if r.get("empty_snapshot")]
-    if empties:
-        lines.append("")
-        lines.append("## empty snapshot (录制时没拿到 body, 跳过比对)")
-        for r in empties[:10]:
-            lines.append(f"- `{r['endpoint']}` (actual extra fields: {len(r['extra'])})")
-        if len(empties) > 10:
-            lines.append(f"- ... 共 {len(empties)} 个")
-
-    lines.append("")
-    lines.append("---")
-    lines.append("")
-    lines.append("脚本: `tools/replayer/consistency_report.py`")
     return "\n".join(lines) + "\n"
 
 
-def update_trend(trend_file: Path, overall: dict) -> None:
-    trend = {"entries": []}
-    if trend_file.exists():
+def _trend_document(history: dict[str, Any], result: ConsistencyResult) -> dict[str, Any]:
+    updated = dict(history)
+    entries = list(history["entries"])
+    entry = result.to_dict()
+    entry["date"] = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
+    entries.append(entry)
+    updated["entries"] = entries[-200:]
+    return updated
+
+
+def _stage_text(target: Path, content: str) -> Path:
+    target.parent.mkdir(parents=True, exist_ok=True)
+    fd, raw_path = tempfile.mkstemp(prefix=f".{target.name}.", suffix=".tmp", dir=target.parent)
+    staged = Path(raw_path)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as handle:
+            handle.write(content)
+            handle.flush()
+            os.fsync(handle.fileno())
+        if staged.read_text(encoding="utf-8") != content:
+            raise OSError(f"staged content verification failed for {target}")
+        return staged
+    except Exception:
         try:
-            trend = json.loads(trend_file.read_text(encoding="utf-8"))
-        except Exception:
+            os.close(fd)
+        except OSError:
             pass
-    if "entries" not in trend:
-        trend["entries"] = []
-    trend["entries"].append({
-        "date": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d"),
-        "consistency_rate": overall["consistency_rate"],
-        "total": overall["total"],
-        "replayed": overall["replayed"],
-        "structure_ok": overall["structure_ok"],
-        "status": overall["status"],
-    })
-    if len(trend["entries"]) > 200:
-        trend["entries"] = trend["entries"][-200:]
-    trend_file.write_text(json.dumps(trend, ensure_ascii=False, indent=2), encoding="utf-8")
+        staged.unlink(missing_ok=True)
+        raise
+
+
+def _restore_target(target: Path, previous: bytes | None) -> None:
+    if previous is None:
+        target.unlink(missing_ok=True)
+        return
+    fd, raw_path = tempfile.mkstemp(prefix=f".{target.name}.rollback.", suffix=".tmp", dir=target.parent)
+    staged = Path(raw_path)
+    try:
+        with os.fdopen(fd, "wb") as handle:
+            handle.write(previous)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(staged, target)
+    finally:
+        staged.unlink(missing_ok=True)
+
+
+def _publish_artifacts(
+    report_file: Path,
+    report_text: str,
+    trend_file: Path,
+    trend_text: str,
+) -> None:
+    staged: list[Path] = []
+    previous_report = report_file.read_bytes() if report_file.exists() else None
+    published_report = False
+    try:
+        staged_report = _stage_text(report_file, report_text)
+        staged.append(staged_report)
+        staged_trend = _stage_text(trend_file, trend_text)
+        staged.append(staged_trend)
+        os.replace(staged_report, report_file)
+        published_report = True
+        staged.remove(staged_report)
+        os.replace(staged_trend, trend_file)
+        staged.remove(staged_trend)
+    except Exception:
+        if published_report:
+            try:
+                _restore_target(report_file, previous_report)
+            except Exception as rollback_exc:
+                print(f"artifact rollback failed: {rollback_exc}", file=sys.stderr)
+        raise
+    finally:
+        for path in staged:
+            path.unlink(missing_ok=True)
+
+
+def _collect_endpoint(req_file: Path, snap_dir: Path, actual_dir: Path) -> tuple[dict[str, Any], bool]:
+    prefix = req_file.stem[:-4]
+    resp_file = snap_dir / f"{prefix}.resp.json"
+    actual_file = actual_dir / f"{prefix}.actual.json"
+    meta_file = snap_dir / f"{prefix}.meta.yaml"
+    errors: list[str] = []
+
+    _, request_error = _read_object(req_file, "request")
+    if request_error:
+        errors.append(request_error)
+    response, response_error = _read_object(resp_file, "response")
+    if response_error:
+        errors.append(response_error)
+    actual, actual_error = _read_object(actual_file, "actual")
+    replayed = actual is not None
+    if actual_error:
+        errors.append(actual_error)
+
+    meta: dict[str, Any] = {}
+    if meta_file.exists():
+        if not callable(load_meta):
+            errors.append("metadata: parser unavailable")
+        else:
+            try:
+                loaded_meta = load_meta(meta_file)
+                if not isinstance(loaded_meta, Mapping):
+                    errors.append("metadata: root is not a mapping")
+                else:
+                    meta = dict(loaded_meta)
+            except Exception as exc:
+                errors.append(f"metadata: {type(exc).__name__}: {exc}")
+
+    if errors:
+        return {"endpoint": prefix, "errors": errors}, replayed
+    try:
+        diff = diff_snapshot(response, actual, meta)  # type: ignore[arg-type]
+        if not isinstance(diff, dict):
+            raise TypeError("diff result root is not an object")
+    except Exception as exc:
+        return {
+            "endpoint": prefix,
+            "errors": [f"diff: {type(exc).__name__}: {exc}"],
+        }, replayed
+    diff["endpoint"] = prefix
+    return diff, replayed
+
+
+def _argument_vector(argv: list[str]) -> list[str]:
+    """Keep negative non-finite threshold tokens attached for argparse."""
+    normalized: list[str] = []
+    index = 0
+    while index < len(argv):
+        if argv[index] == "--threshold" and index + 1 < len(argv):
+            normalized.append(f"--threshold={argv[index + 1]}")
+            index += 2
+        else:
+            normalized.append(argv[index])
+            index += 1
+    return normalized
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="聚合 diff 出 markdown 报告 + trend.json")
+    parser = CanonicalArgumentParser(description="聚合 diff 出 markdown 报告 + trend.json")
     parser.add_argument("--domain", required=True)
-    parser.add_argument("--threshold", type=float, default=0.90,
-                        help="一致率阈值, 低于此值退出码 3 (CI 用)")
-    args = parser.parse_args()
+    parser.add_argument("--threshold", type=float, default=0.90)
+    try:
+        args = parser.parse_args(_argument_vector(sys.argv[1:]))
+    except InvalidArgumentsError as exc:
+        print(f"{parser.prog}: error: {exc}", file=sys.stderr)
+        return _emit(_result("REFUSED", 2, "INVALID_ARGUMENT", threshold=None))
 
-    fix_dir = SITE_ROOT / args.domain / "fixtures"
-    snap_dir = fix_dir / "snapshots"
-    actual_dir = fix_dir / "actual"
-    reports_dir = fix_dir / "reports"
-    reports_dir.mkdir(parents=True, exist_ok=True)
+    threshold = args.threshold
+    if not math.isfinite(threshold) or not 0.0 <= threshold <= 1.0:
+        result = _result(
+            "REFUSED",
+            2,
+            "INVALID_ARGUMENT",
+            threshold=threshold if math.isfinite(threshold) else None,
+        )
+        print(f"invalid threshold argument: {threshold!r}", file=sys.stderr)
+        return _emit(result)
 
+    fixtures_dir = SITE_ROOT / args.domain / "fixtures"
+    selected_root, snap_dir = select_fixture_layout(fixtures_dir)
+    if not selected_root.is_dir():
+        return _emit(_result("NO_DATA", 4, "NO_DATA", threshold=threshold, no_data=True))
     if not snap_dir.is_dir():
-        print(f"ERROR: {snap_dir} not found", file=sys.stderr)
-        return 1
-    if not actual_dir.is_dir():
-        print(f"ERROR: {actual_dir} not found. 先跑 snapshot_replay.py", file=sys.stderr)
-        return 1
+        print(f"selected snapshots directory is missing or invalid: {snap_dir}", file=sys.stderr)
+        return _emit(_result("ERROR", 1, "LAYOUT_INVALID", threshold=threshold))
 
     req_files = sorted(snap_dir.glob("*.req.json"))
-    results: list[dict] = []
-    total_matched = 0
-    total_compared = 0
-    replayed = 0
-    structure_ok_count = 0
-    empty_count = 0
+    reports_dir = selected_root / "reports"
+    report_file = reports_dir / (
+        datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d") + "-replay.md"
+    )
+    trend_file = reports_dir / "trend.json"
+    try:
+        trend = _read_trend(trend_file)
+    except TrendInvalidError as exc:
+        print(str(exc), file=sys.stderr)
+        return _emit(
+            _result(
+                "ERROR",
+                5,
+                "TREND_INVALID",
+                threshold=threshold,
+                total=len(req_files),
+                selected=len(req_files),
+            )
+        )
 
+    results: list[dict[str, Any]] = []
+    replayed = compared = fatal = status_mismatches = 0
+    matched_fields = comparable_fields = structure_ok = empty_count = 0
+    actual_dir = selected_root / "actual"
     for req_file in req_files:
-        prefix = req_file.stem[:-4]
-        resp_file = snap_dir / f"{prefix}.resp.json"
-        actual_file = actual_dir / f"{prefix}.actual.json"
-        meta_file = snap_dir / f"{prefix}.meta.yaml"
-
-        if not actual_file.exists():
-            results.append({
-                "endpoint": prefix,
-                "skipped": True,
-                "snapshot_status": "-", "actual_status": "-",
-                "total_fields": 0, "matched": 0,
-                "mismatched": [], "missing": [], "extra": [],
-                "structure_ok": False, "consistency_rate": 0.0,
-                "status_match": False, "empty_snapshot": False,
-            })
+        endpoint, was_replayed = _collect_endpoint(req_file, snap_dir, actual_dir)
+        results.append(endpoint)
+        replayed += int(was_replayed)
+        if "errors" in endpoint:
+            fatal += 1
+            print(f"{endpoint['endpoint']}: {'; '.join(endpoint['errors'])}", file=sys.stderr)
             continue
-
-        try:
-            snap = json.loads(resp_file.read_text(encoding="utf-8"))
-            act = json.loads(actual_file.read_text(encoding="utf-8"))
-            meta = load_meta(meta_file) if meta_file.exists() else {}
-        except Exception as e:
-            print(f"  parse fail {prefix}: {e}")
-            continue
-
-        d = diff_snapshot(snap, act, meta)
-        d["endpoint"] = prefix
-        results.append(d)
-        replayed += 1
-
-        # empty_snapshot 不进一致率分母 (snapshot 录制时没拿到 body)
-        if d.get("empty_snapshot"):
+        compared += 1
+        fields = int(endpoint.get("total_fields", 0))
+        comparable_fields += fields
+        matched_fields += int(endpoint.get("matched", 0))
+        if endpoint.get("empty_snapshot"):
             empty_count += 1
-            continue
+        if endpoint.get("structure_ok"):
+            structure_ok += 1
+        if not endpoint.get("status_match", False):
+            status_mismatches += 1
+            fatal += 1
 
-        total_matched += d["matched"]
-        total_compared += d["total_fields"]
-        if d["structure_ok"]:
-            structure_ok_count += 1
-
-    overall_rate = total_matched / total_compared if total_compared else 0.0
-    if total_compared == 0:
-        status_label = "NO_DATA"
-    elif overall_rate >= args.threshold:
-        status_label = "PASS"
-    elif overall_rate >= 0.80:
-        status_label = "WARN"
-    else:
-        status_label = "FAIL"
-
-    overall = {
-        "total": len(req_files),
-        "replayed": replayed,
-        "structure_ok": structure_ok_count,
-        "empty_snapshot_count": empty_count,
-        "consistency_rate": round(overall_rate, 4),
-        "status": status_label,
-    }
-
-    date_str = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
-    report_file = reports_dir / f"{date_str}-replay.md"
-    report_file.write_text(render_report(args.domain, results, overall), encoding="utf-8")
-    update_trend(reports_dir / "trend.json", overall)
-
-    print(f"\n=== {args.domain} ===")
-    print(f"replayed: {replayed}/{len(req_files)}")
-    print(f"structure_ok: {structure_ok_count}/{replayed}")
-    print(f"consistency_rate: {overall_rate:.2%}  [{status_label}]")
-    print(f"report: {report_file}")
-
-    return 0 if overall_rate >= args.threshold else 3
+    result = _canonical_result(
+        threshold=threshold,
+        total=len(req_files),
+        replayed=replayed,
+        compared=compared,
+        fatal_error_count=fatal,
+        status_mismatch_count=status_mismatches,
+        comparable_fields=comparable_fields,
+        matched_fields=matched_fields,
+        structure_ok=structure_ok,
+        empty_snapshot_count=empty_count,
+    )
+    report_rel = report_file.relative_to(selected_root).as_posix()
+    trend_rel = trend_file.relative_to(selected_root).as_posix()
+    published_result = replace(
+        result,
+        report_artifact=report_rel,
+        trend_artifact=trend_rel,
+    )
+    try:
+        report_text = render_report(args.domain, results, published_result.to_dict())
+        trend_text = serialize_json(_trend_document(trend, published_result), indent=2) + "\n"
+        _publish_artifacts(report_file, report_text, trend_file, trend_text)
+    except Exception as exc:
+        print(f"artifact write failed: {exc}", file=sys.stderr)
+        return _emit(replace(result, status="ERROR", exit_code=5, no_data=False,
+                             failure_kind="ARTIFACT_WRITE"))
+    return _emit(published_result)
 
 
 if __name__ == "__main__":

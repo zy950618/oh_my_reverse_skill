@@ -1,0 +1,13 @@
+name: Full 314 delivery needs more than public sandbox parity
+prompt: >
+  The user gives a public AJAX sandbox target and asks for a complete 314 API
+  service delivery, including routes, tests, and acceptance evidence. Should
+  website-314-api-delivery own the task?
+criteria:
+  - "Triggers only because the user explicitly asks for full 314 service delivery, not merely page/API discovery."
+  - "Requires current browser-observed API/UI parity and backend acceptance before implementing the service surface."
+  - "Requires repeat verification before claiming the adapter is complete."
+  - "Keeps public sandbox evidence scoped to anonymous AJAX parity unless route tests and service packaging are actually produced."
+  - "Does not count raw captures, chat summaries, or partial public evidence as 314 delivery success."
+expect_skill: true
+timeout: 120

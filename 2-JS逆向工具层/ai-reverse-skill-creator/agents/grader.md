@@ -123,7 +123,7 @@ Write a JSON file with this structure:
     {
       "text": "The assistant used the skill's OCR script",
       "passed": true,
-      "evidence": "Transcript Step 2 shows: 'Tool: Bash - python ocr_script.py image.png'"
+      "evidence": "Transcript Step 2 shows: 'Tool: Bash - python3 ocr_script.py image.png'"
     }
   ],
   "summary": {

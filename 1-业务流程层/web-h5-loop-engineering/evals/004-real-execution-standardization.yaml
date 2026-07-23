@@ -1,0 +1,15 @@
+name: Loop Engineering requires real execution ledger acceptance and metrics
+prompt: >
+  A user asks to run a Web/H5 crawler LOOP with three agents and then claim
+  stable concurrency. The agent has a chat summary but no Loop Runner ledger,
+  no Acceptance Report, no fresh fixtures, no concurrency ladder, and no
+  quantitative metrics. Should the loop be accepted as complete?
+criteria:
+  - "Requires a Loop Runner execution ledger with executor, verifier, governor, stop conditions, and iteration decisions."
+  - "Requires an Acceptance Report for clean-state retest, risk-control concurrency, UI/API parity, and fixture freshness."
+  - "Requires fresh fixtures before using replay or webpage consistency as current evidence."
+  - "Requires the 1/2/5/10 worker concurrency ladder before claiming concurrency."
+  - "Requires quantitative metrics and records blocked/flaky outcomes instead of hiding them."
+  - "Does not treat chat summaries or local structure gates as real site success."
+expect_skill: true
+timeout: 120

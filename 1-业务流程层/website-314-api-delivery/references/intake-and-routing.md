@@ -13,6 +13,7 @@ For every new target site, capture:
 - known errors or WAF markers
 - proxy/IP requirement
 - output service shape
+- local base framework target, if any; leave unset until FastAPI interfaces pass and the user confirms integration
 
 ## Task Classification
 
@@ -23,7 +24,8 @@ For every new target site, capture:
 | env-patch | official JS needs browser globals in Node | `reverse-js-crawler` |
 | waf | Incapsula/Reese84/WAF/fingerprint challenge | `imperva-waf-reese84` |
 | adapter | existing findings need standard API packaging | `site-api-adapter` |
-| 314-delivery | user asks for service/API using 314 | `website-314-api-delivery` |
+| fastapi-test-delivery | user asks for a testable API service from a new or existing website | `website-314-api-delivery` |
+| local-framework-integration | Python/FastAPI interfaces already pass and user confirms a local base framework such as 314 | `website-314-api-delivery` |
 | governance | scoring, evals, drift, versioning | `skills-evaluation-governance` |
 
 ## Flight Booking Stages
@@ -47,4 +49,5 @@ Each stage can have a different auth, WAF, host, cookie domain, payload, and suc
 - Do not force a route into a new API flow if the official page routes it to legacy.
 - Treat WAF HTML as protection failure, not empty business data.
 - Treat payment submit as irreversible unless sandbox/dry-run is proven.
+- Default to Python/FastAPI interface test delivery first; do not rewrite into 314 or any local base framework before all target interfaces pass and the user confirms the framework choice.
 
