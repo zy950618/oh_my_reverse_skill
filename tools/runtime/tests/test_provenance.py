@@ -18,6 +18,7 @@ from artifact_manifest import (  # noqa: E402
     create_artifact_record,
     redact_mapping,
     strict_json_loads,
+    validate_artifact_record,
     validate_manifest,
 )
 from run_context import (  # noqa: E402
@@ -145,7 +146,58 @@ class ProvenanceTests(unittest.TestCase):
                     input_hashes=self.inputs,
                 )
 
-    def test_secret_cases_rejected_without_echo(self):
+    def test_verify_hash_false_still_validates_artifact_path(self):
+        context = self.run_context()
+        valid = self.artifact(context)
+        valid["sha256"] = "0" * 64
+        self.assertEqual(
+            validate_artifact_record(valid, self.root, verify_hash=False)["path"],
+            "artifact.bin",
+        )
+        with self.assertRaisesRegex(ProvenanceError, "artifact hash mismatch"):
+            validate_artifact_record(valid, self.root)
+
+        cases = ["../artifact.bin", "/artifact.bin", "missing", "directory"]
+        (self.root / "directory").mkdir()
+        for relative in cases:
+            invalid = dict(valid, path=relative)
+            with self.subTest(relative=relative), self.assertRaises(ProvenanceError):
+                validate_artifact_record(invalid, self.root, verify_hash=False)
+        if hasattr(os, "symlink"):
+            (self.root / "link").symlink_to(self.root / "artifact.bin")
+            invalid = dict(valid, path="link")
+            with self.assertRaises(ProvenanceError):
+                validate_artifact_record(invalid, self.root, verify_hash=False)
+
+    def test_intermediate_symlink_path_rejected(self):
+        if not hasattr(os, "symlink"):
+            self.skipTest("symlinks unavailable")
+        real_dir = self.root / "real-dir"
+        real_dir.mkdir()
+        (real_dir / "nested.bin").write_bytes(b"nested")
+        (self.root / "linked-dir").symlink_to(real_dir, target_is_directory=True)
+        context = self.run_context()
+        record = {
+            "path": "linked-dir/nested.bin",
+            "sha256": hashlib.sha256(b"nested").hexdigest(),
+            "producer_run_id": context.run_id,
+            "producer": context.producer,
+            "target": context.target,
+            "input_hashes": self.inputs,
+            "created_at": FIXED_TIME,
+        }
+        with self.assertRaises(ProvenanceError):
+            create_artifact_record(
+                self.root,
+                record["path"],
+                producer_run_id=context.run_id,
+                producer=context.producer,
+                target=context.target,
+                input_hashes=self.inputs,
+            )
+        with self.assertRaises(ProvenanceError):
+            validate_artifact_record(record, self.root, verify_hash=False)
+
         synthetic = "synthetic-credential-value"
         cases = [
             ["tool", "--token", synthetic],

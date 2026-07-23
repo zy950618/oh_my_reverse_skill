@@ -150,9 +150,16 @@ def _relative_file(repo_root: os.PathLike[str] | str, relative_path: str) -> Pat
     root = Path(repo_root).resolve(strict=True)
     candidate = root.joinpath(*pure.parts)
     try:
+        current = root
+        for part in pure.parts[:-1]:
+            current = current / part
+            if stat.S_ISLNK(current.lstat().st_mode):
+                raise ProvenanceError("artifact is not a contained regular file")
         file_stat = candidate.lstat()
         resolved = candidate.resolve(strict=True)
         resolved.relative_to(root)
+    except ProvenanceError:
+        raise
     except (FileNotFoundError, OSError, ValueError):
         raise ProvenanceError("artifact is not a contained regular file") from None
     if stat.S_ISLNK(file_stat.st_mode) or not stat.S_ISREG(file_stat.st_mode):
@@ -205,6 +212,7 @@ def validate_artifact_record(
         raise ProvenanceError("invalid artifact record")
     validate_timestamp(value["created_at"])
     hashes = validate_input_hashes(value["input_hashes"])
+    _relative_file(repo_root, value["path"])
     if verify_hash and hash_file(repo_root, value["path"]) != value["sha256"]:
         raise ProvenanceError("artifact hash mismatch")
     return {
